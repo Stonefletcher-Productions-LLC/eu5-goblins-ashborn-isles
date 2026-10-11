@@ -1,5 +1,7 @@
 # Goblins of the Ashborn Isles
 
+Pending divorce action: **Dissolve a Royal Marriage** lets a goblin ruler choose a living spouse and divorce for a base cost of **10 gold**, unaffected by inflation, with no stability penalty. Junior union partners cannot act on their shared ruler. Uses native divorce mechanics; AI and player automation do not initiate it.
+
 Pending event help: hovering “Charts, provisions, then a harbor.” now explains that Beyond the Ashen Horizon is informational, has no immediate cost or reward, and points to Ashborn Voyages and the paid Eastern Hunger actions.
 
 Pending tooltip fix: the Moot of Six Fires rewards now display “The Local Covenants” and “The First Oathkeeper”. The three major Covenant rites also have proper modifier names and descriptions. Effects and saved modifier IDs are unchanged.

@@ -1,0 +1,38 @@
+﻿ga_divorce_ruler = {
+ type = owncountry
+ show_message = no
+ automation_tick = never
+ ai_tick = never
+ potential = { scope:actor = { ga_is_goblin = yes } }
+ allow = {
+  scope:actor = {
+   has_ruler = yes
+   is_junior_partner = no
+   ruler ?= { num_of_spouses > 0 }
+  }
+  trigger_if = {
+   limit = { exists = scope:target }
+   scope:target = { is_alive = yes is_spouse_of = scope:actor.ruler }
+  }
+ }
+ price = price:ga_divorce_price
+ select_trigger = {
+  looking_for_a = character
+  source = actor
+  target_flag = target
+  name = choose_consort_to_divorce_from
+  column = { data = character_info }
+  interaction_source_list = {
+   scope:actor.ruler ?= {
+    every_spouse = { limit = { is_alive = yes } add_to_list = source }
+   }
+  }
+  visible = { is_alive = yes is_spouse_of = scope:actor.ruler }
+  enabled = { is_alive = yes is_spouse_of = scope:actor.ruler }
+ }
+ effect = {
+  custom_tooltip = ga_divorce_effect_tt
+  scope:actor = { ruler ?= { divorce_character = scope:target } }
+ }
+ ai_will_do = { add = 0 }
+}

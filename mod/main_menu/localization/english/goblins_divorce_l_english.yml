@@ -1,0 +1,7 @@
+﻿l_english:
+ ga_divorce_ruler: "Dissolve a Royal Marriage"
+ ga_divorce_ruler_desc: "Pay the marriage settlement and release the ruler and the chosen spouse from their vows. Choose a living spouse of your current ruler. Costs 10 gold before action-cost modifiers, unaffected by inflation, with no stability penalty. Junior partners cannot dissolve their shared ruler's marriage."
+ ga_divorce_effect_tt: "End the marriage between your ruler and the selected spouse. Neither character is killed, and this action does not change their children's parentage or grant a replacement spouse. Normal succession and diplomatic rules still apply."
+ ga_divorce_price: "Royal Divorce Settlement"
+ MODIFIER_TYPE_NAME_ga_divorce_price_cost_modifier: "Royal Divorce Settlement Cost"
+ MODIFIER_TYPE_DESC_ga_divorce_price_cost_modifier: "Changes the gold cost of dissolving a goblin ruler's marriage."

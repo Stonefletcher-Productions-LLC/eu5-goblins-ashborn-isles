@@ -184,6 +184,8 @@ def validate(game,out,mapstats,economy):
     assert len(re.findall(r'\boption\s*=\s*\{',intro))==1
     from verify_ashborn_intro import verify as verify_intro
     verify_intro(lambda p: (out/p).read_text(encoding='utf-8-sig'))
+    from verify_divorce import verify as verify_divorce
+    verify_divorce(lambda p: (out/p).read_text(encoding='utf-8-sig'))
     import shatterfin
     shatterfin.verify(sys.modules[__name__],out)
     import ashborn_names
