@@ -1,10 +1,14 @@
-# Goblins of the Ashborn Isles 0.6.3
+# Goblins of the Ashborn Isles 0.6.4
 
-This staging build adds **Ashen Harbors** at peace and **Black Sails, Ashen Teeth** at war for all six goblin cultures. Automatic peace → war → peace is confirmed in Cindermaw. These are two short demo tracks; live multiplayer, non-goblin and music-off checks remain pending. The music change works with an existing save after restarting. It requires EU5 1.3.11's matching native music/Init banks and topbar GUI, checked by the installer; mods replacing those files may conflict. The published 0.6.3 release and Workshop have not been updated with this prototype.
+**0.6.4 — Goblin music, royal divorce and clearer events.**
 
-Pending tooltip fix: the Moot of Six Fires rewards now display “The Local Covenants” and “The First Oathkeeper”. The three major Covenant rites also have proper modifier names and descriptions. Effects and saved modifier IDs are unchanged.
+Two peace tracks and three war tracks now rotate for all six goblin primary cultures. Peace: **Ashen Harbors** and **Six Clans, One Fire**. War: **Black Sails, Ashen Teeth**, **Hooks and Gold**, and **Drums Beneath the Volcano**. The local player's diplomacy state controls switching; native music routes are preserved for non-goblin cultures. Automatic peace → war → peace was confirmed in Cindermaw with the original two tracks. The expanded rotation, non-goblin listening, music controls and multiplayer remain unverified. Other music drafts are excluded and generation is paused.
 
-Pending introduction patch: all six goblin kingdoms receive the Ashborn introduction once on their monthly country pulse. Existing saves catch up; Cindermaw does not repeat its old introduction or starting units. This candidate is not the published 0.6.3 release.
+**Dissolve a Royal Marriage** lets a goblin ruler divorce a living spouse for a base **10 gold**, unaffected by inflation, with no stability penalty. Junior union partners cannot divorce their shared ruler; AI and player automation do not initiate this action.
+
+Every goblin kingdom receives the Ashborn introduction once, including existing saves catching up. Cindermaw retains its exclusive starting units and does not repeat its old introduction. Covenant unification rewards and major rites display proper modifier names. Hovering “Charts, provisions, then a harbor.” explains the informational event and the paid exploration/foothold steps; it grants no immediate reward or land.
+
+Built for **EU5 1.3.11**. Restart before playing. Existing 0.6.3 saves can use these additions; earlier starting-world changes still require a new 1337 campaign. Other mods replacing the native music bank, Init bank or in-game topbar may conflict. [Music details](art/music/README.md).
 
 ## 0.6.3 — Construction economy and Jaimzha
 

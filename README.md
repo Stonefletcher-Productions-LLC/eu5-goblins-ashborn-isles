@@ -1,26 +1,24 @@
 # Goblins of the Ashborn Isles
 
-Pending music prototype: **Ashen Harbors** at peace and **Black Sails, Ashen Teeth** at war for all six goblin primary cultures. Automatic peace → war → peace is confirmed in an isolated Cindermaw campaign. A local UI check reads the player's actual war status, bypassing EU5 1.3.11's stale audio war flag. Original routes remain for other cultures. The approved library now contains two peace tracks (Ashen Harbors; Six Clans, One Fire) and three war tracks (Black Sails, Ashen Teeth; Hooks and Gold; Drums Beneath the Volcano), rotating within each mood. Other drafts are excluded and generation is paused. The expanded rotation, live non-goblin, music-off and multiplayer checks remain unverified. Requires matching native music/Init banks and topbar GUI; other mods replacing those files may conflict. [Music details](art/music/README.md). The matching staging installer passed a clean source reconstruction and fresh installation; every delivered file is checked against the candidate. [Installer receipt](reports/goblin-music-install.json).
+**0.6.4 — Goblin music, royal divorce and clearer events.**
 
-Pending divorce action: **Dissolve a Royal Marriage** lets a goblin ruler choose a living spouse and divorce for a base cost of **10 gold**, unaffected by inflation, with no stability penalty. Junior union partners cannot act on their shared ruler. Uses native divorce mechanics; AI and player automation do not initiate it.
+Two peace tracks and three war tracks now rotate for all six goblin primary cultures. Peace: **Ashen Harbors** and **Six Clans, One Fire**. War: **Black Sails, Ashen Teeth**, **Hooks and Gold**, and **Drums Beneath the Volcano**. The local player's diplomacy state controls switching; native music routes are preserved for non-goblin cultures. Automatic peace → war → peace was confirmed in Cindermaw with the original two tracks. The expanded rotation, non-goblin listening, music controls and multiplayer remain unverified. Other music drafts are excluded and generation is paused.
 
-Pending event help: hovering “Charts, provisions, then a harbor.” now explains that Beyond the Ashen Horizon is informational, has no immediate cost or reward, and points to Ashborn Voyages and the paid Eastern Hunger actions.
+**Dissolve a Royal Marriage** lets a goblin ruler divorce a living spouse for a base **10 gold**, unaffected by inflation, with no stability penalty. Junior union partners cannot divorce their shared ruler; AI and player automation do not initiate this action.
 
-Pending tooltip fix: the Moot of Six Fires rewards now display “The Local Covenants” and “The First Oathkeeper”. The three major Covenant rites also have proper modifier names and descriptions. Effects and saved modifier IDs are unchanged.
+Every goblin kingdom receives the Ashborn introduction once, including existing saves catching up. Cindermaw retains its exclusive starting units and does not repeat its old introduction. Covenant unification rewards and major rites display proper modifier names. Hovering “Charts, provisions, then a harbor.” explains the informational event and the paid exploration/foothold steps; it grants no immediate reward or land.
 
-**0.6.3 — Construction economy and Jaimzha.**
-
-**Pending patch on `staging/ashborn-intro`:** all six goblin crowns receive the “Smoke on the Horizon” introduction (“The Ashborn rise.”) once, on their monthly country pulse. Existing saves catch up for the other crowns; Cindermaw does not repeat an introduction it already received. Cindermaw's starting troops and ships remain exclusive to Cindermaw. This patch is not yet deployed to the published 0.6.3 or Steam Workshop.
+Built for **EU5 1.3.11**. Restart before playing. Existing 0.6.3 saves can use these additions; earlier starting-world changes still require a new 1337 campaign. Other mods replacing the native music bank, Init bank or in-game topbar may conflict. [Music details](art/music/README.md).
 
 ![Goblins of the Ashborn Isles banner](art/workshop/0.6.0/banner.jpg)
 
-[0.6.3 release notes](RELEASE_NOTES_0.6.3.md) | [Download 0.6.3](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.6.3) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)
+[0.6.4 release notes](RELEASE_NOTES_0.6.4.md) | [Download 0.6.4](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.6.4) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)
 
 Fire rose from the Atlantic. When the smoke cleared, goblin kingdoms stood among the new volcanic islands between the Azores and Portugal. Captains claimed sheltered harbors, smiths built their forges beneath black ridges, and rival houses began arguing over who should lead them.
 
 **Goblins of the Ashborn Isles** adds a fantasy homeland to Europa Universalis V. Choose a crown, develop its economy, bargain with neighboring rulers, and decide whether the Isles will unite through conquest, submission or dynastic union. Beyond the familiar shoals lie foreign ports and the promise of an eastern foothold.
 
-## 0.6.3 — Construction economy and Jaimzha
+## Previous 0.6.3 — Construction economy and Jaimzha
 
 Shatterfin's ruler is now **Jaimzha, the Mare-Mother**. Character IDs, family and succession stay intact.
 
@@ -133,16 +131,16 @@ At home, the **Ashen Covenant** provides twelve sacred sites, traditions, rites,
 
 ## Install and continue
 
-Built for **EU5 1.3.11 (Pavia)**. Version 0.6.3 requires a **new 1337 campaign** for the revised populations. Existing saves retain their saved population setup.
+Built for **EU5 1.3.11 (Pavia)**. Existing 0.6.3 campaigns can continue after restarting. Start a **new 1337 campaign** when upgrading from earlier versions to receive the revised populations and industries.
 
-- Subscribe through the Workshop, or download **Goblins_Ashborn_Isles_0.6.2.zip** from the release above, extract it and run **Install-Goblins.cmd** with EU5 closed. The installer reconstructs its terrain using the installed game.
+- Subscribe through the Workshop, or download **Goblins_Ashborn_Isles_0.6.4.zip** from the release above, extract it and run **Install-Goblins.cmd** with EU5 closed. The installer reconstructs its terrain using the installed game.
 - Enable only one Goblins copy and disable the old Gathering Prototype add-on. Restart before playing.
 - Existing 0.6.0 saves can receive the clan-flag repair after restart and the next monthly pulse; that repair alone needs no new campaign.
 - Other map, terrain and starting-world mods may conflict. Keep separate saves.
 
 ## Checks and feedback
 
-The construction candidate passed native recipe/input-chain checks, staffing and population checks, succession/geography regressions, and a clean committed-source installer test. All 1,977 isolated installed files match the validated build; stale source/bundle combinations are rejected. The gameplay payload matches the verified economy candidate; the final 0.6.3 clean-source reconstruction and isolated installation also passed. [Installer receipt](reports/release-063-install.json). Gameplay acceptance remains pending: actual hiring, market access, food and profitability must be checked in a new campaign.
+The five-track candidate passed native audio-route preservation, playlist/media checks and clean-source installer verification. The 0.6.4 release package receives its own clean install check; see the [release receipt](reports/release-064-install.json). Economy checks from 0.6.3 remain applicable to the unchanged world configuration. Actual employment, trade and profitability still require gameplay checks.
 
 Development packaging creates the player installer by default. Use `python tools/package.py --source` only when a separate source ZIP is needed; GitHub already supplies source downloads. Reuse verified build stages and keep one current clean-test workspace.
 
@@ -152,4 +150,4 @@ The complete 0.6.1 static build, economy, connected-province, portrait asset and
 
 ## Credits
 
-Original setting and development by Stonefletcher. Base goblin infantry model: Quaternius, Ultimate Animated Character Pack (CC0). Paintings, banner and thumbnail use AI-generated artwork; map diagrams use the mod's generated geography. Europa Universalis V and its original assets belong to Paradox Interactive. This is an unofficial mod.
+Original setting and development by Stonefletcher. Base goblin infantry model: Quaternius, Ultimate Animated Character Pack (CC0). Music was generated with ElevenLabs Music v2 and local ACE-Step 1.5 (MIT). Paintings, banner and thumbnail use AI-generated artwork; map diagrams use the mod's generated geography. Europa Universalis V and its original assets belong to Paradox Interactive. This is an unofficial mod.

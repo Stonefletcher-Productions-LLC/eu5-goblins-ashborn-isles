@@ -1,3 +1,6 @@
+0.6.4 — Goblin music, royal divorce and clearer events
+Five peace/war tracks for goblin cultures; divorce for 10 gold; introduction for all six crowns; Covenant modifier names and Horizon hover help. Original switching user-confirmed; expanded rotation and multiplayer unverified. Restart; 0.6.3 saves can continue.
+
 [h1]0.6.3 — Construction economy and Jaimzha[/h1]
 [list]
 [*]Renamed Jaima to Jaimzha; family and succession preserved.

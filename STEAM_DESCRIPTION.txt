@@ -1,6 +1,6 @@
 [h1]Goblins of the Ashborn Isles[/h1]
 
-[b]Version 0.6.3 — Construction economy and Jaimzha.[/b]
+[b]Version 0.6.4 — Goblin music, royal divorce and clearer events.[/b]
 
 [img]https://raw.githubusercontent.com/stonefletcher/eu5-goblins-ashborn-isles/main/art/workshop/0.6.0/banner.jpg[/img]
 
@@ -9,15 +9,15 @@ Volcanic islands rose between the Azores and Portugal. Goblin captains claimed t
 
 Choose a goblin crown, develop its economy and bargain with neighboring rulers. Unite the Isles through conquest, submission or dynastic union, then chart foreign shores and pursue an eastern foothold.
 
-[h2]New in 0.6.3[/h2]
+[h2]New in 0.6.4[/h2]
 [list]
-[*][b]Jaimzha, the Mare-Mother:[/b] Shatterfin's ruler has a new goblin name, preserving her family and succession.
-[*][b]Construction in every crown:[/b] masons increase from 6 to 30 levels; glass guilds from 5 to 13. Every kingdom has tools, cloth, leather, paper, pottery and naval-supply industries.
-[*][b]Complete input chains:[/b] more sand and planned stone capacity, plus northern fiber farms, charcoal and smithing.
-[*][b]Workers and Wildfang Clans:[/b] 1,895,000 people retained, with about 25% tribesmen per district. New jobs meet the staffing target; minorities and slaves are preserved. Estates remain Wildfang Clans, Highfangs and Ironfang Crown.
+[*][b]Goblin music:[/b] two peace tracks (Ashen Harbors; Six Clans, One Fire) and three war tracks (Black Sails, Ashen Teeth; Hooks and Gold; Drums Beneath the Volcano), switching with your own war status. Non-goblin native routing is preserved.
+[*][b]Royal divorce:[/b] goblin rulers can divorce for a base 10 gold, with no stability penalty. Junior union partners cannot divorce their shared ruler; no automatic AI divorces.
+[*][b]All-crown introduction:[/b] each goblin kingdom receives the Ashborn introduction once, including catch-up for existing saves.
+[*][b]Clearer events:[/b] Covenant rewards have proper modifier names; Beyond the Ashen Horizon explains its purpose and next steps when hovered.
 [/list]
 
-The earlier economy, connected provinces, wharves, seeded trade, Covenant Favor and portrait fixes remain included. Static checks passed; actual hiring and profitability need playtesting.
+Cindermaw peace-war-peace was confirmed with the original two tracks. Expanded rotation, live non-goblin playback, music controls and multiplayer remain unverified. Earlier Jaimzha, masonry/glass, workers, flags, portraits, religion and exploration updates remain included.
 
 [h2]An Atlantic homeland[/h2]
 
@@ -27,7 +27,7 @@ The earlier economy, connected provinces, wharves, seeded trade, Covenant Favor 
 
 The Isles contain [b]97 districts, 75 ports and 28 coastal sea tiles[/b], with 1,895,000 people at the start. Volcanic highlands, marshes, woodland and fisheries give each crown a different base of resources and settlements.
 
-Giltfang and Tolltooth lie north of Cindermaw; together they are about 10% smaller than Brackmaw. Cindermaw gains Lantern Cay: Lantern Haven, Wickwood and Emberwatch. The Quiet Road links north and south through ordinary coastal water, with an opened eastern approach and reworked current tiles.
+Giltfang and Tolltooth lie north of Cindermaw. Lantern Cay guards Cindermaw; the Quiet Road connects the northern and southern waters.
 
 [h2]Choose your crown[/h2]
 
@@ -85,17 +85,17 @@ At home, the [b]Ashen Covenant[/b] provides twelve sacred sites, traditions, rit
 
 [h2]Install and continue[/h2]
 
-Built for [b]EU5 1.3.11 (Pavia)[/b]. Start a [b]new 1337 campaign[/b] for 0.6.3: starting industries and populations changed.
+Built for [b]EU5 1.3.11 (Pavia)[/b]. Existing 0.6.3 saves can continue after restart. Upgrading from earlier versions requires a [b]new 1337 campaign[/b] for the changed industries and populations.
 
 [list]
 [*]Subscribe through the Workshop, or extract the complete GitHub installer ZIP and run [b]Install-Goblins.cmd[/b] with EU5 closed.
 [*]Enable only one Goblins copy and disable the old Gathering Prototype add-on. Restart before playing.
-[*]Other map, terrain and starting-world mods may conflict. Keep separate saves.
+[*]Other map, starting-world, music-bank, Init-bank or topbar mods may conflict. Keep separate saves.
 [/list]
 
 [h2]Checks, feedback and credits[/h2]
-Static map, script, artwork and clean-install checks passed. Actual hiring, masonry output, trade, UI/flag rendering and save behavior still need gameplay confirmation. Multiplayer and achievements are unverified. Dedicated foreign invasion ambitions and fear mechanics are not included.
+Static map, script, artwork and clean-install checks passed. Hiring, masonry output, trade and UI rendering need gameplay confirmation. Multiplayer and achievements are unverified. Dedicated foreign invasion ambitions and fear mechanics are not included.
 
-Report bugs with your version, clan, enabled mods and reproduction steps. See the illustrated [url=https://github.com/stonefletcher/eu5-goblins-ashborn-isles/blob/main/README.md]README[/url] for details.
+Report your version, clan, enabled mods and reproduction steps. See the [url=https://github.com/stonefletcher/eu5-goblins-ashborn-isles/blob/main/README.md]README[/url] for details.
 
-Setting and development: Stonefletcher. Base infantry: Quaternius (CC0). Paintings and branding use AI-generated art; maps are generated-data diagrams. Europa Universalis V belongs to Paradox Interactive. Unofficial mod.
+Music: ElevenLabs Music v2 and ACE-Step 1.5 (MIT). Setting and development: Stonefletcher. Base infantry: Quaternius (CC0). Paintings and branding use AI-generated art; maps are generated-data diagrams. Europa Universalis V belongs to Paradox Interactive. Unofficial mod.

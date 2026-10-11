@@ -1,12 +1,12 @@
 {
-  "version": "0.6.3",
+  "version": "0.6.4",
   "source_commit": "ce196d3a68c074fb24970f53ff4b3e12518fcfce",
-  "source_config_sha256": "b181319e8c73a38f1a14c92fb622dd7be3354f8ef8a4eeb3caa828c6a2ab7958",
+  "source_config_sha256": "0fd57c9426e616cddd7b5f5a29365855d7b261867bc3d72f026ea015198930b6",
   "assets": [
     {
-      "name": "Goblins_Ashborn_Isles_0.6.3.zip",
-      "size": 432698031,
-      "sha256": "881dfa4f4da002cd840cf2b330a6b35c66a990bab588b64b1780841527d8329c",
+      "name": "Goblins_Ashborn_Isles_0.6.4.zip",
+      "size": 433087266,
+      "sha256": "64fc719adef2b2929dde7c076c308ffb56350535013109e182c324fcdc3b1a12",
       "chunks": [
         "assets/0.6.1-fdef69b9611d-0000.b64",
         "assets/0.6.1-fdef69b9611d-0001.b64",
@@ -837,7 +837,8 @@
         "assets/overlay-c23d67783c0a-0246.b64",
         "assets/overlay-c23d67783c0a-0247.b64",
         "assets/overlay-c23d67783c0a-0248.b64",
-        "assets/overlay-c23d67783c0a-0249.b64"
+        "assets/overlay-c23d67783c0a-0249.b64",
+        "assets/overlay-f14073e23199-0000.b64"
       ]
     }
   ]

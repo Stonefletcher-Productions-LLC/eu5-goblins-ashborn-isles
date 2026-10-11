@@ -2,7 +2,7 @@
 
 On October 11, 2026, the user confirmed automatic **Ashen Harbors at peace → Black Sails, Ashen Teeth at war → Ashen Harbors after peace** in the isolated Cindermaw test using the custom local audio state. Earlier candidates relying on native PlayerAtWar audio state are superseded: that value remained at war after the campaign returned to peace.
 
-The accepted design reads the local player's actual diplomacy state through invisible in-game GUI widgets and posts custom audio-state events. Only goblin bank routes consume the custom state; no synchronized campaign variable or host-only pulse drives music. This is a multiplayer-compatible design intention, not completed multiplayer acceptance. Both tracks are 60-second demos and will repeat.
+The accepted design reads the local player's actual diplomacy state through invisible in-game GUI widgets and posts custom audio-state events. Only goblin bank routes consume the custom state; no synchronized campaign variable or host-only pulse drives music. This is a multiplayer-compatible design intention, not completed multiplayer acceptance. The 0.6.4 library has two peace tracks and three war tracks, totaling 7 minutes 30 seconds. Verify complete rotation within each mood, then a second cycle; the original listening confirmation does not cover the expanded playlists.
 
 Before accepting a packaged candidate, confirm its applied playset and installed bank/GUI hashes. A saved playset or successful launch command alone does not prove the mod loaded. Use listening confirmation; a native track title or advancing music UI is not evidence of the intended audio.
 

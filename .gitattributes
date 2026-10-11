@@ -7,3 +7,6 @@ data/cindermaw.json -text
 data/reefhook.json -text
 data/sootwake.json -text
 data/giltfang.json -text
+
+# Steam upload descriptions must remain below the byte limit without CRLF expansion.
+STEAM_DESCRIPTION.txt text eol=lf

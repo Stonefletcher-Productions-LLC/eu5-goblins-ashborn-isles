@@ -1,9 +1,12 @@
 """Append checksum-verified overlay changes to an existing prepared release."""
-import base64, hashlib, io, json, zipfile
+import argparse, base64, hashlib, io, json, subprocess, zipfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 
 def main():
+    ap=argparse.ArgumentParser()
+    ap.add_argument('--promote-version',action='store_true',help='Promote unchanged world configuration, retaining verified terrain')
+    args=ap.parse_args()
     release=ROOT/'.release'
     manifest=json.loads((release/'manifest.json').read_text())
     asset=manifest['assets'][0]
@@ -11,11 +14,35 @@ def main():
     digest=lambda b:hashlib.sha256(b).hexdigest()
     assert len(raw)==asset['size'] and digest(raw)==asset['sha256']
     overlay=json.loads((ROOT/'data/main_overlay.json').read_text())
-    assert overlay['base_release']==manifest['version']
+    config_text=(ROOT/'data/island.json').read_text(encoding='utf-8')
+    config=json.loads(config_text)
+    assert overlay['base_release']==config['version']
+    promotion=config['version']!=manifest['version']
+    if promotion:
+        assert args.promote_version, 'Version promotion requires --promote-version'
+        prior=json.loads(subprocess.check_output(['git','show',manifest['source_commit']+':data/island.json'],cwd=ROOT,text=True))
+        assert prior['version']==manifest['version']
+        prior['version']=config['version']
+        assert prior==config, 'World configuration changed; regenerate and validate terrain/setup before packaging'
     changed={}
     player_roots={'README.md','RELEASE_NOTES.md','TESTING.md','LORE.md',
                   'Install-Goblins.ps1','Install-Goblins.cmd','reports/validation.json'}
     with zipfile.ZipFile(io.BytesIO(raw)) as old:
+        metadata=json.loads((ROOT/'mod/.metadata/metadata.json').read_text(encoding='utf-8'))
+        assert metadata['version']==config['version']
+        name='goblins_ashborn_isles/.metadata/metadata.json'
+        if old.read(name)!=(ROOT/'mod/.metadata/metadata.json').read_bytes():
+            changed[name]=(ROOT/'mod/.metadata/metadata.json').read_bytes()
+        if promotion:
+            for name in ('terrain_patch/manifest.json','reports/validation.json'):
+                document=json.loads(old.read(name))
+                assert document['version']==manifest['version']
+                document['version']=config['version']
+                if name.startswith('reports/'):
+                    document['terrain_reuse']={'previous_version':manifest['version'],
+                        'world_configuration_unchanged_except_version':True,
+                        'note':'Inherited world checks; current authored overlay and native terrain hashes checked separately by package/install validation.'}
+                changed[name]=(json.dumps(document,indent=2)+'\n').encode('utf-8')
         removed={n for n in old.namelist() if not n.startswith(('goblins_ashborn_isles/','terrain_patch/')) and n not in player_roots}
         for item in overlay['files']:
             data=(ROOT/'mod'/item['path']).read_bytes()
@@ -42,6 +69,10 @@ def main():
         (release/name).write_bytes(base64.b64encode(suffix[offset:offset+512*1024]))
         asset['chunks'].append(name)
     asset['size']=len(full);asset['sha256']=digest(full)
+    if promotion:
+        manifest['version']=config['version']
+        manifest['source_config_sha256']=digest(config_text.encode('utf-8'))
+        asset['name']=f"Goblins_Ashborn_Isles_{config['version']}.zip"
     (release/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     (ROOT/'dist').mkdir(exist_ok=True)
     (ROOT/'dist'/asset['name']).write_bytes(full)
