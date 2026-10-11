@@ -1,0 +1,33 @@
+{
+  "version": "0.6.4",
+  "release_url": "https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.6.4",
+  "published_at": "2026-10-11T21:27:25Z",
+  "github_asset": {
+    "name": "Goblins_Ashborn_Isles_0.6.4.zip",
+    "bytes": 433087266,
+    "sha256": "64fc719adef2b2929dde7c076c308ffb56350535013109e182c324fcdc3b1a12",
+    "public_download_verified": true,
+    "checksum_verified": true
+  },
+  "workshop": {
+    "publishedfileid": "3814944518",
+    "title": "[1.3] - Goblins of the Ashborn Isles",
+    "file_size": "2362317908",
+    "time_updated": 1791754060,
+    "visibility": 0,
+    "result": 1
+  },
+  "workshop_description_verified": true,
+  "github_illustrations_loaded": 7,
+  "workshop_notes_and_illustrations": "verified_live",
+  "workshop_illustrations_loaded": 7,
+  "workshop_description_utf8_bytes": 7966,
+  "release_commit": "847867e44206bb25e92d02d395b9d81b06c72498",
+  "tag_verified": true,
+  "main_merged": true,
+  "github_actions": {
+    "installer": "success",
+    "art_and_events": "success",
+    "publication": "success"
+  }
+}
