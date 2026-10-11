@@ -900,6 +900,14 @@
       "sha256": "61d89a0f473a1fef4f2206911699d14ef30e7a42def727280e9d341974837ff5"
     },
     {
+      "path": "loading_screen/sound/banks/windows/Media/1638621397.wem",
+      "sha256": "a61ff1647a3540ba68b8a0ca06de120414e3172aaea4993eff6d68018ac4abcb"
+    },
+    {
+      "path": "loading_screen/sound/banks/windows/Media/1829570450.wem",
+      "sha256": "e4b86b5a3ab4742905f2daafd77c35ab285dea2f2838afb23a27233fd353257e"
+    },
+    {
       "path": "loading_screen/sound/banks/windows/Media/3708559938.wem",
       "sha256": "c106843f8f6d4c40a61ee78c5069cbc1f5dcaaa886cdab7551833a116f9b9f9f"
     },
@@ -908,12 +916,16 @@
       "sha256": "a9b7bf52e57a5c453a705c049ace800223a05b99b4e9a13f809e69bc773e0818"
     },
     {
+      "path": "loading_screen/sound/banks/windows/Media/599689154.wem",
+      "sha256": "486619c554c6bfdefed61dbe385ba8f6ffcca9529bd1a71faf490dcd93fdbe62"
+    },
+    {
       "path": "loading_screen/sound/banks/windows/SoundbanksInfo.json",
-      "sha256": "68aeac6b6d035f4a120b05b613e27cc73c7f02ce71999492c9cb80d8e81feeec"
+      "sha256": "493cafab461d2f8d2d6ef0d0de454fdf6e17dbe7bb4a41a9b99713a5d2c65a17"
     },
     {
       "path": "loading_screen/sound/banks/windows/sb_music_logic.bnk",
-      "sha256": "120a2507380663b967c1767e3ffc9f37a2c61177d30abe7be52f643f66086ccf"
+      "sha256": "dd049f5bbff54d87923df0bd7667e6000b1b963c4ccf840cc3863a481bd36317"
     },
     {
       "path": "loading_screen/sound/goblins_music_manifest.json",

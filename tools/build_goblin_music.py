@@ -23,6 +23,13 @@ MODE = 194639714
 MUSIC_ROOT = 337896570
 WAR_SWITCH = 481495805
 P32 = lambda n: struct.pack('<I', n)
+TRACKS = [
+    ('peace', 'ashen_harbors', 'ga_music_peace', 'Ashen Harbors', 60),
+    ('peace', 'peace_six_clans_one_fire', 'ga_music_six_clans', 'Six Clans, One Fire', 120),
+    ('war', 'black_sails_ashen_teeth', 'ga_music_war', 'Black Sails, Ashen Teeth', 60),
+    ('war', 'war_hooks_and_gold', 'ga_music_hooks_gold', 'Hooks and Gold', 90),
+    ('war', 'war_drums_beneath_the_volcano', 'ga_music_volcano', 'Drums Beneath the Volcano', 120),
+]
 
 def ident(name):
     value = 2166136261
@@ -126,8 +133,9 @@ def main():
     goblin_states = {ident('ga_'+c['culture']+'_sfx') for c in COUNTRIES}
     object_id = lambda name: internal_ident(name)
     war_group = ident('ga_music_war_state')
-    internal_names = ['ga_music_'+m+'_'+kind for m in ('peace','war') for kind in ('track','segment','playlist')]
-    internal_names += ['ga_'+m+'_'+kind for m in ('peace','war') for kind in ('root','leaf')]
+    internal_names = [prefix+'_'+kind for _,_,prefix,_,_ in TRACKS for kind in ('track','segment','leaf')]
+    internal_names += ['ga_music_'+m+'_playlist' for m in ('peace','war')]
+    internal_names += ['ga_'+m+'_root' for m in ('peace','war')]
     internal_names += ['ga_music_'+m+'_set_state_action' for m in ('peace','war')]
     internal_ids = [object_id(name) for name in internal_names]
     native_internal_ids = set(objects) | {int(f.get('value')) for f in xml.iter('field') if f.get('name')=='playlistItemID'}
@@ -138,19 +146,23 @@ def main():
     output = args.output/BANK_PATH
     output.mkdir(parents=True, exist_ok=True)
     media = []
-    for mood, filename in [('peace','ashen_harbors'), ('war','black_sails_ashen_teeth')]:
-        track = object_id('ga_music_'+mood+'_track')
-        segment = object_id('ga_music_'+mood+'_segment')
-        wemid = ident('ga_music_'+mood+'_wem')
+    library = []
+    for mood, filename, prefix, title, seconds in TRACKS:
+        track = object_id(prefix+'_track')
+        segment = object_id(prefix+'_segment')
+        wemid = ident(prefix+'_wem')
         wem_path = ROOT/'art/music'/f'{filename}.wem'
         if args.ffmpeg:
-            wem_path.write_bytes(pcm_wem(wem_path.with_suffix('.mp3'), args.ffmpeg))
+            master = wem_path.with_suffix('.wav')
+            if not master.exists(): master = wem_path.with_suffix('.mp3')
+            wem_path.write_bytes(pcm_wem(master, args.ffmpeg))
         wem = wem_path.read_bytes()
         riff = dict(chunks(wem[12:]))
         fmt = riff[b'fmt ']
         assert len(fmt) == 24 and struct.unpack_from('<HHIIHH', fmt) == (0xfffe, 2, 48000, 192000, 4, 16), 'Expected tested Wwise PCM format; rebuild with --ffmpeg'
         duration = len(riff[b'data']) / 192000 * 1000
-        assert 59000 <= duration <= 61000
+        assert abs(duration-seconds*1000) <= 1000, filename
+        library.append({'mood':mood,'title':title,'filename':filename,'prefix':prefix,'duration_ms':duration,'media_id':wemid})
         dest = output/'Media'/f'{wemid}.wem'
         dest.parent.mkdir(exist_ok=True)
         dest.write_bytes(wem)
@@ -174,16 +186,21 @@ def main():
         positions = fields(obj,'fPosition')
         edits += [(int(positions[-1].get('offset')),8,struct.pack('<d',duration))]
         additions.append(render(1052937988,segment,edits))
+    for mood in ('peace','war'):
+        entries = [entry for entry in library if entry['mood']==mood]
+        segments = [object_id(entry['prefix']+'_segment') for entry in entries]
         obj = objects[0x3de374bf]
-        edits = [children(obj,[segment])]
+        edits = [children(obj,segments)]
         edits += edits_for(obj,'DirectParentID',P32(MODE))
         edits += edits_for(obj,'OverrideBusId',P32(1397326711))
         start = offset(obj,'numPlaylistItems')
         end = offset(obj,'ulID')+int(fields(obj,'dwSectionSize')[0].get('value'))
-        # Infinite sequence of one segment. State changes interrupt via switch rules.
+        # Repeat a continuous sequence; each track plays once before rotation.
+        # State changes still interrupt immediately via the tested switch rules.
         item = struct.Struct('<IIIiHHHIHBB')
-        playlist = P32(2)+item.pack(0,object_id('ga_'+mood+'_root'),1,0,0,0,0,1,0,0,0)
-        playlist += item.pack(segment,object_id('ga_'+mood+'_leaf'),0,-1,1,0,0,1,0,0,0)
+        playlist = P32(1+len(entries))+item.pack(0,object_id('ga_'+mood+'_root'),len(entries),0,0,0,0,1,0,0,0)
+        for entry,segment in zip(entries,segments):
+            playlist += item.pack(segment,object_id(entry['prefix']+'_leaf'),0,-1,1,0,0,1,0,0,0)
         edits.append((start,end-start,playlist))
         additions.append(render(0x3de374bf,playlist_ids[mood],edits))
 
@@ -367,7 +384,7 @@ def main():
     report={'base_sha256':BASE_HASH,'bank_sha256':hashlib.sha256(b''.join(result)).hexdigest(),
         'modified_native_objects':[MODE,MUSIC_ROOT],'added_objects':len(additions),
         'goblin_states':sorted(goblin_states),'routes':{str(k):v for k,v in mapping.items()},
-        'playlists':playlist_ids,'media':media,'runtime_verified':False,'multiplayer_verified':False}
+        'playlists':playlist_ids,'media':media,'tracks':library,'runtime_verified':False,'multiplayer_verified':False}
     report['init_base_sha256']=INIT_HASH
     report['init_sha256']=init_sha
     report_path = args.report or (ROOT/'reports/goblin-music.json' if args.output.resolve()==(ROOT/'mod').resolve()

@@ -6,7 +6,7 @@ import json
 import struct
 from pathlib import Path
 import xml.etree.ElementTree as ET
-from build_goblin_music import ROOT, MODE, MUSIC_ROOT, BANK_PATH, chunks, ident, internal_ident
+from build_goblin_music import ROOT, MODE, MUSIC_ROOT, BANK_PATH, TRACKS, chunks, ident, internal_ident
 from ashborn_roster import COUNTRIES
 
 def records(data):
@@ -56,7 +56,7 @@ def main():
     object_id=lambda name: internal_ident(name)
     original=records((args.game/'game'/BANK_PATH/'sb_music_logic.bnk').read_bytes())
     built=records((args.mod/BANK_PATH/'sb_music_logic.bnk').read_bytes())
-    assert len(built)==len(original)+10
+    assert len(built)==len(original)+2*len(TRACKS)+6
     for oid, data in original.items():
         if oid not in (MODE,MUSIC_ROOT): assert built[oid]==data, f'Unexpected native change: {oid}'
     before=objects(args.native_xml);after=objects(args.built_xml)
@@ -145,6 +145,11 @@ def main():
         playlist=after[object_id('ga_music_'+mood+'_playlist')]
         assert int(playlist.find(".//field[@name='DirectParentID']").get('value'))==MODE
         assert int(playlist.find(".//field[@name='OverrideBusId']").get('value'))==1397326711
+        expected_segments=[object_id(prefix+'_segment') for state,_,prefix,_,_ in TRACKS if state==mood]
+        assert [int(f.get('value')) for f in playlist.findall(".//field[@name='ulChildID']")]==expected_segments
+        assert int(playlist.find(".//field[@name='numPlaylistItems']").get('value'))==1+len(expected_segments)
+        assert [int(f.get('value')) for f in playlist.findall(".//field[@name='SegmentID']")]==[0]+expected_segments
+        assert [int(f.get('value')) for f in playlist.findall(".//field[@name='Loop']")]==[0]+[1]*len(expected_segments)
     # Explicit round-trip mapping check; this does not simulate live Wwise time.
     for culture in goblin_cultures:
         states={culture_group:culture,mode_group:ident('mus_systemType_dynamic_all')}
@@ -153,8 +158,8 @@ def main():
             assert_goblin_destination(resolve(after[MODE],states),states,war)
     bank_chunks=dict(chunks((args.mod/BANK_PATH/'sb_music_logic.bnk').read_bytes()))
     embedded={wid:bank_chunks[b'DATA'][offset:offset+size] for wid,offset,size in struct.iter_unpack('<III',bank_chunks[b'DIDX'])}
-    for mood in ('peace','war'):
-        obj=after[object_id('ga_music_'+mood+'_track')]
+    for mood,filename,prefix,title,seconds in TRACKS:
+        obj=after[object_id(prefix+'_track')]
         sources=obj.findall(".//field[@name='sourceID']")
         for source in sources:
             media_data=(args.mod/BANK_PATH/'Media'/(source.get('value')+'.wem')).read_bytes()
@@ -164,6 +169,7 @@ def main():
             assert struct.unpack_from('<HHIIHH',riff[b'fmt '])==(0xfffe,2,48000,192000,4,16)
             assert len(riff[b'data']) % 4 == 0
             duration=len(riff[b'data'])/192000*1000
+            assert abs(duration-seconds*1000)<=1000
             assert abs(float(obj.find(".//field[@name='fSrcDuration']").get('value'))-duration)<0.01
         assert int(obj.find(".//field[@name='ulPluginID']").get('value'))==0x00010001
         assert obj.find(".//field[@name='StreamType']").get('value')=='0'
@@ -171,9 +177,9 @@ def main():
     native_catalog=json.loads((args.game/'game'/catalog_path).read_text(encoding='utf-8-sig'))
     catalog=json.loads((args.mod/catalog_path).read_text(encoding='utf-8-sig'))
     bank=next(b for b in catalog['SoundBanksInfo']['SoundBanks'] if b['ShortName']=='sb_music_logic')
-    added_ids={str(ident('ga_music_'+m+'_wem')) for m in ('peace','war')}
+    added_ids={str(ident(prefix+'_wem')) for _,_,prefix,_,_ in TRACKS}
     new_media=[m for m in bank['Media'] if m['Id'] in added_ids]
-    assert len(new_media)==2
+    assert len(new_media)==len(TRACKS)
     for media in new_media:
         assert (args.mod/BANK_PATH/media['Path']).is_file()
         assert media['Streaming']=='false' and media['Location']=='Memory'

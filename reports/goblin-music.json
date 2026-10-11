@@ -1,11 +1,11 @@
 {
   "base_sha256": "53ab8b27030abe1ddc5ba46c487df8f0beecd4c95878038644d87efca7fed1b7",
-  "bank_sha256": "120a2507380663b967c1767e3ffc9f37a2c61177d30abe7be52f643f66086ccf",
+  "bank_sha256": "dd049f5bbff54d87923df0bd7667e6000b1b963c4ccf840cc3863a481bd36317",
   "modified_native_objects": [
     194639714,
     337896570
   ],
-  "added_objects": 10,
+  "added_objects": 16,
   "goblin_states": [
     158628486,
     437792455,
@@ -278,9 +278,66 @@
       "Path": "Media/4152290082.wem"
     },
     {
+      "Id": "599689154",
+      "ShortName": "599689154.wem",
+      "Path": "Media/599689154.wem"
+    },
+    {
       "Id": "3708559938",
       "ShortName": "3708559938.wem",
       "Path": "Media/3708559938.wem"
+    },
+    {
+      "Id": "1638621397",
+      "ShortName": "1638621397.wem",
+      "Path": "Media/1638621397.wem"
+    },
+    {
+      "Id": "1829570450",
+      "ShortName": "1829570450.wem",
+      "Path": "Media/1829570450.wem"
+    }
+  ],
+  "tracks": [
+    {
+      "mood": "peace",
+      "title": "Ashen Harbors",
+      "filename": "ashen_harbors",
+      "prefix": "ga_music_peace",
+      "duration_ms": 60000.0,
+      "media_id": 4152290082
+    },
+    {
+      "mood": "peace",
+      "title": "Six Clans, One Fire",
+      "filename": "peace_six_clans_one_fire",
+      "prefix": "ga_music_six_clans",
+      "duration_ms": 120000.0,
+      "media_id": 599689154
+    },
+    {
+      "mood": "war",
+      "title": "Black Sails, Ashen Teeth",
+      "filename": "black_sails_ashen_teeth",
+      "prefix": "ga_music_war",
+      "duration_ms": 60000.0,
+      "media_id": 3708559938
+    },
+    {
+      "mood": "war",
+      "title": "Hooks and Gold",
+      "filename": "war_hooks_and_gold",
+      "prefix": "ga_music_hooks_gold",
+      "duration_ms": 90000.0,
+      "media_id": 1638621397
+    },
+    {
+      "mood": "war",
+      "title": "Drums Beneath the Volcano",
+      "filename": "war_drums_beneath_the_volcano",
+      "prefix": "ga_music_volcano",
+      "duration_ms": 120000.0,
+      "media_id": 1829570450
     }
   ],
   "runtime_verified": false,
@@ -315,12 +372,5 @@
     "init_native_content_preserved": true,
     "native_gui_preserved": true,
     "custom_events_set_state_only": true
-  },
-  "acceptance": {
-    "cindermaw_peace_war_peace": "user_confirmed",
-    "all_goblin_routes": "static_verified",
-    "non_goblin_preservation": "static_verified",
-    "live_multiplayer": "not_verified",
-    "all_kingdom_live_playback": "not_verified"
   }
 }

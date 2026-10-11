@@ -1,17 +1,25 @@
-# Goblin music prototype
+# Goblin music library
 
-Two original 60-second ElevenLabs Music v2 demos, generated for this mod:
+Five approved original tracks: two peace tracks and three war tracks (7 minutes 30 seconds total). The original two 60-second tracks were generated with ElevenLabs Music v2:
 
 * Ashen Harbors: peace, instrumental. Session 5plOnLee0Eon2NXBrOnN, generation 1DOikKiC9zOJJKu9uD7G.
 * Black Sails, Ashen Teeth: war, goblin crew vocals. Approved revision; session kEZh2geoTyTfuyhNpuA4, generation oL95uDsIfrtBUbRdq3d6.
 
-The user confirmed automatic peace → war → peace playback in the isolated Cindermaw test on October 11, 2026. This establishes that sequence for the tested local-state candidate; it does not establish multiplayer, every kingdom, wartime campaign entry or all music controls. Two short looping demos remain a prototype library, not a complete soundtrack. More and longer arrangements would reduce repetition.
+The user confirmed automatic peace → war → peace playback in the isolated Cindermaw test on October 11, 2026. This establishes that sequence for the tested local-state candidate; it does not establish multiplayer, every kingdom, wartime campaign entry or all music controls. That listening test used the original two-track library. The expanded five-track candidate has passed serialized-bank and routing checks; its full playlist rotation has not yet been listened to in game.
 
-MP3s are original generated masters. WEM derivatives use uncompressed 16-bit PCM, normalized to -20 LUFS / -2 dBTP, 48 kHz stereo. Rebuild them with FFmpeg through the bank builder's `--ffmpeg <executable>` option. Previous Vorbis derivatives decoded offline but were silent in EU5; their precise incompatibility remains unresolved.
+New approved ACE-Step 1.5 additions (MIT model/code), generated locally:
+
+* Peace — Six Clans, One Fire: 120 seconds, approved batch track 3.
+* War — Hooks and Gold: 90 seconds, approved earlier demo track 2.
+* War — Drums Beneath the Volcano: 120 seconds, approved batch track 6.
+
+Each mood uses a repeating sequence that plays each track once before cycling. The other drafts are excluded; generation is paused. Shatterfin Tide (unapproved track 1) was reported to have crackle at its start. Approved-only generation settings are in `approved-local-generation.json`.
+
+Original ElevenLabs MP3s and lossless WAV masters for the new tracks are retained. WEM derivatives use uncompressed 16-bit PCM, normalized to -20 LUFS / -2 dBTP, 48 kHz stereo. Rebuild them with FFmpeg through the bank builder's `--ffmpeg <executable>` option. Previous Vorbis derivatives decoded offline but were silent in EU5; their precise incompatibility remains unresolved.
 
 ## Routing and local war state
 
-`tools/build_goblin_music.py` reads installed EU5 1.3.11 music and Init banks and their wwiser XML dumps. It rejects unrecognized native bank and topbar hashes. The complete native sound catalogue is preserved, with registrations for the custom media, state and events. Children are serialized before music containers, matching native load order. The two tracks are embedded in the music bank and play through looping playlists.
+`tools/build_goblin_music.py` reads installed EU5 1.3.11 music and Init banks and their wwiser XML dumps. It rejects unrecognized native bank and topbar hashes. The complete native sound catalogue is preserved, with registrations for the custom media, state and events. Children are serialized before music containers, matching native load order. The five tracks are embedded in the music bank and play through looping playlists.
 
 The music root sends goblin campaign-introduction requests through the mode selector, avoiding the native culture-introduction branch that has no goblin match. Native cultures keep their original introduction routes. The mode selector's PlayerCulturePrimary condition routes six goblin audio categories to the custom playlists; wildcard branches preserve native destinations and the no-music branch remains intact.
 
@@ -23,6 +31,6 @@ The six categories match goblin graphical culture tags at priority 200, above na
 
 ## Rebuilding and acceptance
 
-Build with `--game <EU5 installation> --xml <native music XML> --init-xml <native Init XML>`. The local audio-state routing is the default; the native Init XML is required. Add `--ffmpeg <executable>` to regenerate WEMs from the MP3 masters. Dump the resulting banks with wwiser and run `tools/verify_goblin_music.py` with the corresponding native and built XML inputs. Rebuild after game audio or topbar updates. Do not combine with another mod replacing the same music bank, Init bank or in-game topbar.
+Build with `--game <EU5 installation> --xml <native music XML> --init-xml <native Init XML>`. The local audio-state routing is the default; the native Init XML is required. Add `--ffmpeg <executable>` to regenerate WEMs from the WAV masters when present, otherwise the original MP3 masters. Dump the resulting banks with wwiser and run `tools/verify_goblin_music.py` with the corresponding native and built XML inputs. Rebuild after game audio or topbar updates. Do not combine with another mod replacing the same music bank, Init bank or in-game topbar.
 
 The runtime payload includes the music bank, Init state registration, native catalogue additions, culture definitions and topbar watcher together. Packaging and installation must keep those files in sync; an older music-only installer is not this tested candidate. Refer to `reports/goblin-music.json` for candidate-specific checks and `TESTING.md` for outstanding acceptance. Static routing checks cannot certify multiplayer or replace listening tests.
