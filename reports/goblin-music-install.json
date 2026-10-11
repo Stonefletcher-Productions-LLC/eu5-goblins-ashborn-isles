@@ -1,0 +1,47 @@
+{
+  "source_commit": "824b051695319c08dd0a7139ec3ce7636bb5ee5a",
+  "branch": "staging/ashborn-intro",
+  "game_version": "1.3.11",
+  "archive": {
+    "name": "Goblins_Ashborn_Isles_0.6.3.zip",
+    "size": 302124916,
+    "sha256": "6b17bc005d2ec7732f9fe8815f371033a58dd49b605e829ed7a13db47fddd71a"
+  },
+  "overlay_sha256": "875f863170319ff6e3a916f2f665f4c602513f6021356322440a39f6999f7ce6",
+  "music_manifest": {
+    "base_sha256": "53ab8b27030abe1ddc5ba46c487df8f0beecd4c95878038644d87efca7fed1b7",
+    "init_base_sha256": "a10a30b594e11a210a736f74f135c94574689ffcd8d68b994dfab31000e87682",
+    "topbar_base_sha256": "078c2ef89afbc1a034b9d4ee1abd101b99b09351c96d8c0a7442ffd7439e1ae2",
+    "supported_game_version": "1.3.11"
+  },
+  "clean_source_prepare_only": "passed",
+  "fresh_isolated_install": {
+    "files": 1990,
+    "overlay_files": 1936,
+    "missing": [],
+    "extra": [],
+    "changed": [],
+    "version": "0.6.3"
+  },
+  "rejected_mismatches": [
+    "stale_source_version",
+    "base_sha256",
+    "init_base_sha256",
+    "topbar_base_sha256"
+  ],
+  "inputs_sha256": {
+    "tools/build_goblin_music.py": "b7c13e3c95963d5cb3eb3f06a00c3f4032fc9947bfb08bbe77210b189e09e75c",
+    "tools/verify_goblin_music.py": "d3e1145e4d099d135884506c37055756771a10074d6eb7d63a39b4906bcbf80b",
+    "Install-Goblins.ps1": "859ae514a34514de5181d1a820e68642692e21ff253378fac7493366e19848b4",
+    "PLAYER_README.md": "ff61365a00073db84cd416c8c147e7c2e57946103aeb24bf9a98774679842b48",
+    "TESTING.md": "a46a4c41d4182270da30f0068aa9bd941b224ca71f6f9051206a7b47cd5eba75",
+    "data/main_overlay.json": "875f863170319ff6e3a916f2f665f4c602513f6021356322440a39f6999f7ce6"
+  },
+  "runtime": {
+    "cindermaw_peace_war_peace": "user_confirmed",
+    "non_goblin_listening": "pending",
+    "multiplayer": "not_verified"
+  },
+  "published": false,
+  "input_hash_scope": "exact committed export bytes"
+}
