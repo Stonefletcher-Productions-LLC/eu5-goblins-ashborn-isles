@@ -1,0 +1,47 @@
+{
+  "version": "0.6.4",
+  "source_commit": "d79e068ebe3640bd7a71ce8f45f59b0753211e61",
+  "clean_export_commit": "92d7f6d",
+  "inventory_only_amendment": "d79e068",
+  "archive": {
+    "name": "Goblins_Ashborn_Isles_0.6.4.zip",
+    "size": 433087266,
+    "sha256": "64fc719adef2b2929dde7c076c308ffb56350535013109e182c324fcdc3b1a12"
+  },
+  "clean_export_bundle_verified": true,
+  "prepare_only_passed": true,
+  "isolated_install_passed": true,
+  "delivered_files": 1993,
+  "overlay_files": 1939,
+  "missing": [],
+  "extra": [],
+  "changed": [],
+  "terrain_reused": true,
+  "world_configuration_unchanged_except_version": true,
+  "art_and_script_inventory_verified": true,
+  "event_generator_matches_shipped_script": true,
+  "runtime": {
+    "original_two_track_peace_war_peace": "user_confirmed",
+    "expanded_rotation": "unverified",
+    "non_goblin_listening": "user_skipped",
+    "multiplayer": "unverified"
+  },
+  "input_hashes": {
+    "data/island.json": "582a6217e2c79ec0ff62017db9f49a4eb4468e527ad200d3e1c6e3075b05f256",
+    "data/main_overlay.json": "73e2d985a3c0bf831fab8714d6227c63a68f743eeed9c085799b23d7947ad653",
+    "data/prototype_055_files.json": "3c9542b3be7c0a46904a8360d8b9ef6e2b402b4aa6b2509c423b23250e8046dc",
+    "Install-Goblins.ps1": "859ae514a34514de5181d1a820e68642692e21ff253378fac7493366e19848b4",
+    "PLAYER_README.md": "9e4111e1bfac068787b81f592febc96c6ef0c6f990e9bd5fa9fb0431081acf11",
+    "RELEASE_NOTES.md": "023698c07c503db6044b193bb96b41c75b201fb4256f39ffac080fa515d6842c",
+    "TESTING.md": "a430b4f0a001d0b6f9248777f7025c58c2346975f0dadbff198463917fb8c156",
+    "mod/.metadata/metadata.json": "025a713db3c2057b13d1db939c5c4ff4ed9e6036e222ff887245bab702251836"
+  },
+  "stale_source_rejected": true,
+  "active_install": {
+    "path": "C:/Users/alexa/Documents/Paradox Interactive/Europa Universalis V/mod/goblins_ashborn_isles",
+    "files": 1993,
+    "matches_verified_candidate": true,
+    "update": "Metadata-only promotion; every runtime file already matches the clean 0.6.4 install.",
+    "metadata_rollback": "C:\\Users\\alexa\\Documents\\Paradox Interactive\\Europa Universalis V\\goblins_backups\\goblins_ashborn_isles_20261011_171613_552\\.metadata\\metadata.json"
+  }
+}
