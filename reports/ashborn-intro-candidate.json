@@ -1,16 +1,17 @@
 {
   "branch": "staging/ashborn-intro",
-  "candidate_commit": "fc2ba4c",
-  "source_commit": "89c200eb339322e3dc3bdc7b5ded4ba482b401f6",
+  "candidate_commit": "beac163",
+  "source_commit": "1820b4fa366c812c82c1d08dfc21acdc97e71bad",
   "fixes": [
     "Once-per-country Ashborn introduction for all six goblin crowns",
     "Names and descriptions for two Moot rewards and three Covenant rite modifiers",
-    "Eastern Hunger announcement option explains its lack of immediate effects and the next gameplay steps"
+    "Eastern Hunger announcement option explains its lack of immediate effects and the next gameplay steps",
+    "Manual goblin ruler divorce action: choose a living spouse, base 10 gold, no scripted stability penalty, junior unions excluded"
   ],
   "archive": {
     "name": "Goblins_Ashborn_Isles_0.6.3.zip",
-    "size": 255834346,
-    "sha256": "be120888c52101bb95a7b86d818b62e1c559536ed75aec2aba1de6976f9f6eed"
+    "size": 256183711,
+    "sha256": "cc4bc5b8e0b3219de6ff17e49a8f51c29b962888322f47f3e4c8fee53772890c"
   },
   "script_regression": "passed; original missing-label source rejected",
   "custom_modifier_names_and_descriptions_checked": 60,
@@ -18,8 +19,8 @@
   "stale_config_rejected": true,
   "clean_source_prepare_only": "passed",
   "isolated_install": {
-    "target": "E:\\CodexScratch\\goblins-intro-review\\horizon-user\\mod\\goblins_ashborn_isles",
-    "files": 1977,
+    "target": "E:\\CodexScratch\\goblins-divorce-review\\user\\mod\\goblins_ashborn_isles",
+    "files": 1981,
     "missing": [],
     "extra": [],
     "changed": [],
@@ -29,5 +30,14 @@
   "active_install_changed": false,
   "published": false,
   "gameplay_tested": false,
-  "event_hover_check": "Actual event AST unchanged except for one localized custom_tooltip; native static checks passed"
+  "event_hover_check": "Actual event AST unchanged except for one localized custom_tooltip; native static checks passed",
+  "divorce_validation": {
+    "six_crowns": true,
+    "stale_spouse_and_ruler_guards": true,
+    "junior_union_guard": true,
+    "base_gold_cost": 10,
+    "native_divorce_only": true,
+    "automation_disabled": true,
+    "gameplay_tested": false
+  }
 }
