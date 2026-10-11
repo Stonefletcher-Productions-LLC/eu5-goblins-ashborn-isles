@@ -880,6 +880,10 @@
       "sha256": "5cb059de0f4f17493b43336b1fd68cd2604a0a0b2a3d14207f3c61ab5f18a87c"
     },
     {
+      "path": "in_game/gui/ingame_topbar.gui",
+      "sha256": "7131dc63ca27f8959946daeded237183ddc496ddc1a6ae03ffda022481a29e6e"
+    },
+    {
       "path": "in_game/gui/panels/situation/ga_ashborn_voyages.gui",
       "sha256": "1a9a3d4fe0bc3dd5d6dcae4ef9729c66d32a1149365448b05df5944194ab593a"
     },
@@ -890,6 +894,30 @@
     {
       "path": "in_game/gui/panels/situation/ga_gathering_of_five.gui",
       "sha256": "4b29bf1b1ba25dbc6893415fd77004f31b464a1a28d3e3d7ab948ee259687cd6"
+    },
+    {
+      "path": "loading_screen/sound/banks/windows/Init.bnk",
+      "sha256": "61d89a0f473a1fef4f2206911699d14ef30e7a42def727280e9d341974837ff5"
+    },
+    {
+      "path": "loading_screen/sound/banks/windows/Media/3708559938.wem",
+      "sha256": "c106843f8f6d4c40a61ee78c5069cbc1f5dcaaa886cdab7551833a116f9b9f9f"
+    },
+    {
+      "path": "loading_screen/sound/banks/windows/Media/4152290082.wem",
+      "sha256": "a9b7bf52e57a5c453a705c049ace800223a05b99b4e9a13f809e69bc773e0818"
+    },
+    {
+      "path": "loading_screen/sound/banks/windows/SoundbanksInfo.json",
+      "sha256": "68aeac6b6d035f4a120b05b613e27cc73c7f02ce71999492c9cb80d8e81feeec"
+    },
+    {
+      "path": "loading_screen/sound/banks/windows/sb_music_logic.bnk",
+      "sha256": "120a2507380663b967c1767e3ffc9f37a2c61177d30abe7be52f643f66086ccf"
+    },
+    {
+      "path": "loading_screen/sound/goblins_music_manifest.json",
+      "sha256": "27452ab6ce29238e25693502ae220d2fca13703fecd249b44bf217e4d8f17809"
     },
     {
       "path": "main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt",
@@ -7710,6 +7738,14 @@
     {
       "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
       "sha256": "9752a714371631d4c3d4853d2ac52163be20f74e988fb156c6ad15b5c838c758"
+    },
+    {
+      "path": "main_menu/localization/english/goblins_music_l_english.yml",
+      "sha256": "bdf9a287d79055f8b7fafed6fb7915a4008052206d673fda058aac2d36d3bb20"
+    },
+    {
+      "path": "main_menu/music/audio_culture_types/goblins_music.txt",
+      "sha256": "ea882f7d00596da952a8e5666d51530e1d77d8e33f1cf2e440d3b9ee73075d2b"
     }
   ]
 }

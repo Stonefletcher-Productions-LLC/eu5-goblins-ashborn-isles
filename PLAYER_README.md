@@ -1,5 +1,7 @@
 # Goblins of the Ashborn Isles 0.6.3
 
+This staging build adds **Ashen Harbors** at peace and **Black Sails, Ashen Teeth** at war for all six goblin cultures. Automatic peace → war → peace is confirmed in Cindermaw. These are two short demo tracks; live multiplayer, non-goblin and music-off checks remain pending. The music change works with an existing save after restarting. It requires EU5 1.3.11's matching native music/Init banks and topbar GUI, checked by the installer; mods replacing those files may conflict. The published 0.6.3 release and Workshop have not been updated with this prototype.
+
 Pending tooltip fix: the Moot of Six Fires rewards now display “The Local Covenants” and “The First Oathkeeper”. The three major Covenant rites also have proper modifier names and descriptions. Effects and saved modifier IDs are unchanged.
 
 Pending introduction patch: all six goblin kingdoms receive the Ashborn introduction once on their monthly country pulse. Existing saves catch up; Cindermaw does not repeat its old introduction or starting units. This candidate is not the published 0.6.3 release.

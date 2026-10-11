@@ -1,5 +1,7 @@
 # Goblins of the Ashborn Isles
 
+Pending music prototype: **Ashen Harbors** at peace and **Black Sails, Ashen Teeth** at war for all six goblin primary cultures. Automatic peace → war → peace is confirmed in an isolated Cindermaw campaign. A local UI check reads the player's actual war status, bypassing EU5 1.3.11's stale audio war flag. Original routes remain for other cultures. Two 60-second demos are included; live non-goblin, music-off and multiplayer checks remain pending. Requires matching native music/Init banks and topbar GUI; other mods replacing those files may conflict. [Music details](art/music/README.md).
+
 Pending divorce action: **Dissolve a Royal Marriage** lets a goblin ruler choose a living spouse and divorce for a base cost of **10 gold**, unaffected by inflation, with no stability penalty. Junior union partners cannot act on their shared ruler. Uses native divorce mechanics; AI and player automation do not initiate it.
 
 Pending event help: hovering “Charts, provisions, then a harbor.” now explains that Beyond the Ashen Horizon is informational, has no immediate cost or reward, and points to Ashborn Voyages and the paid Eastern Hunger actions.

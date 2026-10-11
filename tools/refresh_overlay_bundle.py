@@ -13,21 +13,25 @@ def main():
     overlay=json.loads((ROOT/'data/main_overlay.json').read_text())
     assert overlay['base_release']==manifest['version']
     changed={}
+    player_roots={'README.md','RELEASE_NOTES.md','TESTING.md','LORE.md',
+                  'Install-Goblins.ps1','Install-Goblins.cmd','reports/validation.json'}
     with zipfile.ZipFile(io.BytesIO(raw)) as old:
+        removed={n for n in old.namelist() if not n.startswith(('goblins_ashborn_isles/','terrain_patch/')) and n not in player_roots}
         for item in overlay['files']:
             data=(ROOT/'mod'/item['path']).read_bytes()
             assert digest(data)==item['sha256'],item['path']
             name='goblins_ashborn_isles/'+item['path']
             if name not in old.namelist() or old.read(name)!=data: changed[name]=data
-        for name in ['README.md','RELEASE_NOTES.md',f'RELEASE_NOTES_{manifest["version"]}.md','TESTING.md','WORKSHOP_UPLOAD.md','STEAM_DESCRIPTION.txt','STEAM_CHANGELOG.txt','LORE.md']:
-            data=(ROOT/name).read_bytes()
+        for name in ['Install-Goblins.ps1','README.md','RELEASE_NOTES.md','TESTING.md','LORE.md']:
+            data=(ROOT/('PLAYER_README.md' if name == 'README.md' else name)).read_bytes()
             if name not in old.namelist() or old.read(name)!=data: changed[name]=data
-    if not changed:
+    if not changed and not removed:
         print('Prepared bundle already matches overlay.');return
     buffer=io.BytesIO(raw)
     with zipfile.ZipFile(buffer,'a',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
         z.start_dir=len(raw)
-        z.filelist=[i for i in z.filelist if i.filename not in changed]
+        z._didModify=True  # Re-emit the directory even for removal-only updates.
+        z.filelist=[i for i in z.filelist if i.filename not in changed and i.filename not in removed]
         z.NameToInfo={i.filename:i for i in z.filelist}
         for name,data in changed.items(): z.writestr(name,data)
     full=buffer.getvalue();assert full[:len(raw)]==raw

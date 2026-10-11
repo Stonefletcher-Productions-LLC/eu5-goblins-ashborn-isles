@@ -59,6 +59,10 @@ def main():
     for prefix in ['in_game/common','in_game/events','in_game/gui','main_menu/common','main_menu/localization']:
         paths.extend(p for p in (output/prefix).rglob('*')
                      if p.is_file() and p.name.startswith(('goblins_','ga_','ashen_covenant')))
+    for prefix in ['loading_screen/sound','main_menu/music/audio_culture_types']:
+        paths.extend(p for p in (output/prefix).rglob('*') if p.is_file())
+    if (output/'loading_screen/sound/goblins_music_manifest.json').exists():
+        paths.append(output/'in_game/gui/ingame_topbar.gui')
     paths=sorted(set(paths),key=lambda p:p.relative_to(output).as_posix())
     manifest={'base_release':b.CFG['version'],'stage':'development-models-and-culture-names','engine_tested':False,
               'files':[{'path':p.relative_to(output).as_posix(),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in paths]}

@@ -1,3 +1,20 @@
+# Goblin dynamic music acceptance
+
+On October 11, 2026, the user confirmed automatic **Ashen Harbors at peace → Black Sails, Ashen Teeth at war → Ashen Harbors after peace** in the isolated Cindermaw test using the custom local audio state. Earlier candidates relying on native PlayerAtWar audio state are superseded: that value remained at war after the campaign returned to peace.
+
+The accepted design reads the local player's actual diplomacy state through invisible in-game GUI widgets and posts custom audio-state events. Only goblin bank routes consume the custom state; no synchronized campaign variable or host-only pulse drives music. This is a multiplayer-compatible design intention, not completed multiplayer acceptance. Both tracks are 60-second demos and will repeat.
+
+Before accepting a packaged candidate, confirm its applied playset and installed bank/GUI hashes. A saved playset or successful launch command alone does not prove the mod loaded. Use listening confirmation; a native track title or advancing music UI is not evidence of the intended audio.
+
+Remaining runtime checks:
+
+- Repeat peace → war → peace across the six goblin primary cultures, including formed goblin countries. End every simultaneous war before expecting peace music; verify subsequent wars switch again.
+- Start or load a campaign already at war, and load a peaceful save. Confirm correct initial music without manual track selection, including when the game remains paused. Repeat save/reload after a transition.
+- Test Portugal or another non-goblin control at peace and war. It must retain native music. Switch the local country between goblin and non-goblin countries and verify correct routing without leftover custom music.
+- Run two actual multiplayer clients with different local countries and war states: goblin at peace versus goblin at war, then goblin versus non-goblin. Each must hear its own appropriate music. Test a joining/rejoining client and save/reload; do not infer success from static route combinations.
+- Verify music off remains silent, restore music, and exercise pause/resume, next track, volume and manual selection. Check returning to the menu and entering another campaign.
+- Inspect fresh logs for missing audio events, unknown custom states, GUI binding errors or bank-load errors. Confirm the installer carries the matching music bank, Init registration, catalogue, culture definitions and topbar watcher.
+
 # 0.6.2 construction economy playtest
 
 Start fresh campaigns for all six crowns. Record at pause, months 1, 3 and 12:

@@ -77,7 +77,8 @@ $needsGame = @($manifest.files | Where-Object {
     $p = Join-Path $modSource $_.path
     -not (Test-Path -LiteralPath $p) -or (Get-Item -LiteralPath $p -ErrorAction SilentlyContinue).Length -ne $_.final_size
 }).Count -gt 0
-if ($needsGame) {
+$musicManifestPath = Join-Path $modSource 'loading_screen\sound\goblins_music_manifest.json'
+if ($needsGame -or (Test-Path -LiteralPath $musicManifestPath)) {
     $candidates = [Collections.Generic.List[string]]::new()
     if ($GamePath) { $candidates.Add($GamePath) }
     $steam = (Get-ItemProperty -LiteralPath 'HKCU:\Software\Valve\Steam' -ErrorAction SilentlyContinue).SteamPath
@@ -92,11 +93,26 @@ if ($needsGame) {
     }
     $game = $candidates | Where-Object { Test-Path -LiteralPath (Join-Path $_ 'in_game\gfx\terrain2\terrain_cache\heightmap.bin') } | Select-Object -First 1
     if (-not $game) { throw 'EU5 not found. Supply -GamePath pointing to its game directory.' }
+    if (Test-Path -LiteralPath $musicManifestPath) {
+        $musicManifest = Get-Content -LiteralPath $musicManifestPath -Raw | ConvertFrom-Json
+        $nativeMusicBank = Join-Path $game 'loading_screen\sound\banks\windows\sb_music_logic.bnk'
+        if ((Get-FileHash -LiteralPath $nativeMusicBank -Algorithm SHA256).Hash -ne $musicManifest.base_sha256) {
+            throw 'EU5 music-bank version mismatch. This Goblins music build must be updated for your installed game.'
+        }
+        foreach ($dependency in @(
+            @{ path = 'loading_screen\sound\banks\windows\Init.bnk'; hash = $musicManifest.init_base_sha256 },
+            @{ path = 'in_game\gui\ingame_topbar.gui'; hash = $musicManifest.topbar_base_sha256 }
+        )) {
+            if (-not $dependency.hash -or (Get-FileHash -LiteralPath (Join-Path $game $dependency.path) -Algorithm SHA256).Hash -ne $dependency.hash) {
+                throw "EU5 music dependency version mismatch: $($dependency.path). Update this Goblins build for your installed game."
+            }
+        }
+    }
     foreach ($entry in $manifest.files) {
         $original = Join-Path $game $entry.path
         if ((Get-Item -LiteralPath $original).Length -ne $entry.source_size -or (Get-FileHash -LiteralPath $original -Algorithm SHA256).Hash -ne $entry.source_sha256) { throw "EU5 version mismatch: $($entry.path)" }
     }
-    foreach ($entry in $manifest.files) {
+    if ($needsGame) { foreach ($entry in $manifest.files) {
         $destination = [IO.Path]::GetFullPath((Join-Path $modSource $entry.path))
         $sourcePrefix = [IO.Path]::GetFullPath($modSource).TrimEnd('\') + '\'
         if (-not $destination.StartsWith($sourcePrefix, [StringComparison]::OrdinalIgnoreCase)) { throw 'Unsafe cache output path.' }
@@ -104,7 +120,7 @@ if ($needsGame) {
         $output = [IO.File]::Open($destination, [IO.FileMode]::Append, [IO.FileAccess]::Write)
         $delta = [IO.File]::OpenRead((Join-Path $patchRoot $entry.delta))
         try { $delta.CopyTo($output) } finally { $delta.Dispose(); $output.Dispose() }
-    }
+    } }
 }
 foreach ($entry in $manifest.files) {
     $p = Join-Path $modSource $entry.path
