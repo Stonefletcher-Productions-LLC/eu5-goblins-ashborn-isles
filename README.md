@@ -1,5 +1,7 @@
 # Goblins of the Ashborn Isles
 
+Working copy: `E:\Codex_EU5_Modding\goblins-ashborn-isles`. Repository: [Bitbucket](https://bitbucket.org/stonefletcher/goblins-ashborn-isles). The October 13 storage cleanup removes only the accidentally committed `.git-partial-old/` backup from history; release assets and game content are preserved. Every remaining file matched across all three original commits, and Git integrity checks passed. Keep old Git backups outside source control.
+
 **0.6.4.1 — Load-error fixes and restored Workshop art.**
 
 - **Goblin hairstyles:** women and children now pick their curated styles from the game's own per-portrait hair lists. 0.6.4 logged 15 "Both value and accessory are set" warnings and 9 "Can't find accessory" errors at startup from these modifiers. Men keep their named styles. Women's and children's styles still need an in-game portrait check.
