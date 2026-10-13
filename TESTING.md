@@ -1,3 +1,12 @@
+# 0.6.4.1 acceptance
+
+Restart EU5 with only one Goblins copy enabled. Confirm the applied playset and fresh logs before judging results.
+
+- Fresh `logs/error.log`: no `Both value and accessory are set` or `Can't find accessory` lines for `zzz_ashborn_outfits.txt`, and no `map.cpp` line `Unknown reference to location! Key: '`.
+- Portraits: compare adult goblin women and girls/boys across several clans with the curated lists in `tools/build_goblin_outfits.py`: women syrian braid, german braid, iroquois parted, aztec horn braid, short afro; girls long basic or short afro; boys short, bob or curly. Men keep their named styles. Check a human control.
+- Ports: dock and embark at Hooktooth, Chainhaven and Lantern Cay; confirm the port count is unchanged.
+- Load a 0.6.4 save after restarting. Separately, load a goblin save with the mod disabled and confirm EU5 shows the missing-mod warning (cancel, do not continue).
+
 # Goblin dynamic music acceptance
 
 On October 11, 2026, the user confirmed automatic **Ashen Harbors at peace → Black Sails, Ashen Teeth at war → Ashen Harbors after peace** in the isolated Cindermaw test using the custom local audio state. Earlier candidates relying on native PlayerAtWar audio state are superseded: that value remained at war after the campaign returned to peace.

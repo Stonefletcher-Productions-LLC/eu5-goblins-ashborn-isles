@@ -244,7 +244,11 @@ def build_map(b,game,out,reports):
         if best:
             _,x,y=best;ports.append({'land':l['id'],'sea':zones[int(sea_labels[y-box[1],x-box[0]])]['id'],'x':x,'y':b.H-y,'png_y':y})
     for c in cfg['countries']:assert c['capital'] in {p['land'] for p in ports},c['capital']
-    b.write(out,'in_game/map_data/ports.csv',b.read(game,'in_game/map_data/ports.csv').rstrip()+'\n'+''.join(f'{p["land"]};{p["sea"]};{p["x"]};{p["y"]};x\n' for p in ports))
+    # Match native ports.csv bytes: no BOM, LF, no trailing newline. The
+    # CRLF/trailing-newline copy shipped through 0.6.4 left an empty final row
+    # that EU5 1.3.11 logged as "Unknown reference to location! Key: ''".
+    ports_csv=out/'in_game/map_data/ports.csv';ports_csv.parent.mkdir(parents=True,exist_ok=True)
+    ports_csv.write_bytes(('\n'.join([b.read(game,'in_game/map_data/ports.csv').replace('\r\n','\n').rstrip('\n')]+[f'{p["land"]};{p["sea"]};{p["x"]};{p["y"]};x' for p in ports])).encode('utf-8'))
     b.write(out,'in_game/map_data/named_locations/goblins_ashborn_isles.txt','\n'.join(f'{l["id"]} = {l["color"]}' for l in locs+zones)+'\n')
     capitals={c['capital'] for c in cfg['countries']};lines=[f'{z["id"]} = {{ topography = coastal_ocean climate = {cfg["climate"]} }}' for z in zones]
     for l in locs:

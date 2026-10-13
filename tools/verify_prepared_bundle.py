@@ -40,6 +40,11 @@ def verify(root):
             assert z.read('goblins_ashborn_isles/'+str(Path(item['path']).with_suffix('.info')).replace('\\','/'))
         for name in ['10_countries.txt','06_pops.txt','07_cities_and_buildings.txt','03_markets.txt']:
             assert z.read('goblins_ashborn_isles/main_menu/setup/start/'+name)
+        if tuple(map(int, version.split('.'))) >= (0, 6, 4, 1):
+            # An empty trailing row logged "Unknown reference to location! Key: ''".
+            ports=z.read('goblins_ashborn_isles/in_game/map_data/ports.csv')
+            assert b'\r' not in ports and not ports.endswith(b'\n'),'ports.csv must match native LF/no-trailing-newline format'
+            assert all(row and len(row.split(b';'))==5 for row in ports.split(b'\n')),'Empty or malformed ports.csv row'
         # Configuration binding alone cannot catch a stale generated treasury.
         country_setup=z.read('goblins_ashborn_isles/main_menu/setup/start/10_countries.txt').decode('utf-8-sig')
         starting_gold={}

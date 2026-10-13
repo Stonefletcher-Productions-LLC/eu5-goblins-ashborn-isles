@@ -1,5 +1,5 @@
 {
-  "base_release": "0.6.4",
+  "base_release": "0.6.4.1",
   "stage": "development-models-and-culture-names",
   "engine_tested": false,
   "files": [
@@ -894,6 +894,10 @@
     {
       "path": "in_game/gui/panels/situation/ga_gathering_of_five.gui",
       "sha256": "4b29bf1b1ba25dbc6893415fd77004f31b464a1a28d3e3d7ab948ee259687cd6"
+    },
+    {
+      "path": "in_game/map_data/ports.csv",
+      "sha256": "e4ac22904b0799a627763c8b10885dd20f942f7f165f0f660654ad0de21cffa3"
     },
     {
       "path": "loading_screen/sound/banks/windows/Init.bnk",
@@ -7717,7 +7721,7 @@
     },
     {
       "path": "main_menu/gfx/portraits/portrait_modifiers/zzz_ashborn_outfits.txt",
-      "sha256": "39593bfe10bc1970f619da5631ff56bf0ef12ad36b6b5b08576bdd806d3a76b8"
+      "sha256": "f3cceafb76fe93ca369d7b41342337f9f41625759b399baaaad666aa86b23901"
     },
     {
       "path": "main_menu/gfx/unit_graphics/attachments/zz_ashborn_goblins.txt",

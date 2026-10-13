@@ -1,3 +1,6 @@
+0.6.4.1 — Load-error fixes and restored Workshop art
+Fixed goblin hairstyle modifiers (24 startup log errors) and an empty ports.csv row. Workshop art now hosted on Steam. Restart; 0.6.4 saves can continue. If EU5 says the mod is missing when loading a save, cancel and enable it first.
+
 0.6.4 — Goblin music, royal divorce and clearer events
 Five peace/war tracks for goblin cultures; divorce for 10 gold; introduction for all six crowns; Covenant modifier names and Horizon hover help. Original switching user-confirmed; expanded rotation and multiplayer unverified. Restart; 0.6.3 saves can continue.
 

@@ -1,27 +1,25 @@
 [h1]Goblins of the Ashborn Isles[/h1]
 
-[b]Version 0.6.4 — Goblin music, royal divorce and clearer events.[/b]
+[b]Version 0.6.4.1 — Load-error fixes and restored page art.[/b]
 
-[img]https://raw.githubusercontent.com/stonefletcher/eu5-goblins-ashborn-isles/main/art/workshop/0.6.0/banner.jpg[/img]
+[img]https://images.steamusercontent.com/ugc/14907097014739312596/D0FF7245E19633C807843C5D36A672B4224E95BB/[/img]
 
 
 Volcanic islands rose between the Azores and Portugal. Goblin captains claimed their harbors, smiths built forges beneath black ridges, and rival houses began arguing over who should lead them.
 
 Choose a goblin crown, develop its economy and bargain with neighboring rulers. Unite the Isles through conquest, submission or dynastic union, then chart foreign shores and pursue an eastern foothold.
 
-[h2]New in 0.6.4[/h2]
+[h2]New in 0.6.4.1[/h2]
 [list]
-[*][b]Goblin music:[/b] two peace tracks (Ashen Harbors; Six Clans, One Fire) and three war tracks (Black Sails, Ashen Teeth; Hooks and Gold; Drums Beneath the Volcano), switching with your own war status. Non-goblin native routing is preserved.
-[*][b]Royal divorce:[/b] goblin rulers can divorce for a base 10 gold, with no stability penalty. Junior union partners cannot divorce their shared ruler; no automatic AI divorces.
-[*][b]All-crown introduction:[/b] each goblin kingdom receives the Ashborn introduction once, including catch-up for existing saves.
-[*][b]Clearer events:[/b] Covenant rewards have proper modifier names; Beyond the Ashen Horizon explains its purpose and next steps when hovered.
+[*][b]Hairstyles:[/b] goblin women and children now use the game's own per-portrait hair lists, removing 24 startup log errors.
+[*][b]Ports:[/b] fixed an empty row that EU5 logged as an unknown location. All 75 ports unchanged.
+[*][b]Page art[/b] is now hosted on Steam.
 [/list]
-
-Cindermaw peace-war-peace was confirmed with the original two tracks. Expanded rotation, live non-goblin playback, music controls and multiplayer remain unverified. Earlier Jaimzha, masonry/glass, workers, flags, portraits, religion and exploration updates remain included.
+[b]Included from 0.6.4:[/b] five goblin peace/war music tracks, royal divorce for 10 gold, an introduction for every crown and clearer Covenant and Horizon events. Music rotation and multiplayer remain unverified.
 
 [h2]An Atlantic homeland[/h2]
 
-[img]https://raw.githubusercontent.com/stonefletcher/eu5-goblins-ashborn-isles/main/art/workshop/0.6.0/ashborn-map.png[/img]
+[img]https://images.steamusercontent.com/ugc/11559685398036182343/F8D2BDE6B6FFE608075FC730CCA705470951571D/[/img]
 
 [i]Map diagram generated from the mod's geography, not an in-game screenshot.[/i]
 
@@ -43,7 +41,7 @@ Every crown has its own culture, ruling household, introduction and three starti
 
 [b]Sootwake — Ashveil.[/b] Snikh, the Blackbough, guards the woodland paths and charcoal hearths that sustain his smaller realm. Independence rests on the groves as much as the crown.
 
-[img]https://raw.githubusercontent.com/stonefletcher/eu5-goblins-ashborn-isles/main/art/workshop/0.6.0/giltfang.jpg[/img]
+[img]https://images.steamusercontent.com/ugc/12326756296266873860/999EC3DB01CD882A3DBCB91990A98F4576AFD0A2/[/img]
 
 [b]Giltfang — Cinderweight.[/b] Vrekk, the Brass-Tooth, turned salvage disputes and trusted copper weights into harbor fees, armed crews and a crown. Copper workings and salt pans supply Chainhaven's market, while Tolltooth's lamps guard the approach. His projects support honest weights, harbor envoys or a supplied watch.
 
@@ -51,7 +49,7 @@ Distinct names, dynasties, courts and original artwork give each clan its own id
 
 [h2]Gather the crowns[/h2]
 
-[img]https://raw.githubusercontent.com/stonefletcher/eu5-goblins-ashborn-isles/main/art/workshop/0.6.0/gathering.jpg[/img]
+[img]https://images.steamusercontent.com/ugc/10155200157179084398/A7F6F8B4604D1ADBFF20EB594FA4A8B4096E8815/[/img]
 
 Build alliances, offer paid aid, negotiate submission and Compact charters, or press claims through normal EU5 warfare. Other crowns can refuse; an offer is not a guaranteed treaty.
 
@@ -59,7 +57,7 @@ Unite all [b]97 homeland districts[/b] through ownership, qualifying vassals or 
 
 [h2]Harbors, provisions and promises[/h2]
 
-[img]https://raw.githubusercontent.com/stonefletcher/eu5-goblins-ashborn-isles/main/art/workshop/0.6.0/harbor-bargain.jpg[/img]
+[img]https://images.steamusercontent.com/ugc/12764873856563528734/0282D3303C9374C76FFC85A63F55822F07F1BB30/[/img]
 
 Negotiate five-year provision or pilot services between independent crowns. Pay only when signed; counteroffers can change terms. Both partners receive receipts explaining payment, benefit, burden and duration.
 
@@ -69,7 +67,7 @@ Each crown starts with [b]100 gold[/b]. Its three opening projects cost [b]25 go
 
 [h2]Chart the foreign shores[/h2]
 
-[img]https://raw.githubusercontent.com/stonefletcher/eu5-goblins-ashborn-isles/main/art/workshop/0.6.0/voyages.jpg[/img]
+[img]https://images.steamusercontent.com/ugc/17127861966221590669/8C2B103CF811C442EFDC200176DA9E98B83877CD/[/img]
 
 [b]Ashborn Voyages[/b] tracks preparation, sailing, returning crews, rest and completed charts. Expeditions toward Iberia, northern waters and northwest Africa cost gold and time. The first offer follows 36 months of preparation.
 
@@ -77,7 +75,7 @@ Request reminders or commission available routes manually. Returning crews revea
 
 [h2]The Eastern Hunger and the Ashen Covenant[/h2]
 
-[img]https://raw.githubusercontent.com/stonefletcher/eu5-goblins-ashborn-isles/main/art/workshop/0.6.0/eastern-hunger.jpg[/img]
+[img]https://images.steamusercontent.com/ugc/17291105826608567034/1A63D562B8824145D9EF614F1147A25B3A2BC816/[/img]
 
 After unification, the [b]Eastern Hunger[/b] supports a European coastal foothold. Prepare your fleet, choose an eligible objective and pursue it through normal warfare and peace settlements. Build the forces and win the land yourself.
 
@@ -85,10 +83,11 @@ At home, the [b]Ashen Covenant[/b] provides twelve sacred sites, traditions, rit
 
 [h2]Install and continue[/h2]
 
-Built for [b]EU5 1.3.11 (Pavia)[/b]. Existing 0.6.3 saves can continue after restart. Upgrading from earlier versions requires a [b]new 1337 campaign[/b] for the changed industries and populations.
+Built for [b]EU5 1.3.11 (Pavia)[/b]. Existing 0.6.3 and 0.6.4 saves can continue after restart. Upgrading from earlier versions requires a [b]new 1337 campaign[/b].
 
 [list]
-[*]Subscribe through the Workshop, or extract the complete GitHub installer ZIP and run [b]Install-Goblins.cmd[/b] with EU5 closed.
+[*]Subscribe through the Workshop and restart EU5.
+[*][b]If EU5 says Goblins of the Ashborn Isles is missing when you load a save, cancel.[/b] Enable the mod first; continuing without it crashes the game.
 [*]Enable only one Goblins copy and disable the old Gathering Prototype add-on. Restart before playing.
 [*]Other map, starting-world, music-bank, Init-bank or topbar mods may conflict. Keep separate saves.
 [/list]
@@ -96,6 +95,6 @@ Built for [b]EU5 1.3.11 (Pavia)[/b]. Existing 0.6.3 saves can continue after res
 [h2]Checks, feedback and credits[/h2]
 Static map, script, artwork and clean-install checks passed. Hiring, masonry output, trade and UI rendering need gameplay confirmation. Multiplayer and achievements are unverified. Dedicated foreign invasion ambitions and fear mechanics are not included.
 
-Report your version, clan, enabled mods and reproduction steps. See the [url=https://github.com/stonefletcher/eu5-goblins-ashborn-isles/blob/main/README.md]README[/url] for details.
+Report your version, clan, enabled mods and reproduction steps in the comments.
 
 Music: ElevenLabs Music v2 and ACE-Step 1.5 (MIT). Setting and development: Stonefletcher. Base infantry: Quaternius (CC0). Paintings and branding use AI-generated art; maps are generated-data diagrams. Europa Universalis V belongs to Paradox Interactive. Unofficial mod.

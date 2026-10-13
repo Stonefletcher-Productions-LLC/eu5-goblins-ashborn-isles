@@ -1,6 +1,16 @@
 # Goblins of the Ashborn Isles
 
-**0.6.4 — Goblin music, royal divorce and clearer events.**
+**0.6.4.1 — Load-error fixes and restored Workshop art.**
+
+- **Goblin hairstyles:** women and children now pick their curated styles from the game's own per-portrait hair lists. 0.6.4 logged 15 "Both value and accessory are set" warnings and 9 "Can't find accessory" errors at startup from these modifiers. Men keep their named styles. Women's and children's styles still need an in-game portrait check.
+- **Ports:** `ports.csv` now matches the game's native format. The 0.6.4 file ended with an empty row that EU5 logged as an unknown location with an empty name. All 75 goblin ports are unchanged.
+- **Missing-mod crash:** loading a goblin save while this mod is not enabled crashes EU5. If the game warns that **Goblins of the Ashborn Isles** is missing when you load a save, cancel, enable the mod in your playset and restart. Enable only one Goblins copy.
+- **Workshop page:** description artwork is now hosted on Steam; the old GitHub links are retired.
+- The installer accepts four-part version numbers.
+
+Built for **EU5 1.3.11**. Restart before playing. Existing 0.6.4 saves can continue: no starting-world changes. All 0.6.4 music, divorce and event changes remain included.
+
+## 0.6.4 — Goblin music, royal divorce and clearer events
 
 Two peace tracks and three war tracks now rotate for all six goblin primary cultures. Peace: **Ashen Harbors** and **Six Clans, One Fire**. War: **Black Sails, Ashen Teeth**, **Hooks and Gold**, and **Drums Beneath the Volcano**. The local player's diplomacy state controls switching; native music routes are preserved for non-goblin cultures. Automatic peace → war → peace was confirmed in Cindermaw with the original two tracks. The expanded rotation, non-goblin listening, music controls and multiplayer remain unverified. Other music drafts are excluded and generation is paused.
 
@@ -12,7 +22,7 @@ Built for **EU5 1.3.11**. Restart before playing. Existing 0.6.3 saves can use t
 
 ![Goblins of the Ashborn Isles banner](art/workshop/0.6.0/banner.jpg)
 
-[0.6.4 release notes](RELEASE_NOTES_0.6.4.md) | [Download 0.6.4](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.6.4) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)
+[0.6.4.1 release notes](RELEASE_NOTES_0.6.4.1.md) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)
 
 Fire rose from the Atlantic. When the smoke cleared, goblin kingdoms stood among the new volcanic islands between the Azores and Portugal. Captains claimed sheltered harbors, smiths built their forges beneath black ridges, and rival houses began arguing over who should lead them.
 
@@ -146,7 +156,7 @@ Development packaging creates the player installer by default. Use `python tools
 
 The complete 0.6.1 static build, economy, connected-province, portrait asset and voyage script checks have passed. The city/wharf/seeded-trade follow-up passed full static validation, clean-source reconstruction and isolated installation; all 1,977 delivered files matched the build. These checks are separate from in-game confirmation of production, trade, UI rendering, portraits and save behavior. Multiplayer and achievements are unverified; dedicated foreign invasion ambitions and fear mechanics are not included.
 
-[Report a problem](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/issues) with your version, clan, enabled mods and steps to reproduce it. Screenshots and relevant saves help. See the [release history](RELEASE_NOTES.md) and [playtest checklist](TESTING.md) for more detail.
+[Report a problem](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518) in the Workshop comments with your version, clan, enabled mods and steps to reproduce it. Screenshots and relevant saves help. See the [release history](RELEASE_NOTES.md) and [playtest checklist](TESTING.md) for more detail.
 
 ## Credits
 

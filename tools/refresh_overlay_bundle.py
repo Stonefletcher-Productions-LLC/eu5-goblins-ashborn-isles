@@ -20,10 +20,21 @@ def main():
     promotion=config['version']!=manifest['version']
     if promotion:
         assert args.promote_version, 'Version promotion requires --promote-version'
-        prior=json.loads(subprocess.check_output(['git','show',manifest['source_commit']+':data/island.json'],cwd=ROOT,text=True))
-        assert prior['version']==manifest['version']
-        prior['version']=config['version']
-        assert prior==config, 'World configuration changed; regenerate and validate terrain/setup before packaging'
+        try:
+            prior=json.loads(subprocess.check_output(['git','show',manifest['source_commit']+':data/island.json'],cwd=ROOT,text=True))
+        except subprocess.CalledProcessError:
+            prior=None
+        if prior is not None:
+            assert prior['version']==manifest['version']
+            prior['version']=config['version']
+            assert prior==config, 'World configuration changed; regenerate and validate terrain/setup before packaging'
+        else:
+            # The source commit is unavailable (history re-created when moving
+            # to Bitbucket). The manifest's recorded config hash is the same
+            # binding: the current config with the old version must match it.
+            old_version=json.dumps(manifest['version'])
+            restored=config_text.replace('"version": '+json.dumps(config['version']),'"version": '+old_version,1)
+            assert hashlib.sha256(restored.encode('utf-8')).hexdigest()==manifest['source_config_sha256'], 'World configuration changed; regenerate and validate terrain/setup before packaging'
     changed={}
     player_roots={'README.md','RELEASE_NOTES.md','TESTING.md','LORE.md',
                   'Install-Goblins.ps1','Install-Goblins.cmd','reports/validation.json'}

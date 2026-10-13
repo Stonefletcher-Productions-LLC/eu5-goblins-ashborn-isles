@@ -54,6 +54,10 @@ def main():
     paths.extend(output / p for p in runtime_paths())
     paths.extend(output / p for p in build_clan_flags.runtime_paths())
     paths.append(output / 'in_game/events/goblins_ashborn_isles.txt')
+    # 0.6.4.1: normalized ports.csv (LF, no trailing empty row) ships as an
+    # overlay over the 0.6.4 terrain/map base. archipelago.build_map now emits
+    # the same bytes; after any full map rebuild, copy its ports.csv here.
+    paths.append(output / 'in_game/map_data/ports.csv')
     # Retain the authored gameplay/UI modules when refreshing portrait assets.
     # A partial manifest previously dropped the Gathering and Covenant panels.
     for prefix in ['in_game/common','in_game/events','in_game/gui','main_menu/common','main_menu/localization']:
