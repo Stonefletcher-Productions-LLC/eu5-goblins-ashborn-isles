@@ -2,7 +2,14 @@
 
 Working copy: `E:\Codex_EU5_Modding\goblins-ashborn-isles`. Repository: [Bitbucket](https://bitbucket.org/stonefletcher/goblins-ashborn-isles). The October 13 storage cleanup removes only the accidentally committed `.git-partial-old/` backup from history; release assets and game content are preserved. Every remaining file matched across all three original commits, and Git integrity checks passed. Keep old Git backups outside source control.
 
-**0.6.4.1 — Load-error fixes and restored Workshop art.**
+**0.6.5 — Buildable timber in Blackwood and Giltfang.**
+
+- **Ironbark, Pitchfang and Emberhollow** now produce **lumber**. They were set to tar, which has no raw-material production in EU5 1.3.11, so their RGOs could not be built up and the game logged missing `rgo_workers:tar` and `raw_resource:tar` entries. All three are wooded hills; their populations, buildings and charcoal makers are unchanged.
+- The build checks no longer accept tar as a raw material, and the release check now confirms every goblin location's packaged raw material.
+
+Built for **EU5 1.3.11**. Restart before playing. The fix applies to a **new 1337 campaign**: existing 0.6.4 and 0.6.4.1 saves keep loading, but those three locations stay on tar there. In multiplayer, every player needs the same version. All 0.6.4.1 fixes remain included.
+
+## 0.6.4.1 — Load-error fixes and restored Workshop art
 
 - **Goblin hairstyles:** women and children now pick their curated styles from the game's own per-portrait hair lists. 0.6.4 logged 15 "Both value and accessory are set" warnings and 9 "Can't find accessory" errors at startup from these modifiers. Men keep their named styles. Women's and children's styles still need an in-game portrait check.
 - **Ports:** `ports.csv` now matches the game's native format. The 0.6.4 file ended with an empty row that EU5 logged as an unknown location with an empty name. All 75 goblin ports are unchanged.
@@ -24,7 +31,7 @@ Built for **EU5 1.3.11**. Restart before playing. Existing 0.6.3 saves can use t
 
 ![Goblins of the Ashborn Isles banner](art/workshop/0.6.0/banner.jpg)
 
-[0.6.4.1 release notes](RELEASE_NOTES_0.6.4.1.md) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)
+[0.6.5 release notes](RELEASE_NOTES_0.6.5.md) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)
 
 Fire rose from the Atlantic. When the smoke cleared, goblin kingdoms stood among the new volcanic islands between the Azores and Portugal. Captains claimed sheltered harbors, smiths built their forges beneath black ridges, and rival houses began arguing over who should lead them.
 
@@ -145,7 +152,7 @@ At home, the **Ashen Covenant** provides twelve sacred sites, traditions, rites,
 
 Built for **EU5 1.3.11 (Pavia)**. Existing 0.6.3 campaigns can continue after restarting. Start a **new 1337 campaign** when upgrading from earlier versions to receive the revised populations and industries.
 
-- Subscribe through the Workshop, or download **Goblins_Ashborn_Isles_0.6.4.zip** from the release above, extract it and run **Install-Goblins.cmd** with EU5 closed. The installer reconstructs its terrain using the installed game.
+- Subscribe through the Workshop, or download **Goblins_Ashborn_Isles_0.6.5.zip** from the release above, extract it and run **Install-Goblins.cmd** with EU5 closed. The installer reconstructs its terrain using the installed game.
 - Enable only one Goblins copy and disable the old Gathering Prototype add-on. Restart before playing.
 - Existing 0.6.0 saves can receive the clan-flag repair after restart and the next monthly pulse; that repair alone needs no new campaign.
 - Other map, terrain and starting-world mods may conflict. Keep separate saves.

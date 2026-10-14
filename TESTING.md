@@ -1,3 +1,12 @@
+# 0.6.5 acceptance
+
+Restart EU5 with only one Goblins copy enabled and start a **new 1337 campaign**.
+
+- Ironbark, Pitchfang and Emberhollow show **lumber** as their raw material, and their RGO can be expanded.
+- Fresh `logs/error.log`: no `Could not find NamedIndex 'rgo_workers:tar'`, `'raw_resource:tar'` or `'is_under_construction:tar'` lines.
+- Load a 0.6.4.1 save after restarting: it loads; those three locations still show tar there (expected).
+- Multiplayer: host and client both on 0.6.5 (same checksum in the lobby).
+
 # 0.6.4.1 acceptance
 
 Restart EU5 with only one Goblins copy enabled. Confirm the applied playset and fresh logs before judging results.

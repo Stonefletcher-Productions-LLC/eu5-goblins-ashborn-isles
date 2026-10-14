@@ -188,7 +188,8 @@ ga_economy_monthly = {{
     goods='\n'.join(p.read_text(encoding='utf-8-sig') for p in (game/'in_game/common/goods').glob('*.txt'))
     for loc in cfg['locations']:
         a,z=b.block_span(goods,loc['good'])
-        assert 'category = raw_material' in goods[a:z] or loc['good'] in {'fish','wheat','livestock','lumber','tar','wool'},(loc['id'],'invalid RGO')
+        # 'tar' was exempted until 0.6.5, but it has no raw-material RGO in 1.3.11.
+        assert 'category = raw_material' in goods[a:z] or loc['good'] in {'fish','wheat','livestock','lumber','wool'},(loc['id'],'invalid RGO')
     effects=b.read(game,'in_game/common/scripted_effects/country_effects.txt')
     assert 'change_max_raw_material_workers = 1' in effects,'Native RGO effect changed'
     return {'rgo_expansion_total':sum(l['rgo_expansion'] for l in cfg['locations']),

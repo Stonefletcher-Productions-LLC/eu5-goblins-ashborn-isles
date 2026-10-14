@@ -1,5 +1,5 @@
 {
-  "base_release": "0.6.4.1",
+  "base_release": "0.6.5",
   "stage": "development-models-and-culture-names",
   "engine_tested": false,
   "files": [
@@ -894,6 +894,10 @@
     {
       "path": "in_game/gui/panels/situation/ga_gathering_of_five.gui",
       "sha256": "4b29bf1b1ba25dbc6893415fd77004f31b464a1a28d3e3d7ab948ee259687cd6"
+    },
+    {
+      "path": "in_game/map_data/location_templates.txt",
+      "sha256": "6425ff51382cafb64a19b5fcdb53872ba2bfd4ffb46efbded5d3b05c6d374f23"
     },
     {
       "path": "in_game/map_data/ports.csv",
