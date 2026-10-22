@@ -240,6 +240,8 @@ def main():
     export_event_art.build(out)
     import export_goblin_models
     models=export_goblin_models.build(out)
+    import export_goblin_buildings
+    models['city_set']=export_goblin_buildings.build(out)
     import build_goblin_portraits
     build_goblin_portraits.build(out)
     import build_infantry_art

@@ -1,0 +1,194 @@
+﻿{
+  "stage": "procedural-city-set",
+  "engine_tested": false,
+  "models": [
+    {
+      "name": "cm_goblin_peasant_a",
+      "triangles": 764,
+      "vertices": 1538,
+      "aabb_min": [
+        -0.828,
+        -0.011,
+        -0.834
+      ],
+      "aabb_max": [
+        0.913,
+        0.227,
+        0.872
+      ]
+    },
+    {
+      "name": "cm_goblin_peasant_b",
+      "triangles": 799,
+      "vertices": 1607,
+      "aabb_min": [
+        -0.766,
+        -0.021,
+        -0.815
+      ],
+      "aabb_max": [
+        0.809,
+        0.307,
+        0.876
+      ]
+    },
+    {
+      "name": "cm_goblin_peasant_c",
+      "triangles": 829,
+      "vertices": 1669,
+      "aabb_min": [
+        -0.814,
+        -0.02,
+        -0.873
+      ],
+      "aabb_max": [
+        0.864,
+        0.262,
+        0.89
+      ]
+    },
+    {
+      "name": "cm_goblin_peasant_d",
+      "triangles": 833,
+      "vertices": 1683,
+      "aabb_min": [
+        -0.821,
+        -0.021,
+        -0.869
+      ],
+      "aabb_max": [
+        0.758,
+        0.293,
+        0.724
+      ]
+    },
+    {
+      "name": "cm_goblin_burgher_a",
+      "triangles": 673,
+      "vertices": 1339,
+      "aabb_min": [
+        -0.826,
+        -0.021,
+        -0.861
+      ],
+      "aabb_max": [
+        0.775,
+        0.634,
+        0.931
+      ]
+    },
+    {
+      "name": "cm_goblin_burgher_b",
+      "triangles": 704,
+      "vertices": 1418,
+      "aabb_min": [
+        -0.762,
+        -0.012,
+        -0.829
+      ],
+      "aabb_max": [
+        0.858,
+        0.626,
+        0.784
+      ]
+    },
+    {
+      "name": "cm_goblin_burgher_c",
+      "triangles": 605,
+      "vertices": 1213,
+      "aabb_min": [
+        -0.807,
+        -0.014,
+        -0.926
+      ],
+      "aabb_max": [
+        0.839,
+        0.601,
+        0.818
+      ]
+    },
+    {
+      "name": "cm_goblin_noble_a",
+      "triangles": 1670,
+      "vertices": 3590,
+      "aabb_min": [
+        -0.885,
+        -0.022,
+        -1.034
+      ],
+      "aabb_max": [
+        0.86,
+        1.05,
+        0.959
+      ]
+    },
+    {
+      "name": "cm_goblin_noble_b",
+      "triangles": 1633,
+      "vertices": 3505,
+      "aabb_min": [
+        -1.055,
+        -0.022,
+        -0.881
+      ],
+      "aabb_max": [
+        1.008,
+        1.05,
+        0.95
+      ]
+    },
+    {
+      "name": "cm_goblin_stockade",
+      "triangles": 3768,
+      "vertices": 8250,
+      "aabb_min": [
+        -1.085,
+        -0.022,
+        -1.124
+      ],
+      "aabb_max": [
+        0.966,
+        0.94,
+        0.944
+      ]
+    },
+    {
+      "name": "cm_goblin_fort",
+      "triangles": 4621,
+      "vertices": 10115,
+      "aabb_min": [
+        -1.285,
+        -0.023,
+        -1.23
+      ],
+      "aabb_max": [
+        1.236,
+        1.07,
+        1.228
+      ]
+    },
+    {
+      "name": "cm_goblin_market",
+      "triangles": 621,
+      "vertices": 1233,
+      "aabb_min": [
+        -0.491,
+        -0.001,
+        -0.784
+      ],
+      "aabb_max": [
+        0.672,
+        0.32,
+        0.765
+      ]
+    }
+  ],
+  "graphical_cultures": [
+    "cm_cinderkin_gfx",
+    "cm_brinekin_gfx",
+    "cm_reefkin_gfx",
+    "cm_shatterkin_gfx",
+    "cm_sootkin_gfx",
+    "cm_giltkin_gfx"
+  ]
+}

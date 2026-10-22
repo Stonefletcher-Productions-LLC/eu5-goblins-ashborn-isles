@@ -1,3 +1,11 @@
+# Goblin city buildings acceptance
+
+- Start a new 1337 campaign and zoom into Hooktooth (city) and a few goblin towns and villages. Houses should be goblin shacks, stacked shanty towers and the chieftain's hall, not European half-timbered houses.
+- Check scale against a neighbouring vanilla town: shacks should read as slightly smaller and messier, not as tiny specks or giants.
+- Check that buildings sit on the ground on hills (no floating or buried shacks) and that textures are not pink, black or missing.
+- Build a stockade or fort in a goblin location: it should show the stake palisade with gate towers.
+- error.log: no lines mentioning `cm_goblin_`, `ashborn_goblins` or `cm_ashborn_goblins.txt`.
+
 # 0.6.5 acceptance
 
 Restart EU5 with only one Goblins copy enabled and start a **new 1337 campaign**.
