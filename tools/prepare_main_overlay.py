@@ -79,6 +79,11 @@ def main():
     import goblin_families
     goblin_families.build()
     paths.extend(output / rel for rel in goblin_families.FILES)
+    # 0.6.8: goblin locations start with the Feudalism institution (galleys, cogs,
+    # iron working). 08_institutions.txt ships as an overlay over the native file.
+    import goblin_tech
+    goblin_tech.build(args.game)
+    paths.append(output / goblin_tech.INSTITUTIONS)
     # Retain the authored gameplay/UI modules when refreshing portrait assets.
     # A partial manifest previously dropped the Gathering and Covenant panels.
     for prefix in ['in_game/common','in_game/events','in_game/gui','main_menu/common','main_menu/localization']:

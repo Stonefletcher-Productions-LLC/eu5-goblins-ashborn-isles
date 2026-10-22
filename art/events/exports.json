@@ -18,45 +18,63 @@
     "ga_gathering.15": "shatterfin",
     "ga_gathering.16": "harbor_pact",
     "ga_gathering.17": "harbor_pact",
-    "ga_gathering.18": "oath",
+    "ga_gathering.18": "compact_charter",
     "ga_gathering.20": "harbor_pact",
     "ga_gathering.21": "harbor_pact",
     "ga_gathering.22": "harbor_pact",
     "ga_gathering.23": "harbor_pact",
     "ga_gathering.24": "harbor_pact",
     "ga_gathering.25": "harbor_pact",
-    "ga_gathering.30": "oath",
-    "ga_gathering.31": "oath",
-    "ga_gathering.32": "oath",
-    "ga_gathering.33": "oath",
-    "ga_gathering.34": "oath",
-    "ga_gathering.35": "oath",
+    "ga_gathering.30": "compact_charter",
+    "ga_gathering.31": "compact_charter",
+    "ga_gathering.32": "compact_charter",
+    "ga_gathering.33": "compact_charter",
+    "ga_gathering.34": "compact_charter",
+    "ga_gathering.35": "compact_charter",
+    "ga_gathering.36": "sworn_pact",
+    "ga_gathering.37": "sworn_pact",
+    "ga_gathering.38": "sworn_pact",
+    "ga_gathering.39": "pact_broken",
+    "ga_gathering.41": "kinship",
+    "ga_gathering.42": "kinship",
     "goblins_exploration.1": "departure",
     "goblins_exploration.2": "iberia",
     "goblins_exploration.3": "charts",
     "goblins_exploration.4": "biscay",
     "goblins_exploration.5": "africa",
     "goblins_exploration.6": "foreign_sails",
-    "ashen_covenant.1": "cindermaw",
-    "ashen_covenant.2": "brackmaw",
-    "ashen_covenant.3": "reefhook",
-    "ashen_covenant.4": "shatterfin",
-    "ashen_covenant.5": "shatterfin",
-    "ashen_covenant.6": "sootwake",
-    "ashen_covenant.7": "reefhook",
-    "ashen_covenant.8": "cindermaw",
-    "ashen_covenant.9": "oath",
-    "ashen_covenant.10": "eastern_harbor",
-    "ashen_covenant.11": "brackmaw",
-    "ashen_covenant.12": "cindermaw",
-    "ashen_covenant.20": "unification"
+    "ga_opening.1": "cindermaw",
+    "ga_opening.2": "brackmaw",
+    "ga_opening.3": "reefhook",
+    "ga_opening.4": "shatterfin",
+    "ga_opening.5": "sootwake",
+    "ga_opening.6": "giltfang",
+    "ga_old_world.1": "old_world_demons",
+    "ga_old_world.2": "old_world_tavern",
+    "ga_old_world.3": "old_world_envoy",
+    "ga_old_world.4": "old_world_cabinet",
+    "ga_old_world.5": "old_world_legate",
+    "ashen_covenant.1": "covenant_mountain",
+    "ashen_covenant.2": "covenant_flood",
+    "ashen_covenant.3": "covenant_lantern",
+    "ashen_covenant.4": "covenant_cord",
+    "ashen_covenant.5": "covenant_storm_teeth",
+    "ashen_covenant.6": "covenant_grove",
+    "ashen_covenant.7": "covenant_unnamed_crew",
+    "ashen_covenant.8": "covenant_preacher",
+    "ashen_covenant.9": "covenant_captives_hearth",
+    "ashen_covenant.10": "covenant_spirit_beyond",
+    "ashen_covenant.11": "covenant_empty_feast",
+    "ashen_covenant.12": "covenant_finished_blade",
+    "ashen_covenant.13": "covenant_light_weight",
+    "ashen_covenant.20": "covenant_moot"
   },
   "situations": {
     "ga_gathering_of_five": "gathering",
     "ga_eastern_hunger": "eastern_hunger",
     "ga_ashborn_voyages": "charts"
   },
-  "original_paintings": 18,
+  "original_paintings": 41,
   "format": "DDS BC1/DXT1, full mip chain",
   "files": [
     {
@@ -81,7 +99,7 @@
         1080,
         440
       ],
-      "sha256": "b1a2898d5af82eaeaeb273487279649bf09a71ff6edacec22072d1a95d26718c"
+      "sha256": "f4a0532bf409948c15a563c9922fc5e8262970e25c2040f227b66919a9695b3f"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/charts.dds",
@@ -100,6 +118,126 @@
       "sha256": "daf9ea8c14b8bc85cd45ccfc9306d5c3b5dc096a34adc147c79fa2ce76f06372"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/compact_charter.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "180149ff457acc352960b24e7ffeaebc42065c13c04c25ffde649d3941404f6a"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/covenant_captives_hearth.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "6dce0b756ee3735139aa8919405a83db2099dbe9edbe35f1dee134164c72385f"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/covenant_cord.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "ad9ed8826de5b7291b03fe1b666781c54db1053fa0ecca7322699060a028521e"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/covenant_empty_feast.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "03df7c2ac7e9912befa5f5fd05f689d0a48fcfa39bdf75fc07082845d92d71cb"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/covenant_finished_blade.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "9a03c19fe2fbbc14c05487b1c74be1805571e8b524d5783b31547e7b969b9f7e"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/covenant_flood.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "29249075152a4525a73e7efc1a5293591904a793adf1ff08afe6e821fde53bb4"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/covenant_grove.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "a4f3250b4ac6888e9c593c51d9a60324175445a2ffa9e231a24d9b1b415a2afd"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/covenant_lantern.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "4e2d223cb07f2b56eba2a27a40887cf941f65ab781a80ba2303db9ae5f6bc3b3"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/covenant_light_weight.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "d4ee09374336bcf71d7d9a38be1b449e24e2821b5a95db45687f42e3fb7e3505"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/covenant_moot.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "379b7048e6fc5a6a7a94ed694dd619198702abf7a21c263e381247fc517d0424"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/covenant_mountain.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "cf6458ca444c652a9640d3e4db5a45b6bfc76c0fb72970faa09df1d53e17da6d"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/covenant_preacher.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "294dcbd4a8a5e3a0292ffb0c5880be94d347777c8d49987d583f3af09c13913a"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/covenant_spirit_beyond.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "01daa6d3beb40bd5d213d772b72137625b9ccb68895b4d19e843613a387fff57"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/covenant_storm_teeth.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "0d8e1d4192d3f15dd6c16869e682cc37544d11e627b0b3191327c4ea0dde2bda"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/covenant_unnamed_crew.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "df918b1200466e720b5b1f58c1b59de755a795b7ac4e617cec97c6aedad3c611"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/departure.dds",
       "size": [
         1080,
@@ -113,7 +251,7 @@
         1080,
         440
       ],
-      "sha256": "fd4c69b000e962bf5c2d25162ceb60addbc8f9699a3129b0d98282ca4df45ee6"
+      "sha256": "67b0b80d775f51d51786c1323b4338b3bba611a2113e123c0bbf1cc6f75c6365"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/eastern_hunger.dds",
@@ -145,7 +283,7 @@
         1080,
         440
       ],
-      "sha256": "6ef5c79a2f0d5876c6bd71c27bf5cebd3d6fa992f211358bd6ac4fb84acf4d78"
+      "sha256": "9fe46c1e3d225b1321b2a8e9bb75caf39efe3e007bfc08ce1bea3e530fe58ffd"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/harbor_pact.dds",
@@ -153,7 +291,7 @@
         1080,
         440
       ],
-      "sha256": "bb43074a6ea3cc46bf733226164137909c700e6c13537baff9bd067774206777"
+      "sha256": "775e72458340876320bdaed1ca12760404b43dc06f6f1227c4277cf654c18a18"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/iberia.dds",
@@ -164,12 +302,68 @@
       "sha256": "b0477cbb985315db8d7c731f82a574d1f40b8a65d6856a7d32bf6cd405ab3c64"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/kinship.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "a5d9e98fee4b96bad5a06c91138e64f0b643869b9e453c446869000cdb395c71"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/oath.dds",
       "size": [
         1080,
         440
       ],
-      "sha256": "ed42213c0222507b7cf5ea7888928ba25960deff2e12e20db513092eafddb6c9"
+      "sha256": "57a14d1b4cbbe33238e6b5f985d415e180a4dd56116c57d0c74903be8beb1438"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/old_world_cabinet.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "cfeaa21d70ff83566e3c90cfe3dbf8aea44007f45bd34ec971ab92a5fd62a966"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/old_world_demons.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "453ecdfede8feca871369e4eb7c7a4c6ae792fd353137331b9a2156ed84a64d5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/old_world_envoy.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "05ae820bdc968437035d72c5f8690fa92449b5ad7f3d2b688bc353ddf201aab4"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/old_world_legate.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "35d3bbe2a289361b3f94ff7c9ce70a59a9317f7cedad1aeb78b9dc84f220272a"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/old_world_tavern.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "03904ebdef1b42a4b3dd3287bdb04daa33b7c2ad95be2829f9bf044599cd03af"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/pact_broken.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "73063f227bce4148cc4a343eaa7aca7a4db9265c63ef8381659143641c96250d"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/reefhook.dds",
@@ -196,12 +390,20 @@
       "sha256": "b4d6f2080e9369d04e0e782f1eefae12958daf6d4c6a8dfb4519f957e1c40a3d"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/sworn_pact.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "36b60b80eb71e9c7fe03ea732d13741e37b72dec8767708c477be1087d502a70"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/unification.dds",
       "size": [
         1080,
         440
       ],
-      "sha256": "1767a1c003eca337c3b2593503d3855a60b2c0ea4c60d405da219c053a10a101"
+      "sha256": "5a1efc229e0dcfca7ed9af84861e0242cf210e5d69a8936dbd747c01141a7df1"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/situation/ga_gathering_of_five.dds",

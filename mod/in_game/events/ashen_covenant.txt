@@ -2,7 +2,7 @@
 ashen_covenant.1 = {
         type = country_event category = situation_event outcome = neutral
         title = ashen_covenant.1.title desc = ashen_covenant.1.desc
-        image = "gfx/interface/illustrations/event/ashborn/cindermaw.dds"
+        image = "gfx/interface/illustrations/event/ashborn/covenant_mountain.dds"
         trigger = { religion = religion:cm_hunger_below NOT = { has_variable = ac_story_cooldown } owns = location:cm_cinder_crown }
         immediate = {
             set_variable = { name = ac_story_cooldown value = yes years = 3 }
@@ -29,7 +29,7 @@ option = { name = ashen_covenant.1.c trigger = { } ai_chance = { factor = 1 }
 ashen_covenant.2 = {
         type = country_event category = situation_event outcome = neutral
         title = ashen_covenant.2.title desc = ashen_covenant.2.desc
-        image = "gfx/interface/illustrations/event/ashborn/brackmaw.dds"
+        image = "gfx/interface/illustrations/event/ashborn/covenant_flood.dds"
         trigger = { religion = religion:cm_hunger_below NOT = { has_variable = ac_story_cooldown } owns = location:cm_reedmouth }
         immediate = {
             set_variable = { name = ac_story_cooldown value = yes years = 3 }
@@ -56,7 +56,7 @@ option = { name = ashen_covenant.2.c trigger = { } ai_chance = { factor = 1 }
 ashen_covenant.3 = {
         type = country_event category = situation_event outcome = neutral
         title = ashen_covenant.3.title desc = ashen_covenant.3.desc
-        image = "gfx/interface/illustrations/event/ashborn/reefhook.dds"
+        image = "gfx/interface/illustrations/event/ashborn/covenant_lantern.dds"
         trigger = { religion = religion:cm_hunger_below NOT = { has_variable = ac_story_cooldown } owns = location:cm_tidefang }
         immediate = {
             set_variable = { name = ac_story_cooldown value = yes years = 3 }
@@ -83,7 +83,7 @@ option = { name = ashen_covenant.3.c trigger = { } ai_chance = { factor = 1 }
 ashen_covenant.4 = {
         type = country_event category = situation_event outcome = neutral
         title = ashen_covenant.4.title desc = ashen_covenant.4.desc
-        image = "gfx/interface/illustrations/event/ashborn/shatterfin.dds"
+        image = "gfx/interface/illustrations/event/ashborn/covenant_cord.dds"
         trigger = { religion = religion:cm_hunger_below NOT = { has_variable = ac_story_cooldown } owns = location:cm_shatterfin }
         immediate = {
             set_variable = { name = ac_story_cooldown value = yes years = 3 }
@@ -110,7 +110,7 @@ option = { name = ashen_covenant.4.c trigger = { } ai_chance = { factor = 1 }
 ashen_covenant.5 = {
         type = country_event category = situation_event outcome = neutral
         title = ashen_covenant.5.title desc = ashen_covenant.5.desc
-        image = "gfx/interface/illustrations/event/ashborn/shatterfin.dds"
+        image = "gfx/interface/illustrations/event/ashborn/covenant_storm_teeth.dds"
         trigger = { religion = religion:cm_hunger_below NOT = { has_variable = ac_story_cooldown } owns = location:cm_knifeback }
         immediate = {
             set_variable = { name = ac_story_cooldown value = yes years = 3 }
@@ -137,7 +137,7 @@ option = { name = ashen_covenant.5.c trigger = { } ai_chance = { factor = 1 }
 ashen_covenant.6 = {
         type = country_event category = situation_event outcome = neutral
         title = ashen_covenant.6.title desc = ashen_covenant.6.desc
-        image = "gfx/interface/illustrations/event/ashborn/sootwake.dds"
+        image = "gfx/interface/illustrations/event/ashborn/covenant_grove.dds"
         trigger = { religion = religion:cm_hunger_below NOT = { has_variable = ac_story_cooldown } owns = location:cm_ember_key }
         immediate = {
             set_variable = { name = ac_story_cooldown value = yes years = 3 }
@@ -164,7 +164,7 @@ option = { name = ashen_covenant.6.c trigger = { } ai_chance = { factor = 1 }
 ashen_covenant.7 = {
         type = country_event category = situation_event outcome = neutral
         title = ashen_covenant.7.title desc = ashen_covenant.7.desc
-        image = "gfx/interface/illustrations/event/ashborn/reefhook.dds"
+        image = "gfx/interface/illustrations/event/ashborn/covenant_unnamed_crew.dds"
         trigger = { religion = religion:cm_hunger_below NOT = { has_variable = ac_story_cooldown } has_religious_aspect = religious_aspect:ac_crew_home }
         immediate = {
             set_variable = { name = ac_story_cooldown value = yes years = 3 }
@@ -191,7 +191,7 @@ option = { name = ashen_covenant.7.c trigger = { } ai_chance = { factor = 1 }
 ashen_covenant.8 = {
         type = country_event category = situation_event outcome = neutral
         title = ashen_covenant.8.title desc = ashen_covenant.8.desc
-        image = "gfx/interface/illustrations/event/ashborn/cindermaw.dds"
+        image = "gfx/interface/illustrations/event/ashborn/covenant_preacher.dds"
         trigger = { religion = religion:cm_hunger_below NOT = { has_variable = ac_story_cooldown }  }
         immediate = {
             set_variable = { name = ac_story_cooldown value = yes years = 3 }
@@ -218,7 +218,7 @@ option = { name = ashen_covenant.8.c trigger = { } ai_chance = { factor = 1 }
 ashen_covenant.9 = {
         type = country_event category = situation_event outcome = neutral
         title = ashen_covenant.9.title desc = ashen_covenant.9.desc
-        image = "gfx/interface/illustrations/event/ashborn/oath.dds"
+        image = "gfx/interface/illustrations/event/ashborn/covenant_captives_hearth.dds"
         trigger = { religion = religion:cm_hunger_below NOT = { has_variable = ac_story_cooldown }  }
         immediate = {
             set_variable = { name = ac_story_cooldown value = yes years = 3 }
@@ -245,7 +245,7 @@ option = { name = ashen_covenant.9.c trigger = { } ai_chance = { factor = 1 }
 ashen_covenant.10 = {
         type = country_event category = situation_event outcome = neutral
         title = ashen_covenant.10.title desc = ashen_covenant.10.desc
-        image = "gfx/interface/illustrations/event/ashborn/eastern_harbor.dds"
+        image = "gfx/interface/illustrations/event/ashborn/covenant_spirit_beyond.dds"
         trigger = { religion = religion:cm_hunger_below NOT = { has_variable = ac_story_cooldown } has_variable = ga_charted_east }
         immediate = {
             set_variable = { name = ac_story_cooldown value = yes years = 3 }
@@ -272,7 +272,7 @@ option = { name = ashen_covenant.10.c trigger = { } ai_chance = { factor = 1 }
 ashen_covenant.11 = {
         type = country_event category = situation_event outcome = neutral
         title = ashen_covenant.11.title desc = ashen_covenant.11.desc
-        image = "gfx/interface/illustrations/event/ashborn/brackmaw.dds"
+        image = "gfx/interface/illustrations/event/ashborn/covenant_empty_feast.dds"
         trigger = { religion = religion:cm_hunger_below NOT = { has_variable = ac_story_cooldown } has_religious_aspect = religious_aspect:ac_common_hearth }
         immediate = {
             set_variable = { name = ac_story_cooldown value = yes years = 3 }
@@ -299,7 +299,7 @@ option = { name = ashen_covenant.11.c trigger = { } ai_chance = { factor = 1 }
 ashen_covenant.12 = {
         type = country_event category = situation_event outcome = neutral
         title = ashen_covenant.12.title desc = ashen_covenant.12.desc
-        image = "gfx/interface/illustrations/event/ashborn/cindermaw.dds"
+        image = "gfx/interface/illustrations/event/ashborn/covenant_finished_blade.dds"
         trigger = { religion = religion:cm_hunger_below NOT = { has_variable = ac_story_cooldown } has_religious_aspect = religious_aspect:ac_offering_smoke }
         immediate = {
             set_variable = { name = ac_story_cooldown value = yes years = 3 }
@@ -326,7 +326,7 @@ option = { name = ashen_covenant.12.c trigger = { } ai_chance = { factor = 1 }
 ashen_covenant.13 = {
         type = country_event category = situation_event outcome = neutral
         title = ashen_covenant.13.title desc = ashen_covenant.13.desc
-        image = "gfx/interface/illustrations/event/ashborn/giltfang.dds"
+        image = "gfx/interface/illustrations/event/ashborn/covenant_light_weight.dds"
         trigger = { religion = religion:cm_hunger_below NOT = { has_variable = ac_story_cooldown } owns = location:cm_chainhaven }
         immediate = {
             set_variable = { name = ac_story_cooldown value = yes years = 3 }
@@ -353,7 +353,7 @@ option = { name = ashen_covenant.13.c trigger = { } ai_chance = { factor = 1 }
 ashen_covenant.20 = {
  type = country_event category = situation_event outcome = neutral
  title = ashen_covenant.20.title desc = ashen_covenant.20.desc
- image = "gfx/interface/illustrations/event/ashborn/unification.dds"
+ image = "gfx/interface/illustrations/event/ashborn/covenant_moot.dds"
  trigger = { religion = religion:cm_hunger_below has_variable = ga_unifier ga_controls_homeland = yes }
  option = { name = ashen_covenant.20.a ai_chance = { factor = 1 } set_variable = { name = ac_local_covenants value = yes } add_country_modifier = { modifier = ac_local_covenants years = -1 mode = replace } }
  option = { name = ashen_covenant.20.b ai_chance = { factor = 1 } set_variable = { name = ac_first_oathkeeper value = yes } add_country_modifier = { modifier = ac_first_oathkeeper years = -1 mode = replace } }

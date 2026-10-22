@@ -132,7 +132,7 @@ ga_gathering.18 = {
     title = ga_gathering.18.title
     desc = ga_gathering.18.desc
     trigger = { ga_is_goblin = yes }
-    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
+    image = "gfx/interface/illustrations/event/ashborn/compact_charter.dds"
     immediate = {  }
     option = {
         name = ga_gathering.18.a
@@ -1262,7 +1262,7 @@ ga_gathering.30 = {
     title = ga_gathering.30.title
     desc = ga_gathering.30.desc
     trigger = { ga_is_goblin = yes }
-    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
+    image = "gfx/interface/illustrations/event/ashborn/compact_charter.dds"
     immediate = {  }
     option = {
         name = ga_gathering.30.autonomy
@@ -1378,7 +1378,7 @@ ga_gathering.31 = {
     title = ga_gathering.31.title
     desc = ga_gathering.31.desc
     trigger = { ga_is_goblin = yes }
-    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
+    image = "gfx/interface/illustrations/event/ashborn/compact_charter.dds"
     immediate = {  }
     option = {
         name = ga_gathering.31.a
@@ -1478,7 +1478,7 @@ ga_gathering.32 = {
     title = ga_gathering.32.title
     desc = ga_gathering.32.desc
     trigger = { ga_is_goblin = yes }
-    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
+    image = "gfx/interface/illustrations/event/ashborn/compact_charter.dds"
     immediate = {  }
     option = {
         name = ga_gathering.32.a
@@ -1578,7 +1578,7 @@ ga_gathering.33 = {
     title = ga_gathering.33.title
     desc = ga_gathering.33.desc
     trigger = { ga_is_goblin = yes }
-    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
+    image = "gfx/interface/illustrations/event/ashborn/compact_charter.dds"
     immediate = {  }
     option = {
         name = ga_gathering.33.autonomy
@@ -1740,7 +1740,7 @@ ga_gathering.34 = {
     title = ga_gathering.34.title
     desc = ga_gathering.34.desc
     trigger = { ga_is_goblin = yes }
-    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
+    image = "gfx/interface/illustrations/event/ashborn/compact_charter.dds"
     immediate = {  }
     option = {
         name = ga_gathering.34.a
@@ -1758,7 +1758,7 @@ ga_gathering.35 = {
     title = ga_gathering.35.title
     desc = ga_gathering.35.desc
     trigger = { ga_is_goblin = yes }
-    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
+    image = "gfx/interface/illustrations/event/ashborn/compact_charter.dds"
     immediate = {  }
     option = {
         name = ga_gathering.35.a
@@ -1776,7 +1776,7 @@ ga_gathering.36 = {
     title = ga_gathering.36.title
     desc = ga_gathering.36.desc
     trigger = { ga_is_goblin = yes }
-    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
+    image = "gfx/interface/illustrations/event/ashborn/sworn_pact.dds"
     immediate = {  }
     option = {
         name = ga_gathering.36.a
@@ -1836,7 +1836,7 @@ ga_gathering.37 = {
     title = ga_gathering.37.title
     desc = ga_gathering.37.desc
     trigger = { ga_is_goblin = yes }
-    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
+    image = "gfx/interface/illustrations/event/ashborn/sworn_pact.dds"
     immediate = {  }
     option = {
         name = ga_gathering.37.a
@@ -1854,7 +1854,7 @@ ga_gathering.38 = {
     title = ga_gathering.38.title
     desc = ga_gathering.38.desc
     trigger = { ga_is_goblin = yes }
-    image = "gfx/interface/illustrations/event/ashborn/harbor_pact.dds"
+    image = "gfx/interface/illustrations/event/ashborn/sworn_pact.dds"
     immediate = {  }
     option = {
         name = ga_gathering.38.a
@@ -1872,7 +1872,7 @@ ga_gathering.39 = {
     title = ga_gathering.39.title
     desc = ga_gathering.39.desc
     trigger = { ga_is_goblin = yes }
-    image = "gfx/interface/illustrations/event/ashborn/gathering.dds"
+    image = "gfx/interface/illustrations/event/ashborn/pact_broken.dds"
     immediate = {  }
     option = {
         name = ga_gathering.39.a
@@ -1890,7 +1890,7 @@ ga_gathering.41 = {
     title = ga_gathering.41.title
     desc = ga_gathering.41.desc
     trigger = { ga_is_goblin = yes }
-    image = "gfx/interface/illustrations/event/ashborn/unification.dds"
+    image = "gfx/interface/illustrations/event/ashborn/kinship.dds"
     immediate = {  }
     option = {
         name = ga_gathering.41.a
@@ -1908,7 +1908,7 @@ ga_gathering.42 = {
     title = ga_gathering.42.title
     desc = ga_gathering.42.desc
     trigger = { ga_is_goblin = yes }
-    image = "gfx/interface/illustrations/event/ashborn/gathering.dds"
+    image = "gfx/interface/illustrations/event/ashborn/kinship.dds"
     immediate = {  }
     option = {
         name = ga_gathering.42.a

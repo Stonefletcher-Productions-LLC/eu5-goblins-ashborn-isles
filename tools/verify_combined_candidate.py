@@ -14,7 +14,8 @@ def verify(read):
     assert 'cm_ashborn' in genes and 'old_forehead' in genes
     sites = read('in_game/common/holy_sites/ashen_covenant.txt')
     levels = re.findall(r'importance = (\d+)', sites)
-    assert len(levels) == 12 and set(levels) == set('12345')
+    # 12 sites plus Maw Rock and The Kiln Stair (0.6.7)
+    assert len(levels) == 14 and set(levels) == set('12345')
     panel = read('in_game/gui/panels/situation/ga_gathering_of_five.gui')
     for tag in TAGS:
         assert panel.count("[GetCountry('"+tag+"')]") == 1
@@ -26,6 +27,6 @@ def verify(read):
     values = dict((k,v) for k,_,v in parse(read('in_game/common/script_values/ga_gathering_ui.txt')))
     assert values['ga_gathering_realm_locations'] == [('value','=','ga_ui_homeland_count')]
     assert {v for k,_,v in flatten(values['ga_gathering_crown_status']) if k=='is_subject_type'} == {'vassal','ga_compact_autonomy','ga_compact_protection'}
-    return {'skin_materials':3*len(TAGS),'holy_sites':12,'founding_crown_rows':len(TAGS),
+    return {'skin_materials':3*len(TAGS),'holy_sites':len(levels),'founding_crown_rows':len(TAGS),
             'shared_current_ownership_counter':True,'dedicated_voyage_situation':True,
             'engine_visual_acceptance':False}

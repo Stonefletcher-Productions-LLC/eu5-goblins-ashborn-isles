@@ -1,0 +1,9 @@
+﻿l_english:
+ n_ga_ashoar_galley: "Ash-Oar Galley"
+ n_ga_ashoar_galley_desc: "Goblin yards have more hands than good timber, so the Ash-Oar Galley is long, low and crammed with rowers. It runs down slower ships and carries raiders ashore, but mounts fewer guns than a southern galley."
+ n_ga_wreck_hulk: "Wreck-Hulk"
+ n_ga_wreck_hulk_desc: "Two or three salvaged hulls lashed and pegged into one, armed with whatever guns the wrecks gave up. The Wreck-Hulk is slow and ugly, but it takes a beating, and no one else in the age of oars puts a ship this big to sea."
+ ga_ashoar_galley_advance: "$n_ga_ashoar_galley$"
+ ga_ashoar_galley_advance_desc: "$n_ga_ashoar_galley_desc$"
+ ga_wreck_hulk_advance: "$n_ga_wreck_hulk$"
+ ga_wreck_hulk_advance_desc: "$n_ga_wreck_hulk_desc$"

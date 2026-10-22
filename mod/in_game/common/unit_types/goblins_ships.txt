@@ -1,0 +1,44 @@
+﻿# Goblin unique ships. Values after copy_from are deltas on the age template,
+# as in vanilla n_long_fada.
+
+# Long, low and packed with rowers: the isles have more hands than timber.
+n_ga_ashoar_galley = {
+	is_special = yes
+	category = navy_galley
+	copy_from = n_age_1_traditions_galley
+	upgrades_to = n_mediterrannean_galley
+	age = "age_1_traditions"
+
+	movement_speed = 1
+	cannons = -2
+	crew_size = 0.010
+	transport_capacity = 0.020
+
+	maintenance_demand = galley_1_maintenance
+	construction_demand = galley_1_construction
+
+	location_potential = {
+		ga_goblin_shipyard_location_trigger = yes
+	}
+}
+
+# Salvaged hulls lashed together and armed with whatever the wrecks carried.
+n_ga_wreck_hulk = {
+	is_special = yes
+	category = navy_heavy_ship
+	copy_from = n_age_1_traditions_heavy_ship
+	upgrades_to = n_early_carrack
+	age = "age_1_traditions"
+
+	hull_size = 3
+	cannons = -6
+	movement_speed = -1
+	crew_size = 0.020
+
+	maintenance_demand = heavy_ship_1_maintenance
+	construction_demand = heavy_ship_1_construction
+
+	location_potential = {
+		ga_goblin_shipyard_location_trigger = yes
+	}
+}

@@ -1,0 +1,29 @@
+﻿# Goblin unique ships. Patterned on vanilla unlock_long_fada / genoese_galley.
+ga_ashoar_galley_advance = {
+	age = age_1_traditions
+	icon = ship_building_advance
+
+	potential = {
+		culture = { has_culture_group = culture_group:cm_goblin_group }
+	}
+	requires = ship_building_advance
+	starting_technology_level = 2
+
+	unlock_unit = n_ga_ashoar_galley
+}
+
+ga_wreck_hulk_advance = {
+	age = age_1_traditions
+	icon = ship_building_advance
+
+	potential = {
+		culture = { has_culture_group = culture_group:cm_goblin_group }
+	}
+	requires = unlock_cog_advance
+
+	unlock_unit = n_ga_wreck_hulk
+
+	ai_preference_tags = {
+		exploration
+	}
+}
