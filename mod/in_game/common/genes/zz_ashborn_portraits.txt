@@ -60,6 +60,14 @@ cm_drogg_scar = { inheritable = no cm_battle_scar = { index = 0
  } }
  female = { } boy = { } girl = { } adolescent_boy = { } adolescent_girl = { } infant = { }
  } }
+cm_ashborn_king_marks = { inheritable = no
+ cm_jaw_scar = { index = 0 male = { decal = { body_part = head
+ textures = { diffuse = "gfx/models/portraits/decals/visual_traits/male_head_decal_traits_scars_01_diffuse.dds" normal = "gfx/models/portraits/decals/visual_traits/male_head_decal_traits_scars_01_normal.dds" }
+ blend_modes = { diffuse = overlay normal = overlay }
+ alpha_curve = { { 0 0 } { 1 0.85 } }
+ decal_apply_order = post_skin_color priority = 115
+ } } female = { } boy = { } girl = { } adolescent_boy = { } adolescent_girl = { } infant = { } }
+}
 cm_ashborn_stature = { inheritable = no
  cm_compact_body = { index = 0
   male = {

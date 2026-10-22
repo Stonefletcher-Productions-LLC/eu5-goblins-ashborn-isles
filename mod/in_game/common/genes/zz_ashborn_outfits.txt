@@ -6,5 +6,11 @@ female = { 7 = "female_clothes_iroquois_common_overcoat" 3 = "female_clothes_iro
 boy = { 1 = "ger_child_cloth_set_a" }
 girl = { 1 = "child_cloth" }
 infant = { 1 = "empty" }
-adolescent_boy = boy adolescent_girl = girl
-} cm_warchief_clothing = { index = 1 male = { 1 = "male_clothes_iroquois_royal_bear_hunter" } female = { 1 = "empty" } boy = { 1 = "empty" } girl = { 1 = "empty" } adolescent_boy = boy adolescent_girl = girl infant = { 1 = "empty" } } } } }
+adolescent_boy = boy adolescent_girl = girl }
+cm_warchief_clothing = { index = 1 male = { 1 = "male_clothes_iroquois_royal_bear_hunter" } female = { 1 = "empty" } boy = { 1 = "empty" } girl = { 1 = "empty" } adolescent_boy = boy adolescent_girl = girl infant = { 1 = "empty" } }
+cm_sluice_clothing = { index = 2 male = { 1 = "male_clothes_syrian_low_hooded_jillaba" } female = { 1 = "empty" } boy = { 1 = "empty" } girl = { 1 = "empty" } adolescent_boy = boy adolescent_girl = girl infant = { 1 = "empty" } }
+cm_wreck_clothing = { index = 3 male = { 1 = "male_clothes_deccan_high_scarf" } female = { 1 = "empty" } boy = { 1 = "empty" } girl = { 1 = "empty" } adolescent_boy = boy adolescent_girl = girl infant = { 1 = "empty" } }
+cm_warden_clothing = { index = 4 male = { 1 = "male_clothes_iroquois_doctor_cape" } female = { 1 = "empty" } boy = { 1 = "empty" } girl = { 1 = "empty" } adolescent_boy = boy adolescent_girl = girl infant = { 1 = "empty" } }
+cm_merchant_clothing = { index = 5 male = { 1 = "male_clothes_syrian_high_kaftan" } female = { 1 = "empty" } boy = { 1 = "empty" } girl = { 1 = "empty" } adolescent_boy = boy adolescent_girl = girl infant = { 1 = "empty" } }
+cm_tidemother_clothing = { index = 6 male = { 1 = "empty" } female = { 1 = "female_clothes_iroquois_noble_overcoat" } boy = { 1 = "empty" } girl = { 1 = "empty" } adolescent_boy = boy adolescent_girl = girl infant = { 1 = "empty" } }
+} } }
