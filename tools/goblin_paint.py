@@ -48,7 +48,7 @@ def masks(ident):
 def paint_skin(pos,ao,clan_rgb,seed=1):
     base=(np.array(clan_rgb,np.float32)/255)**2.2*2.1  # clan sRGB -> linear, brightened for map distance
     col=np.broadcast_to(base,pos.shape).copy()
-    mottle=1+0.22*(fbm(pos,7,3,seed)-0.5)+0.10*(fbm(pos,1.6,2,seed+7)-0.5)
+    mottle=1+0.32*(fbm(pos,7,3,seed)-0.5)+0.16*(fbm(pos,1.6,2,seed+7)-0.5)
     col*=mottle[...,None]
     # Paler belly and throat, darker back
     front=np.clip((-pos[...,2]-2)/10,0,1)*np.clip((pos[...,1]-95)/10,0,1)*np.clip((150-pos[...,1])/10,0,1)
@@ -103,8 +103,8 @@ def paint_skin(pos,ao,clan_rgb,seed=1):
     return col
 
 def paint_cloth(pos,ao,seed=2):
-    col=np.broadcast_to(np.array((0.42,0.32,0.19),np.float32),pos.shape).copy()
-    weave=1+0.14*(noise(pos,0.45,seed)-0.5);stain=1+0.3*(fbm(pos,9,3,seed+3)-0.5)
+    col=np.broadcast_to(np.array((0.36,0.27,0.16),np.float32),pos.shape).copy()
+    weave=1+0.22*(noise(pos,0.45,seed)-0.5);stain=1+0.3*(fbm(pos,9,3,seed+3)-0.5)
     col*=(weave*stain)[...,None]
     # sewn-on patches of other cloth
     for (x0,x1,y0,y1,c) in [(-12,-4,108,118,(0.42,0.34,0.22)),(3,11,120,128,(0.35,0.3,0.3)),(2,9,86,96,(0.45,0.3,0.2))]:
@@ -137,7 +137,7 @@ def paint_iron(pos,ao,seed=5):
 
 def paint_mail(pos,ao,seed=6):
     # riveted rings: hex-ish lattice of bright ring edges on dark backing
-    col=np.broadcast_to(np.array((0.2,0.21,0.23),np.float32),pos.shape).copy()
+    col=np.broadcast_to(np.array((0.15,0.16,0.18),np.float32),pos.shape).copy()
     u=pos[...,0]*1.0+pos[...,2]*0.3;v=pos[...,1]*1.0
     ring=np.cos(u/1.1*2*np.pi)*np.cos(v/1.1*2*np.pi);col*=(0.75+0.5*np.clip(ring,0,1))[...,None]
     rust=np.clip((fbm(pos,5,3,seed+2)-0.58)*3,0,1);col=col*(1-rust[...,None])+np.array((0.38,0.2,0.1))*rust[...,None]
