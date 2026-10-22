@@ -105,7 +105,7 @@
     },
     {
       "path": "in_game/common/on_action/ashen_covenant.txt",
-      "sha256": "abc19e75e0779e7752af2c6a71dfdf1fdcbca982f5f077da6c1a06561258d556"
+      "sha256": "7d38bf2478d0a9a2cc085a88f58d174927b698a92ad3da12389aabcb2e862187"
     },
     {
       "path": "in_game/common/on_action/goblins_ashborn_isles.txt",
@@ -209,7 +209,7 @@
     },
     {
       "path": "in_game/events/ashen_covenant.txt",
-      "sha256": "00e3abcfd23980bea15d5d823afaed125770ec7c45a4c3ad2d50bde1b13d9dee"
+      "sha256": "4a0918f025a3be4cfda82494f94b807a01fe9c306ef469a953e843229bb6fc61"
     },
     {
       "path": "in_game/events/goblins_ashborn_isles.txt",
@@ -545,7 +545,7 @@
     },
     {
       "path": "main_menu/common/static_modifiers/ashen_covenant.txt",
-      "sha256": "f6330bc9f73b06c08b80fbbc77d5c63fcd8271ba13d731f83580e9d82f32c082"
+      "sha256": "86c93c4ed9b30127d29b827c88fa8c49ec19cfbd49d5fd4409df754548e13c40"
     },
     {
       "path": "main_menu/common/static_modifiers/goblins_gathering.txt",
@@ -7341,11 +7341,11 @@
     },
     {
       "path": "main_menu/localization/english/ashen_covenant_l_english.yml",
-      "sha256": "75671c89d7885c21f07bdd9e9eb97cb17768fed61ba7eff8c1f0773919b353d4"
+      "sha256": "d3ebc24dce319277ee6bee075a6cabfc3746305944f9b62dd8491dd98dc233d3"
     },
     {
       "path": "main_menu/localization/english/goblins_ashborn_isles_l_english.yml",
-      "sha256": "058455fda23dc533866f4bd216babdcbfd069e3a472e61b6a17297fa0164df2d"
+      "sha256": "c5fd84f93fb53754dd7c1e51820252f6014a8a4d750ea5a494781458738e82a7"
     },
     {
       "path": "main_menu/localization/english/goblins_divorce_l_english.yml",
@@ -7353,11 +7353,11 @@
     },
     {
       "path": "main_menu/localization/english/goblins_exploration_l_english.yml",
-      "sha256": "ac35cee1a1c723b8f13a870e710fca002dc64e4e5ddc3e967139691e2f94065f"
+      "sha256": "aca5ffc21a328a706b4971d612c8261b6866742671769ac7e5b38258991e29ab"
     },
     {
       "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
-      "sha256": "fb6e3e7fc39435fe7c21c323117583a627f961bb2f20573028f2fcb0f97536fb"
+      "sha256": "8e0428bc24e289ff096d7502d01bcb52e392f34c80237ecae44abdde81e41f40"
     },
     {
       "path": "main_menu/localization/english/goblins_music_l_english.yml",
@@ -7365,7 +7365,7 @@
     },
     {
       "path": "main_menu/localization/english/goblins_old_world_l_english.yml",
-      "sha256": "9641414994dbeb10fb596bb41d08ac09aaf345cf7ad1688fc1a261aa78ba6d05"
+      "sha256": "6e6796f6cba58341081a929e035a545b02664febc9f2dd0088eeeeb006cf1747"
     },
     {
       "path": "main_menu/localization/english/goblins_units_l_english.yml",
