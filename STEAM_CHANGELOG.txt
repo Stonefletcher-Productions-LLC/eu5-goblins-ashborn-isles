@@ -1,3 +1,7 @@
+0.6.7 — Shatter Maw moves, the goblin realms band together
+Shatter Maw moves north-west and becomes the largest goblin realm; new Cinderstep island; 117 locations. Start-game balance with many more goblins and enough food. Goblin Horde with Ashen Kinship defence, Pact Ladder, Covenant rites, Old World first-contact events and bigger courts. New 1337 campaign needed (map changed). All players need the same version in multiplayer.
+
+
 0.6.6 — Royal households, goblin soldiers and goblin towns
 Every crown starts with a large royal family and rulers may take up to four wives. New Obsidian Fletchers archer levy. Goblin infantry on the native soldier rig with clan goblin heads. Goblin city set. Silver Shard joins Shatterfin province and stops starving; inland Netjaw produces livestock instead of fish. New 1337 campaign needed; 0.6.5 saves keep loading. All players need the same version in multiplayer.
 

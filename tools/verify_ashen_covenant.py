@@ -50,7 +50,7 @@ def verify(game, out):
     assert len(locs) == len(set(locs)), 'Duplicate localization'
     events = (out/'in_game/events/ashen_covenant.txt').read_text(encoding='utf-8-sig')
     ids = set(re.findall(r'^(ashen_covenant\.\d+) =', events, re.M))
-    assert len(ids) == 13
+    assert len(ids) == 14  # 13 numbered events plus the Moot event ashen_covenant.20
     for key in re.findall(r'\b(?:title|desc|name) = (ashen_covenant\.\d+\.\w+)', events):
         assert key in locs, key
     for image in re.findall(r'image = "([^"]+)"', events):

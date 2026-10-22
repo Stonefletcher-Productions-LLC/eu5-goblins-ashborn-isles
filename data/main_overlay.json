@@ -1,5 +1,5 @@
 {
-  "base_release": "0.6.6",
+  "base_release": "0.6.7",
   "stage": "development-models-and-culture-names",
   "engine_tested": false,
   "files": [
@@ -81,7 +81,7 @@
     },
     {
       "path": "in_game/common/on_action/goblins_economy.txt",
-      "sha256": "fb510420b7d0a125e7fb531ec21e2d2174be799d4ec9b7dd0e9ac99a310fb032"
+      "sha256": "d3be196311f0ce9f0e11901c54d8869d524881fba2cae33585e3e82dcb336d22"
     },
     {
       "path": "in_game/common/on_action/goblins_exploration.txt",
@@ -89,7 +89,7 @@
     },
     {
       "path": "in_game/common/on_action/goblins_starting_trades.txt",
-      "sha256": "7f07fb921a48ad98b291be1988719877cb0e638b81e39311e70006b28882fcc1"
+      "sha256": "9255738c248c81d65effcadad838d1db6369a9520ae60fc816038b4554dbb4c2"
     },
     {
       "path": "in_game/common/prices/goblins_divorce.txt",
@@ -121,7 +121,7 @@
     },
     {
       "path": "in_game/common/scripted_effects/goblins_starting_trades.txt",
-      "sha256": "51ffbc020f7214a2a78d2ff14fb53c3d4c5f3c31b4e15451823ccd2d41dbc4fe"
+      "sha256": "2ce2271fe5466b92d82f00eaa2ce67a0b1f2d0af52193b170a80bf9932b8825d"
     },
     {
       "path": "in_game/common/scripted_triggers/goblins_units.txt",
@@ -141,7 +141,7 @@
     },
     {
       "path": "in_game/common/town_setups/goblins_ashborn_isles.txt",
-      "sha256": "b47f61aac81fc4f268b9ba09011ac12490d54338e34593001e53076300eb1fed"
+      "sha256": "da3a62cb382b1c0f3f854043211499a1f0b3ce48fb0ead0d19cc96425d65ece0"
     },
     {
       "path": "in_game/common/unit_types/goblins_units.txt",
@@ -225,7 +225,7 @@
     },
     {
       "path": "in_game/gfx/models/schematics/cm_goblin_unit_skeleton_schematic.schematic",
-      "sha256": "5ca04051c89bb846ecb44e16d3199820a5a9d43515ca55f7ce176d1a960e4a0b"
+      "sha256": "d652e86a55ae61eaf31d376fac660ae545c3de939a3014bac8440b115e0c9a77"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_brackmaw_unit_head_diffuse.dds",
@@ -269,7 +269,7 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_unit_head.asset",
-      "sha256": "7789afb1fc1f5ca9dec0bf89e0ac2569772277def0583ce49939494b533727ea"
+      "sha256": "64a894dacdcb5f43ef307d7e132b48a8fcc41db2d92187e7323cdacaeaa9dd7a"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_unit_head.mesh",
@@ -353,7 +353,7 @@
     },
     {
       "path": "main_menu/common/modifier_type_definitions/goblins_divorce.txt",
-      "sha256": "674832772271f0f98a035ccbb0f2454f9db59165e7ea2d83898eb98cb9a0aa77"
+      "sha256": "9cff4bcf2070298c592eb528ae620726cfa5e0b20ef70fa13c7e803871ba1deb"
     },
     {
       "path": "main_menu/common/modifier_type_definitions/goblins_gathering.txt",
@@ -497,15 +497,15 @@
     },
     {
       "path": "main_menu/gfx/unit_graphics/attachments/zz_ashborn_goblins.txt",
-      "sha256": "cc46b94c836ac660e10ecaccd1c6c1fcaac5daff900da819a9b86ff9e7065d05"
+      "sha256": "695c810684fba2b6305856dba1ea84a1b4f700709eb40a0501cd406ced9c3973"
     },
     {
       "path": "main_menu/gfx/unit_graphics/texture_variations/zz_ashborn_goblins.txt",
-      "sha256": "30db843be1f8401308cf4d12f0400ddc0298d9b267c02dd6add53a6655a3c4ba"
+      "sha256": "820390aae42b533eb8d4b1a5f8e631bd2ac3c04b41696a169ed7d82e83f774fd"
     },
     {
       "path": "main_menu/gfx/unit_graphics/units/zz_ashborn_goblins.txt",
-      "sha256": "d28659ffdafeb8e9a0f8e5f46e31ed89c6233542aaba36db7383e6775150f73d"
+      "sha256": "e82bf4455b7b8805dda94a8e00f378649c1b766ea7337e4e5b966938fb5ba649"
     },
     {
       "path": "main_menu/localization/english/goblins_ashborn_isles_l_english.yml",
@@ -529,7 +529,7 @@
     },
     {
       "path": "main_menu/music/audio_culture_types/goblins_music.txt",
-      "sha256": "ea882f7d00596da952a8e5666d51530e1d77d8e33f1cf2e440d3b9ee73075d2b"
+      "sha256": "c3f16ba3754036a56f466888d51150bdef2d025a05859e2bb3afbce7f6cd3624"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_absolutism_cawa_cm_cinderkin_gfx.dds",
@@ -12413,11 +12413,223 @@
     },
     {
       "path": "in_game/events/goblins_old_world.txt",
-      "sha256": "f9d5cacf8503bb600ba9432b8548f2c36609fd523729a00a3e27fec21a9d58d8"
+      "sha256": "d083399d0f7f49a5183a6721d6548cad53f8ee1242fe4f2ea54199ecef3ce251"
     },
     {
       "path": "in_game/events/goblins_gathering.txt",
       "sha256": "a8d91865cb6238e007436a7ac286fe8eb6ff7a46525c275acb095f45f62dc195"
+    },
+    {
+      "path": "in_game/common/biases/goblins_gathering.txt",
+      "sha256": "dee938f1328a37a8d743962bc88db74efce3ef7362baf2a54cd5e9ed690a692c"
+    },
+    {
+      "path": "in_game/common/biases/goblins_old_world.txt",
+      "sha256": "cadb35f61b36a1f3bf060dc8b34942a96c49ec4c0dbbd83f66072c5c7e510538"
+    },
+    {
+      "path": "in_game/common/generic_action_ai_lists/ashen_covenant.txt",
+      "sha256": "e350d06a3ebcc65da2d8e5a8ea0aacc1a4a1baf5f4b7857adb149b3af2df4436"
+    },
+    {
+      "path": "in_game/common/generic_action_ai_lists/goblins_gathering.txt",
+      "sha256": "0919acffc334c51e1e9cbfb5146789f0d3b212fd6643bafdb3405eefc1a182fc"
+    },
+    {
+      "path": "in_game/common/generic_actions/ashen_covenant.txt",
+      "sha256": "79ee70922a4d16bcf9db77a520910083bb64767754cd2276ee1b0c42dbcbcaa4"
+    },
+    {
+      "path": "in_game/common/generic_actions/goblins_gathering.txt",
+      "sha256": "c77ffce31bd358980048aa14cbc595ab2b3f1e83af78b4b0fd5bba482bf78da8"
+    },
+    {
+      "path": "in_game/common/generic_actions/goblins_horde.txt",
+      "sha256": "859e0a8680aef8bcad4bdb213b77cf68e83370bb9f5608d2c4febc0ae5dfbece"
+    },
+    {
+      "path": "in_game/common/international_organizations/goblins_horde.txt",
+      "sha256": "5c589bfbd0094e04c260e145f3cb4d18b13d5216236a0d41464c3669a3e3ed5a"
+    },
+    {
+      "path": "in_game/common/on_action/ashen_covenant.txt",
+      "sha256": "7d38bf2478d0a9a2cc085a88f58d174927b698a92ad3da12389aabcb2e862187"
+    },
+    {
+      "path": "in_game/common/on_action/goblins_gathering.txt",
+      "sha256": "6373eb2e9a0dbf1391ff8fc1478b1cf2248d03414044847206113292e9e32472"
+    },
+    {
+      "path": "in_game/common/on_action/goblins_old_world.txt",
+      "sha256": "461a9ea87e88087ac8694b3d5c50b91ef93e0182e9b86bbcb2b071e1c020c59f"
+    },
+    {
+      "path": "in_game/common/prices/ashen_covenant.txt",
+      "sha256": "ba878a1611813dea91067a38e6b8e46e01ee9a50339b956081d404e99b51fadd"
+    },
+    {
+      "path": "in_game/common/script_values/ga_gathering_ui.txt",
+      "sha256": "027dfc47df97bd0b827808c92c56233b8516c6ae2a34d912a582dcdc3bae39d8"
+    },
+    {
+      "path": "in_game/common/scripted_triggers/goblins_gathering.txt",
+      "sha256": "7beafe8a718982dc4e5979060c7851bc4ed32eda71a4838f56134cb6489ce493"
+    },
+    {
+      "path": "in_game/common/scripted_triggers/goblins_old_world.txt",
+      "sha256": "e90401272be725c53b976f9ef6983e2d8482b0d6f37a9e1407c92ab0befd78d5"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_buildings_atlas_diffuse.dds",
+      "sha256": "d64dc4488e22662d0a3a8de783316f641e25f1edae4d55a8e4beb3e8ca807185"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_buildings_atlas_normal.dds",
+      "sha256": "b9e4e3bba6d750c512df0f11aabfb43643c0978b0d24a65d1b08afa8469d95db"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_buildings_atlas_properties.dds",
+      "sha256": "a767c89a9efb362dac92db665237fe5f85632e3928a3e491a69a803b8e1cea2a"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_burgher_a.asset",
+      "sha256": "3ab53cd0b60979d244ea153181c445152ef526a36abcdb66ba8eb8a723a0a739"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_burgher_a.mesh",
+      "sha256": "be6e0de3199120dfb307ccb77c54775eb07c706042b24be298a049179900da52"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_burgher_b.asset",
+      "sha256": "270bb7993d8ebaf8d03100a5c9a211b93c4c90ced02f02d3daa2e7755f273350"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_burgher_b.mesh",
+      "sha256": "ebfb20dd8afab73994c502e4be481d3b30e2963092b1320b3bb9dbf705e0a9f0"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_burgher_c.asset",
+      "sha256": "8afe63f7fb8281f60486b173992ae0552d39f9898db68ff096ef0aadee9b7a8d"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_burgher_c.mesh",
+      "sha256": "b52a83b8c923bac61f2d0dcc233c9a3736ccf2375cd53f8fabbefe9fd817ae94"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_fort.asset",
+      "sha256": "46a639534907cdbf51f8027d37b66ee0571322d4016e0912e58cdcdac6a355c5"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_fort.mesh",
+      "sha256": "c9f087cfd9c2d6d21f4f97ed4bd7f1db0c70e83b2ceb47add3631b4f7d18c2e2"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_market.asset",
+      "sha256": "5f5b3bcf770955dc0d97199b35bac09dd9aa9dfe079648ad0458b35131006fd0"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_market.mesh",
+      "sha256": "252b593505995ad7b9e78b99e9e2850c56b03f6b757fec0941624b1497302945"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_noble_a.asset",
+      "sha256": "409eae8164ca49020e0b167f0809fa4eb2d0944011514b49f22ef29d3a6a91c4"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_noble_a.mesh",
+      "sha256": "ba65c5bc4cb5fb93a19d2f25988e22878ea41a09dce3b1c6522fb501d13af213"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_noble_b.asset",
+      "sha256": "2d9843398441c4a5e405323b851cd0b19a84e32c70ce4c607365a70a7b36d6ba"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_noble_b.mesh",
+      "sha256": "d71681a2b9f2f53989398cb53e5c8494c95c901f6668da82987d3b9fd5393afd"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_peasant_a.asset",
+      "sha256": "f495201a67df4dffc7bfc4a27611a913ca761407ec7cda22d9a678cc15ba9716"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_peasant_a.mesh",
+      "sha256": "ce7ae7b2a684e195dfb88795c0e0166baabed6e19d166e508e8f93257a08aa9c"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_peasant_b.asset",
+      "sha256": "61dda66c755da131550ea998b95014bf3fe2c2559ec49b2fedfcdc8c9b6a9441"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_peasant_b.mesh",
+      "sha256": "1a67fa63e4824a5e8d728e462741228bc153712b7067f8d2293438a240224a42"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_peasant_c.asset",
+      "sha256": "5ad39f5bf23ebe7a7c0cb8b678f60cded1c994ec0e11f3cbadef3d8a7c5c6917"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_peasant_c.mesh",
+      "sha256": "e1403116b4b7afd513e5c21f1ecb32d5f86a39df5d3fbfb18e6d1c2190708950"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_peasant_d.asset",
+      "sha256": "d5b82048f070cccac7d0633f5d604f065f2e398bb7e538a560463b41348bb866"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_peasant_d.mesh",
+      "sha256": "a28066b4f5514d91248793326c214f9d1036caa53dde7373c691c68ecf5d470f"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_stockade.asset",
+      "sha256": "01d839bbe4387e06b247e503002ebd5a8bb542bd4b3777d5c200b318a92db29b"
+    },
+    {
+      "path": "in_game/gfx/models/buildings/ashborn_goblins/cm_goblin_stockade.mesh",
+      "sha256": "fc38e5473bb093b7c30e5c0a58eef46d70feec006955d871e2718cf1b7c8bacf"
+    },
+    {
+      "path": "in_game/gui/panels/situation/ga_gathering_of_five.gui",
+      "sha256": "ac97c1a935a16736fc302c2979c290436e7e8a268f1e0d8acdc02f9627cd1a10"
+    },
+    {
+      "path": "main_menu/common/modifier_type_definitions/ashen_covenant.txt",
+      "sha256": "956b31b45046eba6528eafca8e5f12b5becfaad70a96669dd824a2e846e2ad2d"
+    },
+    {
+      "path": "main_menu/common/static_modifiers/ashen_covenant.txt",
+      "sha256": "86c93c4ed9b30127d29b827c88fa8c49ec19cfbd49d5fd4409df754548e13c40"
+    },
+    {
+      "path": "main_menu/common/static_modifiers/goblins_gathering.txt",
+      "sha256": "a881f1059df914924abdd5ca20a7b108f57e0942915a5d011731ca5b4f857770"
+    },
+    {
+      "path": "main_menu/common/static_modifiers/goblins_old_world.txt",
+      "sha256": "771264e519e7e2c2b01e3f6c0b15259542dd83d7b49d99d8decd1772d8092632"
+    },
+    {
+      "path": "main_menu/gfx/map/city_data/cm_ashborn_goblins.txt",
+      "sha256": "901f8d7204663b76ab754a1294269433dac276b873c683c4d8955565378a886f"
+    },
+    {
+      "path": "main_menu/localization/english/ashen_covenant_l_english.yml",
+      "sha256": "d3ebc24dce319277ee6bee075a6cabfc3746305944f9b62dd8491dd98dc233d3"
+    },
+    {
+      "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
+      "sha256": "8e0428bc24e289ff096d7502d01bcb52e392f34c80237ecae44abdde81e41f40"
+    },
+    {
+      "path": "main_menu/localization/english/goblins_old_world_l_english.yml",
+      "sha256": "6e6796f6cba58341081a929e035a545b02664febc9f2dd0088eeeeb006cf1747"
+    },
+    {
+      "path": "main_menu/setup/start/04_dynasties.txt",
+      "sha256": "129949184acfbe9d9bceab88e88347de9561db2dbc0c12339669fed0d2cba6e6"
+    },
+    {
+      "path": "main_menu/setup/start/05_characters.txt",
+      "sha256": "62301727e47931b38e500ce11eefb469689806b0f10a8aa5ee91ea78f256fcba"
     }
   ]
 }

@@ -2,7 +2,20 @@
 
 Working copy: `E:\Codex_EU5_Modding\goblins-ashborn-isles`. Repository: [GitHub](https://github.com/stonefletcher/eu5-goblins-ashborn-isles) (Bitbucket was a temporary home from October 12 to 22; its history was rebuilt onto GitHub in PR #13).
 
-**0.6.6 — Royal households, goblin soldiers and goblin towns.**
+**0.6.7 — Shatter Maw moves, the goblin realms band together.**
+
+- **Shatter Maw** moves north-west into the open water west of Giltfang and grows into the largest goblin realm: a much bigger main island, a larger Knifeback, the new Maw Rock and 23 locations, so Shatterfin can take on Giltfang. Cindermaw gains **Cinderstep**, a small volcanic island with fish, iron and stone. The map now has 11 islands, 43 provinces and 117 locations, with rugged coastlines, new rivers and new sea zones.
+- **Start-game balance:** many more goblins (2.75M, mostly tribesmen who promote over time), a thinner early economy, enough food in every crown and four more starting trade routes.
+- **The Goblin Horde:** every goblin crown joins one international organization with an elected Warchief. Goblins may fight each other, but when an outsider attacks one crown, the others join the defence (**Ashen Kinship**).
+- **Pact Ladder:** peaceful unification is a visible three-step path, Harbor Bargain, Sworn Pact, then Compact.
+- **Covenant rites:** the Ashen Covenant's rites appear in the Religion panel, with four shared rites, one clan rite per culture and a standing Moot.
+- **The Old World Reacts:** Portugal and the Catholic courts respond to goblin first contact with five new events.
+- **Lore pass:** event and localisation text reviewed and rewritten.
+- **Bigger courts:** five noble houses, three Oathkeepers and three guild masters per crown, about 40 more characters each.
+
+Built for **EU5 1.3.11**. Restart before playing. This version needs a **new 1337 campaign**: the map changed. In multiplayer, every player needs the same version. Not yet tested in game. All 0.6.6 changes remain included.
+
+## 0.6.6 — Royal households, goblin soldiers and goblin towns
 
 - **Royal families:** every goblin crown starts with a large household: brothers, uncles, cousins, three wives for the ruler and five or six sons, so Rule of the Strongest no longer runs out of heirs. The Ashen Covenant allows up to four wives. 153 authored goblin characters (was 51).
 - **Obsidian Fletchers:** a goblin unique archer levy, raised from peasants in goblin-majority locations. It upgrades to Blackglass Crossbows in Age 2.
@@ -42,7 +55,7 @@ Built for **EU5 1.3.11**. Restart before playing. Existing 0.6.3 saves can use t
 
 ![Goblins of the Ashborn Isles banner](art/workshop/0.6.0/banner.jpg)
 
-[0.6.6 release notes](RELEASE_NOTES_0.6.6.md) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)
+[0.6.7 release notes](RELEASE_NOTES_0.6.7.md) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)
 
 Fire rose from the Atlantic. When the smoke cleared, goblin kingdoms stood among the new volcanic islands between the Azores and Portugal. Captains claimed sheltered harbors, smiths built their forges beneath black ridges, and rival houses began arguing over who should lead them.
 
@@ -163,7 +176,7 @@ At home, the **Ashen Covenant** provides twelve sacred sites, traditions, rites,
 
 Built for **EU5 1.3.11 (Pavia)**. Existing 0.6.3 campaigns can continue after restarting. Start a **new 1337 campaign** when upgrading from earlier versions to receive the revised populations and industries.
 
-- Subscribe through the Workshop, or download **Goblins_Ashborn_Isles_0.6.6.zip** from the release above, extract it and run **Install-Goblins.cmd** with EU5 closed. The installer reconstructs its terrain using the installed game.
+- Subscribe through the Workshop, or download **Goblins_Ashborn_Isles_0.6.7.zip** from the release above, extract it and run **Install-Goblins.cmd** with EU5 closed. The installer reconstructs its terrain using the installed game.
 - Enable only one Goblins copy and disable the old Gathering Prototype add-on. Restart before playing.
 - Existing 0.6.0 saves can receive the clan-flag repair after restart and the next monthly pulse; that repair alone needs no new campaign.
 - Other map, terrain and starting-world mods may conflict. Keep separate saves.

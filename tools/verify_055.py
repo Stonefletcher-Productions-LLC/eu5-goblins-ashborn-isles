@@ -273,7 +273,8 @@ def verify(root, game, out):
     followup = declarations['ga_gathering.15']
     assert ('trigger', '=', [('tag', '=', 'SFK'), ('NOT', '=', [('has_variable', '=', 'ga_tidemother_council_seen')])]) in followup
     assert ('immediate', '=', [('set_variable', '=', [('name', '=', 'ga_tidemother_council_seen'), ('value', '=', 'yes')])]) in followup
-    assert len([k for k in declarations if k.startswith('ga_gathering.')]) == 30
+    # 30 base events, Sworn Pacts .36-.39 (0.6.7), Ashen Kinship .40-.42 (0.6.7)
+    assert len([k for k in declarations if k.startswith('ga_gathering.')]) == 36
     # Every diplomatic response must notify the sender before request cleanup.
     for number, outcomes in [(2, [17]), (3, [18])]:
         response = declarations[f'ga_gathering.{number}']

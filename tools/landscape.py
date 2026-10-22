@@ -246,29 +246,33 @@ def write_visual_biome(b,game,out,box):
     rel='main_menu/gfx/FX/cw/terrain2_biomes.fxh';shader=b.read(game,rel)
     marker='int GetBiomeWorldspace( float2 WorldSpacePosXZ )\n\t{'
     assert shader.count(marker)==1
-    # The generated rectangle contains only new islands and Atlantic water;
-    # the build checks that no native land lies here. Terrain paints determine
-    # transitions inside it, not mutable per-location gameplay biome IDs.
-    islands=b.CFG['islands']
-    box=(math.floor(min(i['center'][0]-i['radius'][0]*1.7 for i in islands)),math.floor(min(i['center'][1]-i['radius'][1]*1.7 for i in islands)),math.ceil(max(i['center'][0]+i['radius'][0]*1.7 for i in islands)),math.ceil(max(i['center'][1]+i['radius'][1]*1.7 for i in islands)))
-    native=np.array(Image.open(game/'in_game/map_data/locations.png').crop(box))
+    # One rectangle per island, each holding only that island and Atlantic
+    # water; the build checks that no native land lies in any of them (a single
+    # rectangle around all islands reached the Azores in 0.6.7). Terrain paints
+    # determine transitions inside them, not mutable per-location gameplay biome IDs.
+    boxes=[(math.floor(i['center'][0]-i['radius'][0]*1.7),math.floor(i['center'][1]-i['radius'][1]*1.7),
+            math.ceil(i['center'][0]+i['radius'][0]*1.7),math.ceil(i['center'][1]+i['radius'][1]*1.7)) for i in b.CFG['islands']]
+    image=Image.open(game/'in_game/map_data/locations.png')
     names=b.parse_names(game);inverse={v:k for k,v in names.items()}
     templates=b.read(game,'in_game/map_data/location_templates.txt')
     top=dict(re.findall(r'(?m)^\s*(\w+)\s*=\s*\{[^\n]*?topography\s*=\s*(\w+)',templates))
     replaced_water={b.CFG['coastal_sea']['source_water']} | {r['source_water'] for r in b.CFG['coastal_sea'].get('extra_basins',[])}
-    for color in np.unique(native.reshape(-1,3),axis=0):
-        # ocean_wasteland is impassable open ocean (north_atlantic_ocean), not land.
-        name=inverse[tuple(color)];assert top.get(name) in b.WATER|{'ocean_wasteland'} or name in replaced_water,(name,'native land in visual biome bounds')
-    x0,y0,x1,y1=box
+    tests=[]
+    for x0,y0,x1,y1 in boxes:
+        native=np.array(image.crop((x0,y0,x1,y1)))
+        for color in np.unique(native.reshape(-1,3),axis=0):
+            # ocean_wasteland is impassable open ocean (north_atlantic_ocean), not land.
+            name=inverse[tuple(color)];assert top.get(name) in b.WATER|{'ocean_wasteland'} or name in replaced_water,(name,'native land in visual biome bounds')
+        tests.append(f'( WorldSpacePosXZ.x >= {x0}.0f && WorldSpacePosXZ.x <= {x1}.0f &&\n\t\t       WorldSpacePosXZ.y >= {8192-y1}.0f && WorldSpacePosXZ.y <= {8192-y0}.0f )')
+    condition=' ||\n\t\t     '.join(tests)
     code=f'''\n\t\t// Ashborn visual biome; native location/combat/vegetation rules unchanged.
-\t\tif ( WorldSpacePosXZ.x >= {x0}.0f && WorldSpacePosXZ.x <= {x1}.0f &&
-\t\t     WorldSpacePosXZ.y >= {8192-y1}.0f && WorldSpacePosXZ.y <= {8192-y0}.0f )
+\t\tif ( {condition} )
 \t\t{{
 \t\t\treturn {index};
 \t\t}}
 '''
     b.write(out,rel,shader.replace(marker,marker+code))
-    return {'biome':'cm_ashborn_landscape_biome','index':index,'png_bounds':list(box),'palette':palette}
+    return {'biome':'cm_ashborn_landscape_biome','index':index,'png_bounds':[list(x) for x in boxes],'palette':palette}
 
 
 def write_scenery(b,game,out,anchors):
