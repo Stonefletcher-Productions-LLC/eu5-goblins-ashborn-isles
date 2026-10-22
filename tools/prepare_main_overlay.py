@@ -79,7 +79,7 @@ def main():
     import goblin_families
     goblin_families.build()
     paths.extend(output / rel for rel in goblin_families.FILES)
-    # 0.6.7: goblin locations start with the Feudalism institution (galleys, cogs,
+    # 0.6.8: goblin locations start with the Feudalism institution (galleys, cogs,
     # iron working). 08_institutions.txt ships as an overlay over the native file.
     import goblin_tech
     goblin_tech.build(args.game)
