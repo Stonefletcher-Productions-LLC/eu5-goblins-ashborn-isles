@@ -11,3 +11,4 @@ ac_blackwood_oathstones = { location = cm_blackwood type = ac_blackwood_oathston
 ac_ashfield_hearth = { location = cm_ashfields type = ac_ashfield_hearth_site importance = 1 religions = { cm_hunger_below } }
 ac_miregrove_witness = { location = cm_miregrove type = ac_miregrove_witness_site importance = 1 religions = { cm_hunger_below } }
 ac_gull_cairn = { location = cm_gullwatch type = ac_gull_cairn_site importance = 1 religions = { cm_hunger_below } }
+ac_kiln_stair = { location = cm_kilnwatch type = ac_kiln_stair_site importance = 1 religions = { cm_hunger_below } }

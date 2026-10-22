@@ -4502,3 +4502,6 @@ cm_lastlight;cm_tolltooth_sound;7058;6150;x
 cm_lantern_haven;cm_lantern_west_passage;6913;5933;x
 cm_wickwood;cm_lantern_north_passage;6952;5941;x
 cm_emberwatch;cm_lantern_south_passage;6950;5900;x
+cm_cinderstep;cm_cinderstep_roads;6772;5844;x
+cm_slagcove;cm_cinderstep_roads;6814;5870;x
+cm_kilnwatch;cm_cinderstep_roads;6794;5843;x

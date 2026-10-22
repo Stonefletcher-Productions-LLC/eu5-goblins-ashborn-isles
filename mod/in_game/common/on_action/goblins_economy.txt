@@ -139,6 +139,18 @@ ga_economy_monthly = {
                 limit = { owns = location:cm_emberwatch }
                 location:cm_emberwatch = { change_max_raw_material_workers = 1 }
             }
+            if = {
+                limit = { owns = location:cm_cinderstep }
+                location:cm_cinderstep = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_slagcove }
+                location:cm_slagcove = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_kilnwatch }
+                location:cm_kilnwatch = { change_max_raw_material_workers = 1 }
+            }
         }
         if = {
             limit = { tag = QBR }

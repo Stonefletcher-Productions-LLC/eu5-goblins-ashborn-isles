@@ -11,3 +11,4 @@ ac_blackwood_oathstones_site = { location_modifier = { local_defensive = 0.025 }
 ac_ashfield_hearth_site = { location_modifier = { local_monthly_food_modifier = 0.025 } }
 ac_miregrove_witness_site = { location_modifier = { local_unrest = -0.025 } }
 ac_gull_cairn_site = { location_modifier = { local_monthly_food_modifier = 0.025 } }
+ac_kiln_stair_site = { location_modifier = { local_production_efficiency = 0.025 } }

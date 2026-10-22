@@ -5,7 +5,7 @@ import re
 
 def verify(b,game,out,mapstats):
     cfg=b.CFG;locs=cfg['locations'];baseline=cfg['baseline_locations'];byid={l['id']:l for l in locs}
-    assert len(byid)==len(locs)==106 and len({l['color'] for l in locs})==106
+    assert len(byid)==len(locs)==109 and len({l['color'] for l in locs})==109
     assert set(baseline)<=set(byid)
     assert sum(Decimal(str(l['pop'])) for l in locs)==Decimal(cfg['population_target'])/1000
     for l in locs:
@@ -35,7 +35,7 @@ def verify(b,game,out,mapstats):
         # Province membership follows actual land borders in verify_061.
     # 0.6.6 folded the one-location Shatterfin Outer province into Shatterfin;
     # 0.6.7 adds Stormcrag and Maw Rock with the relocated Shatter Maw.
-    assert len({l['province'] for l in locs})==41
+    assert len({l['province'] for l in locs})==42
     # Check generated setup, not just input configuration.
     pops=(out/'main_menu/setup/start/06_pops.txt').read_text(encoding='utf-8-sig')
     for l in locs:

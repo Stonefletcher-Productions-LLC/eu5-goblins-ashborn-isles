@@ -330,6 +330,26 @@
           -205.71825392998065
         ],
         "basin": "shatter_maw"
+      },
+      {
+        "id": "cm_cinderstep_passage",
+        "color": "ed12e4",
+        "name": "Cinderstep Passage",
+        "seed": [
+          -143.10835055998655,
+          -178.88543819998316
+        ],
+        "basin": "cinderstep_passage"
+      },
+      {
+        "id": "cm_cinderstep_roads",
+        "color": "ed12e5",
+        "name": "Cinderstep Roads",
+        "seed": [
+          -98.38699100999074,
+          -116.27553482998906
+        ],
+        "basin": "cinderstep_passage"
       }
     ],
     "extra_basins": [
@@ -422,6 +442,26 @@
           6680,
           2170
         ]
+      },
+      {
+        "id": "cinderstep_passage",
+        "source_water": "atlantic_azores_current6",
+        "bounds": [
+          6700,
+          2250,
+          6770,
+          2440
+        ]
+      },
+      {
+        "id": "cinderstep_passage",
+        "source_water": "atlantic_azores_current7",
+        "bounds": [
+          6731,
+          2282,
+          6840,
+          2380
+        ]
       }
     ],
     "reworked_navigable_sources": [
@@ -430,7 +470,8 @@
       "atlantic_azores_current8",
       "atlantic_azores_current1",
       "atlantic_azores_current2",
-      "atlantic_north_atlantic_current10"
+      "atlantic_north_atlantic_current10",
+      "atlantic_azores_current6"
     ]
   },
   "countries": [
@@ -4202,6 +4243,142 @@
         "volcanic_exposure": 0.35,
         "craters": []
       }
+    },
+    {
+      "id": "cinderstep",
+      "name": "Cinderstep",
+      "offset": [
+        -0.8944271909999159,
+        -1.689473582999841
+      ],
+      "area_ratio": 0.06,
+      "country": "CDM",
+      "locations": [
+        {
+          "id": "cm_cinderstep",
+          "name": "Cinderstep",
+          "seed": [
+            -0.45,
+            0.3
+          ],
+          "good": "fish",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 7.2,
+          "province": "cm_cinderstep_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "color": "ed1350",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.0,
+            "peasants": 1.75,
+            "tribesmen": 1.8
+          }
+        },
+        {
+          "id": "cm_slagcove",
+          "name": "Slagcove",
+          "seed": [
+            0.45,
+            -0.35
+          ],
+          "good": "iron",
+          "topography": "mountains",
+          "vegetation": "sparse",
+          "pop": 7.2,
+          "province": "cm_cinderstep_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1,
+            "local_smelters": 1
+          },
+          "color": "ed1351",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.313,
+            "peasants": 1.437,
+            "tribesmen": 1.8
+          }
+        },
+        {
+          "id": "cm_kilnwatch",
+          "name": "Kilnwatch",
+          "seed": [
+            0.15,
+            0.45
+          ],
+          "good": "stone",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 6.6,
+          "province": "cm_cinderstep_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "color": "ed1352",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.0,
+            "peasants": 1.3,
+            "tribesmen": 1.65
+          }
+        }
+      ],
+      "position_adjustment": [
+        0,
+        0
+      ],
+      "profile": {
+        "stretch": 1.1,
+        "rotation": -0.7,
+        "lobes": [
+          [
+            2,
+            0.1,
+            0.4
+          ],
+          [
+            3,
+            0.05,
+            1.7
+          ]
+        ],
+        "bays": [
+          [
+            2.6,
+            0.3,
+            0.24
+          ]
+        ]
+      },
+      "geology": {
+        "seed": 8311,
+        "rivers": 1,
+        "foothills": 0.7,
+        "woodland": 0.42,
+        "ridges": [
+          [
+            0.2,
+            0,
+            4.2,
+            0.52,
+            0.29,
+            0.5
+          ]
+        ],
+        "volcanic_exposure": 0.35,
+        "craters": []
+      }
     }
   ],
   "climate": "oceanic",
@@ -4211,7 +4388,7 @@
   "terrain_revision": "volcanic-spacing-pass",
   "economy_revision": "lore-specialization-056",
   "population_baseline": 593647,
-  "population_target": 1571059,
+  "population_target": 1592059,
   "baseline_locations": {
     "cm_cinder_crown": {
       "population": 8.222,
@@ -4478,7 +4655,7 @@
     }
   },
   "country_population_targets": {
-    "CDM": 460051,
+    "CDM": 481051,
     "QBR": 346645,
     "RHK": 118045,
     "SFK": 230880,
@@ -4647,7 +4824,7 @@
     "rgo_base_reserve": 2,
     "tribal_share": 0.25,
     "total_country_targets": {
-      "CDM": 620000,
+      "CDM": 641000,
       "QBR": 420000,
       "RHK": 140000,
       "SFK": 280000,
@@ -5537,7 +5714,7 @@
     }
   },
   "shatter_maw_067": {
-    "note": "0.6.7 moves the Shatterfin crown to the north-west and enlarges it. New locations are settled from existing Shatterfin towns; country and archipelago totals are unchanged.",
+    "note": "0.6.7 moves the Shatterfin crown to the north-west and enlarges it, and adds Cinderstep, a Cindermaw island between them. New Shatterfin locations are settled from existing Shatterfin towns; Cinderstep's settlers are new population added to Cindermaw.",
     "transfers": [
       {
         "from": "cm_knifeback",
@@ -5647,6 +5824,11 @@
         },
         "laborers_on_arrival": 3.0
       }
-    ]
+    ],
+    "additions": {
+      "cm_cinderstep": 7.2,
+      "cm_slagcove": 7.2,
+      "cm_kilnwatch": 6.6
+    }
   }
 }

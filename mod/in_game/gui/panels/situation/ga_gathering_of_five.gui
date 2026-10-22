@@ -117,7 +117,7 @@
                     layoutpolicy_horizontal = expanding
                     size = { -1 8 }
                     min = 0
-                    max = 106
+                    max = 109
                     value = "[FixedPointToFloat(Country.MakeScope.ScriptValue('ga_gathering_realm_locations'))]"
                     progresstexture = "gfx/interface/progressbars/progress_bar_yellow.dds"
                     noprogresstexture = "gfx/interface/icons/unit_view/moral_bar_transparent.dds"
@@ -185,7 +185,7 @@
                     layoutpolicy_horizontal = expanding
                     size = { -1 8 }
                     min = 0
-                    max = 106
+                    max = 109
                     value = "[FixedPointToFloat(Country.MakeScope.ScriptValue('ga_gathering_realm_locations'))]"
                     progresstexture = "gfx/interface/progressbars/progress_bar_yellow.dds"
                     noprogresstexture = "gfx/interface/icons/unit_view/moral_bar_transparent.dds"
@@ -253,7 +253,7 @@
                     layoutpolicy_horizontal = expanding
                     size = { -1 8 }
                     min = 0
-                    max = 106
+                    max = 109
                     value = "[FixedPointToFloat(Country.MakeScope.ScriptValue('ga_gathering_realm_locations'))]"
                     progresstexture = "gfx/interface/progressbars/progress_bar_yellow.dds"
                     noprogresstexture = "gfx/interface/icons/unit_view/moral_bar_transparent.dds"
@@ -321,7 +321,7 @@
                     layoutpolicy_horizontal = expanding
                     size = { -1 8 }
                     min = 0
-                    max = 106
+                    max = 109
                     value = "[FixedPointToFloat(Country.MakeScope.ScriptValue('ga_gathering_realm_locations'))]"
                     progresstexture = "gfx/interface/progressbars/progress_bar_yellow.dds"
                     noprogresstexture = "gfx/interface/icons/unit_view/moral_bar_transparent.dds"
@@ -389,7 +389,7 @@
                     layoutpolicy_horizontal = expanding
                     size = { -1 8 }
                     min = 0
-                    max = 106
+                    max = 109
                     value = "[FixedPointToFloat(Country.MakeScope.ScriptValue('ga_gathering_realm_locations'))]"
                     progresstexture = "gfx/interface/progressbars/progress_bar_yellow.dds"
                     noprogresstexture = "gfx/interface/icons/unit_view/moral_bar_transparent.dds"
@@ -457,7 +457,7 @@
                     layoutpolicy_horizontal = expanding
                     size = { -1 8 }
                     min = 0
-                    max = 106
+                    max = 109
                     value = "[FixedPointToFloat(Country.MakeScope.ScriptValue('ga_gathering_realm_locations'))]"
                     progresstexture = "gfx/interface/progressbars/progress_bar_yellow.dds"
                     noprogresstexture = "gfx/interface/icons/unit_view/moral_bar_transparent.dds"

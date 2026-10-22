@@ -48,7 +48,7 @@ SITE_IMPORTANCE = {
     'mothers_basin': 4, 'storm_teeth': 1, 'emberroot': 2,
     'blackwood_oathstones': 2, 'ashfield_hearth': 1, 'miregrove_witness': 1,
     'first_weight': 3, 'last_lamp': 1, 'three_watchfires': 1,
-    'gull_cairn': 1,
+    'gull_cairn': 1, 'kiln_stair': 1,
 }
 SITES.extend([
     ('three_watchfires', 'The Three Watchfires', 'cm_emberwatch', 'lantern_cay', 'local_monthly_prosperity', .001,
@@ -65,6 +65,8 @@ SITES.extend([
      'A crooked grove above the floodwater shelters the oath stakes of neighboring marsh houses. Disputes over channels are spoken before its roots, where witnesses remember promises longer than chiefs do.'),
     ('gull_cairn', 'The Gull Cairn', 'cm_gullwatch', 'maw_rock', 'local_monthly_food_modifier', .025,
      'A cairn of wave-worn stones stands above the Shatter Strait. Fishers add a stone for each crew that came home and leave the first gull-picked catch of the season beneath it.'),
+    ('kiln_stair', 'The Kiln Stair', 'cm_kilnwatch', 'cinderstep', 'local_production_efficiency', .025,
+     'Steps cut into a cooled lava flow climb to an old charcoal kiln above the Cinderstep Passage. Smelters carry up the first bloom of each season, and crews bound for Shatter Maw leave a coal for a safe crossing.'),
 ])
 RITES = {
     'returning_ash': ('Feast of Returning Ash', 'Fund a communal feast and name the dead.', 'stability_cost_efficiency', .10),

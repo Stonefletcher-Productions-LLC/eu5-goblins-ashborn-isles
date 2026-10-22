@@ -104,3 +104,6 @@ cm_lastlight_settlement = { market_village = 1 }
 cm_lantern_haven_settlement = { marketplace = 1 wharf = 1 granary = 1 }
 cm_wickwood_settlement = { market_village = 1 }
 cm_emberwatch_settlement = { market_village = 1 }
+cm_cinderstep_settlement = { market_village = 1 }
+cm_slagcove_settlement = { market_village = 1 local_smelters = 1 }
+cm_kilnwatch_settlement = { market_village = 1 }

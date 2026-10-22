@@ -28603,6 +28603,8 @@ cm_shatterfin_sea = { topography = coastal_ocean climate = oceanic }
 cm_shatter_maw_north = { topography = coastal_ocean climate = oceanic }
 cm_shatter_maw_strait = { topography = coastal_ocean climate = oceanic }
 cm_shatter_maw_roads = { topography = coastal_ocean climate = oceanic }
+cm_cinderstep_passage = { topography = coastal_ocean climate = oceanic }
+cm_cinderstep_roads = { topography = coastal_ocean climate = oceanic }
 cm_cinder_crown = { topography = mountains vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_cinderkin raw_material = iron }
 cm_blackwood = { topography = hills vegetation = woods climate = oceanic religion = cm_hunger_below culture = cm_cinderkin raw_material = lumber }
 cm_copperfang = { topography = mountains vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_cinderkin raw_material = copper }
@@ -28709,3 +28711,6 @@ cm_lastlight = { topography = hills vegetation = woods climate = oceanic religio
 cm_lantern_haven = { topography = flatland vegetation = grasslands climate = oceanic religion = cm_hunger_below culture = cm_cinderkin raw_material = fish }
 cm_wickwood = { topography = hills vegetation = woods climate = oceanic religion = cm_hunger_below culture = cm_cinderkin raw_material = lumber }
 cm_emberwatch = { topography = hills vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_cinderkin raw_material = stone }
+cm_cinderstep = { topography = hills vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_cinderkin raw_material = fish }
+cm_slagcove = { topography = mountains vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_cinderkin raw_material = iron }
+cm_kilnwatch = { topography = hills vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_cinderkin raw_material = stone }

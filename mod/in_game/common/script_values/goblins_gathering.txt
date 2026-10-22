@@ -108,5 +108,8 @@ if = { limit = { location:cm_lastlight = { exists = owner owner = { ga_owner_in_
 if = { limit = { location:cm_lantern_haven = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
 if = { limit = { location:cm_wickwood = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
 if = { limit = { location:cm_emberwatch = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_cinderstep = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_slagcove = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_kilnwatch = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
         }
     }

@@ -5440,9 +5440,10 @@ cm_giltfang_6_province = { cm_blackmeasure cm_lockshore }
 cm_tolltooth_1_province = { cm_tolltooth cm_watchfang cm_netreach }
 cm_tolltooth_2_province = { cm_lastlight }
 cm_lantern_cay_province = { cm_lantern_haven cm_wickwood cm_emberwatch }
+cm_cinderstep_province = { cm_cinderstep cm_slagcove cm_kilnwatch }
 }
 
-cm_ashborn_seas_area = { cm_ashborn_seas_province = { cm_cindermaw_sea cm_ashborn_channel cm_brackmaw_sea cm_reefhook_sea cm_cindermaw_north cm_hooktooth_approaches cm_cindermaw_west cm_brackmaw_east cm_sootwake_sea cm_brackmaw_south cm_western_approach cm_eastern_passage cm_northwest_reach cm_chainhaven_roads cm_giltfang_north cm_giltfang_west cm_giltfang_passage cm_tolltooth_sound cm_tolltooth_east cm_giltfang_south cm_giltfang_outer_roads cm_tolltooth_approach cm_tolltooth_eastern_gate cm_tolltooth_lower_reach cm_lantern_north_passage cm_lantern_west_passage cm_lantern_east_passage cm_lantern_south_passage cm_shatterfin_sea cm_shatter_maw_north cm_shatter_maw_strait cm_shatter_maw_roads } }
+cm_ashborn_seas_area = { cm_ashborn_seas_province = { cm_cindermaw_sea cm_ashborn_channel cm_brackmaw_sea cm_reefhook_sea cm_cindermaw_north cm_hooktooth_approaches cm_cindermaw_west cm_brackmaw_east cm_sootwake_sea cm_brackmaw_south cm_western_approach cm_eastern_passage cm_northwest_reach cm_chainhaven_roads cm_giltfang_north cm_giltfang_west cm_giltfang_passage cm_tolltooth_sound cm_tolltooth_east cm_giltfang_south cm_giltfang_outer_roads cm_tolltooth_approach cm_tolltooth_eastern_gate cm_tolltooth_lower_reach cm_lantern_north_passage cm_lantern_west_passage cm_lantern_east_passage cm_lantern_south_passage cm_shatterfin_sea cm_shatter_maw_north cm_shatter_maw_strait cm_shatter_maw_roads cm_cinderstep_passage cm_cinderstep_roads } }
 }
 		maghreb_region = {
 			sus_area = {

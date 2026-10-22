@@ -77,6 +77,7 @@ def verify_population_062(game, out):
         settled[move['to']] = (taken, Decimal(str(move['laborers_on_arrival'])))
         gone = departed.setdefault(move['from'], {})
         for k,v in taken.items():gone[k] = gone.get(k,Decimal(0))+v
+    additions = {k:Decimal(str(v)) for k,v in b.CFG.get('shatter_maw_067', {}).get('additions', {}).items()}
     for loc in b.CFG['locations']:
         actual = {}
         for key,op,row in parse(populations[loc['id']]):
@@ -93,6 +94,11 @@ def verify_population_062(game, out):
         total=sum(actual.values())
         tribal=sum(v for (k,_,_),v in actual.items() if k=='tribesmen')
         assert Decimal('.25')<=tribal/total<Decimal('.2501'),loc['id']
+        if loc['id'] in additions:
+            # 0.6.7 adds new Cinderstep towns, outside the 0.6.2 policy.
+            assert Decimal(str(loc['pop']))==additions[loc['id']] and loc['id'] not in policy['locations']
+            assert actual==expected and loc['pop_classes']['laborers']>=3,loc['id']
+            continue
         if loc['id'] in settled:
             taken, laborers = settled[loc['id']]
             arrived = dict(taken, laborers=laborers, peasants=taken['peasants']-laborers)
