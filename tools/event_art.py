@@ -21,8 +21,8 @@ EVENTS = {
         1: 'departure', 2: 'iberia', 3: 'charts',
         4: 'biscay', 5: 'africa', 6: 'foreign_sails',
     }.items()},
-    # Kingdom openings reuse each crown's clan painting until dedicated ones exist.
-    **{f'ga_opening.{n}': art for n, art in {
+    # Each crown's opening has its own painting.
+    **{f'ga_opening.{n}': 'opening_' + art for n, art in {
         1: 'cindermaw', 2: 'brackmaw', 3: 'reefhook', 4: 'shatterfin', 5: 'sootwake', 6: 'giltfang',
     }.items()},
     **{f'ga_old_world.{n}': art for n, art in {

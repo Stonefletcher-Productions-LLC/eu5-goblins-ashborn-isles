@@ -499,6 +499,30 @@
       "sha256": "03904ebdef1b42a4b3dd3287bdb04daa33b7c2ad95be2829f9bf044599cd03af"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/opening_brackmaw.dds",
+      "sha256": "c08d8a52989c43cdb07455b74022b95a12e27e1d91409315d095b0ebb466a1b1"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/opening_cindermaw.dds",
+      "sha256": "6cecbfd46543e540872696efce55c536708f4e2eb9c6b6eb9929ce194a6e78d7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/opening_giltfang.dds",
+      "sha256": "f0c0e0888d832cc6261b3f21b9d91b84ad21dc92b90e6c6071b7fc042d35387b"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/opening_reefhook.dds",
+      "sha256": "3f8e1747c8f68bbe7da2965f7803c70a5aa017c4bc8fcc8c67abca94a7e0d1be"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/opening_shatterfin.dds",
+      "sha256": "5d9cc9f071f6538f98df9fc5c180832feb30d94dbf9f04eef81684dc2a8e37ff"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/opening_sootwake.dds",
+      "sha256": "ba5e80b317e55a9636553c015b746b7a07889357c16c1125d7c48a892873b9cd"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/pact_broken.dds",
       "sha256": "73063f227bce4148cc4a343eaa7aca7a4db9265c63ef8381659143641c96250d"
     },
