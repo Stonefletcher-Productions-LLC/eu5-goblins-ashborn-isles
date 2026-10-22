@@ -5423,8 +5423,10 @@ cm_reefhook_province = { cm_reefhook cm_hookrim }
 cm_crooked_reef_province = { cm_crooked_reef cm_tidefang cm_coralpasture }
 cm_reefhook_outer_province = { cm_reefnet cm_pearlshore }
 cm_crooked_reef_outer_province = { cm_tidegrain }
-cm_shatterfin_province = { cm_shatterfin cm_shardpoint cm_stormpasture cm_silver_shard }
-cm_knifeback_province = { cm_knifeback cm_silkworm_grove }
+cm_shatterfin_province = { cm_shatterfin cm_silver_shard cm_gullscar cm_brinehollow cm_splitrock }
+cm_stormcrag_province = { cm_shardpoint cm_stormpasture cm_wrackfang cm_stormcrag cm_tidewhet }
+cm_knifeback_province = { cm_knifeback cm_silkworm_grove cm_edgewater }
+cm_maw_rock_province = { cm_maw_rock cm_gullwatch }
 cm_sootwake_province = { cm_sootwake }
 cm_ember_key_province = { cm_ember_key }
 cm_sootwake_outer_province = { cm_sootgrain }
@@ -5440,7 +5442,7 @@ cm_tolltooth_2_province = { cm_lastlight }
 cm_lantern_cay_province = { cm_lantern_haven cm_wickwood cm_emberwatch }
 }
 
-cm_ashborn_seas_area = { cm_ashborn_seas_province = { cm_cindermaw_sea cm_ashborn_channel cm_brackmaw_sea cm_reefhook_sea cm_cindermaw_north cm_shatterfin_sea cm_cindermaw_west cm_brackmaw_east cm_sootwake_sea cm_brackmaw_south cm_western_approach cm_eastern_passage cm_northwest_reach cm_chainhaven_roads cm_giltfang_north cm_giltfang_west cm_giltfang_passage cm_tolltooth_sound cm_tolltooth_east cm_giltfang_south cm_giltfang_outer_roads cm_tolltooth_approach cm_tolltooth_eastern_gate cm_tolltooth_lower_reach cm_lantern_north_passage cm_lantern_west_passage cm_lantern_east_passage cm_lantern_south_passage } }
+cm_ashborn_seas_area = { cm_ashborn_seas_province = { cm_cindermaw_sea cm_ashborn_channel cm_brackmaw_sea cm_reefhook_sea cm_cindermaw_north cm_hooktooth_approaches cm_cindermaw_west cm_brackmaw_east cm_sootwake_sea cm_brackmaw_south cm_western_approach cm_eastern_passage cm_northwest_reach cm_chainhaven_roads cm_giltfang_north cm_giltfang_west cm_giltfang_passage cm_tolltooth_sound cm_tolltooth_east cm_giltfang_south cm_giltfang_outer_roads cm_tolltooth_approach cm_tolltooth_eastern_gate cm_tolltooth_lower_reach cm_lantern_north_passage cm_lantern_west_passage cm_lantern_east_passage cm_lantern_south_passage cm_shatterfin_sea cm_shatter_maw_north cm_shatter_maw_strait cm_shatter_maw_roads } }
 }
 		maghreb_region = {
 			sus_area = {

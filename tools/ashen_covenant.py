@@ -48,6 +48,7 @@ SITE_IMPORTANCE = {
     'mothers_basin': 4, 'storm_teeth': 1, 'emberroot': 2,
     'blackwood_oathstones': 2, 'ashfield_hearth': 1, 'miregrove_witness': 1,
     'first_weight': 3, 'last_lamp': 1, 'three_watchfires': 1,
+    'gull_cairn': 1,
 }
 SITES.extend([
     ('three_watchfires', 'The Three Watchfires', 'cm_emberwatch', 'lantern_cay', 'local_monthly_prosperity', .001,
@@ -62,6 +63,8 @@ SITES.extend([
      'Field households carry a pinch of the first grain to a low hearth built from cooling lava. Its keepers feed hungry neighbors before burning the offering. Few pilgrims come from beyond the nearby farms.'),
     ('miregrove_witness', 'The Miregrove Witness', 'cm_miregrove', 'brackmaw', 'local_unrest', -.025,
      'A crooked grove above the floodwater shelters the oath stakes of neighboring marsh houses. Disputes over channels are spoken before its roots, where witnesses remember promises longer than chiefs do.'),
+    ('gull_cairn', 'The Gull Cairn', 'cm_gullwatch', 'maw_rock', 'local_monthly_food_modifier', .025,
+     'A cairn of wave-worn stones stands above the Shatter Strait. Fishers add a stone for each crew that came home and leave the first gull-picked catch of the season beneath it.'),
 ])
 RITES = {
     'returning_ash': ('Feast of Returning Ash', 'Fund a communal feast and name the dead.', 'stability_cost_efficiency', .10),

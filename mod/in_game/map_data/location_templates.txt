@@ -28576,7 +28576,7 @@ cm_ashborn_channel = { topography = coastal_ocean climate = oceanic }
 cm_brackmaw_sea = { topography = coastal_ocean climate = oceanic }
 cm_reefhook_sea = { topography = coastal_ocean climate = oceanic }
 cm_cindermaw_north = { topography = coastal_ocean climate = oceanic }
-cm_shatterfin_sea = { topography = coastal_ocean climate = oceanic }
+cm_hooktooth_approaches = { topography = coastal_ocean climate = oceanic }
 cm_cindermaw_west = { topography = coastal_ocean climate = oceanic }
 cm_brackmaw_east = { topography = coastal_ocean climate = oceanic }
 cm_sootwake_sea = { topography = coastal_ocean climate = oceanic }
@@ -28599,6 +28599,10 @@ cm_lantern_north_passage = { topography = coastal_ocean climate = oceanic }
 cm_lantern_west_passage = { topography = coastal_ocean climate = oceanic }
 cm_lantern_east_passage = { topography = coastal_ocean climate = oceanic }
 cm_lantern_south_passage = { topography = coastal_ocean climate = oceanic }
+cm_shatterfin_sea = { topography = coastal_ocean climate = oceanic }
+cm_shatter_maw_north = { topography = coastal_ocean climate = oceanic }
+cm_shatter_maw_strait = { topography = coastal_ocean climate = oceanic }
+cm_shatter_maw_roads = { topography = coastal_ocean climate = oceanic }
 cm_cinder_crown = { topography = mountains vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_cinderkin raw_material = iron }
 cm_blackwood = { topography = hills vegetation = woods climate = oceanic religion = cm_hunger_below culture = cm_cinderkin raw_material = lumber }
 cm_copperfang = { topography = mountains vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_cinderkin raw_material = copper }
@@ -28665,8 +28669,17 @@ cm_shatterfin = { topography = mountains vegetation = sparse climate = oceanic r
 cm_shardpoint = { topography = mountains vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = stone }
 cm_stormpasture = { topography = flatland vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = livestock }
 cm_silver_shard = { topography = hills vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = silver }
+cm_wrackfang = { topography = flatland vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = wool }
+cm_gullscar = { topography = hills vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = fish }
+cm_stormcrag = { topography = mountains vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = iron }
+cm_tidewhet = { topography = flatland vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = salt }
+cm_brinehollow = { topography = flatland vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = fiber_crops }
+cm_splitrock = { topography = hills vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = clay }
 cm_knifeback = { topography = mountains vegetation = woods climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = lumber }
 cm_silkworm_grove = { topography = mountains vegetation = woods climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = silk }
+cm_edgewater = { topography = hills vegetation = woods climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = fish }
+cm_maw_rock = { topography = hills vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = sand }
+cm_gullwatch = { topography = hills vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = fish }
 cm_sootwake = { topography = mountains vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_sootkin raw_material = fish natural_harbor_suitability = 0.80 }
 cm_ember_key = { topography = mountains vegetation = woods climate = oceanic religion = cm_hunger_below culture = cm_sootkin raw_material = lumber }
 cm_sootgrain = { topography = flatland vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_sootkin raw_material = wheat }

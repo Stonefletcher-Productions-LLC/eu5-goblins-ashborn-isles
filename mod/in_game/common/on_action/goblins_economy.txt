@@ -293,12 +293,48 @@ ga_economy_monthly = {
                 location:cm_silver_shard = { change_max_raw_material_workers = 1 }
             }
             if = {
+                limit = { owns = location:cm_wrackfang }
+                location:cm_wrackfang = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_gullscar }
+                location:cm_gullscar = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_stormcrag }
+                location:cm_stormcrag = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_tidewhet }
+                location:cm_tidewhet = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_brinehollow }
+                location:cm_brinehollow = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_splitrock }
+                location:cm_splitrock = { change_max_raw_material_workers = 1 }
+            }
+            if = {
                 limit = { owns = location:cm_knifeback }
                 location:cm_knifeback = { change_max_raw_material_workers = 6 }
             }
             if = {
                 limit = { owns = location:cm_silkworm_grove }
                 location:cm_silkworm_grove = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_edgewater }
+                location:cm_edgewater = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_maw_rock }
+                location:cm_maw_rock = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_gullwatch }
+                location:cm_gullwatch = { change_max_raw_material_workers = 1 }
             }
         }
         if = {

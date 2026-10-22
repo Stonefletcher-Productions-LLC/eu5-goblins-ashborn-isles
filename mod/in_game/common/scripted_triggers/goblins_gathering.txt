@@ -97,8 +97,17 @@ ga_controls_homeland = {
         location:cm_shardpoint = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
         location:cm_stormpasture = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
         location:cm_silver_shard = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_wrackfang = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_gullscar = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_stormcrag = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_tidewhet = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_brinehollow = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_splitrock = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
         location:cm_knifeback = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
         location:cm_silkworm_grove = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_edgewater = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_maw_rock = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_gullwatch = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
         location:cm_sootwake = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
         location:cm_ember_key = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
         location:cm_sootgrain = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
@@ -200,8 +209,17 @@ ga_owns_entire_homeland = {
         owns = location:cm_shardpoint
         owns = location:cm_stormpasture
         owns = location:cm_silver_shard
+        owns = location:cm_wrackfang
+        owns = location:cm_gullscar
+        owns = location:cm_stormcrag
+        owns = location:cm_tidewhet
+        owns = location:cm_brinehollow
+        owns = location:cm_splitrock
         owns = location:cm_knifeback
         owns = location:cm_silkworm_grove
+        owns = location:cm_edgewater
+        owns = location:cm_maw_rock
+        owns = location:cm_gullwatch
         owns = location:cm_sootwake
         owns = location:cm_ember_key
         owns = location:cm_sootgrain

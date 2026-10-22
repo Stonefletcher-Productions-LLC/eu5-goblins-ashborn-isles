@@ -69,11 +69,11 @@
     },
     {
       "path": "in_game/common/holy_site_types/ashen_covenant.txt",
-      "sha256": "6c91f9a5638f5a3c2ecc84d9887c0b13234446f2826aa4836c8a176438320221"
+      "sha256": "9e413f58ffcd9e43aebc9871e405d4faa2bcbd8f87a44315d766291db3864c9f"
     },
     {
       "path": "in_game/common/holy_sites/ashen_covenant.txt",
-      "sha256": "46573039f2748705093e8b7303d6a3dc7bff71bc8e736cdc6fb6c275db07a0c4"
+      "sha256": "fcdcc7b1a4df320b2907de772a419d16db8b9d71b3b6c0e4fbe27d7f79e21cef"
     },
     {
       "path": "in_game/common/language_families/goblins_ashborn_isles.txt",
@@ -93,7 +93,7 @@
     },
     {
       "path": "in_game/common/on_action/goblins_economy.txt",
-      "sha256": "4b45cedea5a468195bd1caa0d9cbaac79d7c2400ea90feec4a578aee4e747489"
+      "sha256": "55834d8e4aaf2d97c0a5e017e65b179741237e7a2109115b2c8818a755b4b7ba"
     },
     {
       "path": "in_game/common/on_action/goblins_exploration.txt",
@@ -133,7 +133,7 @@
     },
     {
       "path": "in_game/common/script_values/goblins_gathering.txt",
-      "sha256": "a1fad45803beb7094a8ded55996adaed6cc6eacb317b17258dde383b4496eb2b"
+      "sha256": "7c8ef10d53b8ba0e43c141d79b8c92fa39b31db3ffbdf466fed409ff2997017d"
     },
     {
       "path": "in_game/common/scripted_effects/goblins_dynastic_clans.txt",
@@ -145,7 +145,7 @@
     },
     {
       "path": "in_game/common/scripted_triggers/goblins_gathering.txt",
-      "sha256": "99fc4a1953bfd17697b9234a4e8b8293626a474d43fa1da8828e21136a24f89a"
+      "sha256": "0c8e1197f9a55c46086b43978e74e9985824fdf1827cf27754e37576292b88b4"
     },
     {
       "path": "in_game/common/scripted_triggers/goblins_units.txt",
@@ -165,7 +165,7 @@
     },
     {
       "path": "in_game/common/town_setups/goblins_ashborn_isles.txt",
-      "sha256": "8dc3539c39b189551c9c73e9ffbec32ed0b0c8838bbc1de0f4278f766b242a03"
+      "sha256": "8e368ea00ad6e82757e3be92ddafd995346af697adca7ab8f8fa73d485043842"
     },
     {
       "path": "in_game/common/unit_types/goblins_units.txt",
@@ -329,19 +329,19 @@
     },
     {
       "path": "in_game/gui/panels/situation/ga_gathering_of_five.gui",
-      "sha256": "4b29bf1b1ba25dbc6893415fd77004f31b464a1a28d3e3d7ab948ee259687cd6"
+      "sha256": "857f23da858d93dd2abf6e37016a4030ce0412cb4249c744b023a26a4f593404"
     },
     {
       "path": "in_game/map_data/definitions.txt",
-      "sha256": "660707820f59338db5576973438d2fd3040847fa943488d6f31e411aa376f790"
+      "sha256": "d40ee7e9d66d0855910601f44854751b443071629fb06f1e5dedaf61ffe502e1"
     },
     {
       "path": "in_game/map_data/location_templates.txt",
-      "sha256": "78406df186ce5880c79578975ffb01041cf6ddf5b1aa345eb8043cafb482efa0"
+      "sha256": "301d7c434d6e0a3cc3be673b84a94043325b7f60ce9ab9687470154eafb0a839"
     },
     {
       "path": "in_game/map_data/ports.csv",
-      "sha256": "e4ac22904b0799a627763c8b10885dd20f942f7f165f0f660654ad0de21cffa3"
+      "sha256": "483e3185fb54f37c4d1451a5e8cf11887207d1b99e232e0482787ae662418c3c"
     },
     {
       "path": "loading_screen/sound/banks/windows/Init.bnk",
@@ -7169,7 +7169,7 @@
     },
     {
       "path": "main_menu/localization/english/goblins_ashborn_isles_l_english.yml",
-      "sha256": "f37802b891fa25b9c00a729d231d97d9a05823acc9a5e8024a9aa560be921c2b"
+      "sha256": "caa0556b5d996c4e3956e93600a99a60e24eece102a1b843e0cb450ec7717b4e"
     },
     {
       "path": "main_menu/localization/english/goblins_divorce_l_english.yml",
@@ -7181,7 +7181,7 @@
     },
     {
       "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
-      "sha256": "9752a714371631d4c3d4853d2ac52163be20f74e988fb156c6ad15b5c838c758"
+      "sha256": "70903777e1aec46ad153e9af42834a8b911dfb7bc8d0e04342654e6b34622acc"
     },
     {
       "path": "main_menu/localization/english/goblins_music_l_english.yml",

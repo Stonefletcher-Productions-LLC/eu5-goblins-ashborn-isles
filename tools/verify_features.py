@@ -16,7 +16,7 @@ def verify(b,out,mapstats):
         if 'wharf' in loc['buildings']:
             assert loc['id'] in coastal,('inland wharf',loc['id'])
     counts={c['tag']:sum(l['country']==c['tag'] for l in cfg['locations']) for c in cfg['countries']}
-    assert counts=={'CDM':33,'QBR':24,'RHK':8,'SFK':6,'SWK':4,'GTF':22},counts
+    assert counts=={'CDM':33,'QBR':24,'RHK':8,'SFK':15,'SWK':4,'GTF':22},counts
     ratios={}
     for island in cfg['islands']:
         expected=np.pi*np.prod(cfg['radius'])*cfg['island_size_multiplier']*island['area_ratio']

@@ -68,8 +68,17 @@ if = { limit = { location:cm_shatterfin = { exists = owner owner = { ga_owner_in
 if = { limit = { location:cm_shardpoint = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
 if = { limit = { location:cm_stormpasture = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
 if = { limit = { location:cm_silver_shard = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_wrackfang = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_gullscar = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_stormcrag = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_tidewhet = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_brinehollow = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_splitrock = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
 if = { limit = { location:cm_knifeback = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
 if = { limit = { location:cm_silkworm_grove = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_edgewater = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_maw_rock = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_gullwatch = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
 if = { limit = { location:cm_sootwake = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
 if = { limit = { location:cm_ember_key = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
 if = { limit = { location:cm_sootgrain = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }

@@ -45,16 +45,17 @@ def verify(game, out):
     assert countries['QBR']['building_levels']['naval_supplies_guild'] > countries['CDM']['building_levels']['naval_supplies_guild']
     assert countries['SWK']['building_levels']['charcoal_maker'] > countries['CDM']['building_levels']['charcoal_maker']
     assert len({tuple(sorted(next(l['buildings'] for l in b.CFG['locations'] if l['id']==c['capital']).items())) for c in b.CFG['countries']}) == len(b.CFG['countries'])
-    # Two native markets and once-only, ownership-guarded investment remain intact.
+    # Three native markets and once-only, ownership-guarded investment remain intact.
     markets = (out/'main_menu/setup/start/03_markets.txt').read_text()
     assert 'add_market = cm_hooktooth' in markets
     assert 'add_market = cm_chainhaven' in markets
+    assert 'add_market = cm_shatterfin' in markets
     actions = (out/'in_game/common/on_action/goblins_economy.txt').read_text(encoding='utf-8-sig')
     assert actions.count('NOT = { has_variable = ga_economy_initialized }') == 1
     assert actions.count('limit = { owns = location:') == len(b.CFG['locations'])
     report['checks'] = ['native building ranks/resources', 'generated settlement levels',
                         'configured population totals', 'production staffing and resource reserve',
-                        'country specialization and scale', 'two markets and guarded initialization',
+                        'country specialization and scale', 'three markets and guarded initialization',
                         'essential goods in every crown and complete regional base-recipe input chains']
     (out/'economy-audit.json').write_text(json.dumps(report, indent=2)+'\n')
     return report
@@ -68,6 +69,14 @@ def verify_population_062(game, out):
     populations = dict(economy_reference.blocks(dict(economy_reference.blocks((out/'main_menu/setup/start/06_pops.txt').read_text()))['locations']))
     policy = b.CFG['population_062']
     previous_totals = {tag:Decimal(0) for tag in policy['prior_country_population_targets']}
+    # 0.6.7 settles the enlarged Shatter Maw from existing Shatterfin towns.
+    # Check each donor's 0.6.2 history with its settlers added back.
+    settled, departed = {}, {}
+    for move in b.CFG.get('shatter_maw_067', {}).get('transfers', []):
+        taken = {k:Decimal(str(v)) for k,v in move['taken'].items()}
+        settled[move['to']] = (taken, Decimal(str(move['laborers_on_arrival'])))
+        gone = departed.setdefault(move['from'], {})
+        for k,v in taken.items():gone[k] = gone.get(k,Decimal(0))+v
     for loc in b.CFG['locations']:
         actual = {}
         for key,op,row in parse(populations[loc['id']]):
@@ -84,14 +93,22 @@ def verify_population_062(game, out):
         total=sum(actual.values())
         tribal=sum(v for (k,_,_),v in actual.items() if k=='tribesmen')
         assert Decimal('.25')<=tribal/total<Decimal('.2501'),loc['id']
+        if loc['id'] in settled:
+            taken, laborers = settled[loc['id']]
+            arrived = dict(taken, laborers=laborers, peasants=taken['peasants']-laborers)
+            assert arrived=={k:Decimal(str(v)) for k,v in loc['pop_classes'].items()},loc['id']
+            assert loc['id'] not in policy['locations']
+            continue
+        classes = {k:Decimal(str(v))+departed.get(loc['id'],{}).get(k,Decimal(0)) for k,v in loc['pop_classes'].items()}
+        pop = Decimal(str(loc['pop']))+sum(departed.get(loc['id'],{}).values())
         prior=policy['locations'][loc['id']]
         changes={k:Decimal(str(v)) for k,v in prior['class_changes'].items()}
         assert 'slaves' not in changes
-        assert all(Decimal(str(loc['pop_classes'][k]))-v>=0 for k,v in changes.items())
+        assert all(classes[k]-v>=0 for k,v in changes.items())
         assert all(v>0 for k,v in changes.items() if k!='peasants')
-        assert Decimal(str(loc['pop_classes']['peasants']))>=Decimal(str(prior['minimum_peasants']))
+        assert classes['peasants']>=Decimal(str(prior['minimum_peasants']))
         assert Decimal(str(loc['pop']))/total>=Decimal('.70'),loc['id']
-        assert Decimal(str(loc['pop']))-sum(changes.values())==Decimal(str(prior['population_before']))
+        assert pop-sum(changes.values())==Decimal(str(prior['population_before']))
         previous_totals[loc['country']]+=Decimal(str(prior['population_before']))*1000
     assert previous_totals==policy['prior_country_population_targets']
     names=(out/'main_menu/localization/english/goblin_estates_l_english.yml').read_text(encoding='utf-8-sig')
