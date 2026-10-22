@@ -1,0 +1,82 @@
+﻿namespace = ga_maw_rivalry
+# The Shatter Maw rivalry between Shatterfin and Giltfang, paced by goblins_maw_rivalry on_actions.
+
+ga_maw_rivalry.1 = {
+    type = country_event
+    outcome = neutral
+    title = ga_maw_rivalry.1.title
+    desc = ga_maw_rivalry.1.desc
+    trigger = { tag = SFK exists = c:GTF }
+    image = "gfx/interface/illustrations/event/ashborn/opening_shatterfin.dds"
+    option = { name = ga_maw_rivalry.1.a ai_chance = { factor = 2 }
+        trigger = { gold >= 15 }
+        add_gold = -15 c:GTF = { add_gold = 15 }
+        custom_tooltip = ga_maw_rivalry.1.a_tt
+        hidden_effect = { c:GTF = { add_opinion = { target = root modifier = ga_mr_tolls_paid } } }
+    }
+    option = { name = ga_maw_rivalry.1.b ai_chance = { factor = 2 }
+        add_prestige = 10
+        add_country_modifier = { modifier = ga_mr_strait_defiance years = 10 mode = replace }
+        custom_tooltip = ga_maw_rivalry.1.b_tt
+        hidden_effect = { add_opinion = { target = c:GTF modifier = ga_mr_toll_raised } c:GTF = { add_opinion = { target = root modifier = ga_mr_toll_defied } } }
+    }
+    option = { name = ga_maw_rivalry.1.c ai_chance = { factor = 1 }
+        set_variable = { name = ga_mr_ledger_kept value = yes }
+        if = { limit = { religion = religion:cm_hunger_below } add_religious_influence = 5 }
+        custom_tooltip = ga_maw_rivalry.1.c_tt
+        hidden_effect = { add_opinion = { target = c:GTF modifier = ga_mr_toll_raised } }
+    }
+}
+
+ga_maw_rivalry.2 = {
+    type = country_event
+    outcome = neutral
+    title = ga_maw_rivalry.2.title
+    desc = ga_maw_rivalry.2.desc
+    trigger = { tag = GTF exists = c:SFK }
+    image = "gfx/interface/illustrations/event/ashborn/giltfang.dds"
+    option = { name = ga_maw_rivalry.2.a ai_chance = { factor = 2 }
+        add_gold = 25
+        custom_tooltip = ga_maw_rivalry.2.a_tt
+        hidden_effect = { c:SFK = { add_opinion = { target = root modifier = ga_mr_debts_called } } }
+    }
+    option = { name = ga_maw_rivalry.2.b ai_chance = { factor = 1 }
+        trigger = { gold >= 10 }
+        add_gold = -10 c:SFK = { add_gold = 10 }
+        custom_tooltip = ga_maw_rivalry.2.b_tt
+        hidden_effect = { c:SFK = { add_opinion = { target = root modifier = ga_mr_debts_eased } } }
+    }
+    option = { name = ga_maw_rivalry.2.c ai_chance = { factor = 1 }
+        trigger = { gold >= 15 }
+        add_gold = -15
+        add_country_modifier = { modifier = ga_mr_bought_captains years = 10 mode = replace }
+        custom_tooltip = ga_maw_rivalry.2.c_tt
+        hidden_effect = { c:SFK = { add_opinion = { target = root modifier = ga_mr_captains_bought } } }
+    }
+}
+
+ga_maw_rivalry.3 = {
+    type = country_event
+    outcome = neutral
+    title = ga_maw_rivalry.3.title
+    desc = ga_maw_rivalry.3.desc
+    trigger = { tag = SFK exists = c:GTF }
+    image = "gfx/interface/illustrations/event/ashborn/shatterfin.dds"
+    option = { name = ga_maw_rivalry.3.a ai_chance = { factor = 2 }
+        add_prestige = 10
+        add_country_modifier = { modifier = ga_mr_blood_debt_sworn years = 10 mode = replace }
+        custom_tooltip = ga_maw_rivalry.3.a_tt
+        hidden_effect = { add_opinion = { target = c:GTF modifier = ga_mr_blood_debt } c:GTF = { add_opinion = { target = root modifier = ga_mr_lamp_dark } } }
+    }
+    option = { name = ga_maw_rivalry.3.b ai_chance = { factor = 1 }
+        custom_tooltip = ga_maw_rivalry.3.b_tt
+        hidden_effect = { add_opinion = { target = c:GTF modifier = ga_mr_grief_set_aside } c:GTF = { add_opinion = { target = root modifier = ga_mr_grief_set_aside } } }
+    }
+    option = { name = ga_maw_rivalry.3.c ai_chance = { factor = 1 }
+        trigger = { has_variable = ga_mr_ledger_kept }
+        if = { limit = { religion = religion:cm_hunger_below } add_religious_influence = 10 }
+        add_country_modifier = { modifier = ga_mr_cords_remember years = 10 mode = replace }
+        custom_tooltip = ga_maw_rivalry.3.c_tt
+        hidden_effect = { c:GTF = { add_opinion = { target = root modifier = ga_mr_cords_brought } } }
+    }
+}

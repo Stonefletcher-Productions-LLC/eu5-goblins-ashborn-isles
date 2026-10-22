@@ -1,7 +1,8 @@
-ga_owr_mission_to_the_isles = { diplomatic_reputation = 1 }
+﻿ga_owr_mission_to_the_isles = { diplomatic_reputation = 1 }
 ga_owr_watch_on_the_coast = { global_defensive = 0.05 }
 ga_owr_let_them_fear = { land_morale_modifier = 0.05 }
 ga_owr_oathkeepers_answer = { clergy_estate_target_satisfaction = 0.05 }
 ga_owr_lisbon_factors = { diplomatic_reputation = 1 global_production_efficiency = 0.03 }
 ga_owr_relics_sold = { clergy_estate_target_satisfaction = -0.05 }
 ga_owr_friars_welcome = { tolerance_heathen = 1 clergy_estate_target_satisfaction = -0.05 }
+ga_owr_goblins_in_the_souk = { global_production_efficiency = 0.03 }

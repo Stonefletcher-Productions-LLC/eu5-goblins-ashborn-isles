@@ -608,6 +608,8 @@ ga_cb_eastern_foothold = {
     goblin_horde.localization(loc)
     import kingdom_openings
     kingdom_openings.build(out, write)
+    import maw_rivalry
+    maw_rivalry.build(out, write)
     def write_bytes(path, data):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(data)

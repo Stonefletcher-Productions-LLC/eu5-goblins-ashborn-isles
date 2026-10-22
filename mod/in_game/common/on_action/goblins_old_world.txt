@@ -10,6 +10,7 @@ ga_owr_foreign_monthly = {
         else_if = { limit = { NOT = { has_variable = ga_owr_debate_delay } }
             set_variable = { name = ga_owr_debated value = yes }
             if = { limit = { religion = religion:catholic } trigger_event_non_silently = { id = ga_old_world.1 } }
+            else_if = { limit = { religion = religion:sunni } trigger_event_non_silently = { id = ga_old_world.6 } }
         }
     }
 }
