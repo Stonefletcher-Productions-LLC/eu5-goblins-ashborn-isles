@@ -345,20 +345,42 @@ ga_cp_valid = {
         at_war = no
         NOT = { has_variable = ga_hb_pending }
         NOT = { is_rival_of = scope:ga_cp_provider } NOT = { is_enemy_of = scope:ga_cp_provider }
-        is_allied_with = { target = scope:ga_cp_provider }
-        OR = { AND = { scope:ga_cp_provider = { tag = CDM } has_variable = ga_cp_honored_CDM } AND = { scope:ga_cp_provider = { tag = QBR } has_variable = ga_cp_honored_QBR } AND = { scope:ga_cp_provider = { tag = RHK } has_variable = ga_cp_honored_RHK } AND = { scope:ga_cp_provider = { tag = SFK } has_variable = ga_cp_honored_SFK } AND = { scope:ga_cp_provider = { tag = SWK } has_variable = ga_cp_honored_SWK } AND = { scope:ga_cp_provider = { tag = GTF } has_variable = ga_cp_honored_GTF } }
-OR = { AND = { scope:ga_cp_provider = { tag = CDM } has_variable = ga_cp_allied_ready_CDM } AND = { scope:ga_cp_provider = { tag = QBR } has_variable = ga_cp_allied_ready_QBR } AND = { scope:ga_cp_provider = { tag = RHK } has_variable = ga_cp_allied_ready_RHK } AND = { scope:ga_cp_provider = { tag = SFK } has_variable = ga_cp_allied_ready_SFK } AND = { scope:ga_cp_provider = { tag = SWK } has_variable = ga_cp_allied_ready_SWK } AND = { scope:ga_cp_provider = { tag = GTF } has_variable = ga_cp_allied_ready_GTF } }
+        OR = { OR = { AND = { scope:ga_cp_provider = { tag = CDM } has_variable = ga_sp_sworn_CDM } AND = { scope:ga_cp_provider = { tag = QBR } has_variable = ga_sp_sworn_QBR } AND = { scope:ga_cp_provider = { tag = RHK } has_variable = ga_sp_sworn_RHK } AND = { scope:ga_cp_provider = { tag = SFK } has_variable = ga_sp_sworn_SFK } AND = { scope:ga_cp_provider = { tag = SWK } has_variable = ga_sp_sworn_SWK } AND = { scope:ga_cp_provider = { tag = GTF } has_variable = ga_sp_sworn_GTF } } AND = { is_allied_with = { target = scope:ga_cp_provider } OR = { AND = { scope:ga_cp_provider = { tag = CDM } has_variable = ga_cp_honored_CDM has_variable = ga_cp_allied_ready_CDM } AND = { scope:ga_cp_provider = { tag = QBR } has_variable = ga_cp_honored_QBR has_variable = ga_cp_allied_ready_QBR } AND = { scope:ga_cp_provider = { tag = RHK } has_variable = ga_cp_honored_RHK has_variable = ga_cp_allied_ready_RHK } AND = { scope:ga_cp_provider = { tag = SFK } has_variable = ga_cp_honored_SFK has_variable = ga_cp_allied_ready_SFK } AND = { scope:ga_cp_provider = { tag = SWK } has_variable = ga_cp_honored_SWK has_variable = ga_cp_allied_ready_SWK } AND = { scope:ga_cp_provider = { tag = GTF } has_variable = ga_cp_honored_GTF has_variable = ga_cp_allied_ready_GTF } } } }
     }
     scope:ga_cp_provider = {
         ga_independent_goblin = yes
         at_war = no
         NOT = { has_variable = ga_hb_pending }
         NOT = { is_rival_of = scope:ga_cp_requester } NOT = { is_enemy_of = scope:ga_cp_requester }
-        is_allied_with = { target = scope:ga_cp_requester }
-        "opinion(scope:ga_cp_requester)" >= 150
-        relative_strength = { target = scope:ga_cp_requester value <= 0.65 }
+        OR = { OR = { AND = { scope:ga_cp_requester = { tag = CDM } has_variable = ga_sp_sworn_CDM } AND = { scope:ga_cp_requester = { tag = QBR } has_variable = ga_sp_sworn_QBR } AND = { scope:ga_cp_requester = { tag = RHK } has_variable = ga_sp_sworn_RHK } AND = { scope:ga_cp_requester = { tag = SFK } has_variable = ga_sp_sworn_SFK } AND = { scope:ga_cp_requester = { tag = SWK } has_variable = ga_sp_sworn_SWK } AND = { scope:ga_cp_requester = { tag = GTF } has_variable = ga_sp_sworn_GTF } } AND = { is_allied_with = { target = scope:ga_cp_requester } OR = { AND = { scope:ga_cp_requester = { tag = CDM } has_variable = ga_cp_honored_CDM has_variable = ga_cp_allied_ready_CDM } AND = { scope:ga_cp_requester = { tag = QBR } has_variable = ga_cp_honored_QBR has_variable = ga_cp_allied_ready_QBR } AND = { scope:ga_cp_requester = { tag = RHK } has_variable = ga_cp_honored_RHK has_variable = ga_cp_allied_ready_RHK } AND = { scope:ga_cp_requester = { tag = SFK } has_variable = ga_cp_honored_SFK has_variable = ga_cp_allied_ready_SFK } AND = { scope:ga_cp_requester = { tag = SWK } has_variable = ga_cp_honored_SWK has_variable = ga_cp_allied_ready_SWK } AND = { scope:ga_cp_requester = { tag = GTF } has_variable = ga_cp_honored_GTF has_variable = ga_cp_allied_ready_GTF } } } }
+        "opinion(scope:ga_cp_requester)" >= 100
+        OR = { OR = { AND = { scope:ga_cp_requester = { tag = CDM } has_variable = ga_sp_sworn_CDM } AND = { scope:ga_cp_requester = { tag = QBR } has_variable = ga_sp_sworn_QBR } AND = { scope:ga_cp_requester = { tag = RHK } has_variable = ga_sp_sworn_RHK } AND = { scope:ga_cp_requester = { tag = SFK } has_variable = ga_sp_sworn_SFK } AND = { scope:ga_cp_requester = { tag = SWK } has_variable = ga_sp_sworn_SWK } AND = { scope:ga_cp_requester = { tag = GTF } has_variable = ga_sp_sworn_GTF } } relative_strength = { target = scope:ga_cp_requester value <= 0.65 } }
         scope:ga_cp_requester.country_rank_level >= country_rank_level
-        OR = { AND = { scope:ga_cp_requester = { tag = CDM } has_variable = ga_cp_honored_CDM } AND = { scope:ga_cp_requester = { tag = QBR } has_variable = ga_cp_honored_QBR } AND = { scope:ga_cp_requester = { tag = RHK } has_variable = ga_cp_honored_RHK } AND = { scope:ga_cp_requester = { tag = SFK } has_variable = ga_cp_honored_SFK } AND = { scope:ga_cp_requester = { tag = SWK } has_variable = ga_cp_honored_SWK } AND = { scope:ga_cp_requester = { tag = GTF } has_variable = ga_cp_honored_GTF } }
-OR = { AND = { scope:ga_cp_requester = { tag = CDM } has_variable = ga_cp_allied_ready_CDM } AND = { scope:ga_cp_requester = { tag = QBR } has_variable = ga_cp_allied_ready_QBR } AND = { scope:ga_cp_requester = { tag = RHK } has_variable = ga_cp_allied_ready_RHK } AND = { scope:ga_cp_requester = { tag = SFK } has_variable = ga_cp_allied_ready_SFK } AND = { scope:ga_cp_requester = { tag = SWK } has_variable = ga_cp_allied_ready_SWK } AND = { scope:ga_cp_requester = { tag = GTF } has_variable = ga_cp_allied_ready_GTF } }
     }
+}
+
+ga_sp_session_matches = {
+    country_exists = scope:ga_sp_requester
+    country_exists = scope:ga_sp_provider
+    scope:ga_sp_requester = { has_variable = ga_sp_pending var:ga_sp_partner = scope:ga_sp_provider }
+    scope:ga_sp_provider = { has_variable = ga_sp_pending var:ga_sp_offer_from = scope:ga_sp_requester }
+}
+ga_sp_valid = {
+    ga_sp_session_matches = yes
+    scope:ga_sp_requester = {
+        ga_independent_goblin = yes at_war = no
+        NOT = { is_rival_of = scope:ga_sp_provider } NOT = { is_enemy_of = scope:ga_sp_provider }
+        NOT = { OR = { AND = { scope:ga_sp_provider = { tag = CDM } has_variable = ga_sp_sworn_CDM } AND = { scope:ga_sp_provider = { tag = QBR } has_variable = ga_sp_sworn_QBR } AND = { scope:ga_sp_provider = { tag = RHK } has_variable = ga_sp_sworn_RHK } AND = { scope:ga_sp_provider = { tag = SFK } has_variable = ga_sp_sworn_SFK } AND = { scope:ga_sp_provider = { tag = SWK } has_variable = ga_sp_sworn_SWK } AND = { scope:ga_sp_provider = { tag = GTF } has_variable = ga_sp_sworn_GTF } } }
+    }
+    scope:ga_sp_provider = {
+        ga_independent_goblin = yes at_war = no
+        NOT = { is_rival_of = scope:ga_sp_requester } NOT = { is_enemy_of = scope:ga_sp_requester }
+    }
+}
+
+ga_sp_free = {
+    custom_tooltip = { text = ga_ui_independent_tt ga_independent_goblin = yes }
+    custom_tooltip = { text = ga_ui_peace_tt at_war = no }
+    custom_tooltip = { text = ga_ui_pact_free_tt NOT = { has_variable = ga_sp_pending } }
+    custom_tooltip = { text = ga_ui_harbor_free_tt NOT = { has_variable = ga_hb_pending } }
 }

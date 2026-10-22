@@ -110,6 +110,9 @@ def verify(root):
                 verify_bargains(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_compact_talks import verify as verify_compact
                 verify_compact(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
+                if b'ga_swear_pact' in z.read('goblins_ashborn_isles/in_game/common/generic_actions/goblins_gathering.txt'):
+                    from verify_sworn_pacts import verify as verify_pacts
+                    verify_pacts(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_situation_progress import verify as verify_progress
                 verify_progress(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_early_projects import verify as verify_projects

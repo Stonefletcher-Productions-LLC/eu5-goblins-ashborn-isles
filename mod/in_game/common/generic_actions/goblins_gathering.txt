@@ -339,6 +339,89 @@ ga_send_supplies = {
         } }
 }
 
+ga_swear_pact = {
+    type = situation
+    show_message = no
+    potential = { scope:actor = { ga_is_goblin = yes is_subject = no is_junior_partner = no  } }
+    allow = { scope:actor = {  ga_sp_free = yes } }
+    automation_tick = never
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    cooldown = { type = ga_swear_pact years = 2 }
+    select_trigger = {
+        looking_for_a = situation
+        interaction_source_list = { situation:ga_gathering_of_five = { add_to_list = source } }
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { this = situation:ga_gathering_of_five situation_is_active = yes }
+    }
+    select_trigger = {
+        looking_for_a = country
+        interaction_source_list = { c:CDM ?= { add_to_list = source } c:QBR ?= { add_to_list = source } c:RHK ?= { add_to_list = source } c:SFK ?= { add_to_list = source } c:SWK ?= { add_to_list = source } c:GTF ?= { add_to_list = source } }
+        target_flag = target name = ga_choose_kingdom none_available_msg_key = ga_ui_no_crown
+        column = { data = name }
+        show_why_not_enabled = yes
+        visible = { ga_is_goblin = yes this != scope:actor country_exists = this }
+        enabled = { scope:actor = {
+        custom_tooltip = { text = ga_ui_independent_tt ga_independent_goblin = yes }
+        custom_tooltip = { text = ga_ui_peace_tt at_war = no }
+        custom_tooltip = { text = ga_ui_pact_free_tt NOT = { has_variable = ga_sp_pending } }
+        custom_tooltip = { text = ga_ui_harbor_free_tt NOT = { has_variable = ga_hb_pending } }
+        custom_tooltip = { text = ga_ui_friendly_tt NOT = { is_rival_of = scope:target } NOT = { is_enemy_of = scope:target } }
+        custom_tooltip = { text = ga_ui_pact_opinion_tt "opinion(scope:target)" >= 50 }
+    }
+    scope:target = {
+        custom_tooltip = { text = ga_ui_independent_tt ga_independent_goblin = yes }
+        custom_tooltip = { text = ga_ui_peace_tt at_war = no }
+        custom_tooltip = { text = ga_ui_pact_free_tt NOT = { has_variable = ga_sp_pending } }
+        custom_tooltip = { text = ga_ui_harbor_free_tt NOT = { has_variable = ga_hb_pending } }
+        custom_tooltip = { text = ga_ui_friendly_tt NOT = { is_rival_of = scope:actor } NOT = { is_enemy_of = scope:actor } }
+        custom_tooltip = { text = ga_ui_pact_opinion_tt "opinion(scope:actor)" >= 50 }
+    }
+    scope:actor = {
+        custom_tooltip = { text = ga_ui_pact_foundation_tt OR = { is_allied_with = { target = scope:target } AND = { scope:target = { tag = CDM } has_variable = ga_cp_honored_CDM } AND = { scope:target = { tag = QBR } has_variable = ga_cp_honored_QBR } AND = { scope:target = { tag = RHK } has_variable = ga_cp_honored_RHK } AND = { scope:target = { tag = SFK } has_variable = ga_cp_honored_SFK } AND = { scope:target = { tag = SWK } has_variable = ga_cp_honored_SWK } AND = { scope:target = { tag = GTF } has_variable = ga_cp_honored_GTF } } }
+        custom_tooltip = { text = ga_ui_not_sworn_tt NOT = { OR = { AND = { scope:target = { tag = CDM } has_variable = ga_sp_sworn_CDM } AND = { scope:target = { tag = QBR } has_variable = ga_sp_sworn_QBR } AND = { scope:target = { tag = RHK } has_variable = ga_sp_sworn_RHK } AND = { scope:target = { tag = SFK } has_variable = ga_sp_sworn_SFK } AND = { scope:target = { tag = SWK } has_variable = ga_sp_sworn_SWK } AND = { scope:target = { tag = GTF } has_variable = ga_sp_sworn_GTF } } } }
+    } }
+    }
+    effect = { if = { limit = { exists = scope:target } hidden_effect = { if = { limit = { scope:actor = {
+        ga_independent_goblin = yes
+        at_war = no
+        NOT = { has_variable = ga_sp_pending }
+        NOT = { has_variable = ga_hb_pending }
+        NOT = { is_rival_of = scope:target } NOT = { is_enemy_of = scope:target }
+        "opinion(scope:target)" >= 50
+    }
+    scope:target = {
+        ga_independent_goblin = yes
+        at_war = no
+        NOT = { has_variable = ga_sp_pending }
+        NOT = { has_variable = ga_hb_pending }
+        NOT = { is_rival_of = scope:actor } NOT = { is_enemy_of = scope:actor }
+        "opinion(scope:actor)" >= 50
+    }
+    scope:actor = {
+        OR = { is_allied_with = { target = scope:target } AND = { scope:target = { tag = CDM } has_variable = ga_cp_honored_CDM } AND = { scope:target = { tag = QBR } has_variable = ga_cp_honored_QBR } AND = { scope:target = { tag = RHK } has_variable = ga_cp_honored_RHK } AND = { scope:target = { tag = SFK } has_variable = ga_cp_honored_SFK } AND = { scope:target = { tag = SWK } has_variable = ga_cp_honored_SWK } AND = { scope:target = { tag = GTF } has_variable = ga_cp_honored_GTF } }
+        NOT = { OR = { AND = { scope:target = { tag = CDM } has_variable = ga_sp_sworn_CDM } AND = { scope:target = { tag = QBR } has_variable = ga_sp_sworn_QBR } AND = { scope:target = { tag = RHK } has_variable = ga_sp_sworn_RHK } AND = { scope:target = { tag = SFK } has_variable = ga_sp_sworn_SFK } AND = { scope:target = { tag = SWK } has_variable = ga_sp_sworn_SWK } AND = { scope:target = { tag = GTF } has_variable = ga_sp_sworn_GTF } } }
+    } }
+        scope:actor = {
+            save_scope_as = ga_sp_requester
+            set_variable = { name = ga_sp_pending value = yes days = 180 }
+            set_variable = { name = ga_sp_partner value = scope:target days = 180 }
+        }
+        scope:target = {
+            save_scope_as = ga_sp_provider
+            set_variable = { name = ga_sp_pending value = yes days = 180 }
+            set_variable = { name = ga_sp_offer_from value = scope:actor days = 180 }
+            trigger_event_non_silently = ga_gathering.36
+        }
+    } } } }
+    ai_will_do = { add = 10
+        if = { limit = { exists = scope:target }
+            add = { value = "scope:actor.opinion(scope:target)" multiply = 0.2 desc = ga_relations }
+        } }
+}
+
 ga_offer_compact = {
     type = situation
     show_message = no
@@ -380,21 +463,17 @@ NOT = { AND = { scope:target = { tag = GTF } has_variable = ga_cp_lock_GTF } } }
         custom_tooltip = { text = ga_ui_peace_tt at_war = no }
         custom_tooltip = { text = ga_ui_harbor_free_tt NOT = { has_variable = ga_hb_pending } }
         custom_tooltip = { text = ga_ui_friendly_tt NOT = { is_rival_of = scope:target } NOT = { is_enemy_of = scope:target } }
-        custom_tooltip = { text = ga_ui_allied_tt is_allied_with = { target = scope:target } }
-        custom_tooltip = { text = ga_ui_bargain_tt OR = { AND = { scope:target = { tag = CDM } has_variable = ga_cp_honored_CDM } AND = { scope:target = { tag = QBR } has_variable = ga_cp_honored_QBR } AND = { scope:target = { tag = RHK } has_variable = ga_cp_honored_RHK } AND = { scope:target = { tag = SFK } has_variable = ga_cp_honored_SFK } AND = { scope:target = { tag = SWK } has_variable = ga_cp_honored_SWK } AND = { scope:target = { tag = GTF } has_variable = ga_cp_honored_GTF } } }
-custom_tooltip = { text = ga_ui_alliance_age_tt OR = { AND = { scope:target = { tag = CDM } has_variable = ga_cp_allied_ready_CDM } AND = { scope:target = { tag = QBR } has_variable = ga_cp_allied_ready_QBR } AND = { scope:target = { tag = RHK } has_variable = ga_cp_allied_ready_RHK } AND = { scope:target = { tag = SFK } has_variable = ga_cp_allied_ready_SFK } AND = { scope:target = { tag = SWK } has_variable = ga_cp_allied_ready_SWK } AND = { scope:target = { tag = GTF } has_variable = ga_cp_allied_ready_GTF } } }
+        custom_tooltip = { text = ga_ui_bound_tt OR = { OR = { AND = { scope:target = { tag = CDM } has_variable = ga_sp_sworn_CDM } AND = { scope:target = { tag = QBR } has_variable = ga_sp_sworn_QBR } AND = { scope:target = { tag = RHK } has_variable = ga_sp_sworn_RHK } AND = { scope:target = { tag = SFK } has_variable = ga_sp_sworn_SFK } AND = { scope:target = { tag = SWK } has_variable = ga_sp_sworn_SWK } AND = { scope:target = { tag = GTF } has_variable = ga_sp_sworn_GTF } } AND = { is_allied_with = { target = scope:target } OR = { AND = { scope:target = { tag = CDM } has_variable = ga_cp_honored_CDM has_variable = ga_cp_allied_ready_CDM } AND = { scope:target = { tag = QBR } has_variable = ga_cp_honored_QBR has_variable = ga_cp_allied_ready_QBR } AND = { scope:target = { tag = RHK } has_variable = ga_cp_honored_RHK has_variable = ga_cp_allied_ready_RHK } AND = { scope:target = { tag = SFK } has_variable = ga_cp_honored_SFK has_variable = ga_cp_allied_ready_SFK } AND = { scope:target = { tag = SWK } has_variable = ga_cp_honored_SWK has_variable = ga_cp_allied_ready_SWK } AND = { scope:target = { tag = GTF } has_variable = ga_cp_honored_GTF has_variable = ga_cp_allied_ready_GTF } } } } }
     }
     scope:target = {
         custom_tooltip = { text = ga_ui_independent_tt ga_independent_goblin = yes }
         custom_tooltip = { text = ga_ui_peace_tt at_war = no }
         custom_tooltip = { text = ga_ui_harbor_free_tt NOT = { has_variable = ga_hb_pending } }
         custom_tooltip = { text = ga_ui_friendly_tt NOT = { is_rival_of = scope:actor } NOT = { is_enemy_of = scope:actor } }
-        custom_tooltip = { text = ga_ui_allied_tt is_allied_with = { target = scope:actor } }
-        custom_tooltip = { text = ga_ui_opinion_tt "opinion(scope:actor)" >= 150 }
-        custom_tooltip = { text = ga_ui_strength_tt relative_strength = { target = scope:actor value <= 0.65 } }
+        custom_tooltip = { text = ga_ui_bound_tt OR = { OR = { AND = { scope:actor = { tag = CDM } has_variable = ga_sp_sworn_CDM } AND = { scope:actor = { tag = QBR } has_variable = ga_sp_sworn_QBR } AND = { scope:actor = { tag = RHK } has_variable = ga_sp_sworn_RHK } AND = { scope:actor = { tag = SFK } has_variable = ga_sp_sworn_SFK } AND = { scope:actor = { tag = SWK } has_variable = ga_sp_sworn_SWK } AND = { scope:actor = { tag = GTF } has_variable = ga_sp_sworn_GTF } } AND = { is_allied_with = { target = scope:actor } OR = { AND = { scope:actor = { tag = CDM } has_variable = ga_cp_honored_CDM has_variable = ga_cp_allied_ready_CDM } AND = { scope:actor = { tag = QBR } has_variable = ga_cp_honored_QBR has_variable = ga_cp_allied_ready_QBR } AND = { scope:actor = { tag = RHK } has_variable = ga_cp_honored_RHK has_variable = ga_cp_allied_ready_RHK } AND = { scope:actor = { tag = SFK } has_variable = ga_cp_honored_SFK has_variable = ga_cp_allied_ready_SFK } AND = { scope:actor = { tag = SWK } has_variable = ga_cp_honored_SWK has_variable = ga_cp_allied_ready_SWK } AND = { scope:actor = { tag = GTF } has_variable = ga_cp_honored_GTF has_variable = ga_cp_allied_ready_GTF } } } } }
+        custom_tooltip = { text = ga_ui_opinion_tt "opinion(scope:actor)" >= 100 }
+        custom_tooltip = { text = ga_ui_strength_tt OR = { OR = { AND = { scope:actor = { tag = CDM } has_variable = ga_sp_sworn_CDM } AND = { scope:actor = { tag = QBR } has_variable = ga_sp_sworn_QBR } AND = { scope:actor = { tag = RHK } has_variable = ga_sp_sworn_RHK } AND = { scope:actor = { tag = SFK } has_variable = ga_sp_sworn_SFK } AND = { scope:actor = { tag = SWK } has_variable = ga_sp_sworn_SWK } AND = { scope:actor = { tag = GTF } has_variable = ga_sp_sworn_GTF } } relative_strength = { target = scope:actor value <= 0.65 } } }
         custom_tooltip = { text = ga_ui_rank_tt scope:actor.country_rank_level >= country_rank_level }
-        custom_tooltip = { text = ga_ui_bargain_tt OR = { AND = { scope:actor = { tag = CDM } has_variable = ga_cp_honored_CDM } AND = { scope:actor = { tag = QBR } has_variable = ga_cp_honored_QBR } AND = { scope:actor = { tag = RHK } has_variable = ga_cp_honored_RHK } AND = { scope:actor = { tag = SFK } has_variable = ga_cp_honored_SFK } AND = { scope:actor = { tag = SWK } has_variable = ga_cp_honored_SWK } AND = { scope:actor = { tag = GTF } has_variable = ga_cp_honored_GTF } } }
-custom_tooltip = { text = ga_ui_alliance_age_tt OR = { AND = { scope:actor = { tag = CDM } has_variable = ga_cp_allied_ready_CDM } AND = { scope:actor = { tag = QBR } has_variable = ga_cp_allied_ready_QBR } AND = { scope:actor = { tag = RHK } has_variable = ga_cp_allied_ready_RHK } AND = { scope:actor = { tag = SFK } has_variable = ga_cp_allied_ready_SFK } AND = { scope:actor = { tag = SWK } has_variable = ga_cp_allied_ready_SWK } AND = { scope:actor = { tag = GTF } has_variable = ga_cp_allied_ready_GTF } } }
     } }
     }
     effect = { if = { limit = { exists = scope:target } hidden_effect = { if = { limit = { scope:target = { ga_cp_free = yes custom_tooltip = { text = ga_ui_pair_wait_tt NOT = { AND = { scope:actor = { tag = CDM } has_variable = ga_cp_lock_CDM } }
@@ -414,21 +493,17 @@ NOT = { AND = { scope:target = { tag = GTF } has_variable = ga_cp_lock_GTF } } }
         custom_tooltip = { text = ga_ui_peace_tt at_war = no }
         custom_tooltip = { text = ga_ui_harbor_free_tt NOT = { has_variable = ga_hb_pending } }
         custom_tooltip = { text = ga_ui_friendly_tt NOT = { is_rival_of = scope:target } NOT = { is_enemy_of = scope:target } }
-        custom_tooltip = { text = ga_ui_allied_tt is_allied_with = { target = scope:target } }
-        custom_tooltip = { text = ga_ui_bargain_tt OR = { AND = { scope:target = { tag = CDM } has_variable = ga_cp_honored_CDM } AND = { scope:target = { tag = QBR } has_variable = ga_cp_honored_QBR } AND = { scope:target = { tag = RHK } has_variable = ga_cp_honored_RHK } AND = { scope:target = { tag = SFK } has_variable = ga_cp_honored_SFK } AND = { scope:target = { tag = SWK } has_variable = ga_cp_honored_SWK } AND = { scope:target = { tag = GTF } has_variable = ga_cp_honored_GTF } } }
-custom_tooltip = { text = ga_ui_alliance_age_tt OR = { AND = { scope:target = { tag = CDM } has_variable = ga_cp_allied_ready_CDM } AND = { scope:target = { tag = QBR } has_variable = ga_cp_allied_ready_QBR } AND = { scope:target = { tag = RHK } has_variable = ga_cp_allied_ready_RHK } AND = { scope:target = { tag = SFK } has_variable = ga_cp_allied_ready_SFK } AND = { scope:target = { tag = SWK } has_variable = ga_cp_allied_ready_SWK } AND = { scope:target = { tag = GTF } has_variable = ga_cp_allied_ready_GTF } } }
+        custom_tooltip = { text = ga_ui_bound_tt OR = { OR = { AND = { scope:target = { tag = CDM } has_variable = ga_sp_sworn_CDM } AND = { scope:target = { tag = QBR } has_variable = ga_sp_sworn_QBR } AND = { scope:target = { tag = RHK } has_variable = ga_sp_sworn_RHK } AND = { scope:target = { tag = SFK } has_variable = ga_sp_sworn_SFK } AND = { scope:target = { tag = SWK } has_variable = ga_sp_sworn_SWK } AND = { scope:target = { tag = GTF } has_variable = ga_sp_sworn_GTF } } AND = { is_allied_with = { target = scope:target } OR = { AND = { scope:target = { tag = CDM } has_variable = ga_cp_honored_CDM has_variable = ga_cp_allied_ready_CDM } AND = { scope:target = { tag = QBR } has_variable = ga_cp_honored_QBR has_variable = ga_cp_allied_ready_QBR } AND = { scope:target = { tag = RHK } has_variable = ga_cp_honored_RHK has_variable = ga_cp_allied_ready_RHK } AND = { scope:target = { tag = SFK } has_variable = ga_cp_honored_SFK has_variable = ga_cp_allied_ready_SFK } AND = { scope:target = { tag = SWK } has_variable = ga_cp_honored_SWK has_variable = ga_cp_allied_ready_SWK } AND = { scope:target = { tag = GTF } has_variable = ga_cp_honored_GTF has_variable = ga_cp_allied_ready_GTF } } } } }
     }
     scope:target = {
         custom_tooltip = { text = ga_ui_independent_tt ga_independent_goblin = yes }
         custom_tooltip = { text = ga_ui_peace_tt at_war = no }
         custom_tooltip = { text = ga_ui_harbor_free_tt NOT = { has_variable = ga_hb_pending } }
         custom_tooltip = { text = ga_ui_friendly_tt NOT = { is_rival_of = scope:actor } NOT = { is_enemy_of = scope:actor } }
-        custom_tooltip = { text = ga_ui_allied_tt is_allied_with = { target = scope:actor } }
-        custom_tooltip = { text = ga_ui_opinion_tt "opinion(scope:actor)" >= 150 }
-        custom_tooltip = { text = ga_ui_strength_tt relative_strength = { target = scope:actor value <= 0.65 } }
+        custom_tooltip = { text = ga_ui_bound_tt OR = { OR = { AND = { scope:actor = { tag = CDM } has_variable = ga_sp_sworn_CDM } AND = { scope:actor = { tag = QBR } has_variable = ga_sp_sworn_QBR } AND = { scope:actor = { tag = RHK } has_variable = ga_sp_sworn_RHK } AND = { scope:actor = { tag = SFK } has_variable = ga_sp_sworn_SFK } AND = { scope:actor = { tag = SWK } has_variable = ga_sp_sworn_SWK } AND = { scope:actor = { tag = GTF } has_variable = ga_sp_sworn_GTF } } AND = { is_allied_with = { target = scope:actor } OR = { AND = { scope:actor = { tag = CDM } has_variable = ga_cp_honored_CDM has_variable = ga_cp_allied_ready_CDM } AND = { scope:actor = { tag = QBR } has_variable = ga_cp_honored_QBR has_variable = ga_cp_allied_ready_QBR } AND = { scope:actor = { tag = RHK } has_variable = ga_cp_honored_RHK has_variable = ga_cp_allied_ready_RHK } AND = { scope:actor = { tag = SFK } has_variable = ga_cp_honored_SFK has_variable = ga_cp_allied_ready_SFK } AND = { scope:actor = { tag = SWK } has_variable = ga_cp_honored_SWK has_variable = ga_cp_allied_ready_SWK } AND = { scope:actor = { tag = GTF } has_variable = ga_cp_honored_GTF has_variable = ga_cp_allied_ready_GTF } } } } }
+        custom_tooltip = { text = ga_ui_opinion_tt "opinion(scope:actor)" >= 100 }
+        custom_tooltip = { text = ga_ui_strength_tt OR = { OR = { AND = { scope:actor = { tag = CDM } has_variable = ga_sp_sworn_CDM } AND = { scope:actor = { tag = QBR } has_variable = ga_sp_sworn_QBR } AND = { scope:actor = { tag = RHK } has_variable = ga_sp_sworn_RHK } AND = { scope:actor = { tag = SFK } has_variable = ga_sp_sworn_SFK } AND = { scope:actor = { tag = SWK } has_variable = ga_sp_sworn_SWK } AND = { scope:actor = { tag = GTF } has_variable = ga_sp_sworn_GTF } } relative_strength = { target = scope:actor value <= 0.65 } } }
         custom_tooltip = { text = ga_ui_rank_tt scope:actor.country_rank_level >= country_rank_level }
-        custom_tooltip = { text = ga_ui_bargain_tt OR = { AND = { scope:actor = { tag = CDM } has_variable = ga_cp_honored_CDM } AND = { scope:actor = { tag = QBR } has_variable = ga_cp_honored_QBR } AND = { scope:actor = { tag = RHK } has_variable = ga_cp_honored_RHK } AND = { scope:actor = { tag = SFK } has_variable = ga_cp_honored_SFK } AND = { scope:actor = { tag = SWK } has_variable = ga_cp_honored_SWK } AND = { scope:actor = { tag = GTF } has_variable = ga_cp_honored_GTF } } }
-custom_tooltip = { text = ga_ui_alliance_age_tt OR = { AND = { scope:actor = { tag = CDM } has_variable = ga_cp_allied_ready_CDM } AND = { scope:actor = { tag = QBR } has_variable = ga_cp_allied_ready_QBR } AND = { scope:actor = { tag = RHK } has_variable = ga_cp_allied_ready_RHK } AND = { scope:actor = { tag = SFK } has_variable = ga_cp_allied_ready_SFK } AND = { scope:actor = { tag = SWK } has_variable = ga_cp_allied_ready_SWK } AND = { scope:actor = { tag = GTF } has_variable = ga_cp_allied_ready_GTF } } }
     } } } scope:actor = {
         save_scope_as = ga_cp_requester
         if = { limit = { NOT = { has_variable = ga_cp_serial } }
@@ -501,7 +576,7 @@ scope:ga_cp_requester = {
     }
  scope:actor = { set_variable = { name = ga_cp_stage value = 1 days = 180 } }
  scope:target = { trigger_event_non_silently = ga_gathering.30 } } } } }
-    ai_will_do = { add = 5 }
+    ai_will_do = { add = 10 }
 }
 
 ga_challenge_crown = {

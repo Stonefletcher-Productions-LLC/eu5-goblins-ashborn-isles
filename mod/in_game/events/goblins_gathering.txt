@@ -1768,3 +1768,117 @@ ga_gathering.35 = {
     }
     after = {  }
 }
+
+ga_gathering.36 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.36.title
+    desc = ga_gathering.36.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.36.a
+        trigger = { custom_tooltip = { text = ga_sp_ready_tt ga_sp_valid = yes } }
+        ai_chance = { factor = 3 modifier = { factor = 0.5 relative_strength = { target = scope:ga_sp_requester value <= 0.5 } } }
+        custom_tooltip = ga_sp_terms_tt
+hidden_effect = { if = { limit = { ga_sp_valid = yes }
+        scope:ga_sp_requester = {
+            if = { limit = { scope:ga_sp_provider = { tag = CDM } } set_variable = { name = ga_sp_sworn_CDM value = yes } }
+if = { limit = { scope:ga_sp_provider = { tag = QBR } } set_variable = { name = ga_sp_sworn_QBR value = yes } }
+if = { limit = { scope:ga_sp_provider = { tag = RHK } } set_variable = { name = ga_sp_sworn_RHK value = yes } }
+if = { limit = { scope:ga_sp_provider = { tag = SFK } } set_variable = { name = ga_sp_sworn_SFK value = yes } }
+if = { limit = { scope:ga_sp_provider = { tag = SWK } } set_variable = { name = ga_sp_sworn_SWK value = yes } }
+if = { limit = { scope:ga_sp_provider = { tag = GTF } } set_variable = { name = ga_sp_sworn_GTF value = yes } }
+            add_opinion = { target = scope:ga_sp_provider modifier = ga_sworn_pact }
+        }
+        scope:ga_sp_provider = {
+            if = { limit = { scope:ga_sp_requester = { tag = CDM } } set_variable = { name = ga_sp_sworn_CDM value = yes } }
+if = { limit = { scope:ga_sp_requester = { tag = QBR } } set_variable = { name = ga_sp_sworn_QBR value = yes } }
+if = { limit = { scope:ga_sp_requester = { tag = RHK } } set_variable = { name = ga_sp_sworn_RHK value = yes } }
+if = { limit = { scope:ga_sp_requester = { tag = SFK } } set_variable = { name = ga_sp_sworn_SFK value = yes } }
+if = { limit = { scope:ga_sp_requester = { tag = SWK } } set_variable = { name = ga_sp_sworn_SWK value = yes } }
+if = { limit = { scope:ga_sp_requester = { tag = GTF } } set_variable = { name = ga_sp_sworn_GTF value = yes } }
+            add_opinion = { target = scope:ga_sp_requester modifier = ga_sworn_pact }
+        }
+        scope:ga_sp_requester ?= {
+        if = { limit = { has_variable = ga_sp_partner var:ga_sp_partner = scope:ga_sp_provider } remove_variable = ga_sp_pending remove_variable = ga_sp_partner }
+    }
+    scope:ga_sp_provider ?= {
+        if = { limit = { has_variable = ga_sp_offer_from var:ga_sp_offer_from = scope:ga_sp_requester } remove_variable = ga_sp_pending remove_variable = ga_sp_offer_from }
+    }
+        scope:ga_sp_requester = { trigger_event_non_silently = ga_gathering.37 }
+        scope:ga_sp_provider = { trigger_event_non_silently = ga_gathering.37 }
+    } }
+    }
+option = {
+        name = ga_gathering.36.b
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        hidden_effect = { if = { limit = { ga_sp_session_matches = yes }
+        scope:ga_sp_requester = { trigger_event_non_silently = ga_gathering.38 }
+    }
+    scope:ga_sp_requester ?= {
+        if = { limit = { has_variable = ga_sp_partner var:ga_sp_partner = scope:ga_sp_provider } remove_variable = ga_sp_pending remove_variable = ga_sp_partner }
+    }
+    scope:ga_sp_provider ?= {
+        if = { limit = { has_variable = ga_sp_offer_from var:ga_sp_offer_from = scope:ga_sp_requester } remove_variable = ga_sp_pending remove_variable = ga_sp_offer_from }
+    } }
+    }
+    after = {  }
+}
+
+ga_gathering.37 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.37.title
+    desc = ga_gathering.37.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.37.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        
+    }
+    after = {  }
+}
+
+ga_gathering.38 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.38.title
+    desc = ga_gathering.38.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/harbor_pact.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.38.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        
+    }
+    after = {  }
+}
+
+ga_gathering.39 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.39.title
+    desc = ga_gathering.39.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/gathering.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.39.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        
+    }
+    after = {  }
+}

@@ -1,4 +1,4 @@
-﻿monthly_country_pulse = { on_actions = { ga_hb_contract_pulse ga_cp_history_pulse ga_clan_flags_060_pulse } }
+﻿monthly_country_pulse = { on_actions = { ga_hb_contract_pulse ga_cp_history_pulse ga_sp_pact_pulse ga_clan_flags_060_pulse } }
 ga_hb_contract_pulse = {
     trigger = { has_variable = ga_hb_committed }
     effect = {
@@ -148,6 +148,66 @@ if = { limit = { country_exists = c:GTF NOT = { tag = GTF } is_allied_with = { t
         if = { limit = { has_variable = ga_cp_owns_type_lock
             NOT = { OR = { is_subject_type = ga_compact_autonomy is_subject_type = ga_compact_protection } } }
             remove_variable = has_locked_subject_type remove_variable = ga_cp_owns_type_lock
+        }
+    }
+}
+
+ga_sp_pact_pulse = {
+    trigger = { ga_is_goblin = yes }
+    effect = {
+        if = { limit = { has_variable = ga_sp_sworn_CDM }
+            if = { limit = { country_exists = c:CDM OR = { is_at_war_with = c:CDM is_rival_of = c:CDM is_enemy_of = c:CDM AND = { tag = QBR c:CDM = { NOT = { has_variable = ga_sp_sworn_QBR } } } AND = { tag = RHK c:CDM = { NOT = { has_variable = ga_sp_sworn_RHK } } } AND = { tag = SFK c:CDM = { NOT = { has_variable = ga_sp_sworn_SFK } } } AND = { tag = SWK c:CDM = { NOT = { has_variable = ga_sp_sworn_SWK } } } AND = { tag = GTF c:CDM = { NOT = { has_variable = ga_sp_sworn_GTF } } } } }
+                remove_variable = ga_sp_sworn_CDM
+                c:CDM = { save_scope_as = ga_sp_broken_partner }
+                add_opinion = { target = scope:ga_sp_broken_partner modifier = ga_sworn_pact_broken }
+                trigger_event_non_silently = ga_gathering.39
+            }
+            if = { limit = { NOT = { country_exists = c:CDM } } remove_variable = ga_sp_sworn_CDM }
+        }
+if = { limit = { has_variable = ga_sp_sworn_QBR }
+            if = { limit = { country_exists = c:QBR OR = { is_at_war_with = c:QBR is_rival_of = c:QBR is_enemy_of = c:QBR AND = { tag = CDM c:QBR = { NOT = { has_variable = ga_sp_sworn_CDM } } } AND = { tag = RHK c:QBR = { NOT = { has_variable = ga_sp_sworn_RHK } } } AND = { tag = SFK c:QBR = { NOT = { has_variable = ga_sp_sworn_SFK } } } AND = { tag = SWK c:QBR = { NOT = { has_variable = ga_sp_sworn_SWK } } } AND = { tag = GTF c:QBR = { NOT = { has_variable = ga_sp_sworn_GTF } } } } }
+                remove_variable = ga_sp_sworn_QBR
+                c:QBR = { save_scope_as = ga_sp_broken_partner }
+                add_opinion = { target = scope:ga_sp_broken_partner modifier = ga_sworn_pact_broken }
+                trigger_event_non_silently = ga_gathering.39
+            }
+            if = { limit = { NOT = { country_exists = c:QBR } } remove_variable = ga_sp_sworn_QBR }
+        }
+if = { limit = { has_variable = ga_sp_sworn_RHK }
+            if = { limit = { country_exists = c:RHK OR = { is_at_war_with = c:RHK is_rival_of = c:RHK is_enemy_of = c:RHK AND = { tag = CDM c:RHK = { NOT = { has_variable = ga_sp_sworn_CDM } } } AND = { tag = QBR c:RHK = { NOT = { has_variable = ga_sp_sworn_QBR } } } AND = { tag = SFK c:RHK = { NOT = { has_variable = ga_sp_sworn_SFK } } } AND = { tag = SWK c:RHK = { NOT = { has_variable = ga_sp_sworn_SWK } } } AND = { tag = GTF c:RHK = { NOT = { has_variable = ga_sp_sworn_GTF } } } } }
+                remove_variable = ga_sp_sworn_RHK
+                c:RHK = { save_scope_as = ga_sp_broken_partner }
+                add_opinion = { target = scope:ga_sp_broken_partner modifier = ga_sworn_pact_broken }
+                trigger_event_non_silently = ga_gathering.39
+            }
+            if = { limit = { NOT = { country_exists = c:RHK } } remove_variable = ga_sp_sworn_RHK }
+        }
+if = { limit = { has_variable = ga_sp_sworn_SFK }
+            if = { limit = { country_exists = c:SFK OR = { is_at_war_with = c:SFK is_rival_of = c:SFK is_enemy_of = c:SFK AND = { tag = CDM c:SFK = { NOT = { has_variable = ga_sp_sworn_CDM } } } AND = { tag = QBR c:SFK = { NOT = { has_variable = ga_sp_sworn_QBR } } } AND = { tag = RHK c:SFK = { NOT = { has_variable = ga_sp_sworn_RHK } } } AND = { tag = SWK c:SFK = { NOT = { has_variable = ga_sp_sworn_SWK } } } AND = { tag = GTF c:SFK = { NOT = { has_variable = ga_sp_sworn_GTF } } } } }
+                remove_variable = ga_sp_sworn_SFK
+                c:SFK = { save_scope_as = ga_sp_broken_partner }
+                add_opinion = { target = scope:ga_sp_broken_partner modifier = ga_sworn_pact_broken }
+                trigger_event_non_silently = ga_gathering.39
+            }
+            if = { limit = { NOT = { country_exists = c:SFK } } remove_variable = ga_sp_sworn_SFK }
+        }
+if = { limit = { has_variable = ga_sp_sworn_SWK }
+            if = { limit = { country_exists = c:SWK OR = { is_at_war_with = c:SWK is_rival_of = c:SWK is_enemy_of = c:SWK AND = { tag = CDM c:SWK = { NOT = { has_variable = ga_sp_sworn_CDM } } } AND = { tag = QBR c:SWK = { NOT = { has_variable = ga_sp_sworn_QBR } } } AND = { tag = RHK c:SWK = { NOT = { has_variable = ga_sp_sworn_RHK } } } AND = { tag = SFK c:SWK = { NOT = { has_variable = ga_sp_sworn_SFK } } } AND = { tag = GTF c:SWK = { NOT = { has_variable = ga_sp_sworn_GTF } } } } }
+                remove_variable = ga_sp_sworn_SWK
+                c:SWK = { save_scope_as = ga_sp_broken_partner }
+                add_opinion = { target = scope:ga_sp_broken_partner modifier = ga_sworn_pact_broken }
+                trigger_event_non_silently = ga_gathering.39
+            }
+            if = { limit = { NOT = { country_exists = c:SWK } } remove_variable = ga_sp_sworn_SWK }
+        }
+if = { limit = { has_variable = ga_sp_sworn_GTF }
+            if = { limit = { country_exists = c:GTF OR = { is_at_war_with = c:GTF is_rival_of = c:GTF is_enemy_of = c:GTF AND = { tag = CDM c:GTF = { NOT = { has_variable = ga_sp_sworn_CDM } } } AND = { tag = QBR c:GTF = { NOT = { has_variable = ga_sp_sworn_QBR } } } AND = { tag = RHK c:GTF = { NOT = { has_variable = ga_sp_sworn_RHK } } } AND = { tag = SFK c:GTF = { NOT = { has_variable = ga_sp_sworn_SFK } } } AND = { tag = SWK c:GTF = { NOT = { has_variable = ga_sp_sworn_SWK } } } } }
+                remove_variable = ga_sp_sworn_GTF
+                c:GTF = { save_scope_as = ga_sp_broken_partner }
+                add_opinion = { target = scope:ga_sp_broken_partner modifier = ga_sworn_pact_broken }
+                trigger_event_non_silently = ga_gathering.39
+            }
+            if = { limit = { NOT = { country_exists = c:GTF } } remove_variable = ga_sp_sworn_GTF }
         }
     }
 }

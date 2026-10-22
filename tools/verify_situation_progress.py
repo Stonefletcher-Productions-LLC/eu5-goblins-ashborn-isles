@@ -24,7 +24,8 @@ def verify(read):
     assert w.condition(fields['visible'], 'QBR', scopes)
     assert not w.condition(fields['enabled'], 'QBR', scopes)
     reasons = {v for k, _, v in flatten(fields['enabled']) if k == 'text'}
-    assert {'ga_ui_bargain_tt','ga_ui_alliance_age_tt','ga_ui_opinion_tt','ga_ui_strength_tt','ga_ui_rank_tt','ga_ui_pair_wait_tt'} <= reasons
+    trust = {'ga_ui_bound_tt'} if 'ga_swear_pact' in definitions else {'ga_ui_bargain_tt','ga_ui_alliance_age_tt'}
+    assert trust | {'ga_ui_opinion_tt','ga_ui_strength_tt','ga_ui_rank_tt','ga_ui_pair_wait_tt'} <= reasons
     for state in ['at_war','is_subject','is_junior_partner']:
         w.countries['QBR'][state] = True
         assert w.condition(fields['visible'], 'QBR', scopes)

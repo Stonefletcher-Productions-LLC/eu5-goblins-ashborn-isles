@@ -11,8 +11,13 @@ TOOLTIPS = {
     'allied': 'An alliance currently exists with the other crown. Form one through ordinary diplomacy.',
     'bargain': 'This crown has recorded a completed five-year Harbor Bargain with this specific partner. A signed or unfinished bargain is not enough; older, untracked contracts earn no retroactive credit.',
     'alliance_age': 'This crown has recorded three years of alliance with this specific partner. The monthly check must observe the full term; an observed break resets it. This can overlap the five-year bargain.',
-    'opinion': 'The prospective subject has at least 150 opinion of the patron.',
-    'strength': 'The prospective subject has no more than 65% of the patron\'s strength.',
+    'opinion': 'The prospective subject has at least 100 opinion of the patron.',
+    'strength': 'The two crowns have sworn a pact, or the prospective subject has no more than 65% of the patron\'s strength.',
+    'bound': 'The two crowns are bound by a Sworn Pact, or have both completed a five-year Harbor Bargain together and kept an alliance for three observed years.',
+    'pact_free': 'This crown has no pending Sworn Pact offer. It expires 180 days after it was sent.',
+    'pact_opinion': 'This crown has at least 50 opinion of the other crown.',
+    'pact_foundation': 'The two crowns are allied, or have completed a five-year Harbor Bargain together.',
+    'not_sworn': 'These crowns have not already sworn a pact.',
     'rank': 'The prospective subject has no higher country rank than the patron.',
 }
 
@@ -22,8 +27,8 @@ def build(out, homeland, write, loc):
     loc('ga_ui_no_crown', '@trigger_no! No eligible crown. Inspect the listed crowns for unmet requirements. Annexed crowns and your own crown are not listed.')
     loc('ga_ui_homeland_progress', f"Your qualifying realm: [GetPlayer.MakeScope.ScriptValue('ga_ui_homeland_count')|0] / {len(homeland)} homeland locations")
     loc('ga_ui_homeland_rules', 'Unification requires every homeland location, not just the six capitals. Direct ownership, qualifying vassals, Compact charters and junior union partners count. Allies, tributaries, occupation and foreign land do not. A dependent crown cannot claim unification; its count is shown as zero.')
-    loc('ga_ui_compact_heading', 'Working toward Compact talks')
-    loc('ga_ui_compact_route', 'Complete a five-year Harbor Bargain together and maintain an alliance for three years; the terms can overlap. Then meet the opinion, strength, rank and peace requirements. Choose Open Compact Talks and inspect a crown to see which checks are still unmet. A disabled action also explains pending talks and quiet periods.')
+    loc('ga_ui_compact_heading', '#bold The Pact Ladder#! - Bargain, Sworn Pact, Compact')
+    loc('ga_ui_compact_route', '#Y 1. Trust#! - ally a crown, or complete a five-year Harbor Bargain with it.\n#Y 2. Swear#! - with 50+ opinion both ways, use Swear a Sworn Pact.\n#Y 3. Bind#! - when the sworn crown holds 100+ opinion of you and no higher rank, use Open Compact Talks. It becomes your subject under a charter and its homeland counts toward unification.\nEach crown below shows your current step with it. Inspect a crown in any action to see which checks are still unmet.')
     loc('ga_ui_history_note', 'History updates monthly. Existing saves start alliance observation with this update; only newly tracked bargains earn completion credit. A missing check means the full requirement has not yet been recorded, not that progress is lost. An observed alliance break resets its three-year term.')
     loc('ga_ui_eastern_route', 'Keep the homeland united under the same realm rules. For the Eastern Hunger, secure a genuinely foreign European coastal location through normal play. The Ashborn homeland itself never counts as that foothold.')
     rows = '\n'.join(f'if = {{ limit = {{ location:{x} = {{ exists = owner owner = {{ ga_owner_in_claimant_realm = yes }} }} }} add = 1 }}' for x in homeland)

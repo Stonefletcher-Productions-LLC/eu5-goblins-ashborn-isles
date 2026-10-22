@@ -11,6 +11,8 @@ def verify(read):
                  'in_game/events/goblins_gathering.txt']:
         definitions.update({k: v for k, _, v in parse(read(path)) if k != 'namespace'})
     scenarios = []
+    # Sworn Pacts (0.6.7) lowered the Compact opinion bar; released bundles keep 150.
+    threshold = 100 if 'ga_swear_pact' in definitions else 150
     def pulse(w, hook, country):
         fields = dict((k, v) for k, _, v in definitions[hook])
         if w.condition(fields['trigger'], country, {}):
@@ -81,7 +83,7 @@ def verify(read):
     scenarios.append('observed alliance break resets the full three-year timer')
     for change in ['opinion', 'strength', 'rank', 'war', 'subject', 'alliance', 'history', 'wrong_pair', 'harbor_pending']:
         w = ready()
-        if change == 'opinion': w.opinion = 149.99
+        if change == 'opinion': w.opinion = threshold - .01
         elif change == 'strength': w.countries['QBR']['relative_strength'] = .6501
         elif change == 'rank': w.countries['QBR']['country_rank_level'] = 3
         elif change == 'war': w.countries['CDM']['at_war'] = True
@@ -92,8 +94,8 @@ def verify(read):
             if change == 'wrong_pair': w.countries['QBR']['vars']['ga_cp_honored_RHK'] = (True, None)
         else: w.countries['QBR']['vars']['ga_hb_pending'] = (True, None)
         blocked(w); scenarios.append(change + ': entry blocked')
-    w = ready(); w.countries['QBR']['relative_strength'] = .65; start(w)
-    scenarios.append('150 opinion and exactly 65 percent strength are eligible')
+    w = ready(); w.opinion = threshold; w.countries['QBR']['relative_strength'] = .65; start(w)
+    scenarios.append(f'{threshold} opinion and exactly 65 percent strength are eligible')
     for stage in [1, 2, 3]:
         for invalid in [False, True]:
             w = ready(); event = start(w)

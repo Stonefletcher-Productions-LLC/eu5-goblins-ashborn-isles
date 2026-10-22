@@ -85,6 +85,38 @@
                             autoresize = yes
                             text = "[Country.GetGovernment.GetRulerOrRegent.GetName]"
                         }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_CDM'), '(CFixedPoint)0'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_strangers"
+                            tooltip = "ga_pact_step_strangers_tt"
+                        }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_CDM'), '(CFixedPoint)1'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_trusted"
+                            tooltip = "ga_pact_step_trusted_tt"
+                        }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_CDM'), '(CFixedPoint)2'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_sworn"
+                            tooltip = "ga_pact_step_sworn_tt"
+                        }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_CDM'), '(CFixedPoint)3'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_bound"
+                            tooltip = "ga_pact_step_bound_tt"
+                        }
                     }
                     text_single = {
                         visible = "[Not(Country.Exists)]"
@@ -152,6 +184,38 @@
                             fontsize = 13
                             autoresize = yes
                             text = "[Country.GetGovernment.GetRulerOrRegent.GetName]"
+                        }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_QBR'), '(CFixedPoint)0'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_strangers"
+                            tooltip = "ga_pact_step_strangers_tt"
+                        }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_QBR'), '(CFixedPoint)1'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_trusted"
+                            tooltip = "ga_pact_step_trusted_tt"
+                        }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_QBR'), '(CFixedPoint)2'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_sworn"
+                            tooltip = "ga_pact_step_sworn_tt"
+                        }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_QBR'), '(CFixedPoint)3'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_bound"
+                            tooltip = "ga_pact_step_bound_tt"
                         }
                     }
                     text_single = {
@@ -221,6 +285,38 @@
                             autoresize = yes
                             text = "[Country.GetGovernment.GetRulerOrRegent.GetName]"
                         }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_RHK'), '(CFixedPoint)0'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_strangers"
+                            tooltip = "ga_pact_step_strangers_tt"
+                        }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_RHK'), '(CFixedPoint)1'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_trusted"
+                            tooltip = "ga_pact_step_trusted_tt"
+                        }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_RHK'), '(CFixedPoint)2'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_sworn"
+                            tooltip = "ga_pact_step_sworn_tt"
+                        }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_RHK'), '(CFixedPoint)3'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_bound"
+                            tooltip = "ga_pact_step_bound_tt"
+                        }
                     }
                     text_single = {
                         visible = "[Not(Country.Exists)]"
@@ -288,6 +384,38 @@
                             fontsize = 13
                             autoresize = yes
                             text = "[Country.GetGovernment.GetRulerOrRegent.GetName]"
+                        }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_SFK'), '(CFixedPoint)0'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_strangers"
+                            tooltip = "ga_pact_step_strangers_tt"
+                        }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_SFK'), '(CFixedPoint)1'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_trusted"
+                            tooltip = "ga_pact_step_trusted_tt"
+                        }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_SFK'), '(CFixedPoint)2'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_sworn"
+                            tooltip = "ga_pact_step_sworn_tt"
+                        }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_SFK'), '(CFixedPoint)3'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_bound"
+                            tooltip = "ga_pact_step_bound_tt"
                         }
                     }
                     text_single = {
@@ -357,6 +485,38 @@
                             autoresize = yes
                             text = "[Country.GetGovernment.GetRulerOrRegent.GetName]"
                         }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_SWK'), '(CFixedPoint)0'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_strangers"
+                            tooltip = "ga_pact_step_strangers_tt"
+                        }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_SWK'), '(CFixedPoint)1'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_trusted"
+                            tooltip = "ga_pact_step_trusted_tt"
+                        }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_SWK'), '(CFixedPoint)2'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_sworn"
+                            tooltip = "ga_pact_step_sworn_tt"
+                        }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_SWK'), '(CFixedPoint)3'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_bound"
+                            tooltip = "ga_pact_step_bound_tt"
+                        }
                     }
                     text_single = {
                         visible = "[Not(Country.Exists)]"
@@ -424,6 +584,38 @@
                             fontsize = 13
                             autoresize = yes
                             text = "[Country.GetGovernment.GetRulerOrRegent.GetName]"
+                        }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_GTF'), '(CFixedPoint)0'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_strangers"
+                            tooltip = "ga_pact_step_strangers_tt"
+                        }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_GTF'), '(CFixedPoint)1'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_trusted"
+                            tooltip = "ga_pact_step_trusted_tt"
+                        }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_GTF'), '(CFixedPoint)2'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_sworn"
+                            tooltip = "ga_pact_step_sworn_tt"
+                        }
+                        text_single = {
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_GTF'), '(CFixedPoint)3'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_bound"
+                            tooltip = "ga_pact_step_bound_tt"
                         }
                     }
                     text_single = {

@@ -11,6 +11,7 @@ from clan_identity import PROFILES, SHATTERFIN
 from event_art import image
 import harbor_bargains
 import compact_talks
+import sworn_pacts
 import situation_progress
 import early_projects
 
@@ -96,7 +97,7 @@ def action(key, name, desc, effect, selector='', allow='', ai='add = 10',
         effect = 'if = { limit = { exists = scope:target } ' + effect + ' }'
     price_line = f'    price = price:{price}\n' if price else ''
     # Harbor/Compact eligibility already supplies the readable peace check.
-    peace = '' if allow.startswith(('ga_hb_free', 'ga_cp_free')) else 'at_war = no'
+    peace = '' if allow.startswith(('ga_hb_free', 'ga_cp_free', 'ga_sp_free')) else 'at_war = no'
     return f'''{key} = {{
     type = situation
     show_message = no
@@ -201,9 +202,9 @@ ga_has_european_foothold = {{
     }}
 }}
 '''
-    write(out, 'in_game/common/scripted_triggers/goblins_gathering.txt', triggers + harbor_bargains.triggers() + compact_talks.triggers())
+    write(out, 'in_game/common/scripted_triggers/goblins_gathering.txt', triggers + harbor_bargains.triggers() + compact_talks.triggers() + sworn_pacts.triggers() + sworn_pacts.free_trigger())
     from build_clan_flags import recovery_on_action
-    write(out, 'in_game/common/on_action/goblins_gathering.txt', harbor_bargains.maintenance().replace("on_actions = { ga_hb_contract_pulse }", "on_actions = { ga_hb_contract_pulse ga_cp_history_pulse ga_clan_flags_060_pulse }") + compact_talks.pulse() + recovery_on_action())
+    write(out, 'in_game/common/on_action/goblins_gathering.txt', harbor_bargains.maintenance().replace("on_actions = { ga_hb_contract_pulse }", "on_actions = { ga_hb_contract_pulse ga_cp_history_pulse ga_sp_pact_pulse ga_clan_flags_060_pulse }") + compact_talks.pulse() + sworn_pacts.pulse() + recovery_on_action())
 
     # Use native monthly situation evaluation; no external global pulse override.
     situations = '''
@@ -342,6 +343,7 @@ situation_panel = {
             add_gold = 10
             add_opinion = { target = scope:actor modifier = ga_received_supplies }
         }''', country_picker(choices), ai=ai_friendly, years=5, price='ga_gathering_aid_price'))
+    actions.append(sworn_pacts.action(action))
     actions.append(compact_talks.action(action, country_picker))
     war_ai = '''add = -100
         if = { limit = { exists = scope:target scope:actor = { wants_to_attack = scope:target } } add = 140 }
@@ -408,7 +410,7 @@ situation_panel = {
     write(out, 'in_game/common/generic_action_ai_lists/goblins_gathering.txt', '''
 ga_gathering_ai_list = {
     potential = { ga_independent_goblin = yes can_see_situation = situation:ga_gathering_of_five }
-    actions = { ga_send_supplies ga_offer_compact ga_challenge_crown ga_claim_homeland }
+    actions = { ga_send_supplies ga_swear_pact ga_offer_compact ga_challenge_crown ga_claim_homeland }
 }
 ga_eastern_ai_list = {
     potential = { has_variable = ga_unifier ga_controls_homeland = yes can_see_situation = situation:ga_eastern_hunger }
@@ -443,7 +445,7 @@ ga_gathering_target_price = { gold = 10 }
 ga_harbor_pact_opinion = { value = 35 months = 120 }
 ga_received_supplies = { value = 30 months = 60 }
 ga_oath_honored = { value = 25 months = 120 }
-''')
+''' + sworn_pacts.biases())
     for key, text in [('ga_harbor_pact_opinion', 'The Harbor Pact'), ('ga_received_supplies', 'Grain and Iron Received'), ('ga_oath_honored', 'The Ashen Oath')]:
         loc(key, text)
     write(out, 'main_menu/common/static_modifiers/goblins_gathering.txt', '''
@@ -570,6 +572,8 @@ ga_cb_eastern_foothold = {
     events.extend(harbor_bargains.events(event, option, loc))
     write(out, 'in_game/common/customizable_localization/goblins_harbor_receipts.txt', harbor_bargains.signed_recap(loc))
     events.extend(compact_talks.events(event, option, loc))
+    events.extend(sworn_pacts.events(event, option, loc))
+    sworn_pacts.localization(loc)
     write(out, 'in_game/events/goblins_gathering.txt', '\n'.join(events))
 
     for key, text in [
