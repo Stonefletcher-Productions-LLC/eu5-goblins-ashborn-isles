@@ -359,6 +359,10 @@
       "sha256": "8e5ffe6a862db733b1f2a10633a571233c2a845bc583f1d050b4576862d723e8"
     },
     {
+      "path": "main_menu/gfx/interface/icons/situations/ga_goblin_shore.dds",
+      "sha256": "5622d49293c2fa0616aea756491d1e1063a8fe8fceac7bdf878ee731bcafb9e8"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/africa.dds",
       "sha256": "df624f1deb38b7d26946784f7b25e20251dbf3e667f815e0ee3562b0eabd2e9e"
     },
@@ -557,6 +561,10 @@
     {
       "path": "main_menu/gfx/interface/illustrations/situation/ga_gathering_of_five.dds",
       "sha256": "df047021b8df645fdd8421d8776c7fde973239788f1ab9ebd2244884af6821f4"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/situation/ga_goblin_shore.dds",
+      "sha256": "67b0b80d775f51d51786c1323b4338b3bba611a2113e123c0bbf1cc6f75c6365"
     },
     {
       "path": "main_menu/localization/english/goblins_exploration_l_english.yml",

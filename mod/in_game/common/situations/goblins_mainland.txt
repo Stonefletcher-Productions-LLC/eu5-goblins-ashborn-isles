@@ -1,0 +1,62 @@
+﻿ga_goblin_shore = {
+    monthly_spawn_chance = monthly_spawn_chance_unique
+    can_start = { custom_tooltip = {
+        text = ga_ms_start_tt
+        any_country = { ga_independent_goblin = yes ga_holds_mainland = yes }
+    } }
+    can_end = { custom_tooltip = {
+        text = ga_ms_end_tt
+        any_country = { ga_shore_settled = yes }
+    } }
+    visible = { OR = { ga_is_goblin = yes has_variable = ga_ms_alarmed } }
+    # Only the six crowns can land; avoid a global scan every month.
+    on_monthly = {
+        c:CDM ?= {
+            if = {
+                limit = { ga_holds_mainland = yes NOT = { has_variable = ga_ms_landed } }
+                trigger_event_non_silently = ga_mainland.1
+            }
+        }
+        c:QBR ?= {
+            if = {
+                limit = { ga_holds_mainland = yes NOT = { has_variable = ga_ms_landed } }
+                trigger_event_non_silently = ga_mainland.1
+            }
+        }
+        c:RHK ?= {
+            if = {
+                limit = { ga_holds_mainland = yes NOT = { has_variable = ga_ms_landed } }
+                trigger_event_non_silently = ga_mainland.1
+            }
+        }
+        c:SFK ?= {
+            if = {
+                limit = { ga_holds_mainland = yes NOT = { has_variable = ga_ms_landed } }
+                trigger_event_non_silently = ga_mainland.1
+            }
+        }
+        c:SWK ?= {
+            if = {
+                limit = { ga_holds_mainland = yes NOT = { has_variable = ga_ms_landed } }
+                trigger_event_non_silently = ga_mainland.1
+            }
+        }
+        c:GTF ?= {
+            if = {
+                limit = { ga_holds_mainland = yes NOT = { has_variable = ga_ms_landed } }
+                trigger_event_non_silently = ga_mainland.1
+            }
+        }
+    }
+    on_ending = {
+        every_country = {
+            limit = { ga_shore_settled = yes }
+            set_variable = { name = ga_ms_settled value = yes }
+            trigger_event_non_silently = ga_mainland.9
+        }
+        every_country = {
+            limit = { ga_is_goblin = yes NOT = { has_variable = ga_ms_settled } }
+            trigger_event_non_silently = ga_mainland.10
+        }
+    }
+}

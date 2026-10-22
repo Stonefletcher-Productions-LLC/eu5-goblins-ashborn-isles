@@ -1,0 +1,148 @@
+﻿ga_ms_send_settlers = {
+    type = situation
+    show_message = no
+    potential = { scope:actor = { ga_is_goblin = yes is_subject = no ga_holds_mainland = yes } }
+    allow = { scope:actor = {  } }
+    automation_tick = never
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    cooldown = { type = ga_ms_send_settlers years = 2 }
+    price = price:ga_ms_settlers_price
+    select_trigger = {
+        looking_for_a = situation
+        interaction_source_list = { situation:ga_goblin_shore = { add_to_list = source } }
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { this = situation:ga_goblin_shore situation_is_active = yes }
+    }
+    select_trigger = {
+        looking_for_a = province
+        target_flag = target
+        name = ga_ms_choose_shore
+        none_available_msg_key = ga_ms_no_shore
+        column = { data = name }
+        visible = {
+            any_location_in_province = { owner = scope:actor ga_mainland_location = yes  }
+        }
+    }
+    effect = { if = { limit = { exists = scope:target }
+        scope:target = { random_location_in_province = { limit = { owner = scope:actor ga_mainland_location = yes  } add_pop = { culture = scope:actor.culture religion = scope:actor.religion type = pop_type:peasants size = 3 } add_location_modifier = { modifier = ga_ms_stockade years = 10 mode = replace } } }
+        scope:actor.capital ?= {
+            ordered_pop = {
+                limit = { culture = { has_culture_group = culture_group:cm_goblin_group } pop_size > 9 }
+                order_by = pop_size
+                max = 1
+                add_pop_size = -3
+            }
+        }
+    } }
+    ai_will_do = { add = 40 }
+}
+
+ga_ms_teach_tongue = {
+    type = situation
+    show_message = no
+    potential = { scope:actor = { ga_is_goblin = yes is_subject = no ga_holds_mainland = yes } }
+    allow = { scope:actor = {  } }
+    automation_tick = never
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    cooldown = { type = ga_ms_teach_tongue years = 3 }
+    price = price:ga_ms_tongue_price
+    select_trigger = {
+        looking_for_a = situation
+        interaction_source_list = { situation:ga_goblin_shore = { add_to_list = source } }
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { this = situation:ga_goblin_shore situation_is_active = yes }
+    }
+    select_trigger = {
+        looking_for_a = province
+        target_flag = target
+        name = ga_ms_choose_shore
+        none_available_msg_key = ga_ms_no_shore
+        column = { data = name }
+        visible = {
+            any_location_in_province = { owner = scope:actor ga_mainland_location = yes  }
+        }
+    }
+    effect = { if = { limit = { exists = scope:target }
+        scope:target = { random_location_in_province = { limit = { owner = scope:actor ga_mainland_location = yes  } every_pop = { limit = { NOT = { culture = { has_culture_group = culture_group:cm_goblin_group } } } split_pop = { fraction = 0.1 culture = scope:actor.culture } } add_location_modifier = { modifier = ga_ms_resentment years = 10 mode = replace } } }
+    } }
+    ai_will_do = { add = 25 }
+}
+
+ga_ms_raise_shrine = {
+    type = situation
+    show_message = no
+    potential = { scope:actor = { ga_is_goblin = yes is_subject = no ga_holds_mainland = yes } }
+    allow = { scope:actor = { religion = religion:cm_hunger_below } }
+    automation_tick = never
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    cooldown = { type = ga_ms_raise_shrine years = 3 }
+    price = price:ga_ms_shrine_price
+    select_trigger = {
+        looking_for_a = situation
+        interaction_source_list = { situation:ga_goblin_shore = { add_to_list = source } }
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { this = situation:ga_goblin_shore situation_is_active = yes }
+    }
+    select_trigger = {
+        looking_for_a = province
+        target_flag = target
+        name = ga_ms_choose_shore
+        none_available_msg_key = ga_ms_no_shore
+        column = { data = name }
+        visible = {
+            any_location_in_province = { owner = scope:actor ga_mainland_location = yes  }
+        }
+    }
+    effect = { if = { limit = { exists = scope:target }
+        scope:target = { random_location_in_province = { limit = { owner = scope:actor ga_mainland_location = yes  } every_pop = { limit = { NOT = { religion = scope:actor.religion } } split_pop = { fraction = 0.1 religion = scope:actor.religion } } } }
+    } }
+    ai_will_do = { add = 20 }
+}
+
+ga_horde_ship_kin = {
+    type = internationalorganization
+    ai_tick = monthly
+    ai_tick_frequency = 12
+    automation_tick = never
+    potential = { scope:actor = { ga_in_horde = yes } }
+    allow = {
+        custom_tooltip = { text = ga_ms_kin_shore_tt international_organization:goblin_horde = { any_international_organization_member = { ga_holds_mainland = yes NOT = { this = scope:actor } } } }
+    }
+    cooldown = { type = ga_horde_ship_kin years = 5 }
+    price = price:ga_ms_kin_price
+    select_trigger = {
+        looking_for_a = international_organization
+        source = actor
+        target_flag = recipient
+        name = "choose_international_organization"
+        column = { data = name }
+        visible = { international_organization_type = international_organization_type:goblin_horde }
+    }
+    effect = {
+        international_organization:goblin_horde = {
+            random_international_organization_member = {
+                limit = { ga_holds_mainland = yes NOT = { this = scope:actor } }
+                random_owned_location = { limit = { ga_mainland_location = yes } add_pop = { culture = scope:actor.culture religion = scope:actor.religion type = pop_type:peasants size = 2 } }
+                add_opinion = { target = scope:actor modifier = ga_ms_kin_answered }
+            }
+        }
+        scope:actor.capital ?= {
+            ordered_pop = {
+                limit = { culture = { has_culture_group = culture_group:cm_goblin_group } pop_size > 6 }
+                order_by = pop_size
+                max = 1
+                add_pop_size = -2
+            }
+        }
+    }
+    ai_will_do = { add = 15 }
+}

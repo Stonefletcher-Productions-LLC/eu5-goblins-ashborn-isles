@@ -27,6 +27,7 @@ def verify(out, check_manifest=True):
         assert not any(field == 'illustration_tags' for field, _, _ in fields), key
     situations = parse((out / 'in_game/common/situations/goblins_gathering.txt').read_text(encoding='utf-8-sig'))
     situations += parse((out / 'in_game/common/situations/goblins_voyages.txt').read_text(encoding='utf-8-sig'))
+    situations += parse((out / 'in_game/common/situations/goblins_mainland.txt').read_text(encoding='utf-8-sig'))
     assert {key for key, _, _ in situations} == set(SITUATIONS), 'Situation art coverage differs'
     for rel in runtime_paths():
         path = out / rel
