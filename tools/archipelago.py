@@ -58,6 +58,11 @@ def shape(x,y,rx,ry,profile):
             delta=np.arctan2(np.sin(a-angle),np.cos(a-angle))
             rim-=depth*np.exp(-(delta/width)**2)
         rim+=.018*np.sin(13*a+rotation)+.009*np.cos(23*a+rotation)
+        if 'coast' in profile:
+            # Fractal headlands and coves; bounded so the shore never sheds islets.
+            from landscape import noise
+            amplitude,seed=profile['coast']
+            rim+=amplitude*(.58*noise(u*3.5,v*3.5,seed)+.28*noise(u*8,v*8,seed+1)+.14*noise(u*17,v*17,seed+2))
         return rim-r
     delta=np.arctan2(np.sin(a-bay),np.cos(a-bay))
     rim=1+.20*np.sin(3*a+phase)+.105*np.cos(5*a-phase)+.055*np.sin(11*a+phase)+.025*np.cos(19*a)
@@ -124,11 +129,18 @@ def build_map(b,game,out,reports):
     basin &= xx>=cx-320*math.sqrt(cfg.get('land_area_multiplier',1))+.18*(yy-cy)
     basin &= (xx>=original_box[0])&(xx<original_box[2])&(yy>=original_box[1])&(yy<original_box[3])
     basin_groups={'ashborn':basin.copy()}
+    # One shared warp keeps neighbouring cuts consistent while giving trimmed
+    # native tiles wavy, natural edges instead of ruler-straight ones.
+    bx,by=xx,yy
+    if 'edge_warp' in sea:
+        from landscape import noise
+        amplitude,scale,seed=sea['edge_warp']
+        bx=xx+amplitude*noise(xx/scale,yy/scale,seed);by=yy+amplitude*noise(xx/scale,yy/scale,seed+1)
     for region in sea.get('extra_basins',[]):
         x0,y0,x1,y1=region['bounds']
         # Named source and bounds restrict the approved water conversion. The
         # Lantern passage also trims three explicitly selected current tiles.
-        extra=np.all(original==names[region['source_water']],axis=2)&(xx>=x0)&(xx<x1)&(yy>=y0)&(yy<y1)
+        extra=np.all(original==names[region['source_water']],axis=2)&(bx>=x0)&(bx<x1)&(by>=y0)&(by<y1)
         assert not np.any(extra&basin),'Coastal basin overlap'
         basin_groups[region['id']]=basin_groups.get(region['id'],np.zeros_like(basin))|extra;basin|=extra
     basin_components=b.connectivity(basin)[0]
@@ -136,7 +148,14 @@ def build_map(b,game,out,reports):
     sea_labels=np.full(xx.shape,-1,np.int16)
     for group,mask in basin_groups.items():
         indices=[j for j,z in enumerate(zones) if z.get('basin','ashborn')==group]
-        selected=np.argmin(np.stack([(xx-cx-zones[j]['seed'][0])**2+(yy-cy-zones[j]['seed'][1])**2 for j in indices]),axis=0)
+        # Native coastal seas have irregular borders; warp the cell distances.
+        if 'boundary_warp' in sea:
+            from landscape import noise
+            amplitude,scale,seed=sea['boundary_warp']
+            wx=xx+amplitude*(.65*noise(xx/scale,yy/scale,seed)+.35*noise(xx*2.3/scale,yy*2.3/scale,seed+1))
+            wy=yy+amplitude*(.65*noise(xx/scale,yy/scale,seed+2)+.35*noise(xx*2.3/scale,yy*2.3/scale,seed+3))
+        else:wx,wy=xx,yy
+        selected=np.argmin(np.stack([(wx-cx-zones[j]['seed'][0])**2+(wy-cy-zones[j]['seed'][1])**2 for j in indices]),axis=0)
         sea_labels[mask]=np.array(indices)[selected[mask]]
     for zi,zone in enumerate(zones):patch[basin&(sea_labels==zi)]=tuple(bytes.fromhex(zone['color']))
     island_labels=np.full(xx.shape,-1,np.int16);labels=np.full(xx.shape,-1,np.int16);land=np.zeros(xx.shape,bool);stats={};offset=0
