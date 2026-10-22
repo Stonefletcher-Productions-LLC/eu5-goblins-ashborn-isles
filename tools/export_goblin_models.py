@@ -29,13 +29,17 @@ HEAD_JOINT='Unit_Base_Rig_Head'
 # (62.5%, roughly 1.1 m beside a 1.8 m human) with an oversized head.
 UNIT_SCALE=0.05
 BODY='cm_goblin_soldier_body'
-OUTFITS={'army_light_infantry':'cm_goblin_soldier_outfit_light','army_heavy_infantry':'cm_goblin_soldier_outfit_heavy'}
-CAPS={'leather':'cm_goblin_soldier_cap_leather','iron':'cm_goblin_soldier_cap_iron'}
-HEADGEAR={'army_light_infantry':{'none':45,'leather':40,'iron':15},
-          'army_heavy_infantry':{'none':10,'leather':30,'iron':60}}
+# Each category draws one of two outfit variants (weights) and one headgear option.
+OUTFITS={'army_light_infantry':{'cm_goblin_soldier_outfit_light_a':55,'cm_goblin_soldier_outfit_light_b':45},
+         'army_heavy_infantry':{'cm_goblin_soldier_outfit_heavy_a':50,'cm_goblin_soldier_outfit_heavy_b':50}}
+CAPS={'leather':'cm_goblin_soldier_cap_leather','iron':'cm_goblin_soldier_cap_iron','horned':'cm_goblin_soldier_cap_horned'}
+HEADGEAR={'army_light_infantry':{'none':40,'leather':35,'iron':10,'horned':15},
+          'army_heavy_infantry':{'none':10,'leather':25,'iron':45,'horned':20}}
 # Native lists the goblin constructors keep (torsos/legs are replaced by the goblin body and outfits).
 NATIVE_ATTACH=['weapons','shields','back','offhand']
-SOURCES={BODY:'body',OUTFITS['army_light_infantry']:'outfit_light',OUTFITS['army_heavy_infantry']:'outfit_heavy',CAPS['leather']:'cap_leather',CAPS['iron']:'cap_iron'}
+SOURCES={BODY:'body'}
+SOURCES.update({name:name[len('cm_goblin_soldier_'):] for variants in OUTFITS.values() for name in variants})
+SOURCES.update({name:'cap_'+kind for kind,name in CAPS.items()})
 
 def prop(typ,a):return (typ,np.asarray(a).ravel().tolist())
 def write_text(path,text):path.parent.mkdir(parents=True,exist_ok=True);path.write_text(text,encoding='utf-8-sig')
@@ -59,12 +63,25 @@ def bone_table(game):
         out.append({'name':names[i],'parent':int(pa),'position':np.round(np.linalg.inv(M)[:3,3],3).tolist()})
     return out
 
+def uv_tangents(p,n,uv,tri):
+    """Per-vertex tangents along +u (the normal map's red axis), orthogonalised against the normal."""
+    t=tri.reshape(-1,3);e1=p[t[:,1]]-p[t[:,0]];e2=p[t[:,2]]-p[t[:,0]]
+    d1=uv[t[:,1]]-uv[t[:,0]];d2=uv[t[:,2]]-uv[t[:,0]]
+    det=d1[:,0]*d2[:,1]-d2[:,0]*d1[:,1];r=np.where(np.abs(det)>1e-12,1/np.where(np.abs(det)>1e-12,det,1),0)
+    face_t=(e1*d2[:,[1]]-e2*d1[:,[1]])*r[:,None]
+    acc=np.zeros_like(p)
+    for k in range(3):np.add.at(acc,t[:,k],face_t)
+    acc-=n*(acc*n).sum(1,keepdims=True)
+    length=np.linalg.norm(acc,axis=1);fallback=np.cross(np.where(np.abs(n[:,[0]])>.9,[[0,1,0]],[[1,0,0]]),n)
+    acc=np.where(length[:,None]>1e-6,acc/np.maximum(length,1e-6)[:,None],fallback/np.maximum(np.linalg.norm(fallback,axis=1),1e-6)[:,None])
+    return acc
+
 def skinned_mesh(name,source,skeleton,names):
     """pdx mesh tree for a sculpted part (world-space cm, 4 bone weights per vertex, native bone order)."""
     d=np.load(SOLDIER/f'{source}.npz');p,n,uv,tri,ix,w=d['pos'],d['nor'],d['uv'],d['tri'],d['ix'],d['w']
     assert ix.max()<len(names) and np.allclose(w.sum(1),1,atol=1e-3)
     length=np.linalg.norm(n,axis=1);n=np.where(length[:,None]>1e-6,n/np.maximum(length,1e-6)[:,None],[[0,1,0]])
-    tangent=np.cross(np.where(np.abs(n[:,[0]])>.9,[[0,1,0]],[[1,0,0]]),n);tangent/=np.maximum(np.linalg.norm(tangent,axis=1)[:,None],1e-6)
+    tangent=uv_tangents(p,n,uv,tri)
     low,high=p.min(0),p.max(0);center=(low+high)/2
     mesh=node('mesh',{'p':prop('f',p),'n':prop('f',n),'ta':prop('f',np.c_[tangent,np.ones(len(p))]),
          'u0':prop('f',uv),'u1':prop('f',uv),'tri':prop('i',tri),
@@ -139,8 +156,9 @@ def build(out,game):
         else:
             (directory/(name+'_diffuse.dds')).write_bytes(rgba_dds(goblin_paint.paint(SOLDIER/source)))
             asset+=pdxmesh_entry(name+'_mesh',name,name+'_diffuse.dds',normal,'cm_goblin_soldier_mask.dds');registered.append(name+'_mesh')
-    for category,outfit in OUTFITS.items():
-        lists.append(f'cm_goblin_{category}_outfit = {{\n 1 = {{ add_entity = {{ node = shared_pose_entity mesh_name = "{outfit}_mesh" }} }}\n}}')
+    for category,variants in OUTFITS.items():
+        options=''.join(f' {w} = {{ add_entity = {{ node = shared_pose_entity mesh_name = "{outfit}_mesh" }} }}\n' for outfit,w in variants.items())
+        lists.append(f'cm_goblin_{category}_outfit = {{\n{options}}}')
     for category,weights in HEADGEAR.items():
         options=''.join(f' {w} = {{ }}\n' if kind=='none' else
                         f' {w} = {{ add_entity = {{ node = shared_pose_entity mesh_name = "{CAPS[kind]}_mesh" }} }}\n'
@@ -164,7 +182,7 @@ def build(out,game):
     write_text(out/'main_menu/gfx/unit_graphics/attachments/zz_ashborn_goblins.txt','\n'.join(lists)+'\n')
     # Goblin meshes carry authored colours; keep them out of the human skin/uniform repaint.
     write_text(out/TEXTURE_REGISTRATION,'assets_without_texture_variation = {\n'+''.join(f' {m}\n' for m in registered)+'}\n')
-    report['runtime_infantry']='native soldier rig, weapons, shields and animations; sculpted goblin body per clan, goblin outfits and caps; 62.5% native graph copy'
+    report['runtime_infantry']='native soldier rig, weapons, shields and animations; sculpted goblin body per clan, two outfit variants per category and three caps; 62.5% native graph copy'
     return report
 
 if __name__=='__main__':
