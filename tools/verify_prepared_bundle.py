@@ -103,7 +103,8 @@ def verify(root):
                 verify_intro(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_divorce import verify as verify_divorce
                 verify_divorce(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
-                if 'goblins_ashborn_isles/in_game/events/goblins_old_world.txt' in z.namelist():
+                # The Old World Reacts first ships in 0.6.7; earlier bundles carry only part of it.
+                if tuple(map(int, version.split('.'))) >= (0, 6, 7):
                     from verify_old_world import verify as verify_old_world
                     verify_old_world(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_harbor_bargains import verify as verify_bargains
