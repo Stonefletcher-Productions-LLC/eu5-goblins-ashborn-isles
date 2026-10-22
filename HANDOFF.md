@@ -31,6 +31,8 @@ Alex's direction: there are tons of goblins, they are bad at economics and catch
 - `economy.STARTING_TRADES` seeds four more routes: livestock Hooktooth→Chainhaven (GTF), wheat Hooktooth→Shatter Maw (SFK), fish Shatter Maw→Hooktooth (CDM), salt Chainhaven→Shatter Maw (SFK). The two 0.6.1 routes keep their effect names and flag.
 - Fishing villages may now sit on any coastal location (port in `mod/in_game/map_data/ports.csv`), as in vanilla.
 
+- Shatterfin also out-builds Giltfang (`tools/conquest_balance_067.py`, recorded in `start_balance_067.shatterfin_over_giltfang`): Giltfang loses 5 market villages, 2 tools guilds, 2 marketplaces, 2 smelters and a fiber farm (food villages kept); Shatterfin gains 7 fishing and 1 farming village, a weapon guild, 2 marketplaces, a wharf and a smelter. Building levels SFK 65, GTF 58.
+
 `verify_economy.verify_start_balance_067` checks the totals and crown order, the guild limits and the food floor; older population checks run against the population before this pass. Needs a new 1337 campaign. Engine-untested: food balance, trade-route creation and tribal promotion speed.
 
 ## 0.6.6: Silver Shard starvation
