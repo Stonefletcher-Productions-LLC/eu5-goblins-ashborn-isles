@@ -40,6 +40,29 @@ def verify(root):
             assert z.read('goblins_ashborn_isles/'+str(Path(item['path']).with_suffix('.info')).replace('\\','/'))
         for name in ['10_countries.txt','06_pops.txt','07_cities_and_buildings.txt','03_markets.txt']:
             assert z.read('goblins_ashborn_isles/main_menu/setup/start/'+name)
+        if tuple(map(int, version.split('.'))) >= (0, 6, 4, 1):
+            # An empty trailing row logged "Unknown reference to location! Key: ''".
+            ports=z.read('goblins_ashborn_isles/in_game/map_data/ports.csv')
+            assert b'\r' not in ports and not ports.endswith(b'\n'),'ports.csv must match native LF/no-trailing-newline format'
+            assert all(row and len(row.split(b';'))==5 for row in ports.split(b'\n')),'Empty or malformed ports.csv row'
+        if tuple(map(int, version.split('.'))) >= (0, 6, 5):
+            # 'tar' has no raw-material RGO in EU5 1.3.11; such locations could not be built up.
+            templates=z.read('goblins_ashborn_isles/in_game/map_data/location_templates.txt').decode('utf-8-sig')
+            assert 'raw_material = tar' not in templates,'A location uses tar as its raw material'
+            for island in config['islands']:
+                for location in island['locations']:
+                    row=re.search(r'(?m)^'+re.escape(location['id'])+r' = \{[^\n]*\braw_material = (\w+)\b',templates)
+                    assert row and row[1]==location['good'],f'Stale packaged raw material: {location["id"]}'
+        if tuple(map(int, version.split('.'))) >= (0, 6, 6):
+            # Provinces share food; a lone non-food location (Silver Shard) starved.
+            definitions=z.read('goblins_ashborn_isles/in_game/map_data/definitions.txt').decode('utf-8-sig')
+            provinces={}
+            for island in config['islands']:
+                for location in island['locations']:
+                    provinces.setdefault(location['province'],set()).add(location['id'])
+            for province,members in provinces.items():
+                row=re.search(r'(?m)^'+re.escape(province)+r' = \{([^}\n]*)\}',definitions)
+                assert row and set(row[1].split())==members,f'Stale packaged province: {province}'
         # Configuration binding alone cannot catch a stale generated treasury.
         country_setup=z.read('goblins_ashborn_isles/main_menu/setup/start/10_countries.txt').decode('utf-8-sig')
         starting_gold={}

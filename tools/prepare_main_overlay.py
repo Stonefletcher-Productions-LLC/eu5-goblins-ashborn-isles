@@ -54,6 +54,21 @@ def main():
     paths.extend(output / p for p in runtime_paths())
     paths.extend(output / p for p in build_clan_flags.runtime_paths())
     paths.append(output / 'in_game/events/goblins_ashborn_isles.txt')
+    # 0.6.4.1: normalized ports.csv (LF, no trailing empty row) ships as an
+    # overlay over the 0.6.4 terrain/map base. archipelago.build_map now emits
+    # the same bytes; after any full map rebuild, copy its ports.csv here.
+    paths.append(output / 'in_game/map_data/ports.csv')
+    # 0.6.5: three goblin locations used 'tar', which has no raw-material RGO in
+    # EU5 1.3.11 (they could not be built up). The corrected location_templates.txt
+    # ships as an overlay over the reused map base; archipelago.build_map emits the
+    # same lines from data/island.json. After any full map rebuild, copy it here.
+    paths.append(output / 'in_game/map_data/location_templates.txt')
+    # 0.6.6: Silver Shard was the only location in Shatterfin Outer and starved,
+    # since provinces share food. It joins the neighbouring Shatterfin province;
+    # the corrected definitions.txt ships as an overlay over the reused map base.
+    # archipelago.build_map emits the same line from data/island.json. After any
+    # full map rebuild, copy it here.
+    paths.append(output / 'in_game/map_data/definitions.txt')
     # Retain the authored gameplay/UI modules when refreshing portrait assets.
     # A partial manifest previously dropped the Gathering and Covenant panels.
     for prefix in ['in_game/common','in_game/events','in_game/gui','main_menu/common','main_menu/localization']:

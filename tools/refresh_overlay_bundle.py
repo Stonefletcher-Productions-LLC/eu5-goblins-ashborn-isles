@@ -1,7 +1,30 @@
 """Append checksum-verified overlay changes to an existing prepared release."""
-import argparse, base64, hashlib, io, json, subprocess, zipfile
+import argparse, base64, hashlib, io, json, re, subprocess, zipfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
+
+# Raw-material corrections shipped as an authored location_templates.txt overlay
+# over the reused terrain/map base (no terrain or starting-setup regeneration).
+# version -> {location id: (previous good, corrected good)}
+RGO_FIXES={'0.6.5':{'cm_ironbark':('tar','lumber'),'cm_pitchfang':('tar','lumber'),'cm_emberhollow':('tar','lumber')}}
+# Province membership corrections shipped as an authored definitions.txt overlay.
+# Location pixels and terrain are unchanged; only the province grouping moves.
+# version -> {location id: (previous province, corrected province)}
+PROVINCE_FIXES={'0.6.6':{'cm_silver_shard':('cm_shatterfin_outer_province','cm_shatterfin_province')}}
+
+def _revert_field(text,lid,field,old,new):
+    i=text.index(f'"id": "{lid}"'); j=text.index(f'"{field}": "{new}"',i)
+    following=text.find('"id": ',i+5)
+    assert following==-1 or following>j,lid
+    return text[:j]+f'"{field}": "{old}"'+text[j+len(f'"{field}": "{new}"'):]
+
+def revert_rgo_fixes(text,version):
+    """Return island.json text with this version's raw-material and province corrections undone."""
+    for lid,(old,new) in RGO_FIXES.get(version,{}).items():
+        text=_revert_field(text,lid,'good',old,new)
+    for lid,(old,new) in PROVINCE_FIXES.get(version,{}).items():
+        text=_revert_field(text,lid,'province',old,new)
+    return text
 
 def main():
     ap=argparse.ArgumentParser()
@@ -17,13 +40,51 @@ def main():
     config_text=(ROOT/'data/island.json').read_text(encoding='utf-8')
     config=json.loads(config_text)
     assert overlay['base_release']==config['version']
+    fixes=RGO_FIXES.get(config['version'],{})
+    if fixes:
+        templates_path='in_game/map_data/location_templates.txt'
+        assert any(f['path']==templates_path for f in overlay['files']),'RGO fix requires the location_templates.txt overlay'
+        templates=(ROOT/'mod'/templates_path).read_text(encoding='utf-8-sig')
+        assert 'raw_material = tar' not in templates
+        for lid,(old,new) in fixes.items():
+            assert f'{lid} = {{' in templates and f'raw_material = {new} ' in templates.split(f'{lid} = {{',1)[1].split('\n',1)[0]+' ',lid
+    moves=PROVINCE_FIXES.get(config['version'],{})
+    if moves:
+        definitions_path='in_game/map_data/definitions.txt'
+        assert any(f['path']==definitions_path for f in overlay['files']),'Province fix requires the definitions.txt overlay'
+        definitions=(ROOT/'mod'/definitions_path).read_text(encoding='utf-8-sig')
+        for lid,(old,new) in moves.items():
+            assert re.search(r'(?m)^'+new+r' = \{[^\n]*\b'+lid+r'\b',definitions),lid
+            assert not re.search(r'(?m)^'+old+r' = ',definitions),old
     promotion=config['version']!=manifest['version']
     if promotion:
         assert args.promote_version, 'Version promotion requires --promote-version'
-        prior=json.loads(subprocess.check_output(['git','show',manifest['source_commit']+':data/island.json'],cwd=ROOT,text=True))
-        assert prior['version']==manifest['version']
-        prior['version']=config['version']
-        assert prior==config, 'World configuration changed; regenerate and validate terrain/setup before packaging'
+        try:
+            prior=json.loads(subprocess.check_output(['git','show',manifest['source_commit']+':data/island.json'],cwd=ROOT,text=True))
+        except subprocess.CalledProcessError:
+            prior=None
+        if prior is not None and prior.get('version')!=manifest['version']:
+            prior=None  # stale source_commit; fall back to the recorded config hash
+        if prior is not None:
+            assert prior['version']==manifest['version']
+            prior['version']=config['version']
+            for island in prior['islands']:
+                for location in island['locations']:
+                    if location['id'] in fixes:
+                        assert location['good']==fixes[location['id']][0],location['id']
+                        location['good']=fixes[location['id']][1]
+                    if location['id'] in moves:
+                        assert location['province']==moves[location['id']][0],location['id']
+                        location['province']=moves[location['id']][1]
+            assert prior==config, 'World configuration changed; regenerate and validate terrain/setup before packaging'
+        else:
+            # The source commit is unavailable (history re-created when moving
+            # to Bitbucket). The manifest's recorded config hash is the same
+            # binding: the current config with the old version must match it.
+            old_version=json.dumps(manifest['version'])
+            restored=config_text.replace('"version": '+json.dumps(config['version']),'"version": '+old_version,1)
+            restored=revert_rgo_fixes(restored,config['version'])
+            assert hashlib.sha256(restored.encode('utf-8')).hexdigest()==manifest['source_config_sha256'], 'World configuration changed; regenerate and validate terrain/setup before packaging'
     changed={}
     player_roots={'README.md','RELEASE_NOTES.md','TESTING.md','LORE.md',
                   'Install-Goblins.ps1','Install-Goblins.cmd','reports/validation.json'}

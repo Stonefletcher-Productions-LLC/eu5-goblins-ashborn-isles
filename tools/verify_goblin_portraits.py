@@ -144,6 +144,17 @@ def verify(out,game=None):
     assert 'gene = hair_styles template = no_hair' not in clothing_mods
     assert outfit_mods.count('mode = replace gene = hair_styles')==sum(len(HAIR[t]) for t in ['male','female','boy','girl'])
     assert 'selection_behavior = weighted_random priority = 130' in outfit_mods
+    # 0.6.4.1: a named hair accessory plus a range logged "Both value and
+    # accessory are set"; named female/child styles logged "Can't find accessory".
+    hair_lines=[l for l in outfit_mods.splitlines() if 'gene = hair_styles' in l]
+    assert not [l for l in hair_lines if 'accessory = ' in l.split('gene = hair_styles',1)[1] and 'range' in l], 'Hair modifier sets both a name and a range'
+    assert not re.search(r'gene = hair_styles template = all_hair accessory = (?!male_)', outfit_mods), 'Only male hair may be selected by name'
+    from build_goblin_outfits import NATIVE_ALL_HAIR, hair_selection
+    for sex in ['female','girl','boy']:
+        for _,name in HAIR[sex]:
+            low,high=map(float,re.search(r'range = \{ ([\d.]+) ([\d.]+) \}',hair_selection(sex,name)[1]).groups())
+            n=len(NATIVE_ALL_HAIR[sex])
+            assert int(low*n)==int(high*n)==NATIVE_ALL_HAIR[sex].index(name),(sex,name)
     for sex,minimum in [('male',6),('female',5)]:
         assert len(HAIR[sex])>=minimum and len({name for _,name in HAIR[sex]})==len(HAIR[sex])
         assert max(w for w,_ in HAIR[sex])/sum(w for w,_ in HAIR[sex])<=.2
@@ -162,6 +173,15 @@ def verify(out,game=None):
         for choices in HAIR.values():
             for _,name in choices:
                 assert name=='empty' or re.search(r'(?m)^\s*'+re.escape(name)+r'\s*=\s*\{',native_hair),name
+        # Range slices assume the native all_hair order and equal weights.
+        hair_genes=(Path(game)/'in_game/common/genes/07_genes_accessories_hair.txt').read_text(encoding='utf-8-sig')
+        all_hair=hair_genes[hair_genes.index('all_hair = {'):]
+        all_hair=all_hair[:all_hair.index('german_hair = {')]
+        for sex in ['female','girl','boy']:
+            block=re.search(r'\b'+sex+r'\s*=\s*\{([^}]*)\}',all_hair)[1]
+            entries=re.findall(r'(\d+)\s*=\s*(\w+)',block)
+            assert [name for _,name in entries]==NATIVE_ALL_HAIR[sex],('native all_hair order changed',sex)
+            assert {w for w,_ in entries}=={'1'},('native all_hair weights changed',sex)
         for gene in re.findall(r'mode = replace gene = (gene_\w+)',modifiers+variants):
             assert re.search(r'\b'+gene+r'\s*=\s*\{',native_genes),gene
         from build_goblin_portraits import FACE

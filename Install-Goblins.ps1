@@ -14,7 +14,7 @@ if (-not (Test-Path -LiteralPath (Join-Path $modSource '.metadata\metadata.json'
         throw 'This source checkout has no built mod. Use a prepared install archive for this version, or build the mod first.'
     }
     $release = Get-Content -LiteralPath $releaseManifest -Raw | ConvertFrom-Json
-    if ($release.version -notmatch '^\d+\.\d+\.\d+$') { throw 'Invalid release version.' }
+    if ($release.version -notmatch '^\d+(\.\d+){2,3}$') { throw 'Invalid release version.' }
     $configPath = Join-Path $PSScriptRoot 'data\island.json'
     if (Test-Path -LiteralPath $configPath) {
         $configText = [IO.File]::ReadAllText($configPath).Replace("`r`n", "`n")

@@ -1,5 +1,5 @@
 {
-  "version": "0.6.4",
+  "version": "0.6.5",
   "game_version": "1.3.11",
   "tag": "CDM",
   "center": [
@@ -717,7 +717,7 @@
             -0.835659,
             -0.16429
           ],
-          "good": "tar",
+          "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
           "pop": 12.585,
@@ -1140,7 +1140,7 @@
             -1.088452,
             -0.094771
           ],
-          "good": "tar",
+          "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
           "pop": 11.488,
@@ -2552,7 +2552,7 @@
           "topography": "hills",
           "vegetation": "sparse",
           "pop": 23.001,
-          "province": "cm_shatterfin_outer_province",
+          "province": "cm_shatterfin_province",
           "rgo_expansion": 1,
           "buildings": {
             "market_village": 1
@@ -3409,7 +3409,7 @@
             0.471155
           ],
           "color": "ed1271",
-          "good": "tar",
+          "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
           "pop": 14.135,

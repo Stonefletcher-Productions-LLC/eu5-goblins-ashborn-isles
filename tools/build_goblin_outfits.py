@@ -38,6 +38,39 @@ HAIR = {
     'infant': [(1, 'empty')],
 }
 
+# Native all_hair entry order per portrait type (in_game/common/genes/
+# 07_genes_accessories_hair.txt, EU5 1.3.11). All weights are 1 there.
+# EU5 resolves a named `accessory =` only against the male list ("Can't find
+# accessory 'female_...' in gene template all_hair" in 0.6.4 logs), and a
+# `range` alongside a name counts as a second selector ("Both value and
+# accessory are set"). So: male choices use the name alone, as native
+# 01_hairstyles.txt does; female/child choices use a range slice that lands on
+# the curated entry in their own list. verify_goblin_portraits checks this
+# order against the installed game. In-game appearance is unverified.
+NATIVE_ALL_HAIR = {
+    'female': ['female_german_braid_hair_behind', 'female_ashanti_hair_short_afro',
+               'female_iroquois_straight_parted_hair', 'female_hair_chinese_bun_loose',
+               'female_syrian_braided_back_hair', 'female_aztec_horn_braid_hair',
+               'female_deccan_straight_back_hair', 'female_hair_long_basic',
+               'male_german_hair_bob_regular', 'female_german_hair_long_crown'],
+    'girl': ['female_hair_long_basic', 'female_ashanti_hair_short_afro',
+             'girl_han_chinese_hair_bon_sides'],
+    'boy': ['boy_short_hair_a', 'boy_german_hair_bob_short', 'male_ashanti_hair_short_afro',
+            'boy_han_chinese_hair_bun_front', 'male_syrian_hair_curly_regular',
+            'boy_aztec_hair_bob_short'],
+}
+
+def hair_selection(sex, name):
+    """DNA selector for one curated hairstyle; never both a name and a range."""
+    if name == 'empty':
+        return 'no_hair', 'range = { 0 1 }'
+    if sex == 'male':
+        return 'all_hair', 'accessory = ' + name
+    entries = NATIVE_ALL_HAIR[sex]
+    i, n = entries.index(name), len(entries)
+    low, high = (i + 0.1) / n, (i + 0.9) / n
+    return 'all_hair', f'range = {{ {low:.3f} {high:.3f} }}'
+
 def hair_modifiers(clans):
     lines=['cm_ashborn_native_hair = { usage = game selection_behavior = weighted_random priority = 130']
     cultures='OR = { '+' '.join('gfx_culture_applicable = '+c['culture']+'_gfx' for c in clans)+' }'
@@ -46,10 +79,9 @@ def hair_modifiers(clans):
         female=sex in ['female','girl']
         age='age_in_years >= 18' if sex in ['male','female'] else 'age_in_years >= 3 age_in_years < 18'
         for index,(weight,name) in enumerate(choices):
-            template='no_hair' if name=='empty' else 'all_hair'
-            selection='' if name=='empty' else 'accessory = '+name
+            template,selection=hair_selection(sex,name)
             lines.append(f'''cm_hair_{sex}_{index} = {{ ignore_outfit_tags = yes
- dna_modifiers = {{ accessory = {{ mode = replace gene = hair_styles template = {template} {selection} range = {{ 0 1 }} }} }}
+ dna_modifiers = {{ accessory = {{ mode = replace gene = hair_styles template = {template} {selection} }} }}
  weight = {{ base = 0 modifier = {{ add = {weight} {cultures} is_female = {'yes' if female else 'no'} {age} }} }}
  }}''')
     lines.append('}')
