@@ -13,3 +13,11 @@ Multiplayer note (2026-10-13): a client's simulation stalled silently twice mid-
 ## Next release (0.6.6) pending: Silver Shard starvation
 
 Silver Shard was the only location in `cm_shatterfin_outer_province`. Provinces share food, and a lone silver mine has none, so it starved permanently. It now belongs to `cm_shatterfin_province` (it borders Shatterfin and Shardpoint), and Shatterfin Outer is gone (39 provinces). The corrected `definitions.txt` ships as an overlay `mod/in_game/map_data/definitions.txt` over the reused map base, like the 0.6.5 `location_templates.txt` fix. `tools/refresh_overlay_bundle.py` accepts it via `PROVINCE_FIXES['0.6.6']` when promoting; `tools/verify_prepared_bundle.py` checks packaged province membership from 0.6.6. Bump the version to 0.6.6 and repackage before release. Needs a new 1337 campaign.
+
+## Next release (0.6.6) pending: royal families and multiple wives
+
+Cindermaw's dynasty died out within 20 years in a playtest. Rule of the Strongest only crowns adult men of the ruler's own dynasty, and each captain crown started with one or two such men. Every crown now starts with a large household (`ashborn_names.FAMILY_ROLES`): a dead father, an uncle and adult cousin, two brothers with wives and children, three wives for the ruler and five or six sons. Cindermaw, Brackmaw and Giltfang also have a married eldest son with an infant grandson. Shatterfin gains a sister for Jaimzha, more daughters and granddaughters (`shatterfin.FAMILY`). Existing heirs stay the strongest adult candidates; all new kin have lower Military. 153 authored goblin characters (was 51).
+
+The Ashen Covenant adds `female_spouses = 3` to its `definition_modifier`, which stacks on Monogamous Marriage's 1 for four wives, the same cap as native Polygyny (whose `is_country_religion_pagan` whitelist excludes our religion group). Starting rulers use repeated `spouse =` lines, as native Gediminas does.
+
+`04_dynasties.txt` and `05_characters.txt` ship as overlays over the reused bundle. `tools/goblin_families.py` swaps only the goblin rows in the bundled files and verifies dates, parentage, marriages and heirs; `prepare_main_overlay.py` runs it. Needs a new 1337 campaign. Engine-untested: the multi-wife setup, the spouse cap stacking and AI marriage behaviour.
