@@ -405,23 +405,23 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_brackmaw_soldier_body_diffuse.dds",
-      "sha256": "99a0bc0ee7bc2183dc640d4bf11d5c91504ce6b4745612516632765b2771e1ae"
+      "sha256": "f803ba07da091363a660a770cf697929bf4f152d55e40b8916595eb8bdab78ba"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_cindermaw_soldier_body_diffuse.dds",
-      "sha256": "9ddd1b328a4c43cefff2279a9aa9827cfc57471618562309df120f8c4b4bfa76"
+      "sha256": "49407f85dd3eec8ddeca6a6c9432d4ef1ae11aca75d3a2f25be2182838ff337f"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang_soldier_body_diffuse.dds",
-      "sha256": "0585c1c4b17339aa6fddc399d97727bb92f9b800732ac1c84dc91f4cfdfcd929"
+      "sha256": "e32269af63c637e45f8e057af9cd7572f9a90b200853e47ca08f5bacbd7d793d"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_reefhook_soldier_body_diffuse.dds",
-      "sha256": "824a9823dbc700827aaa65a4903a64091e718655f1da28a4d0e017654c1d712b"
+      "sha256": "db93d419552dfe20d5ba7f18692eed4187f5abf35e658e8435127d1bee867ebc"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_shatterfin_soldier_body_diffuse.dds",
-      "sha256": "06ebebaf09169d820ff71225a278c92ac27b0489d748a9c50bb1cdf1d9bcc85e"
+      "sha256": "e24ed12180eef77d1abba436fb3ee5ad8ecde58ab28d62fc618b13e912451749"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_soldier.asset",
@@ -429,35 +429,35 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_soldier_body.mesh",
-      "sha256": "8d67987ce44f30eba495c3fb769ec15f3b6d7c673976bf7ff6ff468039d16458"
+      "sha256": "f8c87ecf16da798dd25d2690b06990265370df6d6b2cba8c39db602779a0d613"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_soldier_body_normal.dds",
-      "sha256": "922ae051c5eb1d211c25d224f9aef6478a180bc5c0aaac0881eff462778fc2f1"
+      "sha256": "5c06a6f8c3429fda5086775b3580bf1a3066c6e73650dc350b3cfd2917a8e0fb"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_soldier_cap_horned.mesh",
-      "sha256": "2ddbc3742e3cf178dd908608c4e1f76362e77814223bcc2bbf00f027016ec82d"
+      "sha256": "e1aa64dbf759562423c0e60ea3b6c5a9af58306becfbe33861584c4b7df0c527"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_soldier_cap_horned_diffuse.dds",
-      "sha256": "083fe489c1e5e5f33762b1e1e326da18c4845062fbf9df88faafcedc6f3f74b6"
+      "sha256": "c7ae4f063ee3937d6f0255415a587cde5b9607279db96b7f1fad6ed848163a15"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_soldier_cap_iron.mesh",
-      "sha256": "41f4d18e467b7f8cfba7d022a4ad8a79ee86090e70cb661251631dcf08d260cf"
+      "sha256": "39d5e0736bb70670afa6e85e0a9e1e9af4cfbb3db4b9826994dc0697c3adc556"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_soldier_cap_iron_diffuse.dds",
-      "sha256": "06a144d6cb478bdf1cf64e8b12af731d769a6f9a46e4e70c1686763ba7242fb9"
+      "sha256": "1dd64420dbc8a435c7ccb4e3f18569f3d222f99fc836d699b0f26a9a00da2501"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_soldier_cap_leather.mesh",
-      "sha256": "10278e9ded63d637ba9a01f622ae7c39828b97b27fa814e42e970394915f268d"
+      "sha256": "29dc5b14c0c2b897d88c713b9fd5f0e735bbbe18e6e2bcbca0c1ced2a943818b"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_soldier_cap_leather_diffuse.dds",
-      "sha256": "be94939c79cd6a08fc0e681a3ce75ccb41beee6fb37bd2e992db9e96b45a7d75"
+      "sha256": "1ce756b6cc19933c290a8343e6c005e0ba32b986f41e9f0fdb38af5f4e2bb01a"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_soldier_flat_normal.dds",
@@ -469,39 +469,39 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_soldier_outfit_heavy_a.mesh",
-      "sha256": "7a9655411ee27065d8deddbcc35841568132dc6c8e2b2f0c55b8f7378a5022e6"
+      "sha256": "563f8eaff44aab1b7b4320026fad0ea819a68b23dfea553d77f4b507509471ad"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_soldier_outfit_heavy_a_diffuse.dds",
-      "sha256": "781db97a2e3a13af49fe2d482cbd9c65016d7001a700799e5d1d8032eac4a847"
+      "sha256": "f6a6b2214221088ae46ae60d6d0923f69ba8a956dd09d2d80f1b0ccdb76e8482"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_soldier_outfit_heavy_b.mesh",
-      "sha256": "67ce66071d034c39c886815f32aaaabe71936700eeed9f906870351f94611a29"
+      "sha256": "56ba1b031af778e30d98f18cbf7c38830ef309b6d2c86d21ab0d2dc8a1107e3a"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_soldier_outfit_heavy_b_diffuse.dds",
-      "sha256": "8f43320db9b0f37b2d75a850dbf6dfd47ef35e3caa8114e83dbd95c7ea435c1b"
+      "sha256": "1b50533789ab03a5806bf6096ac5950e6098cbc860516492d331dbc6b9726971"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_soldier_outfit_light_a.mesh",
-      "sha256": "44c1ed42da4bc2fd57b460fd3e13cd063da28426f0bac1a65309339ee799f917"
+      "sha256": "6f46705b45b086b2b319d7d452179a1558841b73a217c1923985cc8634e9d8b1"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_soldier_outfit_light_a_diffuse.dds",
-      "sha256": "634b319c61eae28845d308f519ea841ba2f60648a63a57adf5b8d04bcb4e0875"
+      "sha256": "5254d9b32ec64fa61fa282b3ec2965364b6ffa12fd5c20d29f416dabc1542135"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_soldier_outfit_light_b.mesh",
-      "sha256": "0e6eddbd02f895ac0d03a50d08ff8d41020cc2f0e1b2108cb8b1028244cae95b"
+      "sha256": "951563b25065601745e1b47f9b42c389de4c376415707c4b79335caf7820430b"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_soldier_outfit_light_b_diffuse.dds",
-      "sha256": "608d5436a6c558f5655ad9d6e17e6519d6284ec4e051b566e7ed8d72ddb9541e"
+      "sha256": "cb37051dca2e7ceece1397dad40f2a54243aca75e51f6a1881f3c34e491c417a"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_sootwake_soldier_body_diffuse.dds",
-      "sha256": "735e81a9de22077542690f7c191a3252b8fa18a97fff13209853d30f414a96f5"
+      "sha256": "ecdf5b8dd1c65776152747aa09f19212741eaa4adbe13231d2aee8580dff6af0"
     },
     {
       "path": "in_game/gui/ingame_topbar.gui",

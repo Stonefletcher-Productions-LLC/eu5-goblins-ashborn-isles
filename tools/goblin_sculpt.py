@@ -174,7 +174,7 @@ P=dict(
     hollows=[((5.3,165,-16),4.6,2.8),((-5.3,165,-16),4.6,2.8),((11,159,-6),4.5,1.2),((-11,159,-6),4.5,1.2),((12,170,-3),3.5,0.8),((-12,170,-3),3.5,0.8),
              ((1.6,158.6,-21.2),1.3,0.9),((-1.6,158.6,-21.2),1.3,0.9),((0,112,-14.5),2.2,1.0)],
     cheek=(9,162,-9.5),cheek_r=(3.6,2.6,3.6),
-    jaw=(0,153,-11),jaw_r=(7,3.5,6),tusk_base=(3,153.5,-15),tusk_tip=(3.6,158.5,-16.8),tusk_r=(0.95,0.8),
+    jaw=(0,153,-11),jaw_r=(7,3.5,6),tusk_base=(3.4,152.5,-14.6),tusk_tip=(4.2,159.5,-18),tusk_r=(1.15,0.55),
     nose=[((0,166,-15.8),2.4),((0,162.8,-19),2.0),((0,159.8,-21.2),2.3),((1.9,159,-19.6),1.3),((-1.9,159,-19.6),1.3)],
     warts=[((2.4,160,-21.6),0.9),((-7.5,167.5,-12.5),0.8),((9.5,160,-9.5),0.7),((-3,152,-12.5),0.6)],
     ear_base=(10,167,0),ear_tip=(30,179,5),ear_r=(5.5,1.1),
@@ -183,9 +183,9 @@ P=dict(
     hump=(0,146,11),hump_r=(11,9,8),
     collarbone=((2,145,-6),(15,142.5,-3),1.3),ribs=3,rib_r=1.0,spine_knobs=7,spine_r=1.4,hip=(12,99,-4),hip_r=2.5,
     shoulder_r=6.6,upper_arm=(4.8,3.9),forearm=(4.3,3.5),elbow_r=4.4,
-    palm_center=(37,95.5,2),palm_r=(2.4,6.5,5.2),finger_r=1.6,thumb_r=1.7,claw=4.0,
+    palm_center=(37,95.5,2),palm_r=(2.3,6.5,5.0),finger_r=1.3,thumb_r=1.5,claw=5.0,knuckle_r=1.6,
     thigh=(6.3,4.6),knee_r=5.2,kneecap_r=3.0,calf=(4.6,3.2),
-    ankle_r=3.4,foot_center=(15.5,5.2,-3),foot_r=(5.6,3.8,11.5),toe_len=5.5,toe_r=(1.8,1.3),
+    ankle_r=3.4,foot_center=(15.5,5,-2.5),foot_r=(5,3.6,10.5),heel=(15,4.5,8.5),heel_r=3.4,toe_len=7,toe_r=(1.7,0.9),
 )
 
 def trunk_at(y):
@@ -252,16 +252,21 @@ def sculpt_body(B,voxel=0.6,target_tris=6000):
         C(f'upperarm{side}',g('Arm'),g('ForeArm'),*P['upper_arm']);C(f'forearm{side}',g('ForeArm'),g('Hand'),*P['forearm'])
         E(f'elbow{side}',g('ForeArm')+Vector((0,0,1.5)),(P['elbow_r'],)*3)
         pc=P['palm_center'];E(f'palm{side}',(s*pc[0],pc[1],pc[2]),P['palm_r'])
-        for finger,r in [('Thumb',P['thumb_r']),('Index',P['finger_r']),('Ring',P['finger_r'])]:
-            chain=[g(f'Hand{finger}{i}') for i in range(1,5)]
-            for i in range(3):C(f'{finger}{side}{i}',chain[i],chain[i+1],r,r*0.85)
-            tip=chain[3]+(chain[3]-chain[2]).normalized()*P['claw'];K(f'claw{finger}{side}',chain[3],tip,(r*0.8,r*0.6))
+        chains={f:[g(f'Hand{f}{i}') for i in range(1,5)] for f in ('Thumb','Index','Ring')}
+        # The rig has no middle finger: build one between the index and ring chains, bound to whichever is nearest.
+        chains['Middle']=[(a+b)/2+Vector((0,-1.2,-1.0)) for a,b in zip(chains['Index'],chains['Ring'])]
+        for finger,r in [('Thumb',P['thumb_r']),('Index',P['finger_r']),('Middle',P['finger_r']*1.05),('Ring',P['finger_r']*0.95)]:
+            chain=chains[finger]
+            for i in range(3):C(f'{finger}{side}{i}',chain[i],chain[i+1],r,r*0.8)
+            for i in (1,2):E(f'knuckle{finger}{side}{i}',chain[i],(P['knuckle_r']*r/P['finger_r'],)*3)
+            tip=chain[3]+(chain[3]-chain[2]).normalized()*P['claw'];K(f'claw{finger}{side}',chain[3],tip,(r*0.75,r*0.35))
         C(f'thigh{side}',g('UpLeg'),g('Leg'),*P['thigh']);E(f'knee{side}',g('Leg'),(P['knee_r'],)*3);E(f'kneecap{side}',g('Leg')+Vector((0,0.5,-4.5)),(P['kneecap_r'],)*3)
         C(f'calf{side}',g('Leg'),g('Foot'),*P['calf'])
         fc=P['foot_center'];E(f'foot{side}',(s*fc[0],fc[1],fc[2]),P['foot_r']);C(f'ankle{side}',g('Foot'),(s*fc[0],fc[1],fc[2]),P['ankle_r'],P['ankle_r'])
-        for j,(dx,dz) in enumerate([(-4.5,-1),(0,0),(4.5,-1)]):
-            base=(s*(fc[0]+dx),3.2,fc[2]-P['foot_r'][2]+3+dz);tip=(s*(fc[0]+dx*1.3),2.4,base[2]-P['toe_len'])
-            K(f'toe{side}{j}',base,tip,P['toe_r'])
+        hc=P['heel'];E(f'heel{side}',(s*hc[0],hc[1],hc[2]),(P['heel_r'],)*3)
+        for j,(dx,dz,ln) in enumerate([(-5,-0.5,0.85),(0,0.5,1.0),(5,-0.5,0.85)]):
+            base=(s*(fc[0]+dx),3.0,fc[2]-P['foot_r'][2]+3.5+dz);tip=(s*(fc[0]+dx*1.4),2.0,base[2]-P['toe_len']*ln)
+            C(f'toe{side}{j}',base,tip,P['toe_r'][0],P['toe_r'][0]*0.8);K(f'toeclaw{side}{j}',tip,(tip[0],1.0,tip[2]-3.5),(P['toe_r'][0]*0.7,P['toe_r'][1]*0.3))
     ob=join(parts,'goblin_body_hi');remesh(ob,voxel,smooth_iterations=3)
     for c,r,d in P['hollows']:dimple(ob,c,r,d)
     eyes=[];mirror(lambda n,c,r:ellipsoid(n,c,r,parts=eyes),'eye',P['eye'],(P['eye_r'],)*3)

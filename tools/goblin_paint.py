@@ -83,7 +83,23 @@ def paint_skin(pos,ao,clan_rgb,seed=1):
     # Horn-coloured claws
     claw=np.clip((85.5-pos[...,1])/2.5,0,1)*(np.abs(pos[...,0])>30)+np.clip((-pos[...,2]-17.5)/2,0,1)*(pos[...,1]<6)
     claw=np.clip(claw,0,1);col=col*(1-claw[...,None])+np.array((0.32,0.3,0.22))*claw[...,None]
-    col*=(0.62+0.38*ao)[...,None]
+    # Ivory tusks (cones from the lower jaw past the lip)
+    for sx in (1,-1):
+        a=np.array((sx*3.4,152.5,-14.6));b=np.array((sx*4.2,159.5,-18));ab=b-a;t=np.clip(((pos-a)*ab).sum(-1)/(ab*ab).sum(),0,1)
+        d=np.linalg.norm(pos-(a+t[...,None]*ab),axis=-1);tusk=(d<1.5)&(t>0.35);col[tusk]=np.array((0.78,0.7,0.52))*(0.7+0.3*ao[tusk])[...,None]
+    # Shadowed sockets, darker knuckles, lighter palms, mud on shins and feet, a few pale scars
+    for sx in (1,-1):
+        d=np.linalg.norm(pos-np.array((sx*EYE[0],EYE[1],EYE[2]-2)),axis=-1);socket=np.clip((EYE_R+4.5-d)/3,0,1)*(d>EYE_R+0.5);col*=(1-0.3*socket)[...,None]
+    knuckle=np.clip((np.abs(pos[...,0])-33)/4,0,1)*(pos[...,1]<96)*(pos[...,2]<2.5);col*=(1-0.2*knuckle)[...,None]
+    palm=np.clip((np.abs(pos[...,0])-33)/4,0,1)*(pos[...,1]<98)*(pos[...,2]>3.5);col=col*(1-0.25*palm[...,None])+np.array((0.5,0.36,0.26))*0.25*palm[...,None]
+    mud=np.clip((32-pos[...,1])/26,0,1)**1.5*(0.6+0.4*fbm(pos,3,2,seed+11));col=col*(1-0.55*mud[...,None])+np.array((0.11,0.08,0.05))*0.55*mud[...,None]
+    for (a,b) in [((-9,118,-13),(-4,126,-12)),((11,136,2),(16,141,6)),((-6,170,-11),(-2,176,-8))]:
+        a=np.array(a,float);b=np.array(b,float);ab=b-a;t=np.clip(((pos-a)*ab).sum(-1)/(ab*ab).sum(),0,1)
+        d=np.linalg.norm(pos-(a+t[...,None]*ab),axis=-1);scar=np.clip((0.9-d)/0.5,0,1);col=col*(1-0.5*scar[...,None])+np.array((0.5,0.42,0.3))*0.5*scar[...,None]*col.mean(-1,keepdims=True)*3
+    # Mottled darker patches across the shoulders and back, pinker inner ears
+    spots=np.clip((fbm(pos,2.2,2,seed+13)-0.56)*5,0,1)*np.clip((pos[...,2]+2)/8,0,1)*(pos[...,1]>100);col*=(1-0.35*spots)[...,None]
+    inner=np.clip((np.abs(pos[...,0])-14)/6,0,1)*(pos[...,1]>160)*(pos[...,2]<2);col=col*(1-0.3*inner[...,None])+np.array((0.3,0.15,0.12))*0.3*inner[...,None]
+    col*=(0.52+0.48*ao)[...,None]
     return col
 
 def paint_cloth(pos,ao,seed=2):
@@ -94,7 +110,8 @@ def paint_cloth(pos,ao,seed=2):
     for (x0,x1,y0,y1,c) in [(-12,-4,108,118,(0.42,0.34,0.22)),(3,11,120,128,(0.35,0.3,0.3)),(2,9,86,96,(0.45,0.3,0.2))]:
         m=(pos[...,0]>x0)&(pos[...,0]<x1)&(pos[...,1]>y0)&(pos[...,1]<y1)&(pos[...,2]<0);col[m]=np.array(c)*stain[m][...,None]
         border=m&((np.abs(pos[...,0]-x0)<0.5)|(np.abs(pos[...,0]-x1)<0.5)|(np.abs(pos[...,1]-y0)<0.5)|(np.abs(pos[...,1]-y1)<0.5));col[border]*=0.6
-    hem=np.clip((95-pos[...,1])/10,0,1);col*=(1-0.35*hem)[...,None]
+    hem=np.clip((95-pos[...,1])/10,0,1);col*=(1-0.4*hem)[...,None]
+    dirt=np.clip((fbm(pos,2.5,2,seed+5)-0.5)*2.5,0,1)*0.3;col*=(1-dirt)[...,None]
     col*=(0.45+0.55*ao)[...,None];return col
 
 def paint_pad(pos,ao,seed=3):
@@ -108,7 +125,7 @@ def paint_leather(pos,ao,seed=4):
     col=np.broadcast_to(np.array((0.34,0.21,0.11),np.float32),pos.shape).copy()
     grain=1+0.2*(fbm(pos,3,3,seed)-0.5)+0.08*(noise(pos,0.35,seed+2)-0.5);col*=grain[...,None]
     scratch=noise(pos*np.array((9,0.6,9)),1.0,seed+5)>0.78;col[scratch]*=1.35
-    stitch=(np.abs((pos[...,1]+1)%4-2)<0.25)&(noise(pos,0.8,seed+9)>0.55);col[stitch]=np.array((0.6,0.5,0.3))
+    stitch=(np.abs((pos[...,1]+1)%4-2)<0.2)&(noise(pos,0.8,seed+9)>0.72);col[stitch]=np.array((0.5,0.4,0.25))
     col*=(0.4+0.6*ao)[...,None];return col
 
 def paint_iron(pos,ao,seed=5):
