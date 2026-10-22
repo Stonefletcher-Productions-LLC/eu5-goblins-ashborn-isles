@@ -30,3 +30,4 @@ ga_shatterfin_storm_crews = { naval_morale_modifier = 0.05 }
 ga_shatterfin_house_delegates = { diplomatic_reputation = 0.5 }
 ga_sootwake_charcoal_workshops = { global_production_efficiency = 0.05 }
 ga_sootwake_sheltered_stores = { global_food_capacity_modifier = 0.10 }
+ga_kin_rally = { damage_done_versus_heathens_modifier = 0.10 global_defensive = 0.10 }

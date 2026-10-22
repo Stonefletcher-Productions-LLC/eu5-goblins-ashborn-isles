@@ -4,7 +4,7 @@ from decimal import Decimal
 from datetime import date
 from pathlib import Path
 
-PACT_LADDER_067 = {'in_game/common/biases/goblins_gathering.txt', 'in_game/common/generic_action_ai_lists/goblins_gathering.txt', 'in_game/common/generic_actions/goblins_gathering.txt', 'in_game/common/on_action/goblins_gathering.txt', 'in_game/common/script_values/ga_gathering_ui.txt', 'in_game/common/scripted_triggers/goblins_gathering.txt', 'in_game/events/goblins_gathering.txt', 'in_game/gui/panels/situation/ga_gathering_of_five.gui', 'main_menu/localization/english/goblins_gathering_l_english.yml'}
+PACT_LADDER_067 = {'in_game/common/biases/goblins_gathering.txt', 'in_game/common/generic_action_ai_lists/goblins_gathering.txt', 'in_game/common/generic_actions/goblins_gathering.txt', 'in_game/common/on_action/goblins_gathering.txt', 'in_game/common/script_values/ga_gathering_ui.txt', 'in_game/common/scripted_triggers/goblins_gathering.txt', 'in_game/events/goblins_gathering.txt', 'in_game/gui/panels/situation/ga_gathering_of_five.gui', 'main_menu/common/static_modifiers/goblins_gathering.txt', 'main_menu/localization/english/goblins_gathering_l_english.yml'}
 
 
 def verify(root):
@@ -117,6 +117,9 @@ def verify(root):
                 if b'ga_swear_pact' in z.read('goblins_ashborn_isles/in_game/common/generic_actions/goblins_gathering.txt'):
                     from verify_sworn_pacts import verify as verify_pacts
                     verify_pacts(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
+                if b'ga_kin_defense' in z.read('goblins_ashborn_isles/in_game/common/on_action/goblins_gathering.txt'):
+                    from verify_kin_defense import verify as verify_kin
+                    verify_kin(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_situation_progress import verify as verify_progress
                 verify_progress(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_early_projects import verify as verify_projects
