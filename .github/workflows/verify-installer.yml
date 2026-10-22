@@ -1,7 +1,13 @@
 name: Verify downloadable installer
+# The prepared bundle is only rebuilt when a version is released, so content
+# merged to main between releases is expected to be missing from it. Check the
+# bundle where it changes: release branches, version tags and PRs that touch it.
 on:
   push:
+    branches: ['release/**']
+    tags: ['v*']
   pull_request:
+    paths: ['.release/**']
 permissions:
   contents: read
 jobs:
