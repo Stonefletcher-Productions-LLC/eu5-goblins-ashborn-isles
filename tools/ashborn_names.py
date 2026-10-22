@@ -205,7 +205,9 @@ def court_rows(countries):
 
 def build_courts(b,out):
     """Add families and adult courtiers; native cabinet appointments remain native."""
+    import goblin_nobility
     dynasties,characters=court_rows(b.CFG['countries'])
+    characters=characters+goblin_nobility.rows(b.CFG['countries'])
     for rel,block,rows in [('main_menu/setup/start/04_dynasties.txt','dynasty_manager',dynasties),('main_menu/setup/start/05_characters.txt','character_db',characters)]:
         p=out/rel;b.write(out,rel,b.inject(p.read_text(encoding='utf-8-sig'),block,'\n'.join(rows)))
     return len(characters)
