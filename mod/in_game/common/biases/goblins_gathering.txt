@@ -6,3 +6,5 @@ ga_sworn_pact_broken = { value = -40 months = 120 }
 ga_kin_answered = { value = 30 months = 120 }
 ga_horde_tribute_paid = { value = 25 months = 120 }
 ga_horde_levy_taken = { value = -15 months = 60 }
+ga_horde_aid_given = { value = 25 months = 120 }
+ga_horde_aid_refused = { value = -20 months = 60 }

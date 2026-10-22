@@ -16,6 +16,8 @@ HORNS_GOLD = 25
 MUSTER_GOLD = 50
 FEUD_GOLD = 25
 LEVY_MONTHS = 2
+AID_GOLD = 30
+CALM_PRESTIGE = 10
 
 
 def definition():
@@ -166,7 +168,7 @@ def actions(loc):
     ai_will_do = {{ add = -20 if = {{ limit = {{ scope:actor = {{ at_war = yes gold >= 75 }} }} add = 40 }} }}
 }}
 '''
-    return tribute + horns + muster(loc) + feud(loc) + levy(loc)
+    return tribute + horns + muster(loc) + feud(loc) + levy(loc) + petitions(loc)
 
 
 def warchief_only():
@@ -309,6 +311,97 @@ def levy(loc):
 '''
 
 
+# Petitions: the smaller crowns ask the Warchief for help. Each fires a request event
+# (ga_gathering.43-45) to the Warchief, who grants or refuses; the answer comes back
+# to the petitioner as .46 (granted) or .47 (refused).
+FEUD_AGAINST_US = f'''defender_leader = scope:actor
+                attacker_leader = {{ is_member_of_international_organization = {IO} NOT = {{ is_leader_of_international_organization = {IO} }} }}'''
+PETITIONS = [
+    ('ga_horde_ask_gold', 43, 'Plead for Plunder',
+     f'Ask the Warchief for {AID_GOLD} gold from the Horde\'s plunder. The Warchief may grant it or refuse; a refusal costs the Warchief our goodwill. Once every five years.', ''),
+    ('ga_horde_ask_calm', 44, 'Ask the Warchief to Calm Our Clans',
+     'Ask the Warchief to lend its name to quiet our feuding clans. If granted, we gain stability and the Warchief spends prestige. Once every five years.', ''),
+    ('ga_horde_appeal_feud', 45, 'Appeal to the Warchief',
+     'Another crown of the Horde has attacked us. Ask the Warchief to end that war with a white peace. Once every five years.',
+     f'''scope:actor = {{
+            any_current_war = {{
+                {FEUD_AGAINST_US}
+            }}
+        }}'''),
+]
+
+
+def petitions(loc):
+    out = ''
+    for key, num, name, desc, allow in PETITIONS:
+        loc(key, name)
+        loc(key + '_desc', desc)
+        save_war = '' if key != 'ga_horde_appeal_feud' else f'''scope:actor = {{
+            random_current_war = {{
+                limit = {{
+                    {FEUD_AGAINST_US}
+                }}
+                save_scope_as = ga_horde_feud_war
+            }}
+        }}'''
+        out += f'''{key} = {{
+    type = internationalorganization
+    ai_tick = monthly
+    ai_tick_frequency = 12
+    automation_tick = never
+    potential = {{ scope:actor = {{ ga_in_horde = yes }} }}
+    allow = {{
+        scope:actor = {{ NOT = {{ is_leader_of_international_organization = {IO} }} }}
+        exists = {IO}.leader_country
+        {allow}
+    }}
+    cooldown = {{ type = {key} years = 5 }}
+    {picker()}
+    effect = {{
+        scope:actor = {{ save_scope_as = ga_horde_petitioner }}
+        {save_war}
+        {IO}.leader_country = {{
+            save_scope_as = ga_horde_warchief
+            trigger_event_non_silently = ga_gathering.{num}
+        }}
+    }}
+    ai_will_do = {{ add = 10 }}
+}}
+'''
+    return out
+
+
+def events(event, option, loc):
+    petitioner = "[SCOPE.sCountry('ga_horde_petitioner').GetName]"
+    warchief = "[SCOPE.sCountry('ga_horde_warchief').GetName]"
+    answer = lambda granted: f'scope:ga_horde_petitioner = {{ add_opinion = {{ target = scope:ga_horde_warchief modifier = {"ga_horde_aid_given" if granted else "ga_horde_aid_refused"} }} trigger_event_non_silently = ga_gathering.{46 if granted else 47} }}'
+    refuse = lambda num: option(num, 'b', 'Refuse. The Horde owes the weak nothing.', answer(False), ai='factor = 1')
+    rule = '\n\n#bold Goblin Horde#! - Smaller crowns may petition the Warchief. Granting earns their goodwill (+25 opinion); refusing costs it (-20).'
+    return [
+        event(43, 'A Plea for Plunder',
+            f"Envoys from {petitioner} kneel at our fire. Their coffers are empty and they ask the Warchief for a share of the Horde's plunder: {AID_GOLD} gold.{rule}",
+            option(43, 'a', f'Give them {AID_GOLD} gold. A fed crown fights for us.',
+                f'add_gold = -{AID_GOLD} scope:ga_horde_petitioner = {{ add_gold = {AID_GOLD} }} ' + answer(True),
+                trigger=f'gold >= {AID_GOLD}', ai='factor = 2') + refuse(43)),
+        event(44, 'Clans in Uproar',
+            f"The clans of {petitioner} quarrel over every hearth and harbor. Their ruler asks the Warchief to speak and remind them whose Horde they belong to.{rule}",
+            option(44, 'a', 'Speak for them. The clans will listen to the Warchief.',
+                f'add_prestige = -{CALM_PRESTIGE} scope:ga_horde_petitioner = {{ add_stability = stability_mild_bonus }} ' + answer(True),
+                ai='factor = 2') + refuse(44)),
+        event(45, 'An Appeal Against Kin',
+            f"{petitioner} has been attacked by another crown of the Horde and begs the Warchief to end the war. Goblins may fight goblins, but the Warchief may also say when enough blood has been spilled.{rule}",
+            option(45, 'a', 'Enough. This feud ends now.',
+                'scope:ga_horde_petitioner = { white_peace = scope:ga_horde_feud_war } ' + answer(True),
+                trigger='exists = scope:ga_horde_feud_war', ai='factor = 2') + refuse(45)),
+        event(46, 'The Warchief Answers',
+            f"{warchief} has granted our petition. Whatever grudges lie between the crowns, the Warchief has stood by us.",
+            option(46, 'a', 'The Warchief remembers its kin.')),
+        event(47, 'The Warchief Refuses',
+            f"{warchief} has refused our petition. We will remember who stood by us, and who did not.",
+            option(47, 'a', 'We will not forget this.')),
+    ]
+
+
 def modifiers(loc):
     loc('STATIC_MODIFIER_NAME_ga_horde_war_horns', 'Horde War Horns')
     loc('STATIC_MODIFIER_DESC_ga_horde_war_horns', 'The Warchief has sounded the war horns across the Ashborn Isles.')
@@ -317,7 +410,9 @@ def modifiers(loc):
 
 def biases(loc):
     loc('ga_horde_tribute_paid', 'Tribute to the Warchief')
-    return 'ga_horde_tribute_paid = { value = 25 months = 120 }\nga_horde_levy_taken = { value = -15 months = 60 }\n'
+    loc('ga_horde_aid_given', 'Answered Our Petition')
+    loc('ga_horde_aid_refused', 'Refused Our Petition')
+    return 'ga_horde_tribute_paid = { value = 25 months = 120 }\nga_horde_levy_taken = { value = -15 months = 60 }\nga_horde_aid_given = { value = 25 months = 120 }\nga_horde_aid_refused = { value = -20 months = 60 }\n'
 
 
 def localization(loc):
