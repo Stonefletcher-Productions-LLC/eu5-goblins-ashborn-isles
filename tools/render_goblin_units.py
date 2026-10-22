@@ -65,8 +65,10 @@ if __name__=='__main__':
     cap=lambda kind:load(H/f'cm_goblin_soldier_cap_{kind}.mesh',H/f'cm_goblin_soldier_cap_{kind}_diffuse.dds')
     # Schematic scale applies to the whole unit: show goblins at their size next to the native soldier.
     def scaled(parts,s=UNIT_SCALE/.08):return [(p*s,uv,t,tex) for p,uv,t,tex in parts]
-    soldiers=[human_body+human,scaled(body('cindermaw')+outfit('light')+cap('leather')),scaled(body('brackmaw')+outfit('heavy')+cap('iron')),scaled(body('giltfang')+outfit('light'))]
-    row=[render(parts,-25,center=(0,100,0),extent=112) for parts in soldiers]+[render(soldiers[2],90,center=(0,100,0),extent=112)]
-    close=[render(body('cindermaw')+outfit('light')+cap('leather'),-25,center=(0,140,0),extent=60),render(body('sootwake')+outfit('heavy')+cap('iron'),-25,center=(0,140,0),extent=60),
-           render(body('reefhook')+outfit('heavy'),90,center=(0,140,0),extent=60),render(body('shatterfin'),0,center=(0,160,0),extent=35),render(body('giltfang')+cap('iron'),90,center=(0,160,0),extent=35)]
+    soldiers=[human_body+human,scaled(body('cindermaw')+outfit('light_a')+cap('leather')),scaled(body('brackmaw')+outfit('light_b')+cap('horned')),
+              scaled(body('giltfang')+outfit('heavy_a')+cap('iron')),scaled(body('sootwake')+outfit('heavy_b'))]
+    row=[render(parts,-25,center=(0,100,0),extent=112) for parts in soldiers]+[render(soldiers[3],90,center=(0,100,0),extent=112)]
+    close=[render(body('cindermaw')+outfit('light_a')+cap('leather'),-25,center=(0,140,0),extent=60),render(body('sootwake')+outfit('heavy_a')+cap('iron'),-25,center=(0,140,0),extent=60),
+           render(body('reefhook')+outfit('heavy_b')+cap('horned'),90,center=(0,140,0),extent=60),render(body('shatterfin')+outfit('light_b'),0,center=(0,150,0),extent=45),
+           render(body('giltfang')+cap('horned'),0,center=(0,160,0),extent=35),render(body('brackmaw'),90,center=(0,160,0),extent=35)]
     Image.fromarray((np.concatenate([np.concatenate(row,1),np.concatenate(close,1)],0)*255).astype(np.uint8)).save(args.out)

@@ -10,9 +10,9 @@ import numpy as np
 from pathlib import Path
 from PIL import Image
 
-MATERIALS={'skin':(1,0,0),'cloth':(0,1,0),'leather':(0,0,1),'iron':(1,1,0),'pad':(0,1,1),'horn':(1,0,1)}
+MATERIALS={'skin':(1,0,0),'cloth':(0,1,0),'leather':(0,0,1),'iron':(1,1,0),'pad':(0,1,1),'mail':(1,0,1),'bone':(0.5,0,0),'fur':(0,0.5,0),'rope':(0,0,0.5)}
 # Facial landmarks must match goblin_sculpt.P
-EYE=(5.4,166,-14.6);EYE_R=2.9;MOUTH=(0,154.5,-13);MOUTH_W=5.5
+EYE=(5.3,165.2,-13.6);EYE_R=2.5;MOUTH=(0,154.5,-13);MOUTH_W=5.5
 
 def _hash(ix,iy,iz,seed):
     h=(ix*73856093)^(iy*19349663)^(iz*83492791)^(seed*2654435761)
@@ -56,11 +56,11 @@ def paint_skin(pos,ao,clan_rgb,seed=1):
     back=np.clip((pos[...,2]-4)/8,0,1);col*=(1-0.15*back)[...,None]
     # Warm, bruised tint on the nose, ears, knuckles and toes
     warm=np.zeros(pos.shape[:-1])
-    warm+=np.clip((-pos[...,2]-15)/4,0,1)*np.clip((169-np.abs(pos[...,1]-161))/8,0,1)*(np.abs(pos[...,0])<5)
+    warm+=np.clip((-pos[...,2]-15)/4,0,1)*np.clip((7-np.abs(pos[...,1]-162))/3,0,1)*(np.abs(pos[...,0])<4.5)
     warm+=np.clip((np.abs(pos[...,0])-15)/8,0,1)*(pos[...,1]>158)
     warm+=np.clip((np.abs(pos[...,0])-30)/4,0,1)*(pos[...,1]<98)
     warm+=np.clip((-pos[...,2]-12)/5,0,1)*(pos[...,1]<9)
-    warm=np.clip(warm,0,1)*0.45;col=col*(1-warm[...,None])+np.array((0.62,0.36,0.3))*warm[...,None]
+    warm=np.clip(warm,0,1)*0.4;col=col*(1-warm[...,None])+np.array((0.3,0.17,0.12))*warm[...,None]
     # Brow shadow and sunken cheeks
     brow=(np.abs(pos[...,1]-168.5)<2.2)*(pos[...,2]<-10.5)*(np.abs(pos[...,0])<11);col*=(1-0.18*brow)[...,None]
     # Eyes: amber with a black slit pupil, dark rim
@@ -79,7 +79,7 @@ def paint_skin(pos,ao,clan_rgb,seed=1):
         col[tooth>0]=np.array((0.85,0.8,0.62))
     # Nostrils
     for sx in (1,-1):
-        d=np.linalg.norm(pos-np.array((sx*1.1,156.6,-21.8)),axis=-1);col[d<0.9]*=0.45
+        d=np.linalg.norm(pos-np.array((sx*1.7,158.6,-21.4)),axis=-1);col[d<1.1]*=0.45
     # Horn-coloured claws
     claw=np.clip((85.5-pos[...,1])/2.5,0,1)*(np.abs(pos[...,0])>30)+np.clip((-pos[...,2]-17.5)/2,0,1)*(pos[...,1]<6)
     claw=np.clip(claw,0,1);col=col*(1-claw[...,None])+np.array((0.32,0.3,0.22))*claw[...,None]
@@ -118,12 +118,38 @@ def paint_iron(pos,ao,seed=5):
     scratch=noise(pos*np.array((0.5,8,8)),1.0,seed+6)>0.8;col[scratch]*=1.3
     col*=(0.4+0.6*ao)[...,None];return col
 
+def paint_mail(pos,ao,seed=6):
+    # riveted rings: hex-ish lattice of bright ring edges on dark backing
+    col=np.broadcast_to(np.array((0.2,0.21,0.23),np.float32),pos.shape).copy()
+    u=pos[...,0]*1.0+pos[...,2]*0.3;v=pos[...,1]*1.0
+    ring=np.cos(u/1.1*2*np.pi)*np.cos(v/1.1*2*np.pi);col*=(0.75+0.5*np.clip(ring,0,1))[...,None]
+    rust=np.clip((fbm(pos,5,3,seed+2)-0.58)*3,0,1);col=col*(1-rust[...,None])+np.array((0.38,0.2,0.1))*rust[...,None]
+    col*=(0.35+0.65*ao)[...,None];return col
+
+def paint_bone(pos,ao,seed=7):
+    col=np.broadcast_to(np.array((0.72,0.64,0.5),np.float32),pos.shape).copy()
+    grain=1+0.18*(fbm(pos*np.array((1,0.3,1)),2.5,3,seed)-0.5);col*=grain[...,None]
+    crack=noise(pos*np.array((6,1,6)),1.2,seed+3)>0.82;col[crack]*=0.55
+    col*=(0.5+0.5*ao)[...,None];return col
+
+def paint_fur(pos,ao,seed=8):
+    col=np.broadcast_to(np.array((0.17,0.12,0.08),np.float32),pos.shape).copy()
+    strand=noise(pos*np.array((8,0.7,8)),1.0,seed);col*=(0.6+0.9*strand)[...,None]
+    tips=np.clip((fbm(pos,3,2,seed+2)-0.5)*2,0,1);col=col*(1-tips[...,None])+np.array((0.36,0.28,0.18))*tips[...,None]*0.6
+    col*=(0.45+0.55*ao)[...,None];return col
+
+def paint_rope(pos,ao,seed=9):
+    col=np.broadcast_to(np.array((0.5,0.4,0.24),np.float32),pos.shape).copy()
+    twist=0.5+0.5*np.cos((pos[...,0]+pos[...,1]+pos[...,2])/1.2*2*np.pi);col*=(0.7+0.5*twist)[...,None]
+    col*=(1+0.15*(noise(pos,0.4,seed)-0.5))[...,None]
+    col*=(0.45+0.55*ao)[...,None];return col
+
 def paint(stem,clan_rgb=None,seed=0):
     """Diffuse RGBA uint8 image for the mesh at stem (clan colour used for skin)."""
     ident,pos,ao=load_maps(stem);m=masks(ident);out=np.zeros(pos.shape,np.float32)
     painters={'skin':lambda:paint_skin(pos,ao,clan_rgb if clan_rgb is not None else (90,120,60),seed+1),'cloth':lambda:paint_cloth(pos,ao,seed+2),
               'pad':lambda:paint_pad(pos,ao,seed+3),'leather':lambda:paint_leather(pos,ao,seed+4),'iron':lambda:paint_iron(pos,ao,seed+5),
-              'horn':lambda:np.broadcast_to(np.array((0.3,0.28,0.2)),pos.shape)*(0.5+0.5*ao)[...,None]}
+              'mail':lambda:paint_mail(pos,ao,seed+6),'bone':lambda:paint_bone(pos,ao,seed+7),'fur':lambda:paint_fur(pos,ao,seed+8),'rope':lambda:paint_rope(pos,ao,seed+9)}
     for k,fn in painters.items():
         if m[k].any():out[m[k]]=fn()[m[k]]
     painted=np.zeros(pos.shape[:2],bool)
@@ -143,12 +169,37 @@ def dilate(img,mask,steps):
         fill=(~mask)&(cnt>0);img[fill]=acc[fill]/cnt[fill][...,None];mask|=fill
     return img
 
+def detail_height(pos,ident):
+    """Material-dependent fine relief (cm) evaluated in world space: skin pores and wrinkles, weave, hammered iron, rings."""
+    m=masks(ident);h=np.zeros(pos.shape[:2],np.float32)
+    if m['skin'].any():
+        h[m['skin']]=(0.25*(fbm(pos,1.2,3,21)-0.5)+0.12*(noise(pos,0.25,22)-0.5)+0.18*(noise(pos*np.array((1,6,1)),1.5,23)-0.5))[m['skin']]
+    for k,amp,scale in [('cloth',0.12,0.3),('pad',0.2,0.6),('leather',0.15,0.5),('fur',0.35,0.3),('rope',0.3,0.4),('bone',0.12,0.8)]:
+        if m[k].any():h[m[k]]=(amp*(noise(pos,scale,30+len(k))-0.5)+amp*0.6*(fbm(pos,4,2,40+len(k))-0.5))[m[k]]
+    if m['iron'].any():h[m['iron']]=(0.3*(fbm(pos,5,3,51)-0.5))[m['iron']]
+    if m['mail'].any():
+        u=pos[...,0]+pos[...,2]*0.3;v=pos[...,1];h[m['mail']]=(0.35*np.clip(np.cos(u/1.1*2*np.pi)*np.cos(v/1.1*2*np.pi),0,1))[m['mail']]
+    return h
+
 def normal_rgba(stem,size):
-    """Native-style normal map (R=X, G=Y, B=0, A=128) from the baked tangent map, flat where nothing was baked."""
+    """Native-style normal map (R=X, G=Y, B=0, A=128): the baked sculpt normals with per-material surface detail layered on."""
     p=Path(str(stem)+'_normal.png')
     if not p.exists():return Image.new('RGBA',(size,size),(128,128,0,128))
     n=np.asarray(Image.open(p).convert('RGB'),np.float32)
     bad=np.abs(n[...,2]-255)>140;n[bad]=(128,128,255)   # unbaked texels
+    n=n/127.5-1
+    ident,pos,ao=load_maps(stem)
+    if ident.shape[:2]==n.shape[:2]:
+        h=detail_height(pos,ident)
+        # Texel-space gradients; the texel's world-space tangent frame comes from the position map.
+        dhx=np.roll(h,-1,1)-np.roll(h,1,1);dhy=np.roll(h,-1,0)-np.roll(h,1,0)
+        tx=np.linalg.norm(np.roll(pos,-1,1)-np.roll(pos,1,1),axis=-1);ty=np.linalg.norm(np.roll(pos,-1,0)-np.roll(pos,1,0),axis=-1)
+        valid=(tx>1e-3)&(tx<3)&(ty>1e-3)&(ty<3)&~bad
+        sx=np.where(valid,-dhx/np.maximum(tx,1e-3),0);sy=np.where(valid,dhy/np.maximum(ty,1e-3),0)   # image y runs against uv v
+        d=np.dstack([sx,sy,np.ones_like(sx)]);d/=np.linalg.norm(d,axis=-1,keepdims=True)
+        # Whiteout-style blend of the detail normal onto the baked one.
+        n=np.dstack([n[...,0]+d[...,0],n[...,1]+d[...,1],n[...,2]*d[...,2]]);n/=np.maximum(np.linalg.norm(n,axis=-1,keepdims=True),1e-6)
+    n=np.clip((n+1)*127.5,0,255)
     return Image.fromarray(np.dstack([n[...,0].astype(np.uint8),n[...,1].astype(np.uint8),np.zeros(n.shape[:2],np.uint8),np.full(n.shape[:2],128,np.uint8)]),'RGBA')
 
 if __name__=='__main__':
