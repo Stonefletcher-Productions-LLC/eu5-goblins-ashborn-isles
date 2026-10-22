@@ -83,7 +83,7 @@ def verify(out,game=None):
     for clan in clans:
         stem=f'cm_goblin_{clan["id"]}_soldier_body';tag=clan['culture']+'_gfx'
         assert f'name = "{stem}_mesh"' in asset and f'texture_diffuse = "{stem}_diffuse.dds"' in asset
-        width,height,mips=dds_levels(folder/(stem+'_diffuse.dds'));assert width==height==512 and mips==10
+        width,height,mips=dds_levels(folder/(stem+'_diffuse.dds'));assert width==height==1024 and mips==11
         image=np.asarray(Image.open(folder/(stem+'_diffuse.dds')).convert('RGB'),float).reshape(-1,3)
         painted=image[image.sum(1)>30];median=np.median(painted,axis=0);target=hex_rgb(clan['skin_srgb'])
         # Skin stays a brightened version of the clan palette with the same hue ordering.

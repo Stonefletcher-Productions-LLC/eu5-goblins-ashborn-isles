@@ -12,7 +12,7 @@ from PIL import Image
 
 MATERIALS={'skin':(1,0,0),'cloth':(0,1,0),'leather':(0,0,1),'iron':(1,1,0),'pad':(0,1,1),'mail':(1,0,1),'bone':(0.5,0,0),'fur':(0,0.5,0),'rope':(0,0,0.5)}
 # Facial landmarks must match goblin_sculpt.P
-EYE=(4.8,165,-13.4);EYE_R=2.2;MOUTH=(0,154.5,-13);MOUTH_W=5.5
+EYE=(4.8,165,-13.4);EYE_R=2.2;MOUTH=(0,154.5,-13);MOUTH_W=6.5
 
 def _hash(ix,iy,iz,seed):
     h=(ix*73856093)^(iy*19349663)^(iz*83492791)^(seed*2654435761)
@@ -63,20 +63,23 @@ def paint_skin(pos,ao,clan_rgb,seed=1):
     warm=np.clip(warm,0,1)*0.4;col=col*(1-warm[...,None])+np.array((0.3,0.17,0.12))*warm[...,None]
     # Brow shadow and sunken cheeks
     brow=(np.abs(pos[...,1]-168.5)<2.2)*(pos[...,2]<-10.5)*(np.abs(pos[...,0])<11);col*=(1-0.18*brow)[...,None]
-    # Eyes: amber with a black slit pupil, dark rim
+    # Eyes: amber iris darkening to the rim, a black vertical slit pupil, lid shadow across the top
     for sx in (1,-1):
         c=np.array((sx*EYE[0],EYE[1],EYE[2]));d=np.linalg.norm(pos-c,axis=-1)
-        rim=(d<EYE_R+1.6)&(d>=EYE_R+0.5);col[rim]=col[rim]*0.4
-        eye=d<EYE_R+0.5;col[eye]=np.array((1.0,0.8,0.2))
-        front=np.linalg.norm(pos-(c+np.array((0,0,-EYE_R))),axis=-1)
-        glint=(front<2.2)&(np.abs(pos[...,0]-c[0])<0.5);col[glint&eye]=np.array((0.03,0.02,0.02))
-        edge=(d<EYE_R+0.5)&(d>EYE_R-0.4);col[edge]=col[edge]*0.7
-    # Mouth slit and jagged lower teeth
-    mouth=(np.abs(pos[...,1]-MOUTH[1])<0.75)*(np.abs(pos[...,0])<MOUTH_W)*(pos[...,2]<MOUTH[2]+5.5)
-    col[mouth>0]=np.array((0.16,0.07,0.06))
-    for tx in (-3.6,-1.2,1.2,3.6):
-        tooth=(np.abs(pos[...,0]-tx)<0.5)*(pos[...,1]>MOUTH[1]-1.9)*(pos[...,1]<MOUTH[1]+0.3)*(pos[...,2]<MOUTH[2]+5.5)
-        col[tooth>0]=np.array((0.85,0.8,0.62))
+        rim=(d<EYE_R+1.6)&(d>=EYE_R+0.5);col[rim]=col[rim]*0.45
+        eye=d<EYE_R+0.5;fr=pos-(c+np.array((0,0,-EYE_R)));front=np.linalg.norm(fr,axis=-1)
+        iris=np.clip(1-front/3.2,0,1);amber=np.array((0.95,0.62,0.12))[None]*(0.45+0.55*iris[eye][...,None]);col[eye]=amber
+        pupil=(np.abs(fr[...,0])<0.45+0.25*np.clip(1-np.abs(fr[...,1])/1.6,0,1))&(np.abs(fr[...,1])<1.7)&eye;col[pupil]=np.array((0.03,0.02,0.02))
+        lid=eye&(pos[...,1]>c[1]+0.6);col[lid]*=0.55
+        glint=(np.linalg.norm(fr-np.array((sx*-0.7,0.9,-0.4)),axis=-1)<0.45)&eye&~pupil;col[glint]=np.array((0.95,0.9,0.8))
+    # Mouth: a thin dark line that droops at the corners; teeth and tusks tinted where the cones are
+    corner=(pos[...,0]/MOUTH_W)**2*0.6
+    mouth=(np.abs(pos[...,1]-(MOUTH[1]-corner))<0.45)*(np.abs(pos[...,0])<MOUTH_W)*(pos[...,2]<MOUTH[2]+1.5)
+    col[mouth>0]=np.array((0.1,0.04,0.035))
+    lips=(np.abs(pos[...,1]-MOUTH[1])<2.2)*(np.abs(pos[...,0])<MOUTH_W+0.5)*(pos[...,2]<MOUTH[2]+1.5);col[lips>0]*=0.82
+    for tx in (-4.2,-1.5,1.5,4.2):
+        a=np.array((tx,152.6,-13.8));b=np.array((tx*1.05,156.0,-14.9));ab=b-a;t=np.clip(((pos-a)*ab).sum(-1)/(ab*ab).sum(),0,1)
+        d=np.linalg.norm(pos-(a+t[...,None]*ab),axis=-1);tooth=(d<0.75)&(pos[...,2]<-14.2);col[tooth]=np.array((0.8,0.74,0.55))*(0.6+0.4*t[tooth])[...,None]
     # Nostrils
     for sx in (1,-1):
         d=np.linalg.norm(pos-np.array((sx*1.7,158.6,-21.4)),axis=-1);col[d<1.1]*=0.45
@@ -85,8 +88,8 @@ def paint_skin(pos,ao,clan_rgb,seed=1):
     claw=np.clip(claw,0,1);col=col*(1-claw[...,None])+np.array((0.32,0.3,0.22))*claw[...,None]
     # Ivory tusks (cones from the lower jaw past the lip)
     for sx in (1,-1):
-        a=np.array((sx*3.4,152.5,-14.6));b=np.array((sx*4.2,159.5,-18));ab=b-a;t=np.clip(((pos-a)*ab).sum(-1)/(ab*ab).sum(),0,1)
-        d=np.linalg.norm(pos-(a+t[...,None]*ab),axis=-1);tusk=(d<1.5)&(t>0.35);col[tusk]=np.array((0.78,0.7,0.52))*(0.7+0.3*ao[tusk])[...,None]
+        a=np.array((sx*3.6,152.3,-14.4));b=np.array((sx*5.0,160,-18.6));ab=b-a;t=np.clip(((pos-a)*ab).sum(-1)/(ab*ab).sum(),0,1)
+        d=np.linalg.norm(pos-(a+t[...,None]*ab),axis=-1);tusk=(d<1.6)&(t>0.3);col[tusk]=np.array((0.78,0.7,0.52))*(0.7+0.3*ao[tusk])[...,None]
     # Shadowed sockets, darker knuckles, lighter palms, mud on shins and feet, a few pale scars
     for sx in (1,-1):
         d=np.linalg.norm(pos-np.array((sx*EYE[0],EYE[1],EYE[2]-2)),axis=-1);socket=np.clip((EYE_R+4.5-d)/3,0,1)*(d>EYE_R+0.5);col*=(1-0.3*socket)[...,None]
@@ -117,8 +120,10 @@ def paint_cloth(pos,ao,seed=2):
 def paint_pad(pos,ao,seed=3):
     col=np.broadcast_to(np.array((0.38,0.31,0.24),np.float32),pos.shape).copy()
     stain=1+0.25*(fbm(pos,8,3,seed)-0.5)+0.1*(noise(pos,0.5,seed+1)-0.5);col*=stain[...,None]
-    quilt=(np.abs((pos[...,1]+2.5)%5-2.5)<0.35)|(np.abs((pos[...,0]+3)%6-3)<0.35);col[quilt]*=0.6
-    puff=0.5+0.5*np.cos((pos[...,1])/5*2*np.pi)*np.cos(pos[...,0]/6*2*np.pi);col*=(0.92+0.12*puff)[...,None]
+    u=(pos[...,0]+pos[...,1])/1.4142;v=(pos[...,0]-pos[...,1])/1.4142
+    quilt=(np.abs((u+2.75)%5.5-2.75)<0.22)|(np.abs((v+2.75)%5.5-2.75)<0.22);col[quilt]*=0.72
+    stitch=quilt&(noise(pos,0.5,seed+4)>0.6);col[stitch]*=1.25
+    puff=np.cos(u/5.5*2*np.pi)*np.cos(v/5.5*2*np.pi);col*=(0.95+0.1*np.clip(puff,-1,1))[...,None]
     col*=(0.45+0.55*ao)[...,None];return col
 
 def paint_leather(pos,ao,seed=4):
@@ -129,9 +134,9 @@ def paint_leather(pos,ao,seed=4):
     col*=(0.4+0.6*ao)[...,None];return col
 
 def paint_iron(pos,ao,seed=5):
-    col=np.broadcast_to(np.array((0.3,0.31,0.34),np.float32),pos.shape).copy()
-    dents=1+0.25*(fbm(pos,6,3,seed)-0.5);col*=dents[...,None]
-    rust=np.clip((fbm(pos,4,3,seed+4)-0.55)*3.2,0,1);col=col*(1-rust[...,None])+np.array((0.42,0.22,0.1))*rust[...,None]
+    col=np.broadcast_to(np.array((0.17,0.18,0.21),np.float32),pos.shape).copy()
+    dents=1+0.3*(fbm(pos,6,3,seed)-0.5)+0.1*(noise(pos,0.6,seed+1)-0.5);col*=dents[...,None]
+    rust=np.clip((fbm(pos,4,3,seed+4)-0.58)*3.0,0,1);col=col*(1-rust[...,None])+np.array((0.26,0.12,0.05))*rust[...,None]
     scratch=noise(pos*np.array((0.5,8,8)),1.0,seed+6)>0.8;col[scratch]*=1.3
     col*=(0.4+0.6*ao)[...,None];return col
 
