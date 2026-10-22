@@ -34,7 +34,7 @@ def eligible(actor, target, explain=False):
     scope:{target} = {{
         {side(target, actor)}
         {check('opinion', f'"opinion(scope:{actor})" >= {OPINION}')}
-        {check('strength', f'OR = {{ {sp.sworn('scope:' + actor)} relative_strength = {{ target = scope:{actor} value <= 0.65 }} }}')}
+        {check('strength', f'OR = {{ {sp.sworn("scope:" + actor)} relative_strength = {{ target = scope:{actor} value <= 0.65 }} }}')}
         {check('rank', f'scope:{actor}.country_rank_level >= country_rank_level')}
     }}'''
 
