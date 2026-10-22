@@ -1,6 +1,16 @@
 ﻿ac_returning_ash = { stability_cost_efficiency = 0.1 }
 ac_water_lanterns = { naval_morale_modifier = 0.1 }
 ac_first_oath = { clergy_estate_target_satisfaction = 0.1 }
+ac_name_dead = { land_morale_recovery = 0.05 global_manpower_modifier = 0.05 }
+ac_bless_hulls = { naval_morale_recovery = 0.05 navy_maintenance_efficiency = 0.05 }
+ac_clan_cindermaw = { global_construction_speed = 0.1 }
+ac_clan_brackmaw = { global_population_growth = 0.001 }
+ac_clan_reefhook = { global_sailors_modifier = 0.1 }
+ac_clan_shatterfin = { diplomatic_reputation = 1 }
+ac_clan_sootwake = { global_manpower_modifier = 0.1 }
+ac_clan_giltfang = { global_merchant_power = 0.1 }
+ac_hear_shrines = { clergy_estate_target_satisfaction = 0.05 tolerance_heathen = 0.5 }
+ac_oathkeeper_writ = { global_monthly_control = 0.0025 stability_cost_efficiency = 0.05 }
 ac_local_covenants = { tolerance_heathen = 1 }
 ac_first_oathkeeper = { stability_cost_efficiency = 0.1 }
 ac_story_1_0 = { clergy_estate_target_satisfaction = 0.05 }
