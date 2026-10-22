@@ -239,7 +239,7 @@ def main():
     import export_event_art
     export_event_art.build(out)
     import export_goblin_models
-    models=export_goblin_models.build(out)
+    models=export_goblin_models.build(out,game)
     import build_goblin_portraits
     build_goblin_portraits.build(out)
     import build_infantry_art

@@ -1,60 +1,168 @@
 ﻿cm_cinderkin_gfx:army_light_infantry = {
- schematic_name = cm_goblin_cindermaw_schematic
- attach = { 100 = cm_goblin_cindermaw_body }
- animation_state_machine_name = cm_goblin_infantry
+ schematic_name = cm_goblin_unit_skeleton_schematic
+ attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = torsos }
+ attach = { 100 = legs }
+ attach = { 100 = headgear }
+ attach = { 100 = hairstyles }
+ attach = { 100 = beards }
+ attach = { 100 = weapons }
+ attach = { 100 = shields }
+ attach = { 100 = back }
+ attach = { 100 = offhand }
+ animation_state_machine_name = unit_skeleton_state_machine_one_handed_axe
 }
 cm_cinderkin_gfx:army_heavy_infantry = {
- schematic_name = cm_goblin_cindermaw_schematic
- attach = { 100 = cm_goblin_cindermaw_body }
- animation_state_machine_name = cm_goblin_infantry
+ schematic_name = cm_goblin_unit_skeleton_schematic
+ attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = torsos }
+ attach = { 100 = legs }
+ attach = { 100 = headgear }
+ attach = { 100 = hairstyles }
+ attach = { 100 = beards }
+ attach = { 100 = weapons }
+ attach = { 100 = shields }
+ attach = { 100 = back }
+ attach = { 100 = offhand }
+ animation_state_machine_name = unit_skeleton_state_machine_one_handed_axe
 }
 cm_brinekin_gfx:army_light_infantry = {
- schematic_name = cm_goblin_brackmaw_schematic
- attach = { 100 = cm_goblin_brackmaw_body }
- animation_state_machine_name = cm_goblin_infantry
+ schematic_name = cm_goblin_unit_skeleton_schematic
+ attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = torsos }
+ attach = { 100 = legs }
+ attach = { 100 = headgear }
+ attach = { 100 = hairstyles }
+ attach = { 100 = beards }
+ attach = { 100 = weapons }
+ attach = { 100 = shields }
+ attach = { 100 = back }
+ attach = { 100 = offhand }
+ animation_state_machine_name = unit_skeleton_state_machine_one_handed_axe
 }
 cm_brinekin_gfx:army_heavy_infantry = {
- schematic_name = cm_goblin_brackmaw_schematic
- attach = { 100 = cm_goblin_brackmaw_body }
- animation_state_machine_name = cm_goblin_infantry
+ schematic_name = cm_goblin_unit_skeleton_schematic
+ attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = torsos }
+ attach = { 100 = legs }
+ attach = { 100 = headgear }
+ attach = { 100 = hairstyles }
+ attach = { 100 = beards }
+ attach = { 100 = weapons }
+ attach = { 100 = shields }
+ attach = { 100 = back }
+ attach = { 100 = offhand }
+ animation_state_machine_name = unit_skeleton_state_machine_one_handed_axe
 }
 cm_reefkin_gfx:army_light_infantry = {
- schematic_name = cm_goblin_reefhook_schematic
- attach = { 100 = cm_goblin_reefhook_body }
- animation_state_machine_name = cm_goblin_infantry
+ schematic_name = cm_goblin_unit_skeleton_schematic
+ attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = torsos }
+ attach = { 100 = legs }
+ attach = { 100 = headgear }
+ attach = { 100 = hairstyles }
+ attach = { 100 = beards }
+ attach = { 100 = weapons }
+ attach = { 100 = shields }
+ attach = { 100 = back }
+ attach = { 100 = offhand }
+ animation_state_machine_name = unit_skeleton_state_machine_one_handed_axe
 }
 cm_reefkin_gfx:army_heavy_infantry = {
- schematic_name = cm_goblin_reefhook_schematic
- attach = { 100 = cm_goblin_reefhook_body }
- animation_state_machine_name = cm_goblin_infantry
+ schematic_name = cm_goblin_unit_skeleton_schematic
+ attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = torsos }
+ attach = { 100 = legs }
+ attach = { 100 = headgear }
+ attach = { 100 = hairstyles }
+ attach = { 100 = beards }
+ attach = { 100 = weapons }
+ attach = { 100 = shields }
+ attach = { 100 = back }
+ attach = { 100 = offhand }
+ animation_state_machine_name = unit_skeleton_state_machine_one_handed_axe
 }
 cm_shatterkin_gfx:army_light_infantry = {
- schematic_name = cm_goblin_shatterfin_schematic
- attach = { 100 = cm_goblin_shatterfin_body }
- animation_state_machine_name = cm_goblin_infantry
+ schematic_name = cm_goblin_unit_skeleton_schematic
+ attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = torsos }
+ attach = { 100 = legs }
+ attach = { 100 = headgear }
+ attach = { 100 = hairstyles }
+ attach = { 100 = beards }
+ attach = { 100 = weapons }
+ attach = { 100 = shields }
+ attach = { 100 = back }
+ attach = { 100 = offhand }
+ animation_state_machine_name = unit_skeleton_state_machine_one_handed_axe
 }
 cm_shatterkin_gfx:army_heavy_infantry = {
- schematic_name = cm_goblin_shatterfin_schematic
- attach = { 100 = cm_goblin_shatterfin_body }
- animation_state_machine_name = cm_goblin_infantry
+ schematic_name = cm_goblin_unit_skeleton_schematic
+ attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = torsos }
+ attach = { 100 = legs }
+ attach = { 100 = headgear }
+ attach = { 100 = hairstyles }
+ attach = { 100 = beards }
+ attach = { 100 = weapons }
+ attach = { 100 = shields }
+ attach = { 100 = back }
+ attach = { 100 = offhand }
+ animation_state_machine_name = unit_skeleton_state_machine_one_handed_axe
 }
 cm_sootkin_gfx:army_light_infantry = {
- schematic_name = cm_goblin_sootwake_schematic
- attach = { 100 = cm_goblin_sootwake_body }
- animation_state_machine_name = cm_goblin_infantry
+ schematic_name = cm_goblin_unit_skeleton_schematic
+ attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = torsos }
+ attach = { 100 = legs }
+ attach = { 100 = headgear }
+ attach = { 100 = hairstyles }
+ attach = { 100 = beards }
+ attach = { 100 = weapons }
+ attach = { 100 = shields }
+ attach = { 100 = back }
+ attach = { 100 = offhand }
+ animation_state_machine_name = unit_skeleton_state_machine_one_handed_axe
 }
 cm_sootkin_gfx:army_heavy_infantry = {
- schematic_name = cm_goblin_sootwake_schematic
- attach = { 100 = cm_goblin_sootwake_body }
- animation_state_machine_name = cm_goblin_infantry
+ schematic_name = cm_goblin_unit_skeleton_schematic
+ attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = torsos }
+ attach = { 100 = legs }
+ attach = { 100 = headgear }
+ attach = { 100 = hairstyles }
+ attach = { 100 = beards }
+ attach = { 100 = weapons }
+ attach = { 100 = shields }
+ attach = { 100 = back }
+ attach = { 100 = offhand }
+ animation_state_machine_name = unit_skeleton_state_machine_one_handed_axe
 }
 cm_giltkin_gfx:army_light_infantry = {
- schematic_name = cm_goblin_giltfang_schematic
- attach = { 100 = cm_goblin_giltfang_body }
- animation_state_machine_name = cm_goblin_infantry
+ schematic_name = cm_goblin_unit_skeleton_schematic
+ attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = torsos }
+ attach = { 100 = legs }
+ attach = { 100 = headgear }
+ attach = { 100 = hairstyles }
+ attach = { 100 = beards }
+ attach = { 100 = weapons }
+ attach = { 100 = shields }
+ attach = { 100 = back }
+ attach = { 100 = offhand }
+ animation_state_machine_name = unit_skeleton_state_machine_one_handed_axe
 }
 cm_giltkin_gfx:army_heavy_infantry = {
- schematic_name = cm_goblin_giltfang_schematic
- attach = { 100 = cm_goblin_giltfang_body }
- animation_state_machine_name = cm_goblin_infantry
+ schematic_name = cm_goblin_unit_skeleton_schematic
+ attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = torsos }
+ attach = { 100 = legs }
+ attach = { 100 = headgear }
+ attach = { 100 = hairstyles }
+ attach = { 100 = beards }
+ attach = { 100 = weapons }
+ attach = { 100 = shields }
+ attach = { 100 = back }
+ attach = { 100 = offhand }
+ animation_state_machine_name = unit_skeleton_state_machine_one_handed_axe
 }

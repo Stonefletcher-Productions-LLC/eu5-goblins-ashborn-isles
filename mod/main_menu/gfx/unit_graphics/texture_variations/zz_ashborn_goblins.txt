@@ -1,8 +1,8 @@
 ﻿assets_without_texture_variation = {
- cm_goblin_cindermaw_mesh
- cm_goblin_brackmaw_mesh
- cm_goblin_reefhook_mesh
- cm_goblin_shatterfin_mesh
- cm_goblin_sootwake_mesh
- cm_goblin_giltfang_mesh
+ cm_goblin_cindermaw_unit_head_mesh
+ cm_goblin_brackmaw_unit_head_mesh
+ cm_goblin_reefhook_unit_head_mesh
+ cm_goblin_shatterfin_unit_head_mesh
+ cm_goblin_sootwake_unit_head_mesh
+ cm_goblin_giltfang_unit_head_mesh
 }

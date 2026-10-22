@@ -1,18 +1,54 @@
-﻿cm_goblin_cindermaw_body = {
- 100 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_cindermaw_mesh" } }
+﻿cm_cinderkin_gfx:heads = {
+ 1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_cindermaw_unit_head_mesh" } }
 }
-cm_goblin_brackmaw_body = {
- 100 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_brackmaw_mesh" } }
+cm_cinderkin_gfx:hairstyles = {
+ 1 = { }
 }
-cm_goblin_reefhook_body = {
- 100 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_reefhook_mesh" } }
+cm_cinderkin_gfx:beards = {
+ 1 = { }
 }
-cm_goblin_shatterfin_body = {
- 100 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_shatterfin_mesh" } }
+cm_brinekin_gfx:heads = {
+ 1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_brackmaw_unit_head_mesh" } }
 }
-cm_goblin_sootwake_body = {
- 100 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_sootwake_mesh" } }
+cm_brinekin_gfx:hairstyles = {
+ 1 = { }
 }
-cm_goblin_giltfang_body = {
- 100 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_giltfang_mesh" } }
+cm_brinekin_gfx:beards = {
+ 1 = { }
+}
+cm_reefkin_gfx:heads = {
+ 1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_reefhook_unit_head_mesh" } }
+}
+cm_reefkin_gfx:hairstyles = {
+ 1 = { }
+}
+cm_reefkin_gfx:beards = {
+ 1 = { }
+}
+cm_shatterkin_gfx:heads = {
+ 1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_shatterfin_unit_head_mesh" } }
+}
+cm_shatterkin_gfx:hairstyles = {
+ 1 = { }
+}
+cm_shatterkin_gfx:beards = {
+ 1 = { }
+}
+cm_sootkin_gfx:heads = {
+ 1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_sootwake_unit_head_mesh" } }
+}
+cm_sootkin_gfx:hairstyles = {
+ 1 = { }
+}
+cm_sootkin_gfx:beards = {
+ 1 = { }
+}
+cm_giltkin_gfx:heads = {
+ 1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_giltfang_unit_head_mesh" } }
+}
+cm_giltkin_gfx:hairstyles = {
+ 1 = { }
+}
+cm_giltkin_gfx:beards = {
+ 1 = { }
 }
