@@ -309,7 +309,7 @@
     },
     {
       "path": "in_game/map_data/ports.csv",
-      "sha256": "160feceb31e97c40022fff6e7b5d84171a4338d77ef2764052de038efdbdf0b1"
+      "sha256": "913d807ba2bbd67e5a317974b33da69d580559d54b1b1fe15531ad2d0a56d97e"
     },
     {
       "path": "loading_screen/sound/banks/windows/Init.bnk",

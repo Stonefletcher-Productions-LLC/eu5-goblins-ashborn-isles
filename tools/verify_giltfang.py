@@ -1,5 +1,5 @@
 """Independent new-world checks against delivered rasters, setup and event scripts."""
-import json, re
+import json, math, re
 from collections import defaultdict, deque
 from pathlib import Path
 import numpy as np
@@ -50,8 +50,9 @@ def verify(out,game):
         permitted=np.zeros(actual.shape,bool)
         for region in cfg['coastal_sea']['extra_basins']:
             if region['source_water']==source:
-                x0,y0,x1,y1=region['bounds']
-                permitted|=(xx>=x0)&(xx<x1)&(yy>=y0)&(yy<y1)
+                # Trimmed edges are warped by at most edge_warp[0] pixels.
+                m=math.ceil(cfg['coastal_sea'].get('edge_warp',[0])[0]);x0,y0,x1,y1=region['bounds']
+                permitted|=(xx>=x0-m)&(xx<x1+m)&(yy>=y0-m)&(yy<y1+m)
         assert not np.any((native==ids[source])&(actual!=native)&~permitted)
         assert b.connectivity(actual==ids[source])[0]==1,source
     pixels={i['id']:sum(int(np.sum(actual==ids[l['id']])) for l in i['locations']) for i in cfg['islands']}
