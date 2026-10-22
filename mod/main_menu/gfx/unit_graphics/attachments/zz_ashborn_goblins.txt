@@ -1,28 +1,34 @@
-﻿cm_goblin_cindermaw_heads = {
- 1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_cindermaw_unit_head_mesh" } }
+﻿cm_goblin_cindermaw_body = {
+ 1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_cindermaw_soldier_body_mesh" } }
 }
-cm_goblin_brackmaw_heads = {
- 1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_brackmaw_unit_head_mesh" } }
+cm_goblin_brackmaw_body = {
+ 1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_brackmaw_soldier_body_mesh" } }
 }
-cm_goblin_reefhook_heads = {
- 1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_reefhook_unit_head_mesh" } }
+cm_goblin_reefhook_body = {
+ 1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_reefhook_soldier_body_mesh" } }
 }
-cm_goblin_shatterfin_heads = {
- 1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_shatterfin_unit_head_mesh" } }
+cm_goblin_shatterfin_body = {
+ 1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_shatterfin_soldier_body_mesh" } }
 }
-cm_goblin_sootwake_heads = {
- 1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_sootwake_unit_head_mesh" } }
+cm_goblin_sootwake_body = {
+ 1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_sootwake_soldier_body_mesh" } }
 }
-cm_goblin_giltfang_heads = {
- 1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_giltfang_unit_head_mesh" } }
+cm_goblin_giltfang_body = {
+ 1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_giltfang_soldier_body_mesh" } }
+}
+cm_goblin_army_light_infantry_outfit = {
+ 1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_soldier_outfit_light_mesh" } }
+}
+cm_goblin_army_heavy_infantry_outfit = {
+ 1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_soldier_outfit_heavy_mesh" } }
 }
 cm_goblin_army_light_infantry_headgear = {
  45 = { }
- 40 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_unit_cap_leather_mesh" } }
- 15 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_unit_cap_iron_mesh" } }
+ 40 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_soldier_cap_leather_mesh" } }
+ 15 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_soldier_cap_iron_mesh" } }
 }
 cm_goblin_army_heavy_infantry_headgear = {
  10 = { }
- 30 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_unit_cap_leather_mesh" } }
- 60 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_unit_cap_iron_mesh" } }
+ 30 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_soldier_cap_leather_mesh" } }
+ 60 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_soldier_cap_iron_mesh" } }
 }

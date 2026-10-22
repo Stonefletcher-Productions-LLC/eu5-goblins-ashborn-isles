@@ -1,2 +1,4 @@
 Pillow>=10.1,<12
 numpy>=1.26,<3
+# Optional, only for re-sculpting the goblin soldier (tools/goblin_sculpt.py):
+# bpy>=4.2

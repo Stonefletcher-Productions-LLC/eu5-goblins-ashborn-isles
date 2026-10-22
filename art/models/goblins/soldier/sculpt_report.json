@@ -1,0 +1,16 @@
+{
+  "body_tris": 6000,
+  "body_vertices": 4829,
+  "outfit_light": {
+    "tris": 3000
+  },
+  "outfit_heavy": {
+    "tris": 4500
+  },
+  "cap_leather": {
+    "tris": 700
+  },
+  "cap_iron": {
+    "tris": 1199
+  }
+}

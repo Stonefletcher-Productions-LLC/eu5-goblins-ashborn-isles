@@ -1,4 +1,4 @@
-"""Software preview of goblin heads on native soldier gear (bind pose).
+"""Software preview of the exported goblin soldiers beside a native soldier (bind pose).
 
 Reads native torso/leg/headgear meshes from the installed game and the built
 goblin head. Diffuse only, simple lighting; for fit and silhouette review, not
@@ -56,16 +56,17 @@ if __name__=='__main__':
     ap.add_argument('--out',type=Path,required=True);args=ap.parse_args()
     U=args.game/'in_game/gfx/models/units';H=args.built/'in_game/gfx/models/units/ashborn_goblins'
     def load(mesh,diffuse):return [(p,uv,t,texture(diffuse)) for p,uv,t in shapes(mesh)]
-    body=load(U/'torso/unit_torso_armor_linen_tunic_rope/unit_torso_linen_tunic_rope.mesh',U/'torso/unit_torso_armor_linen_tunic_rope/unit_torso_linen_tunic_rope_diffuse.dds')+\
+    human_body=load(U/'torso/unit_torso_armor_linen_tunic_rope/unit_torso_linen_tunic_rope.mesh',U/'torso/unit_torso_armor_linen_tunic_rope/unit_torso_linen_tunic_rope_diffuse.dds')+\
          load(U/'legs/unit_legs_woven_trousers_leather_shoes/unit_legs_woven_trousers_leather_shoes.mesh',U/'legs/unit_legs_woven_trousers_leather_shoes/unit_legs_woven_trousers_leather_shoes_diffuse.dds')
     human=load(U/'head/unit_head_north_german_male_adult_a/unit_head_german_a.mesh',U/'head/unit_head_north_german_male_adult_a/unit_head_01_diffuse.dds')
-    goblin=load(H/'cm_goblin_unit_head.mesh',H/'cm_goblin_cindermaw_unit_head_diffuse.dds')
-    leather=load(H/'cm_goblin_unit_cap_leather.mesh',H/'cm_goblin_unit_cap_leather_diffuse.dds')
-    iron=load(H/'cm_goblin_unit_cap_iron.mesh',H/'cm_goblin_unit_cap_iron_diffuse.dds')
-    # Schematic scale applies to the whole unit: show goblins at their size next to the native soldier.
     from export_goblin_models import UNIT_SCALE
+    body=lambda clan:load(H/'cm_goblin_soldier_body.mesh',H/f'cm_goblin_{clan}_soldier_body_diffuse.dds')
+    outfit=lambda kind:load(H/f'cm_goblin_soldier_outfit_{kind}.mesh',H/f'cm_goblin_soldier_outfit_{kind}_diffuse.dds')
+    cap=lambda kind:load(H/f'cm_goblin_soldier_cap_{kind}.mesh',H/f'cm_goblin_soldier_cap_{kind}_diffuse.dds')
+    # Schematic scale applies to the whole unit: show goblins at their size next to the native soldier.
     def scaled(parts,s=UNIT_SCALE/.08):return [(p*s,uv,t,tex) for p,uv,t,tex in parts]
-    soldiers=[body+human]+[scaled(body+goblin+cap) for cap in ([],leather,iron)]
-    row=[render(parts,-25,center=(0,100,0),extent=112) for parts in soldiers]+[render(scaled(body+goblin+leather),90,center=(0,100,0),extent=112)]
-    close=[render(body+goblin+cap,yaw,center=(0,160,0),extent=34) for cap,yaw in [([],-25),(leather,-25),(iron,-25),([],90),(iron,90)]]
+    soldiers=[human_body+human,scaled(body('cindermaw')+outfit('light')+cap('leather')),scaled(body('brackmaw')+outfit('heavy')+cap('iron')),scaled(body('giltfang')+outfit('light'))]
+    row=[render(parts,-25,center=(0,100,0),extent=112) for parts in soldiers]+[render(soldiers[2],90,center=(0,100,0),extent=112)]
+    close=[render(body('cindermaw')+outfit('light')+cap('leather'),-25,center=(0,140,0),extent=60),render(body('sootwake')+outfit('heavy')+cap('iron'),-25,center=(0,140,0),extent=60),
+           render(body('reefhook')+outfit('heavy'),90,center=(0,140,0),extent=60),render(body('shatterfin'),0,center=(0,160,0),extent=35),render(body('giltfang')+cap('iron'),90,center=(0,160,0),extent=35)]
     Image.fromarray((np.concatenate([np.concatenate(row,1),np.concatenate(close,1)],0)*255).astype(np.uint8)).save(args.out)
