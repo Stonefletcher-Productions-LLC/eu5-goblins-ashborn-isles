@@ -43,12 +43,12 @@
     "goblins_exploration.4": "biscay",
     "goblins_exploration.5": "africa",
     "goblins_exploration.6": "foreign_sails",
-    "ga_opening.1": "cindermaw",
-    "ga_opening.2": "brackmaw",
-    "ga_opening.3": "reefhook",
-    "ga_opening.4": "shatterfin",
-    "ga_opening.5": "sootwake",
-    "ga_opening.6": "giltfang",
+    "ga_opening.1": "opening_cindermaw",
+    "ga_opening.2": "opening_brackmaw",
+    "ga_opening.3": "opening_reefhook",
+    "ga_opening.4": "opening_shatterfin",
+    "ga_opening.5": "opening_sootwake",
+    "ga_opening.6": "opening_giltfang",
     "ga_old_world.1": "old_world_demons",
     "ga_old_world.2": "old_world_tavern",
     "ga_old_world.3": "old_world_envoy",
@@ -74,7 +74,7 @@
     "ga_eastern_hunger": "eastern_hunger",
     "ga_ashborn_voyages": "charts"
   },
-  "original_paintings": 41,
+  "original_paintings": 47,
   "format": "DDS BC1/DXT1, full mip chain",
   "files": [
     {
@@ -356,6 +356,54 @@
         440
       ],
       "sha256": "03904ebdef1b42a4b3dd3287bdb04daa33b7c2ad95be2829f9bf044599cd03af"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/opening_brackmaw.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "c08d8a52989c43cdb07455b74022b95a12e27e1d91409315d095b0ebb466a1b1"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/opening_cindermaw.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "6cecbfd46543e540872696efce55c536708f4e2eb9c6b6eb9929ce194a6e78d7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/opening_giltfang.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "f0c0e0888d832cc6261b3f21b9d91b84ad21dc92b90e6c6071b7fc042d35387b"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/opening_reefhook.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "3f8e1747c8f68bbe7da2965f7803c70a5aa017c4bc8fcc8c67abca94a7e0d1be"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/opening_shatterfin.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "5d9cc9f071f6538f98df9fc5c180832feb30d94dbf9f04eef81684dc2a8e37ff"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/opening_sootwake.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "ba5e80b317e55a9636553c015b746b7a07889357c16c1125d7c48a892873b9cd"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/pact_broken.dds",

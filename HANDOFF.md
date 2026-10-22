@@ -31,6 +31,8 @@ Alex's direction: there are tons of goblins, they are bad at economics and catch
 - `economy.STARTING_TRADES` seeds four more routes: livestock Hooktooth→Chainhaven (GTF), wheat Hooktooth→Shatter Maw (SFK), fish Shatter Maw→Hooktooth (CDM), salt Chainhaven→Shatter Maw (SFK). The two 0.6.1 routes keep their effect names and flag.
 - Fishing villages may now sit on any coastal location (port in `mod/in_game/map_data/ports.csv`), as in vanilla.
 
+- Shatterfin also out-builds Giltfang (`tools/conquest_balance_067.py`, recorded in `start_balance_067.shatterfin_over_giltfang`): Giltfang loses 5 market villages, 2 tools guilds, 2 marketplaces, 2 smelters and a fiber farm (food villages kept); Shatterfin gains 7 fishing and 1 farming village, a weapon guild, 2 marketplaces, a wharf and a smelter. Building levels SFK 65, GTF 58.
+
 `verify_economy.verify_start_balance_067` checks the totals and crown order, the guild limits and the food floor; older population checks run against the population before this pass. Needs a new 1337 campaign. Engine-untested: food balance, trade-route creation and tribal promotion speed.
 
 ## 0.6.6: Silver Shard starvation
@@ -51,7 +53,7 @@ Goblins get a unique archer levy, `a_ga_obsidian_fletchers` (Age 1, from `a_age_
 
 ## Next release (0.6.7) pending: kingdom openings
 
-Each crown now gets its own opening event after the shared Ashborn introduction (`cindermaw.1`): `ga_opening.1`-`6` (CDM, QBR, RHK, SFK, SWK, GTF), written by `tools/kingdom_openings.py` (called from `gathering.build`) into `goblins_openings` event, on_action and localization files. `ga_opening_monthly` waits one month after the intro flag (`ga_opening_wait`) so the two never stack, then fires once (`ga_opening_seen`). Existing saves catch up, since only the intro flag is needed. The events reuse each clan's painting; prompts for six dedicated paintings are in the project files at `kingdom-openings/codex_prompt.txt`. Engine-untested.
+Each crown now gets its own opening event after the shared Ashborn introduction (`cindermaw.1`): `ga_opening.1`-`6` (CDM, QBR, RHK, SFK, SWK, GTF), written by `tools/kingdom_openings.py` (called from `gathering.build`) into `goblins_openings` event, on_action and localization files. `ga_opening_monthly` waits one month after the intro flag (`ga_opening_wait`) so the two never stack, then fires once (`ga_opening_seen`). Existing saves catch up, since only the intro flag is needed. Each has its own painting (`art/events/sources/opening_<clan>.png`, exported to `opening_<clan>.dds`; prompts in `art/events/prompts.json`). Engine-untested.
 
 ## Next release (0.6.7) pending: lore and text pass
 
