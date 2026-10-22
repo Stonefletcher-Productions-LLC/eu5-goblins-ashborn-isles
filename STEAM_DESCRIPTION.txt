@@ -1,6 +1,6 @@
 [h1]Goblins of the Ashborn Isles[/h1]
 
-[b]Version 0.6.7 — Shatter Maw moves, the goblin realms band together.[/b]
+[b]Version 0.6.8 — Galleys, Warchiefs and sculpted goblin soldiers.[/b]
 
 [img]https://images.steamusercontent.com/ugc/14907097014739312596/D0FF7245E19633C807843C5D36A672B4224E95BB/[/img]
 
@@ -9,16 +9,16 @@ Volcanic islands rose between the Azores and Portugal. Goblin captains claimed t
 
 Choose a goblin crown, develop its economy and bargain with neighboring rulers. Unite the Isles through conquest, submission or dynastic union, then chart foreign shores and pursue an eastern foothold.
 
-[h2]New in 0.6.7[/h2]
+[h2]New in 0.6.8[/h2]
 [list]
-[*][b]Shatter Maw[/b] moves north-west and becomes the largest goblin realm; Cindermaw gains [b]Cinderstep[/b]. 117 locations, rugged coastlines, new rivers and sea zones.
-[*][b]Start-game balance:[/b] many more goblins, a thinner early economy, enough food and more trade routes.
-[*][b]The Goblin Horde:[/b] all goblin crowns defend each other against outsiders under an elected Warchief.
-[*][b]Pact Ladder[/b], Covenant rites, Old World first-contact events and bigger noble courts.
+[*][b]Galleys from day one:[/b] goblin crowns start with Feudalism and two unique goblin ships.
+[*][b]Sculpted goblin soldiers[/b] with clan outfits and caps.
+[*][b]Kingdom openings:[/b] an opening event and painting for every crown.
+[*][b]Warchief actions[/b] and petitions in the Goblin Horde; Shatterfin out-builds Giltfang.
 [/list]
-The map changed: start a new 1337 campaign. Not yet tested in game.
+Start a new 1337 campaign. Not yet tested in game.
+[b]Included from 0.6.7:[/b] Shatter Maw moves and grows, Cinderstep, start-game balance, the Goblin Horde, Pact Ladder and Covenant rites.
 [b]Included from 0.6.6:[/b] royal families and up to four wives, Obsidian Fletchers, goblin soldiers and goblin towns.
-[b]Included from 0.6.5:[/b] Ironbark, Pitchfang and Emberhollow produce lumber.
 [b]Included from 0.6.4.1:[/b] goblin hairstyle and ports.csv load-error fixes; page art hosted on Steam.
 [b]Included from 0.6.4:[/b] five goblin peace/war music tracks, royal divorce for 10 gold, an introduction for every crown and clearer Covenant and Horizon events. Music rotation and multiplayer remain unverified.
 
@@ -88,7 +88,7 @@ At home, the [b]Ashen Covenant[/b] provides twelve sacred sites, traditions, rit
 
 [h2]Install and continue[/h2]
 
-Built for [b]EU5 1.3.11 (Pavia)[/b]. 0.6.7 changes the map, so it needs a [b]new 1337 campaign[/b]. In multiplayer, everyone needs the same version.
+Built for [b]EU5 1.3.11 (Pavia)[/b]. 0.6.8 needs a [b]new 1337 campaign[/b]. In multiplayer, everyone needs the same version.
 
 [list]
 [*]Subscribe through the Workshop and restart EU5.
