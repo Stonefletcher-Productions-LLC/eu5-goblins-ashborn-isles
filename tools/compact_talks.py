@@ -222,6 +222,8 @@ def extra(out, write, loc):
         }}''')
         loc('ga_compact_'+kind, name)
         loc('ga_compact_'+kind+'_desc', DESCRIPTIONS[kind])
+        loc('LEAD_ga_compact_'+kind, '$LIST$ is a [SUBJECT_TYPE.GetName]')
+        loc('AM_ga_compact_'+kind, '[SUBJECT_TYPE.GetName] of $LIST$.')
     write(out, 'in_game/common/subject_types/goblins_gathering.txt', '\n'.join(rows))
     append('in_game/common/prices/goblins_gathering.txt', 'ga_compact_autonomy_tribute = { scaled_gold = 0.1 ignore_inflation = yes }')
     append('main_menu/common/modifier_type_definitions/goblins_gathering.txt', 'ga_compact_autonomy_tribute_cost_modifier = { color = bad percent = yes game_data = { category = country } }')

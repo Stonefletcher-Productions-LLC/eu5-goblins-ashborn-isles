@@ -1,5 +1,6 @@
 ﻿ga_horde_tribute = {
     type = internationalorganization
+    show_message = no
     ai_tick = monthly
     ai_tick_frequency = 12
     automation_tick = never
@@ -28,6 +29,7 @@
 }
 ga_horde_war_horns = {
     type = internationalorganization
+    show_message = no
     ai_tick = monthly
     ai_tick_frequency = 12
     automation_tick = never
@@ -54,6 +56,7 @@ ga_horde_war_horns = {
 }
 ga_horde_muster = {
     type = internationalorganization
+    show_message = no
     ai_tick = monthly
     ai_tick_frequency = 6
     automation_tick = never
@@ -102,6 +105,7 @@ ga_horde_muster = {
 }
 ga_horde_settle_feud = {
     type = internationalorganization
+    show_message = no
     ai_tick = monthly
     ai_tick_frequency = 12
     automation_tick = never
@@ -154,6 +158,7 @@ ga_horde_settle_feud = {
 }
 ga_horde_levy = {
     type = internationalorganization
+    show_message = no
     ai_tick = monthly
     ai_tick_frequency = 12
     automation_tick = never
@@ -183,6 +188,7 @@ ga_horde_levy = {
 }
 ga_horde_ask_gold = {
     type = internationalorganization
+    show_message = no
     ai_tick = monthly
     ai_tick_frequency = 12
     automation_tick = never
@@ -213,6 +219,7 @@ ga_horde_ask_gold = {
 }
 ga_horde_ask_calm = {
     type = internationalorganization
+    show_message = no
     ai_tick = monthly
     ai_tick_frequency = 12
     automation_tick = never
@@ -243,6 +250,7 @@ ga_horde_ask_calm = {
 }
 ga_horde_appeal_feud = {
     type = internationalorganization
+    show_message = no
     ai_tick = monthly
     ai_tick_frequency = 12
     automation_tick = never

@@ -30,8 +30,9 @@ CHANGES = {
     'cm_silver_shard': {'fishing_village': 2},
     'cm_gullscar': {'fishing_village': 1},
     'cm_stormpasture': {'farming_village': 1},
-    'cm_shatterfin': {'marketplace': 1, 'weapon_guild': 1, 'wharf': 1},
-    'cm_stormcrag': {'local_smelters': 1},
+    # A second wharf (Shatterfin) and smelter (Stormcrag) exceeded the max level 1
+    # in game (error.log, 2026-10-22) and were dropped.
+    'cm_shatterfin': {'marketplace': 1, 'weapon_guild': 1},
     'cm_knifeback': {'marketplace': 1},
 }
 

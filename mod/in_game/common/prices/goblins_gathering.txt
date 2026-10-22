@@ -2,7 +2,7 @@
 ga_gathering_aid_price = { gold = 10 }
 ga_gathering_compact_price = { gold = 10 }
 ga_gathering_claim_price = { prestige = 5 }
-ga_gathering_crossing_price = { gold = 20 }
+ga_eastern_crossing_price = { gold = 20 }
 ga_gathering_target_price = { gold = 10 }
 
 ga_compact_autonomy_tribute = { scaled_gold = 0.1 ignore_inflation = yes }

@@ -34,13 +34,11 @@ def definition():
     show_on_diplomatic_map = yes
     show_leave_message = no
     use_laws_as_join_reason = no
-    can_invite_countries = no
     subject_limited = no
     expel_members_who_are_targets_of_other_members = no
     expel_members_who_target_the_leader = no
     expel_members_who_are_attackers_at_war_with_other_members = no
     expel_members_who_are_defenders_at_war_with_other_members = no
-    opinion_bonus = 10
 
     create_visible_trigger = {{ always = no }}
     invite_visible_trigger = {{ always = no }}
@@ -128,6 +126,7 @@ def actions(loc):
     loc('ga_horde_war_horns_desc', f'Warchief only. Spend {HORNS_GOLD} gold to rouse every crown of the Horde: +5% land morale for all members for two years. Once every ten years.')
     tribute = f'''ga_horde_tribute = {{
     type = internationalorganization
+    show_message = no
     ai_tick = monthly
     ai_tick_frequency = 12
     automation_tick = never
@@ -150,6 +149,7 @@ def actions(loc):
 '''
     horns = f'''ga_horde_war_horns = {{
     type = internationalorganization
+    show_message = no
     ai_tick = monthly
     ai_tick_frequency = 12
     automation_tick = never
@@ -181,9 +181,10 @@ def muster(loc):
     loc('ga_horde_muster', 'Call the Muster')
     loc('ga_horde_muster_desc', f'Warchief only. Spend {MUSTER_GOLD} gold to call every crown of the Horde into one of our offensive wars against an outsider. Crowns already at war with us stay out. Once every ten years.')
     loc('ga_horde_muster_choose', 'Choose the war')
-    loc('ga_horde_muster_none', 'We lead no offensive war against an outsider.')
+    loc('ga_horde_muster_none', '@trigger_no! We lead no offensive war against an outsider.')
     return f'''ga_horde_muster = {{
     type = internationalorganization
+    show_message = no
     ai_tick = monthly
     ai_tick_frequency = 6
     automation_tick = never
@@ -231,12 +232,13 @@ def feud(loc):
     loc('ga_horde_settle_feud', 'Settle a Feud')
     loc('ga_horde_settle_feud_desc', f'Warchief only. Spend {FEUD_GOLD} gold to end one war between two crowns of the Horde with a white peace. The Warchief cannot settle a feud it is fighting itself. Once every five years.')
     loc('ga_horde_settle_feud_choose', 'Choose the crown that started the feud')
-    loc('ga_horde_settle_feud_none', 'No two crowns of the Horde are at war.')
+    loc('ga_horde_settle_feud_none', '@trigger_no! No two crowns of the Horde are at war.')
     feud_war = f'''attacker_leader = root
                 defender_leader = {{ is_member_of_international_organization = {IO} }}
                 NOT = {{ defender_leader = scope:actor }}'''
     return f'''ga_horde_settle_feud = {{
     type = internationalorganization
+    show_message = no
     ai_tick = monthly
     ai_tick_frequency = 12
     automation_tick = never
@@ -288,6 +290,7 @@ def levy(loc):
     loc('ga_horde_levy_taken', 'Took Our Levy')
     return f'''ga_horde_levy = {{
     type = internationalorganization
+    show_message = no
     ai_tick = monthly
     ai_tick_frequency = 12
     automation_tick = never
@@ -346,6 +349,7 @@ def petitions(loc):
         }}'''
         out += f'''{key} = {{
     type = internationalorganization
+    show_message = no
     ai_tick = monthly
     ai_tick_frequency = 12
     automation_tick = never
@@ -412,7 +416,21 @@ def biases(loc):
     loc('ga_horde_tribute_paid', 'Tribute to the Warchief')
     loc('ga_horde_aid_given', 'Answered Our Petition')
     loc('ga_horde_aid_refused', 'Refused Our Petition')
-    return 'ga_horde_tribute_paid = { value = 25 months = 120 }\nga_horde_levy_taken = { value = -15 months = 60 }\nga_horde_aid_given = { value = 25 months = 120 }\nga_horde_aid_refused = { value = -20 months = 60 }\n'
+    # EU5 asks every IO type for an io_opinion_<key> bias: members' standing opinion of each other.
+    return 'io_opinion_goblin_horde = { value = 10 }\nga_horde_tribute_paid = { value = 25 months = 120 }\nga_horde_levy_taken = { value = -15 months = 60 }\nga_horde_aid_given = { value = 25 months = 120 }\nga_horde_aid_refused = { value = -20 months = 60 }\n'
+
+
+ACTIONS = ('ga_horde_tribute', 'ga_horde_war_horns', 'ga_horde_muster', 'ga_horde_settle_feud',
+           'ga_horde_levy', 'ga_horde_ask_gold', 'ga_horde_ask_calm', 'ga_horde_appeal_feud')
+
+
+def ai_list():
+    # Native AI lists keep the AI from scanning every action every tick.
+    return f'''ga_horde_ai_list = {{
+    potential = {{ ga_in_horde = yes }}
+    actions = {{ {' '.join(ACTIONS)} }}
+}}
+'''
 
 
 def localization(loc):
@@ -420,6 +438,9 @@ def localization(loc):
     loc(KEY + '_desc', 'Every goblin crown of the Ashborn Isles belongs to the Horde. Its crowns raid, rival and conquer one another freely, but when an outsider declares war on any of them, the whole Horde answers. The crown holding most of the homeland leads as Warchief.')
     loc('GOBLIN_HORDE_LEADER', 'Warchief')
     loc('GOBLIN_HORDE_KIN', 'Goblin kin')
+    loc('diplomatic_status_goblin_horde_name', 'Goblin Horde')
+    loc('diplomatic_status_goblin_horde_tooltip', '#T Goblin Horde#!\nThis country belongs to the Goblin Horde. If an outsider attacks it, every other crown of the Horde is called to arms.')
+    loc('goblin_horde_list_who_tt', '$WHO$ is in the Goblin Horde with $LIST$. They defend each other against anyone outside the Horde')
     loc('goblin_horde_defense_tt', 'The attacker is not a member of the Goblin Horde. Wars between goblin crowns do not call the Horde.')
 
 

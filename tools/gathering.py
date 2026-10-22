@@ -116,6 +116,17 @@ def action(key, name, desc, effect, selector='', allow='', ai='add = 10',
 }}
 '''
 
+# 'ga_gathering_crossing_price' hashed its MODIFIER_TYPE_NAME key onto vanilla
+# flavor_ven.28.desc (EU5 1.3.11 localization hash collision), blanking that event.
+CROSSING_PRICE = 'ga_eastern_crossing_price'
+# Vanilla price icon (modifier_icons/00_modifier_icons.txt hussite_wars_actions_price_cost_modifier).
+PRICE_ICON = 'gfx/interface/icons/modifier_types/hussite_wars_actions_price_cost_modifier.dds'
+
+
+def price_icon(modifier):
+    return f'{modifier} = {{ positive = "{PRICE_ICON}" }}'
+
+
 def build(out, cfg=None):
     TEXT.clear()
     if cfg is None:
@@ -365,7 +376,7 @@ situation_panel = {
     actions.append(action('ga_prepare_crossing', 'Prepare the Eastern Crossing',
         'Pay 20 gold for five years of 15% lower transport construction cost and 5% higher naval morale. Ships, armies and land must still be obtained through normal gameplay. Available once every ten years.',
         '''scope:actor = { add_country_modifier = { modifier = ga_crossing_preparations years = 5 mode = replace } }''',
-        ai='add = 20', years=10, price='ga_gathering_crossing_price', eastern=True))
+        ai='add = 20', years=10, price=CROSSING_PRICE, eastern=True))
     coastal = '''select_trigger = {
         looking_for_a = province
         target_flag = target
@@ -423,26 +434,29 @@ ga_harbor_bargains_ai_list = {
     potential = { ga_hb_free = yes gold >= 30 can_see_situation = situation:ga_gathering_of_five }
     actions = { ga_offer_harbor_pact ga_seek_pilot_bargain }
 }
-''')
+''' + goblin_horde.ai_list())
     write(out, 'in_game/common/prices/goblins_gathering.txt', '''
 ga_gathering_pact_price = { gold = 5 }
 ga_gathering_aid_price = { gold = 10 }
 ga_gathering_compact_price = { gold = 10 }
 ga_gathering_claim_price = { prestige = 5 }
-ga_gathering_crossing_price = { gold = 20 }
+''' + CROSSING_PRICE + ''' = { gold = 20 }
 ga_gathering_target_price = { gold = 10 }
 ''')
     price_types = []
     for suffix, label in [('pact', 'Harbor Bargain'), ('aid', 'Send Supplies'),
                           ('compact', 'Offer Compact'), ('claim', 'Claim the Homeland'),
                           ('crossing', 'Prepare the Crossing'), ('target', 'Plan an Eastern Foothold')]:
-        price = 'ga_gathering_' + suffix + '_price'
+        price = CROSSING_PRICE if suffix == 'crossing' else 'ga_gathering_' + suffix + '_price'
         modifier = price + '_cost_modifier'
         loc(price, label)
         loc('MODIFIER_TYPE_NAME_' + modifier, label + ' Cost')
         loc('MODIFIER_TYPE_DESC_' + modifier, 'Changes the cost of this action.')
         price_types.append(f'{modifier} = {{ color = bad percent = yes game_data = {{ category = country }} }}')
     write(out, 'main_menu/common/modifier_type_definitions/goblins_gathering.txt', '\n'.join(price_types))
+    # Divorce (mod/, hand-written) and compact tribute prices share the file.
+    write(out, 'main_menu/common/modifier_icons/goblins_prices.txt', '\n'.join(
+        price_icon(p.split(' ')[0]) for p in price_types + ['ga_compact_autonomy_tribute_cost_modifier', 'ga_divorce_price_cost_modifier']))
     write(out, 'in_game/common/biases/goblins_gathering.txt', '''
 ga_harbor_pact_opinion = { value = 35 months = 120 }
 ga_received_supplies = { value = 30 months = 60 }
