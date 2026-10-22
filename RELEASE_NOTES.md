@@ -9,6 +9,7 @@
 - **Shatterfin out-builds Giltfang** at the start, so it is set up to conquer it.
 - **The Goblin Shore:** goblin crowns can settle on the mainland, and Europe pushes back.
 - **More lore:** a southern voyage, reactions from Muslim courts, a Shatterfin–Giltfang rivalry, renamed estates, new name pools and country names.
+- **Fixes from the 0.6.7 error log:** the Goblin Horde definition loads, a vanilla Venice event has its text back, Shatterfin buildings start within their max level, and fleets and battles sit inside the reshaped Atlantic sea zones.
 - **New art:** Covenant story paintings, redone event paintings and goblin art for cavalry, artillery and auxiliary unit cards.
 
 Built for **EU5 1.3.11**. Restart before playing. Start a **new 1337 campaign** for the starting tech and Shatterfin changes. In multiplayer, every player needs the same version. Not yet tested in game. All 0.6.7 changes remain included.
