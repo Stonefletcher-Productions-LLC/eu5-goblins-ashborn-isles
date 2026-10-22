@@ -9,6 +9,7 @@ Working copy: `E:\Codex_EU5_Modding\goblins-ashborn-isles`. Repository: [GitHub]
 - **Kingdom openings:** each crown gets its own opening event and painting after the shared Ashborn introduction.
 - **Goblin Horde actions:** the Warchief can Call the Muster, Settle a Feud and Raise the Warchief's Levy. Smaller crowns can petition the Warchief for plunder, calm clans or a peace.
 - **Shatterfin out-builds Giltfang** at the start, so it is set up to conquer it.
+- **More lore:** a southern voyage, reactions from Muslim courts, a Shatterfin–Giltfang rivalry, renamed estates, new name pools and country names.
 - **New art:** Covenant story paintings, redone event paintings and goblin art for cavalry, artillery and auxiliary unit cards.
 
 Built for **EU5 1.3.11**. Restart before playing. Start a **new 1337 campaign** for the starting tech and Shatterfin changes. In multiplayer, every player needs the same version. Not yet tested in game. All 0.6.7 changes remain included.
