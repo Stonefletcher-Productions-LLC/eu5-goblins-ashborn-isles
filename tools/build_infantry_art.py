@@ -1,4 +1,4 @@
-"""Culture-scoped 2D infantry illustrations; native definitions remain unchanged."""
+"""Culture-scoped 2D army illustrations; native definitions remain unchanged."""
 from pathlib import Path
 import argparse, hashlib, io, json, re, struct
 from PIL import Image, ImageOps
@@ -6,6 +6,13 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 REL = Path('main_menu/gfx/interface/illustrations/units')
+# Illustration category -> (native unit categories, authored source painting).
+CATEGORIES = {
+    'infantry': (('army_light_infantry', 'army_heavy_infantry'), 'art/infantry/ashborn_infantry.png'),
+    'cavalry': (('army_light_cavalry', 'army_heavy_cavalry'), 'art/cavalry/ashborn_cavalry.png'),
+    'artillery': (('army_artillery',), 'art/artillery/ashborn_artillery.png'),
+    'auxiliary': (('army_auxiliary',), 'art/auxiliary/ashborn_auxiliary.png'),
+}
 
 def blocks(text):
     text = re.sub(r'#[^\n]*', '', text)
@@ -18,7 +25,7 @@ def blocks(text):
         result[m[1]] = text[m.end():end-1]
     return result
 
-def infantry_types(game):
+def unit_types(game, categories):
     definitions = {}
     for p in sorted((game/'in_game/common/unit_types').glob('*.txt')):
         definitions.update(blocks(p.read_text(encoding='utf-8-sig')))
@@ -29,7 +36,10 @@ def infantry_types(game):
         if direct: return direct[1]
         parent = re.search(r'\bcopy_from\s*=\s*(\w+)', body)
         return category(parent[1], seen+(key,)) if parent else None
-    return sorted(k for k in definitions if category(k) in ('army_light_infantry', 'army_heavy_infantry'))
+    return sorted(k for k in definitions if category(k) in categories)
+
+def infantry_types(game):
+    return unit_types(game, CATEGORIES['infantry'][0])
 
 def dds(image, pixel_format):
     width, height = image.size
@@ -66,24 +76,34 @@ def dds(image, pixel_format):
 def build(game, output):
     config = json.loads((ROOT/'data/island.json').read_text())
     cultures = [c['culture']+'_gfx' for c in config['countries']]
-    unit_ids = infantry_types(game)
-    # Native UI divides the 1080x440 sheet into three 360x440 portrait frames.
-    picture = ImageOps.fit(Image.open(ROOT/'art/infantry/ashborn_infantry.png').convert('RGB'),(1080,440))
-    art = dds(picture,'DXT1')
     mask = dds(Image.new('RGBA',(32,32),(0,0,0,0)),'DXT5')
-    paths = []
-    for culture in cultures:
-        # Exact unit/culture keys outrank all native age and equipment fallbacks.
-        names = [f'army_infantry_{unit}_{culture}' for unit in unit_ids]
-        names += [f'army_infantry_{culture}']
-        for name in names:
-            for rel, content in [(REL/(name+'.dds'),art),(REL/'masks'/(name+'.dds'),mask)]:
-                target=output/rel
-                target.parent.mkdir(parents=True,exist_ok=True)
-                target.write_bytes(content)
-                paths.append(rel.as_posix())
-    report={'unit_types':unit_ids,'culture_tags':cultures,'files':paths,'engine_tested':False,
-            'source_sha256':hashlib.sha256((ROOT/'art/infantry/ashborn_infantry.png').read_bytes()).hexdigest()}
+    report = {'culture_tags':cultures,'files':[],'categories':{},'pending_art':[],'engine_tested':False}
+    for illustration, (categories, source) in CATEGORIES.items():
+        unit_ids = unit_types(game, categories)
+        if not (ROOT/source).exists():
+            # Missing paintings leave native art in place rather than shipping a placeholder.
+            report['pending_art'].append(illustration)
+            continue
+        # Native UI divides the 1080x440 sheet into three 360x440 portrait frames.
+        picture = ImageOps.fit(Image.open(ROOT/source).convert('RGB'),(1080,440))
+        art = dds(picture,'DXT1')
+        paths = []
+        for culture in cultures:
+            # Exact unit/culture keys outrank all native age and equipment fallbacks.
+            names = [f'army_{illustration}_{unit}_{culture}' for unit in unit_ids]
+            names += [f'army_{illustration}_{culture}']
+            for name in names:
+                for rel, content in [(REL/(name+'.dds'),art),(REL/'masks'/(name+'.dds'),mask)]:
+                    target=output/rel
+                    target.parent.mkdir(parents=True,exist_ok=True)
+                    target.write_bytes(content)
+                    paths.append(rel.as_posix())
+        report['categories'][illustration]={'unit_types':unit_ids,'source':source,
+            'source_sha256':hashlib.sha256((ROOT/source).read_bytes()).hexdigest()}
+        report['files'] += paths
+    # Infantry keys remain at top level for existing verifiers and release reports.
+    report['unit_types']=report['categories']['infantry']['unit_types']
+    report['source_sha256']=report['categories']['infantry']['source_sha256']
     return report
 
 def update_manifest(output, report):
@@ -101,4 +121,4 @@ if __name__=='__main__':
     report=build(args.game,ROOT/'mod')
     if args.update_overlay: update_manifest(ROOT/'mod',report)
     (ROOT/'art/infantry/validation.json').write_text(json.dumps(report,indent=2)+'\n')
-    print(json.dumps({'infantry_types':len(report['unit_types']),'cultures':len(report['culture_tags']),'textures':len(report['files'])}))
+    print(json.dumps({'unit_types':{k:len(v['unit_types']) for k,v in report['categories'].items()},'pending_art':report['pending_art'],'cultures':len(report['culture_tags']),'textures':len(report['files'])}))
