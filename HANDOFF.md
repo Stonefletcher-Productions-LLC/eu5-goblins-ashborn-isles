@@ -18,6 +18,19 @@ Build fix: `landscape.write_visual_biome` now accepts `ocean_wasteland` (vanilla
 
 The location map, terrain and rivers are generated, so this cannot ship as an overlay over the reused 0.6.1 map base: the `definitions.txt`, `location_templates.txt` and `ports.csv` overlays in `mod/` already describe the new map. Before releasing 0.6.7, run a full `tools/build.py --game ...` on the PC, then bundle the result (`bundle_prepared_release.py`) instead of `refresh_overlay_bundle.py --promote-version`. Needs a new 1337 campaign. Preview renders and the cloud harness used to check the map: `/mnt/project-files/shatter-maw-map/` in the project.
 
+## 0.6.7 (unreleased): start-game balance — many goblins, thin economy, enough food
+
+Alex's direction: there are tons of goblins, they are bad at economics and catch up later; there must be enough food and the markets must trade; Shatterfin is meant to conquer Giltfang, so it starts larger. `tools/start_balance_067.py` applied it once to `data/island.json` and recorded every change in `start_balance_067` (it refuses to run twice; to redo it, restore `island.json` from before and rerun).
+
+- Every location is 40% tribesmen (was 25%), home and mixed people included. Tribesmen eat no food, pay little tax and promote to peasants, which is the catch-up. Shatterfin, Reefhook and Sootwake also gain peasants and laborers. Crowns with mixed people: CDM 821k, QBR 531k, SFK 506k, GTF 388k, RHK 260k, SWK 240k (2.75M, was 1.97M).
+- One glass guild per crown, one paper guild (Cindermaw two), at most one jewelry guild, half the masons (quarries keep theirs).
+- Food: Giltfang turns 8 market villages into food villages; about 70 fishing/farming villages go where the static estimate (`economy.food_sources`) is short, at most 2 per type per location (the setup rural cap). Villages without peasants get new settlers. Food RGO investment rises in Reefhook, Sootwake and Shatterfin. Every crown is at 0.5 or more on that estimate; it compares crowns and is not the engine's food bar.
+- One tar kiln per market (Ember Key, Emberhollow, Knifeback): naval supplies need tar, which has no RGO.
+- `economy.STARTING_TRADES` seeds four more routes: livestock Hooktooth→Chainhaven (GTF), wheat Hooktooth→Shatter Maw (SFK), fish Shatter Maw→Hooktooth (CDM), salt Chainhaven→Shatter Maw (SFK). The two 0.6.1 routes keep their effect names and flag.
+- Fishing villages may now sit on any coastal location (port in `mod/in_game/map_data/ports.csv`), as in vanilla.
+
+`verify_economy.verify_start_balance_067` checks the totals and crown order, the guild limits and the food floor; older population checks run against the population before this pass. Needs a new 1337 campaign. Engine-untested: food balance, trade-route creation and tribal promotion speed.
+
 ## 0.6.6: Silver Shard starvation
 
 Silver Shard was the only location in `cm_shatterfin_outer_province`. Provinces share food, and a lone silver mine has none, so it starved permanently. It now belongs to `cm_shatterfin_province` (it borders Shatterfin and Shardpoint), and Shatterfin Outer is gone (39 provinces). The corrected `definitions.txt` ships as an overlay `mod/in_game/map_data/definitions.txt` over the reused map base, like the 0.6.5 `location_templates.txt` fix. `tools/refresh_overlay_bundle.py` accepts it via `PROVINCE_FIXES['0.6.6']` when promoting; `tools/verify_prepared_bundle.py` checks packaged province membership from 0.6.6. Needs a new 1337 campaign.

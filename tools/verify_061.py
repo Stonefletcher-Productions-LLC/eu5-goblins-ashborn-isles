@@ -31,12 +31,13 @@ def verify(out,game):
         a,z=b.block_span(templates,n+'_settlement')
         assert dict((k,int(v)) for k,v in re.findall(r'(\w+)\s*=\s*(\d+)',templates[a:z]))==l['buildings'],n
     for cap,sand,stone in [('cm_hooktooth','cm_clayjaw','cm_obsidian_cut'),('cm_chainhaven','cm_lockshore','cm_coinfall')]:
-        assert locs[cap]['buildings']['glass_guild']>=2
+        # 0.6.7 trims every crown to one glass guild and half its masons.
+        assert locs[cap]['buildings']['glass_guild']>=1
         assert locs[cap]['buildings']['tools_guild']>=2
         assert locs[cap]['buildings']['paper_guild']>=1
         assert locs[cap]['buildings']['jewelry_guild']>=1
         assert locs[sand]['good']=='sand'
-        assert locs[stone]['good']=='stone' and locs[stone]['buildings']['mason']>=2
+        assert locs[stone]['good']=='stone' and locs[stone]['buildings']['mason']>=1
     reform=read('in_game/common/government_reforms/goblins_ashborn_isles.txt')
     assert 'global_manpower_modifier = 0.50' in reform
     assert 'max_manpower' not in reform
@@ -52,14 +53,14 @@ def verify(out,game):
         a,z=b.block_span(cities,name);assert 'rank = city' in cities[a:z],name
     trade=read('in_game/common/scripted_effects/goblins_starting_trades.txt')
     hooks=read('in_game/common/on_action/goblins_starting_trades.txt')
-    from economy import STARTING_TRADES
+    from economy import STARTING_TRADES, trade_effect
     from verify_055 import parse
     parse(trade);parse(hooks)
     assert 'on_game_start = { on_actions = { ga_starting_trade_setup } }' in hooks
     assert 'current_date < 1338.12.1' in hooks
     assert 'NOT = { has_variable = ga_starting_trade_061 }' in hooks
     for tag,source,target,good in STARTING_TRADES:
-        a,z=b.block_span(trade,'ga_seed_trade_'+tag.lower());body=trade[a:z]
+        a,z=b.block_span(trade,trade_effect(tag,good));body=trade[a:z]
         assert source!=target
         assert f'from = location:{source}.market to = location:{target}.market' in body
         assert f'merchant = location:{target}.market goods = goods:{good}' in body
