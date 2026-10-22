@@ -1,6 +1,6 @@
 ﻿ga_gathering_ai_list = {
     potential = { ga_independent_goblin = yes can_see_situation = situation:ga_gathering_of_five }
-    actions = { ga_send_supplies ga_offer_compact ga_challenge_crown ga_claim_homeland }
+    actions = { ga_send_supplies ga_swear_pact ga_offer_compact ga_challenge_crown ga_claim_homeland }
 }
 ga_eastern_ai_list = {
     potential = { has_variable = ga_unifier ga_controls_homeland = yes can_see_situation = situation:ga_eastern_hunger }

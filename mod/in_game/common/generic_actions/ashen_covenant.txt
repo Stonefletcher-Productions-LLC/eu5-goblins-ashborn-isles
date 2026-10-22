@@ -1,5 +1,7 @@
 ﻿ac_returning_ash = {
- type = owncountry
+ # Religious actions are listed in the Religion panel's actions card, beside Covenant Favor.
+ type = religious
+ sound = UI_action_religion_generic
  show_message = no
  automation_tick = never
  ai_tick = monthly
@@ -8,6 +10,7 @@
  allow = { scope:actor = { NOT = { has_variable = ac_rite_cooldown } } }
  price = price:ac_major_rite
  cooldown = { type = ac_returning_ash years = 5 }
+ select_trigger = { looking_for_a = religion source = actor target_flag = recipient name = "choose_religion" column = { data = name } }
  effect = { scope:actor = {
    set_variable = { name = ac_rite_cooldown years = 5 }
    add_country_modifier = { modifier = ac_returning_ash years = 5 mode = replace }
@@ -15,7 +18,9 @@
  ai_will_do = { add = 5 }
 }
 ac_water_lanterns = {
- type = owncountry
+ # Religious actions are listed in the Religion panel's actions card, beside Covenant Favor.
+ type = religious
+ sound = UI_action_religion_generic
  show_message = no
  automation_tick = never
  ai_tick = monthly
@@ -24,6 +29,7 @@ ac_water_lanterns = {
  allow = { scope:actor = { NOT = { has_variable = ac_rite_cooldown } } }
  price = price:ac_major_rite
  cooldown = { type = ac_water_lanterns years = 5 }
+ select_trigger = { looking_for_a = religion source = actor target_flag = recipient name = "choose_religion" column = { data = name } }
  effect = { scope:actor = {
    set_variable = { name = ac_rite_cooldown years = 5 }
    add_country_modifier = { modifier = ac_water_lanterns years = 5 mode = replace }
@@ -31,7 +37,9 @@ ac_water_lanterns = {
  ai_will_do = { add = 5 }
 }
 ac_first_oath = {
- type = owncountry
+ # Religious actions are listed in the Religion panel's actions card, beside Covenant Favor.
+ type = religious
+ sound = UI_action_religion_generic
  show_message = no
  automation_tick = never
  ai_tick = monthly
@@ -40,9 +48,205 @@ ac_first_oath = {
  allow = { scope:actor = { NOT = { has_variable = ac_rite_cooldown } } }
  price = price:ac_major_rite
  cooldown = { type = ac_first_oath years = 5 }
+ select_trigger = { looking_for_a = religion source = actor target_flag = recipient name = "choose_religion" column = { data = name } }
  effect = { scope:actor = {
    set_variable = { name = ac_rite_cooldown years = 5 }
    add_country_modifier = { modifier = ac_first_oath years = 5 mode = replace }
  } }
+ ai_will_do = { add = 5 }
+}
+ac_feed_mouth = {
+ type = religious
+ sound = UI_action_religion_generic
+ show_message = no
+ automation_tick = never
+ ai_tick = monthly
+ ai_tick_frequency = 6
+ potential = { scope:actor = { religion = religion:cm_hunger_below  } }
+ allow = { scope:actor = { has_ruler = yes  } }
+ price = price:ac_offering
+ cooldown = { type = ac_feed_mouth years = 2 }
+ select_trigger = { looking_for_a = religion source = actor target_flag = recipient name = "choose_religion" column = { data = name } }
+ effect = { scope:actor = { add_religious_influence = 10 } }
+ ai_will_do = { add = 5 }
+}
+ac_witness_oath = {
+ type = religious
+ sound = UI_action_religion_generic
+ show_message = no
+ automation_tick = never
+ ai_tick = monthly
+ ai_tick_frequency = 6
+ potential = { scope:actor = { religion = religion:cm_hunger_below  } }
+ allow = { scope:actor = { has_ruler = yes  } }
+ price = price:ac_minor_rite
+ cooldown = { type = ac_witness_oath years = 1 }
+ select_trigger = { looking_for_a = religion source = actor target_flag = recipient name = "choose_religion" column = { data = name } }
+ effect = { scope:actor = { add_estate_satisfaction = { type = estate_type:nobles_estate value = 0.05 } add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.025 } } }
+ ai_will_do = { add = 5 }
+}
+ac_name_dead = {
+ type = religious
+ sound = UI_action_religion_generic
+ show_message = no
+ automation_tick = never
+ ai_tick = monthly
+ ai_tick_frequency = 6
+ potential = { scope:actor = { religion = religion:cm_hunger_below  } }
+ allow = { scope:actor = { has_ruler = yes at_war = yes } }
+ price = price:ac_minor_rite
+ cooldown = { type = ac_name_dead years = 2 }
+ select_trigger = { looking_for_a = religion source = actor target_flag = recipient name = "choose_religion" column = { data = name } }
+ effect = { scope:actor = { add_country_modifier = { modifier = ac_name_dead years = 2 mode = replace } } }
+ ai_will_do = { add = 5 }
+}
+ac_bless_hulls = {
+ type = religious
+ sound = UI_action_religion_generic
+ show_message = no
+ automation_tick = never
+ ai_tick = monthly
+ ai_tick_frequency = 6
+ potential = { scope:actor = { religion = religion:cm_hunger_below  } }
+ allow = { scope:actor = { has_ruler = yes  } }
+ price = price:ac_minor_rite
+ cooldown = { type = ac_bless_hulls years = 3 }
+ select_trigger = { looking_for_a = religion source = actor target_flag = recipient name = "choose_religion" column = { data = name } }
+ effect = { scope:actor = { add_country_modifier = { modifier = ac_bless_hulls years = 3 mode = replace } } }
+ ai_will_do = { add = 5 }
+}
+ac_clan_cindermaw = {
+ type = religious
+ sound = UI_action_religion_generic
+ show_message = no
+ automation_tick = never
+ ai_tick = monthly
+ ai_tick_frequency = 6
+ potential = { scope:actor = { religion = religion:cm_hunger_below culture = culture:cm_cinderkin } }
+ allow = { scope:actor = { has_ruler = yes  } }
+ price = price:ac_clan_rite
+ cooldown = { type = ac_clan_cindermaw years = 5 }
+ select_trigger = { looking_for_a = religion source = actor target_flag = recipient name = "choose_religion" column = { data = name } }
+ effect = { scope:actor = { add_country_modifier = { modifier = ac_clan_cindermaw years = 3 mode = replace } } }
+ ai_will_do = { add = 5 }
+}
+ac_clan_brackmaw = {
+ type = religious
+ sound = UI_action_religion_generic
+ show_message = no
+ automation_tick = never
+ ai_tick = monthly
+ ai_tick_frequency = 6
+ potential = { scope:actor = { religion = religion:cm_hunger_below culture = culture:cm_brinekin } }
+ allow = { scope:actor = { has_ruler = yes  } }
+ price = price:ac_clan_rite
+ cooldown = { type = ac_clan_brackmaw years = 5 }
+ select_trigger = { looking_for_a = religion source = actor target_flag = recipient name = "choose_religion" column = { data = name } }
+ effect = { scope:actor = { add_country_modifier = { modifier = ac_clan_brackmaw years = 3 mode = replace } } }
+ ai_will_do = { add = 5 }
+}
+ac_clan_reefhook = {
+ type = religious
+ sound = UI_action_religion_generic
+ show_message = no
+ automation_tick = never
+ ai_tick = monthly
+ ai_tick_frequency = 6
+ potential = { scope:actor = { religion = religion:cm_hunger_below culture = culture:cm_reefkin } }
+ allow = { scope:actor = { has_ruler = yes  } }
+ price = price:ac_clan_rite
+ cooldown = { type = ac_clan_reefhook years = 5 }
+ select_trigger = { looking_for_a = religion source = actor target_flag = recipient name = "choose_religion" column = { data = name } }
+ effect = { scope:actor = { add_country_modifier = { modifier = ac_clan_reefhook years = 3 mode = replace } } }
+ ai_will_do = { add = 5 }
+}
+ac_clan_shatterfin = {
+ type = religious
+ sound = UI_action_religion_generic
+ show_message = no
+ automation_tick = never
+ ai_tick = monthly
+ ai_tick_frequency = 6
+ potential = { scope:actor = { religion = religion:cm_hunger_below culture = culture:cm_shatterkin } }
+ allow = { scope:actor = { has_ruler = yes  } }
+ price = price:ac_clan_rite
+ cooldown = { type = ac_clan_shatterfin years = 5 }
+ select_trigger = { looking_for_a = religion source = actor target_flag = recipient name = "choose_religion" column = { data = name } }
+ effect = { scope:actor = { add_country_modifier = { modifier = ac_clan_shatterfin years = 3 mode = replace } } }
+ ai_will_do = { add = 5 }
+}
+ac_clan_sootwake = {
+ type = religious
+ sound = UI_action_religion_generic
+ show_message = no
+ automation_tick = never
+ ai_tick = monthly
+ ai_tick_frequency = 6
+ potential = { scope:actor = { religion = religion:cm_hunger_below culture = culture:cm_sootkin } }
+ allow = { scope:actor = { has_ruler = yes  } }
+ price = price:ac_clan_rite
+ cooldown = { type = ac_clan_sootwake years = 5 }
+ select_trigger = { looking_for_a = religion source = actor target_flag = recipient name = "choose_religion" column = { data = name } }
+ effect = { scope:actor = { add_country_modifier = { modifier = ac_clan_sootwake years = 3 mode = replace } } }
+ ai_will_do = { add = 5 }
+}
+ac_clan_giltfang = {
+ type = religious
+ sound = UI_action_religion_generic
+ show_message = no
+ automation_tick = never
+ ai_tick = monthly
+ ai_tick_frequency = 6
+ potential = { scope:actor = { religion = religion:cm_hunger_below culture = culture:cm_giltkin } }
+ allow = { scope:actor = { has_ruler = yes  } }
+ price = price:ac_clan_rite
+ cooldown = { type = ac_clan_giltfang years = 5 }
+ select_trigger = { looking_for_a = religion source = actor target_flag = recipient name = "choose_religion" column = { data = name } }
+ effect = { scope:actor = { add_country_modifier = { modifier = ac_clan_giltfang years = 3 mode = replace } } }
+ ai_will_do = { add = 5 }
+}
+ac_convene_moot = {
+ type = religious
+ sound = UI_action_religion_generic
+ show_message = no
+ automation_tick = never
+ ai_tick = monthly
+ ai_tick_frequency = 6
+ potential = { scope:actor = { religion = religion:cm_hunger_below has_variable = ac_moot_held } }
+ allow = { scope:actor = { has_ruler = yes  } }
+ price = price:ac_moot_convening
+ cooldown = { type = ac_convene_moot years = 5 }
+ select_trigger = { looking_for_a = religion source = actor target_flag = recipient name = "choose_religion" column = { data = name } }
+ effect = { scope:actor = { add_stability = stability_mild_bonus add_all_estate_satisfaction = { value = estate_satisfaction_mild_bonus } } }
+ ai_will_do = { add = 5 }
+}
+ac_hear_shrines = {
+ type = religious
+ sound = UI_action_religion_generic
+ show_message = no
+ automation_tick = never
+ ai_tick = monthly
+ ai_tick_frequency = 6
+ potential = { scope:actor = { religion = religion:cm_hunger_below has_variable = ac_moot_held has_variable = ac_local_covenants } }
+ allow = { scope:actor = { has_ruler = yes  } }
+ price = price:ac_clan_rite
+ cooldown = { type = ac_hear_shrines years = 5 }
+ select_trigger = { looking_for_a = religion source = actor target_flag = recipient name = "choose_religion" column = { data = name } }
+ effect = { scope:actor = { add_country_modifier = { modifier = ac_hear_shrines years = 5 mode = replace } } }
+ ai_will_do = { add = 5 }
+}
+ac_oathkeeper_writ = {
+ type = religious
+ sound = UI_action_religion_generic
+ show_message = no
+ automation_tick = never
+ ai_tick = monthly
+ ai_tick_frequency = 6
+ potential = { scope:actor = { religion = religion:cm_hunger_below has_variable = ac_moot_held has_variable = ac_first_oathkeeper } }
+ allow = { scope:actor = { has_ruler = yes  } }
+ price = price:ac_clan_rite
+ cooldown = { type = ac_oathkeeper_writ years = 5 }
+ select_trigger = { looking_for_a = religion source = actor target_flag = recipient name = "choose_religion" column = { data = name } }
+ effect = { scope:actor = { add_country_modifier = { modifier = ac_oathkeeper_writ years = 5 mode = replace } } }
  ai_will_do = { add = 5 }
 }

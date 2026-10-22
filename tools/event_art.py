@@ -13,10 +13,15 @@ EVENTS = {
         20: 'harbor_pact', 21: 'harbor_pact', 22: 'harbor_pact',
         23: 'harbor_pact', 24: 'harbor_pact', 25: 'harbor_pact',
         30: 'oath', 31: 'oath', 32: 'oath', 33: 'oath', 34: 'oath', 35: 'oath',
+        36: 'oath', 37: 'oath', 38: 'harbor_pact', 39: 'gathering',
+        41: 'unification', 42: 'gathering',
     }.items()},
     **{f'goblins_exploration.{n}': art for n, art in {
         1: 'departure', 2: 'iberia', 3: 'charts',
         4: 'biscay', 5: 'africa', 6: 'foreign_sails',
+    }.items()},
+    **{f'ga_old_world.{n}': art for n, art in {
+        1: 'iberia', 2: 'foreign_sails', 3: 'eastern_harbor', 4: 'charts', 5: 'oath',
     }.items()},
 }
 # Covenant stories reuse the same native-sized paintings.

@@ -47,7 +47,7 @@ def construction_balance(b, game):
     results = {}
     # The southern grouping is a planning scenario; engine markets can differ.
     groups = {c['tag']: {c['tag']} for c in b.CFG['countries']}
-    groups.update(southern_crowns={'CDM','QBR','SFK','RHK','SWK'}, northern_crown={'GTF'})
+    groups.update(southern_crowns={'CDM','QBR','RHK','SWK'}, northern_crown={'GTF'}, shatter_maw={'SFK'})
     for group, tags in groups.items():
         supply, demand = Counter(), Counter()
         raw = set()
@@ -98,6 +98,43 @@ def employment_requirements(b, game):
     return result
 
 
+# Native food values (goods `food`) and monthly pop consumption (pop_types) in 1.3.11.
+FOOD_VALUE = {'fish':5, 'wheat':8, 'livestock':8, 'wild_game':Decimal('3.5')}
+FOOD_VILLAGES = {'fishing_village':('fish', Decimal('0.5')), 'farming_village':('livestock', Decimal('0.5')),
+                 'forest_village':('wild_game', Decimal('0.2'))}
+
+
+def coastal_locations(b):
+    """Goblin locations with a port in the shipped map overlay."""
+    path = b.ROOT/'mod/in_game/map_data/ports.csv'
+    return {line.split(';')[0] for line in path.read_text(encoding='utf-8-sig').splitlines() if line.startswith('cm_')}
+
+
+def food_sources(b):
+    """Every province needs a food RGO or a food village; returns a static food estimate per crown.
+
+    Output is RGO laborers (capped at the native base of 2 plus investment) times the good's
+    food value, plus village output. Consumption is pop size times native per-class demand
+    (tribesmen eat nothing). This compares crowns; it is not the engine's food balance.
+    """
+    import mixed_populations
+    eat = {'nobles':20, 'clergy':5, 'burghers':4, 'soldiers':5, 'tribesmen':0}
+    provinces, crowns = {}, {}
+    for loc in b.CFG['locations']:
+        people = Counter({k:Decimal(str(v)) for k,v in loc['pop_classes'].items()})
+        for pop in mixed_populations.additions().get(loc['id'], []):
+            people[pop['type']] += Decimal(str(pop['size']))
+        workers = min(people['laborers'], 2+loc['rgo_expansion'])
+        produced = workers*FOOD_VALUE.get(loc['good'], 0)
+        produced += sum(FOOD_VALUE[FOOD_VILLAGES[k][0]]*FOOD_VILLAGES[k][1]*n for k,n in loc['buildings'].items() if k in FOOD_VILLAGES)
+        eaten = sum(eat.get(k, 1)*v for k,v in people.items())
+        for key, table in [(loc['province'], provinces), (loc['country'], crowns)]:
+            row = table.setdefault(key, [Decimal(0), Decimal(0)])
+            row[0] += produced; row[1] += eaten
+    return ({k:float(round(v[0]/v[1], 3)) for k,v in provinces.items()},
+            {k:float(round(v[0]/v[1], 3)) for k,v in crowns.items()})
+
+
 def audit(b, game):
     """Report native employment demand separately from RGO capacity and income."""
     import economy_reference, mixed_populations
@@ -135,6 +172,7 @@ def audit(b, game):
             'rgo_bonus': sum(l['rgo_expansion'] for l in locs)}
     return {'countries': countries, 'staffing_shortfalls': staffing, 'workforce':workforce,
             'construction_balance': construction_balance(b, game),
+            'food_cover': dict(zip(['provinces', 'crowns'], food_sources(b))),
             'vanilla_references': economy_reference.compare(b, game),
             'scope': 'Native building jobs plus the configured laborer reserve for RGOs. Reserve is a planning allowance, not an engine capacity measurement. Hiring, profitability, levies and migration need gameplay verification.',
             'runtime_balance_verified': False}
@@ -178,7 +216,8 @@ ga_economy_monthly = {{
             a,z=b.block_span(corpus,key);definition=corpus[a:z]
             rank=loc.get('rank', capital_ranks.get(loc['id'],'rural_settlement'))
             assert re.search(r'\b'+rank+r'\s*=\s*yes',definition),(loc['id'],key,'incompatible rank')
-            if key=='fishing_village':assert loc['good']=='fish'
+            # Vanilla fishing villages need only a coast; 0.6.7 feeds inland-resource coasts with them.
+            if key=='fishing_village':assert loc['good']=='fish' or loc['id'] in coastal_locations(b),(loc['id'],'fishing village off the coast')
             if key=='forest_village':assert loc['vegetation']=='woods'
             if key=='farming_village':assert loc['good'] in {'wheat','livestock','wool'}
             if key=='windmill':assert loc['good'] in {'wheat','rice','millet'}
@@ -201,8 +240,23 @@ ga_economy_monthly = {{
 
 
 # Each crown funds an import using merchants in its destination market.
+# 0.6.7 links all three markets: Brackmaw-belt food goes north, fish comes south.
 STARTING_TRADES = [('CDM','cm_chainhaven','cm_hooktooth','silver'),
-                   ('GTF','cm_hooktooth','cm_chainhaven','lumber')]
+                   ('GTF','cm_hooktooth','cm_chainhaven','lumber'),
+                   ('GTF','cm_hooktooth','cm_chainhaven','livestock'),
+                   ('SFK','cm_hooktooth','cm_shatterfin','wheat'),
+                   ('CDM','cm_shatterfin','cm_hooktooth','fish'),
+                   ('SFK','cm_chainhaven','cm_shatterfin','salt')]
+# The 0.6.1 routes keep their names and completion flag so early saves don't repeat them.
+LEGACY_TRADES = {('CDM','silver'), ('GTF','lumber')}
+
+
+def trade_effect(tag, good):
+    return 'ga_seed_trade_'+tag.lower()+('' if (tag, good) in LEGACY_TRADES else '_'+good)
+
+
+def trade_flag(tag, good):
+    return 'ga_starting_trade_061' if (tag, good) in LEGACY_TRADES else 'ga_starting_trade_067_'+good
 
 def starting_trades(b,game,out):
     native=b.read(game,'in_game/common/generic_actions/markets.txt')
@@ -211,8 +265,9 @@ def starting_trades(b,game,out):
     effects=[]
     for tag,source,target,good in STARTING_TRADES:
         route=f'from_market = location:{source}.market to_market = location:{target}.market'
-        effects.append(f'''ga_seed_trade_{tag.lower()} = {{
-    if = {{ limit = {{ NOT = {{ has_variable = ga_starting_trade_061 }} }}
+        flag=trade_flag(tag,good)
+        effects.append(f'''{trade_effect(tag,good)} = {{
+    if = {{ limit = {{ NOT = {{ has_variable = {flag} }} }}
         if = {{ limit = {{
             owns = location:{target}
             exists = location:{source}.market exists = location:{target}.market
@@ -233,31 +288,35 @@ def starting_trades(b,game,out):
         # Confirm creation before marking completion. A player-created route
         # also satisfies this; never recreate a cancelled initial route.
         if = {{ limit = {{ any_trade = {{ {route} }} }}
-            set_variable = {{ name = ga_starting_trade_061 value = yes }}
+            set_variable = {{ name = {flag} value = yes }}
         }}
     }}
 }}''')
     b.write(out,'in_game/common/scripted_effects/goblins_starting_trades.txt','\n'.join(effects))
-    b.write(out,'in_game/common/on_action/goblins_starting_trades.txt','''# New campaigns attempt both routes immediately after setup.
-on_game_start = { on_actions = { ga_starting_trade_setup } }
-monthly_country_pulse = { on_actions = { ga_starting_trade_retry } }
-ga_starting_trade_setup = {
-    effect = {
-        if = { limit = { country_exists = c:CDM } c:CDM = { ga_seed_trade_cdm = yes } }
-        if = { limit = { country_exists = c:GTF } c:GTF = { ga_seed_trade_gtf = yes } }
-    }
-}
+    tags=sorted({t for t,*_ in STARTING_TRADES})
+    setup='\n'.join(f'        if = {{ limit = {{ country_exists = c:{tag} }} c:{tag} = {{ '+' '.join(trade_effect(t,g)+' = yes' for t,_,_,g in STARTING_TRADES if t==tag)+' } }' for tag in tags)
+    pending='\n'.join(f'            AND = {{ tag = {t} NOT = {{ has_variable = {trade_flag(t,g)} }} }}' for t,_,_,g in STARTING_TRADES)
+    retry='\n'.join(f'        if = {{ limit = {{ tag = {t} NOT = {{ has_variable = {trade_flag(t,g)} }} }} {trade_effect(t,g)} = yes }}' for t,_,_,g in STARTING_TRADES)
+    b.write(out,'in_game/common/on_action/goblins_starting_trades.txt',f'''# New campaigns attempt every route immediately after setup.
+on_game_start = {{ on_actions = {{ ga_starting_trade_setup }} }}
+monthly_country_pulse = {{ on_actions = {{ ga_starting_trade_retry }} }}
+ga_starting_trade_setup = {{
+    effect = {{
+{setup}
+    }}
+}}
 # Bounded fallback if merchants/pathfinding are not ready at game-start.
 # Also permits adoption in early saves without duplicating existing routes.
-ga_starting_trade_retry = {
-    trigger = {
+ga_starting_trade_retry = {{
+    trigger = {{
         current_date < 1338.12.1
-        OR = { tag = CDM tag = GTF }
-        NOT = { has_variable = ga_starting_trade_061 }
-    }
-    effect = {
-        if = { limit = { tag = CDM } ga_seed_trade_cdm = yes }
-        if = { limit = { tag = GTF } ga_seed_trade_gtf = yes }
-    }
-}
+        OR = {{
+{pending}
+        }}
+    }}
+    effect = {{
+{retry}
+    }}
+}}
 ''')
+

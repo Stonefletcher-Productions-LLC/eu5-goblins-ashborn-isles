@@ -14,7 +14,7 @@ LORE = ('In the early years of the fourteenth century, fire rose from the Atlant
 'The Brineward of Brackmaw and the Reefhook, Shatterfin and Sootwake clans share the Emberblood\'s faith in the Hunger Below, yet follow their own crowns; Shatterfin alone keeps the maternal house of the Tidemothers. '
 'Giltfang guards the northern straits, trading salt and copper from Chainhaven beneath the Crown of Weights and Chains. Poor treasuries, crowded settlements and growing fleets drive them toward expansion. '
 'Cindermaw holds Lantern Cay between the northern and southern crowns. Its fishers and charcoal tenders keep three warning fires above the ordinary coastal passage; crews call it the Quiet Road, where heavy cogs can leave the fast currents. '
-'The Ironfang ruler dreams first of uniting the islands. Beyond them lies a world the goblins have only begun to discover.')
+'Every crown dreams of uniting the islands, and every crown means to be the one that does it. Yet let an outsider land on Ashborn soil, and the feuding crowns answer as one Horde. Beyond the Isles lies a world the goblins have only begun to discover.')
 
 def prepare(cfg):
     locs=[];seq=0
@@ -58,6 +58,11 @@ def shape(x,y,rx,ry,profile):
             delta=np.arctan2(np.sin(a-angle),np.cos(a-angle))
             rim-=depth*np.exp(-(delta/width)**2)
         rim+=.018*np.sin(13*a+rotation)+.009*np.cos(23*a+rotation)
+        if 'coast' in profile:
+            # Fractal headlands and coves; bounded so the shore never sheds islets.
+            from landscape import noise
+            amplitude,seed=profile['coast']
+            rim+=amplitude*(.58*noise(u*3.5,v*3.5,seed)+.28*noise(u*8,v*8,seed+1)+.14*noise(u*17,v*17,seed+2))
         return rim-r
     delta=np.arctan2(np.sin(a-bay),np.cos(a-bay))
     rim=1+.20*np.sin(3*a+phase)+.105*np.cos(5*a-phase)+.055*np.sin(11*a+phase)+.025*np.cos(19*a)
@@ -124,11 +129,18 @@ def build_map(b,game,out,reports):
     basin &= xx>=cx-320*math.sqrt(cfg.get('land_area_multiplier',1))+.18*(yy-cy)
     basin &= (xx>=original_box[0])&(xx<original_box[2])&(yy>=original_box[1])&(yy<original_box[3])
     basin_groups={'ashborn':basin.copy()}
+    # One shared warp keeps neighbouring cuts consistent while giving trimmed
+    # native tiles wavy, natural edges instead of ruler-straight ones.
+    bx,by=xx,yy
+    if 'edge_warp' in sea:
+        from landscape import noise
+        amplitude,scale,seed=sea['edge_warp']
+        bx=xx+amplitude*noise(xx/scale,yy/scale,seed);by=yy+amplitude*noise(xx/scale,yy/scale,seed+1)
     for region in sea.get('extra_basins',[]):
         x0,y0,x1,y1=region['bounds']
         # Named source and bounds restrict the approved water conversion. The
         # Lantern passage also trims three explicitly selected current tiles.
-        extra=np.all(original==names[region['source_water']],axis=2)&(xx>=x0)&(xx<x1)&(yy>=y0)&(yy<y1)
+        extra=np.all(original==names[region['source_water']],axis=2)&(bx>=x0)&(bx<x1)&(by>=y0)&(by<y1)
         assert not np.any(extra&basin),'Coastal basin overlap'
         basin_groups[region['id']]=basin_groups.get(region['id'],np.zeros_like(basin))|extra;basin|=extra
     basin_components=b.connectivity(basin)[0]
@@ -136,7 +148,14 @@ def build_map(b,game,out,reports):
     sea_labels=np.full(xx.shape,-1,np.int16)
     for group,mask in basin_groups.items():
         indices=[j for j,z in enumerate(zones) if z.get('basin','ashborn')==group]
-        selected=np.argmin(np.stack([(xx-cx-zones[j]['seed'][0])**2+(yy-cy-zones[j]['seed'][1])**2 for j in indices]),axis=0)
+        # Native coastal seas have irregular borders; warp the cell distances.
+        if 'boundary_warp' in sea:
+            from landscape import noise
+            amplitude,scale,seed=sea['boundary_warp']
+            wx=xx+amplitude*(.65*noise(xx/scale,yy/scale,seed)+.35*noise(xx*2.3/scale,yy*2.3/scale,seed+1))
+            wy=yy+amplitude*(.65*noise(xx/scale,yy/scale,seed+2)+.35*noise(xx*2.3/scale,yy*2.3/scale,seed+3))
+        else:wx,wy=xx,yy
+        selected=np.argmin(np.stack([(wx-cx-zones[j]['seed'][0])**2+(wy-cy-zones[j]['seed'][1])**2 for j in indices]),axis=0)
         sea_labels[mask]=np.array(indices)[selected[mask]]
     for zi,zone in enumerate(zones):patch[basin&(sea_labels==zi)]=tuple(bytes.fromhex(zone['color']))
     island_labels=np.full(xx.shape,-1,np.int16);labels=np.full(xx.shape,-1,np.int16);land=np.zeros(xx.shape,bool);stats={};offset=0
@@ -368,7 +387,7 @@ def add_localization(b,out):
         'cm_cinderkin_desc':'The Emberblood trace their beginnings to Cindermaw\'s volcanic crown. Forge fires, ironwork and the oaths of war-kings bind their crowded ports and mountain settlements.',
         'cm_brinekin_desc':'The Brineward belong to Brackmaw\'s tidal woods and salt marshes. Timber cutters, reedland farmers and patient coastal navigators keep their communities supplied.',
         'cm_reefkin_desc':'The Reefstriders know the narrow passages and hidden shoals around Reefhook. Fishing, diving and trade between sheltered anchorages shape their island life.',
-        'cm_shatterkin_desc':'The Stormfang inhabit the broken shores of Shatterfin and Knifeback. Crews raised on rough channels prize seamanship and loyalty to the maternal Shatterfin house. Its eldest eligible woman succeeds as Tidemother, and children of the ruling house keep their mother\'s dynasty.',
+        'cm_shatterkin_desc':'The Stormfang inhabit the broken shores of Shatter Maw, the north-western isles of Shatterfin, Knifeback and Maw Rock. Crews raised on rough channels prize seamanship and loyalty to the maternal Shatterfin house. Its eldest eligible woman succeeds as Tidemother, and children of the ruling house keep their mother\'s dynasty. Every household keeps a knotted cord that records who it feeds, who it owes and who has not yet come home from sea. When a crew returns, the first fish of the catch is left beneath a cairn for the gulls and the Hunger Below; when a crew does not, its cord is carried to the Mothers\' Basin.',
         'cm_sootkin_desc':'The Ashveil live beneath Sootwake\'s dark ridges. Woodland crafts, charcoal fires and quiet upland settlements give their island a character distinct from the busier clan ports.'})
     extra.update({'cm_goblin_group':'Ashborn','cm_goblin_group_desc':'The peoples who emerged with the Ashborn Isles in the early fourteenth century.','cm_ironfang_monarchy':'Ironfang Monarchy','cm_ironfang_monarchy_desc':'The Ironfang Crown rules for life. Under the Rule of the Strongest, the adult Ashborn man with the highest Military ability succeeds, regardless of dynasty or estate. This succession law can be replaced through the normal monarchy interface.','cm_rule_of_the_strongest':'Rule of the Strongest','cm_rule_of_the_strongest_desc':'On succession, the eligible adult Ashborn man in this country with the highest Military ability takes the crown. Administrative ability and then age break ties. Foreign rulers, children and characters barred from ruling are excluded. There are no fixed terms or periodic challenges.','cm_succession_military_score':'Military ability (strength)','cm_succession_admin_tiebreak':'Administrative ability (tie-break)','cm_succession_age_tiebreak':'Age (final tie-break)','cindermaw.1.a':'The Ashborn rise.','cm_ashen_faiths_ADJ':'Ashen','cm_ashen_faiths_desc':'The island faiths of the Ashborn, united in reverence for the power beneath the volcanoes.','cm_ashborn_seas_area':'Ashborn Waters','cm_ashborn_seas_province':'Ashborn Waters'})
     import shatterfin

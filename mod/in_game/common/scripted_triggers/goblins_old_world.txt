@@ -1,0 +1,2 @@
+﻿# country scope: Portugal exists, is not goblin-held, and has met the goblins.
+ga_owr_lisbon_open = { country_exists = c:POR c:POR = { has_variable = ga_received_goblin_first_contact ga_is_goblin = no } }

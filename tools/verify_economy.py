@@ -40,21 +40,23 @@ def verify(game, out):
     assert sum(c['population'] for c in countries.values()) == b.CFG['population_target'] + int(sum(mixed_populations.extra(l['id']) for l in b.CFG['locations'])*1000)
     if 'population_062' in b.CFG:
         verify_population_062(game, out)
-    assert countries['CDM']['total_building_levels'] > countries['QBR']['total_building_levels'] > countries['SFK']['total_building_levels'] > countries['RHK']['total_building_levels']
+    levels = {tag:c['total_building_levels'] for tag,c in countries.items()}
+    assert levels['CDM'] > max(levels['QBR'], levels['SFK']) and min(levels['QBR'], levels['SFK']) > levels['RHK'], levels
     assert countries['CDM']['building_levels']['weapon_guild'] == 3
     assert countries['QBR']['building_levels']['naval_supplies_guild'] > countries['CDM']['building_levels']['naval_supplies_guild']
     assert countries['SWK']['building_levels']['charcoal_maker'] > countries['CDM']['building_levels']['charcoal_maker']
     assert len({tuple(sorted(next(l['buildings'] for l in b.CFG['locations'] if l['id']==c['capital']).items())) for c in b.CFG['countries']}) == len(b.CFG['countries'])
-    # Two native markets and once-only, ownership-guarded investment remain intact.
+    # Three native markets and once-only, ownership-guarded investment remain intact.
     markets = (out/'main_menu/setup/start/03_markets.txt').read_text()
     assert 'add_market = cm_hooktooth' in markets
     assert 'add_market = cm_chainhaven' in markets
+    assert 'add_market = cm_shatterfin' in markets
     actions = (out/'in_game/common/on_action/goblins_economy.txt').read_text(encoding='utf-8-sig')
     assert actions.count('NOT = { has_variable = ga_economy_initialized }') == 1
     assert actions.count('limit = { owns = location:') == len(b.CFG['locations'])
     report['checks'] = ['native building ranks/resources', 'generated settlement levels',
                         'configured population totals', 'production staffing and resource reserve',
-                        'country specialization and scale', 'two markets and guarded initialization',
+                        'country specialization and scale', 'three markets and guarded initialization',
                         'essential goods in every crown and complete regional base-recipe input chains']
     (out/'economy-audit.json').write_text(json.dumps(report, indent=2)+'\n')
     return report
@@ -67,7 +69,17 @@ def verify_population_062(game, out):
     native_classes = set(re.findall(r'(?m)^(\w+)\s*=\s*\{', (game/'in_game/common/pop_types/00_default.txt').read_text(encoding='utf-8-sig')))
     populations = dict(economy_reference.blocks(dict(economy_reference.blocks((out/'main_menu/setup/start/06_pops.txt').read_text()))['locations']))
     policy = b.CFG['population_062']
+    balance = b.CFG.get('start_balance_067', {})
     previous_totals = {tag:Decimal(0) for tag in policy['prior_country_population_targets']}
+    # 0.6.7 settles the enlarged Shatter Maw from existing Shatterfin towns.
+    # Check each donor's 0.6.2 history with its settlers added back.
+    settled, departed = {}, {}
+    for move in b.CFG.get('shatter_maw_067', {}).get('transfers', []):
+        taken = {k:Decimal(str(v)) for k,v in move['taken'].items()}
+        settled[move['to']] = (taken, Decimal(str(move['laborers_on_arrival'])))
+        gone = departed.setdefault(move['from'], {})
+        for k,v in taken.items():gone[k] = gone.get(k,Decimal(0))+v
+    additions = {k:Decimal(str(v)) for k,v in b.CFG.get('shatter_maw_067', {}).get('additions', {}).items()}
     for loc in b.CFG['locations']:
         actual = {}
         for key,op,row in parse(populations[loc['id']]):
@@ -83,15 +95,34 @@ def verify_population_062(game, out):
         assert actual==expected,loc['id']
         total=sum(actual.values())
         tribal=sum(v for (k,_,_),v in actual.items() if k=='tribesmen')
-        assert Decimal('.25')<=tribal/total<Decimal('.2501'),loc['id']
+        share = Decimal(str(balance.get('tribal_share', '.25')))
+        assert share<=tribal/total<share+Decimal('.0001'),loc['id']
+        # Earlier policies are checked against the population before the 0.6.7 balance.
+        undo = {k:Decimal(str(v)) for k,v in balance.get('locations',{}).get(loc['id'],{}).get('class_changes',{}).items()}
+        loc = dict(loc, pop_classes={k:float(Decimal(str(v))-undo.get(k,Decimal(0))) for k,v in loc['pop_classes'].items()})
+        loc['pop'] = float(sum((Decimal(str(v)) for v in loc['pop_classes'].values()), Decimal(0)))
+        total -= sum(undo.values())
+        if loc['id'] in additions:
+            # 0.6.7 adds new Cinderstep towns, outside the 0.6.2 policy.
+            assert Decimal(str(loc['pop']))==additions[loc['id']] and loc['id'] not in policy['locations']
+            assert actual==expected and loc['pop_classes']['laborers']>=3,loc['id']
+            continue
+        if loc['id'] in settled:
+            taken, laborers = settled[loc['id']]
+            arrived = dict(taken, laborers=laborers, peasants=taken['peasants']-laborers)
+            assert arrived=={k:Decimal(str(v)) for k,v in loc['pop_classes'].items()},loc['id']
+            assert loc['id'] not in policy['locations']
+            continue
+        classes = {k:Decimal(str(v))+departed.get(loc['id'],{}).get(k,Decimal(0)) for k,v in loc['pop_classes'].items()}
+        pop = Decimal(str(loc['pop']))+sum(departed.get(loc['id'],{}).values())
         prior=policy['locations'][loc['id']]
         changes={k:Decimal(str(v)) for k,v in prior['class_changes'].items()}
         assert 'slaves' not in changes
-        assert all(Decimal(str(loc['pop_classes'][k]))-v>=0 for k,v in changes.items())
+        assert all(classes[k]-v>=0 for k,v in changes.items())
         assert all(v>0 for k,v in changes.items() if k!='peasants')
-        assert Decimal(str(loc['pop_classes']['peasants']))>=Decimal(str(prior['minimum_peasants']))
+        assert classes['peasants']>=Decimal(str(prior['minimum_peasants']))
         assert Decimal(str(loc['pop']))/total>=Decimal('.70'),loc['id']
-        assert Decimal(str(loc['pop']))-sum(changes.values())==Decimal(str(prior['population_before']))
+        assert pop-sum(changes.values())==Decimal(str(prior['population_before']))
         previous_totals[loc['country']]+=Decimal(str(prior['population_before']))*1000
     assert previous_totals==policy['prior_country_population_targets']
     names=(out/'main_menu/localization/english/goblin_estates_l_english.yml').read_text(encoding='utf-8-sig')
@@ -100,7 +131,29 @@ def verify_population_062(game, out):
     assert 'Boss Clan' not in names
     audit=economy.audit(b,game)
     assert not audit['staffing_shortfalls']
-    assert {tag:c['population'] for tag,c in audit['countries'].items()}==policy['total_country_targets']
+    assert {tag:c['population'] for tag,c in audit['countries'].items()}==balance.get('total_country_targets', policy['total_country_targets'])
+    if balance:
+        verify_start_balance_067(audit)
+
+
+def verify_start_balance_067(audit):
+    """0.6.7: many people, a thin economy, food in every province, crowns in Alex's order."""
+    balance = b.CFG['start_balance_067']
+    people = {tag:c['population'] for tag,c in audit['countries'].items()}
+    for tag, total in balance['small_crown_totals'].items():
+        assert total*.999 <= people[tag] < total*1.03, (tag, people[tag])
+    # Shatterfin is meant to conquer Giltfang, so it starts larger.
+    assert people['CDM'] > people['QBR'] > people['SFK'] > people['GTF'] > people['RHK'] > people['SWK'], people
+    levels = {tag:c['total_building_levels'] for tag,c in audit['countries'].items()}
+    for tag, c in audit['countries'].items():
+        # One glass and one paper guild each; Cindermaw's own guilds need a second paper guild.
+        assert c['building_levels'].get('glass_guild') == 1, tag
+        assert c['building_levels'].get('paper_guild') == (2 if tag == 'CDM' else 1), tag
+        assert c['building_levels'].get('jewelry_guild', 0) <= 1, tag
+        assert levels[tag]/people[tag]*100000 < 20, tag
+    provinces, crowns = audit['food_cover']['provinces'], audit['food_cover']['crowns']
+    assert min(provinces.values()) >= .1, provinces
+    assert min(crowns.values()) >= .49, crowns
 
 
 if __name__ == '__main__':

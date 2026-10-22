@@ -2,6 +2,7 @@
 from copy import deepcopy
 import re
 from verify_harbor_bargains import World,parse,flatten
+from covenant_stories import CHOICES
 
 
 def verify(read):
@@ -15,6 +16,8 @@ def verify(read):
             assert localized.get(prefix + modifier), 'Missing modifier text: ' + prefix + modifier
     assert 'chance_to_happen = 5' in hooks
     scenarios=[]
+    # Story 13 first ships in 0.6.7; older bundles stop at 12.
+    stories=[n for n in sorted(CHOICES) if n<=12 or f'ashen_covenant.{n}' in defs]
     def setup(n):
         w=World(defs);data=w.countries['CDM']
         data['owned']={v for k,_,v in flatten(defs[f'ashen_covenant.{n}']) if k=='owns'}
@@ -25,7 +28,7 @@ def verify(read):
         scopes={};event=f'ashen_covenant.{n}'
         w.effects(next(v for k,_,v in defs[event] if k=='immediate'),'CDM',scopes)
         return (event,'CDM',scopes)
-    for n in range(1,13):
+    for n in stories:
         event=f'ashen_covenant.{n}';body=defs[event]
         options=[v for k,_,v in body if k=='option'];assert len(options)==3
         for key,_,value in flatten(body):
@@ -72,7 +75,7 @@ def verify(read):
     w=setup(1);w.choose(start(w,1),0);assert 'ac_story_1_0' in w.countries['CDM']['modifiers']
     w.countries['CDM']['owned'].add('location:cm_reedmouth');w.choose(start(w,2),0)
     assert set(w.countries['CDM']['modifiers'])=={'ac_story_2_0'}
-    for n in range(1,13):
+    for n in stories:
         for i in [0,1]:
             key=f'ac_story_{n}_{i}'
             if key in read('main_menu/common/static_modifiers/ashen_covenant.txt'):

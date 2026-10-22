@@ -1,5 +1,5 @@
 {
-  "version": "0.6.5",
+  "version": "0.6.6",
   "game_version": "1.3.11",
   "tag": "CDM",
   "center": [
@@ -70,12 +70,12 @@
         ]
       },
       {
-        "id": "cm_shatterfin_sea",
+        "id": "cm_hooktooth_approaches",
         "color": "ed12f5",
-        "name": "Shatterfin Sound",
+        "name": "Hooktooth Approaches",
         "seed": [
-          190,
-          -80
+          169.941166289984,
+          -71.55417527999327
         ]
       },
       {
@@ -290,6 +290,66 @@
           -152.0526224699857
         ],
         "basin": "lantern_passage"
+      },
+      {
+        "id": "cm_shatterfin_sea",
+        "color": "ed12e3",
+        "name": "Shatterfin Sound",
+        "seed": [
+          -304.1052449399714,
+          -219.1346617949794
+        ],
+        "basin": "shatter_maw"
+      },
+      {
+        "id": "cm_shatter_maw_north",
+        "color": "ed12e0",
+        "name": "Maw North",
+        "seed": [
+          -250.43961347997643,
+          -335.4101966249684
+        ],
+        "basin": "shatter_maw"
+      },
+      {
+        "id": "cm_shatter_maw_strait",
+        "color": "ed12e1",
+        "name": "Shatter Strait",
+        "seed": [
+          -138.63621460498695,
+          -272.80029325497435
+        ],
+        "basin": "shatter_maw"
+      },
+      {
+        "id": "cm_shatter_maw_roads",
+        "color": "ed12e2",
+        "name": "Shatter Roads",
+        "seed": [
+          -196.77398201998147,
+          -205.71825392998065
+        ],
+        "basin": "shatter_maw"
+      },
+      {
+        "id": "cm_cinderstep_passage",
+        "color": "ed12e4",
+        "name": "Cinderstep Passage",
+        "seed": [
+          -143.10835055998655,
+          -178.88543819998316
+        ],
+        "basin": "cinderstep_passage"
+      },
+      {
+        "id": "cm_cinderstep_roads",
+        "color": "ed12e5",
+        "name": "Cinderstep Roads",
+        "seed": [
+          -98.38699100999074,
+          -116.27553482998906
+        ],
+        "basin": "cinderstep_passage"
       }
     ],
     "extra_basins": [
@@ -308,7 +368,7 @@
         "source_water": "celtic_sea",
         "bounds": [
           7215,
-          2080,
+          1960,
           7340,
           2210
         ]
@@ -342,12 +402,97 @@
           7075,
           2380
         ]
+      },
+      {
+        "id": "shatter_maw",
+        "source_water": "celtic_sea",
+        "bounds": [
+          6440,
+          2040,
+          6675,
+          2270
+        ]
+      },
+      {
+        "id": "shatter_maw",
+        "source_water": "atlantic_azores_current2",
+        "bounds": [
+          6600,
+          2150,
+          6830,
+          2265
+        ]
+      },
+      {
+        "id": "shatter_maw",
+        "source_water": "atlantic_azores_current1",
+        "bounds": [
+          6440,
+          2200,
+          6640,
+          2295
+        ]
+      },
+      {
+        "id": "shatter_maw",
+        "source_water": "atlantic_north_atlantic_current10",
+        "bounds": [
+          6490,
+          2050,
+          6680,
+          2175
+        ]
+      },
+      {
+        "id": "cinderstep_passage",
+        "source_water": "atlantic_azores_current6",
+        "bounds": [
+          6700,
+          2250,
+          6770,
+          2440
+        ]
+      },
+      {
+        "id": "cinderstep_passage",
+        "source_water": "atlantic_azores_current7",
+        "bounds": [
+          6731,
+          2282,
+          6840,
+          2380
+        ]
+      },
+      {
+        "id": "shatter_maw",
+        "source_water": "atlantic_north_atlantic_current9",
+        "bounds": [
+          6490,
+          2115,
+          6570,
+          2200
+        ]
       }
     ],
     "reworked_navigable_sources": [
       "atlantic_azores_current3",
       "atlantic_azores_current7",
-      "atlantic_azores_current8"
+      "atlantic_azores_current8",
+      "atlantic_azores_current1",
+      "atlantic_azores_current2",
+      "atlantic_north_atlantic_current10",
+      "atlantic_azores_current6",
+      "atlantic_north_atlantic_current9"
+    ],
+    "boundary_warp": [
+      18,
+      45,
+      9001
+    ],
+    "edge_warp": [
+      4,
+      24,
+      9101
     ]
   },
   "countries": [
@@ -464,7 +609,7 @@
           "good": "iron",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 9.108,
+          "pop": 15.625,
           "province": "cm_crown_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -472,7 +617,8 @@
           "rgo_expansion": 1,
           "buildings": {
             "market_village": 1,
-            "local_smelters": 1
+            "local_smelters": 1,
+            "fishing_village": 1
           },
           "pop_classes": {
             "nobles": 0.087,
@@ -480,8 +626,8 @@
             "burghers": 0.087,
             "laborers": 3.313,
             "slaves": 1.296,
-            "peasants": 1.349,
-            "tribesmen": 2.803
+            "peasants": 3.578,
+            "tribesmen": 7.091
           }
         },
         {
@@ -495,7 +641,7 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 11.627,
+          "pop": 15.581,
           "province": "cm_blackwood_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -510,7 +656,7 @@
             "burghers": 0.087,
             "laborers": 3.0,
             "peasants": 4.324,
-            "tribesmen": 3.956
+            "tribesmen": 7.91
           }
         },
         {
@@ -524,7 +670,7 @@
           "good": "copper",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 15.086,
+          "pop": 19.617,
           "province": "cm_copperfang_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -534,7 +680,6 @@
             "marketplace": 1,
             "tools_guild": 1,
             "pottery_guild": 1,
-            "jewelry_guild": 1,
             "granary": 1
           },
           "pop_classes": {
@@ -544,7 +689,7 @@
             "laborers": 4.063,
             "slaves": 1.296,
             "peasants": 2.196,
-            "tribesmen": 4.531
+            "tribesmen": 9.062
           },
           "rank": "town"
         },
@@ -559,7 +704,7 @@
           "good": "fish",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 65.372,
+          "pop": 88.562,
           "province": "cm_hooktooth_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -575,12 +720,12 @@
             "granary": 2,
             "pottery_guild": 2,
             "cloth_guild": 2,
-            "glass_guild": 3,
+            "glass_guild": 1,
             "paper_guild": 2,
             "jewelry_guild": 1,
             "tannery": 2,
             "sergeantry": 1,
-            "mason": 5
+            "mason": 2
           },
           "pop_classes": {
             "nobles": 0.122,
@@ -590,7 +735,7 @@
             "slaves": 3.626,
             "peasants": 20.132,
             "soldiers": 1.375,
-            "tribesmen": 23.191
+            "tribesmen": 46.381
           }
         },
         {
@@ -604,7 +749,7 @@
           "good": "wheat",
           "topography": "hills",
           "vegetation": "farmland",
-          "pop": 26.311,
+          "pop": 35.638,
           "province": "cm_ashfields_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -620,7 +765,7 @@
             "burghers": 0.087,
             "laborers": 6.25,
             "peasants": 10.387,
-            "tribesmen": 9.327
+            "tribesmen": 18.654
           }
         },
         {
@@ -634,22 +779,23 @@
           "good": "salt",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 13.688,
+          "pop": 20.094,
           "province": "cm_saltjaw_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
           "rgo_expansion": 2,
           "buildings": {
-            "market_village": 2
+            "market_village": 2,
+            "fishing_village": 2
           },
           "pop_classes": {
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
             "laborers": 4.0,
-            "peasants": 4.658,
-            "tribesmen": 4.683
+            "peasants": 5.692,
+            "tribesmen": 10.055
           }
         },
         {
@@ -663,7 +809,7 @@
           "good": "livestock",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 19.675,
+          "pop": 26.651,
           "province": "cm_ashfields_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -678,7 +824,7 @@
             "burghers": 0.087,
             "laborers": 4.0,
             "peasants": 8.352,
-            "tribesmen": 6.976
+            "tribesmen": 13.952
           }
         },
         {
@@ -692,7 +838,7 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 16.275,
+          "pop": 22.049,
           "province": "cm_hooktooth_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -707,7 +853,7 @@
             "burghers": 0.087,
             "laborers": 4.0,
             "peasants": 6.154,
-            "tribesmen": 5.774
+            "tribesmen": 11.548
           }
         },
         {
@@ -720,12 +866,13 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 12.585,
+          "pop": 18.053,
           "province": "cm_blackwood_province",
           "rgo_expansion": 1,
           "buildings": {
             "forest_village": 1,
-            "charcoal_maker": 1
+            "charcoal_maker": 1,
+            "fishing_village": 2
           },
           "color": "ed1209",
           "pop_classes": {
@@ -733,8 +880,8 @@
             "clergy": 0.173,
             "burghers": 0.087,
             "laborers": 4.25,
-            "peasants": 3.762,
-            "tribesmen": 4.226
+            "peasants": 4.507,
+            "tribesmen": 8.949
           }
         },
         {
@@ -747,12 +894,13 @@
           "good": "iron",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 11.855,
+          "pop": 17.995,
           "province": "cm_crown_province",
           "rgo_expansion": 2,
           "buildings": {
             "market_village": 1,
-            "local_smelters": 1
+            "local_smelters": 1,
+            "fishing_village": 2
           },
           "color": "ed120a",
           "pop_classes": {
@@ -760,8 +908,8 @@
             "clergy": 0.173,
             "burghers": 0.087,
             "laborers": 4.313,
-            "peasants": 3.295,
-            "tribesmen": 3.9
+            "peasants": 4.639,
+            "tribesmen": 8.696
           }
         },
         {
@@ -774,11 +922,12 @@
           "good": "clay",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 9.898,
+          "pop": 16.009,
           "province": "cm_copperfang_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1
+            "market_village": 1,
+            "fishing_village": 2
           },
           "color": "ed120b",
           "pop_classes": {
@@ -786,8 +935,8 @@
             "clergy": 0.173,
             "burghers": 0.087,
             "laborers": 3.0,
-            "peasants": 3.056,
-            "tribesmen": 3.495
+            "peasants": 4.626,
+            "tribesmen": 8.036
           }
         },
         {
@@ -800,18 +949,20 @@
           "good": "fiber_crops",
           "topography": "hills",
           "vegetation": "farmland",
-          "pop": 9.267,
+          "pop": 13.426,
           "province": "cm_saltjaw_outer_province",
           "rgo_expansion": 1,
-          "buildings": {},
+          "buildings": {
+            "fishing_village": 2
+          },
           "color": "ed120c",
           "pop_classes": {
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
             "laborers": 3.0,
-            "peasants": 2.792,
-            "tribesmen": 3.128
+            "peasants": 3.411,
+            "tribesmen": 6.668
           }
         },
         {
@@ -824,7 +975,7 @@
           "good": "stone",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 10.698,
+          "pop": 14.199,
           "province": "cm_ashfields_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -837,7 +988,7 @@
             "burghers": 0.087,
             "laborers": 4.25,
             "peasants": 2.599,
-            "tribesmen": 3.502
+            "tribesmen": 7.003
           }
         },
         {
@@ -850,18 +1001,20 @@
           "good": "salt",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 7.081,
+          "pop": 10.653,
           "province": "cm_saltjaw_province",
           "rgo_expansion": 1,
-          "buildings": {},
+          "buildings": {
+            "fishing_village": 1
+          },
           "color": "ed120e",
           "pop_classes": {
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
             "laborers": 3.0,
-            "peasants": 1.501,
-            "tribesmen": 2.233
+            "peasants": 2.305,
+            "tribesmen": 5.001
           }
         },
         {
@@ -874,7 +1027,7 @@
           "good": "clay",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 7.433,
+          "pop": 9.852,
           "province": "cm_ashfields_outer_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -885,7 +1038,7 @@
             "burghers": 0.087,
             "laborers": 3.0,
             "peasants": 1.667,
-            "tribesmen": 2.419
+            "tribesmen": 4.838
           }
         },
         {
@@ -899,13 +1052,15 @@
           "good": "goods_gold",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 8.521,
+          "pop": 13.278,
           "province": "cm_copperfang_outer_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
           "rgo_expansion": 1,
-          "buildings": {},
+          "buildings": {
+            "fishing_village": 1
+          },
           "split_from": "cm_cinder_crown",
           "pop_classes": {
             "nobles": 0.087,
@@ -913,8 +1068,8 @@
             "burghers": 0.087,
             "laborers": 3.0,
             "slaves": 1.296,
-            "peasants": 1.142,
-            "tribesmen": 2.737
+            "peasants": 2.355,
+            "tribesmen": 6.281
           }
         },
         {
@@ -928,14 +1083,15 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 12.045,
+          "pop": 16.378,
           "province": "cm_crown_outer_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
           "rgo_expansion": 1,
           "buildings": {
-            "forest_village": 1
+            "forest_village": 1,
+            "fishing_village": 2
           },
           "split_from": "cm_blackwood",
           "pop_classes": {
@@ -943,8 +1099,8 @@
             "clergy": 0.173,
             "burghers": 0.087,
             "laborers": 3.0,
-            "peasants": 4.429,
-            "tribesmen": 4.269
+            "peasants": 4.468,
+            "tribesmen": 8.563
           }
         },
         {
@@ -958,13 +1114,15 @@
           "good": "silver",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 8.608,
+          "pop": 13.278,
           "province": "cm_copperfang_outer_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
           "rgo_expansion": 1,
-          "buildings": {},
+          "buildings": {
+            "fishing_village": 1
+          },
           "split_from": "cm_copperfang",
           "pop_classes": {
             "nobles": 0.087,
@@ -972,8 +1130,8 @@
             "burghers": 0.087,
             "laborers": 3.0,
             "slaves": 1.296,
-            "peasants": 1.195,
-            "tribesmen": 2.77
+            "peasants": 2.335,
+            "tribesmen": 6.3
           }
         },
         {
@@ -984,10 +1142,10 @@
             0.182085
           ],
           "color": "ed1228",
-          "good": "fish",
+          "good": "livestock",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 29.085,
+          "pop": 38.657,
           "province": "cm_hooktooth_outer_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -998,8 +1156,7 @@
             "naval_supplies_guild": 1,
             "granary": 1,
             "cloth_guild": 1,
-            "tannery": 1,
-            "mason": 1
+            "tannery": 1
           },
           "split_from": "cm_hooktooth",
           "pop_classes": {
@@ -1009,7 +1166,7 @@
             "laborers": 5.088,
             "slaves": 1.554,
             "peasants": 7.871,
-            "tribesmen": 9.572
+            "tribesmen": 19.144
           },
           "rank": "town"
         },
@@ -1024,7 +1181,7 @@
           "good": "saffron",
           "topography": "flatland",
           "vegetation": "farmland",
-          "pop": 25.748,
+          "pop": 34.873,
           "province": "cm_ashfields_outer_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -1040,7 +1197,7 @@
             "burghers": 0.087,
             "laborers": 3.0,
             "peasants": 13.274,
-            "tribesmen": 9.127
+            "tribesmen": 18.252
           }
         },
         {
@@ -1054,7 +1211,7 @@
           "good": "dyes",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 12.768,
+          "pop": 17.29,
           "province": "cm_saltjaw_outer_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -1070,7 +1227,7 @@
             "burghers": 0.087,
             "laborers": 3.0,
             "peasants": 4.897,
-            "tribesmen": 4.524
+            "tribesmen": 9.046
           }
         },
         {
@@ -1084,14 +1241,14 @@
           "good": "livestock",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 16.633,
+          "pop": 22.309,
           "province": "cm_ashfields_outer_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
           "rgo_expansion": 2,
           "buildings": {
-            "farming_village": 1
+            "farming_village": 2
           },
           "split_from": "cm_redpasture",
           "pop_classes": {
@@ -1100,7 +1257,7 @@
             "burghers": 0.087,
             "laborers": 4.0,
             "peasants": 6.609,
-            "tribesmen": 5.677
+            "tribesmen": 11.353
           }
         },
         {
@@ -1114,7 +1271,7 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 15.862,
+          "pop": 21.277,
           "province": "cm_hooktooth_outer_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -1130,7 +1287,7 @@
             "burghers": 0.087,
             "laborers": 4.0,
             "peasants": 6.1,
-            "tribesmen": 5.415
+            "tribesmen": 10.83
           }
         },
         {
@@ -1143,11 +1300,12 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 11.488,
+          "pop": 16.232,
           "province": "cm_blackwood_outer_province",
           "rgo_expansion": 1,
           "buildings": {
-            "forest_village": 1
+            "forest_village": 1,
+            "fishing_village": 2
           },
           "color": "ed122d",
           "split_from": "cm_ironbark",
@@ -1156,8 +1314,8 @@
             "clergy": 0.173,
             "burghers": 0.087,
             "laborers": 3.0,
-            "peasants": 4.069,
-            "tribesmen": 4.072
+            "peasants": 4.472,
+            "tribesmen": 8.413
           }
         },
         {
@@ -1170,7 +1328,7 @@
           "good": "goods_gold",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 10.096,
+          "pop": 13.551,
           "province": "cm_crown_outer_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1184,7 +1342,7 @@
             "burghers": 0.087,
             "laborers": 3.0,
             "peasants": 3.294,
-            "tribesmen": 3.455
+            "tribesmen": 6.91
           }
         },
         {
@@ -1197,11 +1355,12 @@
           "good": "sand",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 9.777,
+          "pop": 13.686,
           "province": "cm_copperfang_outer_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1
+            "market_village": 1,
+            "fishing_village": 1
           },
           "color": "ed122f",
           "split_from": "cm_emberfall",
@@ -1210,8 +1369,8 @@
             "clergy": 0.173,
             "burghers": 0.087,
             "laborers": 3.0,
-            "peasants": 3.052,
-            "tribesmen": 3.378
+            "peasants": 3.371,
+            "tribesmen": 6.968
           }
         },
         {
@@ -1224,10 +1383,12 @@
           "good": "fiber_crops",
           "topography": "hills",
           "vegetation": "farmland",
-          "pop": 9.132,
+          "pop": 13.211,
           "province": "cm_saltjaw_outer_province",
           "rgo_expansion": 1,
-          "buildings": {},
+          "buildings": {
+            "fishing_village": 2
+          },
           "color": "ed1230",
           "split_from": "cm_scorchbrook",
           "pop_classes": {
@@ -1235,8 +1396,8 @@
             "clergy": 0.173,
             "burghers": 0.087,
             "laborers": 3.0,
-            "peasants": 2.787,
-            "tribesmen": 2.998
+            "peasants": 3.436,
+            "tribesmen": 6.428
           }
         },
         {
@@ -1249,7 +1410,7 @@
           "good": "stone",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 8.947,
+          "pop": 11.95,
           "province": "cm_ashfields_outer_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -1261,7 +1422,7 @@
             "burghers": 0.087,
             "laborers": 3.0,
             "peasants": 2.597,
-            "tribesmen": 3.003
+            "tribesmen": 6.006
           }
         },
         {
@@ -1274,7 +1435,7 @@
           "good": "salt",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 7.119,
+          "pop": 9.387,
           "province": "cm_blackwood_outer_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -1286,7 +1447,7 @@
             "burghers": 0.087,
             "laborers": 3.0,
             "peasants": 1.502,
-            "tribesmen": 2.27
+            "tribesmen": 4.538
           }
         },
         {
@@ -1299,7 +1460,7 @@
           "good": "wheat",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 7.813,
+          "pop": 10.299,
           "province": "cm_hooktooth_outer_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1314,7 +1475,7 @@
             "burghers": 0.087,
             "laborers": 3.313,
             "peasants": 1.666,
-            "tribesmen": 2.487
+            "tribesmen": 4.973
           }
         }
       ],
@@ -1354,6 +1515,10 @@
             0.22,
             0.12
           ]
+        ],
+        "coast": [
+          0.06,
+          1711
         ]
       },
       "geology": {
@@ -1438,7 +1603,7 @@
           "good": "fish",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 58.927,
+          "pop": 77.905,
           "province": "cm_brackhaven_province",
           "rgo_expansion": 5,
           "buildings": {
@@ -1450,9 +1615,9 @@
             "granary": 3,
             "tools_guild": 3,
             "sergeantry": 1,
-            "mason": 3,
-            "glass_guild": 2,
-            "paper_guild": 2,
+            "mason": 2,
+            "glass_guild": 1,
+            "paper_guild": 1,
             "tannery": 2
           },
           "color": "ed1210",
@@ -1463,7 +1628,7 @@
             "laborers": 7.312,
             "peasants": 28.586,
             "soldiers": 1.25,
-            "tribesmen": 18.979
+            "tribesmen": 37.957
           },
           "rank": "city"
         },
@@ -1477,7 +1642,7 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 13.78,
+          "pop": 17.888,
           "province": "cm_brinewood_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1490,7 +1655,7 @@
             "burghers": 0.088,
             "laborers": 3.0,
             "peasants": 6.322,
-            "tribesmen": 4.108
+            "tribesmen": 8.216
           }
         },
         {
@@ -1503,14 +1668,13 @@
           "good": "iron",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 15.059,
+          "pop": 19.259,
           "province": "cm_rustpeak_province",
           "rgo_expansion": 1,
           "buildings": {
             "marketplace": 1,
             "tools_guild": 2,
             "weapon_guild": 1,
-            "mason": 2,
             "granary": 1
           },
           "color": "ed1212",
@@ -1520,7 +1684,7 @@
             "burghers": 2.0,
             "laborers": 4.089,
             "peasants": 4.27,
-            "tribesmen": 4.2
+            "tribesmen": 8.4
           },
           "rank": "town"
         },
@@ -1534,7 +1698,7 @@
           "good": "wheat",
           "topography": "hills",
           "vegetation": "farmland",
-          "pop": 19.008,
+          "pop": 24.607,
           "province": "cm_mossfields_province",
           "rgo_expansion": 3,
           "buildings": {
@@ -1548,7 +1712,7 @@
             "burghers": 0.088,
             "laborers": 5.313,
             "peasants": 7.745,
-            "tribesmen": 5.6
+            "tribesmen": 11.199
           }
         },
         {
@@ -1561,7 +1725,7 @@
           "good": "salt",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 18.492,
+          "pop": 23.942,
           "province": "cm_brackhaven_outer_province",
           "rgo_expansion": 3,
           "buildings": {
@@ -1574,7 +1738,7 @@
             "burghers": 0.088,
             "laborers": 5.0,
             "peasants": 7.692,
-            "tribesmen": 5.45
+            "tribesmen": 10.9
           }
         },
         {
@@ -1587,7 +1751,7 @@
           "good": "wool",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 10.333,
+          "pop": 13.377,
           "province": "cm_brinewood_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1600,7 +1764,7 @@
             "burghers": 0.088,
             "laborers": 3.0,
             "peasants": 3.937,
-            "tribesmen": 3.046
+            "tribesmen": 6.09
           }
         },
         {
@@ -1613,7 +1777,7 @@
           "good": "fish",
           "topography": "flatland",
           "vegetation": "woods",
-          "pop": 10.31,
+          "pop": 13.422,
           "province": "cm_mossfields_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1626,7 +1790,7 @@
             "burghers": 0.088,
             "laborers": 3.0,
             "peasants": 3.847,
-            "tribesmen": 3.113
+            "tribesmen": 6.225
           }
         },
         {
@@ -1639,12 +1803,13 @@
           "good": "stone",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 12.567,
+          "pop": 18.912,
           "province": "cm_rustpeak_province",
           "rgo_expansion": 3,
           "buildings": {
             "market_village": 1,
-            "mason": 1
+            "mason": 1,
+            "fishing_village": 2
           },
           "color": "ed1217",
           "pop_classes": {
@@ -1652,8 +1817,8 @@
             "clergy": 0.174,
             "burghers": 0.088,
             "laborers": 5.323,
-            "peasants": 3.019,
-            "tribesmen": 3.875
+            "peasants": 4.501,
+            "tribesmen": 8.738
           }
         },
         {
@@ -1666,7 +1831,7 @@
           "good": "stone",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 8.452,
+          "pop": 10.943,
           "province": "cm_mossfields_outer_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -1677,7 +1842,7 @@
             "burghers": 0.088,
             "laborers": 3.0,
             "peasants": 2.609,
-            "tribesmen": 2.493
+            "tribesmen": 4.984
           }
         },
         {
@@ -1690,7 +1855,7 @@
           "good": "clay",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 7.613,
+          "pop": 9.787,
           "province": "cm_mossfields_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -1701,7 +1866,7 @@
             "burghers": 0.088,
             "laborers": 3.0,
             "peasants": 2.089,
-            "tribesmen": 2.174
+            "tribesmen": 4.348
           }
         },
         {
@@ -1714,11 +1879,12 @@
           "good": "iron",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 7.481,
+          "pop": 12.832,
           "province": "cm_rustpeak_outer_province",
           "rgo_expansion": 1,
           "buildings": {
-            "local_smelters": 1
+            "local_smelters": 1,
+            "fishing_village": 2
           },
           "color": "ed121a",
           "pop_classes": {
@@ -1726,8 +1892,8 @@
             "clergy": 0.174,
             "burghers": 0.088,
             "laborers": 3.313,
-            "peasants": 1.626,
-            "tribesmen": 2.192
+            "peasants": 3.522,
+            "tribesmen": 5.647
           }
         },
         {
@@ -1740,7 +1906,7 @@
           "good": "salt",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 7.073,
+          "pop": 9.039,
           "province": "cm_mossfields_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -1751,7 +1917,7 @@
             "burghers": 0.088,
             "laborers": 3.0,
             "peasants": 1.755,
-            "tribesmen": 1.968
+            "tribesmen": 3.934
           }
         },
         {
@@ -1764,7 +1930,7 @@
           "good": "fish",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 33.467,
+          "pop": 43.449,
           "province": "cm_brackhaven_outer_province",
           "rgo_expansion": 5,
           "buildings": {
@@ -1772,8 +1938,7 @@
             "wharf": 1,
             "naval_supplies_guild": 1,
             "granary": 1,
-            "pottery_guild": 1,
-            "glass_guild": 1
+            "pottery_guild": 1
           },
           "color": "ed1234",
           "split_from": "cm_brackhaven",
@@ -1783,7 +1948,7 @@
             "burghers": 3.0,
             "laborers": 7.063,
             "peasants": 12.922,
-            "tribesmen": 9.982
+            "tribesmen": 19.964
           },
           "rank": "town"
         },
@@ -1797,11 +1962,12 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 14.272,
+          "pop": 18.727,
           "province": "cm_brinewood_outer_province",
           "rgo_expansion": 1,
           "buildings": {
-            "forest_village": 1
+            "forest_village": 1,
+            "fishing_village": 1
           },
           "color": "ed1235",
           "split_from": "cm_brinewood",
@@ -1811,7 +1977,7 @@
             "burghers": 0.088,
             "laborers": 3.0,
             "peasants": 6.467,
-            "tribesmen": 4.455
+            "tribesmen": 8.91
           }
         },
         {
@@ -1824,7 +1990,7 @@
           "good": "silver",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 8.226,
+          "pop": 10.752,
           "province": "cm_rustpeak_outer_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -1836,7 +2002,7 @@
             "burghers": 0.088,
             "laborers": 3.0,
             "peasants": 2.35,
-            "tribesmen": 2.526
+            "tribesmen": 5.052
           }
         },
         {
@@ -1849,7 +2015,7 @@
           "good": "wheat",
           "topography": "flatland",
           "vegetation": "farmland",
-          "pop": 19.474,
+          "pop": 25.401,
           "province": "cm_mossfields_outer_province",
           "rgo_expansion": 3,
           "buildings": {
@@ -1864,7 +2030,7 @@
             "burghers": 0.088,
             "laborers": 5.313,
             "peasants": 7.883,
-            "tribesmen": 5.928
+            "tribesmen": 11.855
           }
         },
         {
@@ -1877,7 +2043,7 @@
           "good": "livestock",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 15.548,
+          "pop": 20.531,
           "province": "cm_brackhaven_outer_province",
           "rgo_expansion": 2,
           "buildings": {
@@ -1891,7 +2057,7 @@
             "burghers": 0.088,
             "laborers": 4.0,
             "peasants": 6.215,
-            "tribesmen": 4.983
+            "tribesmen": 9.966
           }
         },
         {
@@ -1904,7 +2070,7 @@
           "good": "wool",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 10.394,
+          "pop": 13.482,
           "province": "cm_brinewood_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1918,7 +2084,7 @@
             "burghers": 0.088,
             "laborers": 3.0,
             "peasants": 3.956,
-            "tribesmen": 3.088
+            "tribesmen": 6.176
           }
         },
         {
@@ -1931,7 +2097,7 @@
           "good": "sand",
           "topography": "flatland",
           "vegetation": "woods",
-          "pop": 10.357,
+          "pop": 13.502,
           "province": "cm_mossfields_province",
           "rgo_expansion": 2,
           "buildings": {},
@@ -1943,7 +2109,7 @@
             "burghers": 0.088,
             "laborers": 3.619,
             "peasants": 3.242,
-            "tribesmen": 3.146
+            "tribesmen": 6.291
           }
         },
         {
@@ -1956,11 +2122,12 @@
           "good": "alum",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 14.231,
+          "pop": 18.777,
           "province": "cm_rustpeak_outer_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1
+            "market_village": 1,
+            "fishing_village": 2
           },
           "color": "ed123b",
           "split_from": "cm_blackcrag",
@@ -1970,7 +2137,7 @@
             "burghers": 0.088,
             "laborers": 3.0,
             "peasants": 6.334,
-            "tribesmen": 4.547
+            "tribesmen": 9.093
           }
         },
         {
@@ -1983,7 +2150,7 @@
           "good": "wheat",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 8.922,
+          "pop": 11.555,
           "province": "cm_brackhaven_outer_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1998,7 +2165,7 @@
             "burghers": 0.088,
             "laborers": 3.313,
             "peasants": 2.625,
-            "tribesmen": 2.634
+            "tribesmen": 5.267
           }
         },
         {
@@ -2011,7 +2178,7 @@
           "good": "saffron",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 7.754,
+          "pop": 10.027,
           "province": "cm_mossfields_outer_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -2023,7 +2190,7 @@
             "burghers": 0.088,
             "laborers": 3.0,
             "peasants": 2.131,
-            "tribesmen": 2.273
+            "tribesmen": 4.546
           }
         },
         {
@@ -2036,7 +2203,7 @@
           "good": "iron",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 7.796,
+          "pop": 10.049,
           "province": "cm_rustpeak_outer_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -2050,7 +2217,7 @@
             "burghers": 0.088,
             "laborers": 3.0,
             "peasants": 2.191,
-            "tribesmen": 2.255
+            "tribesmen": 4.508
           }
         },
         {
@@ -2063,7 +2230,7 @@
           "good": "dyes",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 7.109,
+          "pop": 9.102,
           "province": "cm_brackhaven_outer_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -2075,7 +2242,7 @@
             "burghers": 0.088,
             "laborers": 3.0,
             "peasants": 1.766,
-            "tribesmen": 1.993
+            "tribesmen": 3.986
           }
         }
       ],
@@ -2115,13 +2282,17 @@
             0.23,
             0.14
           ]
+        ],
+        "coast": [
+          0.1,
+          2911
         ]
       },
       "geology": {
         "seed": 2903,
-        "rivers": 4,
-        "foothills": 1.3,
-        "woodland": 0.8450000000000001,
+        "rivers": 5,
+        "foothills": 1.0,
+        "woodland": 0.95,
         "ridges": [
           [
             0.12,
@@ -2148,7 +2319,7 @@
             0.1
           ]
         ],
-        "volcanic_exposure": 0.6,
+        "volcanic_exposure": 0.35,
         "craters": []
       },
       "position_adjustment": [
@@ -2176,7 +2347,7 @@
           "good": "fish",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 35.264,
+          "pop": 68.63,
           "province": "cm_reefhook_province",
           "rgo_expansion": 3,
           "buildings": {
@@ -2184,7 +2355,7 @@
             "wharf": 1,
             "naval_supplies_guild": 1,
             "granary": 1,
-            "mason": 3,
+            "mason": 2,
             "glass_guild": 1,
             "tools_guild": 2,
             "cloth_guild": 1,
@@ -2197,9 +2368,9 @@
             "nobles": 0.25,
             "clergy": 0.498,
             "burghers": 4.979,
-            "laborers": 5.248,
-            "peasants": 13.496,
-            "tribesmen": 10.793
+            "laborers": 9.311,
+            "peasants": 22.977,
+            "tribesmen": 30.615
           }
         },
         {
@@ -2212,7 +2383,7 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 12.115,
+          "pop": 25.119,
           "province": "cm_crooked_reef_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -2223,9 +2394,9 @@
             "nobles": 0.179,
             "clergy": 0.356,
             "burghers": 0.179,
-            "laborers": 3.0,
-            "peasants": 4.844,
-            "tribesmen": 3.557
+            "laborers": 4.7,
+            "peasants": 8.812,
+            "tribesmen": 10.893
           }
         },
         {
@@ -2238,7 +2409,7 @@
           "good": "stone",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 9.764,
+          "pop": 20.067,
           "province": "cm_reefhook_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -2247,9 +2418,9 @@
             "nobles": 0.179,
             "clergy": 0.356,
             "burghers": 0.179,
-            "laborers": 3.0,
-            "peasants": 3.126,
-            "tribesmen": 2.924
+            "laborers": 4.328,
+            "peasants": 6.225,
+            "tribesmen": 8.8
           }
         },
         {
@@ -2262,7 +2433,7 @@
           "good": "sand",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 9.143,
+          "pop": 18.767,
           "province": "cm_crooked_reef_province",
           "rgo_expansion": 2,
           "buildings": {},
@@ -2271,9 +2442,9 @@
             "nobles": 0.179,
             "clergy": 0.356,
             "burghers": 0.179,
-            "laborers": 3.772,
-            "peasants": 2.073,
-            "tribesmen": 2.584
+            "laborers": 5.039,
+            "peasants": 5.03,
+            "tribesmen": 7.984
           }
         },
         {
@@ -2286,7 +2457,7 @@
           "good": "fish",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 18.597,
+          "pop": 36.942,
           "province": "cm_reefhook_outer_province",
           "rgo_expansion": 3,
           "buildings": {
@@ -2298,9 +2469,9 @@
             "nobles": 0.108,
             "clergy": 0.213,
             "burghers": 2.134,
-            "laborers": 5.0,
-            "peasants": 5.782,
-            "tribesmen": 5.36
+            "laborers": 7.337,
+            "peasants": 11.236,
+            "tribesmen": 15.914
           }
         },
         {
@@ -2313,9 +2484,9 @@
           "good": "livestock",
           "topography": "flatland",
           "vegetation": "woods",
-          "pop": 12.322,
+          "pop": 25.545,
           "province": "cm_crooked_reef_province",
-          "rgo_expansion": 1,
+          "rgo_expansion": 3,
           "buildings": {
             "farming_village": 1
           },
@@ -2325,9 +2496,9 @@
             "nobles": 0.179,
             "clergy": 0.356,
             "burghers": 0.179,
-            "laborers": 3.0,
-            "peasants": 4.902,
-            "tribesmen": 3.706
+            "laborers": 4.713,
+            "peasants": 8.899,
+            "tribesmen": 11.219
           }
         },
         {
@@ -2340,7 +2511,7 @@
           "good": "pearls",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 11.086,
+          "pop": 22.914,
           "province": "cm_reefhook_outer_province",
           "rgo_expansion": 2,
           "buildings": {
@@ -2352,9 +2523,9 @@
             "nobles": 0.179,
             "clergy": 0.356,
             "burghers": 0.179,
-            "laborers": 4.0,
-            "peasants": 3.123,
-            "tribesmen": 3.249
+            "laborers": 5.544,
+            "peasants": 6.726,
+            "tribesmen": 9.93
           }
         },
         {
@@ -2367,9 +2538,9 @@
           "good": "wheat",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 9.754,
+          "pop": 20.063,
           "province": "cm_crooked_reef_outer_province",
-          "rgo_expansion": 1,
+          "rgo_expansion": 2,
           "buildings": {
             "farming_village": 1,
             "windmill": 1
@@ -2380,9 +2551,9 @@
             "nobles": 0.179,
             "clergy": 0.356,
             "burghers": 0.179,
-            "laborers": 3.313,
-            "peasants": 2.899,
-            "tribesmen": 2.828
+            "laborers": 4.66,
+            "peasants": 6.041,
+            "tribesmen": 8.648
           }
         }
       ],
@@ -2407,32 +2578,36 @@
             0.57,
             0.66
           ]
+        ],
+        "coast": [
+          0.13,
+          3323
         ]
       },
       "geology": {
         "seed": 3319,
         "rivers": 2,
-        "foothills": 0.6,
-        "woodland": 0.9099999999999999,
+        "foothills": 0.4,
+        "woodland": 1.0,
         "ridges": [
           [
-            -0.03,
-            -0.43,
-            5.5,
-            0.22,
-            0.38,
+            -0.05,
+            -0.4,
+            4.0,
+            0.2,
+            0.35,
             -0.3
           ],
           [
-            0.04,
-            0.27,
-            4.2,
-            0.27,
-            0.42,
+            0.05,
+            0.3,
+            3.2,
+            0.25,
+            0.4,
             0.2
           ]
         ],
-        "volcanic_exposure": 0.33,
+        "volcanic_exposure": 0.15,
         "craters": []
       },
       "position_adjustment": [
@@ -2444,23 +2619,23 @@
       "id": "shatterfin",
       "name": "Shatterfin",
       "offset": [
-        1.391304347826087,
-        -0.7777777777777778
+        -2.1777357693910995,
+        -3.657213403199656
       ],
-      "area_ratio": 0.064,
+      "area_ratio": 0.48,
       "country": "SFK",
       "locations": [
         {
           "id": "cm_shatterfin",
           "name": "Shatterfin",
           "seed": [
-            -0.152614,
-            0.013823
+            0.496535,
+            0.305967
           ],
           "good": "fish",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 78.123,
+          "pop": 60.798,
           "province": "cm_shatterfin_province",
           "rgo_expansion": 5,
           "buildings": {
@@ -2471,20 +2646,20 @@
             "granary": 3,
             "tools_guild": 3,
             "jewelry_guild": 1,
-            "paper_guild": 2,
+            "paper_guild": 1,
             "tannery": 2,
-            "mason": 3,
-            "glass_guild": 2,
+            "mason": 1,
+            "glass_guild": 1,
             "pottery_guild": 1
           },
           "color": "ed1220",
           "pop_classes": {
-            "nobles": 0.6,
-            "clergy": 1.2,
-            "burghers": 12.0,
-            "laborers": 7.188,
-            "peasants": 33.69,
-            "tribesmen": 23.445
+            "nobles": 0.22,
+            "clergy": 0.442,
+            "burghers": 4.42,
+            "laborers": 8.85,
+            "peasants": 16.285,
+            "tribesmen": 30.581
           },
           "rank": "city"
         },
@@ -2492,40 +2667,40 @@
           "id": "cm_shardpoint",
           "name": "Shardpoint",
           "seed": [
-            0.431715,
-            -0.611854
+            0.260121,
+            -0.677515
           ],
           "good": "stone",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 23.712,
-          "province": "cm_shatterfin_province",
+          "pop": 25.7,
+          "province": "cm_stormcrag_province",
           "rgo_expansion": 3,
           "buildings": {
             "mason": 2
           },
           "color": "ed1221",
           "pop_classes": {
-            "nobles": 0.349,
-            "clergy": 0.693,
-            "burghers": 0.349,
-            "laborers": 5.32,
-            "peasants": 9.546,
-            "tribesmen": 7.455
+            "nobles": 0.158,
+            "clergy": 0.313,
+            "burghers": 0.158,
+            "laborers": 6.136,
+            "peasants": 6.213,
+            "tribesmen": 12.722
           }
         },
         {
           "id": "cm_stormpasture",
           "name": "Stormpasture",
           "seed": [
-            -0.811844,
-            0.412979
+            -1.026564,
+            0.558725
           ],
           "good": "livestock",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 25.274,
-          "province": "cm_shatterfin_province",
+          "pop": 39.046,
+          "province": "cm_harrowmoor_province",
           "rgo_expansion": 4,
           "buildings": {
             "farming_village": 1
@@ -2536,23 +2711,23 @@
             "nobles": 0.211,
             "clergy": 0.416,
             "burghers": 4.156,
-            "laborers": 6.0,
-            "peasants": 6.703,
-            "tribesmen": 7.788
+            "laborers": 7.077,
+            "peasants": 9.216,
+            "tribesmen": 17.97
           }
         },
         {
           "id": "cm_silver_shard",
           "name": "Silver Shard",
           "seed": [
-            0.621498,
-            0.020982
+            0.629555,
+            -0.009235
           ],
           "good": "silver",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 23.001,
-          "province": "cm_shatterfin_outer_province",
+          "pop": 24.417,
+          "province": "cm_shatterfin_province",
           "rgo_expansion": 1,
           "buildings": {
             "market_village": 1
@@ -2560,102 +2735,505 @@
           "color": "ed1245",
           "split_from": "cm_shardpoint",
           "pop_classes": {
-            "nobles": 0.349,
-            "clergy": 0.693,
-            "burghers": 0.349,
-            "laborers": 5.199,
-            "peasants": 9.418,
-            "tribesmen": 6.993
+            "nobles": 0.155,
+            "clergy": 0.308,
+            "burghers": 0.155,
+            "laborers": 5.995,
+            "peasants": 6.049,
+            "tribesmen": 11.755
+          }
+        },
+        {
+          "id": "cm_wrackfang",
+          "name": "Wrackfang",
+          "seed": [
+            -0.302269,
+            0.163061
+          ],
+          "good": "wool",
+          "topography": "flatland",
+          "vegetation": "sparse",
+          "pop": 15.335,
+          "province": "cm_harrowmoor_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "farming_village": 1
+          },
+          "color": "ed1320",
+          "pop_classes": {
+            "nobles": 0.116,
+            "clergy": 0.203,
+            "burghers": 1.161,
+            "laborers": 3.51,
+            "peasants": 4.211,
+            "tribesmen": 6.134
+          }
+        },
+        {
+          "id": "cm_gullscar",
+          "name": "Gullscar",
+          "seed": [
+            -0.169752,
+            0.528343
+          ],
+          "good": "fish",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 18.007,
+          "province": "cm_harrowmoor_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "color": "ed1321",
+          "pop_classes": {
+            "nobles": 0.114,
+            "clergy": 0.227,
+            "burghers": 2.274,
+            "laborers": 3.541,
+            "peasants": 4.648,
+            "tribesmen": 7.203
+          }
+        },
+        {
+          "id": "cm_stormcrag",
+          "name": "Stormcrag",
+          "seed": [
+            -0.698761,
+            0.011633
+          ],
+          "good": "iron",
+          "topography": "mountains",
+          "vegetation": "sparse",
+          "pop": 18.007,
+          "province": "cm_stormcrag_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1,
+            "local_smelters": 1
+          },
+          "color": "ed1322",
+          "pop_classes": {
+            "nobles": 0.114,
+            "clergy": 0.228,
+            "burghers": 2.274,
+            "laborers": 3.941,
+            "peasants": 4.247,
+            "tribesmen": 7.203
+          }
+        },
+        {
+          "id": "cm_tidewhet",
+          "name": "Tidewhet",
+          "seed": [
+            -0.391235,
+            -0.254553
+          ],
+          "good": "salt",
+          "topography": "flatland",
+          "vegetation": "sparse",
+          "pop": 12.005,
+          "province": "cm_stormcrag_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "color": "ed1323",
+          "pop_classes": {
+            "nobles": 0.076,
+            "clergy": 0.152,
+            "burghers": 1.516,
+            "laborers": 3.361,
+            "peasants": 2.098,
+            "tribesmen": 4.802
+          }
+        },
+        {
+          "id": "cm_brinehollow",
+          "name": "Brinehollow",
+          "seed": [
+            0.941179,
+            -0.667807
+          ],
+          "good": "fiber_crops",
+          "topography": "flatland",
+          "vegetation": "sparse",
+          "pop": 12.462,
+          "province": "cm_shatterfin_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "color": "ed1324",
+          "pop_classes": {
+            "nobles": 0.194,
+            "clergy": 0.385,
+            "burghers": 0.194,
+            "laborers": 3.443,
+            "peasants": 3.261,
+            "tribesmen": 4.985
+          }
+        },
+        {
+          "id": "cm_splitrock",
+          "name": "Splitrock",
+          "seed": [
+            0.344026,
+            -0.26882
+          ],
+          "good": "clay",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 12.467,
+          "province": "cm_shatterfin_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "color": "ed1325",
+          "pop_classes": {
+            "nobles": 0.191,
+            "clergy": 0.38,
+            "burghers": 0.191,
+            "laborers": 3.444,
+            "peasants": 3.274,
+            "tribesmen": 4.987
+          }
+        },
+        {
+          "id": "cm_fangreach",
+          "name": "Fangreach",
+          "seed": [
+            0.180991,
+            0.499571
+          ],
+          "good": "fish",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 10.917,
+          "province": "cm_shatterfin_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "color": "ed1360",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.39,
+            "peasants": 2.51,
+            "tribesmen": 4.367
+          }
+        },
+        {
+          "id": "cm_saltmarrow",
+          "name": "Saltmarrow",
+          "seed": [
+            0.853565,
+            -0.273747
+          ],
+          "good": "salt",
+          "topography": "flatland",
+          "vegetation": "sparse",
+          "pop": 10.917,
+          "province": "cm_shatterfin_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "color": "ed1361",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.39,
+            "peasants": 2.51,
+            "tribesmen": 4.367
+          }
+        },
+        {
+          "id": "cm_skerrygate",
+          "name": "Skerrygate",
+          "seed": [
+            0.604528,
+            -0.576562
+          ],
+          "good": "fish",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 10.917,
+          "province": "cm_shatterfin_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "color": "ed1366",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.39,
+            "peasants": 2.51,
+            "tribesmen": 4.367
+          }
+        },
+        {
+          "id": "cm_crowspire",
+          "name": "Crowspire",
+          "seed": [
+            -0.066717,
+            -0.526807
+          ],
+          "good": "stone",
+          "topography": "mountains",
+          "vegetation": "sparse",
+          "pop": 10.917,
+          "province": "cm_stormcrag_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "color": "ed1362",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.39,
+            "peasants": 2.51,
+            "tribesmen": 4.367
+          }
+        },
+        {
+          "id": "cm_wavebreak",
+          "name": "Wavebreak",
+          "seed": [
+            -0.035402,
+            -0.159958
+          ],
+          "good": "wheat",
+          "topography": "flatland",
+          "vegetation": "farmland",
+          "pop": 10.917,
+          "province": "cm_stormcrag_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "farming_village": 1
+          },
+          "color": "ed1364",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.39,
+            "peasants": 2.51,
+            "tribesmen": 4.367
+          }
+        },
+        {
+          "id": "cm_brackfen",
+          "name": "Brackfen",
+          "seed": [
+            0.149874,
+            0.132102
+          ],
+          "good": "lumber",
+          "topography": "flatland",
+          "vegetation": "woods",
+          "pop": 10.917,
+          "province": "cm_harrowmoor_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "forest_village": 1
+          },
+          "color": "ed1363",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.39,
+            "peasants": 2.51,
+            "tribesmen": 4.367
+          }
+        },
+        {
+          "id": "cm_harrowmoor",
+          "name": "Harrowmoor",
+          "seed": [
+            -1.007907,
+            0.233558
+          ],
+          "good": "livestock",
+          "topography": "hills",
+          "vegetation": "grasslands",
+          "pop": 10.917,
+          "province": "cm_harrowmoor_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "farming_village": 1
+          },
+          "color": "ed1365",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.39,
+            "peasants": 2.51,
+            "tribesmen": 4.367
+          }
+        },
+        {
+          "id": "cm_grimtide",
+          "name": "Grimtide",
+          "seed": [
+            -0.620372,
+            0.46743
+          ],
+          "good": "fish",
+          "topography": "flatland",
+          "vegetation": "sparse",
+          "pop": 10.917,
+          "province": "cm_harrowmoor_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "color": "ed1367",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.39,
+            "peasants": 2.51,
+            "tribesmen": 4.367
           }
         }
       ],
       "profile": {
-        "stretch": 1.22,
-        "rotation": -0.6,
+        "stretch": 1.25,
+        "rotation": -0.55,
         "lobes": [
           [
             2,
-            0.15,
-            0.1
+            0.12,
+            0.2
           ],
           [
             3,
-            0.065,
-            2.3
+            0.07,
+            2.0
+          ],
+          [
+            5,
+            0.03,
+            0.8
           ]
         ],
         "bays": [
           [
-            2.4,
-            0.4,
-            0.29
+            2.5,
+            0.35,
+            0.3
           ],
           [
-            -0.35,
-            0.22,
-            0.18
+            -0.6,
+            0.25,
+            0.22
+          ],
+          [
+            1.0,
+            0.2,
+            0.12
           ]
+        ],
+        "coast": [
+          0.14,
+          4211
         ]
       },
       "geology": {
         "seed": 4201,
-        "rivers": 1,
-        "foothills": 0.5,
-        "woodland": 0.42250000000000004,
+        "rivers": 3,
+        "foothills": 0.7,
+        "woodland": 0.75,
         "ridges": [
           [
-            -0.12,
-            0.02,
-            9,
-            0.48,
-            0.3,
-            -0.45
+            -0.75,
+            0.38,
+            6.5,
+            0.26,
+            0.17,
+            -0.55
           ],
           [
-            0.4,
-            -0.25,
-            6,
-            0.28,
+            -0.3,
+            0.1,
+            10.5,
+            0.3,
+            0.19,
+            -0.55
+          ],
+          [
+            0.18,
+            -0.18,
+            8,
+            0.26,
+            0.18,
+            -0.5
+          ],
+          [
+            0.6,
+            -0.42,
+            9.5,
+            0.2,
+            0.2,
+            -0.6
+          ],
+          [
+            0.05,
+            0.42,
+            3.5,
+            0.35,
             0.2,
             -0.4
           ]
         ],
         "craters": [
           [
-            -0.12,
-            0.02,
-            0.14025,
-            2.0
+            0.6,
+            -0.42,
+            0.12,
+            2.6
           ]
         ],
-        "volcanic_exposure": 0.85
+        "volcanic_exposure": 0.6
       },
       "position_adjustment": [
-        -4,
-        -34
+        0,
+        0
       ]
     },
     {
       "id": "knifeback",
       "name": "Knifeback",
       "offset": [
-        1.6521739130434783,
-        -0.1111111111111111
+        -3.017719566156238,
+        -2.3652630161997776
       ],
-      "area_ratio": 0.041,
+      "area_ratio": 0.07,
       "country": "SFK",
       "locations": [
         {
           "id": "cm_knifeback",
           "name": "Knifeback",
           "seed": [
-            -0.375754,
-            0.328751
+            -0.497823,
+            0.347853
           ],
           "good": "lumber",
           "topography": "mountains",
           "vegetation": "woods",
-          "pop": 48.056,
+          "pop": 42.033,
           "province": "cm_knifeback_province",
           "rgo_expansion": 6,
           "buildings": {
@@ -2663,16 +3241,17 @@
             "wharf": 1,
             "naval_supplies_guild": 1,
             "tools_guild": 1,
-            "granary": 1
+            "granary": 1,
+            "tar_kiln": 1
           },
           "color": "ed1222",
           "pop_classes": {
-            "nobles": 0.4,
-            "clergy": 0.7,
-            "burghers": 4.0,
-            "laborers": 8.063,
-            "peasants": 20.75,
-            "tribesmen": 14.143
+            "nobles": 0.145,
+            "clergy": 0.253,
+            "burghers": 1.447,
+            "laborers": 9.383,
+            "peasants": 10.585,
+            "tribesmen": 20.22
           },
           "rank": "town"
         },
@@ -2680,27 +3259,54 @@
           "id": "cm_silkworm_grove",
           "name": "Silkworm Grove",
           "seed": [
-            0.435888,
-            -0.385344
+            0.349337,
+            -0.582356
           ],
           "good": "silk",
           "topography": "mountains",
           "vegetation": "woods",
-          "pop": 32.714,
+          "pop": 33.915,
           "province": "cm_knifeback_province",
           "rgo_expansion": 1,
           "buildings": {
-            "forest_village": 1
+            "forest_village": 1,
+            "fishing_village": 1
           },
           "color": "ed1246",
           "split_from": "cm_knifeback",
           "pop_classes": {
-            "nobles": 0.349,
-            "clergy": 0.693,
-            "burghers": 0.349,
-            "laborers": 3.0,
-            "peasants": 18.145,
-            "tribesmen": 10.178
+            "nobles": 0.188,
+            "clergy": 0.374,
+            "burghers": 0.188,
+            "laborers": 4.084,
+            "peasants": 12.316,
+            "tribesmen": 16.765
+          }
+        },
+        {
+          "id": "cm_edgewater",
+          "name": "Edgewater",
+          "seed": [
+            0.292028,
+            0.224418
+          ],
+          "good": "fish",
+          "topography": "hills",
+          "vegetation": "woods",
+          "pop": 18.405,
+          "province": "cm_knifeback_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "color": "ed1330",
+          "pop_classes": {
+            "nobles": 0.139,
+            "clergy": 0.244,
+            "burghers": 1.392,
+            "laborers": 3.613,
+            "peasants": 5.655,
+            "tribesmen": 7.362
           }
         }
       ],
@@ -2725,37 +3331,154 @@
             0.28,
             0.28
           ]
+        ],
+        "coast": [
+          0.09,
+          5401
         ]
       },
       "geology": {
         "seed": 5399,
         "rivers": 1,
         "foothills": 0.6,
-        "woodland": 0.8450000000000001,
+        "woodland": 0.7,
         "ridges": [
           [
-            -0.12,
-            -0.25,
-            10,
-            0.25,
-            0.4,
-            0.65
+            0.0,
+            0.0,
+            11,
+            0.75,
+            0.12,
+            2.12
           ],
           [
-            0.2,
-            0.26,
-            6,
-            0.28,
-            0.3,
-            0.65
+            0.25,
+            -0.35,
+            5,
+            0.25,
+            0.15,
+            2.12
           ]
         ],
-        "volcanic_exposure": 0.75,
+        "volcanic_exposure": 0.5,
         "craters": []
       },
       "position_adjustment": [
-        -4,
-        11
+        0,
+        0
+      ]
+    },
+    {
+      "id": "maw_rock",
+      "name": "Maw Rock",
+      "offset": [
+        -0.9722034684781694,
+        -2.76278621219974
+      ],
+      "area_ratio": 0.04,
+      "country": "SFK",
+      "locations": [
+        {
+          "id": "cm_maw_rock",
+          "name": "Maw Rock",
+          "seed": [
+            -0.35,
+            0.2
+          ],
+          "good": "sand",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 12.005,
+          "province": "cm_maw_rock_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "color": "ed1340",
+          "pop_classes": {
+            "nobles": 0.076,
+            "clergy": 0.151,
+            "burghers": 1.516,
+            "laborers": 3.361,
+            "peasants": 2.099,
+            "tribesmen": 4.802
+          }
+        },
+        {
+          "id": "cm_gullwatch",
+          "name": "Gullwatch",
+          "seed": [
+            0.4,
+            -0.3
+          ],
+          "good": "fish",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 18.939,
+          "province": "cm_maw_rock_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "color": "ed1341",
+          "pop_classes": {
+            "nobles": 0.161,
+            "clergy": 0.319,
+            "burghers": 0.161,
+            "laborers": 3.709,
+            "peasants": 7.013,
+            "tribesmen": 7.576
+          }
+        }
+      ],
+      "profile": {
+        "stretch": 1.15,
+        "rotation": 0.3,
+        "lobes": [
+          [
+            2,
+            0.1,
+            0.6
+          ],
+          [
+            3,
+            0.05,
+            1.5
+          ]
+        ],
+        "bays": [
+          [
+            2.2,
+            0.3,
+            0.25
+          ]
+        ],
+        "coast": [
+          0.13,
+          6117
+        ]
+      },
+      "geology": {
+        "seed": 6113,
+        "rivers": 1,
+        "foothills": 0.2,
+        "woodland": 0.2,
+        "ridges": [
+          [
+            0.1,
+            -0.05,
+            9,
+            0.3,
+            0.25,
+            0.3
+          ]
+        ],
+        "volcanic_exposure": 0.95,
+        "craters": []
+      },
+      "position_adjustment": [
+        0,
+        0
       ]
     },
     {
@@ -2778,16 +3501,16 @@
           "good": "fish",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 42.936,
+          "pop": 83.44,
           "province": "cm_sootwake_province",
-          "rgo_expansion": 3,
+          "rgo_expansion": 6,
           "buildings": {
             "marketplace": 1,
             "wharf": 1,
             "naval_supplies_guild": 1,
             "granary": 1,
             "tools_guild": 2,
-            "mason": 3,
+            "mason": 2,
             "glass_guild": 1,
             "cloth_guild": 1,
             "tannery": 1,
@@ -2799,9 +3522,9 @@
             "nobles": 0.247,
             "clergy": 0.49,
             "burghers": 4.903,
-            "laborers": 5.063,
-            "peasants": 19.267,
-            "tribesmen": 12.966
+            "laborers": 10.02,
+            "peasants": 30.833,
+            "tribesmen": 36.947
           }
         },
         {
@@ -2814,21 +3537,23 @@
           "good": "lumber",
           "topography": "mountains",
           "vegetation": "woods",
-          "pop": 26.193,
+          "pop": 54.047,
           "province": "cm_ember_key_province",
           "rgo_expansion": 4,
           "buildings": {
             "forest_village": 2,
-            "charcoal_maker": 1
+            "charcoal_maker": 1,
+            "tar_kiln": 1,
+            "fishing_village": 2
           },
           "color": "ed1224",
           "pop_classes": {
             "nobles": 0.177,
             "clergy": 0.35,
             "burghers": 0.177,
-            "laborers": 7.25,
-            "peasants": 10.678,
-            "tribesmen": 7.561
+            "laborers": 10.903,
+            "peasants": 19.201,
+            "tribesmen": 23.239
           }
         },
         {
@@ -2841,11 +3566,11 @@
           "good": "wheat",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 19.046,
+          "pop": 37.159,
           "province": "cm_sootwake_outer_province",
-          "rgo_expansion": 1,
+          "rgo_expansion": 3,
           "buildings": {
-            "farming_village": 1,
+            "farming_village": 2,
             "windmill": 1
           },
           "color": "ed1247",
@@ -2854,9 +3579,9 @@
             "nobles": 0.107,
             "clergy": 0.21,
             "burghers": 2.101,
-            "laborers": 3.313,
-            "peasants": 7.95,
-            "tribesmen": 5.365
+            "laborers": 5.608,
+            "peasants": 13.304,
+            "tribesmen": 15.829
           }
         },
         {
@@ -2869,12 +3594,13 @@
           "good": "alum",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 22.263,
+          "pop": 45.793,
           "province": "cm_ember_key_outer_province",
           "rgo_expansion": 1,
           "buildings": {
             "market_village": 1,
-            "charcoal_maker": 1
+            "charcoal_maker": 1,
+            "fishing_village": 2
           },
           "color": "ed1248",
           "split_from": "cm_ember_key",
@@ -2882,9 +3608,9 @@
             "nobles": 0.177,
             "clergy": 0.35,
             "burghers": 0.177,
-            "laborers": 4.25,
-            "peasants": 10.7,
-            "tribesmen": 6.609
+            "laborers": 7.296,
+            "peasants": 17.807,
+            "tribesmen": 19.986
           }
         }
       ],
@@ -2914,6 +3640,10 @@
             0.28,
             0.21
           ]
+        ],
+        "coast": [
+          0.06,
+          6179
         ]
       },
       "geology": {
@@ -2975,22 +3705,22 @@
           "good": "fish",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 48.439,
+          "pop": 60.549,
           "province": "cm_giltfang_1_province",
           "rgo_expansion": 1,
           "buildings": {
             "marketplace": 4,
             "stockade": 1,
             "naval_supplies_guild": 1,
-            "glass_guild": 3,
-            "paper_guild": 2,
+            "glass_guild": 1,
+            "paper_guild": 1,
             "tools_guild": 4,
             "wharf": 1,
             "jewelry_guild": 1,
             "tannery": 2,
             "cloth_guild": 2,
             "granary": 2,
-            "mason": 2,
+            "mason": 1,
             "pottery_guild": 1,
             "weapon_guild": 1
           },
@@ -3001,7 +3731,7 @@
             "laborers": 5.0,
             "peasants": 20.829,
             "soldiers": 1.0,
-            "tribesmen": 12.11
+            "tribesmen": 24.22
           },
           "rank": "city"
         },
@@ -3016,12 +3746,12 @@
           "good": "copper",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 15.719,
+          "pop": 19.649,
           "province": "cm_giltfang_2_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1,
-            "local_smelters": 1
+            "local_smelters": 1,
+            "fishing_village": 2
           },
           "pop_classes": {
             "nobles": 0.192,
@@ -3029,7 +3759,7 @@
             "burghers": 0.884,
             "laborers": 3.698,
             "peasants": 6.63,
-            "tribesmen": 3.93
+            "tribesmen": 7.86
           }
         },
         {
@@ -3043,12 +3773,12 @@
           "good": "stone",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 12.649,
+          "pop": 15.81,
           "province": "cm_giltfang_3_province",
           "rgo_expansion": 3,
           "buildings": {
-            "market_village": 1,
-            "mason": 2
+            "mason": 2,
+            "fishing_village": 1
           },
           "pop_classes": {
             "nobles": 0.124,
@@ -3056,7 +3786,7 @@
             "burghers": 0.572,
             "laborers": 6.25,
             "peasants": 2.291,
-            "tribesmen": 3.163
+            "tribesmen": 6.324
           }
         },
         {
@@ -3070,11 +3800,11 @@
           "good": "salt",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 11.619,
+          "pop": 14.524,
           "province": "cm_giltfang_4_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1
+            "fishing_village": 1
           },
           "pop_classes": {
             "nobles": 0.136,
@@ -3082,7 +3812,7 @@
             "burghers": 0.624,
             "laborers": 3.0,
             "peasants": 4.682,
-            "tribesmen": 2.905
+            "tribesmen": 5.81
           }
         },
         {
@@ -3096,11 +3826,11 @@
           "good": "clay",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 13.871,
+          "pop": 17.339,
           "province": "cm_giltfang_5_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1
+            "fishing_village": 2
           },
           "pop_classes": {
             "nobles": 0.17,
@@ -3108,7 +3838,7 @@
             "burghers": 0.78,
             "laborers": 3.263,
             "peasants": 5.85,
-            "tribesmen": 3.468
+            "tribesmen": 6.936
           }
         },
         {
@@ -3122,12 +3852,12 @@
           "good": "copper",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 13.938,
+          "pop": 17.422,
           "province": "cm_giltfang_2_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1,
-            "local_smelters": 1
+            "local_smelters": 1,
+            "fishing_village": 1
           },
           "pop_classes": {
             "nobles": 0.17,
@@ -3135,7 +3865,7 @@
             "burghers": 0.78,
             "laborers": 3.313,
             "peasants": 5.85,
-            "tribesmen": 3.485
+            "tribesmen": 6.969
           }
         },
         {
@@ -3149,12 +3879,12 @@
           "good": "iron",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 12.036,
+          "pop": 15.045,
           "province": "cm_giltfang_6_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1,
-            "local_smelters": 1
+            "local_smelters": 1,
+            "fishing_village": 2
           },
           "pop_classes": {
             "nobles": 0.136,
@@ -3162,7 +3892,7 @@
             "burghers": 0.624,
             "laborers": 3.313,
             "peasants": 4.682,
-            "tribesmen": 3.009
+            "tribesmen": 6.018
           }
         },
         {
@@ -3176,11 +3906,11 @@
           "good": "wool",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 11.49,
+          "pop": 14.362,
           "province": "cm_giltfang_3_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1
+            "farming_village": 2
           },
           "pop_classes": {
             "nobles": 0.158,
@@ -3188,7 +3918,7 @@
             "burghers": 0.728,
             "laborers": 3.0,
             "peasants": 4.414,
-            "tribesmen": 2.873
+            "tribesmen": 5.745
           }
         },
         {
@@ -3202,7 +3932,7 @@
           "good": "wheat",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 12.842,
+          "pop": 16.052,
           "province": "cm_giltfang_1_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3215,7 +3945,7 @@
             "burghers": 0.832,
             "laborers": 5.5,
             "peasants": 2.755,
-            "tribesmen": 3.211
+            "tribesmen": 6.421
           }
         },
         {
@@ -3229,7 +3959,7 @@
           "good": "iron",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 12.036,
+          "pop": 15.045,
           "province": "cm_giltfang_4_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3242,7 +3972,7 @@
             "burghers": 0.624,
             "laborers": 3.313,
             "peasants": 4.682,
-            "tribesmen": 3.009
+            "tribesmen": 6.018
           }
         },
         {
@@ -3256,7 +3986,7 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 12.166,
+          "pop": 15.207,
           "province": "cm_giltfang_5_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3268,7 +3998,7 @@
             "burghers": 0.78,
             "laborers": 3.0,
             "peasants": 4.834,
-            "tribesmen": 3.042
+            "tribesmen": 6.083
           }
         },
         {
@@ -3282,11 +4012,12 @@
           "good": "wheat",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 12.842,
+          "pop": 16.052,
           "province": "cm_giltfang_4_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1
+            "market_village": 1,
+            "farming_village": 2
           },
           "pop_classes": {
             "nobles": 0.181,
@@ -3294,7 +4025,7 @@
             "burghers": 0.832,
             "laborers": 3.0,
             "peasants": 5.255,
-            "tribesmen": 3.211
+            "tribesmen": 6.421
           }
         },
         {
@@ -3308,19 +4039,20 @@
           "good": "livestock",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 11.433,
+          "pop": 14.91,
           "province": "cm_giltfang_3_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1
+            "market_village": 1,
+            "farming_village": 2
           },
           "pop_classes": {
             "nobles": 0.124,
             "clergy": 0.249,
             "burghers": 0.572,
             "laborers": 3.0,
-            "peasants": 4.629,
-            "tribesmen": 2.859
+            "peasants": 5.001,
+            "tribesmen": 5.964
           }
         },
         {
@@ -3334,11 +4066,11 @@
           "good": "silver",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 9.715,
+          "pop": 12.144,
           "province": "cm_giltfang_2_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1
+            "fishing_village": 1
           },
           "pop_classes": {
             "nobles": 0.102,
@@ -3346,7 +4078,7 @@
             "burghers": 0.468,
             "laborers": 3.0,
             "peasants": 3.512,
-            "tribesmen": 2.429
+            "tribesmen": 4.858
           }
         },
         {
@@ -3360,19 +4092,20 @@
           "good": "salt",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 9.745,
+          "pop": 15.054,
           "province": "cm_giltfang_5_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1
+            "market_village": 1,
+            "fishing_village": 2
           },
           "pop_classes": {
             "nobles": 0.136,
             "clergy": 0.272,
             "burghers": 0.624,
             "laborers": 3.0,
-            "peasants": 3.276,
-            "tribesmen": 2.437
+            "peasants": 5.0,
+            "tribesmen": 6.022
           }
         },
         {
@@ -3386,19 +4119,20 @@
           "good": "wheat",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 10.14,
+          "pop": 12.972,
           "province": "cm_giltfang_1_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1
+            "market_village": 1,
+            "farming_village": 1
           },
           "pop_classes": {
             "nobles": 0.136,
             "clergy": 0.272,
             "burghers": 0.624,
             "laborers": 3.0,
-            "peasants": 3.573,
-            "tribesmen": 2.535
+            "peasants": 3.751,
+            "tribesmen": 5.189
           }
         },
         {
@@ -3412,20 +4146,21 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 14.135,
+          "pop": 18.502,
           "province": "cm_giltfang_4_province",
           "rgo_expansion": 1,
           "buildings": {
             "market_village": 1,
-            "charcoal_maker": 1
+            "charcoal_maker": 1,
+            "tar_kiln": 1
           },
           "pop_classes": {
             "nobles": 0.17,
             "clergy": 0.34,
             "burghers": 0.78,
-            "laborers": 4.25,
+            "laborers": 4.75,
             "peasants": 5.061,
-            "tribesmen": 3.534
+            "tribesmen": 7.401
           }
         },
         {
@@ -3439,19 +4174,20 @@
           "good": "sand",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 12.11,
+          "pop": 16.305,
           "province": "cm_giltfang_6_province",
           "rgo_expansion": 3,
           "buildings": {
-            "market_village": 1
+            "market_village": 1,
+            "fishing_village": 1
           },
           "pop_classes": {
             "nobles": 0.136,
             "clergy": 0.272,
             "burghers": 0.624,
             "laborers": 5.0,
-            "peasants": 3.05,
-            "tribesmen": 3.028
+            "peasants": 3.751,
+            "tribesmen": 6.522
           }
         }
       ],
@@ -3481,6 +4217,10 @@
             0.2,
             0.1
           ]
+        ],
+        "coast": [
+          0.07,
+          7313
         ]
       },
       "geology": {
@@ -3535,15 +4275,14 @@
           "good": "fish",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 21.072,
+          "pop": 26.34,
           "province": "cm_tolltooth_1_province",
           "rgo_expansion": 1,
           "buildings": {
             "marketplace": 2,
             "wharf": 1,
             "naval_supplies_guild": 1,
-            "granary": 1,
-            "mason": 1
+            "granary": 1
           },
           "pop_classes": {
             "nobles": 0.2,
@@ -3551,7 +4290,7 @@
             "burghers": 3.0,
             "laborers": 3.688,
             "peasants": 8.516,
-            "tribesmen": 5.268
+            "tribesmen": 10.536
           },
           "rank": "town"
         },
@@ -3566,7 +4305,7 @@
           "good": "stone",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 8.807,
+          "pop": 11.009,
           "province": "cm_tolltooth_1_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3578,7 +4317,7 @@
             "burghers": 0.468,
             "laborers": 3.0,
             "peasants": 2.831,
-            "tribesmen": 2.202
+            "tribesmen": 4.404
           }
         },
         {
@@ -3592,7 +4331,7 @@
           "good": "fish",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 9.446,
+          "pop": 11.807,
           "province": "cm_tolltooth_1_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3604,7 +4343,7 @@
             "burghers": 0.52,
             "laborers": 3.0,
             "peasants": 3.224,
-            "tribesmen": 2.362
+            "tribesmen": 4.723
           }
         },
         {
@@ -3618,19 +4357,20 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 8.75,
+          "pop": 12.395,
           "province": "cm_tolltooth_2_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1
+            "market_village": 1,
+            "fishing_village": 1
           },
           "pop_classes": {
             "nobles": 0.09,
             "clergy": 0.181,
             "burghers": 0.416,
             "laborers": 3.0,
-            "peasants": 2.875,
-            "tribesmen": 2.188
+            "peasants": 3.75,
+            "tribesmen": 4.958
           }
         }
       ],
@@ -3655,21 +4395,33 @@
             0.35,
             0.22
           ]
+        ],
+        "coast": [
+          0.09,
+          7519
         ]
       },
       "geology": {
         "seed": 7517,
         "rivers": 1,
-        "foothills": 1.0,
+        "foothills": 0.5,
         "woodland": 0.48,
         "ridges": [
           [
-            0.1,
-            0,
-            5,
-            0.5,
-            0.28,
+            0.15,
+            -0.05,
+            9,
+            0.22,
+            0.18,
             -0.35
+          ],
+          [
+            -0.3,
+            0.2,
+            3,
+            0.3,
+            0.25,
+            0
           ]
         ],
         "volcanic_exposure": 0.6,
@@ -3701,7 +4453,7 @@
           "good": "fish",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 7.234,
+          "pop": 9.042,
           "province": "cm_lantern_cay_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3715,7 +4467,7 @@
             "burghers": 0.5,
             "laborers": 3.063,
             "peasants": 1.712,
-            "tribesmen": 1.809
+            "tribesmen": 3.617
           },
           "rank": "town"
         },
@@ -3730,7 +4482,7 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 6.608,
+          "pop": 8.26,
           "province": "cm_lantern_cay_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3742,7 +4494,7 @@
             "burghers": 0.5,
             "laborers": 3.0,
             "peasants": 1.306,
-            "tribesmen": 1.652
+            "tribesmen": 3.304
           }
         },
         {
@@ -3756,7 +4508,7 @@
           "good": "stone",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 6.608,
+          "pop": 8.26,
           "province": "cm_lantern_cay_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3768,7 +4520,7 @@
             "burghers": 0.5,
             "laborers": 3.0,
             "peasants": 1.306,
-            "tribesmen": 1.652
+            "tribesmen": 3.304
           }
         }
       ],
@@ -3797,25 +4549,184 @@
             0.38,
             0.22
           ]
+        ],
+        "coast": [
+          0.08,
+          7929
         ]
       },
       "geology": {
         "seed": 7927,
         "rivers": 1,
-        "foothills": 0.7,
-        "woodland": 0.42,
+        "foothills": 0.9,
+        "woodland": 0.85,
         "ridges": [
           [
-            0.2,
-            0,
-            4.2,
-            0.52,
-            0.29,
+            0.3,
+            -0.1,
+            3.2,
+            0.4,
+            0.3,
             0.5
+          ],
+          [
+            -0.35,
+            0.15,
+            2.4,
+            0.3,
+            0.3,
+            0
           ]
         ],
-        "volcanic_exposure": 0.35,
+        "volcanic_exposure": 0.15,
         "craters": []
+      }
+    },
+    {
+      "id": "cinderstep",
+      "name": "Cinderstep",
+      "offset": [
+        -0.8944271909999159,
+        -1.689473582999841
+      ],
+      "area_ratio": 0.06,
+      "country": "CDM",
+      "locations": [
+        {
+          "id": "cm_cinderstep",
+          "name": "Cinderstep",
+          "seed": [
+            -0.45,
+            0.3
+          ],
+          "good": "fish",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 9.0,
+          "province": "cm_cinderstep_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "color": "ed1350",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.0,
+            "peasants": 1.75,
+            "tribesmen": 3.6
+          }
+        },
+        {
+          "id": "cm_slagcove",
+          "name": "Slagcove",
+          "seed": [
+            0.45,
+            -0.35
+          ],
+          "good": "iron",
+          "topography": "mountains",
+          "vegetation": "sparse",
+          "pop": 9.0,
+          "province": "cm_cinderstep_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1,
+            "local_smelters": 1
+          },
+          "color": "ed1351",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.313,
+            "peasants": 1.437,
+            "tribesmen": 3.6
+          }
+        },
+        {
+          "id": "cm_kilnwatch",
+          "name": "Kilnwatch",
+          "seed": [
+            0.15,
+            0.45
+          ],
+          "good": "stone",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 8.25,
+          "province": "cm_cinderstep_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "color": "ed1352",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.0,
+            "peasants": 1.3,
+            "tribesmen": 3.3
+          }
+        }
+      ],
+      "position_adjustment": [
+        0,
+        0
+      ],
+      "profile": {
+        "stretch": 1.1,
+        "rotation": -0.7,
+        "lobes": [
+          [
+            2,
+            0.1,
+            0.4
+          ],
+          [
+            3,
+            0.05,
+            1.7
+          ]
+        ],
+        "bays": [
+          [
+            2.6,
+            0.3,
+            0.24
+          ]
+        ],
+        "coast": [
+          0.08,
+          8313
+        ]
+      },
+      "geology": {
+        "seed": 8311,
+        "rivers": 1,
+        "foothills": 0.4,
+        "woodland": 0.25,
+        "ridges": [
+          [
+            0.05,
+            0.0,
+            8,
+            0.32,
+            0.3,
+            0
+          ]
+        ],
+        "volcanic_exposure": 0.85,
+        "craters": [
+          [
+            0.05,
+            0.0,
+            0.12,
+            2.2
+          ]
+        ]
       }
     }
   ],
@@ -3826,7 +4737,7 @@
   "terrain_revision": "volcanic-spacing-pass",
   "economy_revision": "lore-specialization-056",
   "population_baseline": 593647,
-  "population_target": 1571059,
+  "population_target": 2416596,
   "baseline_locations": {
     "cm_cinder_crown": {
       "population": 8.222,
@@ -4093,12 +5004,12 @@
     }
   },
   "country_population_targets": {
-    "CDM": 460051,
-    "QBR": 346645,
-    "RHK": 118045,
-    "SFK": 230880,
-    "SWK": 110438,
-    "GTF": 305000
+    "CDM": 661472,
+    "QBR": 457267,
+    "RHK": 238047,
+    "SFK": 450877,
+    "SWK": 220439,
+    "GTF": 388494
   },
   "goblin_life_expectancy_bonus_years": 15,
   "starting_ruler_ages": {
@@ -4111,7 +5022,8 @@
   },
   "markets": [
     "cm_hooktooth",
-    "cm_chainhaven"
+    "cm_chainhaven",
+    "cm_shatterfin"
   ],
   "outpost_population_additions": {
     "CDM": 18000
@@ -4261,10 +5173,10 @@
     "rgo_base_reserve": 2,
     "tribal_share": 0.25,
     "total_country_targets": {
-      "CDM": 620000,
+      "CDM": 641000,
       "QBR": 420000,
       "RHK": 140000,
-      "SFK": 280000,
+      "SFK": 336000,
       "SWK": 130000,
       "GTF": 305000
     },
@@ -5147,6 +6059,1003 @@
           "peasants": -2.249
         },
         "minimum_peasants": 1.281
+      }
+    }
+  },
+  "shatter_maw_067": {
+    "note": "0.6.7 moves the Shatterfin crown to the north-west and enlarges it, and adds Cinderstep, a Cindermaw island between them. New Shatterfin locations are settled from existing Shatterfin towns; Cinderstep's settlers are new population added to Cindermaw. Shatterfin then outgrows Giltfang in land and towns: eight more towns on the enlarged main island, with new settlers (additions).",
+    "transfers": [
+      {
+        "from": "cm_knifeback",
+        "to": "cm_wrackfang",
+        "taken": {
+          "nobles": 0.116,
+          "clergy": 0.203,
+          "burghers": 1.161,
+          "peasants": 6.02,
+          "tribesmen": 2.5
+        },
+        "laborers_on_arrival": 3.0
+      },
+      {
+        "from": "cm_shatterfin",
+        "to": "cm_gullscar",
+        "taken": {
+          "nobles": 0.114,
+          "clergy": 0.227,
+          "burghers": 2.274,
+          "peasants": 6.385,
+          "tribesmen": 3.0
+        },
+        "laborers_on_arrival": 3.0
+      },
+      {
+        "from": "cm_shatterfin",
+        "to": "cm_stormcrag",
+        "taken": {
+          "nobles": 0.114,
+          "clergy": 0.228,
+          "burghers": 2.274,
+          "peasants": 6.384,
+          "tribesmen": 3.0
+        },
+        "laborers_on_arrival": 3.4
+      },
+      {
+        "from": "cm_shatterfin",
+        "to": "cm_tidewhet",
+        "taken": {
+          "nobles": 0.076,
+          "clergy": 0.152,
+          "burghers": 1.516,
+          "peasants": 4.256,
+          "tribesmen": 2.0
+        },
+        "laborers_on_arrival": 3.0
+      },
+      {
+        "from": "cm_silver_shard",
+        "to": "cm_brinehollow",
+        "taken": {
+          "nobles": 0.194,
+          "clergy": 0.385,
+          "burghers": 0.194,
+          "peasants": 5.227,
+          "tribesmen": 2.0
+        },
+        "laborers_on_arrival": 3.0
+      },
+      {
+        "from": "cm_shardpoint",
+        "to": "cm_splitrock",
+        "taken": {
+          "nobles": 0.191,
+          "clergy": 0.38,
+          "burghers": 0.191,
+          "peasants": 5.238,
+          "tribesmen": 2.0
+        },
+        "laborers_on_arrival": 3.0
+      },
+      {
+        "from": "cm_knifeback",
+        "to": "cm_edgewater",
+        "taken": {
+          "nobles": 0.139,
+          "clergy": 0.244,
+          "burghers": 1.392,
+          "peasants": 7.225,
+          "tribesmen": 3.0
+        },
+        "laborers_on_arrival": 3.0
+      },
+      {
+        "from": "cm_shatterfin",
+        "to": "cm_maw_rock",
+        "taken": {
+          "nobles": 0.076,
+          "clergy": 0.151,
+          "burghers": 1.516,
+          "peasants": 4.257,
+          "tribesmen": 2.0
+        },
+        "laborers_on_arrival": 3.0
+      },
+      {
+        "from": "cm_silkworm_grove",
+        "to": "cm_gullwatch",
+        "taken": {
+          "nobles": 0.161,
+          "clergy": 0.319,
+          "burghers": 0.161,
+          "peasants": 8.359,
+          "tribesmen": 3.0
+        },
+        "laborers_on_arrival": 3.0
+      }
+    ],
+    "additions": {
+      "cm_cinderstep": 7.2,
+      "cm_slagcove": 7.2,
+      "cm_kilnwatch": 6.6,
+      "cm_fangreach": 7.0,
+      "cm_saltmarrow": 7.0,
+      "cm_skerrygate": 7.0,
+      "cm_crowspire": 7.0,
+      "cm_wavebreak": 7.0,
+      "cm_brackfen": 7.0,
+      "cm_harrowmoor": 7.0,
+      "cm_grimtide": 7.0
+    }
+  },
+  "start_balance_067": {
+    "note": "0.6.7 start-game balance: many more goblins, mostly tribesmen (40% of every location), who eat no food, pay little tax and settle into peasants over time; thinner luxury industry; a food source in every province; seeded trade between the three markets. Applied by tools/start_balance_067.py.",
+    "tribal_share": 0.4,
+    "small_crown_totals": {
+      "SFK": 500000,
+      "RHK": 260000,
+      "SWK": 240000
+    },
+    "prior_population_target": 1648059,
+    "prior_country_population_targets": {
+      "CDM": 481051,
+      "QBR": 346645,
+      "RHK": 118045,
+      "SFK": 286880,
+      "SWK": 110438,
+      "GTF": 305000
+    },
+    "total_country_targets": {
+      "CDM": 821421,
+      "QBR": 530622,
+      "RHK": 260002,
+      "SFK": 499997,
+      "SWK": 240001,
+      "GTF": 388494
+    },
+    "locations": {
+      "cm_cinder_crown": {
+        "class_changes": {
+          "peasants": 2.229,
+          "tribesmen": 4.288
+        },
+        "building_changes": {
+          "fishing_village": 1
+        }
+      },
+      "cm_blackwood": {
+        "class_changes": {
+          "tribesmen": 3.954
+        }
+      },
+      "cm_copperfang": {
+        "class_changes": {
+          "tribesmen": 4.531
+        },
+        "building_changes": {
+          "jewelry_guild": -1
+        }
+      },
+      "cm_hooktooth": {
+        "class_changes": {
+          "tribesmen": 23.19
+        },
+        "building_changes": {
+          "glass_guild": -2,
+          "mason": -3
+        }
+      },
+      "cm_ashfields": {
+        "class_changes": {
+          "tribesmen": 9.327
+        }
+      },
+      "cm_saltjaw": {
+        "class_changes": {
+          "peasants": 1.034,
+          "tribesmen": 5.372
+        },
+        "building_changes": {
+          "fishing_village": 2
+        }
+      },
+      "cm_redpasture": {
+        "class_changes": {
+          "tribesmen": 6.976
+        }
+      },
+      "cm_splinter_cove": {
+        "class_changes": {
+          "tribesmen": 5.774
+        }
+      },
+      "cm_ironbark": {
+        "class_changes": {
+          "peasants": 0.745,
+          "tribesmen": 4.723
+        },
+        "building_changes": {
+          "fishing_village": 2
+        }
+      },
+      "cm_ashspine": {
+        "class_changes": {
+          "peasants": 1.344,
+          "tribesmen": 4.796
+        },
+        "building_changes": {
+          "fishing_village": 2
+        }
+      },
+      "cm_emberfall": {
+        "class_changes": {
+          "peasants": 1.57,
+          "tribesmen": 4.541
+        },
+        "building_changes": {
+          "fishing_village": 2
+        }
+      },
+      "cm_scorchbrook": {
+        "class_changes": {
+          "peasants": 0.619,
+          "tribesmen": 3.54
+        },
+        "building_changes": {
+          "fishing_village": 2
+        }
+      },
+      "cm_obsidian_cut": {
+        "class_changes": {
+          "tribesmen": 3.501
+        }
+      },
+      "cm_cinder_shelf": {
+        "class_changes": {
+          "peasants": 0.804,
+          "tribesmen": 2.768
+        },
+        "building_changes": {
+          "fishing_village": 1
+        }
+      },
+      "cm_smokehorn": {
+        "class_changes": {
+          "tribesmen": 2.419
+        }
+      },
+      "cm_goldscar": {
+        "class_changes": {
+          "peasants": 1.213,
+          "tribesmen": 3.544
+        },
+        "building_changes": {
+          "fishing_village": 1
+        }
+      },
+      "cm_coaljaw": {
+        "class_changes": {
+          "peasants": 0.039,
+          "tribesmen": 4.294
+        },
+        "building_changes": {
+          "fishing_village": 2
+        }
+      },
+      "cm_silverfang": {
+        "class_changes": {
+          "peasants": 1.14,
+          "tribesmen": 3.53
+        },
+        "building_changes": {
+          "fishing_village": 1
+        }
+      },
+      "cm_netjaw": {
+        "class_changes": {
+          "tribesmen": 9.572
+        },
+        "building_changes": {
+          "mason": -1
+        }
+      },
+      "cm_saffron_hollow": {
+        "class_changes": {
+          "tribesmen": 9.125
+        }
+      },
+      "cm_dyer_s_marsh": {
+        "class_changes": {
+          "tribesmen": 4.522
+        }
+      },
+      "cm_grazetooth": {
+        "class_changes": {
+          "tribesmen": 5.676
+        },
+        "building_changes": {
+          "farming_village": 1
+        }
+      },
+      "cm_sawtooth": {
+        "class_changes": {
+          "tribesmen": 5.415
+        }
+      },
+      "cm_pitchfang": {
+        "class_changes": {
+          "peasants": 0.403,
+          "tribesmen": 4.341
+        },
+        "building_changes": {
+          "fishing_village": 2
+        }
+      },
+      "cm_goldvein": {
+        "class_changes": {
+          "tribesmen": 3.455
+        }
+      },
+      "cm_clayjaw": {
+        "class_changes": {
+          "peasants": 0.319,
+          "tribesmen": 3.59
+        },
+        "building_changes": {
+          "fishing_village": 1
+        }
+      },
+      "cm_reedfurrow": {
+        "class_changes": {
+          "peasants": 0.649,
+          "tribesmen": 3.43
+        },
+        "building_changes": {
+          "fishing_village": 2
+        }
+      },
+      "cm_quarrystone": {
+        "class_changes": {
+          "tribesmen": 3.003
+        }
+      },
+      "cm_saltlip": {
+        "class_changes": {
+          "tribesmen": 2.268
+        }
+      },
+      "cm_ashgrain": {
+        "class_changes": {
+          "tribesmen": 2.486
+        }
+      },
+      "cm_brackhaven": {
+        "class_changes": {
+          "tribesmen": 18.978
+        },
+        "building_changes": {
+          "glass_guild": -1,
+          "mason": -1,
+          "paper_guild": -1
+        }
+      },
+      "cm_brinewood": {
+        "class_changes": {
+          "tribesmen": 4.108
+        }
+      },
+      "cm_rustpeak": {
+        "class_changes": {
+          "tribesmen": 4.2
+        },
+        "building_changes": {
+          "mason": -2
+        }
+      },
+      "cm_mossfields": {
+        "class_changes": {
+          "tribesmen": 5.599
+        }
+      },
+      "cm_bracksalt": {
+        "class_changes": {
+          "tribesmen": 5.45
+        }
+      },
+      "cm_mossglen": {
+        "class_changes": {
+          "tribesmen": 3.044
+        }
+      },
+      "cm_reedmouth": {
+        "class_changes": {
+          "tribesmen": 3.112
+        }
+      },
+      "cm_blackcrag": {
+        "class_changes": {
+          "peasants": 1.482,
+          "tribesmen": 4.863
+        },
+        "building_changes": {
+          "fishing_village": 2
+        }
+      },
+      "cm_basalt_steps": {
+        "class_changes": {
+          "tribesmen": 2.491
+        }
+      },
+      "cm_fumarole_fields": {
+        "class_changes": {
+          "tribesmen": 2.174
+        }
+      },
+      "cm_rustneedle": {
+        "class_changes": {
+          "peasants": 1.896,
+          "tribesmen": 3.455
+        },
+        "building_changes": {
+          "fishing_village": 2
+        }
+      },
+      "cm_brine_spur": {
+        "class_changes": {
+          "tribesmen": 1.966
+        }
+      },
+      "cm_bracknet": {
+        "class_changes": {
+          "tribesmen": 9.982
+        },
+        "building_changes": {
+          "glass_guild": -1
+        }
+      },
+      "cm_miregrove": {
+        "class_changes": {
+          "tribesmen": 4.455
+        },
+        "building_changes": {
+          "fishing_village": 1
+        }
+      },
+      "cm_silverneedle": {
+        "class_changes": {
+          "tribesmen": 2.526
+        }
+      },
+      "cm_mossfurrow": {
+        "class_changes": {
+          "tribesmen": 5.927
+        }
+      },
+      "cm_brinepasture": {
+        "class_changes": {
+          "tribesmen": 4.983
+        }
+      },
+      "cm_woolfen": {
+        "class_changes": {
+          "tribesmen": 3.088
+        }
+      },
+      "cm_reedfish": {
+        "class_changes": {
+          "tribesmen": 3.145
+        }
+      },
+      "cm_alumcrag": {
+        "class_changes": {
+          "tribesmen": 4.546
+        },
+        "building_changes": {
+          "fishing_village": 2
+        }
+      },
+      "cm_basaltgrain": {
+        "class_changes": {
+          "tribesmen": 2.633
+        }
+      },
+      "cm_saffron_vale": {
+        "class_changes": {
+          "tribesmen": 2.273
+        }
+      },
+      "cm_rustforge": {
+        "class_changes": {
+          "tribesmen": 2.253
+        }
+      },
+      "cm_dyer_s_fen": {
+        "class_changes": {
+          "tribesmen": 1.993
+        }
+      },
+      "cm_reefhook": {
+        "class_changes": {
+          "laborers": 4.063,
+          "peasants": 9.481,
+          "tribesmen": 19.822
+        },
+        "building_changes": {
+          "mason": -1
+        }
+      },
+      "cm_crooked_reef": {
+        "class_changes": {
+          "laborers": 1.7,
+          "peasants": 3.968,
+          "tribesmen": 7.336
+        }
+      },
+      "cm_hookrim": {
+        "class_changes": {
+          "laborers": 1.328,
+          "peasants": 3.099,
+          "tribesmen": 5.876
+        }
+      },
+      "cm_tidefang": {
+        "class_changes": {
+          "laborers": 1.267,
+          "peasants": 2.957,
+          "tribesmen": 5.4
+        }
+      },
+      "cm_reefnet": {
+        "class_changes": {
+          "laborers": 2.337,
+          "peasants": 5.454,
+          "tribesmen": 10.554
+        }
+      },
+      "cm_coralpasture": {
+        "class_changes": {
+          "laborers": 1.713,
+          "peasants": 3.997,
+          "tribesmen": 7.513
+        },
+        "rgo_expansion_before": 1
+      },
+      "cm_pearlshore": {
+        "class_changes": {
+          "laborers": 1.544,
+          "peasants": 3.603,
+          "tribesmen": 6.681
+        }
+      },
+      "cm_tidegrain": {
+        "class_changes": {
+          "laborers": 1.347,
+          "peasants": 3.142,
+          "tribesmen": 5.82
+        },
+        "rgo_expansion_before": 1
+      },
+      "cm_shatterfin": {
+        "class_changes": {
+          "laborers": 1.662,
+          "peasants": 3.877,
+          "tribesmen": 17.136
+        },
+        "building_changes": {
+          "glass_guild": -1,
+          "mason": -2,
+          "paper_guild": -1
+        }
+      },
+      "cm_shardpoint": {
+        "class_changes": {
+          "laborers": 0.816,
+          "peasants": 1.905,
+          "tribesmen": 7.267
+        }
+      },
+      "cm_stormpasture": {
+        "class_changes": {
+          "laborers": 1.077,
+          "peasants": 2.513,
+          "tribesmen": 10.182
+        }
+      },
+      "cm_silver_shard": {
+        "class_changes": {
+          "laborers": 0.796,
+          "peasants": 1.858,
+          "tribesmen": 6.762
+        }
+      },
+      "cm_wrackfang": {
+        "class_changes": {
+          "laborers": 0.51,
+          "peasants": 1.191,
+          "tribesmen": 3.634
+        }
+      },
+      "cm_gullscar": {
+        "class_changes": {
+          "laborers": 0.541,
+          "peasants": 1.263,
+          "tribesmen": 4.203
+        }
+      },
+      "cm_stormcrag": {
+        "class_changes": {
+          "laborers": 0.541,
+          "peasants": 1.263,
+          "tribesmen": 4.203
+        }
+      },
+      "cm_tidewhet": {
+        "class_changes": {
+          "laborers": 0.361,
+          "peasants": 0.842,
+          "tribesmen": 2.802
+        }
+      },
+      "cm_brinehollow": {
+        "class_changes": {
+          "laborers": 0.443,
+          "peasants": 1.034,
+          "tribesmen": 2.985
+        }
+      },
+      "cm_splitrock": {
+        "class_changes": {
+          "laborers": 0.444,
+          "peasants": 1.036,
+          "tribesmen": 2.987
+        }
+      },
+      "cm_fangreach": {
+        "class_changes": {
+          "laborers": 0.39,
+          "peasants": 0.91,
+          "tribesmen": 2.617
+        }
+      },
+      "cm_saltmarrow": {
+        "class_changes": {
+          "laborers": 0.39,
+          "peasants": 0.91,
+          "tribesmen": 2.617
+        }
+      },
+      "cm_skerrygate": {
+        "class_changes": {
+          "laborers": 0.39,
+          "peasants": 0.91,
+          "tribesmen": 2.617
+        }
+      },
+      "cm_crowspire": {
+        "class_changes": {
+          "laborers": 0.39,
+          "peasants": 0.91,
+          "tribesmen": 2.617
+        }
+      },
+      "cm_wavebreak": {
+        "class_changes": {
+          "laborers": 0.39,
+          "peasants": 0.91,
+          "tribesmen": 2.617
+        }
+      },
+      "cm_brackfen": {
+        "class_changes": {
+          "laborers": 0.39,
+          "peasants": 0.91,
+          "tribesmen": 2.617
+        }
+      },
+      "cm_harrowmoor": {
+        "class_changes": {
+          "laborers": 0.39,
+          "peasants": 0.91,
+          "tribesmen": 2.617
+        }
+      },
+      "cm_grimtide": {
+        "class_changes": {
+          "laborers": 0.39,
+          "peasants": 0.91,
+          "tribesmen": 2.617
+        }
+      },
+      "cm_knifeback": {
+        "class_changes": {
+          "laborers": 1.32,
+          "peasants": 3.08,
+          "tribesmen": 11.577
+        },
+        "building_changes": {
+          "tar_kiln": 1
+        }
+      },
+      "cm_silkworm_grove": {
+        "class_changes": {
+          "laborers": 1.084,
+          "peasants": 2.53,
+          "tribesmen": 9.587
+        },
+        "building_changes": {
+          "fishing_village": 1
+        }
+      },
+      "cm_edgewater": {
+        "class_changes": {
+          "laborers": 0.613,
+          "peasants": 1.43,
+          "tribesmen": 4.362
+        }
+      },
+      "cm_maw_rock": {
+        "class_changes": {
+          "laborers": 0.361,
+          "peasants": 0.842,
+          "tribesmen": 2.802
+        }
+      },
+      "cm_gullwatch": {
+        "class_changes": {
+          "laborers": 0.709,
+          "peasants": 1.654,
+          "tribesmen": 4.576
+        }
+      },
+      "cm_sootwake": {
+        "class_changes": {
+          "laborers": 4.957,
+          "peasants": 11.566,
+          "tribesmen": 23.981
+        },
+        "building_changes": {
+          "mason": -1
+        },
+        "rgo_expansion_before": 3
+      },
+      "cm_ember_key": {
+        "class_changes": {
+          "laborers": 3.653,
+          "peasants": 8.523,
+          "tribesmen": 15.678
+        },
+        "building_changes": {
+          "fishing_village": 2,
+          "tar_kiln": 1
+        }
+      },
+      "cm_sootgrain": {
+        "class_changes": {
+          "laborers": 2.295,
+          "peasants": 5.354,
+          "tribesmen": 10.464
+        },
+        "building_changes": {
+          "farming_village": 1
+        },
+        "rgo_expansion_before": 1
+      },
+      "cm_alum_key": {
+        "class_changes": {
+          "laborers": 3.046,
+          "peasants": 7.107,
+          "tribesmen": 13.377
+        },
+        "building_changes": {
+          "fishing_village": 2
+        }
+      },
+      "cm_chainhaven": {
+        "class_changes": {
+          "tribesmen": 12.11
+        },
+        "building_changes": {
+          "glass_guild": -2,
+          "mason": -1,
+          "paper_guild": -1
+        }
+      },
+      "cm_brassridge": {
+        "class_changes": {
+          "tribesmen": 3.93
+        },
+        "building_changes": {
+          "fishing_village": 2,
+          "market_village": -1
+        }
+      },
+      "cm_coinfall": {
+        "class_changes": {
+          "tribesmen": 3.161
+        },
+        "building_changes": {
+          "fishing_village": 1,
+          "market_village": -1
+        }
+      },
+      "cm_saltwake": {
+        "class_changes": {
+          "tribesmen": 2.905
+        },
+        "building_changes": {
+          "fishing_village": 1,
+          "market_village": -1
+        }
+      },
+      "cm_weighstone": {
+        "class_changes": {
+          "tribesmen": 3.468
+        },
+        "building_changes": {
+          "fishing_village": 2,
+          "market_village": -1
+        }
+      },
+      "cm_coppercut": {
+        "class_changes": {
+          "tribesmen": 3.484
+        },
+        "building_changes": {
+          "fishing_village": 1,
+          "market_village": -1
+        }
+      },
+      "cm_blackmeasure": {
+        "class_changes": {
+          "tribesmen": 3.009
+        },
+        "building_changes": {
+          "fishing_village": 2,
+          "market_village": -1
+        }
+      },
+      "cm_fangstead": {
+        "class_changes": {
+          "tribesmen": 2.872
+        },
+        "building_changes": {
+          "farming_village": 2,
+          "market_village": -1
+        }
+      },
+      "cm_cinderfurrow": {
+        "class_changes": {
+          "tribesmen": 3.21
+        }
+      },
+      "cm_oathforge": {
+        "class_changes": {
+          "tribesmen": 3.009
+        }
+      },
+      "cm_chainwood": {
+        "class_changes": {
+          "tribesmen": 3.041
+        }
+      },
+      "cm_ashbarley": {
+        "class_changes": {
+          "tribesmen": 3.21
+        },
+        "building_changes": {
+          "farming_village": 2
+        }
+      },
+      "cm_scalebreak": {
+        "class_changes": {
+          "peasants": 0.372,
+          "tribesmen": 3.105
+        },
+        "building_changes": {
+          "farming_village": 2
+        }
+      },
+      "cm_tallyrock": {
+        "class_changes": {
+          "tribesmen": 2.429
+        },
+        "building_changes": {
+          "fishing_village": 1,
+          "market_village": -1
+        }
+      },
+      "cm_brinepans": {
+        "class_changes": {
+          "peasants": 1.724,
+          "tribesmen": 3.585
+        },
+        "building_changes": {
+          "fishing_village": 2
+        }
+      },
+      "cm_ledgerfen": {
+        "class_changes": {
+          "peasants": 0.178,
+          "tribesmen": 2.654
+        },
+        "building_changes": {
+          "farming_village": 1
+        }
+      },
+      "cm_emberhollow": {
+        "class_changes": {
+          "laborers": 0.5,
+          "tribesmen": 3.867
+        },
+        "building_changes": {
+          "tar_kiln": 1
+        }
+      },
+      "cm_lockshore": {
+        "class_changes": {
+          "peasants": 0.701,
+          "tribesmen": 3.494
+        },
+        "building_changes": {
+          "fishing_village": 1
+        }
+      },
+      "cm_tolltooth": {
+        "class_changes": {
+          "tribesmen": 5.268
+        },
+        "building_changes": {
+          "mason": -1
+        }
+      },
+      "cm_watchfang": {
+        "class_changes": {
+          "tribesmen": 2.202
+        }
+      },
+      "cm_netreach": {
+        "class_changes": {
+          "tribesmen": 2.361
+        }
+      },
+      "cm_lastlight": {
+        "class_changes": {
+          "peasants": 0.875,
+          "tribesmen": 2.77
+        },
+        "building_changes": {
+          "fishing_village": 1
+        }
+      },
+      "cm_lantern_haven": {
+        "class_changes": {
+          "tribesmen": 1.808
+        }
+      },
+      "cm_wickwood": {
+        "class_changes": {
+          "tribesmen": 1.652
+        }
+      },
+      "cm_emberwatch": {
+        "class_changes": {
+          "tribesmen": 1.652
+        }
+      },
+      "cm_cinderstep": {
+        "class_changes": {
+          "tribesmen": 1.8
+        }
+      },
+      "cm_slagcove": {
+        "class_changes": {
+          "tribesmen": 1.8
+        }
+      },
+      "cm_kilnwatch": {
+        "class_changes": {
+          "tribesmen": 1.65
+        }
       }
     }
   }

@@ -6,3 +6,45 @@ ga_gathering_crown_status = {
     else_if = { limit = { OR = { is_subject_type = vassal is_subject_type = ga_compact_autonomy is_subject_type = ga_compact_protection } } add = 2 }
     else = { add = 4 }
 }
+ga_pact_step_CDM = {
+    value = 0
+    if = { limit = { tag = CDM } value = 4 }
+    else_if = { limit = { c:CDM ?= { is_subject = yes any_overlord_or_above = { this = root } } } value = 3 }
+    else_if = { limit = { has_variable = ga_sp_sworn_CDM } value = 2 }
+    else_if = { limit = { OR = { has_variable = ga_cp_honored_CDM c:CDM ?= { is_allied_with = { target = root } } } } value = 1 }
+}
+ga_pact_step_QBR = {
+    value = 0
+    if = { limit = { tag = QBR } value = 4 }
+    else_if = { limit = { c:QBR ?= { is_subject = yes any_overlord_or_above = { this = root } } } value = 3 }
+    else_if = { limit = { has_variable = ga_sp_sworn_QBR } value = 2 }
+    else_if = { limit = { OR = { has_variable = ga_cp_honored_QBR c:QBR ?= { is_allied_with = { target = root } } } } value = 1 }
+}
+ga_pact_step_RHK = {
+    value = 0
+    if = { limit = { tag = RHK } value = 4 }
+    else_if = { limit = { c:RHK ?= { is_subject = yes any_overlord_or_above = { this = root } } } value = 3 }
+    else_if = { limit = { has_variable = ga_sp_sworn_RHK } value = 2 }
+    else_if = { limit = { OR = { has_variable = ga_cp_honored_RHK c:RHK ?= { is_allied_with = { target = root } } } } value = 1 }
+}
+ga_pact_step_SFK = {
+    value = 0
+    if = { limit = { tag = SFK } value = 4 }
+    else_if = { limit = { c:SFK ?= { is_subject = yes any_overlord_or_above = { this = root } } } value = 3 }
+    else_if = { limit = { has_variable = ga_sp_sworn_SFK } value = 2 }
+    else_if = { limit = { OR = { has_variable = ga_cp_honored_SFK c:SFK ?= { is_allied_with = { target = root } } } } value = 1 }
+}
+ga_pact_step_SWK = {
+    value = 0
+    if = { limit = { tag = SWK } value = 4 }
+    else_if = { limit = { c:SWK ?= { is_subject = yes any_overlord_or_above = { this = root } } } value = 3 }
+    else_if = { limit = { has_variable = ga_sp_sworn_SWK } value = 2 }
+    else_if = { limit = { OR = { has_variable = ga_cp_honored_SWK c:SWK ?= { is_allied_with = { target = root } } } } value = 1 }
+}
+ga_pact_step_GTF = {
+    value = 0
+    if = { limit = { tag = GTF } value = 4 }
+    else_if = { limit = { c:GTF ?= { is_subject = yes any_overlord_or_above = { this = root } } } value = 3 }
+    else_if = { limit = { has_variable = ga_sp_sworn_GTF } value = 2 }
+    else_if = { limit = { OR = { has_variable = ga_cp_honored_GTF c:GTF ?= { is_allied_with = { target = root } } } } value = 1 }
+}

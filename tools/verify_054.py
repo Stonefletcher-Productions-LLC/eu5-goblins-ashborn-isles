@@ -5,7 +5,7 @@ import re
 
 def verify(b,game,out,mapstats):
     cfg=b.CFG;locs=cfg['locations'];baseline=cfg['baseline_locations'];byid={l['id']:l for l in locs}
-    assert len(byid)==len(locs)==97 and len({l['color'] for l in locs})==97
+    assert len(byid)==len(locs)==117 and len({l['color'] for l in locs})==117
     assert set(baseline)<=set(byid)
     assert sum(Decimal(str(l['pop'])) for l in locs)==Decimal(cfg['population_target'])/1000
     for l in locs:
@@ -13,8 +13,11 @@ def verify(b,game,out,mapstats):
         assert all(v>=0 for v in l['pop_classes'].values())
     for ident,old in baseline.items():
         children=[l for l in locs if l.get('split_from')==ident];assert len(children)==1
-        # The construction pass deliberately converts Tidefang's fish to sand.
-        expected_good = 'sand' if ident == 'cm_tidefang' else old['good']
+        # The construction pass deliberately converts Tidefang's fish to sand;
+        # later raw-material corrections (0.6.5 tar -> lumber) also apply.
+        from refresh_overlay_bundle import RGO_FIXES
+        corrected = {lid:new for fixes in RGO_FIXES.values() for lid,(_,new) in fixes.items()}
+        expected_good = 'sand' if ident == 'cm_tidefang' else corrected.get(ident, old['good'])
         assert byid[ident]['good']==expected_good
         # 0.6.1 relocates households into new towns within each kingdom.
         # Check the historical split before those explicit migrations, then
@@ -30,7 +33,9 @@ def verify(b,game,out,mapstats):
         factor=Decimal(original_target)/cfg['population_revision_baseline']['country_populations'][tag]
         assert abs(combined-old_combined*factor)<=Decimal('.004')
         # Province membership follows actual land borders in verify_061.
-    assert len({l['province'] for l in locs})==40
+    # 0.6.6 folded the one-location Shatterfin Outer province into Shatterfin;
+    # 0.6.7 adds Stormcrag and Maw Rock with the relocated Shatter Maw.
+    assert len({l['province'] for l in locs})==43
     # Check generated setup, not just input configuration.
     pops=(out/'main_menu/setup/start/06_pops.txt').read_text(encoding='utf-8-sig')
     for l in locs:

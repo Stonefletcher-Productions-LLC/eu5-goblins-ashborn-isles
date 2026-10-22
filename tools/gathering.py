@@ -11,6 +11,9 @@ from clan_identity import PROFILES, SHATTERFIN
 from event_art import image
 import harbor_bargains
 import compact_talks
+import sworn_pacts
+import kin_defense
+import goblin_horde
 import situation_progress
 import early_projects
 
@@ -96,7 +99,7 @@ def action(key, name, desc, effect, selector='', allow='', ai='add = 10',
         effect = 'if = { limit = { exists = scope:target } ' + effect + ' }'
     price_line = f'    price = price:{price}\n' if price else ''
     # Harbor/Compact eligibility already supplies the readable peace check.
-    peace = '' if allow.startswith(('ga_hb_free', 'ga_cp_free')) else 'at_war = no'
+    peace = '' if allow.startswith(('ga_hb_free', 'ga_cp_free', 'ga_sp_free')) else 'at_war = no'
     return f'''{key} = {{
     type = situation
     show_message = no
@@ -201,9 +204,9 @@ ga_has_european_foothold = {{
     }}
 }}
 '''
-    write(out, 'in_game/common/scripted_triggers/goblins_gathering.txt', triggers + harbor_bargains.triggers() + compact_talks.triggers())
+    write(out, 'in_game/common/scripted_triggers/goblins_gathering.txt', triggers + harbor_bargains.triggers() + compact_talks.triggers() + sworn_pacts.triggers() + sworn_pacts.free_trigger() + goblin_horde.triggers())
     from build_clan_flags import recovery_on_action
-    write(out, 'in_game/common/on_action/goblins_gathering.txt', harbor_bargains.maintenance().replace("on_actions = { ga_hb_contract_pulse }", "on_actions = { ga_hb_contract_pulse ga_cp_history_pulse ga_clan_flags_060_pulse }") + compact_talks.pulse() + recovery_on_action())
+    write(out, 'in_game/common/on_action/goblins_gathering.txt', harbor_bargains.maintenance().replace("on_actions = { ga_hb_contract_pulse }", "on_actions = { ga_hb_contract_pulse ga_cp_history_pulse ga_sp_pact_pulse ga_horde_founding ga_clan_flags_060_pulse }") + compact_talks.pulse() + sworn_pacts.pulse() + kin_defense.on_action() + goblin_horde.founding() + recovery_on_action())
 
     # Use native monthly situation evaluation; no external global pulse override.
     situations = '''
@@ -342,6 +345,7 @@ situation_panel = {
             add_gold = 10
             add_opinion = { target = scope:actor modifier = ga_received_supplies }
         }''', country_picker(choices), ai=ai_friendly, years=5, price='ga_gathering_aid_price'))
+    actions.append(sworn_pacts.action(action))
     actions.append(compact_talks.action(action, country_picker))
     war_ai = '''add = -100
         if = { limit = { exists = scope:target scope:actor = { wants_to_attack = scope:target } } add = 140 }
@@ -408,7 +412,7 @@ situation_panel = {
     write(out, 'in_game/common/generic_action_ai_lists/goblins_gathering.txt', '''
 ga_gathering_ai_list = {
     potential = { ga_independent_goblin = yes can_see_situation = situation:ga_gathering_of_five }
-    actions = { ga_send_supplies ga_offer_compact ga_challenge_crown ga_claim_homeland }
+    actions = { ga_send_supplies ga_swear_pact ga_offer_compact ga_challenge_crown ga_claim_homeland }
 }
 ga_eastern_ai_list = {
     potential = { has_variable = ga_unifier ga_controls_homeland = yes can_see_situation = situation:ga_eastern_hunger }
@@ -429,7 +433,7 @@ ga_gathering_crossing_price = { gold = 20 }
 ga_gathering_target_price = { gold = 10 }
 ''')
     price_types = []
-    for suffix, label in [('pact', 'Harbor Pact'), ('aid', 'Send Supplies'),
+    for suffix, label in [('pact', 'Harbor Bargain'), ('aid', 'Send Supplies'),
                           ('compact', 'Offer Compact'), ('claim', 'Claim the Homeland'),
                           ('crossing', 'Prepare the Crossing'), ('target', 'Plan an Eastern Foothold')]:
         price = 'ga_gathering_' + suffix + '_price'
@@ -443,8 +447,8 @@ ga_gathering_target_price = { gold = 10 }
 ga_harbor_pact_opinion = { value = 35 months = 120 }
 ga_received_supplies = { value = 30 months = 60 }
 ga_oath_honored = { value = 25 months = 120 }
-''')
-    for key, text in [('ga_harbor_pact_opinion', 'The Harbor Pact'), ('ga_received_supplies', 'Grain and Iron Received'), ('ga_oath_honored', 'The Ashen Oath')]:
+''' + sworn_pacts.biases() + kin_defense.biases() + goblin_horde.biases(loc))
+    for key, text in [('ga_harbor_pact_opinion', 'The Harbor Bargain'), ('ga_received_supplies', 'Grain and Iron Received'), ('ga_oath_honored', 'The Ashen Oath')]:
         loc(key, text)
     write(out, 'main_menu/common/static_modifiers/goblins_gathering.txt', '''
 ga_cindermaw_drilled_captains = { land_morale_modifier = 0.05 }
@@ -461,10 +465,17 @@ ga_compact_guarantees = { subject_loyalty = 10 }
 ga_unification_recovery = { global_monthly_control = 0.002 }
 ga_crossing_preparations = { navy_transport_build_cost_modifier = -0.15 naval_morale_modifier = 0.05 }
 ga_first_eastern_harbor = { naval_morale_recovery = 0.05 }
-''' + harbor_bargains.modifiers(loc) + '\n' + early_projects.modifiers(loc))
-    for key, text in [('ga_gathering_claimant', 'Claimant Among the Six'), ('ga_gathering_defiant', 'Our Shores, Our Crown'), ('ga_compact_guarantees', 'Guarantees of the Ashen Compact'), ('ga_unification_recovery', 'Six Crowns, One Hunger'), ('ga_crossing_preparations', 'The Eastern Crossing'), ('ga_first_eastern_harbor', 'The First Eastern Harbor')]:
+''' + harbor_bargains.modifiers(loc) + '\n' + early_projects.modifiers(loc) + '\n' + kin_defense.modifiers(loc) + '\n' + goblin_horde.modifiers(loc))
+    for key, text, description in [
+        ('ga_gathering_claimant', 'Claimant Among the Six', 'Our envoys speak at every harbor hearth as if the Isles already had one crown, and it was ours.'),
+        ('ga_gathering_defiant', 'Our Shores, Our Crown', 'Our crews patrol our own waters and answer every summons from the other crowns with a closed harbor.'),
+        ('ga_compact_guarantees', 'Guarantees of the Ashen Compact', 'Sealed charters bind the lesser crowns to us, and each seal is a promise we are expected to keep.'),
+        ('ga_unification_recovery', 'Six Crowns, One Hunger', 'The Isles answer to one authority for the first time. Old feuds are buried, though not very deep.'),
+        ('ga_crossing_preparations', 'The Eastern Crossing', 'Shipwrights lay down transports and the crews drill for a long crossing toward the mainland.'),
+        ('ga_first_eastern_harbor', 'The First Eastern Harbor', 'Goblin crews walk a foreign quay that answers to our crown. Every captain wants the next one.'),
+    ]:
         loc('STATIC_MODIFIER_NAME_' + key, text)
-        loc('STATIC_MODIFIER_DESC_' + key, text + '. A temporary benefit from the Ashborn situation.')
+        loc('STATIC_MODIFIER_DESC_' + key, description)
     for key, name, description in [
         ('ga_gathering_leadership', 'Lead the Six', 'Our captains prepare to lead the Ashborn. Army morale increases by 5% for five years.'),
         ('ga_gathering_cooperation', 'Stand Together', 'Our envoys seek partners among the crowns. Diplomatic reputation increases by 0.5 for five years.'),
@@ -504,7 +515,7 @@ ga_cb_eastern_foothold = {
     cleanup = 'remove_variable = ga_offer_sender remove_variable = ga_offer_pending'
     events = ['namespace = ga_gathering\n']
     events.append(event(1, 'A Seat Among the Six',
-        'The mountains have shaken and the six crowns send their captains to the gathering. The Hunger Below binds us, but no crown commands all our shores. Shall we claim leadership, seek partners, or guard our independence? Use the Gathering of the Six situation to bargain for provisions or pilots, send aid, offer voluntary vassalage or obtain war justifications. Harbor Bargains purchase services, not alliances. Every homeland location must fall under one authority before the eastward ambition begins.',
+        'The mountains have shaken and the six crowns send their captains to the gathering. They come armed, and they sit as far apart as the hall allows. The Hunger Below binds us, but no crown commands all our shores, and every crown means to be the one that does. Shall we claim leadership, seek partners, or guard our independence?\n\nThe Gathering of the Six situation tracks the race. Crowns may be conquered, or bound peacefully by climbing the pact ladder: a Harbor Bargain, then a Sworn Pact, then a Compact charter. Whatever blood lies between the crowns, an outsider who attacks one of them faces the whole Goblin Horde. Every homeland location must fall under one authority before the eastward ambition begins.',
         '\n'.join([
             option(1, 'a', 'Our crown shall lead them.', 'add_prestige = 5 add_country_modifier = { modifier = ga_gathering_leadership years = 5 mode = replace }', ai='factor = 3'),
             option(1, 'b', 'Find those worth standing beside.', 'add_prestige = 5 add_country_modifier = { modifier = ga_gathering_cooperation years = 5 mode = replace }', ai='factor = 3'),
@@ -533,20 +544,20 @@ ga_cb_eastern_foothold = {
     ]:
         events.append(event(num, title, desc, option(num, 'a', 'The answer is received.')))
     events.append(event(5, 'Six Crowns, One Hunger',
-        'Every shore of the Ashborn homeland now answers to one authority. Some crowns may have fallen; others endure through oaths or a union. Our dynasty keeps its name. Beyond the smoke, the eastern coasts await. Unification grants no foreign territory.',
+        'Every shore of the Ashborn homeland now answers to one authority. Some crowns fell to our blades; others endure beneath our seal, bound by oaths their grandchildren will argue about. The six fires burn in one hall tonight, and for once no one is counting the knives. Beyond the smoke, the eastern coasts await.',
         option(5, 'a', 'Let the captains look east.', 'add_prestige = 10 add_country_modifier = { modifier = ga_unification_recovery years = 5 mode = replace }')))
     loc('ga_eastern_horizon_acknowledge_tt',
         'Acknowledge the start of The Eastern Hunger. This option has no immediate cost or reward.\n\n'
         'Next steps: use Ashborn Voyages to chart the European coast. In The Eastern Hunger situation, Prepare the Eastern Crossing buys a temporary fleet-preparation bonus, and Plan an Eastern Foothold buys a temporary casus belli for an eligible coastal province. These are separate paid actions.\n\n'
         'Your goal is to secure a European coastal foothold while keeping the Ashborn homeland united. You must obtain ships, troops and territory through normal gameplay; this event does not provide them or declare war.')
     events.append(event(6, 'Beyond the Ashen Horizon',
-        'The homeland is united, but Europe must be approached by sea. Complete the existing exploration voyages to chart its coast. The Eastern Hunger situation offers paid fleet preparation and a temporary casus belli for a chosen coastal province. Build your ships, choose your enemy and win your war; neither land nor troops are provided.',
+        'The homeland is united, and the captains have stopped fighting each other long enough to look east. The mainland is rich, crowded and sure that we are monsters. Our voyages must chart its coast before any fleet can find a landing. Then we need ships, crews and a harbor worth taking. No one will give it to us.',
         option(6, 'a', 'Charts, provisions, then a harbor.', 'custom_tooltip = ga_eastern_horizon_acknowledge_tt')))
     events.append(event(7, 'One Hunger Beyond the Isles',
-        'The island struggle is settled under a common authority. Our crown still stands and our succession customs remain. Our people may now share in an eastern expedition through the normal obligations of our vassalage or union.',
+        'The island struggle is settled, and not in our favor, but our crown still stands and our house keeps its customs. When the great fleet sails east, our crews will sail with it. Some of our captains grumble. Others have already started asking what a foreign harbor might be worth.',
         option(7, 'a', 'Our house endures.')))
     events.append(event(8, 'The First Eastern Harbor',
-        'Our realm has secured a European coastal foothold while the homeland remains united. It was acquired through the ordinary rules of diplomacy and war. The situation rewards the achievement with prestige and a temporary naval recovery benefit. No further territory is bestowed.',
+        'Goblin banners fly over a mainland harbor. Its people bolt their doors at night and haggle with our quartermasters by day. Back home, every hearth tells the story, and every captain swears the next harbor will be his. The Hunger Below has tasted the world beyond the Isles.',
         option(8, 'a', 'The eastern horizon is open.', 'add_prestige = 10 add_country_modifier = { modifier = ga_first_eastern_harbor years = 5 mode = replace }')))
     signatures = [
         (10, 'CDM', *(PROFILES['CDM'][k] for k in ('event_title','event_description','event_answer'))),
@@ -570,6 +581,9 @@ ga_cb_eastern_foothold = {
     events.extend(harbor_bargains.events(event, option, loc))
     write(out, 'in_game/common/customizable_localization/goblins_harbor_receipts.txt', harbor_bargains.signed_recap(loc))
     events.extend(compact_talks.events(event, option, loc))
+    events.extend(sworn_pacts.events(event, option, loc))
+    events.extend(kin_defense.events(event, option, loc))
+    sworn_pacts.localization(loc)
     write(out, 'in_game/events/goblins_gathering.txt', '\n'.join(events))
 
     for key, text in [
@@ -588,6 +602,13 @@ ga_cb_eastern_foothold = {
     ]:
         loc(key, text)
     compact_talks.extra(out, write, loc)
+    write(out, 'in_game/common/international_organizations/goblins_horde.txt', goblin_horde.definition())
+    write(out, 'in_game/common/generic_actions/goblins_horde.txt', goblin_horde.actions(loc))
+    goblin_horde.localization(loc)
+    def write_bytes(path, data):
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(data)
+    goblin_horde.art(ROOT, out, write_bytes)
     import gathering_panel
     gathering_panel.build(write, loc, out, homeland, TAGS)
     situation_progress.build(out, homeland, write, loc)

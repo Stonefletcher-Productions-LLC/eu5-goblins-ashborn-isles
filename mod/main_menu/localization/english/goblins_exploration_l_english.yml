@@ -2,7 +2,7 @@
  goblins_exploration.6.title: "Strange Visitors on Our Shores"
  goblins_exploration.6.desc: "Fishermen report that a strange little vessel put ashore along our coast. Its crew were unlike any people they had seen: short, ugly creatures with long pointed ears, sharp teeth and restless eyes. They picked through the shallows and argued in a rasping tongue, but the moment they realized they had been spotted, they scrambled aboard and fled out to sea.\n\nA scout ship followed at a cautious distance, keeping their patched sails just within sight. Beyond our familiar waters, the pursuit led to a cluster of smoke-wreathed islands, their coves crowded with crooked docks and more of the same vessels. Our scouts have returned with a chart of the crossing. Whatever these creatures may be, we now know where they live."
  goblins_exploration.6.a: "Mark the islands on our charts. Keep watch on the sea."
- goblins_exploration.1.title: "Beyond the Ashen Horizon"
+ goblins_exploration.1.title: "The Captains Look East"
  goblins_exploration.1.desc: "Our rough charts trace the nearby waters, but the mainland beyond them remains unknown. After years of gathering provisions and seaworthy hulls, the crews are ready. A small expedition could cross the eastern waters, chart its harbors and learn who lives beyond them."
  goblins_exploration.1.east: "Sail east: 5 gold; return in 4 months."
  goblins_exploration.1.wait: "Remind me in six months."

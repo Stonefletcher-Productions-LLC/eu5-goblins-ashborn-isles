@@ -4,6 +4,9 @@ from decimal import Decimal
 from datetime import date
 from pathlib import Path
 
+PACT_LADDER_067 = {'in_game/common/biases/goblins_gathering.txt', 'in_game/common/generic_action_ai_lists/goblins_gathering.txt', 'in_game/common/generic_actions/goblins_gathering.txt', 'in_game/common/on_action/goblins_gathering.txt', 'in_game/common/script_values/ga_gathering_ui.txt', 'in_game/common/scripted_triggers/goblins_gathering.txt', 'in_game/events/goblins_gathering.txt', 'in_game/gui/panels/situation/ga_gathering_of_five.gui', 'main_menu/common/static_modifiers/goblins_gathering.txt', 'main_menu/localization/english/goblins_gathering_l_english.yml'}
+
+
 def verify(root):
     root=Path(root)
     source=(root/'data/island.json').read_text(encoding='utf-8')
@@ -53,6 +56,25 @@ def verify(root):
                 for location in island['locations']:
                     row=re.search(r'(?m)^'+re.escape(location['id'])+r' = \{[^\n]*\braw_material = (\w+)\b',templates)
                     assert row and row[1]==location['good'],f'Stale packaged raw material: {location["id"]}'
+            # Fish needs water: Netjaw (inland) produced fish until 0.6.6. Every goblin
+            # location that touches sea has a ports.csv row (archipelago.build_map).
+            coastal={row.split(b';')[0].decode() for row in z.read('goblins_ashborn_isles/in_game/map_data/ports.csv').split(b'\n')}
+            for island in config['islands']:
+                for location in island['locations']:
+                    assert location['good']!='fish' or location['id'] in coastal,f'Inland location produces fish: {location["id"]}'
+        if tuple(map(int, version.split('.'))) >= (0, 6, 6):
+            # Provinces share food; a lone non-food location (Silver Shard) starved.
+            definitions=z.read('goblins_ashborn_isles/in_game/map_data/definitions.txt').decode('utf-8-sig')
+            provinces={}
+            for island in config['islands']:
+                for location in island['locations']:
+                    provinces.setdefault(location['province'],set()).add(location['id'])
+            for province,members in provinces.items():
+                row=re.search(r'(?m)^'+re.escape(province)+r' = \{([^}\n]*)\}',definitions)
+                assert row and set(row[1].split())==members,f'Stale packaged province: {province}'
+            # Goblin unique units (Obsidian Fletchers) ship from 0.6.6.
+            from verify_goblin_units import verify as verify_units
+            verify_units(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
         # Configuration binding alone cannot catch a stale generated treasury.
         country_setup=z.read('goblins_ashborn_isles/main_menu/setup/start/10_countries.txt').decode('utf-8-sig')
         starting_gold={}
@@ -84,10 +106,20 @@ def verify(root):
                 verify_intro(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_divorce import verify as verify_divorce
                 verify_divorce(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
+                # The Old World Reacts first ships in 0.6.7; earlier bundles carry only part of it.
+                if tuple(map(int, version.split('.'))) >= (0, 6, 7):
+                    from verify_old_world import verify as verify_old_world
+                    verify_old_world(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_harbor_bargains import verify as verify_bargains
                 verify_bargains(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_compact_talks import verify as verify_compact
                 verify_compact(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
+                if b'ga_swear_pact' in z.read('goblins_ashborn_isles/in_game/common/generic_actions/goblins_gathering.txt'):
+                    from verify_sworn_pacts import verify as verify_pacts
+                    verify_pacts(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
+                if b'ga_kin_defense' in z.read('goblins_ashborn_isles/in_game/common/on_action/goblins_gathering.txt'):
+                    from verify_kin_defense import verify as verify_kin
+                    verify_kin(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_situation_progress import verify as verify_progress
                 verify_progress(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_early_projects import verify as verify_projects
@@ -143,6 +175,8 @@ def verify(root):
             prototype=json.loads((root/'data/prototype_055_files.json').read_text())
             for item in prototype['files']:
                 path=item['path']
+                # The Pact Ladder regenerated these Gathering files; 0.6.7 packages them.
+                if path in PACT_LADDER_067 and tuple(map(int, version.split('.'))) < (0, 6, 7): continue
                 assert z.read('goblins_ashborn_isles/'+path)==(root/'mod'/path).read_bytes(),f'Stale or missing Gathering content: {path}'
             for name in ['README.md','RELEASE_NOTES.md','TESTING.md','LORE.md']:
                 packed=z.read(name);authored=(root/('PLAYER_README.md' if name == 'README.md' and tuple(map(int, version.split('.'))) >= (0, 5, 9) else name)).read_bytes()

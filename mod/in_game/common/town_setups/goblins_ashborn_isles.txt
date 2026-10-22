@@ -64,8 +64,25 @@ cm_shatterfin_settlement = { marketplace = 3 wharf = 1 naval_supplies_guild = 2 
 cm_shardpoint_settlement = { mason = 2 }
 cm_stormpasture_settlement = { farming_village = 1 }
 cm_silver_shard_settlement = { market_village = 1 }
+cm_wrackfang_settlement = { farming_village = 1 }
+cm_gullscar_settlement = { market_village = 1 }
+cm_stormcrag_settlement = { market_village = 1 local_smelters = 1 }
+cm_tidewhet_settlement = { market_village = 1 }
+cm_brinehollow_settlement = { market_village = 1 }
+cm_splitrock_settlement = { market_village = 1 }
+cm_fangreach_settlement = { market_village = 1 }
+cm_saltmarrow_settlement = { market_village = 1 }
+cm_skerrygate_settlement = { market_village = 1 }
+cm_crowspire_settlement = { market_village = 1 }
+cm_wavebreak_settlement = { farming_village = 1 }
+cm_brackfen_settlement = { forest_village = 1 }
+cm_harrowmoor_settlement = { farming_village = 1 }
+cm_grimtide_settlement = { market_village = 1 }
 cm_knifeback_settlement = { marketplace = 1 wharf = 1 naval_supplies_guild = 1 tools_guild = 1 granary = 1 }
 cm_silkworm_grove_settlement = { forest_village = 1 }
+cm_edgewater_settlement = { market_village = 1 }
+cm_maw_rock_settlement = { market_village = 1 }
+cm_gullwatch_settlement = { market_village = 1 }
 cm_sootwake_settlement = { marketplace = 1 wharf = 1 naval_supplies_guild = 1 granary = 1 tools_guild = 2 mason = 3 glass_guild = 1 cloth_guild = 1 tannery = 1 paper_guild = 1 pottery_guild = 1 }
 cm_ember_key_settlement = { forest_village = 2 charcoal_maker = 1 }
 cm_sootgrain_settlement = { farming_village = 1 windmill = 1 }
@@ -95,3 +112,6 @@ cm_lastlight_settlement = { market_village = 1 }
 cm_lantern_haven_settlement = { marketplace = 1 wharf = 1 granary = 1 }
 cm_wickwood_settlement = { market_village = 1 }
 cm_emberwatch_settlement = { market_village = 1 }
+cm_cinderstep_settlement = { market_village = 1 }
+cm_slagcove_settlement = { market_village = 1 local_smelters = 1 }
+cm_kilnwatch_settlement = { market_village = 1 }

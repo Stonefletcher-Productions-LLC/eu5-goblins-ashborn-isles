@@ -1,0 +1,57 @@
+﻿monthly_country_pulse = { on_actions = { ga_owr_foreign_monthly ga_owr_goblin_monthly } }
+# Foreign courts debate the goblins once, six months after first contact.
+ga_owr_foreign_monthly = {
+    trigger = { has_variable = ga_received_goblin_first_contact NOT = { has_variable = ga_owr_debated } ga_is_goblin = no }
+    effect = {
+        if = { limit = { NOT = { has_variable = ga_owr_heard } }
+            set_variable = { name = ga_owr_heard value = yes }
+            set_variable = { name = ga_owr_debate_delay value = yes months = 6 }
+        }
+        else_if = { limit = { NOT = { has_variable = ga_owr_debate_delay } }
+            set_variable = { name = ga_owr_debated value = yes }
+            if = { limit = { religion = religion:catholic } trigger_event_non_silently = { id = ga_old_world.1 } }
+        }
+    }
+}
+# Each goblin crown that has charted foreign shores gets the chain in order:
+# a year after its first voyage, then one event every two years.
+ga_owr_goblin_monthly = {
+    trigger = {
+        ga_is_goblin = yes
+        OR = { has_variable = ga_charted_east has_variable = ga_charted_north has_variable = ga_charted_south }
+        NOT = { has_variable = ga_owr_cooldown }
+        NOT = { has_variable = ga_owr_finished }
+    }
+    effect = {
+        if = { limit = { NOT = { has_variable = ga_owr_started } }
+            set_variable = { name = ga_owr_started value = yes }
+            set_variable = { name = ga_owr_cooldown value = yes years = 1 }
+        }
+        else_if = { limit = { NOT = { has_variable = ga_owr_2_done } }
+            set_variable = { name = ga_owr_2_done value = yes }
+            set_variable = { name = ga_owr_cooldown value = yes years = 2 }
+            trigger_event_non_silently = { id = ga_old_world.2 }
+        }
+        else_if = { limit = { NOT = { has_variable = ga_owr_3_done } }
+            set_variable = { name = ga_owr_3_done value = yes }
+            set_variable = { name = ga_owr_cooldown value = yes years = 2 }
+            if = { limit = { ga_owr_lisbon_open = yes } trigger_event_non_silently = { id = ga_old_world.3 } }
+        }
+        else_if = { limit = { NOT = { has_variable = ga_owr_4_done } }
+            set_variable = { name = ga_owr_4_done value = yes }
+            set_variable = { name = ga_owr_cooldown value = yes years = 2 }
+            trigger_event_non_silently = { id = ga_old_world.4 }
+        }
+        else_if = { limit = { NOT = { religion = religion:cm_hunger_below } }
+            set_variable = { name = ga_owr_finished value = yes }
+        }
+        else = {
+            # The legate waits until some Catholic court has called the goblins souls.
+            set_variable = { name = ga_owr_cooldown value = yes years = 2 }
+            if = { limit = { any_country = { has_variable = ga_owr_souls } }
+                set_variable = { name = ga_owr_finished value = yes }
+                trigger_event_non_silently = { id = ga_old_world.5 }
+            }
+        }
+    }
+}

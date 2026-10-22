@@ -1,1 +1,5 @@
 ﻿ac_major_rite = { scaled_gold = 2 religious_influence = 20 }
+ac_offering = { scaled_gold = 1 }
+ac_minor_rite = { religious_influence = 10 }
+ac_clan_rite = { religious_influence = 15 }
+ac_moot_convening = { scaled_gold = 1 religious_influence = 25 }

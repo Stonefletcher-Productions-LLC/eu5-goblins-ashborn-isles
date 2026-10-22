@@ -27,14 +27,14 @@ def context(game,out,reports):
     from decimal import Decimal
     totals={c['tag']:sum(int((Decimal(str(l['pop']))+mixed_populations.extra(l['id']))*1000) for l in cfg['locations'] if l['country']==c['tag']) for c in cfg['countries']}
     cd.rectangle((30,70,1370,107),fill='#101c25')
-    cd.text((35,72),f"6 goblin countries | 97 locations | two markets | {sum(totals.values()):,} people",font=b.font(20),fill='#dae1d7')
+    cd.text((35,72),f"6 goblin countries | 117 locations | three markets | {sum(totals.values()):,} people",font=b.font(20),fill='#dae1d7')
     cd.rectangle((30,785,1370,979),fill='#101c25')
     for n,c in enumerate(cfg['countries']):
         capital=next(l['name'] for l in cfg['locations'] if l['id']==c['capital'])
         cd.text((40,790+n*30),f"{c['name']}: {totals[c['tag']]:,} people | {c['culture_name']} | capital: {capital}",font=b.font(18),fill='#d4ddd9')
     canvas.paste(panel,(835,180));cd.text((835,136),'ATLANTIC PLACEMENT',font=b.font(23),fill='#edba5d')
     cd.text((835,604),'Between the Azores and Portugal',font=b.font(19),fill='#d4ddd9')
-    cd.text((835,640),'Gold dots: capital city or town\nCindermaw: city of Hooktooth\nBrackmaw: town of Brackhaven\nGiltfang: town of Chainhaven\n\nGiltfang land area = 90% of Brackmaw\nNine islands / six countries',font=b.font(17),fill='#d4ddd9',spacing=7)
+    cd.text((835,640),'Gold dots: capital city or town\nCindermaw: city of Hooktooth\nBrackmaw: town of Brackhaven\nGiltfang: town of Chainhaven\nShatterfin: city of Shatterfin\n\nGiltfang land area = 90% of Brackmaw\nEleven islands / six countries',font=b.font(17),fill='#d4ddd9',spacing=7)
     canvas.save(reports/'Goblins_Map_Preview.png')
     return str(reports/'Goblins_Map_Preview.png')
 
