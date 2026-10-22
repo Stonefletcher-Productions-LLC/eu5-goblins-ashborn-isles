@@ -18,9 +18,6 @@ Choose a goblin crown, develop its economy and bargain with neighboring rulers. 
 [/list]
 The map changed: start a new 1337 campaign. Not yet tested in game.
 [b]Included from 0.6.6:[/b] royal families and up to four wives, Obsidian Fletchers, goblin soldiers and goblin towns.
-[b]Included from 0.6.5:[/b] Ironbark, Pitchfang and Emberhollow produce lumber.
-[b]Included from 0.6.4.1:[/b] goblin hairstyle and ports.csv load-error fixes; page art hosted on Steam.
-[b]Included from 0.6.4:[/b] five goblin peace/war music tracks, royal divorce for 10 gold, an introduction for every crown and clearer Covenant and Horizon events. Music rotation and multiplayer remain unverified.
 
 [h2]An Atlantic homeland[/h2]
 
@@ -28,9 +25,9 @@ The map changed: start a new 1337 campaign. Not yet tested in game.
 
 [i]Map diagram generated from the mod's geography, not an in-game screenshot.[/i]
 
-The Isles contain [b]97 districts, 75 ports and 28 coastal sea tiles[/b], with 1,895,000 people at the start. Volcanic highlands, marshes, woodland and fisheries give each crown a different base of resources and settlements.
+The Isles contain [b]117 locations in 43 provinces across 11 islands, with 91 ports[/b] and about 2,750,000 people at the start, most of them tribesmen who settle into peasant life over the centuries. Volcanic highlands, marshes, woodland and fisheries give each crown a different base of resources and settlements.
 
-Giltfang and Tolltooth lie north of Cindermaw. Lantern Cay guards Cindermaw; the Quiet Road connects the northern and southern waters.
+Giltfang and Tolltooth lie north of Cindermaw. Shatter Maw lies in the open water west of Giltfang, and Cinderstep sits in the passage between Cindermaw and Shatterfin. Lantern Cay guards Cindermaw; the Quiet Road connects the northern and southern waters.
 
 [h2]Choose your crown[/h2]
 
@@ -42,7 +39,7 @@ Every crown has its own culture, ruling household, introduction and three starti
 
 [b]Reefhook — Reefstrider.[/b] Skrezz, the Wreck-Taker, rules among pilots, fishing households and pearl divers. Rescue obligations, salvage claims and foreign friendships all compete for his attention.
 
-[b]Shatterfin — Stormfang.[/b] Jaimzha, the Mare-Mother, leads the Tidemothers across two islands. Her court bargains for security while preserving its maternal royal house and succession.
+[b]Shatterfin — Stormfang.[/b] Jaimzha, the Mare-Mother, leads the Tidemothers of Shatter Maw, the largest goblin realm. Her court bargains for security while preserving its maternal royal house and succession.
 
 [b]Sootwake — Ashveil.[/b] Snikh, the Blackbough, guards the woodland paths and charcoal hearths that sustain his smaller realm. Independence rests on the groves as much as the crown.
 
@@ -58,7 +55,7 @@ Distinct names, dynasties, courts and original artwork give each clan its own id
 
 Build alliances, offer paid aid, negotiate submission and Compact charters, or press claims through normal EU5 warfare. Other crowns can refuse; an offer is not a guaranteed treaty.
 
-Unite all [b]97 homeland districts[/b] through ownership, qualifying vassals or senior unions. Alliances and temporary occupation do not count. The panel shows founding crowns and realm progress.
+Unite all [b]117 homeland locations[/b] through ownership, qualifying vassals or senior unions. Alliances and temporary occupation do not count. The panel shows founding crowns and realm progress.
 
 [h2]Harbors, provisions and promises[/h2]
 
@@ -66,7 +63,7 @@ Unite all [b]97 homeland districts[/b] through ownership, qualifying vassals or 
 
 Negotiate five-year provision or pilot services between independent crowns. Pay only when signed; counteroffers can change terms. Both partners receive receipts explaining payment, benefit, burden and duration.
 
-Hooktooth and Chainhaven start with separate markets. Fisheries, mines, woodland crafts and workshops support different island economies. Trade and profitability depend on EU5 markets and your campaign.
+Hooktooth, Chainhaven and Shatter Maw start as three separate markets, linked by seeded trade routes in fish, grain, livestock, salt, silver and lumber. Fisheries, mines, woodland crafts and workshops support different island economies. Trade and profitability depend on EU5 markets and your campaign.
 
 Each crown starts with [b]100 gold[/b]. Its three opening projects cost [b]25 gold[/b] each. Food bonuses raise the [b]province food storage limit[/b], not monthly production: hover the province food display and then the stockpile total to inspect capacity and its modifiers.
 
