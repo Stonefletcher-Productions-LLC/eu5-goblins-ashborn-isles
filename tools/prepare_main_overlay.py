@@ -22,7 +22,7 @@ def main():
     export_event_art.build(output)
     import build_clan_flags
     build_clan_flags.build(output)
-    report=export_goblin_models.build(output)
+    report=export_goblin_models.build(output,args.game)
     import export_goblin_buildings
     report['city_set']=export_goblin_buildings.build(output)
     portraits=build_goblin_portraits.build(output)

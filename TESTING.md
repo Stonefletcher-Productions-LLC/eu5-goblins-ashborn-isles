@@ -1,3 +1,11 @@
+# Development: goblin soldiers on the native unit rig
+
+1. Install from main and restart EU5. Start a new 1337 campaign as any goblin clan.
+2. Recruit light and heavy infantry for at least two clans. Check that you see native clothing, armour, weapons and animations with a green goblin head in the clan colour. The head should be large, with long ears and no hair or beard. Some soldiers wear goblin leather or iron caps (no native helmets). The whole soldier should be about 62% the size of a human soldier standing next to it.
+3. Zoom in on idle, march, combat and retreat. Look for heads floating off the neck, the neck gaps, caps clipping the skull or ears, weapons or shields clipping the larger head, and units sinking into or floating above the ground.
+4. Check one human country's infantry for regressions.
+5. Search a fresh `error.log` for `cm_goblin_`, `Invalid entity graph`, `texture variation` and `Could not find`. Send a screenshot if anything looks off.
+
 # 0.6.6 royal families acceptance
 
 New 1337 campaign, fresh `logs/error.log`.
