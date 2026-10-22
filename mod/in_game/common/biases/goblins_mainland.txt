@@ -1,0 +1,8 @@
+﻿ga_ms_goblin_menace = { value = -25 months = 120 }
+ga_ms_shore_trade = { value = 20 months = 120 }
+ga_ms_friars_welcomed = { value = 15 months = 120 }
+ga_ms_paid_off = { value = 25 months = 60 }
+ga_ms_kin_answered = { value = 30 months = 120 }
+ga_ms_kin_ignored = { value = -20 months = 120 }
+ga_ms_townsfolk_charter = { value = 15 months = 120 }
+ga_ms_townsfolk_driven = { value = -20 months = 120 }

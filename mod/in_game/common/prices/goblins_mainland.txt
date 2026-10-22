@@ -1,0 +1,4 @@
+﻿ga_ms_settlers_price = { gold = 20 }
+ga_ms_tongue_price = { gold = 15 }
+ga_ms_shrine_price = { gold = 15 }
+ga_ms_kin_price = { gold = 10 }

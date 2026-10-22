@@ -63,6 +63,16 @@
     "ga_old_world.4": "old_world_cabinet",
     "ga_old_world.5": "old_world_legate",
     "ga_old_world.6": "africa",
+    "ga_mainland.1": "eastern_harbor",
+    "ga_mainland.2": "iberia",
+    "ga_mainland.3": "old_world_tavern",
+    "ga_mainland.4": "departure",
+    "ga_mainland.5": "old_world_demons",
+    "ga_mainland.6": "foreign_sails",
+    "ga_mainland.7": "kinship",
+    "ga_mainland.8": "pact_broken",
+    "ga_mainland.9": "unification",
+    "ga_mainland.10": "kinship",
     "ashen_covenant.1": "covenant_mountain",
     "ashen_covenant.2": "covenant_flood",
     "ashen_covenant.3": "covenant_lantern",
@@ -81,7 +91,8 @@
   "situations": {
     "ga_gathering_of_five": "gathering",
     "ga_eastern_hunger": "eastern_hunger",
-    "ga_ashborn_voyages": "charts"
+    "ga_ashborn_voyages": "charts",
+    "ga_goblin_shore": "eastern_harbor"
   },
   "original_paintings": 47,
   "format": "DDS BC1/DXT1, full mip chain",
@@ -509,6 +520,22 @@
         128
       ],
       "sha256": "8c4c254099f44381da630752a7e1a464afa3babcb9bdba4004eab14c9d2d08d9"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/situation/ga_goblin_shore.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "67b0b80d775f51d51786c1323b4338b3bba611a2113e123c0bbf1cc6f75c6365"
+    },
+    {
+      "path": "main_menu/gfx/interface/icons/situations/ga_goblin_shore.dds",
+      "size": [
+        128,
+        128
+      ],
+      "sha256": "5622d49293c2fa0616aea756491d1e1063a8fe8fceac7bdf878ee731bcafb9e8"
     }
   ],
   "engine_tested": false

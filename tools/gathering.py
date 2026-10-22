@@ -610,6 +610,8 @@ ga_cb_eastern_foothold = {
     kingdom_openings.build(out, write)
     import maw_rivalry
     maw_rivalry.build(out, write)
+    import mainland
+    mainland.build(out, write)
     def write_bytes(path, data):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(data)
