@@ -1,1 +1,1 @@
-﻿ac_rites_ai = { potential = { religion = religion:cm_hunger_below } actions = { ac_returning_ash ac_water_lanterns ac_first_oath } }
+﻿ac_rites_ai = { potential = { religion = religion:cm_hunger_below } actions = { ac_returning_ash ac_water_lanterns ac_first_oath ac_feed_mouth ac_witness_oath ac_name_dead ac_bless_hulls ac_clan_cindermaw ac_clan_brackmaw ac_clan_reefhook ac_clan_shatterfin ac_clan_sootwake ac_clan_giltfang ac_convene_moot ac_hear_shrines ac_oathkeeper_writ } }

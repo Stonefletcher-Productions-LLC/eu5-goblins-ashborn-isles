@@ -69,6 +69,48 @@ RITES = {
     'first_oath': ('Renewal of the First Oath', 'Reconcile the crown with the Oathkeepers and renew communal duties.', 'clergy_estate_target_satisfaction', .10),
 }
 
+# Covenant rites beyond the three major rites. Each entry:
+# name, description, extra potential, extra allow, price, cooldown years, modifier years,
+# modifiers, immediate effect. Shared rites serve every Covenant crown; each clan rite
+# follows the country's primary culture, so all six Ashborn cultures receive one.
+CLAN_CULTURES = {'cindermaw': 'cm_cinderkin', 'brackmaw': 'cm_brinekin', 'reefhook': 'cm_reefkin',
+                 'shatterfin': 'cm_shatterkin', 'sootwake': 'cm_sootkin', 'giltfang': 'cm_giltkin'}
+PRICES = {'ac_offering': 'scaled_gold = 1', 'ac_minor_rite': 'religious_influence = 10',
+          'ac_clan_rite': 'religious_influence = 15', 'ac_moot_convening': 'scaled_gold = 1 religious_influence = 25'}
+COVENANT_RITES = {
+    'feed_mouth': ('Feed the Mouth', 'Carry a month of the crown\'s income to the nearest fissure shrine. The Oathkeepers count the offering aloud.',
+        '', '', 'ac_offering', 2, 0, {}, 'add_religious_influence = 10'),
+    'witness_oath': ('Witness an Oath', 'Oathkeepers hear the chiefs swear their duties to the crown and to their households.',
+        '', '', 'ac_minor_rite', 1, 0, {},
+        'add_estate_satisfaction = { type = estate_type:nobles_estate value = 0.05 } add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.025 }'),
+    'name_dead': ('Name the Dead', 'Recite the names of the fallen before the muster, so that no household is forgotten in the reckoning.',
+        '', 'at_war = yes', 'ac_minor_rite', 2, 2, {'land_morale_recovery': .05, 'global_manpower_modifier': .05}, ''),
+    'bless_hulls': ('Bless the Hulls', 'Smoke every keel in the harbor and hang a lantern for each crew still at sea.',
+        '', '', 'ac_minor_rite', 3, 3, {'naval_morale_recovery': .05, 'navy_maintenance_efficiency': .05}, ''),
+    'clan_cindermaw': ('Smoke from the First Mouth', 'Ember-speakers carry coals from the First Mouth to every new foundation. Cinderkin work goes faster under that smoke.',
+        'culture = culture:cm_cinderkin', '', 'ac_clan_rite', 5, 3, {'global_construction_speed': .10}, ''),
+    'clan_brackmaw': ('Listening at the Pool', 'Reed-witnesses read the Listening Pool and bless the marsh households that will raise the next generation.',
+        'culture = culture:cm_brinekin', '', 'ac_clan_rite', 5, 3, {'global_population_growth': .001}, ''),
+    'clan_reefhook': ('Lantern for the Lost', 'Reefkin light the Lantern Steps for crews that never returned. Their kin answer by signing onto the next voyage.',
+        'culture = culture:cm_reefkin', '', 'ac_clan_rite', 5, 3, {'global_sailors_modifier': .10}, ''),
+    'clan_shatterfin': ("The Tidemothers' Cord", "Tidemothers tie a new knot at the Mothers' Basin for every household bound to us abroad. Foreign courts learn that a Shatterkin cord is not cut lightly.",
+        'culture = culture:cm_shatterkin', '', 'ac_clan_rite', 5, 3, {'diplomatic_reputation': 1}, ''),
+    'clan_sootwake': ('Oath of the Axe', 'Root-wardens let each young Sootkin swear by Emberroot Hollow before taking up an axe for the crown.',
+        'culture = culture:cm_sootkin', '', 'ac_clan_rite', 5, 3, {'global_manpower_modifier': .10}, ''),
+    'clan_giltfang': ('Weighing of the First Gold', 'Merchants hang their scales beside the First Weight and swear them true. Giltkin traders are trusted where their oath is known.',
+        'culture = culture:cm_giltkin', '', 'ac_clan_rite', 5, 3, {'global_merchant_power': .10}, ''),
+    # The standing Moot of Six Fires, for a crown that has held the Moot.
+    'convene_moot': ('Convene the Moot of Six Fires', 'Call the Oathkeepers of every island to the six fires. Disputes between chiefs are heard and settled before the crown.',
+        'has_variable = ac_moot_held', '', 'ac_moot_convening', 5, 0, {},
+        'add_stability = stability_mild_bonus add_all_estate_satisfaction = { value = estate_satisfaction_mild_bonus }'),
+    'hear_shrines': ('Hear the Local Shrines', 'Under the Local Covenants each shrine keeps its own witnesses. The crown travels to hear them in turn.',
+        'has_variable = ac_moot_held has_variable = ac_local_covenants', '', 'ac_clan_rite', 5, 5,
+        {'clergy_estate_target_satisfaction': .05, 'tolerance_heathen': .5}, ''),
+    'oathkeeper_writ': ("The First Oathkeeper's Writ", 'The First Oathkeeper sends sealed writs to every island. Chiefs who ignore them answer to the Moot.',
+        'has_variable = ac_moot_held has_variable = ac_first_oathkeeper', '', 'ac_clan_rite', 5, 5,
+        {'global_monthly_control': .0025, 'stability_cost_efficiency': .05}, ''),
+}
+
 # Event-specific eligibility is checked by native random_events before selection.
 # Each story has two distinct approaches and a neutral defer option.
 STORIES = [
@@ -124,12 +166,18 @@ def build(out):
         types.append(f'ac_{key}_site = {{ location_modifier = {{ {modifier} = {value} }} }}')
     write('in_game/common/holy_sites/ashen_covenant.txt', '\n'.join(sites))
     write('in_game/common/holy_site_types/ashen_covenant.txt', '\n'.join(types))
-    write('in_game/common/prices/ashen_covenant.txt', 'ac_major_rite = { scaled_gold = 2 religious_influence = 20 }')
-    write('main_menu/common/modifier_type_definitions/ashen_covenant.txt',
-          'ac_major_rite_cost_modifier = { color = bad percent = yes game_data = { category = country } }')
-    loc('ac_major_rite', 'Major Covenant Rite')
-    loc('MODIFIER_TYPE_NAME_ac_major_rite_cost_modifier', 'Major Covenant Rite Cost')
-    loc('MODIFIER_TYPE_DESC_ac_major_rite_cost_modifier', 'Changes the cost of performing a major Covenant rite.')
+    write('in_game/common/prices/ashen_covenant.txt', 'ac_major_rite = { scaled_gold = 2 religious_influence = 20 }\n'
+          + '\n'.join(f'{key} = {{ {body} }}' for key, body in PRICES.items()))
+    # EU5 1.3.11 logs a missing <price>_cost_modifier for every price without one.
+    price_labels = [('ac_major_rite', 'Major Covenant Rite', 'a major Covenant rite'), ('ac_offering', 'Covenant Offering', 'a Covenant offering'),
+                    ('ac_minor_rite', 'Covenant Rite', 'a Covenant rite'), ('ac_clan_rite', 'Clan Rite', 'a clan or Moot rite'),
+                    ('ac_moot_convening', 'Convening the Moot', 'the Moot of Six Fires')]
+    write('main_menu/common/modifier_type_definitions/ashen_covenant.txt', '\n'.join(
+          f'{key}_cost_modifier = {{ color = bad percent = yes game_data = {{ category = country }} }}' for key, _, _ in price_labels))
+    for key, label, what in price_labels:
+        loc(key, label)
+        loc(f'MODIFIER_TYPE_NAME_{key}_cost_modifier', label + ' Cost')
+        loc(f'MODIFIER_TYPE_DESC_{key}_cost_modifier', f'Changes the cost of performing {what}.')
     mods, actions = [], []
     for key, (name, desc, modifier, value) in RITES.items():
         loc('ac_' + key, name)
@@ -156,6 +204,34 @@ def build(out):
  }} }}
  ai_will_do = {{ add = 5 }}
 }}''')
+    for key, (name, desc, potential, allow, price, cooldown, years, modifiers, immediate) in COVENANT_RITES.items():
+        terms = []
+        if modifiers:
+            terms.append(f'The blessing lasts {years} years.')
+        terms.append(f'Can be performed again after {cooldown} year{"s" if cooldown > 1 else ""}.')
+        loc('ac_' + key, name)
+        loc('ac_' + key + '_desc', desc + ' ' + ' '.join(terms))
+        effect = immediate
+        if modifiers:
+            loc('STATIC_MODIFIER_NAME_ac_' + key, name)
+            loc('STATIC_MODIFIER_DESC_ac_' + key, desc)
+            mods.append(f'ac_{key} = {{ ' + ' '.join(f'{m} = {v}' for m, v in modifiers.items()) + ' }')
+            effect = (effect + f' add_country_modifier = {{ modifier = ac_{key} years = {years} mode = replace }}').strip()
+        actions.append(f"""ac_{key} = {{
+ type = religious
+ sound = UI_action_religion_generic
+ show_message = no
+ automation_tick = never
+ ai_tick = monthly
+ ai_tick_frequency = 6
+ potential = {{ scope:actor = {{ religion = religion:{RELIGION} {potential} }} }}
+ allow = {{ scope:actor = {{ has_ruler = yes {allow} }} }}
+ price = price:{price}
+ cooldown = {{ type = ac_{key} years = {cooldown} }}
+ select_trigger = {{ looking_for_a = religion source = actor target_flag = recipient name = "choose_religion" column = {{ data = name }} }}
+ effect = {{ scope:actor = {{ {effect} }} }}
+ ai_will_do = {{ add = 5 }}
+}}""")
     for key, name, modifier, value in [('local_covenants', 'The Local Covenants', 'tolerance_heathen', 1), ('first_oathkeeper', 'The First Oathkeeper', 'stability_cost_efficiency', .10)]:
         loc('ac_' + key, name); loc('ac_' + key + '_desc', 'The settlement agreed at the Moot of Six Fires.')
         loc('STATIC_MODIFIER_NAME_ac_' + key, name)
@@ -163,7 +239,7 @@ def build(out):
         mods.append(f'ac_{key} = {{ {modifier} = {value} }}')
     write('in_game/common/generic_actions/ashen_covenant.txt', '\n'.join(actions))
     write('in_game/common/generic_action_ai_lists/ashen_covenant.txt',
-          f'ac_rites_ai = {{ potential = {{ religion = religion:{RELIGION} }} actions = {{ ' + ' '.join('ac_' + k for k in RITES) + ' } }')
+          f'ac_rites_ai = {{ potential = {{ religion = religion:{RELIGION} }} actions = {{ ' + ' '.join('ac_' + k for k in list(RITES) + list(COVENANT_RITES)) + ' } }')
     write('main_menu/common/static_modifiers/ashen_covenant.txt', '\n'.join(mods) + '\n' + covenant_stories.modifiers(loc))
     events = ['namespace = ashen_covenant']
     events.extend(covenant_stories.event(row, loc) for row in STORIES)
@@ -184,7 +260,8 @@ def build(out):
     starts = []
     for tag, pair in STARTING.items():
         starts.append(f'if = {{ limit = {{ tag = {tag} num_of_religious_aspects = 0 }} ' + ' '.join(f'add_religious_aspect = religious_aspect:ac_{key}' for key in pair) + ' }')
-    cleanup = ' '.join(f'remove_country_modifier = ac_{key}' for key in list(RITES) + ['local_covenants', 'first_oathkeeper'])
+    timed = [key for key, row in COVENANT_RITES.items() if row[7]]
+    cleanup = ' '.join(f'remove_country_modifier = ac_{key}' for key in list(RITES) + ['local_covenants', 'first_oathkeeper'] + timed)
     cleanup += ' ' + covenant_stories.cleanup() + ' remove_variable = ac_story_open'
     write('in_game/common/on_action/ashen_covenant.txt', f'''monthly_country_pulse = {{ on_actions = {{ ac_covenant_monthly ac_covenant_stories }} }}
 ac_covenant_monthly = {{
@@ -209,7 +286,7 @@ ac_covenant_stories = {{
  random_events = {{ chance_to_happen = 5 {' '.join(f'10 = ashen_covenant.{s[0]}' for s in STORIES)} }}
 }}''')
     write('main_menu/localization/english/ashen_covenant_l_english.yml', 'l_english:\n' + '\n'.join(' ' + k + ': "' + v.replace('"', '\\"') + '"' for k, v in text.items()))
-    return {'version': '0.5.7', 'sites': len(SITES), 'site_importance': SITE_IMPORTANCE, 'aspects': len(ASPECTS), 'rites': len(RITES), 'events': len(STORIES) + 1, 'files': paths, 'engine_tested': False}
+    return {'version': '0.5.7', 'sites': len(SITES), 'site_importance': SITE_IMPORTANCE, 'aspects': len(ASPECTS), 'rites': len(RITES), 'covenant_rites': len(COVENANT_RITES), 'events': len(STORIES) + 1, 'files': paths, 'engine_tested': False}
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
