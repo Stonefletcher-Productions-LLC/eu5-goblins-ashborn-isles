@@ -53,7 +53,7 @@ Goblins get a unique archer levy, `a_ga_obsidian_fletchers` (Age 1, from `a_age_
 
 ## Next release (0.6.7) pending: kingdom openings
 
-Each crown now gets its own opening event after the shared Ashborn introduction (`cindermaw.1`): `ga_opening.1`-`6` (CDM, QBR, RHK, SFK, SWK, GTF), written by `tools/kingdom_openings.py` (called from `gathering.build`) into `goblins_openings` event, on_action and localization files. `ga_opening_monthly` waits one month after the intro flag (`ga_opening_wait`) so the two never stack, then fires once (`ga_opening_seen`). Existing saves catch up, since only the intro flag is needed. The events reuse each clan's painting; prompts for six dedicated paintings are in the project files at `kingdom-openings/codex_prompt.txt`. Engine-untested.
+Each crown now gets its own opening event after the shared Ashborn introduction (`cindermaw.1`): `ga_opening.1`-`6` (CDM, QBR, RHK, SFK, SWK, GTF), written by `tools/kingdom_openings.py` (called from `gathering.build`) into `goblins_openings` event, on_action and localization files. `ga_opening_monthly` waits one month after the intro flag (`ga_opening_wait`) so the two never stack, then fires once (`ga_opening_seen`). Existing saves catch up, since only the intro flag is needed. Each has its own painting (`art/events/sources/opening_<clan>.png`, exported to `opening_<clan>.dds`; prompts in `art/events/prompts.json`). Engine-untested.
 
 ## Next release (0.6.7) pending: lore and text pass
 
