@@ -41,7 +41,7 @@ def verify(out,game=None):
             assert (out/'in_game'/path).is_file(),path
         else:
             assert (re.fullmatch(r'gfx/models/portraits/decals/(male|female)_head/\1_head_old_(forehead|eyes|mouth)_1_early_(diffuse|normal)\.dds',path)
-                    or re.fullmatch(r'gfx/models/portraits/decals/visual_traits/male_head_decal_traits_scars_02_(diffuse|normal)\.dds',path)),path
+                    or re.fullmatch(r'gfx/models/portraits/decals/visual_traits/male_head_decal_traits_scars_0[12]_(diffuse|normal)\.dds',path)),path
             if game:
                 native_texture=Path(game)/'in_game'/path
                 assert native_texture.is_file(),path
@@ -54,7 +54,8 @@ def verify(out,game=None):
     assert modifiers.count('mode = add gene = cm_ashborn_stature template = cm_compact_body value = 1')==len(clans)
     assert 'cm_ashborn_stature' not in ethnicity
     assert 'cm_ashborn_weathering' not in ethnicity
-    assert modifiers.count('gene = cm_ashborn_weathering')==len(clans)
+    # One per culture, plus one age-appropriate override per crown ruler.
+    assert modifiers.split('cm_ashborn_kings =')[0].count('gene = cm_ashborn_weathering')==len(clans)
     from build_goblin_portraits import weathering_gene
     weathering=weathering_gene()
     assert weathering.count('post_skin_color priority = 110')==6, 'Weathering must survive the clan tint'
@@ -63,13 +64,31 @@ def verify(out,game=None):
     assert 'male_body_height' not in genes, 'Do not depend on the disabled female height attribute'
     assert not re.search(r'cm_\w+_(?:skin|features)\s*=', ethnicity), 'Special genes must only be applied by scoped modifiers'
     clans=json.loads((ART/'clans.json').read_text())['clans']
-    generic_modifiers=modifiers.split('cm_ashborn_drogg =')[0]
-    drogg=modifiers.split('cm_ashborn_drogg =')[1]
-    assert 'priority = 140' in drogg
-    assert 'exists = character:cm_cdm_ruler this = character:cm_cdm_ruler' in drogg
-    assert 'gene = cm_drogg_scar' in drogg and 'gene = cm_drogg_scar' not in generic_modifiers
-    assert 'gene = cm_ashborn_clothing template = cm_warchief_clothing' in drogg
-    assert 'mode = replace gene = hair_styles template = all_hair accessory = male_hair_short_straight_pomp' in drogg
+    generic_modifiers=modifiers.split('cm_ashborn_kings =')[0]
+    kings=modifiers.split('cm_ashborn_kings =')[1]
+    assert 'priority = 140' in kings and 'selection_behavior = max' in kings
+    from build_goblin_portraits import KINGS, KING_ACCESSORY_GENES, clan_face
+    from build_goblin_outfits import KING_CLOTHING
+    culture_of={c['id']:c['culture'] for c in clans}
+    # Every crown's 1337 ruler has a distinct signature, not only Drogg.
+    assert {k['clan'] for k in KINGS.values()}=={c['id'] for c in clans}
+    for name,spec in KINGS.items():
+        block=kings.split(f'cm_{name}_signature =')[1].split('_signature =')[0]
+        character=spec['character']
+        assert f'exists = character:{character} this = character:{character} gfx_culture_applicable = {culture_of[spec["clan"]]}_gfx' in block,name
+        assert re.search(r'(?m)^'+character+r' = \{',(out/'main_menu/setup/start/05_characters.txt').read_text(encoding='utf-8-sig')),character
+        assert f"template = {spec['clothing']} range" in block and spec['clothing'] in KING_CLOTHING
+        assert all(0<v<=1 for v in spec['face'].values()) and 0<=spec['weathering']<=1
+        for gene,template in spec['marks']:assert f'{gene} = {{' in genes and f'{template} = {{' in genes
+    signatures=[tuple(sorted(k['face'].items())) for k in KINGS.values()]
+    assert len(set(signatures))==len(signatures), 'Two kings share a face'
+    looks=[(k['hair'],k['clothing'],k.get('headwear')) for k in KINGS.values()]
+    assert len(set(looks))==len(looks), 'Two kings share a costume'
+    faces=[tuple(sorted(clan_face(c['id']).items())) for c in clans]
+    assert len(set(faces))==len(faces), 'Two cultures share a face recipe'
+    assert 'gene = cm_drogg_scar' in kings and 'gene = cm_drogg_scar' not in generic_modifiers
+    assert 'gene = cm_ashborn_clothing template = cm_warchief_clothing' in kings
+    assert 'mode = replace gene = hair_styles template = all_hair accessory = male_hair_short_straight_pomp' in kings
     for clan in clans:
         ident=clan['id'];tag=clan['culture']+'_gfx'
         assert generic_modifiers.count('gfx_culture_applicable = '+tag)==1
@@ -182,7 +201,20 @@ def verify(out,game=None):
             entries=re.findall(r'(\d+)\s*=\s*(\w+)',block)
             assert [name for _,name in entries]==NATIVE_ALL_HAIR[sex],('native all_hair order changed',sex)
             assert {w for w,_ in entries}=={'1'},('native all_hair weights changed',sex)
-        for gene in re.findall(r'mode = replace gene = (gene_\w+)',modifiers+variants):
+        for _,(male,female) in KING_CLOTHING.items():
+            for name in (male,female):
+                assert name=='empty' or re.search(r'(?m)^'+re.escape(name)+r'\s*=\s*\{',native_accessories),name
+        for spec in KINGS.values():
+            for gene in KING_ACCESSORY_GENES:
+                if gene not in spec:continue
+                template,name=spec[gene]
+                block=re.search(r'\n\t'+gene+r' = \{(.*?)\n\t\}',native_genes,re.S)[1]
+                body=re.search(r'\n\t\t'+template+r' = \{(.*?)\n\t\t\}',block,re.S)[1]
+                sex='female' if spec.get('female') else 'male'
+                entries=re.findall(r'\d+\s*=\s*(\w+)',re.sub(r'#[^\n]*','',re.search(r'\b'+sex+r' = \{([^}]*)\}',body)[1]))
+                # A name resolves only in male lists; a range must hit one item.
+                assert (name in entries and sex=='male') if name else len(entries)==1,(gene,template,entries)
+
             assert re.search(r'\b'+gene+r'\s*=\s*\{',native_genes),gene
         from build_goblin_portraits import FACE
         assert FACE['gene_eye_size'][1] < .5, 'Avoid the previous enlarged cartoon eyes'

@@ -37,7 +37,7 @@
     },
     {
       "path": "in_game/common/ethnicities/ashborn.txt",
-      "sha256": "b7a85d1a94b9ef016f114a9c8b3b533dff31cee0e315c9900259fad29abd4b54"
+      "sha256": "5e26b30877fe2871a43d40ea43543a84477c1394d7a52cd0932d2d1a03650409"
     },
     {
       "path": "in_game/common/generic_action_ai_lists/ashen_covenant.txt",
@@ -69,11 +69,11 @@
     },
     {
       "path": "in_game/common/genes/zz_ashborn_outfits.txt",
-      "sha256": "88e0734e0b3cfe0015b18d9dd2b44a83b8ddef4ca7ccbe192196b51f740d732c"
+      "sha256": "3edd4dc0353cab31a0a2a38b26fbb8d7a2aa4ac82c5c577e29ab25e4526864e0"
     },
     {
       "path": "in_game/common/genes/zz_ashborn_portraits.txt",
-      "sha256": "23e34cb08cb1c87672442ee16e2f348f035860cb66967c2bdf727c0b13059bcb"
+      "sha256": "df889e47ed19442cdd4da23a4323bc5dd6fc3a5b95bfaf24d4dd1a4e453bbe9a"
     },
     {
       "path": "in_game/common/government_reforms/goblins_ashborn_isles.txt",
@@ -12689,7 +12689,7 @@
     },
     {
       "path": "main_menu/gfx/portraits/portrait_modifiers/zz_ashborn.txt",
-      "sha256": "203df5ddd24026f0826de7269ca442e9dc695249ad6dffec20751427a9791e54"
+      "sha256": "6ee7f3c49018ded2aa2d1b54ba41c76a1a976a94cf8d6c61412d212ce7cd6649"
     },
     {
       "path": "main_menu/gfx/portraits/portrait_modifiers/zz_ashborn_male_variation.txt",
