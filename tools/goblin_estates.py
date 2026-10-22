@@ -4,7 +4,7 @@ import re
 NAMES = {
     'crown_estate': 'Ironfang Crown',
     'nobles_estate': 'Highfangs',
-    'clergy_estate': 'Shamans',
+    'clergy_estate': 'Oathkeepers',
     'burghers_estate': 'Coinclutchers',
     'peasants_estate': 'Muckgrubs',
     'tribes_estate': 'Wildfang Clans',

@@ -110,8 +110,8 @@ def action(make):
         'Bind another independent Ashborn crown by oath. No gold, no subjects.\n\n'
         f'Requires: an alliance or a completed Harbor Bargain with them, and {OPINION}+ opinion both ways.\n'
         f'Both crowns gain +{OATH_BONUS} opinion of each other for ten years.\n\n'
-        'A Sworn Pact eases Compact talks: no strength check, and either crown can\n'
-        'later open talks without an alliance. War or rivalry between the two\n'
+        'A Sworn Pact eases Compact talks: no strength check, and either crown can '
+        'later open talks without an alliance. War or rivalry between the two '
         'crowns breaks the pact. Offers expire after 180 days.',
         effect, selector, allow='ga_sp_free = yes', ai=ai, years=2)
 
@@ -139,13 +139,13 @@ def events(event, option, loc):
     {cleanup()}'''
     result = [event(36, 'An Oath Across the Water',
         "[SCOPE.sCountry('ga_sp_requester').GetName] asks our crown to swear a Sworn Pact. Envoys would carry embers from each royal hearth to the other, and our captains would name each other kin before the Hunger Below.\n\n"
-        "A pact is not submission. We keep our crown, our laws and our alliances. But a sworn crown is a trusted crown: if the larger of us later opens Compact talks, they will not weigh which of us is stronger.",
+        "A pact is not submission. We keep our crown, our laws and our alliances. But a sworn crown is a trusted crown: if either of us later opens Compact talks, no one will weigh which of us is stronger.",
         option(36, 'a', 'Carry the embers. We swear.', 'custom_tooltip = ' + terms + '\nhidden_effect = { ' + swear + ' }', guard,
                'factor = 3 modifier = { factor = 0.5 relative_strength = { target = scope:ga_sp_requester value <= 0.5 } }') + '\n' +
         option(36, 'b', 'Our hearth burns alone.', 'hidden_effect = { ' + refuse + ' }', ai='factor = 1'))]
     result.append(event(37, 'The Pact Is Sworn',
         "Embers from [SCOPE.sCountry('ga_sp_requester').GetName] and [SCOPE.sCountry('ga_sp_provider').GetName] now burn in each other's hearths. The two crowns are bound by a Sworn Pact.\n\n"
-        "#bold The next step#! - When the smaller crown holds 100 opinion of the larger and is of equal or lower rank, the larger crown may open Compact talks. Relative strength no longer matters between sworn crowns.",
+        "#bold The next step#! - When one crown holds 100 opinion of the other and is of equal or lower rank, the other may open Compact talks to take it under a charter. Relative strength no longer matters between sworn crowns.",
         option(37, 'a', 'May the embers never cool.')))
     result.append(event(38, 'The Oath Refused',
         "[SCOPE.sCountry('ga_sp_provider').GetName] has refused our Sworn Pact. Its envoys returned our embers unlit. Nothing was lost but time; we may ask again, or seek other partners among the Six.",

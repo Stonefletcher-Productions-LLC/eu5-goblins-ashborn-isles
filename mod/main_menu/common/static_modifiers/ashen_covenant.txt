@@ -36,3 +36,5 @@ ac_story_10_1 = { clergy_estate_target_satisfaction = 0.05 diplomatic_reputation
 ac_story_11_0 = { global_monthly_food_modifier = 0.05 }
 ac_story_11_1 = { global_food_capacity_modifier = 0.1 }
 ac_story_12_1 = { land_morale_modifier = 0.03 }
+ac_story_13_0 = { diplomatic_reputation = 0.5 }
+ac_story_13_1 = { global_production_efficiency = 0.05 }
