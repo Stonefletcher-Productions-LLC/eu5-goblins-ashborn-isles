@@ -13,7 +13,7 @@
     },
     {
       "path": "in_game/common/biases/goblins_gathering.txt",
-      "sha256": "807173a584efdf272f43f2af1d85247c9d96cc1a71cb3421ff5c0fb79405b3f0"
+      "sha256": "c83d9c895cbecb6826cfba5ca20d3491da96b89f899131c09935bd96fd88c4f8"
     },
     {
       "path": "in_game/common/biases/goblins_mainland.txt",
@@ -61,7 +61,7 @@
     },
     {
       "path": "in_game/common/generic_action_ai_lists/goblins_gathering.txt",
-      "sha256": "0919acffc334c51e1e9cbfb5146789f0d3b212fd6643bafdb3405eefc1a182fc"
+      "sha256": "13b1555669dd0318e4fa994d83d42c820d4a98869e94da55c782531a083c3ce1"
     },
     {
       "path": "in_game/common/generic_action_ai_lists/goblins_mainland.txt",
@@ -81,11 +81,11 @@
     },
     {
       "path": "in_game/common/generic_actions/goblins_gathering.txt",
-      "sha256": "c77ffce31bd358980048aa14cbc595ab2b3f1e83af78b4b0fd5bba482bf78da8"
+      "sha256": "2b24cb1b915358de132169a9de11219d67a3ae8012ac1331c647308ea8a7b042"
     },
     {
       "path": "in_game/common/generic_actions/goblins_horde.txt",
-      "sha256": "7802ea6497b0d00605f879a565eb1d27c418707468b897541edad740c662249c"
+      "sha256": "7ddc455ebab3ec03f5cf7cbb9ec8b054e6d91f59da4def062611b50cdf2670df"
     },
     {
       "path": "in_game/common/generic_actions/goblins_mainland.txt",
@@ -117,7 +117,7 @@
     },
     {
       "path": "in_game/common/international_organizations/goblins_horde.txt",
-      "sha256": "5c589bfbd0094e04c260e145f3cb4d18b13d5216236a0d41464c3669a3e3ed5a"
+      "sha256": "ef42a96d7cb8429f78a371986826f5c60250040fc825dcb4b0ca777455bb5886"
     },
     {
       "path": "in_game/common/language_families/goblins_ashborn_isles.txt",
@@ -181,7 +181,7 @@
     },
     {
       "path": "in_game/common/prices/goblins_gathering.txt",
-      "sha256": "44ac426f58749600611571404ac75440f636f9ae43be82e6012dc3dbad7b3131"
+      "sha256": "7145641458eea1ac79aba11a3cb895b44a326427f9cbea22e035ca22c4e18d4d"
     },
     {
       "path": "in_game/common/prices/goblins_mainland.txt",
@@ -653,7 +653,7 @@
     },
     {
       "path": "main_menu/common/modifier_type_definitions/goblins_gathering.txt",
-      "sha256": "1b0dbf4521bebe766bde3dd3b12357fc882fed01f7cc3cd5a3c4d583b269f45d"
+      "sha256": "a294dfeaa20a8cb63a6b85f7a50fba4dc8557aef7b31f39134e944ddf0f89e77"
     },
     {
       "path": "main_menu/common/modifier_type_definitions/goblins_mainland.txt",
@@ -12821,7 +12821,7 @@
     },
     {
       "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
-      "sha256": "8b11c8df510405c651f2f36462f6dc039a22cf8134bf1a6ad4cb0c3efb8fb6bf"
+      "sha256": "730a430bcaa8fa9b1a7cafb7bc61b5375cc25bd10a08855f6aa47d8a600435bf"
     },
     {
       "path": "main_menu/localization/english/goblins_mainland_l_english.yml",
