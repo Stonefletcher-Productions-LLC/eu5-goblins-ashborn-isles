@@ -275,7 +275,7 @@ ga_economy_monthly = {
             }
             if = {
                 limit = { owns = location:cm_coralpasture }
-                location:cm_coralpasture = { change_max_raw_material_workers = 1 }
+                location:cm_coralpasture = { change_max_raw_material_workers = 3 }
             }
             if = {
                 limit = { owns = location:cm_pearlshore }
@@ -283,7 +283,7 @@ ga_economy_monthly = {
             }
             if = {
                 limit = { owns = location:cm_tidegrain }
-                location:cm_tidegrain = { change_max_raw_material_workers = 1 }
+                location:cm_tidegrain = { change_max_raw_material_workers = 2 }
             }
         }
         if = {
@@ -385,7 +385,7 @@ ga_economy_monthly = {
             limit = { tag = SWK }
             if = {
                 limit = { owns = location:cm_sootwake }
-                location:cm_sootwake = { change_max_raw_material_workers = 3 }
+                location:cm_sootwake = { change_max_raw_material_workers = 6 }
             }
             if = {
                 limit = { owns = location:cm_ember_key }
@@ -393,7 +393,7 @@ ga_economy_monthly = {
             }
             if = {
                 limit = { owns = location:cm_sootgrain }
-                location:cm_sootgrain = { change_max_raw_material_workers = 1 }
+                location:cm_sootgrain = { change_max_raw_material_workers = 3 }
             }
             if = {
                 limit = { owns = location:cm_alum_key }
