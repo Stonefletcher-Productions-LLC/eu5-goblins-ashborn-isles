@@ -1,11 +1,9 @@
 ﻿cm_cinderkin_gfx:army_light_infantry = {
  schematic_name = cm_goblin_unit_skeleton_schematic
- attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = cm_goblin_cindermaw_heads use_uniformity = no }
  attach = { 100 = torsos }
  attach = { 100 = legs }
- attach = { 100 = headgear }
- attach = { 100 = hairstyles }
- attach = { 100 = beards }
+ attach = { 100 = cm_goblin_army_light_infantry_headgear }
  attach = { 100 = weapons }
  attach = { 100 = shields }
  attach = { 100 = back }
@@ -14,12 +12,10 @@
 }
 cm_cinderkin_gfx:army_heavy_infantry = {
  schematic_name = cm_goblin_unit_skeleton_schematic
- attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = cm_goblin_cindermaw_heads use_uniformity = no }
  attach = { 100 = torsos }
  attach = { 100 = legs }
- attach = { 100 = headgear }
- attach = { 100 = hairstyles }
- attach = { 100 = beards }
+ attach = { 100 = cm_goblin_army_heavy_infantry_headgear }
  attach = { 100 = weapons }
  attach = { 100 = shields }
  attach = { 100 = back }
@@ -28,12 +24,10 @@ cm_cinderkin_gfx:army_heavy_infantry = {
 }
 cm_brinekin_gfx:army_light_infantry = {
  schematic_name = cm_goblin_unit_skeleton_schematic
- attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = cm_goblin_brackmaw_heads use_uniformity = no }
  attach = { 100 = torsos }
  attach = { 100 = legs }
- attach = { 100 = headgear }
- attach = { 100 = hairstyles }
- attach = { 100 = beards }
+ attach = { 100 = cm_goblin_army_light_infantry_headgear }
  attach = { 100 = weapons }
  attach = { 100 = shields }
  attach = { 100 = back }
@@ -42,12 +36,10 @@ cm_brinekin_gfx:army_light_infantry = {
 }
 cm_brinekin_gfx:army_heavy_infantry = {
  schematic_name = cm_goblin_unit_skeleton_schematic
- attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = cm_goblin_brackmaw_heads use_uniformity = no }
  attach = { 100 = torsos }
  attach = { 100 = legs }
- attach = { 100 = headgear }
- attach = { 100 = hairstyles }
- attach = { 100 = beards }
+ attach = { 100 = cm_goblin_army_heavy_infantry_headgear }
  attach = { 100 = weapons }
  attach = { 100 = shields }
  attach = { 100 = back }
@@ -56,12 +48,10 @@ cm_brinekin_gfx:army_heavy_infantry = {
 }
 cm_reefkin_gfx:army_light_infantry = {
  schematic_name = cm_goblin_unit_skeleton_schematic
- attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = cm_goblin_reefhook_heads use_uniformity = no }
  attach = { 100 = torsos }
  attach = { 100 = legs }
- attach = { 100 = headgear }
- attach = { 100 = hairstyles }
- attach = { 100 = beards }
+ attach = { 100 = cm_goblin_army_light_infantry_headgear }
  attach = { 100 = weapons }
  attach = { 100 = shields }
  attach = { 100 = back }
@@ -70,12 +60,10 @@ cm_reefkin_gfx:army_light_infantry = {
 }
 cm_reefkin_gfx:army_heavy_infantry = {
  schematic_name = cm_goblin_unit_skeleton_schematic
- attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = cm_goblin_reefhook_heads use_uniformity = no }
  attach = { 100 = torsos }
  attach = { 100 = legs }
- attach = { 100 = headgear }
- attach = { 100 = hairstyles }
- attach = { 100 = beards }
+ attach = { 100 = cm_goblin_army_heavy_infantry_headgear }
  attach = { 100 = weapons }
  attach = { 100 = shields }
  attach = { 100 = back }
@@ -84,12 +72,10 @@ cm_reefkin_gfx:army_heavy_infantry = {
 }
 cm_shatterkin_gfx:army_light_infantry = {
  schematic_name = cm_goblin_unit_skeleton_schematic
- attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = cm_goblin_shatterfin_heads use_uniformity = no }
  attach = { 100 = torsos }
  attach = { 100 = legs }
- attach = { 100 = headgear }
- attach = { 100 = hairstyles }
- attach = { 100 = beards }
+ attach = { 100 = cm_goblin_army_light_infantry_headgear }
  attach = { 100 = weapons }
  attach = { 100 = shields }
  attach = { 100 = back }
@@ -98,12 +84,10 @@ cm_shatterkin_gfx:army_light_infantry = {
 }
 cm_shatterkin_gfx:army_heavy_infantry = {
  schematic_name = cm_goblin_unit_skeleton_schematic
- attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = cm_goblin_shatterfin_heads use_uniformity = no }
  attach = { 100 = torsos }
  attach = { 100 = legs }
- attach = { 100 = headgear }
- attach = { 100 = hairstyles }
- attach = { 100 = beards }
+ attach = { 100 = cm_goblin_army_heavy_infantry_headgear }
  attach = { 100 = weapons }
  attach = { 100 = shields }
  attach = { 100 = back }
@@ -112,12 +96,10 @@ cm_shatterkin_gfx:army_heavy_infantry = {
 }
 cm_sootkin_gfx:army_light_infantry = {
  schematic_name = cm_goblin_unit_skeleton_schematic
- attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = cm_goblin_sootwake_heads use_uniformity = no }
  attach = { 100 = torsos }
  attach = { 100 = legs }
- attach = { 100 = headgear }
- attach = { 100 = hairstyles }
- attach = { 100 = beards }
+ attach = { 100 = cm_goblin_army_light_infantry_headgear }
  attach = { 100 = weapons }
  attach = { 100 = shields }
  attach = { 100 = back }
@@ -126,12 +108,10 @@ cm_sootkin_gfx:army_light_infantry = {
 }
 cm_sootkin_gfx:army_heavy_infantry = {
  schematic_name = cm_goblin_unit_skeleton_schematic
- attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = cm_goblin_sootwake_heads use_uniformity = no }
  attach = { 100 = torsos }
  attach = { 100 = legs }
- attach = { 100 = headgear }
- attach = { 100 = hairstyles }
- attach = { 100 = beards }
+ attach = { 100 = cm_goblin_army_heavy_infantry_headgear }
  attach = { 100 = weapons }
  attach = { 100 = shields }
  attach = { 100 = back }
@@ -140,12 +120,10 @@ cm_sootkin_gfx:army_heavy_infantry = {
 }
 cm_giltkin_gfx:army_light_infantry = {
  schematic_name = cm_goblin_unit_skeleton_schematic
- attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = cm_goblin_giltfang_heads use_uniformity = no }
  attach = { 100 = torsos }
  attach = { 100 = legs }
- attach = { 100 = headgear }
- attach = { 100 = hairstyles }
- attach = { 100 = beards }
+ attach = { 100 = cm_goblin_army_light_infantry_headgear }
  attach = { 100 = weapons }
  attach = { 100 = shields }
  attach = { 100 = back }
@@ -154,12 +132,10 @@ cm_giltkin_gfx:army_light_infantry = {
 }
 cm_giltkin_gfx:army_heavy_infantry = {
  schematic_name = cm_goblin_unit_skeleton_schematic
- attach = { 100 = heads use_uniformity = no }
+ attach = { 100 = cm_goblin_giltfang_heads use_uniformity = no }
  attach = { 100 = torsos }
  attach = { 100 = legs }
- attach = { 100 = headgear }
- attach = { 100 = hairstyles }
- attach = { 100 = beards }
+ attach = { 100 = cm_goblin_army_heavy_infantry_headgear }
  attach = { 100 = weapons }
  attach = { 100 = shields }
  attach = { 100 = back }

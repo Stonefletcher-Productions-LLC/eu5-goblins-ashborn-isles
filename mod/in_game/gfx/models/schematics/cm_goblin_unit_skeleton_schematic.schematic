@@ -508,7 +508,7 @@ graph={
 		pdxns:values:Float={
 			id=37
 			node={
-				value=0.062500
+				value=0.050000
 			}
 			inputs={
 			}

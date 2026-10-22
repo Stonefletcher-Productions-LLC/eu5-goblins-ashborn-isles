@@ -1,11 +1,15 @@
 {
   "status": "STATIC MODEL CHECKS PASSED; ENGINE PLAYTEST PENDING",
-  "runtime_infantry": "native soldier rig, gear and animations with clan goblin heads",
+  "runtime_infantry": "native soldier rig, gear and animations at goblin scale with clan goblin heads and goblin caps",
   "clans": 6,
   "head_triangles": 940,
-  "head_vertices": 1549,
+  "cap_triangles": {
+    "leather": 95,
+    "iron": 95
+  },
+  "head_vertices": 1553,
   "skeleton_bones": 51,
-  "unit_scale": 0.0625,
+  "unit_scale": 0.05,
   "native_scale": 0.08,
   "median_head_texel_srgb": {
     "cindermaw": [
@@ -16,7 +20,7 @@
     "brackmaw": [
       99,
       105,
-      90
+      82
     ],
     "reefhook": [
       115,
@@ -24,7 +28,7 @@
       82
     ],
     "shatterfin": [
-      90,
+      99,
       101,
       90
     ],
@@ -41,7 +45,7 @@
   },
   "native_skeleton_and_graph_compared": true,
   "texture_registration": {
-    "registered_fixed_palette_heads": 6,
+    "registered_fixed_palette_meshes": 8,
     "native_contract_checked": true
   },
   "engine_tested": false

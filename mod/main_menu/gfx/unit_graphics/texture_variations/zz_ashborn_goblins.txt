@@ -5,4 +5,6 @@
  cm_goblin_shatterfin_unit_head_mesh
  cm_goblin_sootwake_unit_head_mesh
  cm_goblin_giltfang_unit_head_mesh
+ cm_goblin_unit_cap_leather_mesh
+ cm_goblin_unit_cap_iron_mesh
 }

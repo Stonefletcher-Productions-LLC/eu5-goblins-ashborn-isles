@@ -102,19 +102,28 @@ NATIVE_SCHEMATIC=Path('in_game/gfx/models/schematics/unit_skeleton_schematic.sch
 SCHEMATIC='cm_goblin_unit_skeleton_schematic'
 HEAD_MESH='cm_goblin_unit_head'
 HEAD_JOINT='Unit_Base_Rig_Head'
-# Native soldiers render at 0.08; goblins stand at 78% of a human soldier.
-# The goblin head keeps its own large proportions on top of that.
-UNIT_SCALE=0.0625
+# Fantasy-goblin proportions: native soldiers render at 0.08; goblins at 0.05
+# (62.5%, roughly 1.1 m beside a 1.8 m human) with an oversized head.
+UNIT_SCALE=0.05
 # Fit of the source head into native head-joint space (cm): uniform scale,
-# source neck base -> native neck base, small forward offset, ears pulled in.
-HEAD_SCALE=0.68;SOURCE_NECK=63.6;NATIVE_NECK=155.0;HEAD_Z=1.5;EAR_START=9.0;EAR_REACH=0.85
-NECK_SIDES=16;NECK_BOTTOM=147.0;NECK_TOP=156.5;NECK_RADIUS=(6.0,7.6,1.6);NECK_THROAT=3.0;NECK_LEAN=-2.0
+# source jaw base -> native neck top, pushed slightly forward for a stoop.
+HEAD_SCALE=1.05;SOURCE_NECK=63.6;NATIVE_NECK=153.0;HEAD_Z=1.0
+NECK_SIDES=16;NECK_BOTTOM=147.0;NECK_TOP=158.0;NECK_RADIUS=(6.2,9.2,3.6);NECK_THROAT=3.0;NECK_LEAN=-2.0
 ATLAS=256;CELL=ATLAS//4
 EYE=(74,52,20);MOUTH=(46,22,18);TEETH=(214,198,150)
-# Native unit attachment lists that soldiers combine. Everything except the
-# head comes from the native lists, so armour and weapons follow age and unit
-# type exactly as for human armies.
-NATIVE_ATTACH=['torsos','legs','headgear','hairstyles','beards','weapons','shields','back','offhand']
+# Crude goblin caps shaped on the goblin skull, because native helmets are
+# sized for human heads. Source-space heights: caps start above the eyes at the
+# front and lower at the back; ears stay bare.
+CAP_FRONT=83.0;CAP_BACK=69.0;CAP_EAR=14.0
+CAPS={'leather':{'thickness':.55,'color':(96,66,40),'rim':(62,42,26)},
+      'iron':{'thickness':.8,'color':(112,114,118),'rim':(70,66,60)}}
+HEADGEAR={'army_light_infantry':{'none':45,'leather':40,'iron':15},
+          'army_heavy_infantry':{'none':10,'leather':30,'iron':60}}
+# Native unit attachment lists that soldiers combine. Gear below the neck comes
+# from the native lists, so clothing, armour and weapons follow age and unit
+# type exactly as for human armies. Native hair, beards and helmets are left
+# out: they are sized for human heads.
+NATIVE_ATTACH=['torsos','legs','weapons','shields','back','offhand']
 
 def write_text(path,text):path.parent.mkdir(parents=True,exist_ok=True);path.write_text(text,encoding='utf-8-sig')
 def hex_rgb(value):return np.array([int(value[i:i+2],16) for i in (1,3,5)],float)
@@ -147,9 +156,6 @@ def head_geometry(g):
         positions.append(pos[used]);normals.append(nor[used]);tris.append(remap[t]);kinds+= [kind]*len(t)
     pos=np.concatenate(positions);nor=np.concatenate(normals);tri=np.concatenate(tris)
     out=pos*HEAD_SCALE;out[:,1]=NATIVE_NECK+(pos[:,1]-SOURCE_NECK)*HEAD_SCALE;out[:,2]+=HEAD_Z
-    # Pull the very long source ears closer so helmets and formations stay legible.
-    ax=np.abs(out[:,0]);far=ax>EAR_START
-    out[far,0]=np.sign(out[far,0])*(EAR_START+(ax[far]-EAR_START)*EAR_REACH)
     # The source neck is a short ring inside the jaw. Add a native-sized neck
     # column so the native torso's neck skin stays hidden inside green skin.
     ring=np.linspace(0,2*np.pi,NECK_SIDES,endpoint=False)
@@ -169,8 +175,9 @@ def head_geometry(g):
     g_=np.cross(out[tri[:,1]]-out[tri[:,0]],out[tri[:,2]]-out[tri[:,0]])
     source_sign=np.sign(np.einsum('ij,ij->i',g_,nor[tri].mean(1)).sum())
     if source_sign*np.dot(f,cn[cyl_tri[0,0]-base])<0:cyl_tri=cyl_tri[:,[0,2,1]]
+    source_y=np.r_[pos[:,1],np.full(len(cyl),-1e9)]  # neck column never joins a cap
     out=np.r_[out,cyl];nor=np.r_[nor,cn];tri=np.r_[tri,cyl_tri];kinds=list(kinds)+['skin']*len(cyl_tri)
-    return out,nor,tri,np.array(kinds)
+    return out,nor,tri,np.array(kinds),source_y
 
 def ambient_occlusion(pos,nor,tri,rays=48,seed=7):
     """Per-vertex hemisphere occlusion against the head itself (Moller-Trumbore)."""
@@ -241,20 +248,16 @@ def skin_colors(pos,nor,kinds_per_vertex,occlusion,clan):
     rng=np.random.default_rng(int(clan['skin_srgb'][1:],16));mottle=1+.05*rng.standard_normal(len(pos))
     color=base[None]*(light*mottle)[:,None]
     # Warmer, thinner skin at ear tips and nose.
-    warm=np.clip((np.abs(pos[:,0])-13)/6,0,1)+np.clip((-pos[:,2]-11)/3,0,1)
+    warm=np.clip((np.abs(pos[:,0])-CAP_EAR*HEAD_SCALE)/8,0,1)+np.clip((-pos[:,2]-11)/3,0,1)
     color=color*(1-.25*warm[:,None])+np.array([.62,.42,.33])*base.mean()*1.6*.25*warm[:,None]
     return np.clip(color,0,1)
 
-def head_mesh(g,skeleton,names):
-    pos,nor,tri,kinds=head_geometry(g)
-    occlusion=ambient_occlusion(pos,nor,tri)
-    vkind=np.array(['skin']*len(pos),dtype=object)
-    for t,k in zip(tri,kinds):vkind[t]=np.where(vkind[t]=='skin',k,vkind[t])
+def head_bound_mesh(name,pos,nor,tri,skeleton,names):
+    """Native-skeleton mesh rigidly bound to the head joint, with unwrapped UVs."""
     source,index,uv,chart=unwrap(pos,nor,tri)
     p,n=pos[source],nor[source]
     tangent=np.cross(np.where(np.abs(n[:,[0]])>.9,[[0,1,0]],[[1,0,0]]),n);tangent/=np.linalg.norm(tangent,axis=1)[:,None]
-    head=names.index(HEAD_JOINT)
-    ids=np.full((len(p),4),-1);ids[:,0]=head;weights=np.zeros((len(p),4));weights[:,0]=1
+    ids=np.full((len(p),4),-1);ids[:,0]=names.index(HEAD_JOINT);weights=np.zeros((len(p),4));weights[:,0]=1
     low,high=p.min(0),p.max(0);center=(low+high)/2
     mesh=node('mesh',{'p':prop('f',p),'n':prop('f',n),'ta':prop('f',np.c_[tangent,np.ones(len(p))]),
          'u0':prop('f',uv),'u1':prop('f',uv),'tri':prop('i',index),
@@ -262,12 +265,37 @@ def head_mesh(g,skeleton,names):
          node('aabb',{'min':prop('f',low),'max':prop('f',high)}),
          node('material',{'shader':('s','standard')}),
          node('skin',{'bones':('i',[4]),'ix':prop('i',ids),'w':prop('f',weights)})])
-    shape=node(HEAD_MESH+'Shape',children=[mesh,skeleton])
+    shape=node(name+'Shape',children=[mesh,skeleton])
     tree=node('root',{'pdxasset':('i',[1,0])},[node('object',children=[shape]),node('locator')])
-    return tree,{'pos':p,'nor':n,'tri':index,'uv':uv,'source':source,'occlusion':occlusion,'kinds':kinds,'base_pos':pos,'base_tri':tri}
+    return tree,{'pos':p,'nor':n,'tri':index,'uv':uv,'source':source}
+
+def head_mesh(g,skeleton,names):
+    pos,nor,tri,kinds,source_y=head_geometry(g)
+    occlusion=ambient_occlusion(pos,nor,tri)
+    tree,data=head_bound_mesh(HEAD_MESH,pos,nor,tri,skeleton,names)
+    data.update({'occlusion':occlusion,'kinds':kinds,'base_pos':pos,'base_tri':tri,'base_nor':nor,'source_y':source_y})
+    return tree,data
+
+def cap_mesh(head,kind,skeleton,names):
+    """A thin shell over the skull above the eyes (ears and face excluded)."""
+    pos,nor,tri,kinds,sy=head['base_pos'],head['base_nor'],head['base_tri'],head['kinds'],head['source_y']
+    back=np.clip((pos[:,2]-pos[:,2].min())/np.ptp(pos[:,2]),0,1)  # 0 at the face, 1 at the back
+    threshold=CAP_FRONT+(CAP_BACK-CAP_FRONT)*np.clip((back-.3)/.5,0,1)
+    inside=(sy>=threshold)&(np.abs(pos[:,0])<CAP_EAR*HEAD_SCALE)
+    keep=(kinds=='skin')&inside[tri].all(1)
+    t=tri[keep];used=np.unique(t);remap=-np.ones(len(pos),int);remap[used]=np.arange(len(used))
+    spec=CAPS[kind];p=pos[used]+nor[used]*spec['thickness']*HEAD_SCALE/.68
+    tree,data=head_bound_mesh(f'cm_goblin_unit_cap_{kind}',p,nor[used],remap[t],skeleton,names)
+    occ=ambient_occlusion(p,nor[used],remap[t],rays=24)
+    rim=np.clip(1-(sy[used]-threshold[used])/2.5,0,1)  # darker band along the lower edge
+    base=np.array(spec['color'])/255;edge=np.array(spec['rim'])/255
+    colors=(base*(1-rim[:,None])+edge*rim[:,None])*(.7+.3*occ)[:,None]
+    rng=np.random.default_rng(len(kind));colors*=1+.06*rng.standard_normal(len(colors))[:,None]
+    image=rasterize(data['uv'],data['tri'],np.clip(colors[data['source']],0,1))
+    return tree,Image.fromarray((np.clip(image,0,1)*255).round().astype(np.uint8),'RGB').convert('RGBA'),len(t)
 
 def head_textures(data,clan):
-    pos,tri,occ,kinds=data['base_pos'],data['base_tri'],data['occlusion'],data['kinds']
+    occ,kinds=data['occlusion'],data['kinds']
     nor=data['nor'];source=data['source']
     skin=skin_colors(data['pos'],nor,None,occ[source],clan)
     colors=skin.copy()
@@ -279,7 +307,7 @@ def head_textures(data,clan):
         p=data['pos'][i]
         if k=='teeth':colors[i]=np.array(TEETH)/255*(.75+.25*occ[source[i]])
         elif k=='face':
-            if p[1]>NATIVE_NECK+(74-SOURCE_NECK)*HEAD_SCALE:  # eyes sit above the mouth
+            if data['source_y'][source[i]]>74:  # eyes sit above the mouth
                 colors[i]=np.array(EYE)/255
             else:colors[i]=np.array(MOUTH)/255
     image=rasterize(data['uv'],data['tri'],colors)
@@ -320,7 +348,7 @@ def build(out,game):
     Image.new('RGBA',(4,4),(128,128,0,128)).save(directory/(HEAD_MESH+'_normal.dds'))
     Image.new('RGBA',(4,4),(0,76,0,140)).save(directory/(HEAD_MESH+'_properties.dds'))
     Image.new('RGBA',(4,4),(0,0,0,255)).save(directory/(HEAD_MESH+'_mask.dds'))
-    asset='';heads=[];report={'stage':'native-rig-goblin-heads','engine_tested':False,'unit_scale':UNIT_SCALE,
+    asset='';heads=[];report={'stage':'native-rig-goblin-heads-and-caps','engine_tested':False,'unit_scale':UNIT_SCALE,
         'native_scale':0.08,'head_triangles':len(data['tri']),'head_vertices':len(data['pos']),'clans':[]}
     for clan in config['clans']:
         stem=f'cm_goblin_{clan["id"]}_unit_head'
@@ -338,23 +366,41 @@ def build(out,game):
 }}
 '''
         tag=clan['culture']+'_gfx'
-        heads.append(f'''{tag}:heads = {{
+        # Own list names, attached directly by the goblin constructors, so no
+        # native tag/age list can take precedence over them.
+        heads.append(f'''cm_goblin_{clan["id"]}_heads = {{
  1 = {{ add_entity = {{ node = shared_pose_entity mesh_name = "{stem}_mesh" }} }}
-}}
-{tag}:hairstyles = {{
- 1 = {{ }}
-}}
-{tag}:beards = {{
- 1 = {{ }}
 }}''')
         report['clans'].append({'clan':clan['id'],'culture':clan['culture'],'gfx_tag':tag,'head_mesh':stem+'_mesh'})
+    for kind in CAPS:
+        name=f'cm_goblin_unit_cap_{kind}';cap,image,count=cap_mesh(data,kind,skeleton,names)
+        write(directory/(name+'.mesh'),cap);(directory/(name+'_diffuse.dds')).write_bytes(rgba_dds(image))
+        asset+=f'''pdxmesh = {{
+ name = "{name}_mesh"
+ file = "{name}.mesh"
+ meshsettings = {{ name = "{name}Shape" index = 0
+  texture_diffuse = "{name}_diffuse.dds"
+  texture_normal = "{HEAD_MESH}_normal.dds"
+  texture_specular = "{HEAD_MESH}_properties.dds"
+  texture = {{ index = 3 srgb = no file = "{HEAD_MESH}_mask.dds" }}
+  shader = "unit_material_repaint" shader_file = "gfx/FX/units.shader"
+ }}
+}}
+'''
+        report[f'cap_{kind}_triangles']=count
+    for category,weights in HEADGEAR.items():
+        options=''.join(f' {w} = {{ }}\n' if kind=='none' else
+                        f' {w} = {{ add_entity = {{ node = shared_pose_entity mesh_name = "cm_goblin_unit_cap_{kind}_mesh" }} }}\n'
+                        for kind,w in weights.items())
+        heads.append(f'cm_goblin_{category}_headgear = {{\n{options}}}')
     write_text(directory/(HEAD_MESH+'.asset'),asset)
     write_text(out/'in_game/gfx/models/schematics'/(SCHEMATIC+'.schematic'),goblin_schematic(game))
     constructors=[]
     for clan in config['clans']:
         tag=clan['culture']+'_gfx'
         for category in ['army_light_infantry','army_heavy_infantry']:
-            attach=''.join(f' attach = {{ 100 = {name}{" use_uniformity = no" if name=="heads" else ""} }}\n' for name in ['heads']+NATIVE_ATTACH)
+            lists=[f'cm_goblin_{clan["id"]}_heads use_uniformity = no']+NATIVE_ATTACH[:2]+[f'cm_goblin_{category}_headgear']+NATIVE_ATTACH[2:]
+            attach=''.join(f' attach = {{ 100 = {name} }}\n' for name in lists)
             constructors.append(f'''{tag}:{category} = {{
  schematic_name = {SCHEMATIC}
 {attach} animation_state_machine_name = unit_skeleton_state_machine_one_handed_axe
@@ -363,10 +409,9 @@ def build(out,game):
     write_text(out/'main_menu/gfx/unit_graphics/attachments/zz_ashborn_goblins.txt','\n'.join(heads)+'\n')
     # Heads carry authored clan skin; keep them out of the human skin repaint.
     write_text(out/TEXTURE_REGISTRATION,'assets_without_texture_variation = {\n'+
-               ''.join(f' cm_goblin_{clan["id"]}_unit_head_mesh\n' for clan in config['clans'])+'}\n')
-    write_text(out/'in_game/gfx/graphical_culture_types/ashborn_goblins.txt','\n'.join(
-        f'{c["culture"]}_gfx = {{ priority = 600 culture_tag = {c["culture"]}_gfx ethnicities = {{ 100 = cm_{c["id"]}_ethnicity }} }}' for c in config['clans'])+'\n')
-    report['runtime_infantry']='native soldier rig, gear and animations; goblin head per clan; shorter native graph copy'
+               ''.join(f' cm_goblin_{clan["id"]}_unit_head_mesh\n' for clan in config['clans'])+
+               ''.join(f' cm_goblin_unit_cap_{kind}_mesh\n' for kind in CAPS)+'}\n')
+    report['runtime_infantry']='native soldier rig, body gear and animations; goblin head per clan and goblin caps; 62.5% native graph copy'
     return report
 
 if __name__=='__main__':

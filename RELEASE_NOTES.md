@@ -2,12 +2,13 @@
 
 Not yet released or tested in game. Applies through the main installer overlay.
 
-- **Goblin infantry now use EU5's own soldier rig.** They wear the same native clothes, armour, helmets, weapons, shields and backpacks as human infantry, and play the same animations. Their gear changes with age and unit type exactly as it does for human armies. The old standalone body is retired: it had 2,476 triangles, flat single-colour textures, no gear and its own animation set.
-- **A goblin head for each clan.** The heads are sculpted from the existing CC0 goblin source, with long ears, a hooked nose, tusks and a dark-eyed face. Each clan's skin has its own colour and baked shading (256 px DXT5 with mipmaps). The head is bound to the native head joint and includes a neck that covers the native torso's neck. Goblins have no hair or beards.
-- **Shorter soldiers.** Goblin infantry use a copy of the native soldier graph with only its name and world scale changed (0.0625 instead of 0.08, 78% of human height).
+- **Goblin infantry now use EU5's own soldier rig.** They wear the same native clothes, armour, weapons, shields and backpacks as human infantry, and play the same animations. Their gear changes with age and unit type exactly as it does for human armies. The old standalone body is retired: it had 2,476 triangles, flat single-colour textures, no gear and its own animation set.
+- **A goblin head for each clan.** The heads are sculpted from the existing CC0 goblin source, with long ears, a hooked nose, tusks and a dark-eyed face. Each clan's skin has its own colour and baked shading (256 px DXT5 with mipmaps). The head is bound to the native head joint and includes a neck that covers the native torso's neck. It is oversized for the body, with full-length ears, in the style of fantasy goblins.
+- **Shorter soldiers.** Goblin infantry use a copy of the native soldier graph with only its name and world scale changed (0.05 instead of 0.08, 62.5% of human scale, about 1.1 m tall).
+- **Goblin caps instead of human helmets.** Native helmets, hair and beards do not fit the goblin skull, so goblins get their own leather and iron caps. Light infantry are mostly bareheaded or in leather; heavy infantry mostly wear iron.
 - No native meshes or textures are copied. They are referenced by name, and the native skeleton and soldier graph are read from the installed game at build time.
 
-Known gaps: hands come from the native torsos and take the game's human skin tone. Cavalry riders get goblin heads at human scale. Heavy helmets can clip the larger goblin skull and ears. Static checks pass (`tools/verify_goblin_models.py`); in-game look, ground contact, formation spacing and logs still need a test.
+Known gaps: hands come from the native torsos and take the game's human skin tone. Cavalry, artillery and ships are unchanged and still use human models. Static checks pass (`tools/verify_goblin_models.py`); in-game look, ground contact, formation spacing and logs still need a test.
 
 # Goblins of the Ashborn Isles 0.6.5
 

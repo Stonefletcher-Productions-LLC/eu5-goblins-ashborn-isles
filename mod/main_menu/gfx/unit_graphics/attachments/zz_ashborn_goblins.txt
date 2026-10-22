@@ -1,54 +1,28 @@
-﻿cm_cinderkin_gfx:heads = {
+﻿cm_goblin_cindermaw_heads = {
  1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_cindermaw_unit_head_mesh" } }
 }
-cm_cinderkin_gfx:hairstyles = {
- 1 = { }
-}
-cm_cinderkin_gfx:beards = {
- 1 = { }
-}
-cm_brinekin_gfx:heads = {
+cm_goblin_brackmaw_heads = {
  1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_brackmaw_unit_head_mesh" } }
 }
-cm_brinekin_gfx:hairstyles = {
- 1 = { }
-}
-cm_brinekin_gfx:beards = {
- 1 = { }
-}
-cm_reefkin_gfx:heads = {
+cm_goblin_reefhook_heads = {
  1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_reefhook_unit_head_mesh" } }
 }
-cm_reefkin_gfx:hairstyles = {
- 1 = { }
-}
-cm_reefkin_gfx:beards = {
- 1 = { }
-}
-cm_shatterkin_gfx:heads = {
+cm_goblin_shatterfin_heads = {
  1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_shatterfin_unit_head_mesh" } }
 }
-cm_shatterkin_gfx:hairstyles = {
- 1 = { }
-}
-cm_shatterkin_gfx:beards = {
- 1 = { }
-}
-cm_sootkin_gfx:heads = {
+cm_goblin_sootwake_heads = {
  1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_sootwake_unit_head_mesh" } }
 }
-cm_sootkin_gfx:hairstyles = {
- 1 = { }
-}
-cm_sootkin_gfx:beards = {
- 1 = { }
-}
-cm_giltkin_gfx:heads = {
+cm_goblin_giltfang_heads = {
  1 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_giltfang_unit_head_mesh" } }
 }
-cm_giltkin_gfx:hairstyles = {
- 1 = { }
+cm_goblin_army_light_infantry_headgear = {
+ 45 = { }
+ 40 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_unit_cap_leather_mesh" } }
+ 15 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_unit_cap_iron_mesh" } }
 }
-cm_giltkin_gfx:beards = {
- 1 = { }
+cm_goblin_army_heavy_infantry_headgear = {
+ 10 = { }
+ 30 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_unit_cap_leather_mesh" } }
+ 60 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_unit_cap_iron_mesh" } }
 }

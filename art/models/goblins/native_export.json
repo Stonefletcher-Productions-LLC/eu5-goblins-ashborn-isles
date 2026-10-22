@@ -1,10 +1,10 @@
 {
-  "stage": "native-rig-goblin-heads",
+  "stage": "native-rig-goblin-heads-and-caps",
   "engine_tested": false,
-  "unit_scale": 0.0625,
+  "unit_scale": 0.05,
   "native_scale": 0.08,
   "head_triangles": 940,
-  "head_vertices": 1549,
+  "head_vertices": 1553,
   "clans": [
     {
       "clan": "cindermaw",
@@ -43,5 +43,7 @@
       "head_mesh": "cm_goblin_giltfang_unit_head_mesh"
     }
   ],
-  "runtime_infantry": "native soldier rig, gear and animations; goblin head per clan; shorter native graph copy"
+  "cap_leather_triangles": 95,
+  "cap_iron_triangles": 95,
+  "runtime_infantry": "native soldier rig, body gear and animations; goblin head per clan and goblin caps; 62.5% native graph copy"
 }

@@ -60,11 +60,12 @@ if __name__=='__main__':
          load(U/'legs/unit_legs_woven_trousers_leather_shoes/unit_legs_woven_trousers_leather_shoes.mesh',U/'legs/unit_legs_woven_trousers_leather_shoes/unit_legs_woven_trousers_leather_shoes_diffuse.dds')
     human=load(U/'head/unit_head_north_german_male_adult_a/unit_head_german_a.mesh',U/'head/unit_head_north_german_male_adult_a/unit_head_01_diffuse.dds')
     goblin=load(H/'cm_goblin_unit_head.mesh',H/'cm_goblin_cindermaw_unit_head_diffuse.dds')
-    helmet=load(U/'headgear/unit_hat_headgear_helmet_with_chainmail/unit_headgear_helmet_with_chainmail.mesh',U/'headgear/unit_hat_headgear_helmet_with_chainmail/unit_headgear_helmet_with_chainmail_diffuse.dds')
-    beanie=load(U/'headgear/unit_hat_felt_beanie/unit_hat_felt_beanie.mesh',U/'headgear/unit_hat_felt_beanie/unit_hat_felt_beanie_diffuse.dds')
-    rows=[]
-    for parts,center,extent in [(body,(0,100,0),112),(body,(0,160,0),34)]:
-        row=[render(parts+head+hat,yaw,center=center,extent=extent) for head,hat in [(human,[]),(goblin,[]),(goblin,helmet),(goblin,beanie)] for yaw in (-25,)]
-        row+=[render(parts+goblin,90,center=center,extent=extent)]
-        rows.append(np.concatenate(row,1))
-    Image.fromarray((np.concatenate(rows,0)*255).astype(np.uint8)).save(args.out)
+    leather=load(H/'cm_goblin_unit_cap_leather.mesh',H/'cm_goblin_unit_cap_leather_diffuse.dds')
+    iron=load(H/'cm_goblin_unit_cap_iron.mesh',H/'cm_goblin_unit_cap_iron_diffuse.dds')
+    # Schematic scale applies to the whole unit: show goblins at their size next to the native soldier.
+    from export_goblin_models import UNIT_SCALE
+    def scaled(parts,s=UNIT_SCALE/.08):return [(p*s,uv,t,tex) for p,uv,t,tex in parts]
+    soldiers=[body+human]+[scaled(body+goblin+cap) for cap in ([],leather,iron)]
+    row=[render(parts,-25,center=(0,100,0),extent=112) for parts in soldiers]+[render(scaled(body+goblin+leather),90,center=(0,100,0),extent=112)]
+    close=[render(body+goblin+cap,yaw,center=(0,160,0),extent=34) for cap,yaw in [([],-25),(leather,-25),(iron,-25),([],90),(iron,90)]]
+    Image.fromarray((np.concatenate([np.concatenate(row,1),np.concatenate(close,1)],0)*255).astype(np.uint8)).save(args.out)
