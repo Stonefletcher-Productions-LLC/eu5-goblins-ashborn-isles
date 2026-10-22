@@ -10,11 +10,13 @@ are left byte-for-byte unchanged. No game installation is needed; a full build
 import argparse, base64, hashlib, io, json, re, zipfile
 from datetime import date
 from pathlib import Path
-import ashborn_names, shatterfin
+import ashborn_names, goblin_nobility, shatterfin
 
 ROOT = Path(__file__).resolve().parents[1]
 TAGS = ('cdm', 'qbr', 'rhk', 'sfk', 'swk', 'gtf')
 GOBLIN_ROW = re.compile(r'^(?:cm_(?:' + '|'.join(TAGS) + r')_\w+|cm_shatterfin_dynasty) = \{.*\}\s*$')
+COURT = re.compile(r'_(?:court|noble|clergy|guild)_')
+LOWBORN = re.compile(r'_(?:clergy|guild)_')
 FILES = {'main_menu/setup/start/04_dynasties.txt': 'dynasty_manager',
          'main_menu/setup/start/05_characters.txt': 'character_db'}
 
@@ -42,7 +44,8 @@ def replace_rows(text, rows):
 def generated(config):
     dynasties, characters = ashborn_names.court_rows(config['countries'])
     return {'main_menu/setup/start/04_dynasties.txt': [shatterfin.dynasty_row()] + dynasties,
-            'main_menu/setup/start/05_characters.txt': shatterfin.family_rows() + characters}
+            'main_menu/setup/start/05_characters.txt': shatterfin.family_rows() + characters
+            + goblin_nobility.rows(config['countries'])}
 
 
 def build(root=ROOT):
@@ -72,7 +75,8 @@ def verify(root=ROOT):
     born = lambda row: date(*map(int, re.search(r'birth_date = ([\d.]+)', row)[1].split('.')))
     summary = {}
     for ident, row in people.items():
-        assert re.search(r'dynasty = (\w+)', row)[1] in houses, ident
+        dynasty = re.search(r'dynasty = (\w+)', row)
+        assert (dynasty[1] in houses) if dynasty else ('last_name = ' in row and LOWBORN.search(ident)), ident
         assert born(row) <= now, ident
         for parent in re.findall(r'\b(?:mother|father) = (cm_\w+)', row):
             assert parent in seen, 'Parents must precede children: ' + ident
@@ -84,7 +88,7 @@ def verify(root=ROOT):
         if tag == 'sfk':
             continue
         prefix = 'cm_' + tag + '_'
-        family = {i: r for i, r in people.items() if i.startswith(prefix) and '_court_' not in i}
+        family = {i: r for i, r in people.items() if i.startswith(prefix) and not COURT.search(i)}
         alive = {i: r for i, r in family.items() if 'death_date' not in r}
         men = [i for i, r in alive.items() if 'female = yes' not in r and i != prefix + 'ruler']
         adults = [i for i in men if (now - born(alive[i])).days >= 18 * 365.25]
@@ -97,9 +101,24 @@ def verify(root=ROOT):
         assert max(adults, key=mil) == heir and all(mil(i) < mil(heir) for i in adults if i != heir), tag
         summary[tag.upper()] = {'living_family': len(alive), 'wives': len(wives), 'sons': len(sons),
                                 'men_of_the_house': len(men), 'adult_men': len(adults)}
-    women = [i for i, r in people.items() if i.startswith('cm_sfk_') and '_court_' not in i and 'death_date' not in r
+    women = [i for i, r in people.items() if i.startswith('cm_sfk_') and not COURT.search(i) and 'death_date' not in r
              and 'female = yes' in r and 'mother = ' in r and (now - born(r)).days >= 18 * 365.25]
     summary['SFK'] = {'eligible_adult_women': len(women)}
+    # Courtiers: enough adults of each estate for cabinets, and unmarried adults to marry.
+    courts = {}
+    for tag in TAGS:
+        prefix = 'cm_' + tag + '_'
+        court = {i: r for i, r in people.items() if i.startswith(prefix) and COURT.search(i)}
+        adults = {i: r for i, r in court.items() if (now - born(r)).days >= 18 * 365.25}
+        estates = {e: sum('estate = ' + e in r for r in adults.values()) for e in ('nobles_estate', 'clergy_estate', 'burghers_estate')}
+        single = [i for i, r in adults.items() if 'spouse = ' not in r]
+        assert estates['nobles_estate'] >= 20 and estates['clergy_estate'] >= 3 and estates['burghers_estate'] >= 3, tag
+        assert sum('female = yes' in adults[i] for i in single) >= 6 and sum('female = yes' not in adults[i] for i in single) >= 6, tag
+        # Courtiers never share the ruling dynasty, so succession is untouched.
+        ruling = 'cm_shatterfin_dynasty' if tag == 'sfk' else prefix + 'house_0'
+        assert all('dynasty = ' + ruling + ' ' not in r for r in court.values()), tag
+        courts[tag.upper()] = {'courtiers': len(court), 'adults': len(adults), 'unmarried_adults': len(single), **estates}
+    summary['courts'] = courts
     return {'goblin_characters': len(people), 'families': summary, 'engine_tested': False}
 
 

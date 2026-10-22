@@ -1,3 +1,7 @@
+# 0.6.7 noble houses acceptance
+
+New 1337 campaign. In each goblin crown: the cabinet picker lists several Highfang nobles, Oathkeepers and guild masters; the court/marriage view shows unmarried noble sons and daughters; noble heads appear in their dynasty trees (e.g. Ashjaw, Ironbite in Cindermaw). No `05_characters.txt` errors in `error.log`.
+
 # Development: goblin soldiers on the native unit rig
 
 1. Install from main and restart EU5. Start a new 1337 campaign as any goblin clan.
