@@ -186,6 +186,8 @@ def validate(game,out,mapstats,economy):
     verify_intro(lambda p: (out/p).read_text(encoding='utf-8-sig'))
     from verify_divorce import verify as verify_divorce
     verify_divorce(lambda p: (out/p).read_text(encoding='utf-8-sig'))
+    from verify_old_world import verify as verify_old_world
+    verify_old_world(lambda p: (out/p).read_text(encoding='utf-8-sig'))
     import shatterfin
     shatterfin.verify(sys.modules[__name__],out)
     import ashborn_names

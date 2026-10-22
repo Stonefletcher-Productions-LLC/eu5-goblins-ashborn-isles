@@ -1,0 +1,113 @@
+﻿namespace = ga_old_world
+# The Old World Reacts: how Iberian and Catholic courts meet the goblins, and how
+# every Ashborn crown answers them. Paced by the goblins_old_world on_actions.
+
+# Foreign Catholic courts that received goblin first contact debate the goblins.
+ga_old_world.1 = {
+    type = country_event outcome = neutral
+    title = ga_old_world.1.title desc = ga_old_world.1.desc
+    image = "gfx/interface/illustrations/event/ashborn/iberia.dds"
+    trigger = { ga_is_goblin = no has_variable = ga_received_goblin_first_contact religion = religion:catholic }
+    option = { name = ga_old_world.1.a ai_chance = { factor = 2 }
+        set_variable = { name = ga_owr_souls value = yes }
+        custom_tooltip = ga_old_world.1.a_tt
+        hidden_effect = { every_country = { limit = { ga_is_goblin = yes } save_scope_as = ga_owr_goblin root = { add_opinion = { target = scope:ga_owr_goblin modifier = ga_owr_new_souls } } } }
+        add_country_modifier = { modifier = ga_owr_mission_to_the_isles years = 10 mode = replace }
+    }
+    option = { name = ga_old_world.1.b ai_chance = { factor = 1 }
+        set_variable = { name = ga_owr_demons value = yes }
+        custom_tooltip = ga_old_world.1.b_tt
+        hidden_effect = { every_country = { limit = { ga_is_goblin = yes } save_scope_as = ga_owr_goblin root = { add_opinion = { target = scope:ga_owr_goblin modifier = ga_owr_spawn_of_the_pit } } } }
+        add_country_modifier = { modifier = ga_owr_watch_on_the_coast years = 10 mode = replace }
+    }
+}
+
+# Every goblin crown hears what the mainland makes of it.
+ga_old_world.2 = {
+    type = country_event outcome = neutral
+    title = ga_old_world.2.title desc = ga_old_world.2.desc
+    image = "gfx/interface/illustrations/event/ashborn/foreign_sails.dds"
+    trigger = { ga_is_goblin = yes }
+    option = { name = ga_old_world.2.a ai_chance = { factor = 2 }
+        trigger = { gold >= 15 }
+        add_gold = -15
+        custom_tooltip = ga_old_world.2.a_tt
+        hidden_effect = { every_country = { limit = { has_variable = ga_received_goblin_first_contact } add_opinion = { target = root modifier = ga_owr_gifts_to_churchmen } } }
+    }
+    option = { name = ga_old_world.2.b ai_chance = { factor = 1 }
+        add_prestige = 10
+        add_country_modifier = { modifier = ga_owr_let_them_fear years = 5 mode = replace }
+        custom_tooltip = ga_old_world.2.b_tt
+        hidden_effect = { every_country = { limit = { has_variable = ga_received_goblin_first_contact } add_opinion = { target = root modifier = ga_owr_feared } } }
+    }
+    option = { name = ga_old_world.2.c ai_chance = { factor = 1 }
+        trigger = { religion = religion:cm_hunger_below }
+        add_religious_influence = 5
+        add_country_modifier = { modifier = ga_owr_oathkeepers_answer years = 5 mode = replace }
+    }
+}
+
+# Every goblin crown may send its own envoy to Lisbon.
+ga_old_world.3 = {
+    type = country_event outcome = neutral
+    title = ga_old_world.3.title desc = ga_old_world.3.desc
+    image = "gfx/interface/illustrations/event/ashborn/eastern_harbor.dds"
+    trigger = { ga_is_goblin = yes ga_owr_lisbon_open = yes }
+    option = { name = ga_old_world.3.a ai_chance = { factor = 2 }
+        trigger = { gold >= 25 }
+        add_gold = -25
+        add_country_modifier = { modifier = ga_owr_lisbon_factors years = 10 mode = replace }
+        custom_tooltip = ga_old_world.3.a_tt
+        hidden_effect = { c:POR = { add_opinion = { target = root modifier = ga_owr_envoy_in_finery } } }
+    }
+    option = { name = ga_old_world.3.b ai_chance = { factor = 2 }
+        trigger = { gold >= 5 }
+        add_gold = -5
+        custom_tooltip = ga_old_world.3.b_tt
+        hidden_effect = { c:POR = { add_opinion = { target = root modifier = ga_owr_plain_envoy } } }
+    }
+    option = { name = ga_old_world.3.c ai_chance = { factor = 1 } }
+}
+
+# Curiosity cabinets: foreign collectors want goblin things.
+ga_old_world.4 = {
+    type = country_event outcome = neutral
+    title = ga_old_world.4.title desc = ga_old_world.4.desc
+    image = "gfx/interface/illustrations/event/ashborn/charts.dds"
+    trigger = { ga_is_goblin = yes }
+    option = { name = ga_old_world.4.a ai_chance = { factor = 1 }
+        add_gold = 30
+        if = { limit = { religion = religion:cm_hunger_below } add_religious_influence = -5 }
+        add_country_modifier = { modifier = ga_owr_relics_sold years = 5 mode = replace }
+    }
+    option = { name = ga_old_world.4.b ai_chance = { factor = 2 }
+        add_gold = 12
+    }
+    option = { name = ga_old_world.4.c ai_chance = { factor = 1 }
+        trigger = { gold >= 5 }
+        add_gold = -5
+        custom_tooltip = ga_old_world.4.c_tt
+        hidden_effect = { every_country = { limit = { has_variable = ga_received_goblin_first_contact } add_opinion = { target = root modifier = ga_owr_cabinet_gift } } }
+    }
+}
+
+# A papal legate reaches a goblin crown that keeps the Covenant.
+ga_old_world.5 = {
+    type = country_event outcome = neutral
+    title = ga_old_world.5.title desc = ga_old_world.5.desc
+    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
+    trigger = { ga_is_goblin = yes religion = religion:cm_hunger_below }
+    option = { name = ga_old_world.5.a ai_chance = { factor = 1 }
+        add_country_modifier = { modifier = ga_owr_friars_welcome years = 10 mode = replace }
+        custom_tooltip = ga_old_world.5.a_tt
+        hidden_effect = { every_country = { limit = { has_variable = ga_received_goblin_first_contact religion = religion:catholic } add_opinion = { target = root modifier = ga_owr_legate_welcomed } } }
+    }
+    option = { name = ga_old_world.5.b ai_chance = { factor = 2 }
+        add_religious_influence = 5
+        add_prestige = 10
+    }
+    option = { name = ga_old_world.5.c ai_chance = { factor = 1 }
+        custom_tooltip = ga_old_world.5.c_tt
+        hidden_effect = { every_country = { limit = { has_variable = ga_received_goblin_first_contact religion = religion:catholic } add_opinion = { target = root modifier = ga_owr_legate_dismissed } } }
+    }
+}

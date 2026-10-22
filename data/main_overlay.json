@@ -12,6 +12,10 @@
       "sha256": "1ca43e2b6916f4a317a4fff7659584fd158ddafb04bad40d2eacd915d5b9c470"
     },
     {
+      "path": "in_game/common/biases/goblins_old_world.txt",
+      "sha256": "ef9b5b4b87f71fa84fffee6fd3636c86f9a1e626eac5a3e61721fd232e3b908b"
+    },
+    {
       "path": "in_game/common/casus_belli/goblins_gathering.txt",
       "sha256": "b3898d705bb97d276923b9270513124b25ba43ab89097086bfbe379200a352e6"
     },
@@ -116,6 +120,10 @@
       "sha256": "58181113e10cd96ecb9a0cdfdebf6af309f2dae729e95f7b335aa74414be76a4"
     },
     {
+      "path": "in_game/common/on_action/goblins_old_world.txt",
+      "sha256": "7ade8f64c0c7ad3f83b4940f42bff56e8ad18df1d37009acba700a172b3d1e44"
+    },
+    {
       "path": "in_game/common/on_action/goblins_starting_trades.txt",
       "sha256": "7f07fb921a48ad98b291be1988719877cb0e638b81e39311e70006b28882fcc1"
     },
@@ -164,6 +172,10 @@
       "sha256": "99fc4a1953bfd17697b9234a4e8b8293626a474d43fa1da8828e21136a24f89a"
     },
     {
+      "path": "in_game/common/scripted_triggers/goblins_old_world.txt",
+      "sha256": "3fdb4aaefdb2e92584eacb9e2dbf1496acdcb60b80034538031bb8507afe2b85"
+    },
+    {
       "path": "in_game/common/situations/goblins_gathering.txt",
       "sha256": "7ef7c732fcaeebe516f67d825e0b3a9c13a5d204ae33aea524c8609886c664b2"
     },
@@ -194,6 +206,10 @@
     {
       "path": "in_game/events/goblins_gathering.txt",
       "sha256": "ae551ac4bc9d8e040eaf6db80875c67613f0299a8430c4bef903b4336800cab4"
+    },
+    {
+      "path": "in_game/events/goblins_old_world.txt",
+      "sha256": "3fe738cab1a6629f5b4a3202603b800e4008b85d3433a702442936d7682c8113"
     },
     {
       "path": "in_game/gfx/graphical_culture_types/ashborn_goblins.txt",
@@ -966,6 +982,10 @@
     {
       "path": "main_menu/common/static_modifiers/goblins_gathering.txt",
       "sha256": "3ea5d5674756b0b6639c6cfcb5fa69d798385d59df9a8ed68843b37752444d98"
+    },
+    {
+      "path": "main_menu/common/static_modifiers/goblins_old_world.txt",
+      "sha256": "6ae5801069949c4b81cb1f76819f491c5e89efdd0f792d1e826dd755607b84b0"
     },
     {
       "path": "main_menu/gfx/animation_state_machines/cm_goblin_infantry.animsm",
@@ -7766,6 +7786,10 @@
     {
       "path": "main_menu/localization/english/goblins_music_l_english.yml",
       "sha256": "bdf9a287d79055f8b7fafed6fb7915a4008052206d673fda058aac2d36d3bb20"
+    },
+    {
+      "path": "main_menu/localization/english/goblins_old_world_l_english.yml",
+      "sha256": "9641414994dbeb10fb596bb41d08ac09aaf345cf7ad1688fc1a261aa78ba6d05"
     },
     {
       "path": "main_menu/music/audio_culture_types/goblins_music.txt",
