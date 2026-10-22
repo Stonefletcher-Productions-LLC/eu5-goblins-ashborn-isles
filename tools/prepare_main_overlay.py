@@ -23,6 +23,8 @@ def main():
     import build_clan_flags
     build_clan_flags.build(output)
     report=export_goblin_models.build(output)
+    import export_goblin_buildings
+    report['city_set']=export_goblin_buildings.build(output)
     portraits=build_goblin_portraits.build(output)
     import verify_goblin_portraits
     portraits["validation"]=verify_goblin_portraits.verify(output,args.game)
@@ -41,6 +43,7 @@ def main():
     paths=[p for prefix in ['in_game/gfx/models/units/ashborn_goblins','in_game/gfx/models/schematics','in_game/gfx/graphical_culture_types','main_menu/gfx/unit_graphics/units','main_menu/gfx/animation_state_machines'] for p in (output/prefix).rglob('*') if p.is_file()]
     paths.extend([output/'in_game/common/cultures/goblins_ashborn_isles.txt',output/'main_menu/localization/english/goblins_ashborn_isles_l_english.yml',output/'main_menu/gfx/unit_graphics/attachments/zz_ashborn_goblins.txt'])
     paths.append(output/export_goblin_models.TEXTURE_REGISTRATION)
+    paths.extend(output/p for p in export_goblin_buildings.runtime_paths())
     paths.extend(p for prefix in ['in_game/gfx/models/portraits/ashborn','in_game/common/ethnicities','main_menu/gfx/portraits'] for p in (output/prefix).rglob('*') if p.is_file())
     paths.append(output/'in_game/common/genes/zz_ashborn_portraits.txt')
     paths.append(output/'in_game/common/genes/zz_ashborn_outfits.txt')

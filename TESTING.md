@@ -7,6 +7,23 @@ New 1337 campaign, fresh `logs/error.log`.
 - The marriage law tooltip or ruler panel allows four wives under the Ashen Covenant; arrange a fourth marriage for a goblin ruler.
 - No `05_characters.txt` or `04_dynasties.txt` errors in the log. Observe 30+ years: the ruling dynasty survives at least one succession.
 
+# 0.6.6 acceptance: Obsidian Fletchers
+
+- As any goblin crown, open levies in a goblin-majority location: **Obsidian Fletchers** are offered, with the name and description shown, not raw keys.
+- As Portugal or Castile, they are not offered in their own lands. Whoever owns a goblin-majority location can raise them there (by design, like vanilla Schiltrons).
+- Raise one and check the unit panel: initiative and damage bonuses, hills and mountains combat bonus, goblin infantry card art and goblin 3D soldiers.
+- After the Renaissance age starts, they upgrade to **Blackglass Crossbows**.
+- Fresh `logs/error.log`: no lines mentioning `a_ga_obsidian_fletchers`, `a_ga_blackglass_crossbows` or `ga_obsidian_fletchers_location_trigger`.
+- Load a 0.6.5 save: it loads and the levy appears there too.
+
+# Goblin city buildings acceptance
+
+- Start a new 1337 campaign and zoom into Hooktooth (city) and a few goblin towns and villages. Houses should be goblin shacks, stacked shanty towers and the chieftain's hall, not European half-timbered houses.
+- Check scale against a neighbouring vanilla town: shacks should read as slightly smaller and messier, not as tiny specks or giants.
+- Check that buildings sit on the ground on hills (no floating or buried shacks) and that textures are not pink, black or missing.
+- Build a stockade or fort in a goblin location: it should show the stake palisade with gate towers.
+- error.log: no lines mentioning `cm_goblin_`, `ashborn_goblins` or `cm_ashborn_goblins.txt`.
+
 # 0.6.5 acceptance
 
 Restart EU5 with only one Goblins copy enabled and start a **new 1337 campaign**.

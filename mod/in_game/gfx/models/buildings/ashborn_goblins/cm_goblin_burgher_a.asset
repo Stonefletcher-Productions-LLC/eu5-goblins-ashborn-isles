@@ -1,0 +1,19 @@
+﻿pdxmesh = {
+	name = "cm_goblin_burgher_a_mesh"
+	file = "cm_goblin_burgher_a.mesh"
+
+	meshsettings = {
+		name = "cm_goblin_burgher_aShape"
+		index = 0
+		texture_diffuse = "cm_goblin_buildings_atlas_diffuse.dds"
+		texture_normal = "cm_goblin_buildings_atlas_normal.dds"
+		texture_specular = "cm_goblin_buildings_atlas_properties.dds"
+		shader = "standard_building"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "cm_goblin_burgher_a_entity"
+	pdxmesh = "cm_goblin_burgher_a_mesh"
+}
