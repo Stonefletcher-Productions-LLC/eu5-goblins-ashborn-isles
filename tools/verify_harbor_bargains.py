@@ -52,7 +52,7 @@ class World:
             if k in ['AND', 'OR', 'NOT']:
                 answers = [check(*row) for row in v]
                 return any(answers) if k == 'OR' else not all(answers) if k == 'NOT' else all(answers)
-            if isinstance(v, list) and k.startswith(('scope:', 'var:')):
+            if isinstance(v, list) and k.startswith(('scope:', 'var:', 'c:')):
                 target = self.value(k, country, scopes)
                 return target in self.countries and self.countries[target]['exists'] and self.condition(v, target, scopes)
             if k in self.defs:
@@ -101,7 +101,7 @@ class World:
                 limits = next(value for key, _, value in v if key == 'limit')
                 if self.condition(limits, country, scopes):
                     self.effects([row for row in v if row[0] != 'limit'], country, scopes)
-            elif k.startswith(('scope:', 'var:')):
+            elif k.startswith(('scope:', 'var:', 'c:')):
                 target = self.value(k, country, scopes)
                 if target in self.countries and self.countries[target]['exists']:
                     self.effects(v, target, scopes)
@@ -122,6 +122,9 @@ class World:
             elif k == 'remove_variable': data['vars'].pop(v, None)
             elif k == 'remove_country_modifier': data['modifiers'].pop(v, None)
             elif k == 'add_gold': data['gold'] += float(v)
+            elif k == 'add_opinion':
+                fields = {key: value for key, _, value in v}
+                data.setdefault('opinions', []).append((self.value(fields['target'], country, scopes), fields['modifier']))
             elif k == 'add_religious_influence': data['religious_influence'] = max(0, min(100, data['religious_influence'] + float(v)))
             elif k == 'make_subject_of':
                 fields = {key: value for key, _, value in v}

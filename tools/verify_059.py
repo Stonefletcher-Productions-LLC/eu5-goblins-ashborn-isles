@@ -9,6 +9,7 @@ import verify_ashen_covenant
 import verify_script_registration
 import verify_harbor_bargains
 import verify_compact_talks
+import verify_sworn_pacts
 import verify_situation_progress
 import verify_early_projects
 import verify_covenant_stories
@@ -61,6 +62,7 @@ def verify(out, game):
             'combined_candidate':verify_combined_candidate.verify(lambda p:(out/p).read_text(encoding='utf-8-sig')),
             'harbor_bargains':verify_harbor_bargains.verify(lambda p:(out/p).read_text(encoding='utf-8-sig')),
             'compact_talks':verify_compact_talks.verify(lambda p:(out/p).read_text(encoding='utf-8-sig')),
+            'sworn_pacts':verify_sworn_pacts.verify(lambda p:(out/p).read_text(encoding='utf-8-sig')),
             'situation_progress':verify_situation_progress.verify(lambda p:(out/p).read_text(encoding='utf-8-sig')),
             'early_projects':verify_early_projects.verify(lambda p:(out/p).read_text(encoding='utf-8-sig')),
             'covenant_stories':verify_covenant_stories.verify(lambda p:(out/p).read_text(encoding='utf-8-sig')),
