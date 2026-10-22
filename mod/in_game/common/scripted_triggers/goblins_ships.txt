@@ -1,0 +1,4 @@
+﻿# location scope; goblin-majority ports, including settled or conquered ones.
+ga_goblin_shipyard_location_trigger = {
+	dominant_culture ?= { has_culture_group = culture_group:cm_goblin_group }
+}
