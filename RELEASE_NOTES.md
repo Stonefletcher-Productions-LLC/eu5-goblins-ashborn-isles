@@ -3,10 +3,11 @@
 **0.6.8 — Galleys, Warchiefs and sculpted goblin soldiers.**
 
 - **Starting tech and ships:** goblin crowns start with Feudalism, so they get galleys, iron working and feudal advances from day one instead of only canoes. Two unique goblin ships join the fleet.
-- **Sculpted goblin soldiers:** infantry use their own goblin body (big skull, long ears, tusks, clawed hands) with clan outfits and caps, still on EU5's native skeleton, animations and weapons.
+- **Sculpted goblin soldiers:** infantry use their own goblin body (big skull, long ears, tusks, clawed hands) with clan outfits, trousers, spaulders, belt knives and caps, still on EU5's native skeleton, animations and weapons.
 - **Kingdom openings:** each crown gets its own opening event and painting after the shared Ashborn introduction.
 - **Goblin Horde actions:** the Warchief can Call the Muster, Settle a Feud and Raise the Warchief's Levy. Smaller crowns can petition the Warchief for plunder, calm clans or a peace.
 - **Shatterfin out-builds Giltfang** at the start, so it is set up to conquer it.
+- **The Goblin Shore:** goblin crowns can settle on the mainland, and Europe pushes back.
 - **More lore:** a southern voyage, reactions from Muslim courts, a Shatterfin–Giltfang rivalry, renamed estates, new name pools and country names.
 - **New art:** Covenant story paintings, redone event paintings and goblin art for cavalry, artillery and auxiliary unit cards.
 

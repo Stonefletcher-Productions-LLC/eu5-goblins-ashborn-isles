@@ -15,6 +15,7 @@ Choose a goblin crown, develop its economy and bargain with neighboring rulers. 
 [*][b]Sculpted goblin soldiers[/b] with clan outfits and caps.
 [*][b]Kingdom openings:[/b] an opening event and painting for every crown.
 [*][b]Warchief actions[/b] and petitions in the Goblin Horde; Shatterfin out-builds Giltfang.
+[*][b]The Goblin Shore:[/b] settle the mainland and face the European backlash.
 [/list]
 Start a new 1337 campaign. Not yet tested in game.
 [b]Included from 0.6.7:[/b] Shatter Maw moves and grows, Cinderstep, start-game balance, the Goblin Horde, Pact Ladder and Covenant rites.
