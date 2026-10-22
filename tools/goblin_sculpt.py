@@ -169,17 +169,17 @@ P=dict(
     head=[(149,3.5,3,-10),(152,5.5,5.5,-9),(155,7.2,7,-7.5),(158,9,9,-6),(161,10.8,11,-4.5),(164,12.4,12.5,-3.2),(167,13.2,13.8,-2.5),
           (170,13.2,14.5,-2),(172.5,12.4,14,-1.5),(175,10.8,12.8,-1),(177.5,8.4,10.6,-0.5),(179.8,4.5,6,0)],
     # angry V brow (outer ends up), beady close-set eyes under it
-    brow=(5.6,168.4,-14.8),brow_r=(5.8,2.4,4.0),brow_rot=(0,0,15),bridge=(0,168,-15.8),bridge_r=1.9,
+    brow=(5.6,168.4,-14.8),brow_r=(5.8,2.4,4.0),brow_rot=(0,0,15),bridge=(0,167.2,-15.2),bridge_r=1.6,
     eye=(4.8,165,-13.4),eye_r=2.2,
     # hollows carved into the remeshed skin before the eyeballs go in: (centre, radius, depth)
     hollows=[((4.8,165,-16.5),4.3,2.0),((-4.8,165,-16.5),4.3,2.0),((10.5,159,-6.5),4.5,1.5),((-10.5,159,-6.5),4.5,1.5),((12,170,-3),3.5,0.8),((-12,170,-3),3.5,0.8),
              ((1.6,158.8,-21.4),1.3,0.9),((-1.6,158.8,-21.4),1.3,0.9),((6.8,155,-12.5),1.8,1.0),((-6.8,155,-12.5),1.8,1.0),((0,112,-14.5),2.2,1.0)],
-    cheek=(8.3,164.5,-10),cheek_r=(3.0,2.2,3.0),chin=(0,150.5,-13.5),chin_r=(3.2,2.8,3.4),teeth_x=(-4.2,-1.5,1.5,4.2),
-    jaw=(0,153,-11),jaw_r=(6,3.5,6),tusk_base=(3.4,152.5,-14.6),tusk_tip=(4.2,159.5,-18),tusk_r=(1.15,0.55),
+    cheek=(8.6,164,-10),cheek_r=(3.4,2.4,3.3),chin=(0,149.6,-14.0),chin_r=(2.6,3.0,3.2),teeth_x=(-4.2,-1.5,1.5,4.2),
+    jaw=(0,153,-11),jaw_r=(6,3.5,6),tusk_base=(3.6,152.3,-14.4),tusk_tip=(5.0,160,-18.6),tusk_r=(1.3,0.6),
     nose=[((0,166.5,-15.8),2.0),((0,163.5,-18.8),1.9),((0,160.2,-21.3),2.2),((0,158.3,-22.0),1.6),((1.9,159.5,-19.6),1.3),((-1.9,159.5,-19.6),1.3)],
     warts=[((2.4,160,-21.6),0.9),((-7.5,167.5,-12.5),0.8),((9.5,160,-9.5),0.7),((-3,152,-12.5),0.6)],
     ear_base=(10,167,0),ear_tip=(30,179,5),ear_r=(5.5,1.1),
-    mouth=(0,154.5,-13),mouth_w=7,mouth_depth=1.8,
+    mouth=(0,154.5,-13),mouth_w=8,mouth_depth=1.8,
     neck=((0,146,0),(0,158,-6),6.5,6.8),
     hump=(0,146,11),hump_r=(11,9,8),
     collarbone=((2,145,-6),(15,142.5,-3),1.3),ribs=3,rib_r=1.0,spine_knobs=7,spine_r=1.4,hip=(12,99,-4),hip_r=2.5,
@@ -214,7 +214,7 @@ def crease(ob,center,width,depth,height=1.2):
     for v in ob.data.vertices:
         dx=abs(v.co.x-cx)/width;dy=abs(v.co.y-cy)/height
         if dx<1 and dy<1 and v.co.z<cz+6:
-            w=(1-dx*dx)*(1-dy*dy);v.co.z+=depth*w
+            w=(1-dx*dx)*(1-dy*dy);v.co.z+=depth*w;v.co.y-=0.6*dx*dx*w
 
 def dimple(ob,center,radius,depth):
     """Press a smooth hollow into the surface around center (eye sockets, nostrils, cheek hollows)."""
@@ -234,7 +234,7 @@ def sculpt_body(B,voxel=0.6,target_tris=6000):
     mirror(E,'brow',P['brow'],P['brow_r'],rot=P['brow_rot']);E('bridge',P['bridge'],(P['bridge_r'],)*3)
     mirror(E,'cheek',P['cheek'],P['cheek_r'])
     E('jaw',P['jaw'],P['jaw_r']);E('chin',P['chin'],P['chin_r']);mirror(K,'tusk',P['tusk_base'],P['tusk_tip'],P['tusk_r'])
-    for i,x in enumerate(P['teeth_x']):K(f'tooth{i}',(x,152.8,-16.6),(x*1.05,156.4,-17.4),(0.95,0.35))
+    for i,x in enumerate(P['teeth_x']):K(f'tooth{i}',(x,152.6,-13.8),(x*1.05,156.0,-14.9),(0.8,0.3))
     C('lowerlip',(-6.5,153.2,-13.5),(6.5,153.2,-13.5),1.1,1.1);C('upperlip',(-6.5,155.9,-13.6),(6.5,155.9,-13.6),1.0,1.0)
     for i,(c,r) in enumerate(P['nose']):E(f'nose{i}',c,(r,r,r*1.2))
     for i,(c,r) in enumerate(P['warts']):E(f'wart{i}',c,(r,r,r))
@@ -586,7 +586,7 @@ def main(bones_path,outdir,game=None,render=True):
     hi,lo=sculpt_body(B);assign(lo,'skin');assign(hi,'skin')
     armature=build_armature(bones);print('unweighted',skin_to(lo,armature));unwrap(lo,margin=0.004)
     print('body',export_mesh(lo,armature,outdir/'body.npz'))
-    maps=bake_maps(lo,512,hi=hi);save_maps(maps,str(outdir/'body'))
+    maps=bake_maps(lo,1024,hi=hi);save_maps(maps,str(outdir/'body'))
     body=np.load(outdir/'body.npz');weights=(body['pos'],body['ix'],body['w'])
     meshes={f'outfit_{kind}_{variant}':join_pieces(build_outfit(B,hi,kind,variant),f'outfit_{kind}_{variant}') for kind in ('light','heavy') for variant in 'ab'}
     meshes.update({f'cap_{kind}':join_pieces(build_cap(B,hi,kind),f'cap_{kind}') for kind in ('leather','iron','horned')})
