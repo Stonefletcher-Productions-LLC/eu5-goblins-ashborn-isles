@@ -11,13 +11,11 @@
     show_on_diplomatic_map = yes
     show_leave_message = no
     use_laws_as_join_reason = no
-    can_invite_countries = no
     subject_limited = no
     expel_members_who_are_targets_of_other_members = no
     expel_members_who_target_the_leader = no
     expel_members_who_are_attackers_at_war_with_other_members = no
     expel_members_who_are_defenders_at_war_with_other_members = no
-    opinion_bonus = 10
 
     create_visible_trigger = { always = no }
     invite_visible_trigger = { always = no }

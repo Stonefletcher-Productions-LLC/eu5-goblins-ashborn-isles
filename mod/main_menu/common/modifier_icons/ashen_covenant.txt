@@ -1,0 +1,5 @@
+﻿ac_major_rite_cost_modifier = { positive = "gfx/interface/icons/modifier_types/hussite_wars_actions_price_cost_modifier.dds" }
+ac_offering_cost_modifier = { positive = "gfx/interface/icons/modifier_types/hussite_wars_actions_price_cost_modifier.dds" }
+ac_minor_rite_cost_modifier = { positive = "gfx/interface/icons/modifier_types/hussite_wars_actions_price_cost_modifier.dds" }
+ac_clan_rite_cost_modifier = { positive = "gfx/interface/icons/modifier_types/hussite_wars_actions_price_cost_modifier.dds" }
+ac_moot_convening_cost_modifier = { positive = "gfx/interface/icons/modifier_types/hussite_wars_actions_price_cost_modifier.dds" }

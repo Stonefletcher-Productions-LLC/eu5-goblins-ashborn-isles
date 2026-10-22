@@ -674,7 +674,7 @@ ga_prepare_crossing = {
     ai_tick = monthly
     ai_tick_frequency = 6
     cooldown = { type = ga_prepare_crossing years = 10 }
-    price = price:ga_gathering_crossing_price
+    price = price:ga_eastern_crossing_price
     select_trigger = {
         looking_for_a = situation
         interaction_source_list = { situation:ga_eastern_hunger = { add_to_list = source } }

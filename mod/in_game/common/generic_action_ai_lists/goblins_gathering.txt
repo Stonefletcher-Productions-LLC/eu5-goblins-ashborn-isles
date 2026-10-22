@@ -11,3 +11,7 @@ ga_harbor_bargains_ai_list = {
     potential = { ga_hb_free = yes gold >= 30 can_see_situation = situation:ga_gathering_of_five }
     actions = { ga_offer_harbor_pact ga_seek_pilot_bargain }
 }
+ga_horde_ai_list = {
+    potential = { ga_in_horde = yes }
+    actions = { ga_horde_tribute ga_horde_war_horns ga_horde_muster ga_horde_settle_feud ga_horde_levy ga_horde_ask_gold ga_horde_ask_calm ga_horde_appeal_feud }
+}
