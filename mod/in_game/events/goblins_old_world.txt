@@ -6,7 +6,7 @@
 ga_old_world.1 = {
     type = country_event outcome = neutral
     title = ga_old_world.1.title desc = ga_old_world.1.desc
-    image = "gfx/interface/illustrations/event/ashborn/iberia.dds"
+    image = "gfx/interface/illustrations/event/ashborn/old_world_demons.dds"
     trigger = { ga_is_goblin = no has_variable = ga_received_goblin_first_contact religion = religion:catholic }
     option = { name = ga_old_world.1.a ai_chance = { factor = 2 }
         set_variable = { name = ga_owr_souls value = yes }
@@ -26,7 +26,7 @@ ga_old_world.1 = {
 ga_old_world.2 = {
     type = country_event outcome = neutral
     title = ga_old_world.2.title desc = ga_old_world.2.desc
-    image = "gfx/interface/illustrations/event/ashborn/foreign_sails.dds"
+    image = "gfx/interface/illustrations/event/ashborn/old_world_tavern.dds"
     trigger = { ga_is_goblin = yes }
     option = { name = ga_old_world.2.a ai_chance = { factor = 2 }
         trigger = { gold >= 15 }
@@ -51,7 +51,7 @@ ga_old_world.2 = {
 ga_old_world.3 = {
     type = country_event outcome = neutral
     title = ga_old_world.3.title desc = ga_old_world.3.desc
-    image = "gfx/interface/illustrations/event/ashborn/eastern_harbor.dds"
+    image = "gfx/interface/illustrations/event/ashborn/old_world_envoy.dds"
     trigger = { ga_is_goblin = yes ga_owr_lisbon_open = yes }
     option = { name = ga_old_world.3.a ai_chance = { factor = 2 }
         trigger = { gold >= 25 }
@@ -73,7 +73,7 @@ ga_old_world.3 = {
 ga_old_world.4 = {
     type = country_event outcome = neutral
     title = ga_old_world.4.title desc = ga_old_world.4.desc
-    image = "gfx/interface/illustrations/event/ashborn/charts.dds"
+    image = "gfx/interface/illustrations/event/ashborn/old_world_cabinet.dds"
     trigger = { ga_is_goblin = yes }
     option = { name = ga_old_world.4.a ai_chance = { factor = 1 }
         add_gold = 30
@@ -95,7 +95,7 @@ ga_old_world.4 = {
 ga_old_world.5 = {
     type = country_event outcome = neutral
     title = ga_old_world.5.title desc = ga_old_world.5.desc
-    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
+    image = "gfx/interface/illustrations/event/ashborn/old_world_legate.dds"
     trigger = { ga_is_goblin = yes religion = religion:cm_hunger_below }
     option = { name = ga_old_world.5.a ai_chance = { factor = 1 }
         add_country_modifier = { modifier = ga_owr_friars_welcome years = 10 mode = replace }

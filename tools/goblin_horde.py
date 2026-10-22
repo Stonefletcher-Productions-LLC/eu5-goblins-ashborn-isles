@@ -191,8 +191,7 @@ ILLUSTRATION = 'main_menu/gfx/interface/illustrations/international_organization
 
 def art(root, out, write_bytes):
     from build_infantry_art import dds
-    with Image.open(root / 'art/events/sources/gathering.png') as source:
-        source = source.convert('RGB')
-        write_bytes(out / ILLUSTRATION, dds(ImageOps.fit(source, (1920, 826), method=Image.Resampling.LANCZOS), 'DXT1'))
-        # A square crop of the six banners for the IO icon.
-        write_bytes(out / ICON, dds(ImageOps.fit(source, (128, 128), method=Image.Resampling.LANCZOS, centering=(0.5, 0.2)), 'DXT1'))
+    with Image.open(root / 'art/horde/goblin_horde.png') as source:
+        write_bytes(out / ILLUSTRATION, dds(ImageOps.fit(source.convert('RGB'), (1920, 826), method=Image.Resampling.LANCZOS), 'DXT1'))
+    with Image.open(root / 'art/horde/goblin_horde_icon.png') as source:
+        write_bytes(out / ICON, dds(ImageOps.fit(source.convert('RGB'), (128, 128), method=Image.Resampling.LANCZOS), 'DXT1'))

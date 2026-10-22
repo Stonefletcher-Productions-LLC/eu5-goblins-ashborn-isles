@@ -99,7 +99,7 @@
     {
       "tag": "GTF",
       "path": "data/giltfang.json",
-      "sha256": "43080f91598c9c5079b1641ddc6ef845b1155b4119cfe8b68d5e9ccd521bbd71"
+      "sha256": "b56bfb7082b7637ba93c245c2b2a755a0a48583defb482a34ea04b0007d3c60b"
     }
   ],
   "homeland_locations": [
@@ -169,8 +169,25 @@
     "cm_shardpoint",
     "cm_stormpasture",
     "cm_silver_shard",
+    "cm_wrackfang",
+    "cm_gullscar",
+    "cm_stormcrag",
+    "cm_tidewhet",
+    "cm_brinehollow",
+    "cm_splitrock",
+    "cm_fangreach",
+    "cm_saltmarrow",
+    "cm_skerrygate",
+    "cm_crowspire",
+    "cm_wavebreak",
+    "cm_brackfen",
+    "cm_harrowmoor",
+    "cm_grimtide",
     "cm_knifeback",
     "cm_silkworm_grove",
+    "cm_edgewater",
+    "cm_maw_rock",
+    "cm_gullwatch",
     "cm_sootwake",
     "cm_ember_key",
     "cm_sootgrain",
@@ -199,7 +216,10 @@
     "cm_lastlight",
     "cm_lantern_haven",
     "cm_wickwood",
-    "cm_emberwatch"
+    "cm_emberwatch",
+    "cm_cinderstep",
+    "cm_slagcove",
+    "cm_kilnwatch"
   ],
   "files": [
     {
@@ -248,11 +268,11 @@
     },
     {
       "path": "in_game/common/script_values/goblins_gathering.txt",
-      "sha256": "a1fad45803beb7094a8ded55996adaed6cc6eacb317b17258dde383b4496eb2b"
+      "sha256": "5bf30245ce83a5a9d64001ffb6524464dfea7beb6d8ff05f07962122509abe73"
     },
     {
       "path": "in_game/common/scripted_triggers/goblins_gathering.txt",
-      "sha256": "0e8340ec789fc5b6f2dc6d4c0a3c997ba00a24b02236f56a327bf66b1a54978c"
+      "sha256": "7beafe8a718982dc4e5979060c7851bc4ed32eda71a4838f56134cb6489ce493"
     },
     {
       "path": "in_game/common/situations/goblins_gathering.txt",
@@ -276,7 +296,7 @@
     },
     {
       "path": "in_game/events/goblins_gathering.txt",
-      "sha256": "d958752bca05d6bc7a6fb21a83885d0ccdcc0ff312bf26cf52370ac472a93c2d"
+      "sha256": "a8d91865cb6238e007436a7ac286fe8eb6ff7a46525c275acb095f45f62dc195"
     },
     {
       "path": "in_game/gui/panels/situation/ga_ashborn_voyages.gui",
@@ -288,7 +308,7 @@
     },
     {
       "path": "in_game/gui/panels/situation/ga_gathering_of_five.gui",
-      "sha256": "4a4d828fcfbe8ee40e6423eb22ad06c388c089be737188c1be6959618148daa2"
+      "sha256": "ac97c1a935a16736fc302c2979c290436e7e8a268f1e0d8acdc02f9627cd1a10"
     },
     {
       "path": "main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt",
@@ -359,6 +379,10 @@
       "sha256": "daf9ea8c14b8bc85cd45ccfc9306d5c3b5dc096a34adc147c79fa2ce76f06372"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/compact_charter.dds",
+      "sha256": "180149ff457acc352960b24e7ffeaebc42065c13c04c25ffde649d3941404f6a"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/departure.dds",
       "sha256": "8eb596f676f2bff3cd9e372a7c3a7f843a0cc382a9d9afe72c3f6931628ef48a"
     },
@@ -391,8 +415,32 @@
       "sha256": "b0477cbb985315db8d7c731f82a574d1f40b8a65d6856a7d32bf6cd405ab3c64"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/kinship.dds",
+      "sha256": "a5d9e98fee4b96bad5a06c91138e64f0b643869b9e453c446869000cdb395c71"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/oath.dds",
       "sha256": "ed42213c0222507b7cf5ea7888928ba25960deff2e12e20db513092eafddb6c9"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/old_world_cabinet.dds",
+      "sha256": "cfeaa21d70ff83566e3c90cfe3dbf8aea44007f45bd34ec971ab92a5fd62a966"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/old_world_demons.dds",
+      "sha256": "453ecdfede8feca871369e4eb7c7a4c6ae792fd353137331b9a2156ed84a64d5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/old_world_envoy.dds",
+      "sha256": "05ae820bdc968437035d72c5f8690fa92449b5ad7f3d2b688bc353ddf201aab4"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/old_world_legate.dds",
+      "sha256": "35d3bbe2a289361b3f94ff7c9ce70a59a9317f7cedad1aeb78b9dc84f220272a"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/old_world_tavern.dds",
+      "sha256": "03904ebdef1b42a4b3dd3287bdb04daa33b7c2ad95be2829f9bf044599cd03af"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/reefhook.dds",
@@ -405,6 +453,10 @@
     {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/sootwake.dds",
       "sha256": "b4d6f2080e9369d04e0e782f1eefae12958daf6d4c6a8dfb4519f957e1c40a3d"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/sworn_pact.dds",
+      "sha256": "36b60b80eb71e9c7fe03ea732d13741e37b72dec8767708c477be1087d502a70"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/unification.dds",
@@ -424,11 +476,11 @@
     },
     {
       "path": "main_menu/localization/english/goblins_exploration_l_english.yml",
-      "sha256": "ac35cee1a1c723b8f13a870e710fca002dc64e4e5ddc3e967139691e2f94065f"
+      "sha256": "aca5ffc21a328a706b4971d612c8261b6866742671769ac7e5b38258991e29ab"
     },
     {
       "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
-      "sha256": "6ec9cccfc29422d87f3324752b3e60541ed9f3790dc1ab1ccacfe6cebf698f0e"
+      "sha256": "8e0428bc24e289ff096d7502d01bcb52e392f34c80237ecae44abdde81e41f40"
     }
   ]
 }

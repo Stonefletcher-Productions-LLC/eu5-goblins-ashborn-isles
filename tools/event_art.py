@@ -9,19 +9,21 @@ EVENTS = {
         5: 'unification', 6: 'eastern_hunger', 7: 'unification',
         8: 'eastern_harbor', 10: 'cindermaw', 11: 'brackmaw',
         12: 'reefhook', 13: 'shatterfin', 14: 'sootwake', 15: 'shatterfin',
-        16: 'harbor_pact', 17: 'harbor_pact', 18: 'oath',
+        16: 'harbor_pact', 17: 'harbor_pact', 18: 'compact_charter',
         20: 'harbor_pact', 21: 'harbor_pact', 22: 'harbor_pact',
         23: 'harbor_pact', 24: 'harbor_pact', 25: 'harbor_pact',
-        30: 'oath', 31: 'oath', 32: 'oath', 33: 'oath', 34: 'oath', 35: 'oath',
-        36: 'oath', 37: 'oath', 38: 'harbor_pact', 39: 'gathering',
-        41: 'unification', 42: 'gathering',
+        30: 'compact_charter', 31: 'compact_charter', 32: 'compact_charter',
+        33: 'compact_charter', 34: 'compact_charter', 35: 'compact_charter',
+        36: 'sworn_pact', 37: 'sworn_pact', 38: 'sworn_pact', 39: 'gathering',
+        41: 'kinship', 42: 'kinship',
     }.items()},
     **{f'goblins_exploration.{n}': art for n, art in {
         1: 'departure', 2: 'iberia', 3: 'charts',
         4: 'biscay', 5: 'africa', 6: 'foreign_sails',
     }.items()},
     **{f'ga_old_world.{n}': art for n, art in {
-        1: 'iberia', 2: 'foreign_sails', 3: 'eastern_harbor', 4: 'charts', 5: 'oath',
+        1: 'old_world_demons', 2: 'old_world_tavern', 3: 'old_world_envoy',
+        4: 'old_world_cabinet', 5: 'old_world_legate',
     }.items()},
 }
 # Covenant stories reuse the same native-sized paintings.
