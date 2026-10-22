@@ -901,7 +901,7 @@
     },
     {
       "path": "in_game/map_data/location_templates.txt",
-      "sha256": "6425ff51382cafb64a19b5fcdb53872ba2bfd4ffb46efbded5d3b05c6d374f23"
+      "sha256": "78406df186ce5880c79578975ffb01041cf6ddf5b1aa345eb8043cafb482efa0"
     },
     {
       "path": "in_game/map_data/ports.csv",
