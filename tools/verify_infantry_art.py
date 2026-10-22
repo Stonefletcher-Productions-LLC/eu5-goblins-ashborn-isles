@@ -15,12 +15,17 @@ def verify(game):
         if built:
             assert built['unit_types']==art.unit_types(game,categories),name
             assert built['source_sha256']==hashlib.sha256((root/source).read_bytes()).hexdigest(),name
+    for name, source in art.UNIQUE.items():
+        built=report['unique'].get(name)
+        assert (built is None)==(name in report['pending_art']),name
+        if built: assert built['source_sha256']==hashlib.sha256((root/source).read_bytes()).hexdigest(),name
     assert len(report['culture_tags'])==len(__import__('ashborn_roster').TAGS)
     files=set(report['files'])
     assert files=={p.relative_to(root/'mod').as_posix() for p in (root/'mod'/art.REL).rglob('*.dds')}
     for name in files:
-        assert any(Path(name).stem.endswith('_'+tag) for tag in report['culture_tags'])
-        assert any(Path(name).stem.startswith(f'army_{c}_') for c in report['categories'])
+        if Path(name).stem not in report['unique']:
+            assert any(Path(name).stem.endswith('_'+tag) for tag in report['culture_tags'])
+            assert any(Path(name).stem.startswith(f'army_{c}_') for c in report['categories'])
         raw=(root/'mod'/name).read_bytes()
         mask='/masks/' in name
         assert raw[:4]==b'DDS '

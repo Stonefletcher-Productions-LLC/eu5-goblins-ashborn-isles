@@ -13,6 +13,13 @@ CATEGORIES = {
     'artillery': (('army_artillery',), 'art/artillery/ashborn_artillery.png'),
     'auxiliary': (('army_auxiliary',), 'art/auxiliary/ashborn_auxiliary.png'),
 }
+# Goblin-only unique units and ships: [unit_category]_[unit_type] names need no culture tag.
+UNIQUE = {
+    'army_infantry_a_ga_obsidian_fletchers': 'art/units/obsidian_fletchers.png',
+    'army_infantry_a_ga_blackglass_crossbows': 'art/units/blackglass_crossbows.png',
+    'navy_galley_n_ga_ashoar_galley': 'art/ships/ashoar_galley.png',
+    'navy_heavy_ship_n_ga_wreck_hulk': 'art/ships/wreck_hulk.png',
+}
 
 def blocks(text):
     text = re.sub(r'#[^\n]*', '', text)
@@ -101,6 +108,18 @@ def build(game, output):
         report['categories'][illustration]={'unit_types':unit_ids,'source':source,
             'source_sha256':hashlib.sha256((ROOT/source).read_bytes()).hexdigest()}
         report['files'] += paths
+    report['unique']={}
+    for name, source in UNIQUE.items():
+        if not (ROOT/source).exists():
+            report['pending_art'].append(name)
+            continue
+        art = dds(ImageOps.fit(Image.open(ROOT/source).convert('RGB'),(1080,440)),'DXT1')
+        for rel, content in [(REL/(name+'.dds'),art),(REL/'masks'/(name+'.dds'),mask)]:
+            target=output/rel
+            target.parent.mkdir(parents=True,exist_ok=True)
+            target.write_bytes(content)
+            report['files'].append(rel.as_posix())
+        report['unique'][name]={'source':source,'source_sha256':hashlib.sha256((ROOT/source).read_bytes()).hexdigest()}
     # Infantry keys remain at top level for existing verifiers and release reports.
     report['unit_types']=report['categories']['infantry']['unit_types']
     report['source_sha256']=report['categories']['infantry']['source_sha256']
@@ -121,4 +140,4 @@ if __name__=='__main__':
     report=build(args.game,ROOT/'mod')
     if args.update_overlay: update_manifest(ROOT/'mod',report)
     (ROOT/'art/infantry/validation.json').write_text(json.dumps(report,indent=2)+'\n')
-    print(json.dumps({'unit_types':{k:len(v['unit_types']) for k,v in report['categories'].items()},'pending_art':report['pending_art'],'cultures':len(report['culture_tags']),'textures':len(report['files'])}))
+    print(json.dumps({'unit_types':{k:len(v['unit_types']) for k,v in report['categories'].items()},'unique':len(report['unique']),'pending_art':report['pending_art'],'cultures':len(report['culture_tags']),'textures':len(report['files'])}))
