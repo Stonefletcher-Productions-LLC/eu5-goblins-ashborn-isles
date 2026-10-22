@@ -2552,7 +2552,7 @@
           "topography": "hills",
           "vegetation": "sparse",
           "pop": 23.001,
-          "province": "cm_shatterfin_outer_province",
+          "province": "cm_shatterfin_province",
           "rgo_expansion": 1,
           "buildings": {
             "market_village": 1

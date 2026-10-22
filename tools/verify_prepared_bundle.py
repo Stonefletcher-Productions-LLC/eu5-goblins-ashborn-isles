@@ -53,6 +53,16 @@ def verify(root):
                 for location in island['locations']:
                     row=re.search(r'(?m)^'+re.escape(location['id'])+r' = \{[^\n]*\braw_material = (\w+)\b',templates)
                     assert row and row[1]==location['good'],f'Stale packaged raw material: {location["id"]}'
+        if tuple(map(int, version.split('.'))) >= (0, 6, 6):
+            # Provinces share food; a lone non-food location (Silver Shard) starved.
+            definitions=z.read('goblins_ashborn_isles/in_game/map_data/definitions.txt').decode('utf-8-sig')
+            provinces={}
+            for island in config['islands']:
+                for location in island['locations']:
+                    provinces.setdefault(location['province'],set()).add(location['id'])
+            for province,members in provinces.items():
+                row=re.search(r'(?m)^'+re.escape(province)+r' = \{([^}\n]*)\}',definitions)
+                assert row and set(row[1].split())==members,f'Stale packaged province: {province}'
         # Configuration binding alone cannot catch a stale generated treasury.
         country_setup=z.read('goblins_ashborn_isles/main_menu/setup/start/10_countries.txt').decode('utf-8-sig')
         starting_gold={}

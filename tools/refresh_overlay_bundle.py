@@ -1,5 +1,5 @@
 """Append checksum-verified overlay changes to an existing prepared release."""
-import argparse, base64, hashlib, io, json, subprocess, zipfile
+import argparse, base64, hashlib, io, json, re, subprocess, zipfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -7,14 +7,23 @@ ROOT=Path(__file__).resolve().parents[1]
 # over the reused terrain/map base (no terrain or starting-setup regeneration).
 # version -> {location id: (previous good, corrected good)}
 RGO_FIXES={'0.6.5':{'cm_ironbark':('tar','lumber'),'cm_pitchfang':('tar','lumber'),'cm_emberhollow':('tar','lumber')}}
+# Province membership corrections shipped as an authored definitions.txt overlay.
+# Location pixels and terrain are unchanged; only the province grouping moves.
+# version -> {location id: (previous province, corrected province)}
+PROVINCE_FIXES={'0.6.6':{'cm_silver_shard':('cm_shatterfin_outer_province','cm_shatterfin_province')}}
+
+def _revert_field(text,lid,field,old,new):
+    i=text.index(f'"id": "{lid}"'); j=text.index(f'"{field}": "{new}"',i)
+    following=text.find('"id": ',i+5)
+    assert following==-1 or following>j,lid
+    return text[:j]+f'"{field}": "{old}"'+text[j+len(f'"{field}": "{new}"'):]
 
 def revert_rgo_fixes(text,version):
-    """Return island.json text with this version's raw-material corrections undone."""
+    """Return island.json text with this version's raw-material and province corrections undone."""
     for lid,(old,new) in RGO_FIXES.get(version,{}).items():
-        i=text.index(f'"id": "{lid}"'); j=text.index(f'"good": "{new}"',i)
-        following=text.find('"id": ',i+5)
-        assert following==-1 or following>j,lid
-        text=text[:j]+f'"good": "{old}"'+text[j+len(f'"good": "{new}"'):]
+        text=_revert_field(text,lid,'good',old,new)
+    for lid,(old,new) in PROVINCE_FIXES.get(version,{}).items():
+        text=_revert_field(text,lid,'province',old,new)
     return text
 
 def main():
@@ -39,6 +48,14 @@ def main():
         assert 'raw_material = tar' not in templates
         for lid,(old,new) in fixes.items():
             assert f'{lid} = {{' in templates and f'raw_material = {new} ' in templates.split(f'{lid} = {{',1)[1].split('\n',1)[0]+' ',lid
+    moves=PROVINCE_FIXES.get(config['version'],{})
+    if moves:
+        definitions_path='in_game/map_data/definitions.txt'
+        assert any(f['path']==definitions_path for f in overlay['files']),'Province fix requires the definitions.txt overlay'
+        definitions=(ROOT/'mod'/definitions_path).read_text(encoding='utf-8-sig')
+        for lid,(old,new) in moves.items():
+            assert re.search(r'(?m)^'+new+r' = \{[^\n]*\b'+lid+r'\b',definitions),lid
+            assert not re.search(r'(?m)^'+old+r' = ',definitions),old
     promotion=config['version']!=manifest['version']
     if promotion:
         assert args.promote_version, 'Version promotion requires --promote-version'
@@ -56,6 +73,9 @@ def main():
                     if location['id'] in fixes:
                         assert location['good']==fixes[location['id']][0],location['id']
                         location['good']=fixes[location['id']][1]
+                    if location['id'] in moves:
+                        assert location['province']==moves[location['id']][0],location['id']
+                        location['province']=moves[location['id']][1]
             assert prior==config, 'World configuration changed; regenerate and validate terrain/setup before packaging'
         else:
             # The source commit is unavailable (history re-created when moving

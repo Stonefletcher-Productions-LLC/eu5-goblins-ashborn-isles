@@ -30,7 +30,8 @@ def verify(b,game,out,mapstats):
         factor=Decimal(original_target)/cfg['population_revision_baseline']['country_populations'][tag]
         assert abs(combined-old_combined*factor)<=Decimal('.004')
         # Province membership follows actual land borders in verify_061.
-    assert len({l['province'] for l in locs})==40
+    # 0.6.6 folded the one-location Shatterfin Outer province into Shatterfin.
+    assert len({l['province'] for l in locs})==39
     # Check generated setup, not just input configuration.
     pops=(out/'main_menu/setup/start/06_pops.txt').read_text(encoding='utf-8-sig')
     for l in locs:

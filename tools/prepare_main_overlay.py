@@ -63,6 +63,12 @@ def main():
     # ships as an overlay over the reused map base; archipelago.build_map emits the
     # same lines from data/island.json. After any full map rebuild, copy it here.
     paths.append(output / 'in_game/map_data/location_templates.txt')
+    # 0.6.6: Silver Shard was the only location in Shatterfin Outer and starved,
+    # since provinces share food. It joins the neighbouring Shatterfin province;
+    # the corrected definitions.txt ships as an overlay over the reused map base.
+    # archipelago.build_map emits the same line from data/island.json. After any
+    # full map rebuild, copy it here.
+    paths.append(output / 'in_game/map_data/definitions.txt')
     # Retain the authored gameplay/UI modules when refreshing portrait assets.
     # A partial manifest previously dropped the Gathering and Covenant panels.
     for prefix in ['in_game/common','in_game/events','in_game/gui','main_menu/common','main_menu/localization']:

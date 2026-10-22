@@ -896,6 +896,10 @@
       "sha256": "4b29bf1b1ba25dbc6893415fd77004f31b464a1a28d3e3d7ab948ee259687cd6"
     },
     {
+      "path": "in_game/map_data/definitions.txt",
+      "sha256": "660707820f59338db5576973438d2fd3040847fa943488d6f31e411aa376f790"
+    },
+    {
       "path": "in_game/map_data/location_templates.txt",
       "sha256": "6425ff51382cafb64a19b5fcdb53872ba2bfd4ffb46efbded5d3b05c6d374f23"
     },
@@ -7745,7 +7749,7 @@
     },
     {
       "path": "main_menu/localization/english/goblins_ashborn_isles_l_english.yml",
-      "sha256": "61cd808aa5fa3e6a6290528019a40a86c061f712716b272aa7d49f94f43e32ae"
+      "sha256": "1179471609a655f60c15a0816775630fdd8acb3ca16791d6da85faabfff34c38"
     },
     {
       "path": "main_menu/localization/english/goblins_divorce_l_english.yml",
