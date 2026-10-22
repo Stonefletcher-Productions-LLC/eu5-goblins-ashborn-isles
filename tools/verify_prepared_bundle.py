@@ -63,6 +63,9 @@ def verify(root):
             for province,members in provinces.items():
                 row=re.search(r'(?m)^'+re.escape(province)+r' = \{([^}\n]*)\}',definitions)
                 assert row and set(row[1].split())==members,f'Stale packaged province: {province}'
+            # Goblin unique units (Obsidian Fletchers) ship from 0.6.6.
+            from verify_goblin_units import verify as verify_units
+            verify_units(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
         # Configuration binding alone cannot catch a stale generated treasury.
         country_setup=z.read('goblins_ashborn_isles/main_menu/setup/start/10_countries.txt').decode('utf-8-sig')
         starting_gold={}

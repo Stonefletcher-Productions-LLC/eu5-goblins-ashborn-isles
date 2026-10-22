@@ -1,3 +1,12 @@
+# 0.6.6 acceptance: Obsidian Fletchers
+
+- As any goblin crown, open levies in a goblin-majority location: **Obsidian Fletchers** are offered, with the name and description shown, not raw keys.
+- As Portugal or Castile, they are not offered in their own lands. Whoever owns a goblin-majority location can raise them there (by design, like vanilla Schiltrons).
+- Raise one and check the unit panel: initiative and damage bonuses, hills and mountains combat bonus, goblin infantry card art and goblin 3D soldiers.
+- After the Renaissance age starts, they upgrade to **Blackglass Crossbows**.
+- Fresh `logs/error.log`: no lines mentioning `a_ga_obsidian_fletchers`, `a_ga_blackglass_crossbows` or `ga_obsidian_fletchers_location_trigger`.
+- Load a 0.6.5 save: it loads and the levy appears there too.
+
 # Goblin city buildings acceptance
 
 - Start a new 1337 campaign and zoom into Hooktooth (city) and a few goblin towns and villages. Houses should be goblin shacks, stacked shanty towers and the chieftain's hall, not European half-timbered houses.
