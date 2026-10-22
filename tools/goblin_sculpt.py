@@ -166,19 +166,20 @@ P=dict(
     trunk=[(96,11.5,8.5,1.5),(101,13,9,1),(107,13.5,11,-1),(113,13.5,13,-2.5),(119,13,12.5,-2),(125,12.5,11,-0.5),
            (131,13.5,10.5,1),(137,15.5,10.5,3),(142,17,10,5),(146,15,9.5,7),(150,10,7.5,7)],
     # head loft (y, rx, rz, cz): big cranium, long back of skull, narrow jaw
-    head=[(149,3.5,3,-10),(152,6,5.5,-9),(155,8,7,-7),(158,9.5,9,-5.5),(161,11,11,-4),(164,12.5,12.5,-3),(167,13.2,13.8,-2.5),
-          (170,13.2,14.5,-2),(173,12.6,14.2,-1.5),(176,11.3,13,-1),(179,9,11,-0.5),(182,5.5,7,0)],
-    brow=(6,168.8,-14.6),brow_r=(6.2,2.6,4.2),brow_rot=(0,0,-12),bridge=(0,168.5,-15.5),bridge_r=2.3,
-    eye=(5.3,165,-12.6),eye_r=2.3,
+    head=[(149,3.5,3,-10),(152,5.5,5.5,-9),(155,7.2,7,-7.5),(158,9,9,-6),(161,10.8,11,-4.5),(164,12.4,12.5,-3.2),(167,13.2,13.8,-2.5),
+          (170,13.2,14.5,-2),(172.5,12.4,14,-1.5),(175,10.8,12.8,-1),(177.5,8.4,10.6,-0.5),(179.8,4.5,6,0)],
+    # angry V brow (outer ends up), beady close-set eyes under it
+    brow=(5.6,168.4,-14.8),brow_r=(5.8,2.4,4.0),brow_rot=(0,0,15),bridge=(0,168,-15.8),bridge_r=1.9,
+    eye=(4.8,165,-13.4),eye_r=2.2,
     # hollows carved into the remeshed skin before the eyeballs go in: (centre, radius, depth)
-    hollows=[((5.3,165,-16),4.6,2.8),((-5.3,165,-16),4.6,2.8),((11,159,-6),4.5,1.2),((-11,159,-6),4.5,1.2),((12,170,-3),3.5,0.8),((-12,170,-3),3.5,0.8),
-             ((1.6,158.6,-21.2),1.3,0.9),((-1.6,158.6,-21.2),1.3,0.9),((0,112,-14.5),2.2,1.0)],
-    cheek=(9,162,-9.5),cheek_r=(3.6,2.6,3.6),
-    jaw=(0,153,-11),jaw_r=(7,3.5,6),tusk_base=(3.4,152.5,-14.6),tusk_tip=(4.2,159.5,-18),tusk_r=(1.15,0.55),
-    nose=[((0,166,-15.8),2.4),((0,162.8,-19),2.0),((0,159.8,-21.2),2.3),((1.9,159,-19.6),1.3),((-1.9,159,-19.6),1.3)],
+    hollows=[((4.8,165,-16.5),4.3,2.0),((-4.8,165,-16.5),4.3,2.0),((10.5,159,-6.5),4.5,1.5),((-10.5,159,-6.5),4.5,1.5),((12,170,-3),3.5,0.8),((-12,170,-3),3.5,0.8),
+             ((1.6,158.8,-21.4),1.3,0.9),((-1.6,158.8,-21.4),1.3,0.9),((6.8,155,-12.5),1.8,1.0),((-6.8,155,-12.5),1.8,1.0),((0,112,-14.5),2.2,1.0)],
+    cheek=(8.3,164.5,-10),cheek_r=(3.0,2.2,3.0),chin=(0,150.5,-13.5),chin_r=(3.2,2.8,3.4),teeth_x=(-4.2,-1.5,1.5,4.2),
+    jaw=(0,153,-11),jaw_r=(6,3.5,6),tusk_base=(3.4,152.5,-14.6),tusk_tip=(4.2,159.5,-18),tusk_r=(1.15,0.55),
+    nose=[((0,166.5,-15.8),2.0),((0,163.5,-18.8),1.9),((0,160.2,-21.3),2.2),((0,158.3,-22.0),1.6),((1.9,159.5,-19.6),1.3),((-1.9,159.5,-19.6),1.3)],
     warts=[((2.4,160,-21.6),0.9),((-7.5,167.5,-12.5),0.8),((9.5,160,-9.5),0.7),((-3,152,-12.5),0.6)],
     ear_base=(10,167,0),ear_tip=(30,179,5),ear_r=(5.5,1.1),
-    mouth=(0,154.5,-13),mouth_w=5.5,mouth_depth=1.6,
+    mouth=(0,154.5,-13),mouth_w=7,mouth_depth=1.8,
     neck=((0,146,0),(0,158,-6),6.5,6.8),
     hump=(0,146,11),hump_r=(11,9,8),
     collarbone=((2,145,-6),(15,142.5,-3),1.3),ribs=3,rib_r=1.0,spine_knobs=7,spine_r=1.4,hip=(12,99,-4),hip_r=2.5,
@@ -232,7 +233,9 @@ def sculpt_body(B,voxel=0.6,target_tris=6000):
     loft('head',P['head'],4,parts)
     mirror(E,'brow',P['brow'],P['brow_r'],rot=P['brow_rot']);E('bridge',P['bridge'],(P['bridge_r'],)*3)
     mirror(E,'cheek',P['cheek'],P['cheek_r'])
-    E('jaw',P['jaw'],P['jaw_r']);mirror(K,'tusk',P['tusk_base'],P['tusk_tip'],P['tusk_r'])
+    E('jaw',P['jaw'],P['jaw_r']);E('chin',P['chin'],P['chin_r']);mirror(K,'tusk',P['tusk_base'],P['tusk_tip'],P['tusk_r'])
+    for i,x in enumerate(P['teeth_x']):K(f'tooth{i}',(x,152.8,-16.6),(x*1.05,156.4,-17.4),(0.95,0.35))
+    C('lowerlip',(-6.5,153.2,-13.5),(6.5,153.2,-13.5),1.1,1.1);C('upperlip',(-6.5,155.9,-13.6),(6.5,155.9,-13.6),1.0,1.0)
     for i,(c,r) in enumerate(P['nose']):E(f'nose{i}',c,(r,r,r*1.2))
     for i,(c,r) in enumerate(P['warts']):E(f'wart{i}',c,(r,r,r))
     mirror(K,'ear',P['ear_base'],P['ear_tip'],P['ear_r'])
@@ -437,8 +440,8 @@ def build_outfit(B,body,kind,variant='a'):
 
 def build_cap(B,body,kind):
     """Skull cap wrapped to the head: leather, riveted iron with a crest spike, or iron with horns."""
-    center=Vector((0,166,-2.5));iron=kind!='leather'
-    cap=patch(f'cap_{kind}',center,(14,14,15),rot=(-12,0,0),cut=0.1 if iron else 0.06,u=28,v=14)
+    center=Vector((0,168.5,-2.5));iron=kind!='leather'
+    cap=patch(f'cap_{kind}',center,(14,14,15),rot=(-12,0,0),cut=0.18 if iron else 0.14,u=28,v=14)
     fit(cap,body,1.6 if iron else 1.0,1.5 if iron else 1.1,subdiv=1);assign(cap,'iron' if iron else 'leather');pieces=[(f'cap_{kind}',cap)]
     if kind=='leather':
         for i,a in enumerate(range(0,360,60)):
@@ -604,8 +607,9 @@ def preview(outdir,out,game=None,clan_rgb=(98,106,82)):
         goblin_paint.paint(stem,clan_rgb if name=='goblin_body' else None).save(tex/f'{name}_diffuse.png')
         ob.data.materials.clear();ob.data.materials.append(textured_material(name,tex/f'{name}_diffuse.png',f'{stem}_normal.png'))
     for o in bpy.data.objects:o.hide_render=True
+    unit=0.625 if game else 1.0   # the goblin schematic runs at 0.05 vs the native 0.08
     def twin(name,dx):
-        ob=objs[name].copy();ob.data=objs[name].data;bpy.context.collection.objects.link(ob);ob.location.x+=dx;ob.hide_render=False;return ob
+        ob=objs[name].copy();ob.data=objs[name].data;bpy.context.collection.objects.link(ob);ob.location.x+=dx;ob.scale=(unit,)*3;ob.hide_render=False;return ob
     # bare body, then light a/b and heavy a/b with a different cap each
     shown=[twin('goblin_body',110)]
     for dx,outfit,cap in [(55,'outfit_light_a','cap_leather'),(0,'outfit_light_b','cap_horned'),(-55,'outfit_heavy_a','cap_iron'),(-110,'outfit_heavy_b',None)]:
@@ -627,9 +631,10 @@ def preview(outdir,out,game=None,clan_rgb=(98,106,82)):
                     for poly in me.polygons:
                         for li in poly.loop_indices:vi=me.loops[li].vertex_index;layer.data[li].uv=(uv[2*vi],1-uv[2*vi+1])
                     me.materials.append(mat);ob=bpy.data.objects.new(shape['name'],me);bpy.context.collection.objects.link(ob);shown.append(ob)
-    clay_render(shown,out,size=1400,views=((-30,0),(90,0),(-30,0)),extent=200 if game else 160,center=(45 if game else 0,92,0))
+    clay_render(shown,out,size=1400,views=((-30,0),(90,0),(-30,0)),extent=200 if game else 160,center=(45 if game else 0,92*unit,0))
     # close-up of the heads
-    clay_render(shown[1:3],out+'_head',size=700,views=((-30,0),(90,0),(0,0)),extent=38,center=(55,165,0))
+    for o in shown[3:]:o.hide_render=True
+    clay_render(shown[1:3],out+'_head',size=700,views=((-30,0),(90,0),(0,0)),extent=38*unit,center=(55,165*unit,0))
 
 if __name__=='__main__':
     args=sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else sys.argv[1:]

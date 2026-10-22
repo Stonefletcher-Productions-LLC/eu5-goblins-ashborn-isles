@@ -12,7 +12,7 @@ from PIL import Image
 
 MATERIALS={'skin':(1,0,0),'cloth':(0,1,0),'leather':(0,0,1),'iron':(1,1,0),'pad':(0,1,1),'mail':(1,0,1),'bone':(0.5,0,0),'fur':(0,0.5,0),'rope':(0,0,0.5)}
 # Facial landmarks must match goblin_sculpt.P
-EYE=(5.3,165.2,-13.6);EYE_R=2.5;MOUTH=(0,154.5,-13);MOUTH_W=5.5
+EYE=(4.8,165,-13.4);EYE_R=2.2;MOUTH=(0,154.5,-13);MOUTH_W=5.5
 
 def _hash(ix,iy,iz,seed):
     h=(ix*73856093)^(iy*19349663)^(iz*83492791)^(seed*2654435761)
@@ -67,7 +67,7 @@ def paint_skin(pos,ao,clan_rgb,seed=1):
     for sx in (1,-1):
         c=np.array((sx*EYE[0],EYE[1],EYE[2]));d=np.linalg.norm(pos-c,axis=-1)
         rim=(d<EYE_R+1.6)&(d>=EYE_R+0.5);col[rim]=col[rim]*0.4
-        eye=d<EYE_R+0.5;col[eye]=np.array((0.92,0.74,0.18))
+        eye=d<EYE_R+0.5;col[eye]=np.array((1.0,0.8,0.2))
         front=np.linalg.norm(pos-(c+np.array((0,0,-EYE_R))),axis=-1)
         glint=(front<2.2)&(np.abs(pos[...,0]-c[0])<0.5);col[glint&eye]=np.array((0.03,0.02,0.02))
         edge=(d<EYE_R+0.5)&(d>EYE_R-0.4);col[edge]=col[edge]*0.7
@@ -191,6 +191,11 @@ def detail_height(pos,ident):
     m=masks(ident);h=np.zeros(pos.shape[:2],np.float32)
     if m['skin'].any():
         h[m['skin']]=(0.25*(fbm(pos,1.2,3,21)-0.5)+0.12*(noise(pos,0.25,22)-0.5)+0.18*(noise(pos*np.array((1,6,1)),1.5,23)-0.5))[m['skin']]
+        # forehead furrows and crow's feet
+        brow=np.clip((pos[...,1]-167)/2,0,1)*np.clip((178-pos[...,1])/2,0,1)*np.clip((-pos[...,2]-7)/3,0,1)*np.clip((12-np.abs(pos[...,0]))/3,0,1)
+        h+=0.4*brow*np.sin(pos[...,1]/2.2*2*np.pi+0.8*np.sin(pos[...,0]/4))
+        feet=np.clip((np.abs(pos[...,0])-7)/2,0,1)*np.clip((12-np.abs(pos[...,0]))/2,0,1)*np.clip((168-np.abs(pos[...,1]-164)*2)/4,0,1)*np.clip((-pos[...,2]-8)/3,0,1)
+        h+=0.3*feet*np.sin((pos[...,1]-np.abs(pos[...,0])*0.6)/1.6*2*np.pi)
     for k,amp,scale in [('cloth',0.12,0.3),('pad',0.2,0.6),('leather',0.15,0.5),('fur',0.35,0.3),('rope',0.3,0.4),('bone',0.12,0.8)]:
         if m[k].any():h[m[k]]=(amp*(noise(pos,scale,30+len(k))-0.5)+amp*0.6*(fbm(pos,4,2,40+len(k))-0.5))[m[k]]
     if m['iron'].any():h[m['iron']]=(0.3*(fbm(pos,5,3,51)-0.5))[m['iron']]
