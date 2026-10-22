@@ -34,7 +34,7 @@ def verify(game, out):
     mod_ids = set(re.findall(r'(?m)^\s*(\w+)\s*=\s*\{', native_mods))
     for _,_,body in parse((out/'main_menu/common/static_modifiers/ashen_covenant.txt').read_text(encoding='utf-8-sig')):
         for modifier,_,_ in body: assert modifier in mod_ids, modifier
-    for modifier in {r[2] for r in ac.ASPECTS.values()} | {r[2] for r in ac.RITES.values()} | {s[4] for s in ac.SITES} | {'monthly_religious_influence', 'maximum_religious_influence'}:
+    for modifier in {r[2] for r in ac.ASPECTS.values()} | {r[2] for r in ac.RITES.values()} | {s[4] for s in ac.SITES} | {'monthly_religious_influence', 'maximum_religious_influence', 'female_spouses'}:
         assert modifier in mod_ids, f'Unknown modifier {modifier}'
     files = [p for p in out.rglob('*') if p.is_file() and (p.stem == 'ashen_covenant' or p.name == 'ashen_covenant_l_english.yml')]
     files.append(out/'in_game/common/religions/goblins_ashborn_isles.txt')

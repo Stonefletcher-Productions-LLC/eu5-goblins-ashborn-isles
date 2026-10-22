@@ -137,7 +137,7 @@
     },
     {
       "path": "in_game/common/religions/goblins_ashborn_isles.txt",
-      "sha256": "6d9c33e700c10157f1074261cc4faf8d6c294e5c1632c49ada7dc383667e5370"
+      "sha256": "eadeb8734d630a356d3159f9dc8a27752032374748505a6b26911a3ce7318cdb"
     },
     {
       "path": "in_game/common/religious_aspects/ashen_covenant.txt",
@@ -7757,7 +7757,7 @@
     },
     {
       "path": "main_menu/localization/english/goblins_ashborn_isles_l_english.yml",
-      "sha256": "1179471609a655f60c15a0816775630fdd8acb3ca16791d6da85faabfff34c38"
+      "sha256": "f37802b891fa25b9c00a729d231d97d9a05823acc9a5e8024a9aa560be921c2b"
     },
     {
       "path": "main_menu/localization/english/goblins_divorce_l_english.yml",
@@ -7782,6 +7782,14 @@
     {
       "path": "main_menu/music/audio_culture_types/goblins_music.txt",
       "sha256": "ea882f7d00596da952a8e5666d51530e1d77d8e33f1cf2e440d3b9ee73075d2b"
+    },
+    {
+      "path": "main_menu/setup/start/04_dynasties.txt",
+      "sha256": "73d55b088a9cdafcba6602c50e69289b66b75aa06e30ead0aa304e341c5089fb"
+    },
+    {
+      "path": "main_menu/setup/start/05_characters.txt",
+      "sha256": "e8104de30b7c759e945d578e98d36f0c2c9152b8caf4b50c6a8e8170c25890d4"
     }
   ]
 }

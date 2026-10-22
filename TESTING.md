@@ -1,3 +1,12 @@
+# 0.6.6 royal families acceptance
+
+New 1337 campaign, fresh `logs/error.log`.
+
+- Each captain crown's ruler shows three wives and five or six sons; brothers, an uncle and cousins appear in the dynasty tree. Shatterfin shows Jaimzha's sister, daughters and granddaughters.
+- The heir is unchanged: the eldest son in Cindermaw, Brackmaw and Giltfang, the ruler's brother Krizzek/Zhor in Reefhook/Sootwake, Skritcha in Shatterfin.
+- The marriage law tooltip or ruler panel allows four wives under the Ashen Covenant; arrange a fourth marriage for a goblin ruler.
+- No `05_characters.txt` or `04_dynasties.txt` errors in the log. Observe 30+ years: the ruling dynasty survives at least one succession.
+
 # 0.6.6 acceptance: Obsidian Fletchers
 
 - As any goblin crown, open levies in a goblin-majority location: **Obsidian Fletchers** are offered, with the name and description shown, not raw keys.

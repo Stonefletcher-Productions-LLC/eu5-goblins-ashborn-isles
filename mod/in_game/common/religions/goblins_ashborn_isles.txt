@@ -5,6 +5,6 @@
  tags = { folk_african_gfx pagan_gfx }
  religious_aspects = 2
  has_religious_influence = yes
- definition_modifier = { monthly_religious_influence = 0.2 maximum_religious_influence = 100 }
+ definition_modifier = { monthly_religious_influence = 0.2 maximum_religious_influence = 100 female_spouses = 3 }
  opinions = { }
 }
