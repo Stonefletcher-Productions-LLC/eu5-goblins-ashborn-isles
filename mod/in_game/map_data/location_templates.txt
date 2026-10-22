@@ -28677,6 +28677,14 @@ cm_stormcrag = { topography = mountains vegetation = sparse climate = oceanic re
 cm_tidewhet = { topography = flatland vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = salt }
 cm_brinehollow = { topography = flatland vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = fiber_crops }
 cm_splitrock = { topography = hills vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = clay }
+cm_fangreach = { topography = hills vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = fish }
+cm_saltmarrow = { topography = flatland vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = salt }
+cm_skerrygate = { topography = hills vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = fish }
+cm_crowspire = { topography = mountains vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = stone }
+cm_wavebreak = { topography = flatland vegetation = farmland climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = wheat }
+cm_brackfen = { topography = flatland vegetation = woods climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = lumber }
+cm_harrowmoor = { topography = hills vegetation = grasslands climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = livestock }
+cm_grimtide = { topography = flatland vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = fish }
 cm_knifeback = { topography = mountains vegetation = woods climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = lumber }
 cm_silkworm_grove = { topography = mountains vegetation = woods climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = silk }
 cm_edgewater = { topography = hills vegetation = woods climate = oceanic religion = cm_hunger_below culture = cm_shatterkin raw_material = fish }

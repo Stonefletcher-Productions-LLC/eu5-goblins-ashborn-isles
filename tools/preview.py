@@ -27,7 +27,7 @@ def context(game,out,reports):
     from decimal import Decimal
     totals={c['tag']:sum(int((Decimal(str(l['pop']))+mixed_populations.extra(l['id']))*1000) for l in cfg['locations'] if l['country']==c['tag']) for c in cfg['countries']}
     cd.rectangle((30,70,1370,107),fill='#101c25')
-    cd.text((35,72),f"6 goblin countries | 109 locations | three markets | {sum(totals.values()):,} people",font=b.font(20),fill='#dae1d7')
+    cd.text((35,72),f"6 goblin countries | 117 locations | three markets | {sum(totals.values()):,} people",font=b.font(20),fill='#dae1d7')
     cd.rectangle((30,785,1370,979),fill='#101c25')
     for n,c in enumerate(cfg['countries']):
         capital=next(l['name'] for l in cfg['locations'] if l['id']==c['capital'])
