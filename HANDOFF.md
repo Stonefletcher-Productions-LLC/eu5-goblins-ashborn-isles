@@ -6,6 +6,16 @@ Working copy `E:\Codex_EU5_Modding\goblins-ashborn-isles`. Remote: GitHub `stone
 
 Multiplayer note (2026-10-13): a client's simulation stalled silently twice mid-session (no error, crash or OOS on either side); a later session from the same save ran 8 years cleanly. Cause unconfirmed; if it recurs, collect the client's logs before relaunch.
 
+## error.log from main 00c13ce (2026-10-22)
+
+Alex's 1337 start on main 00c13ce logged these mod errors; fixed in the generators and regenerated into `mod/`:
+- `goblins_horde.txt`: `can_invite_countries` is not a valid IO key in 1.3.11 (the readme still lists it). Removed; `io_opinion_goblin_horde` (biases) replaces `opinion_bonus`, as the engine asks. Added the diplomatic-status and list loc, `show_message = no` on Horde actions, `ga_horde_ai_list`, and `@trigger_no!` on the two empty-list messages.
+- `MODIFIER_TYPE_NAME_ga_gathering_crossing_price_cost_modifier` hash-collided with vanilla `flavor_ven.28.desc`, blanking that Venice event. The price is now `ga_eastern_crossing_price`.
+- Every mod price cost modifier now has an icon (`main_menu/common/modifier_icons/`, vanilla price icon); `LEAD_`/`AM_` loc for the two Compact subject types; BOM on `goblins_divorce.txt` and `goblins_music.txt`.
+- Shatterfin's second wharf and Stormcrag's second smelter exceeded max level 1; both capped in `data/island.json` (takes effect on the next full map build).
+
+Still open: map locators (combat, unit stacks, VFX) for the trimmed sea zones `atlantic_azores_current2/3/7/8`, `atlantic_north_atlantic_current10`, `celtic_sea` and `azores_biscay_ridge` sit outside their zones (up to 281 px); units and battles there may draw in the wrong place. Needs locator regeneration in a full map build. Legacy events `ga_gathering.2/3/4/16` are orphaned and harmless.
+
 ## 0.6.7 (unreleased): Shatter Maw moves north-west — needs a full map rebuild
 
 The Shatterfin crown (SFK) now sits in the open water west of Giltfang and Lantern Cay. The main island is about 4x larger (9,677 px) with 10 locations, Knifeback is larger with 3, and a third island, Maw Rock (`maw_rock`, 2 locations), sits in Shatter Strait. SFK has 15 locations in four provinces (new: `cm_stormcrag_province`, `cm_maw_rock_province`). New water comes from `celtic_sea` plus trimmed parts of `atlantic_azores_current1`, `atlantic_azores_current2` and `atlantic_north_atlantic_current10` (`extra_basins` id `shatter_maw`); new zones Shatterfin Sound (moved), Maw North, Shatter Strait and Shatter Roads. The old Shatterfin Sound east of Cindermaw is now Hooktooth Approaches (same colour). Shatterfin seats a third market. New locations are settled from existing SFK towns (`shatter_maw_067.transfers` in `data/island.json`); SFK and archipelago totals are unchanged, donors keep their laborers so buildings stay staffed, and each location keeps the 25% tribal share and 70% goblin share. Maw Rock gets a holy site, The Gull Cairn.

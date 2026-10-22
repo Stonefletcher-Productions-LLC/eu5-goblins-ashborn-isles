@@ -2,7 +2,7 @@
 ga_gathering_aid_price_cost_modifier = { color = bad percent = yes game_data = { category = country } }
 ga_gathering_compact_price_cost_modifier = { color = bad percent = yes game_data = { category = country } }
 ga_gathering_claim_price_cost_modifier = { color = bad percent = yes game_data = { category = country } }
-ga_gathering_crossing_price_cost_modifier = { color = bad percent = yes game_data = { category = country } }
+ga_eastern_crossing_price_cost_modifier = { color = bad percent = yes game_data = { category = country } }
 ga_gathering_target_price_cost_modifier = { color = bad percent = yes game_data = { category = country } }
 
 ga_compact_autonomy_tribute_cost_modifier = { color = bad percent = yes game_data = { category = country } }

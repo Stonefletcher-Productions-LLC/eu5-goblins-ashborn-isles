@@ -1,0 +1,8 @@
+﻿ga_gathering_pact_price_cost_modifier = { positive = "gfx/interface/icons/modifier_types/hussite_wars_actions_price_cost_modifier.dds" }
+ga_gathering_aid_price_cost_modifier = { positive = "gfx/interface/icons/modifier_types/hussite_wars_actions_price_cost_modifier.dds" }
+ga_gathering_compact_price_cost_modifier = { positive = "gfx/interface/icons/modifier_types/hussite_wars_actions_price_cost_modifier.dds" }
+ga_gathering_claim_price_cost_modifier = { positive = "gfx/interface/icons/modifier_types/hussite_wars_actions_price_cost_modifier.dds" }
+ga_eastern_crossing_price_cost_modifier = { positive = "gfx/interface/icons/modifier_types/hussite_wars_actions_price_cost_modifier.dds" }
+ga_gathering_target_price_cost_modifier = { positive = "gfx/interface/icons/modifier_types/hussite_wars_actions_price_cost_modifier.dds" }
+ga_compact_autonomy_tribute_cost_modifier = { positive = "gfx/interface/icons/modifier_types/hussite_wars_actions_price_cost_modifier.dds" }
+ga_divorce_price_cost_modifier = { positive = "gfx/interface/icons/modifier_types/hussite_wars_actions_price_cost_modifier.dds" }

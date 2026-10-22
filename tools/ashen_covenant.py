@@ -180,6 +180,8 @@ def build(out):
                     ('ac_moot_convening', 'Convening the Moot', 'the Moot of Six Fires')]
     write('main_menu/common/modifier_type_definitions/ashen_covenant.txt', '\n'.join(
           f'{key}_cost_modifier = {{ color = bad percent = yes game_data = {{ category = country }} }}' for key, _, _ in price_labels))
+    from gathering import price_icon
+    write('main_menu/common/modifier_icons/ashen_covenant.txt', '\n'.join(price_icon(f'{key}_cost_modifier') for key, _, _ in price_labels))
     for key, label, what in price_labels:
         loc(key, label)
         loc(f'MODIFIER_TYPE_NAME_{key}_cost_modifier', label + ' Cost')

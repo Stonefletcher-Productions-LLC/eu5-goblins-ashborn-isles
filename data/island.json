@@ -2640,7 +2640,7 @@
           "rgo_expansion": 5,
           "buildings": {
             "marketplace": 4,
-            "wharf": 2,
+            "wharf": 1,
             "naval_supplies_guild": 2,
             "cloth_guild": 3,
             "granary": 3,
@@ -2813,7 +2813,7 @@
           "rgo_expansion": 1,
           "buildings": {
             "market_village": 1,
-            "local_smelters": 2
+            "local_smelters": 1
           },
           "color": "ed1322",
           "pop_classes": {
@@ -7102,11 +7102,7 @@
       },
       "cm_shatterfin": {
         "marketplace": 1,
-        "weapon_guild": 1,
-        "wharf": 1
-      },
-      "cm_stormcrag": {
-        "local_smelters": 1
+        "weapon_guild": 1
       },
       "cm_knifeback": {
         "marketplace": 1
