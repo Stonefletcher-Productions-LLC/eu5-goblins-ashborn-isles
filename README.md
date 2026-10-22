@@ -2,7 +2,21 @@
 
 Working copy: `E:\Codex_EU5_Modding\goblins-ashborn-isles`. Repository: [GitHub](https://github.com/stonefletcher/eu5-goblins-ashborn-isles) (Bitbucket was a temporary home from October 12 to 22; its history was rebuilt onto GitHub in PR #13).
 
-**0.6.7 — Shatter Maw moves, the goblin realms band together.**
+**0.6.8 — Galleys, Warchiefs and sculpted goblin soldiers.**
+
+- **Starting tech and ships:** goblin crowns start with Feudalism, so they get galleys, iron working and feudal advances from day one instead of only canoes. Two unique goblin ships join the fleet.
+- **Sculpted goblin soldiers:** infantry use their own goblin body (big skull, long ears, tusks, clawed hands) with clan outfits, trousers, spaulders, belt knives and caps, still on EU5's native skeleton, animations and weapons.
+- **Kingdom openings:** each crown gets its own opening event and painting after the shared Ashborn introduction.
+- **Goblin Horde actions:** the Warchief can Call the Muster, Settle a Feud and Raise the Warchief's Levy. Smaller crowns can petition the Warchief for plunder, calm clans or a peace.
+- **Shatterfin out-builds Giltfang** at the start, so it is set up to conquer it.
+- **The Goblin Shore:** goblin crowns can settle on the mainland, and Europe pushes back.
+- **More lore:** a southern voyage, reactions from Muslim courts, a Shatterfin–Giltfang rivalry, renamed estates, new name pools and country names.
+- **Fixes from the 0.6.7 error log:** the Goblin Horde definition loads, a vanilla Venice event has its text back, Shatterfin buildings start within their max level, and fleets and battles sit inside the reshaped Atlantic sea zones.
+- **New art:** Covenant story paintings, redone event paintings and goblin art for cavalry, artillery and auxiliary unit cards.
+
+Built for **EU5 1.3.11**. Restart before playing. Start a **new 1337 campaign** for the starting tech and Shatterfin changes. In multiplayer, every player needs the same version. Not yet tested in game. All 0.6.7 changes remain included.
+
+## 0.6.7 — Shatter Maw moves, the goblin realms band together
 
 - **Shatter Maw** moves north-west into the open water west of Giltfang and grows into the largest goblin realm: a much bigger main island, a larger Knifeback, the new Maw Rock and 23 locations, so Shatterfin can take on Giltfang. Cindermaw gains **Cinderstep**, a small volcanic island with fish, iron and stone. The map now has 11 islands, 43 provinces and 117 locations, with rugged coastlines, new rivers and new sea zones.
 - **Start-game balance:** many more goblins (2.75M, mostly tribesmen who promote over time), a thinner early economy, enough food in every crown and four more starting trade routes.
@@ -55,7 +69,7 @@ Built for **EU5 1.3.11**. Restart before playing. Existing 0.6.3 saves can use t
 
 ![Goblins of the Ashborn Isles banner](art/workshop/0.6.0/banner.jpg)
 
-[0.6.7 release notes](RELEASE_NOTES_0.6.7.md) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)
+[0.6.8 release notes](RELEASE_NOTES_0.6.8.md) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)
 
 Fire rose from the Atlantic. When the smoke cleared, goblin kingdoms stood among the new volcanic islands between the Azores and Portugal. Captains claimed sheltered harbors, smiths built their forges beneath black ridges, and rival houses began arguing over who should lead them.
 
@@ -176,7 +190,7 @@ At home, the **Ashen Covenant** provides twelve sacred sites, traditions, rites,
 
 Built for **EU5 1.3.11 (Pavia)**. Existing 0.6.3 campaigns can continue after restarting. Start a **new 1337 campaign** when upgrading from earlier versions to receive the revised populations and industries.
 
-- Subscribe through the Workshop, or download **Goblins_Ashborn_Isles_0.6.7.zip** from the release above, extract it and run **Install-Goblins.cmd** with EU5 closed. The installer reconstructs its terrain using the installed game.
+- Subscribe through the Workshop, or download **Goblins_Ashborn_Isles_0.6.8.zip** from the release above, extract it and run **Install-Goblins.cmd** with EU5 closed. The installer reconstructs its terrain using the installed game.
 - Enable only one Goblins copy and disable the old Gathering Prototype add-on. Restart before playing.
 - Existing 0.6.0 saves can receive the clan-flag repair after restart and the next monthly pulse; that repair alone needs no new campaign.
 - Other map, terrain and starting-world mods may conflict. Keep separate saves.

@@ -12,7 +12,7 @@ def verify(b,out,mapstats):
     for loc in cfg['locations']:
         rank=loc.get('rank',capital_ranks.get(loc['id'],'rural_settlement'))
         if rank in {'town','city','megalopolis'} and loc['id'] in coastal:
-            assert loc['buildings'].get('wharf')==1,loc['id']
+            assert loc['buildings'].get('wharf',0)>=1,loc['id']  # Shatter Maw has two (0.6.8 balance)
         if 'wharf' in loc['buildings']:
             assert loc['id'] in coastal,('inland wharf',loc['id'])
     counts={c['tag']:sum(l['country']==c['tag'] for l in cfg['locations']) for c in cfg['countries']}

@@ -59,20 +59,40 @@ pdxmesh = {
  }
 }
 pdxmesh = {
- name = "cm_goblin_soldier_outfit_light_mesh"
- file = "cm_goblin_soldier_outfit_light.mesh"
- meshsettings = { name = "cm_goblin_soldier_outfit_lightShape" index = 0
-  texture_diffuse = "cm_goblin_soldier_outfit_light_diffuse.dds"
+ name = "cm_goblin_soldier_outfit_light_a_mesh"
+ file = "cm_goblin_soldier_outfit_light_a.mesh"
+ meshsettings = { name = "cm_goblin_soldier_outfit_light_aShape" index = 0
+  texture_diffuse = "cm_goblin_soldier_outfit_light_a_diffuse.dds"
   texture_normal = "cm_goblin_soldier_flat_normal.dds"
   texture = { index = 3 srgb = no file = "cm_goblin_soldier_mask.dds" }
   shader = "unit_material_repaint" shader_file = "gfx/FX/units.shader"
  }
 }
 pdxmesh = {
- name = "cm_goblin_soldier_outfit_heavy_mesh"
- file = "cm_goblin_soldier_outfit_heavy.mesh"
- meshsettings = { name = "cm_goblin_soldier_outfit_heavyShape" index = 0
-  texture_diffuse = "cm_goblin_soldier_outfit_heavy_diffuse.dds"
+ name = "cm_goblin_soldier_outfit_light_b_mesh"
+ file = "cm_goblin_soldier_outfit_light_b.mesh"
+ meshsettings = { name = "cm_goblin_soldier_outfit_light_bShape" index = 0
+  texture_diffuse = "cm_goblin_soldier_outfit_light_b_diffuse.dds"
+  texture_normal = "cm_goblin_soldier_flat_normal.dds"
+  texture = { index = 3 srgb = no file = "cm_goblin_soldier_mask.dds" }
+  shader = "unit_material_repaint" shader_file = "gfx/FX/units.shader"
+ }
+}
+pdxmesh = {
+ name = "cm_goblin_soldier_outfit_heavy_a_mesh"
+ file = "cm_goblin_soldier_outfit_heavy_a.mesh"
+ meshsettings = { name = "cm_goblin_soldier_outfit_heavy_aShape" index = 0
+  texture_diffuse = "cm_goblin_soldier_outfit_heavy_a_diffuse.dds"
+  texture_normal = "cm_goblin_soldier_flat_normal.dds"
+  texture = { index = 3 srgb = no file = "cm_goblin_soldier_mask.dds" }
+  shader = "unit_material_repaint" shader_file = "gfx/FX/units.shader"
+ }
+}
+pdxmesh = {
+ name = "cm_goblin_soldier_outfit_heavy_b_mesh"
+ file = "cm_goblin_soldier_outfit_heavy_b.mesh"
+ meshsettings = { name = "cm_goblin_soldier_outfit_heavy_bShape" index = 0
+  texture_diffuse = "cm_goblin_soldier_outfit_heavy_b_diffuse.dds"
   texture_normal = "cm_goblin_soldier_flat_normal.dds"
   texture = { index = 3 srgb = no file = "cm_goblin_soldier_mask.dds" }
   shader = "unit_material_repaint" shader_file = "gfx/FX/units.shader"
@@ -93,6 +113,16 @@ pdxmesh = {
  file = "cm_goblin_soldier_cap_iron.mesh"
  meshsettings = { name = "cm_goblin_soldier_cap_ironShape" index = 0
   texture_diffuse = "cm_goblin_soldier_cap_iron_diffuse.dds"
+  texture_normal = "cm_goblin_soldier_flat_normal.dds"
+  texture = { index = 3 srgb = no file = "cm_goblin_soldier_mask.dds" }
+  shader = "unit_material_repaint" shader_file = "gfx/FX/units.shader"
+ }
+}
+pdxmesh = {
+ name = "cm_goblin_soldier_cap_horned_mesh"
+ file = "cm_goblin_soldier_cap_horned.mesh"
+ meshsettings = { name = "cm_goblin_soldier_cap_hornedShape" index = 0
+  texture_diffuse = "cm_goblin_soldier_cap_horned_diffuse.dds"
   texture_normal = "cm_goblin_soldier_flat_normal.dds"
   texture = { index = 3 srgb = no file = "cm_goblin_soldier_mask.dds" }
   shader = "unit_material_repaint" shader_file = "gfx/FX/units.shader"

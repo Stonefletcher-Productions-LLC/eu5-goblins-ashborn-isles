@@ -54154,10 +54154,61 @@ cm_stormpasture = {
 cm_silver_shard = {
 	feudalism = yes
 }
+cm_wrackfang = {
+	feudalism = yes
+}
+cm_gullscar = {
+	feudalism = yes
+}
+cm_stormcrag = {
+	feudalism = yes
+}
+cm_tidewhet = {
+	feudalism = yes
+}
+cm_brinehollow = {
+	feudalism = yes
+}
+cm_splitrock = {
+	feudalism = yes
+}
+cm_fangreach = {
+	feudalism = yes
+}
+cm_saltmarrow = {
+	feudalism = yes
+}
+cm_skerrygate = {
+	feudalism = yes
+}
+cm_crowspire = {
+	feudalism = yes
+}
+cm_wavebreak = {
+	feudalism = yes
+}
+cm_brackfen = {
+	feudalism = yes
+}
+cm_harrowmoor = {
+	feudalism = yes
+}
+cm_grimtide = {
+	feudalism = yes
+}
 cm_knifeback = {
 	feudalism = yes
 }
 cm_silkworm_grove = {
+	feudalism = yes
+}
+cm_edgewater = {
+	feudalism = yes
+}
+cm_maw_rock = {
+	feudalism = yes
+}
+cm_gullwatch = {
 	feudalism = yes
 }
 cm_sootwake = {
@@ -54245,6 +54296,15 @@ cm_wickwood = {
 	feudalism = yes
 }
 cm_emberwatch = {
+	feudalism = yes
+}
+cm_cinderstep = {
+	feudalism = yes
+}
+cm_slagcove = {
+	feudalism = yes
+}
+cm_kilnwatch = {
 	feudalism = yes
 }
 }

@@ -60,12 +60,12 @@ cm_reefnet_settlement = { market_village = 1 }
 cm_coralpasture_settlement = { farming_village = 1 }
 cm_pearlshore_settlement = { market_village = 1 }
 cm_tidegrain_settlement = { farming_village = 1 windmill = 1 }
-cm_shatterfin_settlement = { marketplace = 3 wharf = 1 naval_supplies_guild = 2 cloth_guild = 3 granary = 3 tools_guild = 3 jewelry_guild = 1 paper_guild = 1 tannery = 2 mason = 1 glass_guild = 1 pottery_guild = 1 }
+cm_shatterfin_settlement = { marketplace = 4 wharf = 1 naval_supplies_guild = 2 cloth_guild = 3 granary = 3 tools_guild = 3 jewelry_guild = 1 paper_guild = 1 tannery = 2 mason = 1 glass_guild = 1 pottery_guild = 1 weapon_guild = 1 }
 cm_shardpoint_settlement = { mason = 2 }
-cm_stormpasture_settlement = { farming_village = 1 }
-cm_silver_shard_settlement = { market_village = 1 }
+cm_stormpasture_settlement = { farming_village = 2 }
+cm_silver_shard_settlement = { market_village = 1 fishing_village = 2 }
 cm_wrackfang_settlement = { farming_village = 1 }
-cm_gullscar_settlement = { market_village = 1 }
+cm_gullscar_settlement = { market_village = 1 fishing_village = 1 }
 cm_stormcrag_settlement = { market_village = 1 local_smelters = 1 }
 cm_tidewhet_settlement = { market_village = 1 }
 cm_brinehollow_settlement = { market_village = 1 }
@@ -78,37 +78,37 @@ cm_wavebreak_settlement = { farming_village = 1 }
 cm_brackfen_settlement = { forest_village = 1 }
 cm_harrowmoor_settlement = { farming_village = 1 }
 cm_grimtide_settlement = { market_village = 1 }
-cm_knifeback_settlement = { marketplace = 1 wharf = 1 naval_supplies_guild = 1 tools_guild = 1 granary = 1 tar_kiln = 1 }
+cm_knifeback_settlement = { marketplace = 2 wharf = 1 naval_supplies_guild = 1 tools_guild = 1 granary = 1 tar_kiln = 1 }
 cm_silkworm_grove_settlement = { forest_village = 1 fishing_village = 1 }
-cm_edgewater_settlement = { market_village = 1 }
+cm_edgewater_settlement = { market_village = 1 fishing_village = 2 }
 cm_maw_rock_settlement = { market_village = 1 }
-cm_gullwatch_settlement = { market_village = 1 }
+cm_gullwatch_settlement = { market_village = 1 fishing_village = 2 }
 cm_sootwake_settlement = { marketplace = 1 wharf = 1 naval_supplies_guild = 1 granary = 1 tools_guild = 2 mason = 2 glass_guild = 1 cloth_guild = 1 tannery = 1 paper_guild = 1 pottery_guild = 1 }
 cm_ember_key_settlement = { forest_village = 2 charcoal_maker = 1 tar_kiln = 1 fishing_village = 2 }
 cm_sootgrain_settlement = { farming_village = 2 windmill = 1 }
 cm_alum_key_settlement = { market_village = 1 charcoal_maker = 1 fishing_village = 2 }
-cm_chainhaven_settlement = { marketplace = 4 stockade = 1 naval_supplies_guild = 1 glass_guild = 1 paper_guild = 1 tools_guild = 4 wharf = 1 jewelry_guild = 1 tannery = 2 cloth_guild = 2 granary = 2 mason = 1 pottery_guild = 1 weapon_guild = 1 }
+cm_chainhaven_settlement = { marketplace = 3 stockade = 1 naval_supplies_guild = 1 glass_guild = 1 paper_guild = 1 tools_guild = 2 wharf = 1 jewelry_guild = 1 tannery = 2 cloth_guild = 2 granary = 2 mason = 1 pottery_guild = 1 weapon_guild = 1 }
 cm_brassridge_settlement = { local_smelters = 1 fishing_village = 2 }
 cm_coinfall_settlement = { mason = 2 fishing_village = 1 }
 cm_saltwake_settlement = { fishing_village = 1 }
 cm_weighstone_settlement = { fishing_village = 2 }
-cm_coppercut_settlement = { local_smelters = 1 fishing_village = 1 }
-cm_blackmeasure_settlement = { local_smelters = 1 fishing_village = 2 }
+cm_coppercut_settlement = { fishing_village = 1 }
+cm_blackmeasure_settlement = { fishing_village = 2 }
 cm_fangstead_settlement = { farming_village = 2 }
-cm_cinderfurrow_settlement = { market_village = 1 fiber_crops_farm = 2 }
+cm_cinderfurrow_settlement = { fiber_crops_farm = 1 }
 cm_oathforge_settlement = { market_village = 1 local_smelters = 1 }
-cm_chainwood_settlement = { market_village = 1 }
+cm_chainwood_settlement = {  }
 cm_ashbarley_settlement = { market_village = 1 farming_village = 2 }
 cm_scalebreak_settlement = { market_village = 1 farming_village = 2 }
 cm_tallyrock_settlement = { fishing_village = 1 }
 cm_brinepans_settlement = { market_village = 1 fishing_village = 2 }
 cm_ledgerfen_settlement = { market_village = 1 farming_village = 1 }
 cm_emberhollow_settlement = { market_village = 1 charcoal_maker = 1 tar_kiln = 1 }
-cm_lockshore_settlement = { market_village = 1 fishing_village = 1 }
-cm_tolltooth_settlement = { marketplace = 2 wharf = 1 naval_supplies_guild = 1 granary = 1 }
-cm_watchfang_settlement = { market_village = 1 }
-cm_netreach_settlement = { market_village = 1 }
-cm_lastlight_settlement = { market_village = 1 fishing_village = 1 }
+cm_lockshore_settlement = { fishing_village = 1 }
+cm_tolltooth_settlement = { marketplace = 1 wharf = 1 naval_supplies_guild = 1 granary = 1 }
+cm_watchfang_settlement = {  }
+cm_netreach_settlement = {  }
+cm_lastlight_settlement = { fishing_village = 1 }
 cm_lantern_haven_settlement = { marketplace = 1 wharf = 1 granary = 1 }
 cm_wickwood_settlement = { market_village = 1 }
 cm_emberwatch_settlement = { market_village = 1 }

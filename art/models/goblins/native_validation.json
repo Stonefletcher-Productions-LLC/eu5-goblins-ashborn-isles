@@ -1,51 +1,78 @@
 {
   "status": "STATIC MODEL CHECKS PASSED; ENGINE PLAYTEST PENDING",
-  "runtime_infantry": "native soldier rig, weapons, shields and animations at goblin scale; sculpted goblin body per clan with goblin outfits and caps",
+  "runtime_infantry": "native soldier rig, weapons, shields and animations at goblin scale; sculpted goblin body per clan with two outfit variants per category and three caps",
   "clans": 6,
   "meshes": {
     "cm_goblin_soldier_body": {
       "triangles": 6000,
-      "vertices": 4829,
-      "bones_used": 51,
+      "vertices": 4877,
+      "bones_used": 50,
       "height_cm": [
-        1.5,
-        182.0
+        0.9,
+        179.8
       ]
     },
-    "cm_goblin_soldier_outfit_light": {
-      "triangles": 3000,
-      "vertices": 2434,
-      "bones_used": 23,
+    "cm_goblin_soldier_outfit_light_a": {
+      "triangles": 3200,
+      "vertices": 3281,
+      "bones_used": 25,
       "height_cm": [
-        14.7,
-        150.9
+        16.0,
+        152.1
       ]
     },
-    "cm_goblin_soldier_outfit_heavy": {
+    "cm_goblin_soldier_outfit_light_b": {
+      "triangles": 3200,
+      "vertices": 3476,
+      "bones_used": 20,
+      "height_cm": [
+        16.0,
+        150.2
+      ]
+    },
+    "cm_goblin_soldier_outfit_heavy_a": {
       "triangles": 4500,
-      "vertices": 3728,
-      "bones_used": 23,
+      "vertices": 4263,
+      "bones_used": 25,
       "height_cm": [
-        14.7,
+        16.0,
         154.4
       ]
     },
+    "cm_goblin_soldier_outfit_heavy_b": {
+      "triangles": 4000,
+      "vertices": 3701,
+      "bones_used": 25,
+      "height_cm": [
+        16.0,
+        152.3
+      ]
+    },
     "cm_goblin_soldier_cap_leather": {
-      "triangles": 700,
-      "vertices": 684,
+      "triangles": 800,
+      "vertices": 669,
       "bones_used": 1,
       "height_cm": [
-        165.7,
-        182.1
+        169.0,
+        181.9
       ]
     },
     "cm_goblin_soldier_cap_iron": {
-      "triangles": 1199,
-      "vertices": 1214,
+      "triangles": 1200,
+      "vertices": 1081,
       "bones_used": 1,
       "height_cm": [
-        157.8,
-        191.0
+        160.2,
+        193.5
+      ]
+    },
+    "cm_goblin_soldier_cap_horned": {
+      "triangles": 1400,
+      "vertices": 1332,
+      "bones_used": 1,
+      "height_cm": [
+        169.2,
+        194.5
       ]
     }
   },
@@ -53,19 +80,19 @@
   "native_scale": 0.08,
   "median_skin_texel_srgb": {
     "cindermaw": [
-      137,
-      147,
-      115
+      134,
+      146,
+      112
     ],
     "brackmaw": [
       117,
-      143,
-      129
+      141,
+      126
     ],
     "reefhook": [
       148,
-      156,
-      120
+      154,
+      117
     ],
     "shatterfin": [
       115,
@@ -75,17 +102,17 @@
     "sootwake": [
       107,
       121,
-      104
+      101
     ],
     "giltfang": [
-      145,
-      138,
-      107
+      142,
+      135,
+      104
     ]
   },
   "native_skeleton_and_graph_compared": true,
   "texture_registration": {
-    "registered_fixed_palette_meshes": 10,
+    "registered_fixed_palette_meshes": 13,
     "native_contract_checked": true
   },
   "engine_tested": false

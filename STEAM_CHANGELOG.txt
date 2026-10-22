@@ -1,3 +1,6 @@
+0.6.8 — Galleys, Warchiefs and sculpted goblin soldiers
+Goblin crowns start with Feudalism, galleys and two unique ships. Sculpted goblin soldiers with clan outfits. Opening event and painting for every crown. Warchief actions and petitions in the Goblin Horde. The Goblin Shore: mainland settlement and European backlash. Shatterfin out-builds Giltfang. New event and unit card art. New 1337 campaign needed. All players need the same version in multiplayer.
+
 0.6.7 — Shatter Maw moves, the goblin realms band together
 Shatter Maw moves north-west and becomes the largest goblin realm; new Cinderstep island; 117 locations. Start-game balance with many more goblins and enough food. Goblin Horde with Ashen Kinship defence, Pact Ladder, Covenant rites, Old World first-contact events and bigger courts. New 1337 campaign needed (map changed). All players need the same version in multiplayer.
 
