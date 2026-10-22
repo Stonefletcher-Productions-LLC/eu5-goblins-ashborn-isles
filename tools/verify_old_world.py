@@ -3,8 +3,8 @@ import re
 from verify_055 import parse
 from ashborn_roster import TAGS
 
-EVENTS = [f'ga_old_world.{n}' for n in range(1, 6)]
-GOBLIN_EVENTS = EVENTS[1:]
+EVENTS = [f'ga_old_world.{n}' for n in range(1, 7)]
+GOBLIN_EVENTS = EVENTS[1:5]
 
 
 def verify(read):
@@ -19,7 +19,8 @@ def verify(read):
     assert {v for k, _, v in goblin[0][2]} == set(TAGS) and goblin[0][0] == 'OR'
     for key in GOBLIN_EVENTS:
         assert fields(fields(events[key])['trigger']).get('ga_is_goblin') == 'yes', key
-    assert fields(fields(events['ga_old_world.1'])['trigger'])['ga_is_goblin'] == 'no'
+    for key in ('ga_old_world.1', 'ga_old_world.6'):
+        assert fields(fields(events[key])['trigger'])['ga_is_goblin'] == 'no', key
 
     pulses = fields(parse(read('in_game/common/on_action/goblins_old_world.txt')))
     registered = {k for k, _, _ in fields(pulses['monthly_country_pulse'])['on_actions']}

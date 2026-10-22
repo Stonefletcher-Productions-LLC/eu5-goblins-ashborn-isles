@@ -10,6 +10,8 @@ None of these characters can inherit a crown: Rule of the Strongest and the
 Tidemother seniority only consider the ruling dynasty, and no row here uses it.
 """
 import random
+import re
+from collections import Counter, defaultdict
 from ashborn_names import POOLS, key, house_key
 
 # (household index, noble house index). House 0 rules; houses 1-3 also hold the
@@ -31,7 +33,9 @@ def _stats(rng, focus=None):
     return stats
 
 
-def rows(countries):
+def rows(countries, existing=()):
+    """existing: rows already authored (royal families, courtiers), so names spread out and
+    no two living members of a house share a first name."""
     characters = []
     for country in countries:
         tag = country['tag']
@@ -42,6 +46,23 @@ def rows(countries):
         capital = country['capital']
         prefix = 'cm_' + tag.lower()
         rng = random.Random('goblin-nobility-' + tag)
+        # How often each name is already used in this crown, and which names each house holds.
+        taken, house_names = Counter(), defaultdict(set)
+        for row in existing:
+            if f' tag = {tag} ' in row and 'death_date' not in row:
+                name = re.search(r'first_name = \{ name = (\w+)', row)[1]
+                taken[name] += 1
+                house = re.search(r'dynasty = (\w+)', row)
+                if house:
+                    house_names[house[1]].add(name)
+
+        def pick(pool, avoid=()):
+            # The least-used name in the crown that the household does not already have.
+            free = [x for x in pool if key(x) not in avoid]
+            low = min(taken[key(x)] for x in free)
+            name = rng.choice([x for x in free if taken[key(x)] == low])
+            taken[key(name)] += 1
+            return name
 
         def person(ident, name, born, female=False, dynasty=None, last=None, estate='nobles_estate',
                    stats=None, extra=''):
@@ -64,9 +85,12 @@ def rows(countries):
             # Heads span 1278-1296 so some houses have grown grandchildren-age heirs.
             head_year = 1278 + n * 4 + rng.randint(0, 2)
             wife_year = head_year + rng.randint(2, 7)
-            head_name, wife_name = rng.choice(males), rng.choice(females)
             # The wife comes from the next noble house along, tying the houses together.
             wife_house = house_key(tag, NOBLE_HOUSES[(n + 1) % len(NOBLE_HOUSES)])
+            head_name = pick(males, house_names[dynasty])
+            house_names[dynasty].add(key(head_name))
+            wife_name = pick(females, house_names[dynasty] | house_names[wife_house])
+            house_names[wife_house].add(key(wife_name))
             person(ident + '_head', head_name, _date(rng, head_year), dynasty=dynasty, stats=_stats(rng, n % 3),
                    extra=f'spouse = {ident}_wife')
             person(ident + '_wife', wife_name, _date(rng, wife_year), True, wife_house, stats=_stats(rng, (n + 1) % 3),
@@ -76,11 +100,9 @@ def rows(countries):
             first = wife_year + rng.randint(18, 21)
             children = [('son', False, first), ('daughter', True, first + 2), ('son_2', False, first + 4),
                         ('daughter_2', True, first + 6), ('child', rng.random() < .5, 1330 + rng.randint(0, 6))]
-            used = {head_name, wife_name}
             for role, female, year in children:
-                pool = [x for x in (females if female else males) if x not in used]
-                name = rng.choice(pool)
-                used.add(name)
+                name = pick(females if female else males, house_names[dynasty] | {key(wife_name)})
+                house_names[dynasty].add(key(name))
                 focus = rng.choice((0, 1, 2, None)) if year <= 1319 else None
                 person(f'{ident}_{role}', name, _date(rng, min(year, 1336)), female, dynasty,
                        stats=_stats(rng, focus), extra=f'father = {ident}_head mother = {ident}_wife')
@@ -88,10 +110,10 @@ def rows(countries):
         bynames = rng.sample(lowborn, CLERGY + GUILD)
         for i in range(CLERGY):
             female = i == 1
-            person(f'{prefix}_clergy_{i}', rng.choice(females if female else males), _date(rng, rng.randint(1288, 1312)),
+            person(f'{prefix}_clergy_{i}', pick(females if female else males), _date(rng, rng.randint(1288, 1312)),
                    female, last=bynames[i], estate='clergy_estate', stats=_stats(rng, (0, 1, 0)[i]))
         for i in range(GUILD):
             female = i == 2
-            person(f'{prefix}_guild_{i}', rng.choice(females if female else males), _date(rng, rng.randint(1290, 1314)),
+            person(f'{prefix}_guild_{i}', pick(females if female else males), _date(rng, rng.randint(1290, 1314)),
                    female, last=bynames[CLERGY + i], estate='burghers_estate', stats=_stats(rng, (0, 1, 0)[i]))
     return characters

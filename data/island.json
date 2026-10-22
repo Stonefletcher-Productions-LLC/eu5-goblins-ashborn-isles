@@ -528,7 +528,7 @@
     },
     {
       "tag": "RHK",
-      "name": "Reefhook Clan",
+      "name": "Reefhook",
       "adjective": "Reefhook",
       "culture": "cm_reefkin",
       "culture_name": "Reefstrider",
@@ -543,7 +543,7 @@
     },
     {
       "tag": "SFK",
-      "name": "Shatterfin Clan",
+      "name": "Shatterfin",
       "adjective": "Shatterfin",
       "culture": "cm_shatterkin",
       "culture_name": "Stormfang",
@@ -558,7 +558,7 @@
     },
     {
       "tag": "SWK",
-      "name": "Sootwake Clan",
+      "name": "Sootwake",
       "adjective": "Sootwake",
       "culture": "cm_sootkin",
       "culture_name": "Ashveil",

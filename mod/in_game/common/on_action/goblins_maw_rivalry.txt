@@ -1,0 +1,34 @@
+﻿monthly_country_pulse = { on_actions = { ga_maw_rivalry_monthly } }
+# Shatterfin paces the chain: two years after its opening, then one event every two years.
+# It ends early if either crown is gone.
+ga_maw_rivalry_monthly = {
+    trigger = {
+        tag = SFK
+        has_variable = ga_opening_seen
+        NOT = { has_variable = ga_mr_cooldown }
+        NOT = { has_variable = ga_mr_finished }
+    }
+    effect = {
+        if = { limit = { NOT = { exists = c:GTF } }
+            set_variable = { name = ga_mr_finished value = yes }
+        }
+        else_if = { limit = { NOT = { has_variable = ga_mr_started } }
+            set_variable = { name = ga_mr_started value = yes }
+            set_variable = { name = ga_mr_cooldown value = yes years = 2 }
+        }
+        else_if = { limit = { NOT = { has_variable = ga_mr_1_done } }
+            set_variable = { name = ga_mr_1_done value = yes }
+            set_variable = { name = ga_mr_cooldown value = yes years = 2 }
+            trigger_event_non_silently = { id = ga_maw_rivalry.1 }
+        }
+        else_if = { limit = { NOT = { has_variable = ga_mr_2_done } }
+            set_variable = { name = ga_mr_2_done value = yes }
+            set_variable = { name = ga_mr_cooldown value = yes years = 2 }
+            c:GTF = { trigger_event_non_silently = { id = ga_maw_rivalry.2 } }
+        }
+        else = {
+            set_variable = { name = ga_mr_finished value = yes }
+            trigger_event_non_silently = { id = ga_maw_rivalry.3 }
+        }
+    }
+}

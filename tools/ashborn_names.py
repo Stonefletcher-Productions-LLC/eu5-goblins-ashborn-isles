@@ -3,33 +3,33 @@ from clan_identity import PROFILES
 
 POOLS={
  'GTF':('Cinderweight','cm_giltkin',
- 'Vrekk Skarn Krizz Drazk Korrik Grizz Vrazh Krek Zark Borrik Trazk Krunn Drizz Krazh Zurr Ghrak',
- 'Zhezzra Krizha Vrazka Skarra Drazha Brekka Korrza Grizha Trazza Zurrka Krazra Vrekka Shazra Brizka Zarkha Krezza',
+ 'Vrekk Skarn Krizz Drazk Korrik Grizz Vrazh Krek Zark Borrik Trazk Krunn Drizz Krazh Zurr Ghrak Brazk Korrz Grekk Zrazk Vrizz Kozzik Drekk Trizzak Zhorrik Brekk Skrazk Gorrz',
+ 'Zhezzra Krizha Vrazka Skarra Drazha Brekka Korrza Grizha Trazza Zurrka Krazra Vrekka Shazra Brizka Zarkha Krezza Brazka Korrzha Grekka Zrazha Vrizza Kozzra Drekka Trizzha Zhorra Brekkza Skrazha Gorrza',
  'Giltfang Brassjaw Chainclaw Coinbite Scaletooth Locktusk',
  'Brass-Eye Chainhand Saltknuckle Coin-Eater Copperfoot Lockjaw'),
  'CDM':('Emberblood','cm_cinderkin',
- 'Drogg Grask Korgat Throkk Gorrak Kragg Mograt Drukk Grond Krazg Vorgg Brakk Garkuk Ogrash Krogmar Rukk',
- 'Grakka Kragga Mograz Drakka Gorzha Bragga Korgra Urgza Vrogga Ragra Krugga Drazka Zoggra Garsha Mograkka Krazha',
+ 'Drogg Grask Korgat Throkk Gorrak Kragg Mograt Drukk Grond Krazg Vorgg Brakk Garkuk Ogrash Krogmar Rukk Bragg Thrug Gorgat Drokk Murgat Ghrond Vrakk Grogg Korrok Thragg Urgok Draggar',
+ 'Grakka Kragga Mograz Drakka Gorzha Bragga Korgra Urgza Vrogga Ragra Krugga Drazka Zoggra Garsha Mograkka Krazha Thrugga Gorgra Drokka Murga Ghronda Vrakka Grogga Korrka Thragga Urgra Draggza Bruzga',
  'Cindermaw Ashjaw Ironbite Forgefang Blackslag Emberclaw',
  'Coalhand Ash-Eater Chainbiter Flintknuckle Slagfoot Sootnose'),
  'QBR':('Brineward','cm_brinekin',
- 'Murgash Ghorr Brumak Brugorr Ghum Bragh Murrok Ghorum Bogrash Murruk Grubak Borgh Umrag Broggar Ghurmak Mughor',
- 'Brugha Morga Ghazra Brumra Murgha Boghra Ghorrza Umgra Braghra Mugra Ghumza Morghra Brugzha Urrgha Brorzha Ghubra',
+ 'Murgash Ghorr Brumak Brugorr Ghum Bragh Murrok Ghorum Bogrash Murruk Grubak Borgh Umrag Broggar Ghurmak Mughor Bruggash Ghomm Mudrak Borrum Ghumrak Murbash Brogh Umbrak Gharrum Muggor Bormak Ghudd',
+ 'Brugha Morga Ghazra Brumra Murgha Boghra Ghorrza Umgra Braghra Mugra Ghumza Morghra Brugzha Urrgha Brorzha Ghubra Brogha Ghomma Mudra Borrma Ghumra Murbra Umbra Gharra Muggra Borma Ghudda Brummza',
  'Brackmaw Miretooth Reedclaw Bogjaw Mudtusk Fenhook',
  'Mudfoot Reed-Cutter Bog-Eye Eelgrip Saltjaw Mirehand'),
  'RHK':('Reefstrider','cm_reefkin',
- 'Skrezz Krizzek Zikrat Skrik Rizzik Zrekk Kizrik Skazz Vizzek Zrik Krezik Tizzak Skerz Krikzat Zizzik Rekzik',
- 'Zikka Skrizza Rizzka Krizha Zrikka Skizza Tizzra Kezra Vizzka Zrekka Rikkza Skirza Kizzra Zazka Rezikka Skrezzha',
+ 'Skrezz Krizzek Zikrat Skrik Rizzik Zrekk Kizrik Skazz Vizzek Zrik Krezik Tizzak Skerz Krikzat Zizzik Rekzik Zizzek Skrikk Kretz Vizzik Tazzik Skazzik Rizzek Zekkat Krazzik Skettik Zirrik Kizzek',
+ 'Zikka Skrizza Rizzka Krizha Zrikka Skizza Tizzra Kezra Vizzka Zrekka Rikkza Skirza Kizzra Zazka Rezikka Skrezzha Zizzka Skrikka Kretza Vizzra Tazzka Skazzra Rizzeka Zekka Krazzka Sketta Zirrka Kizzeka',
  'Reefhook Shoalcut Shellsplit Coralbite Shardhook Pearlclaw',
  'Reef-Cutter Shellbreaker Netfinger Hookhand Gullbiter Salt-Eye'),
  'SFK':('Stormfang','cm_shatterkin',
- 'Vrosh Krashik Sharg Vrak Krishak Shrokk Rask Vrokk Krazhik Shrakk Rikkash Vresh Korrak Zharr Kravosh Shrik',
- 'Jaimzha Skritcha Morzha Rikkra Krishka Zrikka Zhavra Vrazka Shrazha Vrishka Krashra Rizhka Shrikka Vroshka Krazha Zhrikka',
+ 'Vrosh Krashik Sharg Vrak Krishak Shrokk Rask Vrokk Krazhik Shrakk Rikkash Vresh Korrak Zharr Kravosh Shrik Vrashk Shorr Krovash Zhrokk Raskar Vrosk Shrazz Kroshik Zharrok Vreshak Skarrosh Krovv',
+ 'Jaimzha Skritcha Morzha Rikkra Krishka Zrikka Zhavra Vrazka Shrazha Vrishka Krashra Rizhka Shrikka Vroshka Krazha Zhrikka Vrashka Shorra Krovasha Zhrokka Raskra Vroska Shrazzka Kroshka Zharra Vreshka Skarrosha Krovva',
  'Shatterfin Knifeback Stormscar Wavecleaver Galehook Deepfang',
  'Saltfang Wavebiter Storm-Eye Ropehand Gale-Eater Keelbreaker'),
  'SWK':('Ashveil','cm_sootkin',
- 'Snikh Zhor Khash Zhekh Skharr Sizh Khuzh Srozh Zhakh Nizhk Khez Szhurr Zhirr Veshk Khaz Surrkh',
- 'Zheska Khazra Sishka Zhirra Khezha Sizhka Nizhka Khurza Zhasha Snezha Veshra Zhurka Sakhra Khasha Zhisra Khessha',
+ 'Snikh Zhor Khash Zhekh Skharr Sizh Khuzh Srozh Zhakh Nizhk Khez Szhurr Zhirr Veshk Khaz Surrkh Snezh Khorr Zhikh Skhaz Sizhk Khurr Zhesk Nikhz Srakh Vezh Khiz Zhurrk',
+ 'Zheska Khazra Sishka Zhirra Khezha Sizhka Nizhka Khurza Zhasha Snezha Veshra Zhurka Sakhra Khasha Zhisra Khessha Sneshka Khorra Zhikha Skhazra Sizhra Khurra Zheskra Nikhza Srakha Vezha Khizra Zhurrka',
  'Sootwake Cinderhush Blackreed Ashveil Duskmire Smoketooth',
  'Smokehand Ashwhisper Coal-Eye Cinderfoot Blackfinger Ember-Eater'),
 }
@@ -207,7 +207,9 @@ def build_courts(b,out):
     """Add families and adult courtiers; native cabinet appointments remain native."""
     import goblin_nobility
     dynasties,characters=court_rows(b.CFG['countries'])
-    characters=characters+goblin_nobility.rows(b.CFG['countries'])
+    import shatterfin
+    # Shatterfin's family is written separately but counts when spreading names.
+    characters=characters+goblin_nobility.rows(b.CFG['countries'],shatterfin.family_rows()+characters)
     for rel,block,rows in [('main_menu/setup/start/04_dynasties.txt','dynasty_manager',dynasties),('main_menu/setup/start/05_characters.txt','character_db',characters)]:
         p=out/rel;b.write(out,rel,b.inject(p.read_text(encoding='utf-8-sig'),block,'\n'.join(rows)))
     return len(characters)

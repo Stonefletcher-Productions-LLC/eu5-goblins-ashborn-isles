@@ -1,5 +1,5 @@
 ﻿namespace = ga_old_world
-# The Old World Reacts: how Iberian and Catholic courts meet the goblins, and how
+# The Old World Reacts: how Catholic and Muslim courts meet the goblins, and how
 # every Ashborn crown answers them. Paced by the goblins_old_world on_actions.
 
 # Foreign Catholic courts that received goblin first contact debate the goblins.
@@ -109,5 +109,23 @@ ga_old_world.5 = {
     option = { name = ga_old_world.5.c ai_chance = { factor = 1 }
         custom_tooltip = ga_old_world.5.c_tt
         hidden_effect = { every_country = { limit = { has_variable = ga_received_goblin_first_contact religion = religion:catholic } add_opinion = { target = root modifier = ga_owr_legate_dismissed } } }
+    }
+}
+
+# Foreign Muslim courts that received goblin first contact debate the goblins.
+ga_old_world.6 = {
+    type = country_event outcome = neutral
+    title = ga_old_world.6.title desc = ga_old_world.6.desc
+    image = "gfx/interface/illustrations/event/ashborn/africa.dds"
+    trigger = { ga_is_goblin = no has_variable = ga_received_goblin_first_contact religion = religion:sunni }
+    option = { name = ga_old_world.6.a ai_chance = { factor = 2 }
+        custom_tooltip = ga_old_world.6.a_tt
+        hidden_effect = { every_country = { limit = { ga_is_goblin = yes } save_scope_as = ga_owr_goblin root = { add_opinion = { target = scope:ga_owr_goblin modifier = ga_owr_peoples_of_the_edge } } } }
+        add_country_modifier = { modifier = ga_owr_goblins_in_the_souk years = 10 mode = replace }
+    }
+    option = { name = ga_old_world.6.b ai_chance = { factor = 1 }
+        custom_tooltip = ga_old_world.6.b_tt
+        hidden_effect = { every_country = { limit = { ga_is_goblin = yes } save_scope_as = ga_owr_goblin root = { add_opinion = { target = scope:ga_owr_goblin modifier = ga_owr_jinn_of_the_fire } } } }
+        add_country_modifier = { modifier = ga_owr_watch_on_the_coast years = 10 mode = replace }
     }
 }

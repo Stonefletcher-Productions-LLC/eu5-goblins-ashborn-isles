@@ -1,0 +1,10 @@
+﻿ga_mr_tolls_paid = { value = 15 months = 120 }
+ga_mr_toll_defied = { value = -20 months = 120 }
+ga_mr_toll_raised = { value = -15 months = 120 }
+ga_mr_debts_called = { value = -30 months = 180 }
+ga_mr_debts_eased = { value = 25 months = 120 }
+ga_mr_captains_bought = { value = -15 months = 120 }
+ga_mr_blood_debt = { value = -30 months = 240 }
+ga_mr_lamp_dark = { value = -20 months = 120 }
+ga_mr_grief_set_aside = { value = 15 months = 120 }
+ga_mr_cords_brought = { value = -10 months = 120 }
