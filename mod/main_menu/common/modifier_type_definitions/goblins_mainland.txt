@@ -1,0 +1,4 @@
+﻿ga_ms_settlers_price_cost_modifier = { color = bad percent = yes game_data = { category = country } }
+ga_ms_tongue_price_cost_modifier = { color = bad percent = yes game_data = { category = country } }
+ga_ms_shrine_price_cost_modifier = { color = bad percent = yes game_data = { category = country } }
+ga_ms_kin_price_cost_modifier = { color = bad percent = yes game_data = { category = country } }

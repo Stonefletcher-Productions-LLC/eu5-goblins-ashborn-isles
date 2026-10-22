@@ -1,0 +1,62 @@
+﻿monthly_country_pulse = { on_actions = { ga_ms_goblin_monthly ga_ms_foreign_monthly } }
+# Each goblin crown that has landed gets the settlement events in order, two years apart,
+# and hears it when it loses its last mainland town.
+ga_ms_goblin_monthly = {
+    trigger = {
+        ga_is_goblin = yes
+        has_variable = ga_ms_landed
+        NOT = { has_variable = ga_ms_cooldown }
+    }
+    effect = {
+        if = { limit = { ga_holds_mainland = no }
+            if = { limit = { NOT = { has_variable = ga_ms_driven_out } }
+                set_variable = { name = ga_ms_driven_out value = yes }
+                trigger_event_non_silently = { id = ga_mainland.8 }
+            }
+        }
+        else = {
+            remove_variable = ga_ms_driven_out
+            if = { limit = { NOT = { has_variable = ga_ms_started } }
+                set_variable = { name = ga_ms_started value = yes }
+                set_variable = { name = ga_ms_cooldown value = yes years = 2 }
+            }
+            else_if = { limit = { NOT = { has_variable = ga_ms_2_done } }
+                set_variable = { name = ga_ms_2_done value = yes }
+                set_variable = { name = ga_ms_cooldown value = yes years = 2 }
+                trigger_event_non_silently = { id = ga_mainland.2 }
+            }
+            else_if = { limit = { NOT = { has_variable = ga_ms_3_done } }
+                set_variable = { name = ga_ms_3_done value = yes }
+                set_variable = { name = ga_ms_cooldown value = yes years = 2 }
+                trigger_event_non_silently = { id = ga_mainland.3 }
+            }
+            else_if = { limit = { NOT = { has_variable = ga_ms_4_done } }
+                set_variable = { name = ga_ms_4_done value = yes }
+                set_variable = { name = ga_ms_cooldown value = yes years = 2 }
+                trigger_event_non_silently = { id = ga_mainland.4 }
+            }
+        }
+    }
+}
+# A European court bordering a goblin shore reacts, and again every 10 years.
+# A court that never met the goblins is marked for the Old World debate first
+# (ga_owr_foreign_monthly fires ga_old_world.1 or .6 six months later).
+ga_ms_foreign_monthly = {
+    trigger = {
+        ga_is_goblin = no
+        NOT = { has_variable = ga_ms_alarm_cooldown }
+        any_owned_location = { ga_mainland_location = yes }
+        ga_shore_neighbour = yes
+    }
+    effect = {
+        if = { limit = { NOT = { has_variable = ga_received_goblin_first_contact } }
+            set_variable = { name = ga_received_goblin_first_contact value = yes }
+            set_variable = { name = ga_ms_alarm_cooldown value = yes months = 9 }
+        }
+        else = {
+            set_variable = { name = ga_ms_alarmed value = yes }
+            set_variable = { name = ga_ms_alarm_cooldown value = yes years = 10 }
+            trigger_event_non_silently = { id = ga_mainland.5 }
+        }
+    }
+}

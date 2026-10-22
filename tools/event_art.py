@@ -36,12 +36,19 @@ EVENTS = {
         # Placeholder until the Muslim court debate has its own painting.
         6: 'africa',
     }.items()},
+    # The Goblin Shore reuses existing paintings until it has its own.
+    **{f'ga_mainland.{n}': art for n, art in {
+        1: 'eastern_harbor', 2: 'iberia', 3: 'old_world_tavern', 4: 'departure',
+        5: 'old_world_demons', 6: 'foreign_sails', 7: 'kinship', 8: 'pact_broken',
+        9: 'unification', 10: 'kinship',
+    }.items()},
 }
 # Covenant stories reuse the same native-sized paintings.
 from ashen_covenant import STORIES
 EVENTS.update({f'ashen_covenant.{row[0]}': row[4] for row in STORIES})
 EVENTS['ashen_covenant.20'] = 'covenant_moot'
-SITUATIONS = {'ga_gathering_of_five': 'gathering', 'ga_eastern_hunger': 'eastern_hunger', 'ga_ashborn_voyages': 'charts'}
+SITUATIONS = {'ga_gathering_of_five': 'gathering', 'ga_eastern_hunger': 'eastern_hunger', 'ga_ashborn_voyages': 'charts',
+              'ga_goblin_shore': 'eastern_harbor'}
 ART = sorted(set(EVENTS.values()) | set(SITUATIONS.values()))
 EVENT_DIR = 'main_menu/gfx/interface/illustrations/event/ashborn'
 

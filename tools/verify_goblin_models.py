@@ -96,14 +96,15 @@ def verify(out,game=None):
             attached=re.findall(r'attach = \{ 100 = (\w+)',block)
             assert attached==[f'cm_goblin_{clan["id"]}_body',f'cm_goblin_{category}_outfit',f'cm_goblin_{category}_headgear',*NATIVE_ATTACH],attached
             assert '= torsos' not in block and '= legs' not in block and '= headgear' not in block
-    for name in list(OUTFITS.values())+list(CAPS.values()):
+    for name in [n for variants in OUTFITS.values() for n in variants]+list(CAPS.values()):
         width,height,mips=dds_levels(folder/(name+'_diffuse.dds'));assert width==height and mips==int(np.log2(width))+1
     # Native helmets, hair and beards do not fit the goblin skull: only goblin outfits and caps, no culture-tag overrides.
     assert ':' not in ''.join(re.findall(r'^(\S+) = \{',attachments,re.M))
     for category,weights in HEADGEAR.items():
         block=re.search(rf'^cm_goblin_{category}_headgear = {{(.*?)^}}',attachments,re.S|re.M)[1]
         assert sorted(re.findall(r'cm_goblin_soldier_cap_(\w+)_mesh',block))==sorted(k for k in weights if k!='none'),category
-        assert f'mesh_name = "{OUTFITS[category]}_mesh"' in re.search(rf'^cm_goblin_{category}_outfit = {{(.*?)^}}',attachments,re.S|re.M)[1]
+        outfit_block=re.search(rf'^cm_goblin_{category}_outfit = {{(.*?)^}}',attachments,re.S|re.M)[1]
+        assert sorted(re.findall(r'mesh_name = "(\w+)_mesh"',outfit_block))==sorted(OUTFITS[category]),category
     schematic=(out/'in_game/gfx/models/schematics'/(SCHEMATIC+'.schematic')).read_text(encoding='utf-8-sig')
     assert f'name="{SCHEMATIC}"' in schematic and f'value={UNIT_SCALE:.6f}' in schematic
     if game:
@@ -112,7 +113,7 @@ def verify(out,game=None):
         assert len(native.splitlines())==len(schematic.splitlines()) and len(diff)==3,'Only name and scale may differ from the native soldier graph'
     registration=verify_texture_registration(out,clans,game)
     return {'status':'STATIC MODEL CHECKS PASSED; ENGINE PLAYTEST PENDING',
-            'runtime_infantry':'native soldier rig, weapons, shields and animations at goblin scale; sculpted goblin body per clan with goblin outfits and caps',
+            'runtime_infantry':'native soldier rig, weapons, shields and animations at goblin scale; sculpted goblin body per clan with two outfit variants per category and three caps',
             'clans':len(clans),'meshes':meshes,'unit_scale':UNIT_SCALE,'native_scale':0.08,'median_skin_texel_srgb':skins,
             'native_skeleton_and_graph_compared':bool(game),'texture_registration':registration,'engine_tested':False}
 

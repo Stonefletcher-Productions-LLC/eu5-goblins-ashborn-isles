@@ -1,7 +1,7 @@
 # Development: goblin soldiers on the native unit rig
 
 1. Install from main and restart EU5. Start a new 1337 campaign as any goblin clan.
-2. Recruit light and heavy infantry for at least two clans. Check that you see green goblins in the clan skin colour with native weapons, shields and animations: big head, long ears, hooked nose, yellow eyes, clawed hands and feet. Light infantry wear a ragged tunic and leather wraps; heavy infantry a scrap breastplate, spiked pauldron and iron tassets. Some wear a leather skullcap or spiked iron cap (no native helmets, hair or beards). The whole soldier should be about 62% the size of a human soldier standing next to it.
+2. Recruit light and heavy infantry for at least two clans. Check that you see green goblins in the clan skin colour with native weapons, shields and animations: big head, long ears, hooked nose, yellow eyes, clawed hands and feet. Light infantry wear either a ragged tunic or a hide vest with fur collar and loincloth; heavy infantry either a quilted jack with scrap breastplate, spiked pauldron and tassets or a mail hauberk with gorget and pauldrons. Mixed within one regiment you should see bare heads, studded leather skullcaps, spiked iron caps and horned caps (no native helmets, hair or beards). Faces: deep-set yellow eyes under a heavy brow, hooked nose, tusks and warts. The whole soldier should be about 62% the size of a human soldier standing next to it.
 3. Zoom in on idle, march, combat and retreat. Look for bad skinning (stretched armpits, crotch or fingers), clothing poking through the body, caps clipping the ears, weapons or shields clipping the head, and units sinking into or floating above the ground.
 4. Check one human country's infantry for regressions.
 5. Search a fresh `error.log` for `cm_goblin_`, `Invalid entity graph`, `texture variation` and `Could not find`. Send a screenshot if anything looks off.
@@ -146,7 +146,7 @@ Static validation and installer verification do not substitute for these gamepla
 # 0.5.8 portrait acceptance
 
 Follow the age/sex, culture, existing-save and human-control checks in
-RELEASE_NOTES_0.5.8.md. Compare to the Gathering artwork. Confirm adult court and noble portraits select
+docs/history/RELEASE_NOTES_0.5.8.md. Compare to the Gathering artwork. Confirm adult court and noble portraits select
 hide/leather/fur outfits, with no cloth robe or jacket from the old mixed pool. In-game acceptance is
 pending; static geometry and packaging checks do not establish visual quality.
 

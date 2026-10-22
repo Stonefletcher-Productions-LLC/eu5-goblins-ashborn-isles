@@ -38,34 +38,212 @@ FACE = {
     'gene_neck_length': (.24,.38),
 }
 
-# Drogg gets a deliberate veteran-war-chief profile, rather than another global
-# species retune. His setup ID is stable and this modifier also reaches saves.
-DROGG_FACE = {
-    'gene_head_height': .38, 'gene_head_width': .62,
-    'gene_forehead_height': .34, 'gene_forehead_roundness': .27,
-    'gene_forehead_brow_forward': .91, 'gene_forehead_brow_height': .25,
-    'gene_eye_open': .24, 'gene_eye_size': .32,
-    'gene_jaw_width': .60, 'gene_jaw_height': .52, 'gene_chin_size': .54,
-    'gene_cheek_fat': .17, 'gene_cheek_def': .87, 'gene_cheek_forward': .73,
-    'gene_nose_length': .69, 'gene_nose_tip_forward': .69,
-    'gene_nose_width': .43, 'gene_nose_ridge_def': .73,
-    'gene_mouth_width': .50, 'gene_mouth_corner_height': .43,
-    'gene_mouth_upper_lip_size': .25, 'gene_mouth_lower_lip_size': .29,
+# Per-culture offsets from FACE, so heirs, consorts and courtiers of each crown
+# read as one people at a glance. Shifts stay inside FACE's restrained limits.
+CLAN_FACE = {
+    # Forge crews: heavy brow, sturdy jaw. The reference profile.
+    'cindermaw': {},
+    # Marsh houses: broad flat heads, fleshy cheeks, wide noses, short necks.
+    'brackmaw': {'gene_head_width': .07, 'gene_head_height': -.05, 'gene_cheek_fat': .12,
+                 'gene_nose_width': .08, 'gene_nose_length': -.06, 'gene_neck_length': -.06,
+                 'gene_jaw_width': .06},
+    # Reef pilots: narrow heads, pointed chins, sharp noses, livelier eyes.
+    'reefhook': {'gene_head_width': -.07, 'gene_jaw_width': -.07, 'gene_chin_size': -.06,
+                 'gene_nose_tip_forward': .06, 'gene_eye_open': .03, 'gene_cheek_fat': -.05},
+    # Stormfang: long faces, high cheekbones, strong jaws, narrow eyes.
+    'shatterfin': {'gene_head_height': .08, 'gene_cheek_forward': .06, 'gene_cheek_def': .04,
+                   'gene_jaw_height': .06, 'gene_eye_open': -.05, 'gene_neck_length': .05},
+    # Forest wardens: gaunt, deep-set eyes under jutting brows, narrow jaws.
+    'sootwake': {'gene_cheek_fat': -.08, 'gene_eye_socket': .08, 'gene_forehead_brow_forward': .05,
+                 'gene_jaw_width': -.05, 'gene_head_width': -.04, 'gene_mouth_width': -.05},
+    # Counting-house merchants: rounder, softer faces, long noses, small chins.
+    'giltfang': {'gene_cheek_fat': .09, 'gene_cheek_def': -.10, 'gene_chin_size': -.05,
+                 'gene_nose_length': .05, 'gene_forehead_roundness': .08},
 }
 
-def drogg_modifier():
-    dna='\n'.join(f'morph = {{ mode = replace gene = {g} template = template_1 value = {v} }}' for g,v in DROGG_FACE.items())
-    return f'''cm_ashborn_drogg = {{ usage = game selection_behavior = max priority = 140
- cm_drogg_warchief = {{ ignore_outfit_tags = yes
- dna_modifiers = {{
- {dna}
- accessory = {{ mode = replace gene = hair_styles template = all_hair accessory = male_hair_short_straight_pomp }}
- accessory = {{ mode = replace gene = cm_ashborn_clothing template = cm_warchief_clothing range = {{ 0 1 }} }}
- morph = {{ mode = add gene = cm_drogg_scar template = cm_battle_scar value = 1 }}
- }}
- weight = {{ base = 0 modifier = {{ add = 1000 exists = this exists = character:cm_cdm_ruler this = character:cm_cdm_ruler gfx_culture_applicable = cm_cinderkin_gfx }} }}
- }}
- }}'''
+def clan_face(ident):
+    face = dict(FACE)
+    for gene, shift in CLAN_FACE[ident].items():
+        a, b = face[gene]
+        face[gene] = (round(min(max(a + shift, 0), 1), 2), round(min(max(b + shift, 0), 1), 2))
+    return face
+
+# Each 1337 crown ruler gets a deliberate signature look, rather than another
+# global species retune. Setup IDs are stable, so the modifiers reach saves.
+# Regalia follows LORE.md: Drogg's war hall, Murgash's sluices, Skrezz's shell
+# clasp, Snikh's charcoal forest, Vrekk's counting house, Jaimzha's maternal
+# house. Accessories use native templates: a single-entry template is selected
+# by range, a multi-entry one by name (EU5 resolves names only in male lists).
+KINGS = {
+    'drogg': {
+        'character': 'cm_cdm_ruler', 'clan': 'cindermaw',
+        'face': {
+            'gene_head_height': .38, 'gene_head_width': .62,
+            'gene_forehead_height': .34, 'gene_forehead_roundness': .27,
+            'gene_forehead_brow_forward': .91, 'gene_forehead_brow_height': .25,
+            'gene_eye_open': .24, 'gene_eye_size': .32,
+            'gene_jaw_width': .60, 'gene_jaw_height': .52, 'gene_chin_size': .54,
+            'gene_cheek_fat': .17, 'gene_cheek_def': .87, 'gene_cheek_forward': .73,
+            'gene_nose_length': .69, 'gene_nose_tip_forward': .69,
+            'gene_nose_width': .43, 'gene_nose_ridge_def': .73,
+            'gene_mouth_width': .50, 'gene_mouth_corner_height': .43,
+            'gene_mouth_upper_lip_size': .25, 'gene_mouth_lower_lip_size': .29,
+            'gene_body_weight': .70,
+        },
+        'weathering': 1.0,
+        'hair': 'male_hair_short_straight_pomp',
+        'clothing': 'cm_warchief_clothing',
+        'headwear': ('iroquois_royalty', None),
+        'neckware_neck': ('european_war', 'male_neckwear_german_neck_gorget_black'),
+        'marks': [('cm_drogg_scar', 'cm_battle_scar')],
+    },
+    'murgash': {
+        'character': 'cm_qbr_ruler', 'clan': 'brackmaw',
+        'face': {
+            'gene_head_height': .30, 'gene_head_width': .70,
+            'gene_forehead_height': .26, 'gene_forehead_roundness': .45,
+            'gene_forehead_brow_forward': .74, 'gene_forehead_brow_height': .36,
+            'gene_eye_open': .30, 'gene_eye_size': .28,
+            'gene_jaw_width': .64, 'gene_jaw_height': .38, 'gene_chin_size': .44,
+            'gene_cheek_fat': .62, 'gene_cheek_def': .48, 'gene_cheek_forward': .64,
+            'gene_nose_length': .60, 'gene_nose_tip_forward': .62,
+            'gene_nose_width': .58, 'gene_nose_ridge_def': .60,
+            'gene_mouth_width': .60, 'gene_mouth_corner_height': .34,
+            'gene_mouth_upper_lip_size': .40, 'gene_mouth_lower_lip_size': .46,
+            'gene_neck_length': .18, 'gene_body_weight': .90,
+        },
+        'weathering': .9,
+        'hair': 'male_german_hair_balding_forehead',
+        'clothing': 'cm_sluice_clothing',
+        'neckware_neck': ('european_low_nobility', 'male_ger_cloth_set_a_scarf'),
+        'marks': [],
+    },
+    'skrezz': {
+        'character': 'cm_rhk_ruler', 'clan': 'reefhook',
+        'face': {
+            'gene_head_height': .36, 'gene_head_width': .44,
+            'gene_forehead_height': .30, 'gene_forehead_roundness': .30,
+            'gene_forehead_brow_forward': .66, 'gene_forehead_brow_height': .44,
+            'gene_eye_open': .48, 'gene_eye_size': .40,
+            'gene_jaw_width': .32, 'gene_jaw_height': .36, 'gene_chin_size': .30,
+            'gene_cheek_fat': .14, 'gene_cheek_def': .84, 'gene_cheek_forward': .70,
+            'gene_nose_length': .84, 'gene_nose_tip_forward': .90,
+            'gene_nose_width': .30, 'gene_nose_ridge_def': .80,
+            'gene_mouth_width': .62, 'gene_mouth_corner_height': .62,
+            'gene_mouth_upper_lip_size': .26, 'gene_mouth_lower_lip_size': .30,
+            'gene_body_weight': .35,
+        },
+        'weathering': .2,
+        'hair': 'male_iroquois_hair_mohawk_regular',
+        'clothing': 'cm_wreck_clothing',
+        'headwear': ('ashanti_high_nobility', None),
+        'neckware_outer': ('ashanti_high_nobility', None),
+        'marks': [],
+    },
+    'snikh': {
+        'character': 'cm_swk_ruler', 'clan': 'sootwake',
+        'face': {
+            'gene_head_height': .44, 'gene_head_width': .40,
+            'gene_forehead_height': .38, 'gene_forehead_roundness': .20,
+            'gene_forehead_brow_forward': .90, 'gene_forehead_brow_height': .22,
+            'gene_eye_open': .22, 'gene_eye_size': .30, 'gene_eye_socket': .86,
+            'gene_jaw_width': .30, 'gene_jaw_height': .48, 'gene_chin_size': .46,
+            'gene_cheek_fat': .06, 'gene_cheek_def': .92, 'gene_cheek_forward': .58,
+            'gene_nose_length': .78, 'gene_nose_tip_forward': .70,
+            'gene_nose_width': .28, 'gene_nose_ridge_def': .86,
+            'gene_mouth_width': .40, 'gene_mouth_corner_height': .30,
+            'gene_mouth_upper_lip_size': .18, 'gene_mouth_lower_lip_size': .22,
+            'gene_neck_length': .40, 'gene_body_weight': .12,
+        },
+        'weathering': .55,
+        'hair': 'male_hair_aztec_hair_bob_long',
+        'clothing': 'cm_warden_clothing',
+        'headwear': ('iroquois_low_nobility', 'male_headwear_iroquois_low_headband'),
+        'marks': [],
+    },
+    'vrekk': {
+        'character': 'cm_gtf_ruler', 'clan': 'giltfang',
+        'face': {
+            'gene_head_height': .34, 'gene_head_width': .56,
+            'gene_forehead_height': .40, 'gene_forehead_roundness': .48,
+            'gene_forehead_brow_forward': .70, 'gene_forehead_brow_height': .40,
+            'gene_eye_open': .28, 'gene_eye_size': .34,
+            'gene_jaw_width': .42, 'gene_jaw_height': .30, 'gene_chin_size': .26,
+            'gene_cheek_fat': .44, 'gene_cheek_def': .60, 'gene_cheek_forward': .62,
+            'gene_nose_length': .92, 'gene_nose_tip_forward': .80,
+            'gene_nose_width': .36, 'gene_nose_ridge_def': .90,
+            'gene_mouth_width': .44, 'gene_mouth_corner_height': .52,
+            'gene_mouth_upper_lip_size': .16, 'gene_mouth_lower_lip_size': .20,
+            'gene_body_weight': .62,
+        },
+        'weathering': .8,
+        'hair': 'male_german_hair_balding_top',
+        'clothing': 'cm_merchant_clothing',
+        'headwear': ('syrian_low_nobility', 'male_headwear_syrian_low_fur_hat'),
+        'neckware_outer': ('european_high_nobility', 'male_ger_cloth_set_a_chain_jewellery'),
+        'marks': [('cm_ashborn_king_marks', 'cm_jaw_scar')],
+    },
+    'jaimzha': {
+        'character': 'cm_sfk_maarka', 'clan': 'shatterfin', 'female': True,
+        'face': {
+            'gene_head_height': .48, 'gene_head_width': .50,
+            'gene_forehead_height': .36, 'gene_forehead_roundness': .34,
+            'gene_forehead_brow_forward': .72, 'gene_forehead_brow_height': .38,
+            'gene_eye_open': .30, 'gene_eye_size': .36,
+            'gene_jaw_width': .50, 'gene_jaw_height': .50, 'gene_chin_size': .52,
+            'gene_cheek_fat': .16, 'gene_cheek_def': .90, 'gene_cheek_forward': .80,
+            'gene_nose_length': .74, 'gene_nose_tip_forward': .66,
+            'gene_nose_width': .34, 'gene_nose_ridge_def': .70,
+            'gene_mouth_width': .48, 'gene_mouth_corner_height': .40,
+            'gene_mouth_upper_lip_size': .28, 'gene_mouth_lower_lip_size': .32,
+            'gene_neck_length': .44, 'gene_body_weight': .48,
+        },
+        'weathering': .85,
+        'hair': 'female_aztec_horn_braid_hair',
+        'clothing': 'cm_tidemother_clothing',
+        'headwear': ('aztec_high_nobility', None),
+        'neckware_outer': ('ashanti_high_nobility', None),
+        'marks': [],
+    },
+}
+KING_ACCESSORY_GENES = ['headwear', 'neckware_neck', 'neckware_outer']
+
+def king_modifiers(clans):
+    from build_goblin_outfits import hair_selection
+    cultures = {c['id']: c['culture'] for c in clans}
+    rows = ['cm_ashborn_kings = { usage = game selection_behavior = max priority = 140']
+    for king, spec in KINGS.items():
+        dna = [f'morph = {{ mode = replace gene = {g} template = template_1 value = {v} }}'
+               for g, v in spec['face'].items()]
+        dna.append(f"morph = {{ mode = replace gene = cm_ashborn_weathering template = cm_weathered value = {spec['weathering']} }}")
+        template, selection = hair_selection('female' if spec.get('female') else 'male', spec['hair'])
+        dna.append(f'accessory = {{ mode = replace gene = hair_styles template = {template} {selection} }}')
+        dna.append(f"accessory = {{ mode = replace gene = cm_ashborn_clothing template = {spec['clothing']} range = {{ 0 1 }} }}")
+        for gene in KING_ACCESSORY_GENES:
+            if gene in spec:
+                template, name = spec[gene]
+                selection = f'accessory = {name}' if name else 'range = { 0 1 }'
+                dna.append(f'accessory = {{ mode = add gene = {gene} template = {template} {selection} }}')
+        for gene, template in spec['marks']:
+            dna.append(f'morph = {{ mode = add gene = {gene} template = {template} value = 1 }}')
+        character = spec['character']
+        rows.append(f'cm_{king}_signature = {{ ignore_outfit_tags = yes\n dna_modifiers = {{\n '
+                    + '\n '.join(dna) +
+                    f'\n }}\n weight = {{ base = 0 modifier = {{ add = 1000 exists = this exists = character:{character}'
+                    f' this = character:{character} gfx_culture_applicable = {cultures[spec["clan"]]}_gfx }} }}\n }}')
+    return '\n'.join(rows + ['}'])
+
+def king_marks_gene():
+    """Native scar map, applied after the clan tint like the weathering."""
+    def decal(stem, blend, alpha, normal):
+        textures = f'diffuse = "{stem}_diffuse.dds"' + (f' normal = "{stem}_normal.dds"' if normal else '')
+        blends = f'diffuse = {blend}' + (' normal = overlay' if normal else '')
+        return (f'decal = {{ body_part = head\n textures = {{ {textures} }}\n blend_modes = {{ {blends} }}\n'
+                f' alpha_curve = {{ {{ 0 0 }} {{ 1 {alpha} }} }}\n decal_apply_order = post_skin_color priority = 115\n }}')
+    scar = decal('gfx/models/portraits/decals/visual_traits/male_head_decal_traits_scars_01', 'overlay', .85, True)
+    rest = 'boy = { } girl = { } adolescent_boy = { } adolescent_girl = { } infant = { }'
+    return ('cm_ashborn_king_marks = { inheritable = no\n'
+            f' cm_jaw_scar = {{ index = 0 male = {{ {scar} }} female = {{ }} {rest} }}\n}}')
 
 def drogg_scar_gene():
     return '''cm_drogg_scar = { inheritable = no cm_battle_scar = { index = 0
@@ -121,7 +299,8 @@ def weathering_gene():
 
 def text(path,value):
     path.parent.mkdir(parents=True,exist_ok=True)
-    path.write_text(value,encoding='utf-8-sig')
+    # CRLF on every platform, matching the checked-in Windows builds.
+    path.write_text(value,encoding='utf-8-sig',newline='\r\n')
 
 def skin_decal(path, rgb):
     """Constant-color BC3 decal matching native 1024px / 11-mip arrays."""
@@ -232,9 +411,9 @@ def build(out):
     # Opt-in visual effects, never ordinary DNA: zero-strength defaults can render globally.
     genes=['special_genes = {\nmorph_genes = {'];accessories=[];assets=[];modifiers=['cm_ashborn_appearance = {\n usage = game selection_behavior = max priority = 110'];ethnicities=[]
     # Kept within supported native gene ranges. Individuals retain all other DNA.
-    face=FACE
     genes.append(weathering_gene())
     genes.append(drogg_scar_gene())
+    genes.append(king_marks_gene())
     # Reuse the supported torso-only proportion and posture attributes on BOTH
     # sexes. Do not enable the disabled female height animation or infant face.
     # Fade in after childhood so native child/infant growth is not compounded.
@@ -279,6 +458,7 @@ def build(out):
         dna=f'morph = {{ mode = add gene = {gene} template = {gene} value = 1 }}\naccessory = {{ mode = add gene = cm_ashborn_features template = cm_{ident}_features value = 1 }}\n'
         dna+='morph = { mode = add gene = cm_ashborn_stature template = cm_compact_body value = 1 }\n'
         dna+='morph = { mode = add gene = cm_ashborn_weathering template = cm_weathered range = { 0.7 1 } }\n'
+        face=clan_face(ident)
         dna+='\n'.join(f'morph = {{ mode = replace gene = {g} template = template_1 range = {{ {a} {b} }} }}' for g,(a,b) in face.items())
         modifiers.append(f'cm_{ident}_appearance = {{ ignore_outfit_tags = yes dna_modifiers = {{ {dna} }} weight = {{ base = 0 modifier = {{ add = 100 gfx_culture_applicable = {tag} }} }} }}')
         ethnicities.append(f'cm_{ident}_ethnicity = {{ template = "ethnicity_template"\n'+
@@ -289,7 +469,7 @@ def build(out):
         ident=clan['id'];genes.append(f'cm_{ident}_features = {{ index = {i}\n'+
             '\n'.join(f'{t} = {{ 1 = "cm_{ident}_{"infant" if t=="infant" else "female" if t in ["female","girl","adolescent_girl"] else "male"}_features" }}' for t in TYPES)+'\n}')
     genes.append('} }\n}');modifiers.append('}')
-    modifiers.append(drogg_modifier())
+    modifiers.append(king_modifiers(clans))
     text(dest/'ashborn_features.asset','\n'.join(assets)+'\n')
     text(out/'in_game/common/genes/zz_ashborn_portraits.txt','\n'.join(genes)+'\n')
     text(out/'in_game/common/ethnicities/ashborn.txt','\n'.join(ethnicities)+'\n')

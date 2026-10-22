@@ -16,6 +16,16 @@ OUTFITS = {
     # The native no_clothes template already supplies infant swaddling.
     'infant': [(1, 'empty')],
 }
+# Signature garments for the six crown rulers (build_goblin_portraits.KINGS),
+# chosen from native wardrobes: (male, female). Index order is save-stable.
+KING_CLOTHING = {
+    'cm_warchief_clothing': ('male_clothes_iroquois_royal_bear_hunter', 'empty'),
+    'cm_sluice_clothing': ('male_clothes_syrian_low_hooded_jillaba', 'empty'),
+    'cm_wreck_clothing': ('male_clothes_deccan_high_scarf', 'empty'),
+    'cm_warden_clothing': ('male_clothes_iroquois_doctor_cape', 'empty'),
+    'cm_merchant_clothing': ('male_clothes_syrian_high_kaftan', 'empty'),
+    'cm_tidemother_clothing': ('empty', 'female_clothes_iroquois_noble_overcoat'),
+}
 RESET = {'clothes': 'no_clothes', 'headwear': 'no_headwear',
          'capes': 'no_cape', 'neckware_neck': 'no_neckware_neck',
          'beards': 'no_beard'}
@@ -95,8 +105,11 @@ def build(out, clans):
              'cm_rough_clothing = { index = 0']
     for sex, choices in OUTFITS.items():
         genes.append(sex + ' = { ' + ' '.join(f'{w} = "{a}"' for w, a in choices) + ' }')
-    genes += ['adolescent_boy = boy adolescent_girl = girl',
-              '} cm_warchief_clothing = { index = 1 male = { 1 = "male_clothes_iroquois_royal_bear_hunter" } female = { 1 = "empty" } boy = { 1 = "empty" } girl = { 1 = "empty" } adolescent_boy = boy adolescent_girl = girl infant = { 1 = "empty" } } } } }']
+    genes.append('adolescent_boy = boy adolescent_girl = girl }')
+    for index, (template, (male, female)) in enumerate(KING_CLOTHING.items(), start=1):
+        genes.append(f'{template} = {{ index = {index} male = {{ 1 = "{male}" }} female = {{ 1 = "{female}" }} '
+                     'boy = { 1 = "empty" } girl = { 1 = "empty" } adolescent_boy = boy adolescent_girl = girl infant = { 1 = "empty" } }')
+    genes.append('} } }')
     text(out/'in_game/common/genes/zz_ashborn_outfits.txt', '\n'.join(genes)+'\n')
     mods = ['cm_ashborn_outfits = { usage = game selection_behavior = max priority = 120']
     for clan in clans:
