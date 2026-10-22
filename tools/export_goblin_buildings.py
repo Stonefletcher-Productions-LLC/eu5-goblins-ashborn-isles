@@ -394,7 +394,7 @@ def market(seed):
     rng=np.random.default_rng(seed);m=Mesh();placed=[(np.zeros(2),.22)]
     m.cylinder((0,0,0),.03,.32,'bark',6)  # totem
     for k in range(3):m.box((0,.08+k*.08,0),(.07,.05,.07),rng.choice(['bone','planks_patched','basalt']),rng.uniform(0,6))
-    for p in scatter(rng,6,.15,.7,placed):
+    for p in scatter(rng,6,.15,.48,placed):
         yaw=rng.uniform(0,6.3);R=rot(yaw);hh=rng.uniform(.09,.12)
         for sx in(-1,1):
             for sz in(-1,1):
@@ -403,6 +403,8 @@ def market(seed):
         a=R@np.array([0,0,-.06]);b=R@np.array([0,0,.07])
         m.slab((p[0]+a[0],hh+.02,p[1]+a[2]),(p[0]+b[0],hh-.01,p[1]+b[2]),.17,.004,rng.choice(['cloth_green','cloth_ochre','rust']))
         for _ in range(2):junk(m,rng,p+rng.normal(0,.06,2),.8)
+    # laid out small, then scaled so stalls match the shacks around them
+    m.faces=[([q*1.7 for q in pts],mat) for pts,mat in m.faces]
     return m
 
 MODELS={
