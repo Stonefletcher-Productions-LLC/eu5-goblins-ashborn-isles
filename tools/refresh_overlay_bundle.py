@@ -6,7 +6,8 @@ ROOT=Path(__file__).resolve().parents[1]
 # Raw-material corrections shipped as an authored location_templates.txt overlay
 # over the reused terrain/map base (no terrain or starting-setup regeneration).
 # version -> {location id: (previous good, corrected good)}
-RGO_FIXES={'0.6.5':{'cm_ironbark':('tar','lumber'),'cm_pitchfang':('tar','lumber'),'cm_emberhollow':('tar','lumber')}}
+RGO_FIXES={'0.6.5':{'cm_ironbark':('tar','lumber'),'cm_pitchfang':('tar','lumber'),'cm_emberhollow':('tar','lumber')},
+           '0.6.6':{'cm_netjaw':('fish','livestock')}}
 
 def revert_rgo_fixes(text,version):
     """Return island.json text with this version's raw-material corrections undone."""

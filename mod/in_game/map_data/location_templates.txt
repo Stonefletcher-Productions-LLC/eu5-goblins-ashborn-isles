@@ -28617,7 +28617,7 @@ cm_smokehorn = { topography = hills vegetation = sparse climate = oceanic religi
 cm_goldscar = { topography = hills vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_cinderkin raw_material = goods_gold }
 cm_coaljaw = { topography = hills vegetation = woods climate = oceanic religion = cm_hunger_below culture = cm_cinderkin raw_material = lumber }
 cm_silverfang = { topography = hills vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_cinderkin raw_material = silver }
-cm_netjaw = { topography = flatland vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_cinderkin raw_material = fish }
+cm_netjaw = { topography = flatland vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_cinderkin raw_material = livestock }
 cm_saffron_hollow = { topography = flatland vegetation = farmland climate = oceanic religion = cm_hunger_below culture = cm_cinderkin raw_material = saffron }
 cm_dyer_s_marsh = { topography = flatland vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_cinderkin raw_material = dyes }
 cm_grazetooth = { topography = flatland vegetation = sparse climate = oceanic religion = cm_hunger_below culture = cm_cinderkin raw_material = livestock }
