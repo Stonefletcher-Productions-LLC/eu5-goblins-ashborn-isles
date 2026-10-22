@@ -2639,8 +2639,8 @@
           "province": "cm_shatterfin_province",
           "rgo_expansion": 5,
           "buildings": {
-            "marketplace": 3,
-            "wharf": 1,
+            "marketplace": 4,
+            "wharf": 2,
             "naval_supplies_guild": 2,
             "cloth_guild": 3,
             "granary": 3,
@@ -2650,7 +2650,8 @@
             "tannery": 2,
             "mason": 1,
             "glass_guild": 1,
-            "pottery_guild": 1
+            "pottery_guild": 1,
+            "weapon_guild": 1
           },
           "color": "ed1220",
           "pop_classes": {
@@ -2703,7 +2704,7 @@
           "province": "cm_harrowmoor_province",
           "rgo_expansion": 4,
           "buildings": {
-            "farming_village": 1
+            "farming_village": 2
           },
           "color": "ed1244",
           "split_from": "cm_shatterfin",
@@ -2730,7 +2731,8 @@
           "province": "cm_shatterfin_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1
+            "market_village": 1,
+            "fishing_village": 2
           },
           "color": "ed1245",
           "split_from": "cm_shardpoint",
@@ -2783,7 +2785,8 @@
           "province": "cm_harrowmoor_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1
+            "market_village": 1,
+            "fishing_village": 1
           },
           "color": "ed1321",
           "pop_classes": {
@@ -2810,7 +2813,7 @@
           "rgo_expansion": 1,
           "buildings": {
             "market_village": 1,
-            "local_smelters": 1
+            "local_smelters": 2
           },
           "color": "ed1322",
           "pop_classes": {
@@ -3237,7 +3240,7 @@
           "province": "cm_knifeback_province",
           "rgo_expansion": 6,
           "buildings": {
-            "marketplace": 1,
+            "marketplace": 2,
             "wharf": 1,
             "naval_supplies_guild": 1,
             "tools_guild": 1,
@@ -3297,7 +3300,8 @@
           "province": "cm_knifeback_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1
+            "market_village": 1,
+            "fishing_village": 2
           },
           "color": "ed1330",
           "pop_classes": {
@@ -3418,7 +3422,8 @@
           "province": "cm_maw_rock_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1
+            "market_village": 1,
+            "fishing_village": 2
           },
           "color": "ed1341",
           "pop_classes": {
@@ -3709,12 +3714,12 @@
           "province": "cm_giltfang_1_province",
           "rgo_expansion": 1,
           "buildings": {
-            "marketplace": 4,
+            "marketplace": 3,
             "stockade": 1,
             "naval_supplies_guild": 1,
             "glass_guild": 1,
             "paper_guild": 1,
-            "tools_guild": 4,
+            "tools_guild": 2,
             "wharf": 1,
             "jewelry_guild": 1,
             "tannery": 2,
@@ -3856,7 +3861,6 @@
           "province": "cm_giltfang_2_province",
           "rgo_expansion": 1,
           "buildings": {
-            "local_smelters": 1,
             "fishing_village": 1
           },
           "pop_classes": {
@@ -3883,7 +3887,6 @@
           "province": "cm_giltfang_6_province",
           "rgo_expansion": 1,
           "buildings": {
-            "local_smelters": 1,
             "fishing_village": 2
           },
           "pop_classes": {
@@ -3936,8 +3939,7 @@
           "province": "cm_giltfang_1_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1,
-            "fiber_crops_farm": 2
+            "fiber_crops_farm": 1
           },
           "pop_classes": {
             "nobles": 0.181,
@@ -3989,9 +3991,7 @@
           "pop": 15.207,
           "province": "cm_giltfang_5_province",
           "rgo_expansion": 1,
-          "buildings": {
-            "market_village": 1
-          },
+          "buildings": {},
           "pop_classes": {
             "nobles": 0.17,
             "clergy": 0.34,
@@ -4178,7 +4178,6 @@
           "province": "cm_giltfang_6_province",
           "rgo_expansion": 3,
           "buildings": {
-            "market_village": 1,
             "fishing_village": 1
           },
           "pop_classes": {
@@ -4279,7 +4278,7 @@
           "province": "cm_tolltooth_1_province",
           "rgo_expansion": 1,
           "buildings": {
-            "marketplace": 2,
+            "marketplace": 1,
             "wharf": 1,
             "naval_supplies_guild": 1,
             "granary": 1
@@ -4308,9 +4307,7 @@
           "pop": 11.009,
           "province": "cm_tolltooth_1_province",
           "rgo_expansion": 1,
-          "buildings": {
-            "market_village": 1
-          },
+          "buildings": {},
           "pop_classes": {
             "nobles": 0.102,
             "clergy": 0.204,
@@ -4334,9 +4331,7 @@
           "pop": 11.807,
           "province": "cm_tolltooth_1_province",
           "rgo_expansion": 1,
-          "buildings": {
-            "market_village": 1
-          },
+          "buildings": {},
           "pop_classes": {
             "nobles": 0.113,
             "clergy": 0.227,
@@ -4361,7 +4356,6 @@
           "province": "cm_tolltooth_2_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1,
             "fishing_village": 1
           },
           "pop_classes": {
@@ -7056,6 +7050,66 @@
         "class_changes": {
           "tribesmen": 1.65
         }
+      }
+    },
+    "shatterfin_over_giltfang": {
+      "cm_chainhaven": {
+        "tools_guild": -2,
+        "marketplace": -1
+      },
+      "cm_tolltooth": {
+        "marketplace": -1
+      },
+      "cm_cinderfurrow": {
+        "fiber_crops_farm": -1,
+        "market_village": -1
+      },
+      "cm_coppercut": {
+        "local_smelters": -1
+      },
+      "cm_blackmeasure": {
+        "local_smelters": -1
+      },
+      "cm_chainwood": {
+        "market_village": -1
+      },
+      "cm_watchfang": {
+        "market_village": -1
+      },
+      "cm_netreach": {
+        "market_village": -1
+      },
+      "cm_lockshore": {
+        "market_village": -1
+      },
+      "cm_lastlight": {
+        "market_village": -1
+      },
+      "cm_gullwatch": {
+        "fishing_village": 2
+      },
+      "cm_edgewater": {
+        "fishing_village": 2
+      },
+      "cm_silver_shard": {
+        "fishing_village": 2
+      },
+      "cm_gullscar": {
+        "fishing_village": 1
+      },
+      "cm_stormpasture": {
+        "farming_village": 1
+      },
+      "cm_shatterfin": {
+        "marketplace": 1,
+        "weapon_guild": 1,
+        "wharf": 1
+      },
+      "cm_stormcrag": {
+        "local_smelters": 1
+      },
+      "cm_knifeback": {
+        "marketplace": 1
       }
     }
   }
