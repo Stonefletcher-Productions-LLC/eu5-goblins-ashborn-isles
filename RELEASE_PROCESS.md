@@ -7,3 +7,5 @@ A release means the new version is on the **Steam Workshop** (item 3814944518). 
 3. **Branch and PR.** Commit on `release/v<ver>`, push to GitHub (`origin`) and open a PR into `main`. Pushing a `release/**` branch that changes `.release/manifest.json` runs `publish-release.yml`, which publishes the GitHub release and `v<ver>` tag.
 4. **Steam Workshop.** With EU5 closed and Steam running as the Workshop owner, run `powershell -ExecutionPolicy Bypass -File tools/Release-Steam.ps1`. It clean-exports `HEAD`, runs the installer in an isolated profile and compares it with the packaged zip. It then installs into the active profile, updates the Workshop description and change notes, and uploads with `pdx-workshop-manager`. Receipts and logs go to `build/release-<ver>/`; the script resumes from the last completed step.
 5. **Merge.** Merge the PR into `main`.
+
+The "Verify downloadable installer" check runs only on `release/**` branches, `v*` tags and PRs that change `.release/`. Content merged to `main` between releases is not in the packaged bundle until the next release.
