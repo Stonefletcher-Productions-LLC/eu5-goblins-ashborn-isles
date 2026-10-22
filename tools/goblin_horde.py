@@ -13,6 +13,9 @@ KEY = 'goblin_horde'
 IO = f'international_organization:{KEY}'
 TRIBUTE_GOLD = 10
 HORNS_GOLD = 25
+MUSTER_GOLD = 50
+FEUD_GOLD = 25
+LEVY_MONTHS = 2
 
 
 def definition():
@@ -163,7 +166,147 @@ def actions(loc):
     ai_will_do = {{ add = -20 if = {{ limit = {{ scope:actor = {{ at_war = yes gold >= 75 }} }} add = 40 }} }}
 }}
 '''
-    return tribute + horns
+    return tribute + horns + muster(loc) + feud(loc) + levy(loc)
+
+
+def warchief_only():
+    return f'scope:actor = {{ is_leader_of_international_organization = {IO} }}'
+
+
+def muster(loc):
+    # Native call-to-war shape (vanilla crusade.txt, hussite_wars_actions.txt): the second
+    # target is one of the Warchief's own offensive wars against an outsider.
+    loc('ga_horde_muster', 'Call the Muster')
+    loc('ga_horde_muster_desc', f'Warchief only. Spend {MUSTER_GOLD} gold to call every crown of the Horde into one of our offensive wars against an outsider. Crowns already at war with us stay out. Once every ten years.')
+    loc('ga_horde_muster_choose', 'Choose the war')
+    loc('ga_horde_muster_none', 'We lead no offensive war against an outsider.')
+    return f'''ga_horde_muster = {{
+    type = internationalorganization
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    automation_tick = never
+    force_click_and_confirm_or_hold = yes
+    potential = {{ scope:actor = {{ ga_in_horde = yes }} }}
+    allow = {{ {warchief_only()} scope:actor = {{ gold >= {MUSTER_GOLD} }} }}
+    cooldown = {{ type = ga_horde_muster years = 10 }}
+    {picker()}
+    select_trigger = {{
+        looking_for_a = war
+        source = actor
+        target_flag = target
+        name = "ga_horde_muster_choose"
+        none_available_msg_key = "ga_horde_muster_none"
+        column = {{ data = name }}
+        visible = {{
+            attacker_leader = scope:actor
+            defender_leader = {{ NOT = {{ is_member_of_international_organization = {IO} }} }}
+        }}
+    }}
+    effect = {{
+        if = {{
+            limit = {{ exists = scope:target }}
+            scope:actor = {{ add_gold = -{MUSTER_GOLD} }}
+            {IO} = {{
+                every_international_organization_member = {{
+                    limit = {{
+                        this != scope:actor
+                        NOT = {{ is_at_war_with = scope:actor }}
+                    }}
+                    join_war_as_attacker = {{ war = scope:target call_in_subjects = yes }}
+                    add_country_modifier = {{ modifier = ga_horde_war_horns years = 2 mode = replace }}
+                }}
+            }}
+        }}
+        else = {{ custom_tooltip = ga_horde_muster_choose }}
+    }}
+    ai_will_do = {{ add = 50 }}
+}}
+'''
+
+
+def feud(loc):
+    # Native forced peace (vanilla hre.txt Enforce Landfriede): white_peace takes a war.
+    loc('ga_horde_settle_feud', 'Settle a Feud')
+    loc('ga_horde_settle_feud_desc', f'Warchief only. Spend {FEUD_GOLD} gold to end one war between two crowns of the Horde with a white peace. The Warchief cannot settle a feud it is fighting itself. Once every five years.')
+    loc('ga_horde_settle_feud_choose', 'Choose the crown that started the feud')
+    loc('ga_horde_settle_feud_none', 'No two crowns of the Horde are at war.')
+    feud_war = f'''attacker_leader = root
+                defender_leader = {{ is_member_of_international_organization = {IO} }}
+                NOT = {{ defender_leader = scope:actor }}'''
+    return f'''ga_horde_settle_feud = {{
+    type = internationalorganization
+    ai_tick = monthly
+    ai_tick_frequency = 12
+    automation_tick = never
+    potential = {{ scope:actor = {{ ga_in_horde = yes }} }}
+    allow = {{ {warchief_only()} scope:actor = {{ gold >= {FEUD_GOLD} }} }}
+    cooldown = {{ type = ga_horde_settle_feud years = 5 }}
+    {picker()}
+    select_trigger = {{
+        looking_for_a = country
+        source = recipient
+        target_flag = target
+        name = "ga_horde_settle_feud_choose"
+        none_available_msg_key = "ga_horde_settle_feud_none"
+        column = {{ data = name }}
+        visible = {{
+            root != scope:actor
+            any_current_war = {{
+                {feud_war}
+            }}
+        }}
+    }}
+    effect = {{
+        if = {{
+            limit = {{ exists = scope:target }}
+            scope:actor = {{ add_gold = -{FEUD_GOLD} add_prestige = 5 }}
+            scope:target = {{
+                random_current_war = {{
+                    limit = {{
+                        attacker_leader = scope:target
+                        defender_leader = {{ is_member_of_international_organization = {IO} }}
+                        NOT = {{ defender_leader = scope:actor }}
+                    }}
+                    save_scope_as = ga_horde_feud_war
+                }}
+                white_peace = scope:ga_horde_feud_war
+            }}
+        }}
+        else = {{ custom_tooltip = ga_horde_settle_feud_choose }}
+    }}
+    ai_will_do = {{ add = -20 if = {{ limit = {{ scope:actor = {{ at_war = no }} }} add = 30 }} }}
+}}
+'''
+
+
+def levy(loc):
+    # add_manpower block form from vanilla appanage_request_levies.txt.
+    loc('ga_horde_levy', 'Raise the Warchief\'s Levy')
+    loc('ga_horde_levy_desc', f'Warchief only. Every other crown of the Horde sends us {LEVY_MONTHS} months of its manpower. Each crown resents it: -15 opinion of the Warchief for five years. Once every ten years.')
+    loc('ga_horde_levy_taken', 'Took Our Levy')
+    return f'''ga_horde_levy = {{
+    type = internationalorganization
+    ai_tick = monthly
+    ai_tick_frequency = 12
+    automation_tick = never
+    potential = {{ scope:actor = {{ ga_in_horde = yes }} }}
+    allow = {{ {warchief_only()} }}
+    cooldown = {{ type = ga_horde_levy years = 10 }}
+    {picker()}
+    effect = {{
+        {IO} = {{
+            every_international_organization_member = {{
+                limit = {{ this != scope:actor }}
+                save_scope_as = ga_horde_levy_payer
+                scope:actor = {{ add_manpower = {{ value = scope:ga_horde_levy_payer.monthly_manpower multiply = {LEVY_MONTHS} }} }}
+                add_manpower = {{ value = monthly_manpower multiply = -{LEVY_MONTHS} }}
+                add_opinion = {{ target = scope:actor modifier = ga_horde_levy_taken }}
+            }}
+        }}
+    }}
+    ai_will_do = {{ add = -20 if = {{ limit = {{ scope:actor = {{ at_war = yes }} }} add = 40 }} }}
+}}
+'''
 
 
 def modifiers(loc):
@@ -174,7 +317,7 @@ def modifiers(loc):
 
 def biases(loc):
     loc('ga_horde_tribute_paid', 'Tribute to the Warchief')
-    return 'ga_horde_tribute_paid = { value = 25 months = 120 }\n'
+    return 'ga_horde_tribute_paid = { value = 25 months = 120 }\nga_horde_levy_taken = { value = -15 months = 60 }\n'
 
 
 def localization(loc):

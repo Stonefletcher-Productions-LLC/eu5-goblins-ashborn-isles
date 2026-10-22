@@ -92,7 +92,16 @@ def verify(read):
         for loc in [key, key + '_desc']: assert f' {loc}: "' in localization, loc
     for loc in ['goblin_horde', 'goblin_horde_desc', 'GOBLIN_HORDE_LEADER', 'goblin_horde_defense_tt']:
         assert f' {loc}: "' in localization, loc
-    scenarios.append(f'{len(actions)} Horde panel actions registered and localized')
+    assert sorted(actions) == ['ga_horde_levy', 'ga_horde_muster', 'ga_horde_settle_feud', 'ga_horde_tribute', 'ga_horde_war_horns']
+    effects = {key: flatten(dict((k, v) for k, _, v in body)['effect']) for key, body in actions.items()}
+    second = lambda key: [v for k, _, v in actions[key] if k == 'select_trigger'][1]
+    assert ('looking_for_a', '=', 'war') in second('ga_horde_muster') and any(k == 'join_war_as_attacker' for k, _, _ in effects['ga_horde_muster'])
+    assert ('looking_for_a', '=', 'country') in second('ga_horde_settle_feud')
+    assert ('white_peace', '=', 'scope:ga_horde_feud_war') in effects['ga_horde_settle_feud']
+    assert sum(k == 'add_manpower' for k, _, _ in effects['ga_horde_levy']) == 2
+    for key in ['ga_horde_muster', 'ga_horde_settle_feud', 'ga_horde_levy', 'ga_horde_war_horns']:
+        assert ('is_leader_of_international_organization', '=', 'international_organization:goblin_horde') in flatten(dict((k, v) for k, _, v in actions[key])['allow']), key
+    scenarios.append(f'{len(actions)} Horde panel actions registered and localized; Muster, Feud and Levy use native war, peace and manpower effects')
     return {'scenarios': scenarios, 'static_script_simulation_passed': True, 'engine_tested': False}
 
 
