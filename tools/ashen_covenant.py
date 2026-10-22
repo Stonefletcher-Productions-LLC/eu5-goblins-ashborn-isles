@@ -138,7 +138,9 @@ def build(out):
         loc('STATIC_MODIFIER_DESC_ac_' + key, desc + ' The blessing lasts five years.')
         mods.append(f'ac_{key} = {{ {modifier} = {value} }}')
         actions.append(f'''ac_{key} = {{
- type = owncountry
+ # Religious actions are listed in the Religion panel's actions card, beside Covenant Favor.
+ type = religious
+ sound = UI_action_religion_generic
  show_message = no
  automation_tick = never
  ai_tick = monthly
@@ -147,6 +149,7 @@ def build(out):
  allow = {{ scope:actor = {{ NOT = {{ has_variable = ac_rite_cooldown }} }} }}
  price = price:ac_major_rite
  cooldown = {{ type = ac_{key} years = 5 }}
+ select_trigger = {{ looking_for_a = religion source = actor target_flag = recipient name = "choose_religion" column = {{ data = name }} }}
  effect = {{ scope:actor = {{
    set_variable = {{ name = ac_rite_cooldown years = 5 }}
    add_country_modifier = {{ modifier = ac_{key} years = 5 mode = replace }}

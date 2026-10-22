@@ -69,6 +69,9 @@ def verify(game, out):
     assert actions.count('NOT = { has_variable = ac_rite_cooldown }') == 3
     assert actions.count('name = ac_rite_cooldown years = 5') == 3
     assert actions.count('price = price:ac_major_rite') == 3
+    # owncountry actions have no Religion panel button; religious ones are listed there.
+    assert actions.count('type = religious') == 3 and 'owncountry' not in actions
+    assert actions.count('target_flag = recipient') == 3
     assert actions.count('years = 5 mode = replace') == 3
     types = (out/'in_game/common/holy_site_types/ashen_covenant.txt').read_text(encoding='utf-8-sig')
     assert 'country_modifier' not in types, 'Holy site national stacking'

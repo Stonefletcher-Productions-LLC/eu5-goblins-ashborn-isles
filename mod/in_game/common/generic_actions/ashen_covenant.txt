@@ -1,5 +1,7 @@
 ﻿ac_returning_ash = {
- type = owncountry
+ # Religious actions are listed in the Religion panel's actions card, beside Covenant Favor.
+ type = religious
+ sound = UI_action_religion_generic
  show_message = no
  automation_tick = never
  ai_tick = monthly
@@ -8,6 +10,7 @@
  allow = { scope:actor = { NOT = { has_variable = ac_rite_cooldown } } }
  price = price:ac_major_rite
  cooldown = { type = ac_returning_ash years = 5 }
+ select_trigger = { looking_for_a = religion source = actor target_flag = recipient name = "choose_religion" column = { data = name } }
  effect = { scope:actor = {
    set_variable = { name = ac_rite_cooldown years = 5 }
    add_country_modifier = { modifier = ac_returning_ash years = 5 mode = replace }
@@ -15,7 +18,9 @@
  ai_will_do = { add = 5 }
 }
 ac_water_lanterns = {
- type = owncountry
+ # Religious actions are listed in the Religion panel's actions card, beside Covenant Favor.
+ type = religious
+ sound = UI_action_religion_generic
  show_message = no
  automation_tick = never
  ai_tick = monthly
@@ -24,6 +29,7 @@ ac_water_lanterns = {
  allow = { scope:actor = { NOT = { has_variable = ac_rite_cooldown } } }
  price = price:ac_major_rite
  cooldown = { type = ac_water_lanterns years = 5 }
+ select_trigger = { looking_for_a = religion source = actor target_flag = recipient name = "choose_religion" column = { data = name } }
  effect = { scope:actor = {
    set_variable = { name = ac_rite_cooldown years = 5 }
    add_country_modifier = { modifier = ac_water_lanterns years = 5 mode = replace }
@@ -31,7 +37,9 @@ ac_water_lanterns = {
  ai_will_do = { add = 5 }
 }
 ac_first_oath = {
- type = owncountry
+ # Religious actions are listed in the Religion panel's actions card, beside Covenant Favor.
+ type = religious
+ sound = UI_action_religion_generic
  show_message = no
  automation_tick = never
  ai_tick = monthly
@@ -40,6 +48,7 @@ ac_first_oath = {
  allow = { scope:actor = { NOT = { has_variable = ac_rite_cooldown } } }
  price = price:ac_major_rite
  cooldown = { type = ac_first_oath years = 5 }
+ select_trigger = { looking_for_a = religion source = actor target_flag = recipient name = "choose_religion" column = { data = name } }
  effect = { scope:actor = {
    set_variable = { name = ac_rite_cooldown years = 5 }
    add_country_modifier = { modifier = ac_first_oath years = 5 mode = replace }
