@@ -1,0 +1,9 @@
+﻿ga_owr_new_souls = { value = 20 months = 120 }
+ga_owr_spawn_of_the_pit = { value = -25 months = 120 }
+ga_owr_gifts_to_churchmen = { value = 20 months = 120 }
+ga_owr_feared = { value = -15 months = 60 }
+ga_owr_envoy_in_finery = { value = 40 months = 240 }
+ga_owr_plain_envoy = { value = 15 months = 120 }
+ga_owr_cabinet_gift = { value = 15 months = 120 }
+ga_owr_legate_welcomed = { value = 25 months = 120 }
+ga_owr_legate_dismissed = { value = -10 months = 120 }

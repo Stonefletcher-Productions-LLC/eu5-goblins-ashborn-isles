@@ -103,6 +103,9 @@ def verify(root):
                 verify_intro(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_divorce import verify as verify_divorce
                 verify_divorce(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
+                if 'goblins_ashborn_isles/in_game/events/goblins_old_world.txt' in z.namelist():
+                    from verify_old_world import verify as verify_old_world
+                    verify_old_world(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_harbor_bargains import verify as verify_bargains
                 verify_bargains(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_compact_talks import verify as verify_compact
