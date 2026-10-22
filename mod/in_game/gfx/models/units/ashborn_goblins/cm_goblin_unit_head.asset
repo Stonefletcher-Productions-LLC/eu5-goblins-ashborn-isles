@@ -1,0 +1,88 @@
+﻿pdxmesh = {
+ name = "cm_goblin_cindermaw_unit_head_mesh"
+ file = "cm_goblin_unit_head.mesh"
+ meshsettings = { name = "cm_goblin_unit_headShape" index = 0
+  texture_diffuse = "cm_goblin_cindermaw_unit_head_diffuse.dds"
+  texture_normal = "cm_goblin_unit_head_normal.dds"
+  texture_specular = "cm_goblin_unit_head_properties.dds"
+  texture = { index = 3 srgb = no file = "cm_goblin_unit_head_mask.dds" }
+  shader = "unit_material_repaint" shader_file = "gfx/FX/units.shader"
+ }
+}
+pdxmesh = {
+ name = "cm_goblin_brackmaw_unit_head_mesh"
+ file = "cm_goblin_unit_head.mesh"
+ meshsettings = { name = "cm_goblin_unit_headShape" index = 0
+  texture_diffuse = "cm_goblin_brackmaw_unit_head_diffuse.dds"
+  texture_normal = "cm_goblin_unit_head_normal.dds"
+  texture_specular = "cm_goblin_unit_head_properties.dds"
+  texture = { index = 3 srgb = no file = "cm_goblin_unit_head_mask.dds" }
+  shader = "unit_material_repaint" shader_file = "gfx/FX/units.shader"
+ }
+}
+pdxmesh = {
+ name = "cm_goblin_reefhook_unit_head_mesh"
+ file = "cm_goblin_unit_head.mesh"
+ meshsettings = { name = "cm_goblin_unit_headShape" index = 0
+  texture_diffuse = "cm_goblin_reefhook_unit_head_diffuse.dds"
+  texture_normal = "cm_goblin_unit_head_normal.dds"
+  texture_specular = "cm_goblin_unit_head_properties.dds"
+  texture = { index = 3 srgb = no file = "cm_goblin_unit_head_mask.dds" }
+  shader = "unit_material_repaint" shader_file = "gfx/FX/units.shader"
+ }
+}
+pdxmesh = {
+ name = "cm_goblin_shatterfin_unit_head_mesh"
+ file = "cm_goblin_unit_head.mesh"
+ meshsettings = { name = "cm_goblin_unit_headShape" index = 0
+  texture_diffuse = "cm_goblin_shatterfin_unit_head_diffuse.dds"
+  texture_normal = "cm_goblin_unit_head_normal.dds"
+  texture_specular = "cm_goblin_unit_head_properties.dds"
+  texture = { index = 3 srgb = no file = "cm_goblin_unit_head_mask.dds" }
+  shader = "unit_material_repaint" shader_file = "gfx/FX/units.shader"
+ }
+}
+pdxmesh = {
+ name = "cm_goblin_sootwake_unit_head_mesh"
+ file = "cm_goblin_unit_head.mesh"
+ meshsettings = { name = "cm_goblin_unit_headShape" index = 0
+  texture_diffuse = "cm_goblin_sootwake_unit_head_diffuse.dds"
+  texture_normal = "cm_goblin_unit_head_normal.dds"
+  texture_specular = "cm_goblin_unit_head_properties.dds"
+  texture = { index = 3 srgb = no file = "cm_goblin_unit_head_mask.dds" }
+  shader = "unit_material_repaint" shader_file = "gfx/FX/units.shader"
+ }
+}
+pdxmesh = {
+ name = "cm_goblin_giltfang_unit_head_mesh"
+ file = "cm_goblin_unit_head.mesh"
+ meshsettings = { name = "cm_goblin_unit_headShape" index = 0
+  texture_diffuse = "cm_goblin_giltfang_unit_head_diffuse.dds"
+  texture_normal = "cm_goblin_unit_head_normal.dds"
+  texture_specular = "cm_goblin_unit_head_properties.dds"
+  texture = { index = 3 srgb = no file = "cm_goblin_unit_head_mask.dds" }
+  shader = "unit_material_repaint" shader_file = "gfx/FX/units.shader"
+ }
+}
+pdxmesh = {
+ name = "cm_goblin_unit_cap_leather_mesh"
+ file = "cm_goblin_unit_cap_leather.mesh"
+ meshsettings = { name = "cm_goblin_unit_cap_leatherShape" index = 0
+  texture_diffuse = "cm_goblin_unit_cap_leather_diffuse.dds"
+  texture_normal = "cm_goblin_unit_head_normal.dds"
+  texture_specular = "cm_goblin_unit_head_properties.dds"
+  texture = { index = 3 srgb = no file = "cm_goblin_unit_head_mask.dds" }
+  shader = "unit_material_repaint" shader_file = "gfx/FX/units.shader"
+ }
+}
+pdxmesh = {
+ name = "cm_goblin_unit_cap_iron_mesh"
+ file = "cm_goblin_unit_cap_iron.mesh"
+ meshsettings = { name = "cm_goblin_unit_cap_ironShape" index = 0
+  texture_diffuse = "cm_goblin_unit_cap_iron_diffuse.dds"
+  texture_normal = "cm_goblin_unit_head_normal.dds"
+  texture_specular = "cm_goblin_unit_head_properties.dds"
+  texture = { index = 3 srgb = no file = "cm_goblin_unit_head_mask.dds" }
+  shader = "unit_material_repaint" shader_file = "gfx/FX/units.shader"
+ }
+}

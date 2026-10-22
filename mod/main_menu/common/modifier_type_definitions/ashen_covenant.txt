@@ -1,1 +1,5 @@
 ﻿ac_major_rite_cost_modifier = { color = bad percent = yes game_data = { category = country } }
+ac_offering_cost_modifier = { color = bad percent = yes game_data = { category = country } }
+ac_minor_rite_cost_modifier = { color = bad percent = yes game_data = { category = country } }
+ac_clan_rite_cost_modifier = { color = bad percent = yes game_data = { category = country } }
+ac_moot_convening_cost_modifier = { color = bad percent = yes game_data = { category = country } }

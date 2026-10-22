@@ -1,3 +1,6 @@
+0.6.6 — Royal households, goblin soldiers and goblin towns
+Every crown starts with a large royal family and rulers may take up to four wives. New Obsidian Fletchers archer levy. Goblin infantry on the native soldier rig with clan goblin heads. Goblin city set. Silver Shard joins Shatterfin province and stops starving; inland Netjaw produces livestock instead of fish. New 1337 campaign needed; 0.6.5 saves keep loading. All players need the same version in multiplayer.
+
 0.6.5 — Buildable timber in Blackwood and Giltfang
 Ironbark, Pitchfang and Emberhollow now produce lumber instead of tar, which has no raw-material production in EU5 1.3.11 and could not be built up. New 1337 campaign needed for the change; existing saves keep loading. All players need the same version in multiplayer.
 

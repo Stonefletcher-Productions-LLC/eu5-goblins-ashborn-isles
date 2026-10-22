@@ -34,7 +34,7 @@ def verify(game, out):
     mod_ids = set(re.findall(r'(?m)^\s*(\w+)\s*=\s*\{', native_mods))
     for _,_,body in parse((out/'main_menu/common/static_modifiers/ashen_covenant.txt').read_text(encoding='utf-8-sig')):
         for modifier,_,_ in body: assert modifier in mod_ids, modifier
-    for modifier in {r[2] for r in ac.ASPECTS.values()} | {r[2] for r in ac.RITES.values()} | {s[4] for s in ac.SITES} | {'monthly_religious_influence', 'maximum_religious_influence'}:
+    for modifier in {r[2] for r in ac.ASPECTS.values()} | {r[2] for r in ac.RITES.values()} | {s[4] for s in ac.SITES} | {'monthly_religious_influence', 'maximum_religious_influence', 'female_spouses'}:
         assert modifier in mod_ids, f'Unknown modifier {modifier}'
     files = [p for p in out.rglob('*') if p.is_file() and (p.stem == 'ashen_covenant' or p.name == 'ashen_covenant_l_english.yml')]
     files.append(out/'in_game/common/religions/goblins_ashborn_isles.txt')
@@ -69,7 +69,26 @@ def verify(game, out):
     assert actions.count('NOT = { has_variable = ac_rite_cooldown }') == 3
     assert actions.count('name = ac_rite_cooldown years = 5') == 3
     assert actions.count('price = price:ac_major_rite') == 3
-    assert actions.count('years = 5 mode = replace') == 3
+    # owncountry actions have no Religion panel button; religious ones are listed there.
+    total = len(ac.RITES) + len(ac.COVENANT_RITES)
+    assert actions.count('type = religious') == total and 'owncountry' not in actions
+    assert actions.count('target_flag = recipient') == total
+    # Every Ashborn primary culture has exactly one clan rite; no crown is left without one.
+    clan = [row[2] for key, row in ac.COVENANT_RITES.items() if key.startswith('clan_')]
+    assert sorted(clan) == sorted(f'culture = culture:{c["culture"]}' for c in cfg['countries'])
+    assert set(ac.CLAN_CULTURES.values()) == {c['culture'] for c in cfg['countries']}
+    for key, row in ac.COVENANT_RITES.items():
+        assert f'price:{row[4]}' in actions and row[4] in ac.PRICES, key
+        assert bool(row[7]) == (row[6] > 0), key
+        assert row[7] or row[8], key
+        if row[7]:
+            assert f'remove_country_modifier = ac_{key}' in hooks, key
+            assert f'modifier = ac_{key} years = {row[6]} mode = replace' in actions, key
+        for modifier in row[7]:
+            assert modifier in mod_ids, modifier
+    ai = (out/'in_game/common/generic_action_ai_lists/ashen_covenant.txt').read_text(encoding='utf-8-sig')
+    assert all(f'ac_{key}' in ai for key in list(ac.RITES) + list(ac.COVENANT_RITES))
+    assert actions.count('ac_rite_cooldown years = 5 }\n   add_country_modifier') == 3
     types = (out/'in_game/common/holy_site_types/ashen_covenant.txt').read_text(encoding='utf-8-sig')
     assert 'country_modifier' not in types, 'Holy site national stacking'
     prices = (out/'in_game/common/prices/ashen_covenant.txt').read_text(encoding='utf-8-sig')

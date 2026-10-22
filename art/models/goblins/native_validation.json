@@ -1,20 +1,52 @@
 {
   "status": "STATIC MODEL CHECKS PASSED; ENGINE PLAYTEST PENDING",
-  "runtime_infantry": "factory-created shared-pose goblin attachment",
+  "runtime_infantry": "native soldier rig, gear and animations at goblin scale with clan goblin heads and goblin caps",
   "clans": 6,
-  "source_joints": 23,
-  "exported_bones": 25,
-  "triangles_per_clan": 2476,
-  "animations": 17,
-  "sampled_poses": 51,
-  "maximum_pose_error_cm": 0.000911605003666916,
-  "native_byte_exact_roundtrips": 2,
-  "palettes_and_runtime_references": true,
-  "typed_graph_links_and_unit_parameters": true,
+  "head_triangles": 940,
+  "cap_triangles": {
+    "leather": 95,
+    "iron": 95
+  },
+  "head_vertices": 1553,
+  "skeleton_bones": 51,
+  "unit_scale": 0.05,
+  "native_scale": 0.08,
+  "median_head_texel_srgb": {
+    "cindermaw": [
+      107,
+      105,
+      74
+    ],
+    "brackmaw": [
+      99,
+      105,
+      82
+    ],
+    "reefhook": [
+      115,
+      113,
+      82
+    ],
+    "shatterfin": [
+      99,
+      101,
+      90
+    ],
+    "sootwake": [
+      90,
+      93,
+      74
+    ],
+    "giltfang": [
+      115,
+      101,
+      74
+    ]
+  },
+  "native_skeleton_and_graph_compared": true,
   "texture_registration": {
-    "registered_fixed_palette_meshes": 6,
-    "native_contract_checked": true,
-    "native_registry_preserved": true
+    "registered_fixed_palette_meshes": 8,
+    "native_contract_checked": true
   },
   "engine_tested": false
 }

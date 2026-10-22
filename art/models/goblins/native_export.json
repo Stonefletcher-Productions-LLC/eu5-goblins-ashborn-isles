@@ -1,159 +1,49 @@
 {
-  "stage": "native-export-prototype",
+  "stage": "native-rig-goblin-heads-and-caps",
   "engine_tested": false,
+  "unit_scale": 0.05,
+  "native_scale": 0.08,
+  "head_triangles": 940,
+  "head_vertices": 1553,
   "clans": [
     {
       "clan": "cindermaw",
       "culture": "cm_cinderkin",
       "gfx_tag": "cm_cinderkin_gfx",
-      "bones": 25,
-      "source_joints": 23,
-      "mesh": "in_game\\gfx\\models\\units\\ashborn_goblins\\cm_goblin_cindermaw.mesh"
+      "head_mesh": "cm_goblin_cindermaw_unit_head_mesh"
     },
     {
       "clan": "brackmaw",
       "culture": "cm_brinekin",
       "gfx_tag": "cm_brinekin_gfx",
-      "bones": 25,
-      "source_joints": 23,
-      "mesh": "in_game\\gfx\\models\\units\\ashborn_goblins\\cm_goblin_brackmaw.mesh"
+      "head_mesh": "cm_goblin_brackmaw_unit_head_mesh"
     },
     {
       "clan": "reefhook",
       "culture": "cm_reefkin",
       "gfx_tag": "cm_reefkin_gfx",
-      "bones": 25,
-      "source_joints": 23,
-      "mesh": "in_game\\gfx\\models\\units\\ashborn_goblins\\cm_goblin_reefhook.mesh"
+      "head_mesh": "cm_goblin_reefhook_unit_head_mesh"
     },
     {
       "clan": "shatterfin",
       "culture": "cm_shatterkin",
       "gfx_tag": "cm_shatterkin_gfx",
-      "bones": 25,
-      "source_joints": 23,
-      "mesh": "in_game\\gfx\\models\\units\\ashborn_goblins\\cm_goblin_shatterfin.mesh"
+      "head_mesh": "cm_goblin_shatterfin_unit_head_mesh"
     },
     {
       "clan": "sootwake",
       "culture": "cm_sootkin",
       "gfx_tag": "cm_sootkin_gfx",
-      "bones": 25,
-      "source_joints": 23,
-      "mesh": "in_game\\gfx\\models\\units\\ashborn_goblins\\cm_goblin_sootwake.mesh"
+      "head_mesh": "cm_goblin_sootwake_unit_head_mesh"
     },
     {
       "clan": "giltfang",
       "culture": "cm_giltkin",
       "gfx_tag": "cm_giltkin_gfx",
-      "bones": 25,
-      "source_joints": 23,
-      "mesh": "in_game\\gfx\\models\\units\\ashborn_goblins\\cm_goblin_giltfang.mesh"
+      "head_mesh": "cm_goblin_giltfang_unit_head_mesh"
     }
   ],
-  "animations": [
-    {
-      "name": "Death",
-      "frames": 70,
-      "duration": 2.2916667461395264,
-      "max_scale_axis_difference": 5.180421127348733e-05
-    },
-    {
-      "name": "Defeat",
-      "frames": 76,
-      "duration": 2.5,
-      "max_scale_axis_difference": 5.513429641723633e-05
-    },
-    {
-      "name": "Idle",
-      "frames": 126,
-      "duration": 4.166666507720947,
-      "max_scale_axis_difference": 5.049705364579271e-05
-    },
-    {
-      "name": "Jump",
-      "frames": 33,
-      "duration": 1.0416666269302368,
-      "max_scale_axis_difference": 5.950592006276345e-05
-    },
-    {
-      "name": "PickUp",
-      "frames": 39,
-      "duration": 1.25,
-      "max_scale_axis_difference": 8.291006088256836e-05
-    },
-    {
-      "name": "Punch",
-      "frames": 24,
-      "duration": 0.75,
-      "max_scale_axis_difference": 6.75605691776715e-05
-    },
-    {
-      "name": "RecieveHit",
-      "frames": 20,
-      "duration": 0.625,
-      "max_scale_axis_difference": 4.771194954333868e-05
-    },
-    {
-      "name": "Roll",
-      "frames": 29,
-      "duration": 0.9166666865348816,
-      "max_scale_axis_difference": 8.07941000218193e-05
-    },
-    {
-      "name": "Run",
-      "frames": 28,
-      "duration": 0.875,
-      "max_scale_axis_difference": 6.897581941844866e-05
-    },
-    {
-      "name": "Run_Carry",
-      "frames": 28,
-      "duration": 0.875,
-      "max_scale_axis_difference": 6.897581941844866e-05
-    },
-    {
-      "name": "Shoot_OneHanded",
-      "frames": 18,
-      "duration": 0.5416666865348816,
-      "max_scale_axis_difference": 4.7326087951660156e-05
-    },
-    {
-      "name": "SitDown",
-      "frames": 30,
-      "duration": 0.9583333134651184,
-      "max_scale_axis_difference": 4.655122756958008e-05
-    },
-    {
-      "name": "StandUp",
-      "frames": 40,
-      "duration": 1.2916666269302368,
-      "max_scale_axis_difference": 4.762411117553711e-05
-    },
-    {
-      "name": "SwordSlash",
-      "frames": 33,
-      "duration": 1.0416666269302368,
-      "max_scale_axis_difference": 6.207823746962049e-05
-    },
-    {
-      "name": "Victory",
-      "frames": 58,
-      "duration": 1.875,
-      "max_scale_axis_difference": 5.1300776627738465e-05
-    },
-    {
-      "name": "Walk",
-      "frames": 39,
-      "duration": 1.25,
-      "max_scale_axis_difference": 6.782381135683746e-05
-    },
-    {
-      "name": "Walk_Carry",
-      "frames": 39,
-      "duration": 1.25,
-      "max_scale_axis_difference": 6.782381135683746e-05
-    }
-  ],
-  "runtime_infantry": "custom goblin skeleton with factory-created shared-pose body attachment; engine retest pending"
+  "cap_leather_triangles": 95,
+  "cap_iron_triangles": 95,
+  "runtime_infantry": "native soldier rig, body gear and animations; goblin head per clan and goblin caps; 62.5% native graph copy"
 }

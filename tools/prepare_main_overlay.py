@@ -22,7 +22,7 @@ def main():
     export_event_art.build(output)
     import build_clan_flags
     build_clan_flags.build(output)
-    report=export_goblin_models.build(output)
+    report=export_goblin_models.build(output,args.game)
     import export_goblin_buildings
     report['city_set']=export_goblin_buildings.build(output)
     portraits=build_goblin_portraits.build(output)
@@ -72,6 +72,13 @@ def main():
     # archipelago.build_map emits the same line from data/island.json. After any
     # full map rebuild, copy it here.
     paths.append(output / 'in_game/map_data/definitions.txt')
+    # 0.6.6: every goblin crown starts with a large royal family (brothers, uncles,
+    # several wives and sons) so its dynasty survives. The starting-setup files ship
+    # as overlays over the reused bundle; goblin_families swaps only the authored
+    # goblin rows, from the same generators a full build uses.
+    import goblin_families
+    goblin_families.build()
+    paths.extend(output / rel for rel in goblin_families.FILES)
     # Retain the authored gameplay/UI modules when refreshing portrait assets.
     # A partial manifest previously dropped the Gathering and Covenant panels.
     for prefix in ['in_game/common','in_game/events','in_game/gui','main_menu/common','main_menu/localization']:

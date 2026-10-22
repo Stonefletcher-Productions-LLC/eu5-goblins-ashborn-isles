@@ -1,5 +1,5 @@
 {
-  "version": "0.6.5",
+  "version": "0.6.6",
   "game_version": "1.3.11",
   "tag": "CDM",
   "center": [
@@ -984,7 +984,7 @@
             0.182085
           ],
           "color": "ed1228",
-          "good": "fish",
+          "good": "livestock",
           "topography": "flatland",
           "vegetation": "sparse",
           "pop": 29.085,

@@ -1,3 +1,29 @@
+# Development: goblin soldiers on the native unit rig
+
+1. Install from main and restart EU5. Start a new 1337 campaign as any goblin clan.
+2. Recruit light and heavy infantry for at least two clans. Check that you see native clothing, armour, weapons and animations with a green goblin head in the clan colour. The head should be large, with long ears and no hair or beard. Some soldiers wear goblin leather or iron caps (no native helmets). The whole soldier should be about 62% the size of a human soldier standing next to it.
+3. Zoom in on idle, march, combat and retreat. Look for heads floating off the neck, the neck gaps, caps clipping the skull or ears, weapons or shields clipping the larger head, and units sinking into or floating above the ground.
+4. Check one human country's infantry for regressions.
+5. Search a fresh `error.log` for `cm_goblin_`, `Invalid entity graph`, `texture variation` and `Could not find`. Send a screenshot if anything looks off.
+
+# 0.6.6 royal families acceptance
+
+New 1337 campaign, fresh `logs/error.log`.
+
+- Each captain crown's ruler shows three wives and five or six sons; brothers, an uncle and cousins appear in the dynasty tree. Shatterfin shows Jaimzha's sister, daughters and granddaughters.
+- The heir is unchanged: the eldest son in Cindermaw, Brackmaw and Giltfang, the ruler's brother Krizzek/Zhor in Reefhook/Sootwake, Skritcha in Shatterfin.
+- The marriage law tooltip or ruler panel allows four wives under the Ashen Covenant; arrange a fourth marriage for a goblin ruler.
+- No `05_characters.txt` or `04_dynasties.txt` errors in the log. Observe 30+ years: the ruling dynasty survives at least one succession.
+
+# 0.6.6 acceptance: Obsidian Fletchers
+
+- As any goblin crown, open levies in a goblin-majority location: **Obsidian Fletchers** are offered, with the name and description shown, not raw keys.
+- As Portugal or Castile, they are not offered in their own lands. Whoever owns a goblin-majority location can raise them there (by design, like vanilla Schiltrons).
+- Raise one and check the unit panel: initiative and damage bonuses, hills and mountains combat bonus, goblin infantry card art and goblin 3D soldiers.
+- After the Renaissance age starts, they upgrade to **Blackglass Crossbows**.
+- Fresh `logs/error.log`: no lines mentioning `a_ga_obsidian_fletchers`, `a_ga_blackglass_crossbows` or `ga_obsidian_fletchers_location_trigger`.
+- Load a 0.6.5 save: it loads and the levy appears there too.
+
 # Goblin city buildings acceptance
 
 - Start a new 1337 campaign and zoom into Hooktooth (city) and a few goblin towns and villages. Houses should be goblin shacks, stacked shanty towers and the chieftain's hall, not European half-timbered houses.
