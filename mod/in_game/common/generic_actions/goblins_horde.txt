@@ -1,0 +1,54 @@
+﻿ga_horde_tribute = {
+    type = internationalorganization
+    ai_tick = monthly
+    ai_tick_frequency = 12
+    automation_tick = never
+    potential = { scope:actor = { ga_in_horde = yes } }
+    allow = {
+        scope:actor = { gold >= 10 NOT = { is_leader_of_international_organization = international_organization:goblin_horde } }
+        exists = international_organization:goblin_horde.leader_country
+    }
+    cooldown = { type = ga_horde_tribute years = 5 }
+    select_trigger = {
+        looking_for_a = international_organization
+        source = actor
+        target_flag = recipient
+        name = "choose_international_organization"
+        column = { data = name }
+        visible = { international_organization_type = international_organization_type:goblin_horde }
+    }
+    effect = {
+        scope:actor = { add_gold = -10 }
+        international_organization:goblin_horde.leader_country = {
+            add_gold = 10
+            add_opinion = { target = scope:actor modifier = ga_horde_tribute_paid }
+        }
+    }
+    ai_will_do = { add = -20 if = { limit = { scope:actor = { gold >= 100 } } add = 30 } }
+}
+ga_horde_war_horns = {
+    type = internationalorganization
+    ai_tick = monthly
+    ai_tick_frequency = 12
+    automation_tick = never
+    potential = { scope:actor = { ga_in_horde = yes } }
+    allow = { scope:actor = { gold >= 25 is_leader_of_international_organization = international_organization:goblin_horde } }
+    cooldown = { type = ga_horde_war_horns years = 10 }
+    select_trigger = {
+        looking_for_a = international_organization
+        source = actor
+        target_flag = recipient
+        name = "choose_international_organization"
+        column = { data = name }
+        visible = { international_organization_type = international_organization_type:goblin_horde }
+    }
+    effect = {
+        scope:actor = { add_gold = -25 }
+        international_organization:goblin_horde = {
+            every_international_organization_member = {
+                add_country_modifier = { modifier = ga_horde_war_horns years = 2 mode = replace }
+            }
+        }
+    }
+    ai_will_do = { add = -20 if = { limit = { scope:actor = { at_war = yes gold >= 75 } } add = 40 } }
+}

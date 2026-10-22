@@ -384,3 +384,8 @@ ga_sp_free = {
     custom_tooltip = { text = ga_ui_pact_free_tt NOT = { has_variable = ga_sp_pending } }
     custom_tooltip = { text = ga_ui_harbor_free_tt NOT = { has_variable = ga_hb_pending } }
 }
+
+ga_in_horde = {
+    exists = international_organization:goblin_horde
+    is_member_of_international_organization = international_organization:goblin_horde
+}

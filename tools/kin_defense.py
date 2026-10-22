@@ -1,9 +1,11 @@
 """Ashen Kinship: goblin crowns may fight each other, but every crown defends
 against an outside invader.
 
+The Goblin Horde international organization (goblin_horde.py) does the joining
+natively (join_defensive_wars_always against non-members). This hook only makes
+it visible: it explains the call and grants the rally modifier.
 Native reference (EU5 _hardcoded.txt): on_war_declared fires once per country with
 root = country, scope:actor = attacker, scope:recipient = defender, scope:war.
-join_war_as_defender is the forced join vanilla uses for the War of Religions.
 """
 
 HOOK = 'ga_kin_defense'
@@ -18,6 +20,7 @@ on_war_declared = {{ on_actions = {{ {HOOK} }} }}
     trigger = {{
         this = scope:recipient
         ga_is_goblin = yes
+        ga_in_horde = yes
         scope:actor = {{ NOT = {{ ga_is_goblin = yes }} }}
     }}
     effect = {{
@@ -26,13 +29,11 @@ on_war_declared = {{ on_actions = {{ {HOOK} }} }}
         add_country_modifier = {{ modifier = ga_kin_rally years = 5 mode = replace }}
         every_country = {{
             limit = {{
-                ga_independent_goblin = yes
+                ga_in_horde = yes
                 this != scope:ga_kin_victim
                 NOT = {{ is_at_war_with = scope:ga_kin_victim }}
-                NOT = {{ is_at_war_with = scope:ga_kin_invader }}
             }}
             save_scope_as = ga_kin_ally
-            join_war_as_defender = {{ war = scope:war call_in_subjects = yes }}
             add_country_modifier = {{ modifier = ga_kin_rally years = 5 mode = replace }}
             scope:ga_kin_victim = {{ add_opinion = {{ target = scope:ga_kin_ally modifier = ga_kin_answered }} }}
             trigger_event_non_silently = ga_gathering.42
@@ -46,12 +47,12 @@ on_war_declared = {{ on_actions = {{ {HOOK} }} }}
 def events(event, option, loc):
     return [
         event(41, 'The Isles Answer',
-            "[SCOPE.sCountry('ga_kin_invader').GetName] has dared to make war on Ashborn shores. Whatever blood lies between the Six, no outsider may take what belongs to the Hunger Below. Every free crown that is not at war with us now sails to our defense.\n\n"
-            "#bold Ashen Kinship#! - Goblin crowns may fight one another, but a war declared on any goblin crown by an outsider draws in every independent goblin crown that is not already its enemy.",
+            "[SCOPE.sCountry('ga_kin_invader').GetName] has dared to make war on Ashborn shores. Whatever blood lies between the Six, no outsider may take what belongs to the Hunger Below. Every crown of the Goblin Horde that is not at war with us now sails to our defense.\n\n"
+            "#bold Ashen Kinship#! - Goblin crowns may fight one another, but the Goblin Horde joins every defensive war against an outsider. See the Horde in the International Organizations view.",
             option(41, 'a', 'Let them come. They will find six crowns, not one.')),
         event(42, 'Kin Under Attack',
-            "[SCOPE.sCountry('ga_kin_invader').GetName] has declared war on [SCOPE.sCountry('ga_kin_victim').GetName]. We may quarrel with our kin over every harbor and hill, but we will not watch an outsider take Ashborn soil. Our crown has joined the war as a defender.\n\n"
-            "#bold Ashen Kinship#! - We joined automatically. Wars between goblin crowns never trigger this; only an outsider's declaration does.",
+            "[SCOPE.sCountry('ga_kin_invader').GetName] has declared war on [SCOPE.sCountry('ga_kin_victim').GetName]. We may quarrel with our kin over every harbor and hill, but we will not watch an outsider take Ashborn soil. As a crown of the Goblin Horde, we have joined the war as a defender.\n\n"
+            "#bold Ashen Kinship#! - Horde members join automatically. Wars between goblin crowns never trigger this; only an outsider's declaration does.",
             option(42, 'a', 'To the shore. Kin first, quarrels later.')),
     ]
 
