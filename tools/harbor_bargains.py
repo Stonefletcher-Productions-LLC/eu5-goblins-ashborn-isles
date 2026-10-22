@@ -119,7 +119,7 @@ def actions(action, picker):
                        'One contract per crown; no alliance or vassalage.\n'
                        'Talks expire in 180 days. Crown cooldown: 2 years.\n'
                        'The same pair must wait 5 years between approaches.\n'
-                       'War, rivalry or a vanished partner ends the contract\n'
+                       'War, rivalry or a vanished partner ends the contract '
                        'at the next monthly check. No refund.')
         if kind == 'provisions':
             description += '\nInspect storage in the province food stockpile tooltip.'
