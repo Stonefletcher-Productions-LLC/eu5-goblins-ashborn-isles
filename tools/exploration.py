@@ -28,9 +28,10 @@ ROUTES = {
                            'tangier','ceuta','asilah','tetouan','larache','fez'],
               'summary':'pockets of southern Britain, the French Atlantic coast, Galicia and the Spanish straits, and northern Morocco; the markets at London, Bordeaux, Seville and Fez and the seas between these shores'},
     'south': {'cost':10,'months':6,'event':5,
-              'areas':['nw_africa_coast_area','iberian_west_coast_area'],
-              'locations':['cadiz','algeciras','gibraltar','tarifa','huelva','sevilla','tangier','ceuta','asilah','tetouan','larache','sale','fez','strait_of_gibraltar'],
-              'summary':'the Spanish and Moroccan shores of the straits, the coast toward Huelva and Sale, the Seville and Fez markets, and their sea approaches'},
+              'areas':['nw_africa_coast_area','madeira_sea_area'],
+              'locations':['funchal','porto_santo','teguise','maxorata','tamaraceite','hipalan','tedote','aguere',
+                           'rabat','anfa','azemmour','mazaghan','asfi','mogador','agadir','massa_MOR','marrakesh'],
+              'summary':'Madeira and the Canary Islands, the Atlantic coast of Morocco from Rabat to Agadir, the Marrakesh market, and the open sea between them'},
 }
 
 
@@ -46,16 +47,16 @@ TEXT = {
     'goblins_exploration.2.desc':'Salt-stained charts cover the council table. Our crews have followed the Portuguese shore from fishing coves to the busy quays of Porto and Lisbon. Beyond the breakers they found people eager to bargain, and watchmen eager to send them away. A foreign sail followed the expedition home; our islands are no longer a secret.',
     'goblins_exploration.2.a':'Keep the charts dry. There will be more voyages.',
     'goblins_exploration.3.title':'The Captains Unroll Their Charts',
-    'goblins_exploration.3.desc':'We have charted the first eastern harbors, but the shores farther north and south remain unexplored. Some crews favor the northern waters, others the warmer southern coast. Provisions for another expedition will cost ten gold, and the voyage will take six months.',
+    'goblins_exploration.3.desc':'We have charted the first eastern harbors, but the world beyond them is still blank. Some crews want the cold northern seas and the crowded straits where the great kingdoms trade. Others have heard Portuguese sailors speak of islands far to the south-west, where a mountain burns above the sea, and of a long African coast beyond them. Provisions for another expedition will cost ten gold, and the voyage will take six months.',
     'goblins_exploration.3.north':'Chart the northern coasts and the narrow sea beyond.',
-    'goblins_exploration.3.south':'Follow the coast south toward the straits.',
+    'goblins_exploration.3.south':'Sail south-west, toward the burning mountain.',
     'goblins_exploration.3.wait':'Let the crews rest. Reconsider in six months.',
     'goblins_exploration.4.title':'Cold Seas and Foreign Harbors',
     'goblins_exploration.4.desc':'The returning ships wear a crust of salt and carry a hold full of stories. Our captains have sounded the cold harbors of Britain and followed the crowded French shore. In foreign taverns they bartered for charts of Spanish coves and the sunlit ports of Morocco. Dock by dock, the distant world takes shape on the council table. Ships can now seek those shores, and their rulers have heard of the Ashborn Isles.',
     'goblins_exploration.4.a':'Another stretch of the world has a name.',
-    'goblins_exploration.5.title':'The Southern Straits',
-    'goblins_exploration.5.desc':'Warm winds bring the southern expedition home. The crews speak of white walls above the straits, markets crowded with unfamiliar wares and watchtowers following every sail. Their charts trace the Spanish and Moroccan shores, opening new places to bargain and new waters to fear. The rulers they encountered now know where our islands lie.',
-    'goblins_exploration.5.a':'The sea is wider than our old stories claimed.',
+    'goblins_exploration.5.title':'Islands of Fire',
+    'goblins_exploration.5.desc':'Warm winds bring the southern expedition home, and the crews cannot stop talking. Far to the south-west they found islands of black rock and ash, and above them a mountain smoking like our own. Some swear the islanders herd goats on its slopes and fear it as we revere ours. On the long coast beyond, they traded at walled ports under Moroccan banners and heard of a red city inland, where caravans come out of the desert. The rulers they encountered now know where our islands lie.',
+    'goblins_exploration.5.a':'So the Hunger Below has other mountains.',
 }
 
 def build(b,game,out,validate_setup=True):

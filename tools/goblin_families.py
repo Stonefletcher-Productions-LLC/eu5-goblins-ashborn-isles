@@ -43,9 +43,9 @@ def replace_rows(text, rows):
 
 def generated(config):
     dynasties, characters = ashborn_names.court_rows(config['countries'])
+    family = shatterfin.family_rows() + characters
     return {'main_menu/setup/start/04_dynasties.txt': [shatterfin.dynasty_row()] + dynasties,
-            'main_menu/setup/start/05_characters.txt': shatterfin.family_rows() + characters
-            + goblin_nobility.rows(config['countries'])}
+            'main_menu/setup/start/05_characters.txt': family + goblin_nobility.rows(config['countries'], family)}
 
 
 def build(root=ROOT):
@@ -119,6 +119,10 @@ def verify(root=ROOT):
         assert all('dynasty = ' + ruling + ' ' not in r for r in court.values()), tag
         courts[tag.upper()] = {'courtiers': len(court), 'adults': len(adults), 'unmarried_adults': len(single), **estates}
     summary['courts'] = courts
+    # No two living members of a house share a first name.
+    names = [(re.search(r'dynasty = (\w+)', r)[1], re.search(r'first_name = \{ name = (\w+)', r)[1])
+             for r in people.values() if 'dynasty = ' in r and 'death_date' not in r]
+    assert len(names) == len(set(names)), sorted({n for n in names if names.count(n) > 1})
     return {'goblin_characters': len(people), 'families': summary, 'engine_tested': False}
 
 

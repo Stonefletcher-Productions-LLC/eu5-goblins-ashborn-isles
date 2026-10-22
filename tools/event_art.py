@@ -26,9 +26,15 @@ EVENTS = {
     **{f'ga_opening.{n}': 'opening_' + art for n, art in {
         1: 'cindermaw', 2: 'brackmaw', 3: 'reefhook', 4: 'shatterfin', 5: 'sootwake', 6: 'giltfang',
     }.items()},
+    # The Shatter Maw rivalry between Shatterfin and Giltfang.
+    **{f'ga_maw_rivalry.{n}': art for n, art in {
+        1: 'opening_shatterfin', 2: 'giltfang', 3: 'shatterfin',
+    }.items()},
     **{f'ga_old_world.{n}': art for n, art in {
         1: 'old_world_demons', 2: 'old_world_tavern', 3: 'old_world_envoy',
         4: 'old_world_cabinet', 5: 'old_world_legate',
+        # Placeholder until the Muslim court debate has its own painting.
+        6: 'africa',
     }.items()},
 }
 # Covenant stories reuse the same native-sized paintings.

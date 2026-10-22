@@ -16,8 +16,12 @@
       "sha256": "807173a584efdf272f43f2af1d85247c9d96cc1a71cb3421ff5c0fb79405b3f0"
     },
     {
+      "path": "in_game/common/biases/goblins_maw_rivalry.txt",
+      "sha256": "94fed00941cc4c86fa258bafe971f4e334a5cf75cd152b3ba21f1ece7f982891"
+    },
+    {
       "path": "in_game/common/biases/goblins_old_world.txt",
-      "sha256": "cadb35f61b36a1f3bf060dc8b34942a96c49ec4c0dbbd83f66072c5c7e510538"
+      "sha256": "a0f6fd7fe122c1cb90349892f67f539552078d4c37cf9f7fe399ebef45d6726d"
     },
     {
       "path": "in_game/common/casus_belli/goblins_gathering.txt",
@@ -105,7 +109,7 @@
     },
     {
       "path": "in_game/common/languages/goblins_ashborn_isles.txt",
-      "sha256": "5cc5908e94e99b8ae4b4b4078a47eba26851603aa3978ab95857ec86d47d7cae"
+      "sha256": "9a4e78c8e5d7bb8c0795389c050567e959281df67ccb990266efb8ae2e4767cc"
     },
     {
       "path": "in_game/common/on_action/ashen_covenant.txt",
@@ -132,8 +136,12 @@
       "sha256": "6373eb2e9a0dbf1391ff8fc1478b1cf2248d03414044847206113292e9e32472"
     },
     {
+      "path": "in_game/common/on_action/goblins_maw_rivalry.txt",
+      "sha256": "72a784335610b99949ce681f41ad95cf9b24f511532e570f1679c25aac52e43c"
+    },
+    {
       "path": "in_game/common/on_action/goblins_old_world.txt",
-      "sha256": "461a9ea87e88087ac8694b3d5c50b91ef93e0182e9b86bbcb2b071e1c020c59f"
+      "sha256": "0c1e65fbfd4ea71de83cfe6077879cf7f2747168f518b349956f77ca7d6cb2bd"
     },
     {
       "path": "in_game/common/on_action/goblins_openings.txt",
@@ -233,15 +241,19 @@
     },
     {
       "path": "in_game/events/goblins_exploration.txt",
-      "sha256": "a31ca47fdc45afa358dabccd197529f846612dcccc1db5ce85487966d0cfed9d"
+      "sha256": "05a86affba06a0ca2b09636728fd522b60856abc54172ce1e50af551983374f3"
     },
     {
       "path": "in_game/events/goblins_gathering.txt",
       "sha256": "3cd759c25a51d15b098ac4c2dd5f008f984b556d20873c5514f898514ff5f0bf"
     },
     {
+      "path": "in_game/events/goblins_maw_rivalry.txt",
+      "sha256": "a83782627aaf01aef06dcc3bc93dd9015d4e9b3c19ed181f635bd9f7cd2dce2d"
+    },
+    {
       "path": "in_game/events/goblins_old_world.txt",
-      "sha256": "d083399d0f7f49a5183a6721d6548cad53f8ee1242fe4f2ea54199ecef3ce251"
+      "sha256": "f0cacd1a6c27bd457829f5d4af89674d9548d595488bca113ae8151101a5c63d"
     },
     {
       "path": "in_game/events/goblins_openings.txt",
@@ -588,8 +600,12 @@
       "sha256": "a881f1059df914924abdd5ca20a7b108f57e0942915a5d011731ca5b4f857770"
     },
     {
+      "path": "main_menu/common/static_modifiers/goblins_maw_rivalry.txt",
+      "sha256": "014b4bf44c0ba6b38fff84cf3a43c84ea93c8887f029beb52790a0c7087a84ee"
+    },
+    {
       "path": "main_menu/common/static_modifiers/goblins_old_world.txt",
-      "sha256": "771264e519e7e2c2b01e3f6c0b15259542dd83d7b49d99d8decd1772d8092632"
+      "sha256": "9806274271e2ce01567fc5d400d4fe8e4187a2482ce0b05c36da9904da936276"
     },
     {
       "path": "main_menu/gfx/coat_of_arms/textured_emblems/te_ashborn_brackmaw.dds",
@@ -12713,7 +12729,7 @@
     },
     {
       "path": "main_menu/localization/english/goblins_ashborn_isles_l_english.yml",
-      "sha256": "c5fd84f93fb53754dd7c1e51820252f6014a8a4d750ea5a494781458738e82a7"
+      "sha256": "5f7a70b6863258bc7251853a29e64b0c4c66cb8cbb510537d4a2229c795bcaf3"
     },
     {
       "path": "main_menu/localization/english/goblins_divorce_l_english.yml",
@@ -12721,11 +12737,15 @@
     },
     {
       "path": "main_menu/localization/english/goblins_exploration_l_english.yml",
-      "sha256": "aca5ffc21a328a706b4971d612c8261b6866742671769ac7e5b38258991e29ab"
+      "sha256": "e706bee904f2e29bef9d65d5cacc2d582ffad407add89ed4e015581a44f95db9"
     },
     {
       "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
       "sha256": "8b11c8df510405c651f2f36462f6dc039a22cf8134bf1a6ad4cb0c3efb8fb6bf"
+    },
+    {
+      "path": "main_menu/localization/english/goblins_maw_rivalry_l_english.yml",
+      "sha256": "1bd790f3eed34c925dceb89347be63eda304806ae599f3198c88a96571751171"
     },
     {
       "path": "main_menu/localization/english/goblins_music_l_english.yml",
@@ -12733,7 +12753,7 @@
     },
     {
       "path": "main_menu/localization/english/goblins_old_world_l_english.yml",
-      "sha256": "6e6796f6cba58341081a929e035a545b02664febc9f2dd0088eeeeb006cf1747"
+      "sha256": "8d35b2a7f6271058eb1f3633be26f9cdda8b7c61c2d526822962be7b53a5fb6c"
     },
     {
       "path": "main_menu/localization/english/goblins_openings_l_english.yml",
@@ -12757,7 +12777,7 @@
     },
     {
       "path": "main_menu/setup/start/05_characters.txt",
-      "sha256": "cf221656a9565f7e75e05643a1960e44defbc42acabf122d333da0498a918f3f"
+      "sha256": "df088e50cf7186bf0971251e0e4e1e73a2eca805fa2855a82ddb7432bd70c7f2"
     },
     {
       "path": "main_menu/setup/start/08_institutions.txt",
