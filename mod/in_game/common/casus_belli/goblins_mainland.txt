@@ -1,0 +1,18 @@
+﻿ga_cb_drive_out_goblins = {
+    years = 10
+    create_visible = { ga_is_goblin = no }
+    create_enabled = {
+        ga_is_goblin = no
+        scope:target = { ga_holds_mainland = yes is_neighbor_of = root }
+    }
+    declare_enabled = {
+        ga_is_goblin = no
+        scope:target = { ga_holds_mainland = yes }
+    }
+    #scopes are actor/recipient for countries, while root = province checked.
+    province = {
+        any_location_in_province = { owner = scope:recipient ga_mainland_location = yes }
+    }
+    additional_war_enthusiasm_attacker = 0.25
+    war_goal_type = conquer_province
+}

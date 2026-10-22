@@ -1,0 +1,29 @@
+﻿# location scope: European mainland, outside the Ashborn homeland.
+ga_mainland_location = {
+    continent = continent:europe
+    NOT = { area = area:cm_cindermaw_area }
+}
+
+# location scope: a goblin-majority mainland location.
+ga_settled_mainland_location = {
+    ga_mainland_location = yes
+    dominant_culture ?= { has_culture_group = culture_group:cm_goblin_group }
+}
+
+# country scope
+ga_holds_mainland = {
+    ga_is_goblin = yes
+    any_owned_location = { ga_mainland_location = yes }
+}
+
+ga_shore_settled = {
+    ga_independent_goblin = yes
+    any_owned_location = { ga_settled_mainland_location = yes count >= 5 }
+}
+
+# A non-goblin country that borders a goblin crown holding mainland land.
+ga_shore_neighbour = {
+    ga_is_goblin = no
+    save_temporary_scope_as = ga_ms_self
+    any_country = { ga_holds_mainland = yes is_neighbor_of = scope:ga_ms_self }
+}

@@ -1,0 +1,223 @@
+﻿namespace = ga_mainland
+# The Goblin Shore: mainland settlement and European backlash, paced by goblins_mainland on_actions.
+
+ga_mainland.1 = {
+    type = country_event
+    outcome = neutral
+    title = ga_mainland.1.title
+    desc = ga_mainland.1.desc
+    trigger = { ga_is_goblin = yes ga_holds_mainland = yes }
+    image = "gfx/interface/illustrations/event/ashborn/eastern_harbor.dds"
+    immediate = { set_variable = { name = ga_ms_landed value = yes } }
+    option = { name = ga_mainland.1.a ai_chance = { factor = 3 }
+        add_country_modifier = { modifier = ga_ms_first_landing years = 10 mode = replace }
+        random_owned_location = { limit = { ga_mainland_location = yes } add_pop = { culture = root.culture religion = root.religion type = pop_type:peasants size = 3 } }
+        root.capital ?= {
+            ordered_pop = {
+                limit = { culture = { has_culture_group = culture_group:cm_goblin_group } pop_size > 9 }
+                order_by = pop_size
+                max = 1
+                add_pop_size = -3
+            }
+        }
+    }
+    option = { name = ga_mainland.1.b ai_chance = { factor = 2 }
+        add_prestige = 10
+        random_owned_location = { limit = { ga_mainland_location = yes } add_location_modifier = { modifier = ga_ms_stockade years = 20 mode = replace } }
+    }
+}
+
+ga_mainland.2 = {
+    type = country_event
+    outcome = neutral
+    title = ga_mainland.2.title
+    desc = ga_mainland.2.desc
+    trigger = { ga_is_goblin = yes ga_holds_mainland = yes }
+    image = "gfx/interface/illustrations/event/ashborn/iberia.dds"
+    option = { name = ga_mainland.2.a ai_chance = { factor = 2 }
+        add_country_modifier = { modifier = ga_ms_mixed_market years = 10 mode = replace }
+    }
+    option = { name = ga_mainland.2.b ai_chance = { factor = 2 }
+        random_owned_location = { limit = { ga_mainland_location = yes } every_pop = { limit = { NOT = { culture = { has_culture_group = culture_group:cm_goblin_group } } } split_pop = { fraction = 0.1 culture = root.culture } } add_location_modifier = { modifier = ga_ms_resentment years = 10 mode = replace } }
+    }
+    option = { name = ga_mainland.2.c ai_chance = { factor = 1 }
+        add_prestige = 5
+        random_owned_location = { limit = { ga_mainland_location = yes } add_location_modifier = { modifier = ga_ms_stockade years = 20 mode = replace } }
+    }
+}
+
+ga_mainland.3 = {
+    type = country_event
+    outcome = neutral
+    title = ga_mainland.3.title
+    desc = ga_mainland.3.desc
+    trigger = { ga_is_goblin = yes ga_holds_mainland = yes }
+    image = "gfx/interface/illustrations/event/ashborn/old_world_tavern.dds"
+    option = { name = ga_mainland.3.a ai_chance = { factor = 2 }
+        random_owned_location = { limit = { ga_mainland_location = yes } every_pop = { limit = { NOT = { culture = { has_culture_group = culture_group:cm_goblin_group } } } add_pop_size = { value = pop_size multiply = -0.15 } } add_pop = { culture = root.culture religion = root.religion type = pop_type:peasants size = 1 } }
+        custom_tooltip = ga_mainland.3.a_tt
+        hidden_effect = { every_country = { limit = { ga_is_goblin = no is_neighbor_of = root } add_opinion = { target = root modifier = ga_ms_townsfolk_driven } } }
+    }
+    option = { name = ga_mainland.3.b ai_chance = { factor = 2 }
+        trigger = { gold >= 15 }
+        add_gold = -15
+        custom_tooltip = ga_mainland.3.b_tt
+        hidden_effect = { every_country = { limit = { ga_is_goblin = no is_neighbor_of = root } add_opinion = { target = root modifier = ga_ms_townsfolk_charter } } }
+    }
+    option = { name = ga_mainland.3.c ai_chance = { factor = 1 }
+        trigger = { gold >= 10 }
+        add_gold = -10
+        random_owned_location = { limit = { ga_mainland_location = yes } add_location_modifier = { modifier = ga_ms_stockade years = 20 mode = replace } add_location_modifier = { modifier = ga_ms_resentment years = 10 mode = replace } }
+    }
+}
+
+ga_mainland.4 = {
+    type = country_event
+    outcome = neutral
+    title = ga_mainland.4.title
+    desc = ga_mainland.4.desc
+    trigger = { ga_is_goblin = yes ga_holds_mainland = yes }
+    image = "gfx/interface/illustrations/event/ashborn/departure.dds"
+    option = { name = ga_mainland.4.a ai_chance = { factor = 2 }
+        random_owned_location = { limit = { ga_mainland_location = yes } add_pop = { culture = root.culture religion = root.religion type = pop_type:peasants size = 3 } }
+        root.capital ?= {
+            ordered_pop = {
+                limit = { culture = { has_culture_group = culture_group:cm_goblin_group } pop_size > 9 }
+                order_by = pop_size
+                max = 1
+                add_pop_size = -3
+            }
+        }
+    }
+    option = { name = ga_mainland.4.b ai_chance = { factor = 1 }
+        add_stability = stability_mild_bonus
+    }
+}
+
+ga_mainland.5 = {
+    type = country_event
+    outcome = neutral
+    title = ga_mainland.5.title
+    desc = ga_mainland.5.desc
+    trigger = { ga_is_goblin = no }
+    image = "gfx/interface/illustrations/event/ashborn/old_world_demons.dds"
+    option = { name = ga_mainland.5.a ai_chance = { factor = 2 modifier = { add = 3 has_variable = ga_owr_demons } }
+        add_country_modifier = { modifier = ga_ms_bells_rung years = 10 mode = replace }
+        custom_tooltip = ga_mainland.5.a_tt
+        save_scope_as = ga_ms_accuser
+        every_country = { limit = { ga_holds_mainland = yes is_neighbor_of = root }
+            save_scope_as = ga_ms_holder
+            root = { add_casus_belli = { type = casus_belli:ga_cb_drive_out_goblins target = scope:ga_ms_holder years = 10 } }
+            hidden_effect = { root = { add_opinion = { target = scope:ga_ms_holder modifier = ga_ms_goblin_menace } } }
+            trigger_event_non_silently = ga_mainland.6
+        }
+    }
+    option = { name = ga_mainland.5.b ai_chance = { factor = 2 modifier = { add = 2 has_variable = ga_owr_souls } }
+        add_country_modifier = { modifier = ga_ms_shore_market years = 10 mode = replace }
+        custom_tooltip = ga_mainland.5.b_tt
+        hidden_effect = { every_country = { limit = { ga_holds_mainland = yes is_neighbor_of = root }
+            add_opinion = { target = root modifier = ga_ms_shore_trade }
+            save_scope_as = ga_ms_holder
+            root = { add_opinion = { target = scope:ga_ms_holder modifier = ga_ms_shore_trade } }
+        } }
+    }
+    option = { name = ga_mainland.5.c ai_chance = { factor = 2 }
+        trigger = { has_variable = ga_owr_souls }
+        add_country_modifier = { modifier = ga_ms_friars_sent years = 10 mode = replace }
+        custom_tooltip = ga_mainland.5.c_tt
+        hidden_effect = { every_country = { limit = { ga_holds_mainland = yes is_neighbor_of = root }
+            add_opinion = { target = root modifier = ga_ms_friars_welcomed }
+        } }
+    }
+}
+
+ga_mainland.6 = {
+    type = country_event
+    outcome = neutral
+    title = ga_mainland.6.title
+    desc = ga_mainland.6.desc
+    trigger = { ga_is_goblin = yes ga_holds_mainland = yes }
+    image = "gfx/interface/illustrations/event/ashborn/foreign_sails.dds"
+    option = { name = ga_mainland.6.a ai_chance = { factor = 3 }
+        trigger = { ga_in_horde = yes }
+        add_country_modifier = { modifier = ga_ms_hold_the_shore years = 5 mode = replace }
+        custom_tooltip = ga_mainland.6.a_tt
+        save_scope_as = ga_ms_kin
+        international_organization:goblin_horde ?= { every_international_organization_member = { limit = { NOT = { this = root } } trigger_event_non_silently = ga_mainland.7 } }
+    }
+    option = { name = ga_mainland.6.b ai_chance = { factor = 1 }
+        trigger = { gold >= 25 }
+        add_gold = -25
+        scope:ga_ms_accuser = { add_gold = 25 add_opinion = { target = root modifier = ga_ms_paid_off } }
+    }
+    option = { name = ga_mainland.6.c ai_chance = { factor = 1 }
+        add_prestige = 10
+        add_country_modifier = { modifier = ga_ms_let_them_come years = 5 mode = replace }
+    }
+}
+
+ga_mainland.7 = {
+    type = country_event
+    outcome = neutral
+    title = ga_mainland.7.title
+    desc = ga_mainland.7.desc
+    trigger = { ga_is_goblin = yes exists = scope:ga_ms_kin }
+    image = "gfx/interface/illustrations/event/ashborn/kinship.dds"
+    option = { name = ga_mainland.7.a ai_chance = { factor = 2 }
+        trigger = { gold >= 20 }
+        add_gold = -20
+        scope:ga_ms_kin = { add_gold = 20 add_opinion = { target = root modifier = ga_ms_kin_answered } }
+    }
+    option = { name = ga_mainland.7.b ai_chance = { factor = 2 }
+        custom_tooltip = ga_mainland.7.b_tt
+        scope:ga_ms_kin = { random_owned_location = { limit = { ga_mainland_location = yes } add_pop = { culture = root.culture religion = root.religion type = pop_type:peasants size = 2 } } add_opinion = { target = root modifier = ga_ms_kin_answered } }
+        root.capital ?= {
+            ordered_pop = {
+                limit = { culture = { has_culture_group = culture_group:cm_goblin_group } pop_size > 6 }
+                order_by = pop_size
+                max = 1
+                add_pop_size = -2
+            }
+        }
+    }
+    option = { name = ga_mainland.7.c ai_chance = { factor = 1 }
+        scope:ga_ms_kin = { add_opinion = { target = root modifier = ga_ms_kin_ignored } }
+    }
+}
+
+ga_mainland.8 = {
+    type = country_event
+    outcome = neutral
+    title = ga_mainland.8.title
+    desc = ga_mainland.8.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/pact_broken.dds"
+    option = { name = ga_mainland.8.a ai_chance = { factor = 1 }
+        add_country_modifier = { modifier = ga_ms_back_to_sea years = 10 mode = replace }
+    }
+}
+
+ga_mainland.9 = {
+    type = country_event
+    outcome = neutral
+    title = ga_mainland.9.title
+    desc = ga_mainland.9.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/unification.dds"
+    option = { name = ga_mainland.9.a ai_chance = { factor = 1 }
+        add_prestige = 25
+        add_country_modifier = { modifier = ga_ms_shore_kingdom years = 25 mode = replace }
+    }
+}
+
+ga_mainland.10 = {
+    type = country_event
+    outcome = neutral
+    title = ga_mainland.10.title
+    desc = ga_mainland.10.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/kinship.dds"
+    option = { name = ga_mainland.10.a ai_chance = { factor = 1 }
+        add_prestige = 10
+    }
+}

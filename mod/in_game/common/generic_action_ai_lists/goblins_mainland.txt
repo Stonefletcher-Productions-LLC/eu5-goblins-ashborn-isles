@@ -1,0 +1,4 @@
+﻿ga_mainland_ai_list = {
+    potential = { ga_holds_mainland = yes can_see_situation = situation:ga_goblin_shore }
+    actions = { ga_ms_send_settlers ga_ms_teach_tongue ga_ms_raise_shrine }
+}

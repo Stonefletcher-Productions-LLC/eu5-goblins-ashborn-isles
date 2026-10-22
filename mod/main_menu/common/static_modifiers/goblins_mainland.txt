@@ -1,0 +1,11 @@
+﻿ga_ms_first_landing = { global_population_growth = 0.001 }
+ga_ms_mixed_market = { global_production_efficiency = 0.03 }
+ga_ms_hold_the_shore = { global_defensive = 0.10 }
+ga_ms_let_them_come = { land_morale_modifier = 0.05 }
+ga_ms_shore_kingdom = { diplomatic_reputation = 1 global_production_efficiency = 0.05 }
+ga_ms_back_to_sea = { land_morale_modifier = 0.05 naval_morale_modifier = 0.05 }
+ga_ms_bells_rung = { global_defensive = 0.10 }
+ga_ms_shore_market = { global_production_efficiency = 0.02 }
+ga_ms_friars_sent = { diplomatic_reputation = 0.5 }
+ga_ms_stockade = { local_defensive = 0.1 }
+ga_ms_resentment = { local_unrest = 0.05 }

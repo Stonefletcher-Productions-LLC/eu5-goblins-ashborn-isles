@@ -1,0 +1,18 @@
+﻿situation_panel = {
+    blockoverride "situation_subheader_content" {}
+    blockoverride "situation_panel_main_content" {
+        text_multi = {
+            layoutpolicy_horizontal = expanding
+            max_width = 400
+            autoresize = yes
+            text = "ga_goblin_shore_desc"
+        }
+        text_single = {
+            layoutpolicy_horizontal = expanding
+            text = "END_REQUIREMENTS"
+        }
+        TooltipRequirementsList = {
+            textcontext = "[SituationView.GetActiveSituation.GetSituation.GetEndConditions]"
+        }
+    }
+}
