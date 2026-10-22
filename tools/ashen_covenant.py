@@ -12,7 +12,8 @@ DESCRIPTION = ('The Ashborn live by bargains with fire, water, roots and the rem
     'Beneath the islands sleeps the Hunger Below: its fire creates land, yet its appetite can consume it. '
     'Oathkeepers tend local shrines and witness the duties of chiefs to their households. '
     'The Returning Mother, Reed Listener, Lantern Dead, Rootkeeper and Tooth in the Gale receive their own offerings. '
-    'No single priest speaks for every island. What keeps you living must be fed.')
+    'No single priest speaks for every island. A chief may bind up to four households to his hearth through marriage, '
+    'so a crowned goblin keeps several wives. What keeps you living must be fed.')
 ASPECTS = {
     'common_hearth': ('Feed the Common Hearth', 'The first share sustains the households. Chiefs must answer for empty stores.', 'global_monthly_food_modifier', .05),
     'offering_smoke': ('Smoke Is an Offering', 'Useful work feeds the fire below. Forge crews dedicate their first finished piece.', 'global_production_efficiency', .05),
@@ -98,6 +99,8 @@ def build(out):
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(content.strip() + '\n', encoding='utf-8-sig', newline='\r\n')
         paths.append(path)
+    # female_spouses stacks on the marriage law: Monogamous Marriage (1) + 3 = four wives,
+    # the same limit as native Polygyny, which the Ashen Covenant cannot select.
     write('in_game/common/religions/goblins_ashborn_isles.txt', f'''{RELIGION} = {{
  color = rgb {{ 160 56 36 }}
  group = cm_ashen_faiths
@@ -105,7 +108,7 @@ def build(out):
  tags = {{ folk_african_gfx pagan_gfx }}
  religious_aspects = 2
  has_religious_influence = yes
- definition_modifier = {{ monthly_religious_influence = 0.2 maximum_religious_influence = 100 }}
+ definition_modifier = {{ monthly_religious_influence = 0.2 maximum_religious_influence = 100 female_spouses = 3 }}
  opinions = {{ }}
 }}''')
     aspects = []

@@ -186,6 +186,10 @@ def validate(game,out,mapstats,economy):
     verify_intro(lambda p: (out/p).read_text(encoding='utf-8-sig'))
     from verify_divorce import verify as verify_divorce
     verify_divorce(lambda p: (out/p).read_text(encoding='utf-8-sig'))
+    from verify_goblin_units import verify as verify_units
+    from build_infantry_art import blocks as unit_blocks
+    native_units={k for f in sorted((game/'in_game/common/unit_types').glob('*.txt')) for k in unit_blocks(f.read_text(encoding='utf-8-sig'))}
+    verify_units(lambda p: (out/p).read_text(encoding='utf-8-sig'),native_units)
     import shatterfin
     shatterfin.verify(sys.modules[__name__],out)
     import ashborn_names
@@ -240,6 +244,8 @@ def main():
     export_event_art.build(out)
     import export_goblin_models
     models=export_goblin_models.build(out,game)
+    import export_goblin_buildings
+    models['city_set']=export_goblin_buildings.build(out)
     import build_goblin_portraits
     build_goblin_portraits.build(out)
     import build_infantry_art

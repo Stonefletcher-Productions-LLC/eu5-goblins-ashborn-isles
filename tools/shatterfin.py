@@ -11,6 +11,17 @@ FAMILY=[
     ('cm_sfk_neshri','cm_name_neshri','1318.9.2',True,'cm_sfk_maarka',None,61,76,44),
     ('cm_sfk_rikka','cm_name_rikka','1319.4.23',True,'cm_sfk_ishra',None,57,65,63),
     ('cm_sfk_sella','cm_name_sella','1335.7.11',True,'cm_sfk_veshka',None,48,54,39),
+    # 0.6.6: a wider maternal house, so seniority always has adult women to call on.
+    ('cm_sfk_zhrikka','cm_ash_name_zhrikka','1304.12.1',True,'cm_sfk_savra',None,63,67,48),
+    ('cm_sfk_krashra','cm_ash_name_krashra','1321.6.28',True,'cm_sfk_ishra',None,60,69,52),
+    ('cm_sfk_shrazha','cm_ash_name_shrazha','1322.2.17',True,'cm_sfk_maarka',None,68,61,57),
+    ('cm_sfk_vresh','cm_ash_name_vresh','1323.7.7',False,'cm_sfk_maarka',None,58,56,80),
+    ('cm_sfk_krazha','cm_ash_name_krazha','1324.3.30',True,'cm_sfk_zhrikka',None,57,64,55),
+    ('cm_sfk_vrishka','cm_ash_name_vrishka','1325.10.3',True,'cm_sfk_maarka',None,62,73,41),
+    ('cm_sfk_zharr','cm_ash_name_zharr','1334.2.12',False,'cm_sfk_veshka',None,52,50,66),
+    ('cm_sfk_vroshka','cm_ash_name_vroshka','1335.11.20',True,'cm_sfk_rikka',None,55,58,47),
+    ('cm_sfk_rizhka','cm_ash_name_rizhka','1336.3.9',True,'cm_sfk_veshka',None,51,60,44),
+    ('cm_sfk_shrikka','cm_ash_name_shrikka','1337.1.5',True,'cm_sfk_neshri',None,49,57,46),
 ]
 LOCALIZATION={
     'cm_tidemother_monarchy':'Tidemother Monarchy',
@@ -24,10 +35,9 @@ LOCALIZATION={
     'cm_name_rikka':'Krishka','cm_name_sella':'Zrikka',
 }
 
-def build(b,game,out):
-    dynasty=f'{DYNASTY} = {{ name = {{ name = {DYNASTY} }} home = cm_shatterfin }}'
-    rel='main_menu/setup/start/04_dynasties.txt'
-    b.write(out,rel,b.inject(b.read(game,rel),'dynasty_manager',dynasty))
+def dynasty_row():return f'{DYNASTY} = {{ name = {{ name = {DYNASTY} }} home = cm_shatterfin }}'
+
+def family_rows():
     rows=[]
     for ident,name,born,female,mother,died,adm,dip,mil in FAMILY:
         row=f'{ident} = {{ first_name = {{ name = {name} }} culture = cm_shatterkin religion = cm_hunger_below dynasty = {DYNASTY} tag = SFK birth = cm_shatterfin birth_date = {born} adm = {adm} dip = {dip} mil = {mil}'
@@ -36,8 +46,13 @@ def build(b,game,out):
         if mother:row+=' mother = '+mother
         if died:row+=' death_date = '+died
         rows.append(row+' }')
+    return rows
+
+def build(b,game,out):
+    rel='main_menu/setup/start/04_dynasties.txt'
+    b.write(out,rel,b.inject(b.read(game,rel),'dynasty_manager',dynasty_row()))
     rel='main_menu/setup/start/05_characters.txt'
-    b.write(out,rel,b.inject(b.read(game,rel),'character_db','\n'.join(rows)))
+    b.write(out,rel,b.inject(b.read(game,rel),'character_db','\n'.join(family_rows())))
 
 def verify(b,out):
     names=(out/'main_menu/localization/english/goblins_ashborn_isles_l_english.yml').read_text(encoding='utf-8-sig')
@@ -60,5 +75,5 @@ def verify(b,out):
     def birthday(row):return date(*map(int,row[2].split('.')))
     now=date(1337,11,11)
     eligible=sorted((r for r in FAMILY if r[0]!='cm_sfk_maarka' and r[3] and r[4] and r[5] is None and (now-birthday(r)).days>=18*365.25),key=birthday)
-    assert [r[0] for r in eligible]==['cm_sfk_ishra','cm_sfk_veshka','cm_sfk_neshri','cm_sfk_rikka']
-    return {'starting_ruler':'Jaimzha Shatterfin','starting_heir':'Skritcha Shatterfin','eligible_starting_women':4,'male_and_minor_exclusion':True,'parents_before_children':True,'engine_succession_tested':False}
+    assert [r[0] for r in eligible]==['cm_sfk_ishra','cm_sfk_zhrikka','cm_sfk_veshka','cm_sfk_neshri','cm_sfk_rikka']
+    return {'starting_ruler':'Jaimzha Shatterfin','starting_heir':'Skritcha Shatterfin','eligible_starting_women':5,'male_and_minor_exclusion':True,'parents_before_children':True,'engine_succession_tested':False}

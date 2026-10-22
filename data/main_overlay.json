@@ -137,7 +137,7 @@
     },
     {
       "path": "in_game/common/religions/goblins_ashborn_isles.txt",
-      "sha256": "6d9c33e700c10157f1074261cc4faf8d6c294e5c1632c49ada7dc383667e5370"
+      "sha256": "eadeb8734d630a356d3159f9dc8a27752032374748505a6b26911a3ce7318cdb"
     },
     {
       "path": "in_game/common/religious_aspects/ashen_covenant.txt",
@@ -164,6 +164,10 @@
       "sha256": "99fc4a1953bfd17697b9234a4e8b8293626a474d43fa1da8828e21136a24f89a"
     },
     {
+      "path": "in_game/common/scripted_triggers/goblins_units.txt",
+      "sha256": "eac78ccca77f20b2d0b1c4160540844d385af5a667821d1b40b01dc600a2bc2b"
+    },
+    {
       "path": "in_game/common/situations/goblins_gathering.txt",
       "sha256": "7ef7c732fcaeebe516f67d825e0b3a9c13a5d204ae33aea524c8609886c664b2"
     },
@@ -178,6 +182,10 @@
     {
       "path": "in_game/common/town_setups/goblins_ashborn_isles.txt",
       "sha256": "8dc3539c39b189551c9c73e9ffbec32ed0b0c8838bbc1de0f4278f766b242a03"
+    },
+    {
+      "path": "in_game/common/unit_types/goblins_units.txt",
+      "sha256": "664c72fffbca55e21f878600a8e2df1fce350fa854227afe723ac8d5f6168364"
     },
     {
       "path": "in_game/events/ashen_covenant.txt",
@@ -345,7 +353,7 @@
     },
     {
       "path": "in_game/map_data/location_templates.txt",
-      "sha256": "6425ff51382cafb64a19b5fcdb53872ba2bfd4ffb46efbded5d3b05c6d374f23"
+      "sha256": "78406df186ce5880c79578975ffb01041cf6ddf5b1aa345eb8043cafb482efa0"
     },
     {
       "path": "in_game/map_data/ports.csv",
@@ -7189,7 +7197,7 @@
     },
     {
       "path": "main_menu/localization/english/goblins_ashborn_isles_l_english.yml",
-      "sha256": "1179471609a655f60c15a0816775630fdd8acb3ca16791d6da85faabfff34c38"
+      "sha256": "f37802b891fa25b9c00a729d231d97d9a05823acc9a5e8024a9aa560be921c2b"
     },
     {
       "path": "main_menu/localization/english/goblins_divorce_l_english.yml",
@@ -7208,8 +7216,20 @@
       "sha256": "bdf9a287d79055f8b7fafed6fb7915a4008052206d673fda058aac2d36d3bb20"
     },
     {
+      "path": "main_menu/localization/english/goblins_units_l_english.yml",
+      "sha256": "d9ab36baea8823951203681601f6b0023fc8017f0a33ecaa35f683569fe13efd"
+    },
+    {
       "path": "main_menu/music/audio_culture_types/goblins_music.txt",
       "sha256": "ea882f7d00596da952a8e5666d51530e1d77d8e33f1cf2e440d3b9ee73075d2b"
+    },
+    {
+      "path": "main_menu/setup/start/04_dynasties.txt",
+      "sha256": "73d55b088a9cdafcba6602c50e69289b66b75aa06e30ead0aa304e341c5089fb"
+    },
+    {
+      "path": "main_menu/setup/start/05_characters.txt",
+      "sha256": "e8104de30b7c759e945d578e98d36f0c2c9152b8caf4b50c6a8e8170c25890d4"
     }
   ]
 }

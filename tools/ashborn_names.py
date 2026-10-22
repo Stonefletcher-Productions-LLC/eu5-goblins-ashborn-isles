@@ -71,17 +71,107 @@ COURT_DATES = {
  'SWK': ('1308.7.6', '1310.10.9', '1328.1.23', '1330.5.31', ('1312.6.17', '1303.4.7', '1296.8.29')),
 }
 
-def build_courts(b,out):
-    """Add families and adult courtiers; native cabinet appointments remain native."""
+# Large ruling households keep each crown's dynasty alive past one unlucky death.
+# Rule of the Strongest only crowns adult men of the ruler's own dynasty, so every
+# crown starts with several adult kinsmen plus younger sons. The Ashen Covenant
+# allows four wives, so each ruler starts with three. Existing heirs remain the
+# strongest adult candidates; the new kin all have lower Military ability.
+# (role, sex, year offset from ruler birth, month, day, father, mother, house, stats)
+FAMILY_ROLES = (
+ ('father','m',-25,4,9,None,None,0,(63,57,88)),
+ ('uncle','m',-22,8,24,None,None,0,(60,63,70)),
+ ('cousin','m',-1,12,5,'uncle',None,0,(58,59,74)),
+ ('brother','m',3,6,14,'father',None,0,(61,60,78)),
+ ('brother_2','m',6,2,27,'father',None,0,(66,64,72)),
+ ('brother_wife','f',4,9,3,None,None,4,(62,66,48)),
+ ('brother_2_wife','f',7,11,21,None,None,5,(58,63,51)),
+ ('wife_2','f',7,5,30,None,None,2,(64,71,47)),
+ ('wife_3','f',10,1,12,None,None,3,(69,59,55)),
+ ('son_2','m',22,3,6,'ruler','consort',0,(62,58,76)),
+ ('son_3','m',24,10,17,'ruler','wife_2',0,(57,61,79)),
+ ('daughter_2','f',26,7,4,'ruler','wife_2',0,(64,70,52)),
+ ('son_4','m',29,12,1,'ruler','wife_2',0,(60,55,74)),
+ ('son_5','m',28,4,22,'ruler','wife_3',0,(65,57,77)),
+ ('daughter_3','f',31,8,13,'ruler','wife_3',0,(68,62,49)),
+ ('nephew','m',24,1,25,'brother','brother_wife',0,(59,62,71)),
+ ('niece','f',26,6,8,'brother','brother_wife',0,(63,67,46)),
+ ('nephew_2','m',29,9,30,'brother','brother_wife',0,(55,58,75)),
+ ('nephew_3','m',27,3,16,'brother_2','brother_2_wife',0,(61,54,73)),
+ ('niece_2','f',30,10,2,'brother_2','brother_2_wife',0,(66,69,44)),
+ ('son_wife','f',19,8,19,None,None,5,(60,68,50)),
+ ('grandson','m',37,2,11,'son','son_wife',0,(58,56,70)),
+)
+FAMILY_FATHER_DEATHS = {'CDM':'1331.3.14','QBR':'1332.7.2','GTF':'1330.11.27','RHK':'1334.9.6','SWK':'1334.9.6'}
+LAST_SETUP_BIRTH = (1337,6,1)
+
+def family_plan(tag):
+    """Return (suffix, female, birth, father, mother, house, stats) rows for a non-Shatterfin crown."""
+    leader_birth=COURT_DATES[tag][0];son_birth=COURT_DATES[tag][2]
+    ruler_year=int(leader_birth.split('.')[0]);son_year=int(son_birth.split('.')[0])
+    rows=[]
+    for role,sex,offset,month,day,father,mother,house,stats in FAMILY_ROLES:
+        if tag in {'RHK','SWK'} and role in {'father','brother'}:continue  # authored before 0.6.6
+        if role in {'son_wife','grandson'}:
+            # Only adult eldest sons marry before the campaign.
+            if son_year>1318:continue
+            year=son_year+(1 if role=='son_wife' else 18)
+        else:
+            year=ruler_year+offset
+        if role=='son_2':year=max(year,son_year+3)
+        if role in {'uncle','cousin'}:
+            father_year={'RHK':1282,'SWK':1281}.get(tag,ruler_year-25)
+            year=father_year+(3 if role=='uncle' else 25)
+        if role.startswith(('nephew','niece')):
+            parent_year=ruler_year+(3 if father=='brother' else 6)
+            if tag in {'RHK','SWK'} and father=='brother':parent_year=int(('1305' if tag=='RHK' else '1303'))
+            year=max(year,parent_year+18+(offset-24))
+        if (year,month,day)>LAST_SETUP_BIRTH:continue
+        rows.append((role,sex=='f',f'{year}.{month}.{day}',father,mother,house,stats))
+    present={r[0] for r in rows}|{'ruler','consort','son','father','brother','uncle'}
+    rows=[r for r in rows if (r[3] is None or r[3] in present) and (r[4] is None or r[4] in present)]
+    present={r[0] for r in rows}|{'ruler','consort','son','father','brother'}
+    # Drop wives whose husbands have no row, and husbands' kin whose mothers were dropped.
+    return [r for r in rows if not r[0].endswith('_wife') or r[0][:-5] in present]
+
+def family_names(tag):
+    """Assign unused pool names to the extended family, in role order."""
+    _,_,males,females,_,_=POOLS[tag];males=males.split();females=females.split()
+    used_m={0,1,3,4,5}|({2} if tag in {'RHK','SWK'} else set())
+    used_f={0,1,3}
+    free_m=[n for i,n in enumerate(males) if i not in used_m]
+    free_f=[n for i,n in enumerate(females) if i not in used_f]
+    names={}
+    for role,female,*_ in family_plan(tag):
+        # Grandsons carry their dead great-grandfather's name.
+        if role in {'father','grandson'}:names[role]=males[5];continue
+        if role=='brother':names[role]=males[1] if tag in {'RHK','SWK'} else free_m.pop(0);continue
+        pool=free_f if female else free_m
+        assert pool,'Name pool exhausted: '+tag
+        names[role]=pool.pop(0)
+    return names
+
+def court_rows(countries):
+    """Authored dynasties and character rows for the five captain crowns and Shatterfin's courtiers."""
     dynasties=[];characters=[]
     def person(ident,name,tag,culture,capital,dynasty,born,female=False,extra='',stats=(58,58,58)):
         adm,dip,mil=stats
         characters.append(f'{ident} = {{ first_name = {{ name = {key(name)} }} culture = {culture} religion = cm_hunger_below dynasty = {dynasty} tag = {tag} birth = {capital} birth_date = {born} adm = {adm} dip = {dip} mil = {mil} '+('female = yes ' if female else '')+extra+' }')
-    for country in b.CFG['countries']:
+    for country in countries:
         tag=country['tag'];label,culture,males,females,houses,_=POOLS[tag];males=males.split();females=females.split();capital=country['capital'];prefix='cm_'+tag.lower()
         leader_birth,consort_birth,son_birth,daughter_birth,court_births=COURT_DATES[tag]
-        for i in range(1 if tag=='SFK' else 0,4):dynasties.append(f'{house_key(tag,i)} = {{ name = {{ name = {house_key(tag,i)} }} home = {capital} }}')
+        for i in range(1 if tag=='SFK' else 0,len(houses.split())):dynasties.append(f'{house_key(tag,i)} = {{ name = {{ name = {house_key(tag,i)} }} home = {capital} }}')
         if tag!='SFK':
+            plan={r[0]:r for r in family_plan(tag)};names=family_names(tag)
+            def kin(role):
+                _,female,born,father,mother,house,stats=plan[role]
+                extra=''
+                if role=='father':extra='death_date = '+FAMILY_FATHER_DEATHS[tag]
+                if father:extra+=' father = '+prefix+'_'+father
+                if mother:extra+=' mother = '+prefix+'_'+mother
+                spouse=role[:-5] if role.endswith('_wife') else (role+'_wife' if role+'_wife' in plan else None)
+                if role in {'wife_2','wife_3'}:spouse='ruler'
+                if spouse:extra+=' spouse = '+prefix+'_'+spouse
+                person(prefix+'_'+role,names[role],tag,culture,capital,house_key(tag,house),born,female,extra.strip(),stats)
             nickname=' nickname = { name = cm_stone_fletcher }' if tag=='CDM' else ''
             if tag in PROFILES:nickname=' nickname = { name = '+PROFILES[tag]['nickname_key']+' }'
             ancestry=''
@@ -89,15 +179,33 @@ def build_courts(b,out):
                 father_birth,brother_birth=('1282.2.11','1305.10.16') if tag=='RHK' else ('1281.5.20','1303.1.14')
                 person(prefix+'_father',males[5],tag,culture,capital,house_key(tag,0),father_birth,extra='death_date = 1334.9.6',stats=(63,57,88))
                 ancestry=' father = '+prefix+'_father'
-                person(prefix+'_brother',males[1],tag,culture,capital,house_key(tag,0),brother_birth,extra=ancestry,stats=(59,55,82))
+                spouse=' spouse = '+prefix+'_brother_wife' if 'brother_wife' in plan else ''
+                person(prefix+'_brother',males[1],tag,culture,capital,house_key(tag,0),brother_birth,extra=ancestry+spouse,stats=(59,55,82))
+            else:
+                kin('father');ancestry=' father = '+prefix+'_father'
+                kin('brother')
+            for role in ('uncle','cousin','brother_2','brother_wife','brother_2_wife'):
+                if role in plan:kin(role)
             stats=tuple(PROFILES[tag][k] for k in ('adm','dip','mil')) if tag in PROFILES else (66,61,90)
-            person(prefix+'_ruler',males[0],tag,culture,capital,house_key(tag,0),leader_birth,extra='spouse = '+prefix+'_consort'+nickname+ancestry,stats=stats)
+            wives=''.join(' spouse = '+prefix+'_'+w for w in ('wife_2','wife_3') if w in plan)
+            person(prefix+'_ruler',males[0],tag,culture,capital,house_key(tag,0),leader_birth,extra='spouse = '+prefix+'_consort'+wives+nickname+ancestry,stats=stats)
             person(prefix+'_consort',females[0],tag,culture,capital,house_key(tag,1),consort_birth,True,'spouse = '+prefix+'_ruler',stats=(70,68,50))
+            for role in ('wife_2','wife_3'):
+                if role in plan:kin(role)
             parents=f'father = {prefix}_ruler mother = {prefix}_consort'
-            person(prefix+'_son',males[2] if tag in {'RHK','SWK'} else males[1],tag,culture,capital,house_key(tag,0),son_birth,extra=parents,stats=(59,55,82))
+            son_spouse=' spouse = '+prefix+'_son_wife' if 'son_wife' in plan else ''
+            person(prefix+'_son',males[2] if tag in {'RHK','SWK'} else males[1],tag,culture,capital,house_key(tag,0),son_birth,extra=parents+son_spouse,stats=(59,55,82))
             person(prefix+'_daughter',females[1],tag,culture,capital,house_key(tag,0),daughter_birth,True,parents,stats=(67,72,61))
+            # Children always follow their parents in the file (native setup requirement).
+            for role in plan:
+                if role not in {'father','uncle','cousin','brother','brother_2','brother_wife','brother_2_wife','wife_2','wife_3'}:kin(role)
         for i,stats in enumerate([(84,59,43),(53,85,52),(51,57,86)]):
             person(prefix+'_court_'+str(i),[males[3],females[3],males[4]][i],tag,culture,capital,house_key(tag,i+1),court_births[i],i==1,stats=stats)
+    return dynasties,characters
+
+def build_courts(b,out):
+    """Add families and adult courtiers; native cabinet appointments remain native."""
+    dynasties,characters=court_rows(b.CFG['countries'])
     for rel,block,rows in [('main_menu/setup/start/04_dynasties.txt','dynasty_manager',dynasties),('main_menu/setup/start/05_characters.txt','character_db',characters)]:
         p=out/rel;b.write(out,rel,b.inject(p.read_text(encoding='utf-8-sig'),block,'\n'.join(rows)))
     return len(characters)
@@ -117,4 +225,4 @@ def verify(b,out):
     assert 'nickname = { name = cm_stone_fletcher }' in chars
     assert 'nickname = { name = cm_mare_mother }' in chars
     for profile in PROFILES.values():assert 'nickname = { name = '+profile['nickname_key']+' }' in chars
-    return {'cultures':5,'male_name_entries':80,'female_name_entries':80,'houses':30,'lowborn_name_entries':30,'authored_family_and_court_characters':43,'engine_generation_tested':False}
+    return {'cultures':5,'male_name_entries':80,'female_name_entries':80,'houses':30,'lowborn_name_entries':30,'authored_family_and_court_characters':len(court_rows(b.CFG['countries'])[1]),'engine_generation_tested':False}
