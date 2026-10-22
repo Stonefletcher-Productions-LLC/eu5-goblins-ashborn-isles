@@ -53,6 +53,12 @@ def verify(root):
                 for location in island['locations']:
                     row=re.search(r'(?m)^'+re.escape(location['id'])+r' = \{[^\n]*\braw_material = (\w+)\b',templates)
                     assert row and row[1]==location['good'],f'Stale packaged raw material: {location["id"]}'
+            # Fish needs water: Netjaw (inland) produced fish until 0.6.6. Every goblin
+            # location that touches sea has a ports.csv row (archipelago.build_map).
+            coastal={row.split(b';')[0].decode() for row in z.read('goblins_ashborn_isles/in_game/map_data/ports.csv').split(b'\n')}
+            for island in config['islands']:
+                for location in island['locations']:
+                    assert location['good']!='fish' or location['id'] in coastal,f'Inland location produces fish: {location["id"]}'
         if tuple(map(int, version.split('.'))) >= (0, 6, 6):
             # Provinces share food; a lone non-food location (Silver Shard) starved.
             definitions=z.read('goblins_ashborn_isles/in_game/map_data/definitions.txt').decode('utf-8-sig')
