@@ -314,18 +314,21 @@ def patch(name,center,radius,rot=(0,0,0),u=24,v=12,cut=0.0,parts=None):
     if parts is not None:parts.append(ob)
     return ob
 
-def fit(ob,body,offset,thickness,subdiv=1,wrap=True):
+def fit(ob,body,offset,thickness,subdiv=1,wrap=True,push=0.7):
     bpy.context.view_layer.objects.active=ob
     if subdiv:
         m=ob.modifiers.new('sub','SUBSURF');m.levels=subdiv;m.subdivision_type='CATMULL_CLARK';bpy.ops.object.modifier_apply(modifier='sub')
     if wrap:
         m=ob.modifiers.new('wrap','SHRINKWRAP');m.target=body;m.wrap_method='NEAREST_SURFACEPOINT';m.offset=offset;bpy.ops.object.modifier_apply(modifier='wrap')
+    if push:
+        # Anything that sank into the body (hump, belly, shoulders) is pushed back out to sit push cm above the skin.
+        m=ob.modifiers.new('push','SHRINKWRAP');m.target=body;m.wrap_method='NEAREST_SURFACEPOINT';m.wrap_mode='OUTSIDE';m.offset=push;bpy.ops.object.modifier_apply(modifier='push')
     if thickness:
         m=ob.modifiers.new('solid','SOLIDIFY');m.thickness=thickness;m.offset=1;bpy.ops.object.modifier_apply(modifier='solid')
     return ob
 
-def trunk_rows(y0,y1,grow,step=4,flare=0):
-    """Rings following the sculpted trunk profile, grown outward by grow cm (flare adds toward the bottom)."""
+def trunk_rows(y0,y1,grow,step=4,flare=0,cinch=None):
+    """Rings following the sculpted trunk profile, grown outward by grow cm (flare adds toward the bottom; cinch=(y0,y1,cm) pulls the waist in)."""
     rows=[]
     ys=[r[0] for r in P['trunk']];y=y0
     while y<=y1+1e-6:
@@ -333,6 +336,8 @@ def trunk_rows(y0,y1,grow,step=4,flare=0):
         i=max(1,min(len(ys)-1,bisect.bisect_left(ys,y)));t=(y-ys[i-1])/(ys[i]-ys[i-1]);t=max(0,min(1,t))
         a,b=P['trunk'][i-1],P['trunk'][i];rx,rz,cz=[a[k]+(b[k]-a[k])*t for k in (1,2,3)]
         f=flare*max(0,(y1-y)/(y1-y0))
+        if cinch and cinch[0]<=y<=cinch[1]:
+            u=(y-cinch[0])/(cinch[1]-cinch[0]);f-=cinch[2]*math.sin(math.pi*u)
         rows.append((y,rx+grow+f,rz+grow+f,cz));y+=step
     return rows
 
@@ -379,12 +384,12 @@ def strap(name,body,pieces,tilt=35,y=128,width=3.2,material_kind='leather',side=
 def build_outfit(B,body,kind,variant='a'):
     """Clothing for 'light' (rags, hide, leather) or 'heavy' (scrap iron, mail) infantry, two variants each. Returns [(name, object)]."""
     pieces=[];g=lambda side,n:B[('Left' if side=='L' else 'Right')+n]
-    yoke=[(138,21,12.5,3.5),(142,23.5,12.5,4),(146,22,11.5,4.5),(150,10,8.5,3)]
+    yoke=[(138,21,13.5,5),(142,23.5,15,7),(146,22,14.5,8),(150,10,10,6)]
     if kind=='light' and variant=='a':
         # ragged patched tunic with short sleeves, crossed strap and pouch, bone necklace
-        tun=tube('tunic',trunk_rows(82,134,1.6,flare=3.5)+yoke,ragged=8,seed=3);fit(tun,body,0,1.0,subdiv=1,wrap=False);assign(tun,'cloth');pieces.append(('tunic',tun))
-        for side in 'LR':limb_band(f'sleeve{side}',g(side,'Arm'),g(side,'ForeArm'),0.05,0.5,6.4,5.0,body,0.9,'cloth',pieces)
-        strap('strap',body,pieces,tilt=35,y=128);blob('pouch',(11,109,-11),(3.6,4.2,2.6),'leather',pieces)
+        tun=tube('tunic',trunk_rows(82,134,1.6,flare=3.5,cinch=(96,112,1.2))+yoke,ragged=8,seed=3);fit(tun,body,0,1.0,subdiv=1,wrap=False);assign(tun,'cloth');pieces.append(('tunic',tun))
+        for side in 'LR':limb_band(f'sleeve{side}',g(side,'Arm'),g(side,'ForeArm'),0.05,0.8,6.6,5.2,body,0.8,'cloth',pieces)
+        strap('strap',body,pieces,tilt=35,y=128);blob('pouch',(-14.5,104,-3),(2.6,4.0,3.4),'leather',pieces,rot=(0,0,15))
         necklace(pieces)
     elif kind=='light':
         # bare chest: hide vest open at the front, fur collar, loincloth and rope belt
@@ -395,9 +400,9 @@ def build_outfit(B,body,kind,variant='a'):
         strap('strap',body,pieces,tilt=-35,y=126,side=-1);necklace(pieces,count=10,seed=5)
     elif variant=='a':
         # quilted jack under a scrap breastplate, spiked pauldron, iron tassets
-        tun=tube('tunic',trunk_rows(82,134,1.6,flare=2)+yoke,ragged=3,seed=3);fit(tun,body,0,1.0,subdiv=1,wrap=False);assign(tun,'pad');pieces.append(('tunic',tun))
-        for side in 'LR':limb_band(f'sleeve{side}',g(side,'Arm'),g(side,'ForeArm'),0.05,0.8,6.4,5.0,body,0.9,'pad',pieces)
-        plate=band('plate',112,140,3.6,body,1.6,'iron',pieces,arc=(-165,-15),ragged=4,seed=5)
+        tun=tube('tunic',trunk_rows(82,134,1.6,flare=2,cinch=(96,112,1.0))+yoke,ragged=3,seed=3);fit(tun,body,0,1.0,subdiv=1,wrap=False);assign(tun,'pad');pieces.append(('tunic',tun))
+        for side in 'LR':limb_band(f'sleeve{side}',g(side,'Arm'),g(side,'ForeArm'),0.05,0.85,6.6,5.2,body,0.8,'pad',pieces)
+        plate=band('plate',112,140,3.6,body,1.6,'iron',pieces,arc=(-165,-15),ragged=2,seed=5)
         for i,(x,y) in enumerate([(-8,118),(8,118),(-9,134),(9,134),(0,126)]):
             rx,rz,cz=trunk_at(y);blob(f'rivet{i}',(x,y,cz-rz-4.6),(1.0,1.0,1.0),'iron',pieces)
         for side,(rad,spikes) in (('R',(10.5,3)),('L',(8.5,0))):
@@ -411,8 +416,8 @@ def build_outfit(B,body,kind,variant='a'):
             strip=tube(f'tasset{i}',[(104,16.5,13.5,-0.5),(86,19.5,16.5,-0.5)],segments=4,arc=(math.degrees(a)-10,math.degrees(a)+10));fit(strip,body,0,0.9,subdiv=0,wrap=False);assign(strip,'iron');pieces.append((f'tasset{i}',strip))
     else:
         # mail hauberk to the knees over a cloth shirt, plain iron pauldrons both sides, gorget, loincloth
-        mail=tube('hauberk',trunk_rows(78,134,1.8,flare=5)+yoke,ragged=3,seed=6);fit(mail,body,0,1.0,subdiv=1,wrap=False);assign(mail,'mail');pieces.append(('hauberk',mail))
-        for side in 'LR':limb_band(f'sleeve{side}',g(side,'Arm'),g(side,'ForeArm'),0.05,0.95,6.4,5.2,body,0.9,'mail',pieces)
+        mail=tube('hauberk',trunk_rows(78,134,1.8,flare=4,cinch=(96,112,1.4))+yoke,ragged=3,seed=6);fit(mail,body,0,1.0,subdiv=1,wrap=False);assign(mail,'mail');pieces.append(('hauberk',mail))
+        for side in 'LR':limb_band(f'sleeve{side}',g(side,'Arm'),g(side,'ForeArm'),0.05,0.95,6.6,5.2,body,0.8,'mail',pieces)
         band('gorget',143,151,2.4,body,1.3,'iron',pieces,step=4,subdiv=1)
         for side in 'LR':
             s=1 if side=='L' else -1;c=g(side,'Arm')+Vector((s*1.5,2.5,0))
@@ -421,11 +426,11 @@ def build_outfit(B,body,kind,variant='a'):
         cloth=tube('loincloth',trunk_rows(70,104,3.0,flare=3),ragged=6,seed=13,arc=(-140,-40));fit(cloth,body,0,0.8,subdiv=1,wrap=False);assign(cloth,'cloth');pieces.append(('loincloth',cloth))
     for side in 'LR':
         s=1 if side=='L' else -1
-        if kind=='heavy':limb_band(f'bracer{side}',g(side,'ForeArm'),g(side,'Hand'),0.25,0.9,5.2,4.4,body,1.0,'iron' if variant=='b' else 'leather',pieces)
-        elif variant=='a' or side=='R':limb_band(f'bracer{side}',g(side,'ForeArm'),g(side,'Hand'),0.25,0.9,5.2,4.4,body,0.9,'leather',pieces)
-        limb_band(f'shin{side}',g(side,'Leg'),g(side,'Foot'),0.2,0.95,5.0,4.0,body,0.8,'leather' if not (kind=='heavy' and variant=='b') else 'iron',pieces)
+        if kind=='heavy':limb_band(f'bracer{side}',g(side,'ForeArm'),g(side,'Hand'),0.4,0.88,5.0,4.3,body,0.7,'iron' if variant=='b' else 'leather',pieces)
+        elif variant=='a' or side=='R':limb_band(f'bracer{side}',g(side,'ForeArm'),g(side,'Hand'),0.4,0.88,5.0,4.3,body,0.6,'leather',pieces)
+        limb_band(f'shin{side}',g(side,'Leg'),g(side,'Foot'),0.3,0.92,4.9,3.9,body,0.6,'leather' if not (kind=='heavy' and variant=='b') else 'iron',pieces)
     if not (kind=='light' and variant=='b'):
-        band('belt',101,106,3.4,body,1.2,'leather',pieces,step=5,subdiv=0);blob('buckle',(0,103.5,-12.6),(3.2,2.6,1.2),'iron',pieces)
+        band('belt',101,106,3.0,body,1.0,'leather',pieces,step=5,subdiv=0);blob('buckle',(0,103.5,-12.4),(3.0,2.4,1.2),'iron',pieces)
     else:
         band('rope',101.5,104.5,3.0,body,1.0,'rope',pieces,step=3,subdiv=1);blob('knot',(5,103,-12.5),(2.2,2.2,2.2),'rope',pieces)
     return pieces
@@ -437,7 +442,7 @@ def build_cap(B,body,kind):
     fit(cap,body,1.6 if iron else 1.0,1.5 if iron else 1.1,subdiv=1);assign(cap,'iron' if iron else 'leather');pieces=[(f'cap_{kind}',cap)]
     if kind=='leather':
         for i,a in enumerate(range(0,360,60)):
-            r=math.radians(a);p=center+Vector((12.5*math.cos(r),7,12.8*math.sin(r)))
+            r=math.radians(a);p=center+Vector((13.6*math.cos(r),7,14*math.sin(r)))
             blob(f'stud{i}',p,(0.9,0.9,0.9),'iron',pieces)
     if kind=='iron':
         ob=cone('crest',center+Vector((0,14,-2)),center+Vector((0,25,-5)),(2.2,2.2));assign(ob,'iron');pieces.append(('crest',ob))
