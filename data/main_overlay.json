@@ -253,7 +253,7 @@
     },
     {
       "path": "in_game/common/town_setups/goblins_ashborn_isles.txt",
-      "sha256": "78040077a3de2125ccc857cc87f0bc8dff88fef14827634fecbef8c007ff5738"
+      "sha256": "87131e1a379cf68b66408978c4c616aaebb2c5cb09b979bd4b593b00cb36ecc6"
     },
     {
       "path": "in_game/common/unit_types/goblins_ships.txt",
@@ -12857,15 +12857,15 @@
     },
     {
       "path": "main_menu/setup/start/04_dynasties.txt",
-      "sha256": "73d55b088a9cdafcba6602c50e69289b66b75aa06e30ead0aa304e341c5089fb"
+      "sha256": "129949184acfbe9d9bceab88e88347de9561db2dbc0c12339669fed0d2cba6e6"
     },
     {
       "path": "main_menu/setup/start/05_characters.txt",
-      "sha256": "df088e50cf7186bf0971251e0e4e1e73a2eca805fa2855a82ddb7432bd70c7f2"
+      "sha256": "5404f9367d05136766e61974a7c76b6d60e19c3a4e4bee7a2a9561f617463487"
     },
     {
       "path": "main_menu/setup/start/08_institutions.txt",
-      "sha256": "92fd0f4ec117ab9d4bdcab9dfaad64ba6f837eb019d10eaa7b59b44611a8b5bf"
+      "sha256": "409b551ef1d26f9ed95228aad3a5eb67fbefb3460d3a19f69379aa6a68c0f3f1"
     }
   ]
 }
