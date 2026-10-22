@@ -17,7 +17,7 @@ def verify(game, out):
     assert len({row[0] for row in ac.SITES}) == len(ac.SITES)
     assert Counter(row[3] for row in ac.SITES) == {
         'cindermaw': 3, 'brackmaw': 2, 'reefhook': 1,
-        'shatterfin': 1, 'knifeback': 1, 'sootwake': 1, 'giltfang': 1, 'tolltooth': 1, 'lantern_cay': 1}
+        'shatterfin': 1, 'knifeback': 1, 'sootwake': 1, 'giltfang': 1, 'tolltooth': 1, 'lantern_cay': 1, 'maw_rock': 1, 'cinderstep': 1}
     assert set(ac.SITE_IMPORTANCE) == {row[0] for row in ac.SITES}
     assert all(type(level) is int and 1 <= level <= 5 for level in ac.SITE_IMPORTANCE.values())
     assert set(ac.SITE_IMPORTANCE.values()) == {1, 2, 3, 4, 5}

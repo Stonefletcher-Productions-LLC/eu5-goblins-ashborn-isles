@@ -47,7 +47,7 @@ def construction_balance(b, game):
     results = {}
     # The southern grouping is a planning scenario; engine markets can differ.
     groups = {c['tag']: {c['tag']} for c in b.CFG['countries']}
-    groups.update(southern_crowns={'CDM','QBR','SFK','RHK','SWK'}, northern_crown={'GTF'})
+    groups.update(southern_crowns={'CDM','QBR','RHK','SWK'}, northern_crown={'GTF'}, shatter_maw={'SFK'})
     for group, tags in groups.items():
         supply, demand = Counter(), Counter()
         raw = set()
