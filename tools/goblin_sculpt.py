@@ -427,6 +427,18 @@ def build_outfit(B,body,kind,variant='a'):
             pa=patch(f'pauldron{side}',c,(9.5,7.5,9.5),rot=(0,0,s*-25),cut=0.15);fit(pa,body,0,1.4,subdiv=1,wrap=False);assign(pa,'iron');pieces.append((f'pauldron{side}',pa))
             blob(f'pauldron_boss{side}',c+Vector((s*4,7,0)),(2,2,2),'iron',pieces)
         cloth=tube('loincloth',trunk_rows(70,104,3.0,flare=3),ragged=6,seed=13,arc=(-140,-40));fit(cloth,body,0,0.8,subdiv=1,wrap=False);assign(cloth,'cloth');pieces.append(('loincloth',cloth))
+    def trousers(material_kind,ragged_to=0.6):
+        for side in 'LR':
+            limb_band(f'thigh{side}',g(side,'UpLeg'),g(side,'Leg'),0.0,1.0,7.6,6.2,body,0.8,material_kind,pieces)
+            limb_band(f'calf{side}',g(side,'Leg'),g(side,'Foot'),0.0,ragged_to,6.3,5.3,body,0.8,material_kind,pieces)
+    def knife(side=-1):
+        hip=Vector((side*13.5,101,0));ob=tube_along('sheath',hip+Vector((0,0,0)),hip+Vector((side*1.5,-14,-2)),1.6,1.0,segments=8);assign(ob,'leather');pieces.append(('sheath',ob))
+        ob=capsule('grip',hip+Vector((0,0,0)),hip+Vector((side*-1,5,-1)),1.2,1.4);assign(ob,'bone');pieces.append(('grip',ob))
+    if kind=='light' and variant=='a':
+        trousers('cloth',0.55)
+        pa=patch('spaulder',g('L','Arm')+Vector((1.5,2.5,0)),(8.5,6.5,8.5),rot=(0,0,-25),cut=0.2);fit(pa,body,0,1.1,subdiv=1,wrap=False);assign(pa,'leather');pieces.append(('spaulder',pa))
+    elif kind=='heavy' and variant=='a':trousers('pad',0.5)
+    if kind=='heavy':knife()
     for side in 'LR':
         s=1 if side=='L' else -1
         if kind=='heavy':limb_band(f'bracer{side}',g(side,'ForeArm'),g(side,'Hand'),0.4,0.88,5.0,4.3,body,0.7,'iron' if variant=='b' else 'leather',pieces)
