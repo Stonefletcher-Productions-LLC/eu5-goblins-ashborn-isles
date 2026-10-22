@@ -1,0 +1,60 @@
+﻿goblin_horde = {
+    has_target = no
+    unique = yes
+    has_leader_country = yes
+    leader_type = country
+    leader_title_key = "GOBLIN_HORDE_LEADER"
+    disband_if_no_leader = no
+    leader_change_trigger_type = timed
+    leader_change_method = score
+    months_between_leader_changes = 60
+    show_on_diplomatic_map = yes
+    show_leave_message = no
+    use_laws_as_join_reason = no
+    can_invite_countries = no
+    subject_limited = no
+    expel_members_who_are_targets_of_other_members = no
+    expel_members_who_target_the_leader = no
+    expel_members_who_are_attackers_at_war_with_other_members = no
+    expel_members_who_are_defenders_at_war_with_other_members = no
+    opinion_bonus = 10
+
+    create_visible_trigger = { always = no }
+    invite_visible_trigger = { always = no }
+    join_visible_trigger = { always = no }
+
+    can_join_trigger = { ga_is_goblin = yes is_rebel_country = no }
+    can_leave_trigger = { always = no }
+    auto_leave_trigger = { NOT = { ga_is_goblin = yes } }
+    auto_disband_trigger = { always = no }
+    can_lead_trigger = { ga_independent_goblin = yes }
+    # The crown holding most of the homeland leads.
+    leader_score = { value = ga_ui_homeland_count }
+
+    # Kin against outsiders: every member defends against a non-member attacker.
+    # Wars between members never call the Horde.
+    join_defensive_wars_always = {
+        custom_tooltip = {
+            text = goblin_horde_defense_tt
+            scope:target ?= { NOT = { is_member_of_international_organization = root } }
+        }
+    }
+
+    modifier = { global_defensive = 0.05 }
+    leader_modifier = { monthly_prestige = 0.05 diplomatic_reputation = 1 }
+
+    monthly_effect = {
+        every_country = {
+            limit = {
+                ga_is_goblin = yes
+                NOT = { is_member_of_international_organization = root }
+                country_can_join_international_organization = root
+            }
+            root = { add_country_to_international_organization = prev }
+        }
+        update_leader_country = yes
+    }
+
+    ai_desire_to_join = { add = { desc = "GOBLIN_HORDE_KIN" value = 100 } }
+    ai_desire_to_allow_new_member = { add = { desc = "GOBLIN_HORDE_KIN" value = 100 } }
+}

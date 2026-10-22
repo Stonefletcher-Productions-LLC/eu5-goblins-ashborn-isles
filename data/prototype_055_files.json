@@ -204,7 +204,7 @@
   "files": [
     {
       "path": "in_game/common/biases/goblins_gathering.txt",
-      "sha256": "d447eb82382fe2080edafa9b33b7a478c9fc68509297bf06b6ef26d9115c8f0f"
+      "sha256": "dee938f1328a37a8d743962bc88db74efce3ef7362baf2a54cd5e9ed690a692c"
     },
     {
       "path": "in_game/common/casus_belli/goblins_gathering.txt",
@@ -236,7 +236,7 @@
     },
     {
       "path": "in_game/common/on_action/goblins_gathering.txt",
-      "sha256": "40d5ed168a612867faf35c3852dfc1b1b53b3f231fab9a26052e1fc77ea7f935"
+      "sha256": "6373eb2e9a0dbf1391ff8fc1478b1cf2248d03414044847206113292e9e32472"
     },
     {
       "path": "in_game/common/prices/goblins_gathering.txt",
@@ -252,7 +252,7 @@
     },
     {
       "path": "in_game/common/scripted_triggers/goblins_gathering.txt",
-      "sha256": "0fb849f5448ca4ddcba8cbb5096007974377f79498ecc84aad5d4e9b3d9bf5e5"
+      "sha256": "0e8340ec789fc5b6f2dc6d4c0a3c997ba00a24b02236f56a327bf66b1a54978c"
     },
     {
       "path": "in_game/common/situations/goblins_gathering.txt",
@@ -300,7 +300,7 @@
     },
     {
       "path": "main_menu/common/static_modifiers/goblins_gathering.txt",
-      "sha256": "4ca43437adf8c12881d2c94a22d4fe70b2786712210155174b7b7480fc17db0c"
+      "sha256": "a881f1059df914924abdd5ca20a7b108f57e0942915a5d011731ca5b4f857770"
     },
     {
       "path": "main_menu/gfx/coat_of_arms/textured_emblems/te_ashborn_brackmaw.dds",
@@ -428,7 +428,7 @@
     },
     {
       "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
-      "sha256": "bad1b2d2f44e469f0259f83c90ac36b44c7068983a2cac1d4590c70a42af5caf"
+      "sha256": "6ec9cccfc29422d87f3324752b3e60541ed9f3790dc1ab1ccacfe6cebf698f0e"
     }
   ]
 }
