@@ -1,4 +1,4 @@
-﻿ga_owr_mission_to_the_isles = { diplomatic_reputation = 1 }
+ga_owr_mission_to_the_isles = { diplomatic_reputation = 1 }
 ga_owr_watch_on_the_coast = { global_defensive = 0.05 }
 ga_owr_let_them_fear = { land_morale_modifier = 0.05 }
 ga_owr_oathkeepers_answer = { clergy_estate_target_satisfaction = 0.05 }
