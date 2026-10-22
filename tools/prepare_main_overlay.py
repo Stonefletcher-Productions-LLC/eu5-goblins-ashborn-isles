@@ -84,6 +84,9 @@ def main():
     for prefix in ['in_game/common','in_game/events','in_game/gui','main_menu/common','main_menu/localization']:
         paths.extend(p for p in (output/prefix).rglob('*')
                      if p.is_file() and p.name.startswith(('goblins_','ga_','ashen_covenant')))
+    # The Goblin Horde IO art must use the IO type key as its file name.
+    import goblin_horde
+    paths.extend(output / rel for rel in (goblin_horde.ICON, goblin_horde.ILLUSTRATION))
     for prefix in ['loading_screen/sound','main_menu/music/audio_culture_types']:
         paths.extend(p for p in (output/prefix).rglob('*') if p.is_file())
     if (output/'loading_screen/sound/goblins_music_manifest.json').exists():

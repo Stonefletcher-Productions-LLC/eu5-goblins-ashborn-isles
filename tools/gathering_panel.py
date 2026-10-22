@@ -1,9 +1,20 @@
 """Native-style Gathering presentation; read-only live values, no saved counters."""
+import sworn_pacts
 
 def build(write, loc, out, homeland, tags):
-    write(out, 'in_game/common/script_values/ga_gathering_ui.txt', 'ga_gathering_realm_locations = { value = ga_ui_homeland_count }\nga_gathering_crown_status = {\n    value = 0\n    if = { limit = { ga_independent_goblin = yes } add = 1 }\n    else_if = { limit = { is_junior_partner = yes } add = 3 }\n    else_if = { limit = { OR = { is_subject_type = vassal is_subject_type = ga_compact_autonomy is_subject_type = ga_compact_protection } } add = 2 }\n    else = { add = 4 }\n}\n')
+    write(out, 'in_game/common/script_values/ga_gathering_ui.txt', 'ga_gathering_realm_locations = { value = ga_ui_homeland_count }\nga_gathering_crown_status = {\n    value = 0\n    if = { limit = { ga_independent_goblin = yes } add = 1 }\n    else_if = { limit = { is_junior_partner = yes } add = 3 }\n    else_if = { limit = { OR = { is_subject_type = vassal is_subject_type = ga_compact_autonomy is_subject_type = ga_compact_protection } } add = 2 }\n    else = { add = 4 }\n}\n' + sworn_pacts.step_values())
     status = "Country.MakeScope.ScriptValue('ga_gathering_crown_status')"
     independent = "EqualTo_CFixedPoint(%s, '(CFixedPoint)1')" % status
+    # One line per ladder step; only the viewer's current step with this crown shows.
+    pact_steps = ''.join(f'''                        text_single = {{
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_TAG'), '(CFixedPoint){i}'))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "ga_pact_step_{key}"
+                            tooltip = "ga_pact_step_{key}_tt"
+                        }}
+''' for i, (key, _, _) in enumerate(sworn_pacts.STEPS))
     rows = []
     for tag in tags:
         # Fixed founding-country contexts survive annexation and restored countries;
@@ -37,7 +48,7 @@ def build(write, loc, out, homeland, tags):
                             autoresize = yes
                             text = "[Country.GetGovernment.GetRulerOrRegent.GetName]"
                         }
-                    }
+PACT_STEPS                    }
                     text_single = {
                         visible = "[Not(Country.Exists)]"
                         text = "ga_gathering_annexed"
@@ -76,7 +87,7 @@ def build(write, loc, out, homeland, tags):
                     tooltip = "ga_gathering_progress_tt"
                 }
             }
-'''.replace('TAG', tag).replace('INDEPENDENT', independent).replace('STATUS', status).replace('TOTAL', str(len(homeland))))
+'''.replace('PACT_STEPS', pact_steps).replace('TAG', tag).replace('INDEPENDENT', independent).replace('STATUS', status).replace('TOTAL', str(len(homeland))))
     panel = '''
 situation_panel = {
     blockoverride "situation_subheader_content" {}
@@ -145,5 +156,8 @@ situation_panel = {
         'ga_gathering_dependent_tt': 'This crown cannot claim unification while dependent. Its homeland locations contribute to its senior crown only where the vassal or union chain satisfies the unification rules.',
         'ga_gathering_other_subject_tt': 'This crown cannot claim unification while dependent. Tributary ties do not add its homeland to an overlord\'s unification progress.',
         'ga_gathering_rules': 'The Path to One Crown',
-        'ga_gathering_paths': '#bold Conquest#! - own the homeland directly.\\n#bold Submission#! - bring kingdoms into your realm as vassals.\\n#bold Union#! - lead junior union partners.\\nAlliances can support your wars, but do not unite the Isles.',
+        'ga_gathering_paths': '#bold Conquest#! - own the homeland directly.\\n#bold Pacts#! - climb the pact ladder: Bargain, Sworn Pact, then a Compact charter that makes a crown your subject.\\n#bold Submission#! - bring kingdoms into your realm as vassals by war.\\n#bold Union#! - lead junior union partners.\\nAlliances and Sworn Pacts build trust, but only subjects and unions unite the Isles.',
     }.items(): loc(key, value)
+    for key, name, tip in sworn_pacts.STEPS:
+        loc('ga_pact_step_' + key, 'Our pact: #Y ' + name + '#!')
+        loc('ga_pact_step_' + key + '_tt', tip)

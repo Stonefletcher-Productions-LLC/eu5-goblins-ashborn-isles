@@ -1,5 +1,8 @@
 """Pair-specific trust history and three-stage voluntary Compact charters."""
 import harbor_bargains as hb
+import sworn_pacts as sp
+
+OPINION = 100
 
 TYPES = {'autonomy': ('Autonomy Charter', '0.5', '20', 'ga_compact_autonomy_tribute'),
          'protection': ('Protection Charter', '1', '10', 'subject_pays_vassal')}
@@ -15,26 +18,24 @@ def history(other, fields=('honored', 'allied_ready')):
 def eligible(actor, target, explain=False):
     def check(key, body):
         return f'custom_tooltip = {{ text = ga_ui_{key}_tt {body} }}' if explain else body
-    def trust(other):
-        return check('bargain', history(other, ('honored',))) + '\n' + check('alliance_age', history(other, ('allied_ready',)))
-    return f'''scope:{actor} = {{
-        {check('independent', 'ga_independent_goblin = yes')}
+    def bound(other):
+        # Ladder route: a Sworn Pact. Original route: alliance, honored bargain and alliance age.
+        allied = f'is_allied_with = {{ target = {other} }} ' + history(other)
+        return check('bound', f'OR = {{ {sp.sworn(other)} AND = {{ {allied} }} }}')
+    def side(me, other):
+        return f'''{check('independent', 'ga_independent_goblin = yes')}
         {check('peace', 'at_war = no')}
         {check('harbor_free', 'NOT = { has_variable = ga_hb_pending }')}
-        {check('friendly', f'NOT = {{ is_rival_of = scope:{target} }} NOT = {{ is_enemy_of = scope:{target} }}')}
-        {check('allied', f'is_allied_with = {{ target = scope:{target} }}')}
-        {trust('scope:'+target)}
+        {check('friendly', f'NOT = {{ is_rival_of = scope:{other} }} NOT = {{ is_enemy_of = scope:{other} }}')}
+        {bound('scope:' + other)}'''
+    return f'''scope:{actor} = {{
+        {side(actor, target)}
     }}
     scope:{target} = {{
-        {check('independent', 'ga_independent_goblin = yes')}
-        {check('peace', 'at_war = no')}
-        {check('harbor_free', 'NOT = { has_variable = ga_hb_pending }')}
-        {check('friendly', f'NOT = {{ is_rival_of = scope:{actor} }} NOT = {{ is_enemy_of = scope:{actor} }}')}
-        {check('allied', f'is_allied_with = {{ target = scope:{actor} }}')}
-        {check('opinion', f'"opinion(scope:{actor})" >= 150')}
-        {check('strength', f'relative_strength = {{ target = scope:{actor} value <= 0.65 }}')}
+        {side(target, actor)}
+        {check('opinion', f'"opinion(scope:{actor})" >= {OPINION}')}
+        {check('strength', f'OR = {{ {sp.sworn("scope:" + actor)} relative_strength = {{ target = scope:{actor} value <= 0.65 }} }}')}
         {check('rank', f'scope:{actor}.country_rank_level >= country_rank_level')}
-        {trust('scope:'+actor)}
     }}'''
 
 
@@ -88,15 +89,21 @@ def action(make, picker):
         enabled = { ''' + conditions + ''' }
     }'''
     return make('ga_offer_compact', 'Open Compact Talks',
-        'Invite an established ally to negotiate a charter. Both crowns must have completed a five-year Harbor Bargain together and maintained a monthly-observed alliance for three years. '
-        'The prospective subject needs 150 opinion, no higher rank, and at most 65% of your strength. Both must be independent and at peace. '
-        'The smaller crown chooses autonomy or protection terms; you accept or refuse; it then ratifies or withdraws. No fee, free subject, prestige or loyalty bonus. '
-        'Talks expire after 180 days, with a two-year quiet period and five-year pair cooldown. Existing saves begin history tracking from this update.',
-        effect, selector, allow='ga_cp_free = yes', ai='add = 5', years=2)
+        'Step 3 of 3 on the road to one crown.\n'
+        'Invite a sworn or long-allied crown to become your subject under a charter.\n\n'
+        'Requires one of:\n'
+        '- a Sworn Pact between the two crowns, or\n'
+        '- a completed Harbor Bargain plus three observed years of alliance.\n'
+        f'The smaller crown needs {OPINION}+ opinion of you and no higher rank.\n'
+        'Without a Sworn Pact it must also have at most 65% of your strength.\n\n'
+        'It chooses autonomy or protection terms, you accept or refuse, and it\n'
+        'ratifies or withdraws. No fee. Talks expire after 180 days, with a\n'
+        'two-year quiet period and a five-year wait for the same pair.',
+        effect, selector, allow='ga_cp_free = yes', ai='add = 10', years=2)
 
 
 def events(event, option, loc):
-    loc('ga_cp_ready_tt', 'These talks remain valid: the same eligible independent allies, an honored five-year bargain, three observed alliance years, 150 opinion, and the required relative strength and rank.')
+    loc('ga_cp_ready_tt', f'These talks remain valid: both crowns are still independent, at peace and bound by a Sworn Pact or a proven alliance, with {OPINION} opinion and the required rank and strength.')
     result = []
     def choice(n, suffix, name, effects, condition='', ai='factor = 1', tip=None):
         if tip:

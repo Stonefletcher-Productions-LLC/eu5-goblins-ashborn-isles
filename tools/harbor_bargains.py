@@ -108,12 +108,14 @@ def actions(action, picker):
     result = []
     for kind, key, number in [('provisions', 'ga_offer_harbor_pact', 20), ('pilots', 'ga_seek_pilot_bargain', 21)]:
         title, metric, gain, burden, _, _, _, preferred = TERMS[kind]
-        description = (f'Buy {kind} from an independent Ashborn crown.\n'
+        description = ('Step 1 of 3 on the road to one crown: Bargain, Sworn Pact, Compact.\n'
+                       f'Buy {kind} from an independent Ashborn crown.\n'
                        f'Price: 10 gold, paid only when signed. Duration: 5 years.\n'
                        f'You gain: +{gain} {metric}.\n'
                        f'Supplier commits: {burden} of its {metric}.\n'
                        'One counteroffer: the other service for 15 gold.\n\n'
                        'Requires: mutual opinion of 25+ and a free contract slot.\n'
+                       'A completed five-year bargain lets the pair swear a Sworn Pact.\n'
                        'One contract per crown; no alliance or vassalage.\n'
                        'Talks expire in 180 days. Crown cooldown: 2 years.\n'
                        'The same pair must wait 5 years between approaches.\n'
