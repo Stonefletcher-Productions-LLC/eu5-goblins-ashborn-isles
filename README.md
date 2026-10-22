@@ -114,7 +114,7 @@ Goods move within a market through market access; this does not create an inter-
 
 *Map diagram generated from the mod's geography, not an in-game screenshot.*
 
-The Isles contain **97 districts, 75 ports and 28 coastal sea tiles**, with 1,895,000 people at the start. Volcanic highlands, marshes, woodland and fisheries give each crown a different base of resources and settlements.
+The Isles contain **117 locations in 43 provinces across 11 islands, with 91 ports** and about 2,750,000 people at the start, most of them tribesmen who settle into peasant life over the centuries. Volcanic highlands, marshes, woodland and fisheries give each crown a different base of resources and settlements.
 
 Giltfang and its smaller companion, Tolltooth, lie north of Cindermaw. Together they are about 10% smaller than Brackmaw. Between north and south, Cindermaw's new **Lantern Cay** adds Lantern Haven, Wickwood and Emberwatch. The Quiet Road provides a connected route through ordinary coastal water, with the lower eastern approach opened and selected current tiles reworked.
 
@@ -128,7 +128,7 @@ Every crown has its own culture, ruling household, introduction and three starti
 
 **Reefhook — Reefstrider.** Skrezz, the Wreck-Taker, rules among pilots, fishing households and pearl divers. Rescue obligations, salvage claims and foreign friendships all compete for his attention.
 
-**Shatterfin — Stormfang.** Jaimzha, the Mare-Mother, leads the Tidemothers across two islands. Her court bargains for security while preserving its maternal royal house and succession.
+**Shatterfin — Stormfang.** Jaimzha, the Mare-Mother, leads the Tidemothers from Shatter Maw, the largest goblin realm, spread across Shatterfin, Knifeback and Maw Rock. Her court bargains for security while preserving its maternal royal house and succession.
 
 **Sootwake — Ashveil.** Snikh, the Blackbough, guards the woodland paths and charcoal hearths that sustain his smaller realm. Independence rests on the groves as much as the crown.
 
@@ -144,7 +144,7 @@ The clans share an Ashborn identity, with distinct names, dynasties, courts and 
 
 The Gathering turns the homeland into a shared contest for leadership. Build alliances, offer paid aid, negotiate submission and Compact charters, or press your claims through normal EU5 warfare. Other crowns can refuse; an offer is not a guaranteed treaty.
 
-Unification requires all **97 homeland districts** within your realm through direct ownership, qualifying vassals or senior unions. Alliances and temporary wartime occupation do not unite the Isles. The situation panel shows the founding crowns and progress toward that goal.
+Unification requires all **117 homeland locations** within your realm through direct ownership, qualifying vassals or senior unions. Alliances and temporary wartime occupation do not unite the Isles. The situation panel shows the founding crowns and progress toward that goal.
 
 ## Harbors, provisions and promises
 
@@ -152,7 +152,7 @@ Unification requires all **97 homeland districts** within your realm through dir
 
 Harbor Bargains let independent crowns negotiate provisions or pilot services for five years. Payment happens when the agreement is signed. A counteroffer can change the service and price, and each partner receives a receipt explaining the benefit, burden and duration.
 
-Hooktooth and Chainhaven begin with separate markets. Fisheries, mines, woodland crafts and urban workshops give the islands different economic foundations; actual trade and profitability depend on EU5's market systems and the course of your campaign.
+Hooktooth, Chainhaven and Shatter Maw begin as three separate markets, linked by seeded trade routes in fish, grain, livestock, salt, silver and lumber. Fisheries, mines, woodland crafts and urban workshops give the islands different economic foundations; actual trade and profitability depend on EU5's market systems and the course of your campaign.
 
 Each crown starts with **100 gold**. Its three opening projects cost **25 gold** each. Food bonuses raise the **province food storage limit**, not monthly production: hover the province food display and then the stockpile total to inspect capacity and its modifiers.
 
