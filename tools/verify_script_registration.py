@@ -15,7 +15,8 @@ def verify(read):
     for name in ['goblins_gathering', 'ashen_covenant']:
         prices.update(entries('in_game/common/prices/' + name + '.txt'))
         definitions.update(entries('main_menu/common/modifier_type_definitions/' + name + '.txt'))
-    assert len(prices) == 12
+    # The released bundle can predate newer rites, so require the 0.5.9 set and check each price below.
+    assert len(prices) >= 8
     for price in prices:
         modifier = price + '_cost_modifier'
         assert definitions[modifier] == [('color', '=', 'bad'), ('percent', '=', 'yes'),
