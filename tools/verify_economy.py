@@ -145,6 +145,8 @@ def verify_start_balance_067(audit):
     # Shatterfin is meant to conquer Giltfang, so it starts larger.
     assert people['CDM'] > people['QBR'] > people['SFK'] > people['GTF'] > people['RHK'] > people['SWK'], people
     levels = {tag:c['total_building_levels'] for tag,c in audit['countries'].items()}
+    if 'shatterfin_over_giltfang' in balance:
+        assert levels['SFK'] > levels['GTF'], levels
     for tag, c in audit['countries'].items():
         # One glass and one paper guild each; Cindermaw's own guilds need a second paper guild.
         assert c['building_levels'].get('glass_guild') == 1, tag

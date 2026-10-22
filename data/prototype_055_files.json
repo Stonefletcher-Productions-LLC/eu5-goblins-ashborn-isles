@@ -224,7 +224,7 @@
   "files": [
     {
       "path": "in_game/common/biases/goblins_gathering.txt",
-      "sha256": "dee938f1328a37a8d743962bc88db74efce3ef7362baf2a54cd5e9ed690a692c"
+      "sha256": "807173a584efdf272f43f2af1d85247c9d96cc1a71cb3421ff5c0fb79405b3f0"
     },
     {
       "path": "in_game/common/casus_belli/goblins_gathering.txt",
@@ -292,11 +292,11 @@
     },
     {
       "path": "in_game/events/goblins_exploration.txt",
-      "sha256": "a31ca47fdc45afa358dabccd197529f846612dcccc1db5ce85487966d0cfed9d"
+      "sha256": "05a86affba06a0ca2b09636728fd522b60856abc54172ce1e50af551983374f3"
     },
     {
       "path": "in_game/events/goblins_gathering.txt",
-      "sha256": "6f827e69e9e214d4cea3c3a39422f0af50f80180ffb5662b894b91bfef29957d"
+      "sha256": "3cd759c25a51d15b098ac4c2dd5f008f984b556d20873c5514f898514ff5f0bf"
     },
     {
       "path": "in_game/gui/panels/situation/ga_ashborn_voyages.gui",
@@ -380,7 +380,7 @@
     },
     {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/compact_charter.dds",
-      "sha256": "180149ff457acc352960b24e7ffeaebc42065c13c04c25ffde649d3941404f6a"
+      "sha256": "6edcf1ff00f27acb3848d5fe9502916129c4f44c121177ef915f3ed331f5d56c"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/covenant_captives_hearth.dds",
@@ -499,6 +499,30 @@
       "sha256": "03904ebdef1b42a4b3dd3287bdb04daa33b7c2ad95be2829f9bf044599cd03af"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/opening_brackmaw.dds",
+      "sha256": "c08d8a52989c43cdb07455b74022b95a12e27e1d91409315d095b0ebb466a1b1"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/opening_cindermaw.dds",
+      "sha256": "6cecbfd46543e540872696efce55c536708f4e2eb9c6b6eb9929ce194a6e78d7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/opening_giltfang.dds",
+      "sha256": "f0c0e0888d832cc6261b3f21b9d91b84ad21dc92b90e6c6071b7fc042d35387b"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/opening_reefhook.dds",
+      "sha256": "3f8e1747c8f68bbe7da2965f7803c70a5aa017c4bc8fcc8c67abca94a7e0d1be"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/opening_shatterfin.dds",
+      "sha256": "5d9cc9f071f6538f98df9fc5c180832feb30d94dbf9f04eef81684dc2a8e37ff"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/opening_sootwake.dds",
+      "sha256": "ba5e80b317e55a9636553c015b746b7a07889357c16c1125d7c48a892873b9cd"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/pact_broken.dds",
       "sha256": "73063f227bce4148cc4a343eaa7aca7a4db9265c63ef8381659143641c96250d"
     },
@@ -516,7 +540,7 @@
     },
     {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/sworn_pact.dds",
-      "sha256": "36b60b80eb71e9c7fe03ea732d13741e37b72dec8767708c477be1087d502a70"
+      "sha256": "f63b91752c4f42bbf1ee4a42459714556addfe71ceb1ae888a931cb4d23497f6"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/unification.dds",
@@ -536,11 +560,11 @@
     },
     {
       "path": "main_menu/localization/english/goblins_exploration_l_english.yml",
-      "sha256": "aca5ffc21a328a706b4971d612c8261b6866742671769ac7e5b38258991e29ab"
+      "sha256": "e706bee904f2e29bef9d65d5cacc2d582ffad407add89ed4e015581a44f95db9"
     },
     {
       "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
-      "sha256": "8e0428bc24e289ff096d7502d01bcb52e392f34c80237ecae44abdde81e41f40"
+      "sha256": "8b11c8df510405c651f2f36462f6dc039a22cf8134bf1a6ad4cb0c3efb8fb6bf"
     }
   ]
 }

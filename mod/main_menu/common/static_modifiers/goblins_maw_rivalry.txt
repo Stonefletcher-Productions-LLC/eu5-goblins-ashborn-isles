@@ -1,0 +1,4 @@
+﻿ga_mr_strait_defiance = { land_morale_modifier = 0.05 }
+ga_mr_bought_captains = { diplomatic_reputation = 1 }
+ga_mr_blood_debt_sworn = { land_morale_modifier = 0.05 }
+ga_mr_cords_remember = { clergy_estate_target_satisfaction = 0.05 }

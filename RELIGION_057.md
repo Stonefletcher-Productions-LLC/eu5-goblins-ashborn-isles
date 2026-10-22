@@ -41,8 +41,8 @@ existing names and goblin countries retain these labels if their religion change
 | Crown | Boss Clan |
 | Nobility | Bigfangs |
 | Clergy | Shamans |
-| Burghers | Coinclutchers |
-| Commoners | Muckgrubs |
+| Burghers | Quay-Guilds |
+| Commoners | Ashfolk |
 | Tribes, if enabled | Warbands |
 | Dhimmi, if enabled | Outsiders |
 | Cossacks, if enabled | Freebooters |

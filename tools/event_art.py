@@ -16,18 +16,25 @@ EVENTS = {
         33: 'compact_charter', 34: 'compact_charter', 35: 'compact_charter',
         36: 'sworn_pact', 37: 'sworn_pact', 38: 'sworn_pact', 39: 'pact_broken',
         41: 'kinship', 42: 'kinship',
+        43: 'kinship', 44: 'kinship', 45: 'kinship', 46: 'kinship', 47: 'kinship',
     }.items()},
     **{f'goblins_exploration.{n}': art for n, art in {
         1: 'departure', 2: 'iberia', 3: 'charts',
         4: 'biscay', 5: 'africa', 6: 'foreign_sails',
     }.items()},
-    # Kingdom openings reuse each crown's clan painting until dedicated ones exist.
-    **{f'ga_opening.{n}': art for n, art in {
+    # Each crown's opening has its own painting.
+    **{f'ga_opening.{n}': 'opening_' + art for n, art in {
         1: 'cindermaw', 2: 'brackmaw', 3: 'reefhook', 4: 'shatterfin', 5: 'sootwake', 6: 'giltfang',
+    }.items()},
+    # The Shatter Maw rivalry between Shatterfin and Giltfang.
+    **{f'ga_maw_rivalry.{n}': art for n, art in {
+        1: 'opening_shatterfin', 2: 'giltfang', 3: 'shatterfin',
     }.items()},
     **{f'ga_old_world.{n}': art for n, art in {
         1: 'old_world_demons', 2: 'old_world_tavern', 3: 'old_world_envoy',
         4: 'old_world_cabinet', 5: 'old_world_legate',
+        # Placeholder until the Muslim court debate has its own painting.
+        6: 'africa',
     }.items()},
 }
 # Covenant stories reuse the same native-sized paintings.

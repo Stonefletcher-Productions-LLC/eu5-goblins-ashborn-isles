@@ -1918,3 +1918,108 @@ ga_gathering.42 = {
     }
     after = {  }
 }
+
+ga_gathering.43 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.43.title
+    desc = ga_gathering.43.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/kinship.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.43.a
+        trigger = { gold >= 30 }
+        ai_chance = { factor = 2 }
+        add_gold = -30 scope:ga_horde_petitioner = { add_gold = 30 } scope:ga_horde_petitioner = { add_opinion = { target = scope:ga_horde_warchief modifier = ga_horde_aid_given } trigger_event_non_silently = ga_gathering.46 }
+    }option = {
+        name = ga_gathering.43.b
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        scope:ga_horde_petitioner = { add_opinion = { target = scope:ga_horde_warchief modifier = ga_horde_aid_refused } trigger_event_non_silently = ga_gathering.47 }
+    }
+    after = {  }
+}
+
+ga_gathering.44 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.44.title
+    desc = ga_gathering.44.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/kinship.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.44.a
+        trigger = {  }
+        ai_chance = { factor = 2 }
+        add_prestige = -10 scope:ga_horde_petitioner = { add_stability = stability_mild_bonus } scope:ga_horde_petitioner = { add_opinion = { target = scope:ga_horde_warchief modifier = ga_horde_aid_given } trigger_event_non_silently = ga_gathering.46 }
+    }option = {
+        name = ga_gathering.44.b
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        scope:ga_horde_petitioner = { add_opinion = { target = scope:ga_horde_warchief modifier = ga_horde_aid_refused } trigger_event_non_silently = ga_gathering.47 }
+    }
+    after = {  }
+}
+
+ga_gathering.45 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.45.title
+    desc = ga_gathering.45.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/kinship.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.45.a
+        trigger = { exists = scope:ga_horde_feud_war }
+        ai_chance = { factor = 2 }
+        scope:ga_horde_petitioner = { white_peace = scope:ga_horde_feud_war } scope:ga_horde_petitioner = { add_opinion = { target = scope:ga_horde_warchief modifier = ga_horde_aid_given } trigger_event_non_silently = ga_gathering.46 }
+    }option = {
+        name = ga_gathering.45.b
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        scope:ga_horde_petitioner = { add_opinion = { target = scope:ga_horde_warchief modifier = ga_horde_aid_refused } trigger_event_non_silently = ga_gathering.47 }
+    }
+    after = {  }
+}
+
+ga_gathering.46 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.46.title
+    desc = ga_gathering.46.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/kinship.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.46.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        
+    }
+    after = {  }
+}
+
+ga_gathering.47 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.47.title
+    desc = ga_gathering.47.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/kinship.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.47.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        
+    }
+    after = {  }
+}
