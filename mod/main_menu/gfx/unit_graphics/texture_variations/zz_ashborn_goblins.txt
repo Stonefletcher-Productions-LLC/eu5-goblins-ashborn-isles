@@ -5,8 +5,11 @@
  cm_goblin_shatterfin_soldier_body_mesh
  cm_goblin_sootwake_soldier_body_mesh
  cm_goblin_giltfang_soldier_body_mesh
- cm_goblin_soldier_outfit_light_mesh
- cm_goblin_soldier_outfit_heavy_mesh
+ cm_goblin_soldier_outfit_light_a_mesh
+ cm_goblin_soldier_outfit_light_b_mesh
+ cm_goblin_soldier_outfit_heavy_a_mesh
+ cm_goblin_soldier_outfit_heavy_b_mesh
  cm_goblin_soldier_cap_leather_mesh
  cm_goblin_soldier_cap_iron_mesh
+ cm_goblin_soldier_cap_horned_mesh
 }
