@@ -40,7 +40,8 @@ def verify(game, out):
     assert sum(c['population'] for c in countries.values()) == b.CFG['population_target'] + int(sum(mixed_populations.extra(l['id']) for l in b.CFG['locations'])*1000)
     if 'population_062' in b.CFG:
         verify_population_062(game, out)
-    assert countries['CDM']['total_building_levels'] > countries['QBR']['total_building_levels'] > countries['SFK']['total_building_levels'] > countries['RHK']['total_building_levels']
+    levels = {tag:c['total_building_levels'] for tag,c in countries.items()}
+    assert levels['CDM'] > max(levels['QBR'], levels['SFK']) and min(levels['QBR'], levels['SFK']) > levels['RHK'], levels
     assert countries['CDM']['building_levels']['weapon_guild'] == 3
     assert countries['QBR']['building_levels']['naval_supplies_guild'] > countries['CDM']['building_levels']['naval_supplies_guild']
     assert countries['SWK']['building_levels']['charcoal_maker'] > countries['CDM']['building_levels']['charcoal_maker']
@@ -68,6 +69,7 @@ def verify_population_062(game, out):
     native_classes = set(re.findall(r'(?m)^(\w+)\s*=\s*\{', (game/'in_game/common/pop_types/00_default.txt').read_text(encoding='utf-8-sig')))
     populations = dict(economy_reference.blocks(dict(economy_reference.blocks((out/'main_menu/setup/start/06_pops.txt').read_text()))['locations']))
     policy = b.CFG['population_062']
+    balance = b.CFG.get('start_balance_067', {})
     previous_totals = {tag:Decimal(0) for tag in policy['prior_country_population_targets']}
     # 0.6.7 settles the enlarged Shatter Maw from existing Shatterfin towns.
     # Check each donor's 0.6.2 history with its settlers added back.
@@ -93,7 +95,13 @@ def verify_population_062(game, out):
         assert actual==expected,loc['id']
         total=sum(actual.values())
         tribal=sum(v for (k,_,_),v in actual.items() if k=='tribesmen')
-        assert Decimal('.25')<=tribal/total<Decimal('.2501'),loc['id']
+        share = Decimal(str(balance.get('tribal_share', '.25')))
+        assert share<=tribal/total<share+Decimal('.0001'),loc['id']
+        # Earlier policies are checked against the population before the 0.6.7 balance.
+        undo = {k:Decimal(str(v)) for k,v in balance.get('locations',{}).get(loc['id'],{}).get('class_changes',{}).items()}
+        loc = dict(loc, pop_classes={k:float(Decimal(str(v))-undo.get(k,Decimal(0))) for k,v in loc['pop_classes'].items()})
+        loc['pop'] = float(sum((Decimal(str(v)) for v in loc['pop_classes'].values()), Decimal(0)))
+        total -= sum(undo.values())
         if loc['id'] in additions:
             # 0.6.7 adds new Cinderstep towns, outside the 0.6.2 policy.
             assert Decimal(str(loc['pop']))==additions[loc['id']] and loc['id'] not in policy['locations']
@@ -123,7 +131,29 @@ def verify_population_062(game, out):
     assert 'Boss Clan' not in names
     audit=economy.audit(b,game)
     assert not audit['staffing_shortfalls']
-    assert {tag:c['population'] for tag,c in audit['countries'].items()}==policy['total_country_targets']
+    assert {tag:c['population'] for tag,c in audit['countries'].items()}==balance.get('total_country_targets', policy['total_country_targets'])
+    if balance:
+        verify_start_balance_067(audit)
+
+
+def verify_start_balance_067(audit):
+    """0.6.7: many people, a thin economy, food in every province, crowns in Alex's order."""
+    balance = b.CFG['start_balance_067']
+    people = {tag:c['population'] for tag,c in audit['countries'].items()}
+    for tag, total in balance['small_crown_totals'].items():
+        assert total*.999 <= people[tag] < total*1.03, (tag, people[tag])
+    # Shatterfin is meant to conquer Giltfang, so it starts larger.
+    assert people['CDM'] > people['QBR'] > people['SFK'] > people['GTF'] > people['RHK'] > people['SWK'], people
+    levels = {tag:c['total_building_levels'] for tag,c in audit['countries'].items()}
+    for tag, c in audit['countries'].items():
+        # One glass and one paper guild each; Cindermaw's own guilds need a second paper guild.
+        assert c['building_levels'].get('glass_guild') == 1, tag
+        assert c['building_levels'].get('paper_guild') == (2 if tag == 'CDM' else 1), tag
+        assert c['building_levels'].get('jewelry_guild', 0) <= 1, tag
+        assert levels[tag]/people[tag]*100000 < 20, tag
+    provinces, crowns = audit['food_cover']['provinces'], audit['food_cover']['crowns']
+    assert min(provinces.values()) >= .1, provinces
+    assert min(crowns.values()) >= .49, crowns
 
 
 if __name__ == '__main__':
