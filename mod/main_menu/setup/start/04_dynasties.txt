@@ -9635,7 +9635,6 @@ dynasty_manager = {
 	}
 
 cm_shatterfin_dynasty = { name = { name = cm_shatterfin_dynasty } home = cm_shatterfin }
-
 cm_cdm_house_0 = { name = { name = cm_cdm_house_0 } home = cm_hooktooth }
 cm_cdm_house_1 = { name = { name = cm_cdm_house_1 } home = cm_hooktooth }
 cm_cdm_house_2 = { name = { name = cm_cdm_house_2 } home = cm_hooktooth }
