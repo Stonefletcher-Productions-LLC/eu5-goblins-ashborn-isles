@@ -224,7 +224,7 @@
   "files": [
     {
       "path": "in_game/common/biases/goblins_gathering.txt",
-      "sha256": "dee938f1328a37a8d743962bc88db74efce3ef7362baf2a54cd5e9ed690a692c"
+      "sha256": "807173a584efdf272f43f2af1d85247c9d96cc1a71cb3421ff5c0fb79405b3f0"
     },
     {
       "path": "in_game/common/casus_belli/goblins_gathering.txt",
@@ -296,7 +296,7 @@
     },
     {
       "path": "in_game/events/goblins_gathering.txt",
-      "sha256": "6f827e69e9e214d4cea3c3a39422f0af50f80180ffb5662b894b91bfef29957d"
+      "sha256": "3cd759c25a51d15b098ac4c2dd5f008f984b556d20873c5514f898514ff5f0bf"
     },
     {
       "path": "in_game/gui/panels/situation/ga_ashborn_voyages.gui",
@@ -564,7 +564,7 @@
     },
     {
       "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
-      "sha256": "8e0428bc24e289ff096d7502d01bcb52e392f34c80237ecae44abdde81e41f40"
+      "sha256": "8b11c8df510405c651f2f36462f6dc039a22cf8134bf1a6ad4cb0c3efb8fb6bf"
     }
   ]
 }

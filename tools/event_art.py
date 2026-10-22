@@ -16,6 +16,7 @@ EVENTS = {
         33: 'compact_charter', 34: 'compact_charter', 35: 'compact_charter',
         36: 'sworn_pact', 37: 'sworn_pact', 38: 'sworn_pact', 39: 'pact_broken',
         41: 'kinship', 42: 'kinship',
+        43: 'kinship', 44: 'kinship', 45: 'kinship', 46: 'kinship', 47: 'kinship',
     }.items()},
     **{f'goblins_exploration.{n}': art for n, art in {
         1: 'departure', 2: 'iberia', 3: 'charts',

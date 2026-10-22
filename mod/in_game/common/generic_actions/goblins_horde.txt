@@ -52,3 +52,235 @@ ga_horde_war_horns = {
     }
     ai_will_do = { add = -20 if = { limit = { scope:actor = { at_war = yes gold >= 75 } } add = 40 } }
 }
+ga_horde_muster = {
+    type = internationalorganization
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    automation_tick = never
+    force_click_and_confirm_or_hold = yes
+    potential = { scope:actor = { ga_in_horde = yes } }
+    allow = { scope:actor = { is_leader_of_international_organization = international_organization:goblin_horde } scope:actor = { gold >= 50 } }
+    cooldown = { type = ga_horde_muster years = 10 }
+    select_trigger = {
+        looking_for_a = international_organization
+        source = actor
+        target_flag = recipient
+        name = "choose_international_organization"
+        column = { data = name }
+        visible = { international_organization_type = international_organization_type:goblin_horde }
+    }
+    select_trigger = {
+        looking_for_a = war
+        source = actor
+        target_flag = target
+        name = "ga_horde_muster_choose"
+        none_available_msg_key = "ga_horde_muster_none"
+        column = { data = name }
+        visible = {
+            attacker_leader = scope:actor
+            defender_leader = { NOT = { is_member_of_international_organization = international_organization:goblin_horde } }
+        }
+    }
+    effect = {
+        if = {
+            limit = { exists = scope:target }
+            scope:actor = { add_gold = -50 }
+            international_organization:goblin_horde = {
+                every_international_organization_member = {
+                    limit = {
+                        this != scope:actor
+                        NOT = { is_at_war_with = scope:actor }
+                    }
+                    join_war_as_attacker = { war = scope:target call_in_subjects = yes }
+                    add_country_modifier = { modifier = ga_horde_war_horns years = 2 mode = replace }
+                }
+            }
+        }
+        else = { custom_tooltip = ga_horde_muster_choose }
+    }
+    ai_will_do = { add = 50 }
+}
+ga_horde_settle_feud = {
+    type = internationalorganization
+    ai_tick = monthly
+    ai_tick_frequency = 12
+    automation_tick = never
+    potential = { scope:actor = { ga_in_horde = yes } }
+    allow = { scope:actor = { is_leader_of_international_organization = international_organization:goblin_horde } scope:actor = { gold >= 25 } }
+    cooldown = { type = ga_horde_settle_feud years = 5 }
+    select_trigger = {
+        looking_for_a = international_organization
+        source = actor
+        target_flag = recipient
+        name = "choose_international_organization"
+        column = { data = name }
+        visible = { international_organization_type = international_organization_type:goblin_horde }
+    }
+    select_trigger = {
+        looking_for_a = country
+        source = recipient
+        target_flag = target
+        name = "ga_horde_settle_feud_choose"
+        none_available_msg_key = "ga_horde_settle_feud_none"
+        column = { data = name }
+        visible = {
+            root != scope:actor
+            any_current_war = {
+                attacker_leader = root
+                defender_leader = { is_member_of_international_organization = international_organization:goblin_horde }
+                NOT = { defender_leader = scope:actor }
+            }
+        }
+    }
+    effect = {
+        if = {
+            limit = { exists = scope:target }
+            scope:actor = { add_gold = -25 add_prestige = 5 }
+            scope:target = {
+                random_current_war = {
+                    limit = {
+                        attacker_leader = scope:target
+                        defender_leader = { is_member_of_international_organization = international_organization:goblin_horde }
+                        NOT = { defender_leader = scope:actor }
+                    }
+                    save_scope_as = ga_horde_feud_war
+                }
+                white_peace = scope:ga_horde_feud_war
+            }
+        }
+        else = { custom_tooltip = ga_horde_settle_feud_choose }
+    }
+    ai_will_do = { add = -20 if = { limit = { scope:actor = { at_war = no } } add = 30 } }
+}
+ga_horde_levy = {
+    type = internationalorganization
+    ai_tick = monthly
+    ai_tick_frequency = 12
+    automation_tick = never
+    potential = { scope:actor = { ga_in_horde = yes } }
+    allow = { scope:actor = { is_leader_of_international_organization = international_organization:goblin_horde } }
+    cooldown = { type = ga_horde_levy years = 10 }
+    select_trigger = {
+        looking_for_a = international_organization
+        source = actor
+        target_flag = recipient
+        name = "choose_international_organization"
+        column = { data = name }
+        visible = { international_organization_type = international_organization_type:goblin_horde }
+    }
+    effect = {
+        international_organization:goblin_horde = {
+            every_international_organization_member = {
+                limit = { this != scope:actor }
+                save_scope_as = ga_horde_levy_payer
+                scope:actor = { add_manpower = { value = scope:ga_horde_levy_payer.monthly_manpower multiply = 2 } }
+                add_manpower = { value = monthly_manpower multiply = -2 }
+                add_opinion = { target = scope:actor modifier = ga_horde_levy_taken }
+            }
+        }
+    }
+    ai_will_do = { add = -20 if = { limit = { scope:actor = { at_war = yes } } add = 40 } }
+}
+ga_horde_ask_gold = {
+    type = internationalorganization
+    ai_tick = monthly
+    ai_tick_frequency = 12
+    automation_tick = never
+    potential = { scope:actor = { ga_in_horde = yes } }
+    allow = {
+        scope:actor = { NOT = { is_leader_of_international_organization = international_organization:goblin_horde } }
+        exists = international_organization:goblin_horde.leader_country
+        
+    }
+    cooldown = { type = ga_horde_ask_gold years = 5 }
+    select_trigger = {
+        looking_for_a = international_organization
+        source = actor
+        target_flag = recipient
+        name = "choose_international_organization"
+        column = { data = name }
+        visible = { international_organization_type = international_organization_type:goblin_horde }
+    }
+    effect = {
+        scope:actor = { save_scope_as = ga_horde_petitioner }
+        
+        international_organization:goblin_horde.leader_country = {
+            save_scope_as = ga_horde_warchief
+            trigger_event_non_silently = ga_gathering.43
+        }
+    }
+    ai_will_do = { add = 10 }
+}
+ga_horde_ask_calm = {
+    type = internationalorganization
+    ai_tick = monthly
+    ai_tick_frequency = 12
+    automation_tick = never
+    potential = { scope:actor = { ga_in_horde = yes } }
+    allow = {
+        scope:actor = { NOT = { is_leader_of_international_organization = international_organization:goblin_horde } }
+        exists = international_organization:goblin_horde.leader_country
+        
+    }
+    cooldown = { type = ga_horde_ask_calm years = 5 }
+    select_trigger = {
+        looking_for_a = international_organization
+        source = actor
+        target_flag = recipient
+        name = "choose_international_organization"
+        column = { data = name }
+        visible = { international_organization_type = international_organization_type:goblin_horde }
+    }
+    effect = {
+        scope:actor = { save_scope_as = ga_horde_petitioner }
+        
+        international_organization:goblin_horde.leader_country = {
+            save_scope_as = ga_horde_warchief
+            trigger_event_non_silently = ga_gathering.44
+        }
+    }
+    ai_will_do = { add = 10 }
+}
+ga_horde_appeal_feud = {
+    type = internationalorganization
+    ai_tick = monthly
+    ai_tick_frequency = 12
+    automation_tick = never
+    potential = { scope:actor = { ga_in_horde = yes } }
+    allow = {
+        scope:actor = { NOT = { is_leader_of_international_organization = international_organization:goblin_horde } }
+        exists = international_organization:goblin_horde.leader_country
+        scope:actor = {
+            any_current_war = {
+                defender_leader = scope:actor
+                attacker_leader = { is_member_of_international_organization = international_organization:goblin_horde NOT = { is_leader_of_international_organization = international_organization:goblin_horde } }
+            }
+        }
+    }
+    cooldown = { type = ga_horde_appeal_feud years = 5 }
+    select_trigger = {
+        looking_for_a = international_organization
+        source = actor
+        target_flag = recipient
+        name = "choose_international_organization"
+        column = { data = name }
+        visible = { international_organization_type = international_organization_type:goblin_horde }
+    }
+    effect = {
+        scope:actor = { save_scope_as = ga_horde_petitioner }
+        scope:actor = {
+            random_current_war = {
+                limit = {
+                    defender_leader = scope:actor
+                attacker_leader = { is_member_of_international_organization = international_organization:goblin_horde NOT = { is_leader_of_international_organization = international_organization:goblin_horde } }
+                }
+                save_scope_as = ga_horde_feud_war
+            }
+        }
+        international_organization:goblin_horde.leader_country = {
+            save_scope_as = ga_horde_warchief
+            trigger_event_non_silently = ga_gathering.45
+        }
+    }
+    ai_will_do = { add = 10 }
+}

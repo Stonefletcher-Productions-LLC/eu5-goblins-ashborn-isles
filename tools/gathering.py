@@ -583,6 +583,7 @@ ga_cb_eastern_foothold = {
     events.extend(compact_talks.events(event, option, loc))
     events.extend(sworn_pacts.events(event, option, loc))
     events.extend(kin_defense.events(event, option, loc))
+    events.extend(goblin_horde.events(event, option, loc))
     sworn_pacts.localization(loc)
     write(out, 'in_game/events/goblins_gathering.txt', '\n'.join(events))
 

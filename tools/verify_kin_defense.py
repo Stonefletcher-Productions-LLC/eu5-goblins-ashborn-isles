@@ -92,7 +92,28 @@ def verify(read):
         for loc in [key, key + '_desc']: assert f' {loc}: "' in localization, loc
     for loc in ['goblin_horde', 'goblin_horde_desc', 'GOBLIN_HORDE_LEADER', 'goblin_horde_defense_tt']:
         assert f' {loc}: "' in localization, loc
-    scenarios.append(f'{len(actions)} Horde panel actions registered and localized')
+    assert sorted(actions) == ['ga_horde_appeal_feud', 'ga_horde_ask_calm', 'ga_horde_ask_gold', 'ga_horde_levy', 'ga_horde_muster',
+                               'ga_horde_settle_feud', 'ga_horde_tribute', 'ga_horde_war_horns']
+    effects = {key: flatten(dict((k, v) for k, _, v in body)['effect']) for key, body in actions.items()}
+    second = lambda key: [v for k, _, v in actions[key] if k == 'select_trigger'][1]
+    assert ('looking_for_a', '=', 'war') in second('ga_horde_muster') and any(k == 'join_war_as_attacker' for k, _, _ in effects['ga_horde_muster'])
+    assert ('looking_for_a', '=', 'country') in second('ga_horde_settle_feud')
+    assert ('white_peace', '=', 'scope:ga_horde_feud_war') in effects['ga_horde_settle_feud']
+    assert sum(k == 'add_manpower' for k, _, _ in effects['ga_horde_levy']) == 2
+    for key in ['ga_horde_muster', 'ga_horde_settle_feud', 'ga_horde_levy', 'ga_horde_war_horns']:
+        assert ('is_leader_of_international_organization', '=', 'international_organization:goblin_horde') in flatten(dict((k, v) for k, _, v in actions[key])['allow']), key
+    # Petitions: only non-Warchief crowns, each sends a grant/refuse request to the Warchief.
+    for key, num in [('ga_horde_ask_gold', 43), ('ga_horde_ask_calm', 44), ('ga_horde_appeal_feud', 45)]:
+        allow = flatten(dict((k, v) for k, _, v in actions[key])['allow'])
+        assert ('NOT', '=', [('is_leader_of_international_organization', '=', 'international_organization:goblin_horde')]) in allow, key
+        assert ('trigger_event_non_silently', '=', f'ga_gathering.{num}') in effects[key], key
+        options = [o for k, _, o in definitions[f'ga_gathering.{num}'] if k == 'option']
+        replies = [('trigger_event_non_silently', '=', 'ga_gathering.46'), ('trigger_event_non_silently', '=', 'ga_gathering.47')]
+        assert len(options) == 2 and [r in flatten(options[i]) for i, r in enumerate(replies)] == [True, True], num
+    assert ('white_peace', '=', 'scope:ga_horde_feud_war') in flatten(definitions['ga_gathering.45'])
+    for loc in ['ga_horde_aid_given', 'ga_horde_aid_refused']: assert f' {loc}: "' in localization, loc
+    scenarios.append('3 petitions for smaller crowns reach the Warchief as grant/refuse events and answer back')
+    scenarios.append(f'{len(actions)} Horde panel actions registered and localized; Muster, Feud and Levy use native war, peace and manpower effects')
     return {'scenarios': scenarios, 'static_script_simulation_passed': True, 'engine_tested': False}
 
 
