@@ -1,10 +1,11 @@
-﻿# New campaigns attempt both routes immediately after setup.
+﻿# New campaigns attempt every route immediately after setup.
 on_game_start = { on_actions = { ga_starting_trade_setup } }
 monthly_country_pulse = { on_actions = { ga_starting_trade_retry } }
 ga_starting_trade_setup = {
     effect = {
-        if = { limit = { country_exists = c:CDM } c:CDM = { ga_seed_trade_cdm = yes } }
-        if = { limit = { country_exists = c:GTF } c:GTF = { ga_seed_trade_gtf = yes } }
+        if = { limit = { country_exists = c:CDM } c:CDM = { ga_seed_trade_cdm = yes ga_seed_trade_cdm_fish = yes } }
+        if = { limit = { country_exists = c:GTF } c:GTF = { ga_seed_trade_gtf = yes ga_seed_trade_gtf_livestock = yes } }
+        if = { limit = { country_exists = c:SFK } c:SFK = { ga_seed_trade_sfk_wheat = yes ga_seed_trade_sfk_salt = yes } }
     }
 }
 # Bounded fallback if merchants/pathfinding are not ready at game-start.
@@ -12,11 +13,21 @@ ga_starting_trade_setup = {
 ga_starting_trade_retry = {
     trigger = {
         current_date < 1338.12.1
-        OR = { tag = CDM tag = GTF }
-        NOT = { has_variable = ga_starting_trade_061 }
+        OR = {
+            AND = { tag = CDM NOT = { has_variable = ga_starting_trade_061 } }
+            AND = { tag = GTF NOT = { has_variable = ga_starting_trade_061 } }
+            AND = { tag = GTF NOT = { has_variable = ga_starting_trade_067_livestock } }
+            AND = { tag = SFK NOT = { has_variable = ga_starting_trade_067_wheat } }
+            AND = { tag = CDM NOT = { has_variable = ga_starting_trade_067_fish } }
+            AND = { tag = SFK NOT = { has_variable = ga_starting_trade_067_salt } }
+        }
     }
     effect = {
-        if = { limit = { tag = CDM } ga_seed_trade_cdm = yes }
-        if = { limit = { tag = GTF } ga_seed_trade_gtf = yes }
+        if = { limit = { tag = CDM NOT = { has_variable = ga_starting_trade_061 } } ga_seed_trade_cdm = yes }
+        if = { limit = { tag = GTF NOT = { has_variable = ga_starting_trade_061 } } ga_seed_trade_gtf = yes }
+        if = { limit = { tag = GTF NOT = { has_variable = ga_starting_trade_067_livestock } } ga_seed_trade_gtf_livestock = yes }
+        if = { limit = { tag = SFK NOT = { has_variable = ga_starting_trade_067_wheat } } ga_seed_trade_sfk_wheat = yes }
+        if = { limit = { tag = CDM NOT = { has_variable = ga_starting_trade_067_fish } } ga_seed_trade_cdm_fish = yes }
+        if = { limit = { tag = SFK NOT = { has_variable = ga_starting_trade_067_salt } } ga_seed_trade_sfk_salt = yes }
     }
 }

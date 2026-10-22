@@ -50,3 +50,107 @@ ga_seed_trade_gtf = {
         }
     }
 }
+ga_seed_trade_gtf_livestock = {
+    if = { limit = { NOT = { has_variable = ga_starting_trade_067_livestock } }
+        if = { limit = {
+            owns = location:cm_chainhaven
+            exists = location:cm_hooktooth.market exists = location:cm_chainhaven.market
+            location:cm_hooktooth = { NOT = { market = location:cm_chainhaven.market } }
+            NOT = { any_trade = { from_market = location:cm_hooktooth.market to_market = location:cm_chainhaven.market } }
+            location:cm_chainhaven.market = {
+                has_merchant = c:GTF
+                available_merchant_capacity = { country = c:GTF value >= 1 }
+            }
+            can_find_trade_route = { from = location:cm_hooktooth.market to = location:cm_chainhaven.market }
+        }
+            create_trade = {
+                from = location:cm_hooktooth.market to = location:cm_chainhaven.market
+                merchant = location:cm_chainhaven.market goods = goods:livestock
+                desired = 1 locked = yes
+            }
+        }
+        # Confirm creation before marking completion. A player-created route
+        # also satisfies this; never recreate a cancelled initial route.
+        if = { limit = { any_trade = { from_market = location:cm_hooktooth.market to_market = location:cm_chainhaven.market } }
+            set_variable = { name = ga_starting_trade_067_livestock value = yes }
+        }
+    }
+}
+ga_seed_trade_sfk_wheat = {
+    if = { limit = { NOT = { has_variable = ga_starting_trade_067_wheat } }
+        if = { limit = {
+            owns = location:cm_shatterfin
+            exists = location:cm_hooktooth.market exists = location:cm_shatterfin.market
+            location:cm_hooktooth = { NOT = { market = location:cm_shatterfin.market } }
+            NOT = { any_trade = { from_market = location:cm_hooktooth.market to_market = location:cm_shatterfin.market } }
+            location:cm_shatterfin.market = {
+                has_merchant = c:SFK
+                available_merchant_capacity = { country = c:SFK value >= 1 }
+            }
+            can_find_trade_route = { from = location:cm_hooktooth.market to = location:cm_shatterfin.market }
+        }
+            create_trade = {
+                from = location:cm_hooktooth.market to = location:cm_shatterfin.market
+                merchant = location:cm_shatterfin.market goods = goods:wheat
+                desired = 1 locked = yes
+            }
+        }
+        # Confirm creation before marking completion. A player-created route
+        # also satisfies this; never recreate a cancelled initial route.
+        if = { limit = { any_trade = { from_market = location:cm_hooktooth.market to_market = location:cm_shatterfin.market } }
+            set_variable = { name = ga_starting_trade_067_wheat value = yes }
+        }
+    }
+}
+ga_seed_trade_cdm_fish = {
+    if = { limit = { NOT = { has_variable = ga_starting_trade_067_fish } }
+        if = { limit = {
+            owns = location:cm_hooktooth
+            exists = location:cm_shatterfin.market exists = location:cm_hooktooth.market
+            location:cm_shatterfin = { NOT = { market = location:cm_hooktooth.market } }
+            NOT = { any_trade = { from_market = location:cm_shatterfin.market to_market = location:cm_hooktooth.market } }
+            location:cm_hooktooth.market = {
+                has_merchant = c:CDM
+                available_merchant_capacity = { country = c:CDM value >= 1 }
+            }
+            can_find_trade_route = { from = location:cm_shatterfin.market to = location:cm_hooktooth.market }
+        }
+            create_trade = {
+                from = location:cm_shatterfin.market to = location:cm_hooktooth.market
+                merchant = location:cm_hooktooth.market goods = goods:fish
+                desired = 1 locked = yes
+            }
+        }
+        # Confirm creation before marking completion. A player-created route
+        # also satisfies this; never recreate a cancelled initial route.
+        if = { limit = { any_trade = { from_market = location:cm_shatterfin.market to_market = location:cm_hooktooth.market } }
+            set_variable = { name = ga_starting_trade_067_fish value = yes }
+        }
+    }
+}
+ga_seed_trade_sfk_salt = {
+    if = { limit = { NOT = { has_variable = ga_starting_trade_067_salt } }
+        if = { limit = {
+            owns = location:cm_shatterfin
+            exists = location:cm_chainhaven.market exists = location:cm_shatterfin.market
+            location:cm_chainhaven = { NOT = { market = location:cm_shatterfin.market } }
+            NOT = { any_trade = { from_market = location:cm_chainhaven.market to_market = location:cm_shatterfin.market } }
+            location:cm_shatterfin.market = {
+                has_merchant = c:SFK
+                available_merchant_capacity = { country = c:SFK value >= 1 }
+            }
+            can_find_trade_route = { from = location:cm_chainhaven.market to = location:cm_shatterfin.market }
+        }
+            create_trade = {
+                from = location:cm_chainhaven.market to = location:cm_shatterfin.market
+                merchant = location:cm_shatterfin.market goods = goods:salt
+                desired = 1 locked = yes
+            }
+        }
+        # Confirm creation before marking completion. A player-created route
+        # also satisfies this; never recreate a cancelled initial route.
+        if = { limit = { any_trade = { from_market = location:cm_chainhaven.market to_market = location:cm_shatterfin.market } }
+            set_variable = { name = ga_starting_trade_067_salt value = yes }
+        }
+    }
+}
