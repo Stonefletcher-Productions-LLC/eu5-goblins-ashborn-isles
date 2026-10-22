@@ -360,7 +360,7 @@
     },
     {
       "path": "main_menu/gfx/interface/icons/situations/ga_goblin_shore.dds",
-      "sha256": "5622d49293c2fa0616aea756491d1e1063a8fe8fceac7bdf878ee731bcafb9e8"
+      "sha256": "b9d326259aff5a14b8f2630310b0a91b83cb7b9a37fde750158e5d218dbeb117"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/africa.dds",
@@ -564,7 +564,7 @@
     },
     {
       "path": "main_menu/gfx/interface/illustrations/situation/ga_goblin_shore.dds",
-      "sha256": "67b0b80d775f51d51786c1323b4338b3bba611a2113e123c0bbf1cc6f75c6365"
+      "sha256": "b9cef848ac158295860c4575237b637064ebf7f1da4edc17f9da145b36381eb0"
     },
     {
       "path": "main_menu/localization/english/goblins_exploration_l_english.yml",
