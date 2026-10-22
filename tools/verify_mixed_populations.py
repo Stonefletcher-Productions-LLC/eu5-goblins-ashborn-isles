@@ -50,7 +50,9 @@ def verify(base, out, game):
     assert summary['CDM']['slaves']>sum(v['slaves'] for k,v in summary.items() if k!='CDM')
     assert len({v['added'] for v in summary.values()})==5
     for tag, stats in summary.items():
-        minority_share = stats['added'] / (cfg['country_population_targets'][tag] + stats['added'])
+        # Measured against the crowns the minorities were generated for, before 0.6.7 grew them.
+        home = cfg.get('start_balance_067', {}).get('prior_country_population_targets', cfg['country_population_targets'])[tag]
+        minority_share = stats['added'] / (home + stats['added'])
         assert .15 <= minority_share <= .25, (tag, minority_share)
     return {'population':cfg['population_target']+sum(v['added'] for v in summary.values()),'countries':summary,'original_entries_preserved':True,'native_classes_checked':True,'engine_tested':False}
 
