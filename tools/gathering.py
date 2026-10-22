@@ -12,6 +12,7 @@ from event_art import image
 import harbor_bargains
 import compact_talks
 import sworn_pacts
+import kin_defense
 import situation_progress
 import early_projects
 
@@ -204,7 +205,7 @@ ga_has_european_foothold = {{
 '''
     write(out, 'in_game/common/scripted_triggers/goblins_gathering.txt', triggers + harbor_bargains.triggers() + compact_talks.triggers() + sworn_pacts.triggers() + sworn_pacts.free_trigger())
     from build_clan_flags import recovery_on_action
-    write(out, 'in_game/common/on_action/goblins_gathering.txt', harbor_bargains.maintenance().replace("on_actions = { ga_hb_contract_pulse }", "on_actions = { ga_hb_contract_pulse ga_cp_history_pulse ga_sp_pact_pulse ga_clan_flags_060_pulse }") + compact_talks.pulse() + sworn_pacts.pulse() + recovery_on_action())
+    write(out, 'in_game/common/on_action/goblins_gathering.txt', harbor_bargains.maintenance().replace("on_actions = { ga_hb_contract_pulse }", "on_actions = { ga_hb_contract_pulse ga_cp_history_pulse ga_sp_pact_pulse ga_clan_flags_060_pulse }") + compact_talks.pulse() + sworn_pacts.pulse() + kin_defense.on_action() + recovery_on_action())
 
     # Use native monthly situation evaluation; no external global pulse override.
     situations = '''
@@ -445,7 +446,7 @@ ga_gathering_target_price = { gold = 10 }
 ga_harbor_pact_opinion = { value = 35 months = 120 }
 ga_received_supplies = { value = 30 months = 60 }
 ga_oath_honored = { value = 25 months = 120 }
-''' + sworn_pacts.biases())
+''' + sworn_pacts.biases() + kin_defense.biases())
     for key, text in [('ga_harbor_pact_opinion', 'The Harbor Pact'), ('ga_received_supplies', 'Grain and Iron Received'), ('ga_oath_honored', 'The Ashen Oath')]:
         loc(key, text)
     write(out, 'main_menu/common/static_modifiers/goblins_gathering.txt', '''
@@ -463,7 +464,7 @@ ga_compact_guarantees = { subject_loyalty = 10 }
 ga_unification_recovery = { global_monthly_control = 0.002 }
 ga_crossing_preparations = { navy_transport_build_cost_modifier = -0.15 naval_morale_modifier = 0.05 }
 ga_first_eastern_harbor = { naval_morale_recovery = 0.05 }
-''' + harbor_bargains.modifiers(loc) + '\n' + early_projects.modifiers(loc))
+''' + harbor_bargains.modifiers(loc) + '\n' + early_projects.modifiers(loc) + '\n' + kin_defense.modifiers(loc))
     for key, text in [('ga_gathering_claimant', 'Claimant Among the Six'), ('ga_gathering_defiant', 'Our Shores, Our Crown'), ('ga_compact_guarantees', 'Guarantees of the Ashen Compact'), ('ga_unification_recovery', 'Six Crowns, One Hunger'), ('ga_crossing_preparations', 'The Eastern Crossing'), ('ga_first_eastern_harbor', 'The First Eastern Harbor')]:
         loc('STATIC_MODIFIER_NAME_' + key, text)
         loc('STATIC_MODIFIER_DESC_' + key, text + '. A temporary benefit from the Ashborn situation.')
@@ -573,6 +574,7 @@ ga_cb_eastern_foothold = {
     write(out, 'in_game/common/customizable_localization/goblins_harbor_receipts.txt', harbor_bargains.signed_recap(loc))
     events.extend(compact_talks.events(event, option, loc))
     events.extend(sworn_pacts.events(event, option, loc))
+    events.extend(kin_defense.events(event, option, loc))
     sworn_pacts.localization(loc)
     write(out, 'in_game/events/goblins_gathering.txt', '\n'.join(events))
 

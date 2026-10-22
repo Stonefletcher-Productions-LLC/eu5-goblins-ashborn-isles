@@ -212,6 +212,34 @@ if = { limit = { has_variable = ga_sp_sworn_GTF }
     }
 }
 
+on_war_declared = { on_actions = { ga_kin_defense } }
+ga_kin_defense = {
+    trigger = {
+        this = scope:recipient
+        ga_is_goblin = yes
+        scope:actor = { NOT = { ga_is_goblin = yes } }
+    }
+    effect = {
+        save_scope_as = ga_kin_victim
+        scope:actor = { save_scope_as = ga_kin_invader }
+        add_country_modifier = { modifier = ga_kin_rally years = 5 mode = replace }
+        every_country = {
+            limit = {
+                ga_independent_goblin = yes
+                this != scope:ga_kin_victim
+                NOT = { is_at_war_with = scope:ga_kin_victim }
+                NOT = { is_at_war_with = scope:ga_kin_invader }
+            }
+            save_scope_as = ga_kin_ally
+            join_war_as_defender = { war = scope:war call_in_subjects = yes }
+            add_country_modifier = { modifier = ga_kin_rally years = 5 mode = replace }
+            scope:ga_kin_victim = { add_opinion = { target = scope:ga_kin_ally modifier = ga_kin_answered } }
+            trigger_event_non_silently = ga_gathering.42
+        }
+        trigger_event_non_silently = ga_gathering.41
+    }
+}
+
 ga_clan_flags_060_pulse = {
     trigger = {
         OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK tag = GTF }

@@ -17,9 +17,9 @@ from verify_055 import parse
 
 ROOT = Path(__file__).resolve().parents[1]
 MOD = ROOT / 'mod'
-NAMES = {c['tag']: c['name'] for c in json.loads((ROOT / 'data/island.json').read_text(encoding='utf-8-sig'))['countries']}
+NAMES = {c['tag']: c['name'] for c in json.loads((ROOT / 'data/island.json').read_text(encoding='utf-8-sig'))['countries']} | {'POR': 'Portugal'}
 # Sample cast for saved scopes: Cindermaw asks, Brackmaw answers.
-SAMPLE = {'ga_sp_requester': 'CDM', 'ga_sp_provider': 'QBR', 'ga_sp_broken_partner': 'QBR',
+SAMPLE = {'ga_kin_invader': 'POR', 'ga_kin_victim': 'QBR', 'ga_sp_requester': 'CDM', 'ga_sp_provider': 'QBR', 'ga_sp_broken_partner': 'QBR',
           'ga_cp_requester': 'CDM', 'ga_cp_provider': 'QBR', 'ga_hb_requester': 'CDM', 'ga_hb_provider': 'QBR'}
 COLORS = {'Y': '#f3c75a', 'G': '#7fd46a', 'R': '#e8664f'}
 

@@ -360,10 +360,6 @@
       "sha256": "1b0dbf4521bebe766bde3dd3b12357fc882fed01f7cc3cd5a3c4d583b269f45d"
     },
     {
-      "path": "main_menu/common/static_modifiers/goblins_gathering.txt",
-      "sha256": "3ea5d5674756b0b6639c6cfcb5fa69d798385d59df9a8ed68843b37752444d98"
-    },
-    {
       "path": "main_menu/gfx/coat_of_arms/textured_emblems/te_ashborn_brackmaw.dds",
       "sha256": "00c8cb9c0c611d6cae89249932c366bd3415d4469c5085ea167692543cc9d9cf"
     },

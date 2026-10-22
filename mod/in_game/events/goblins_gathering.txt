@@ -1882,3 +1882,39 @@ ga_gathering.39 = {
     }
     after = {  }
 }
+
+ga_gathering.41 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.41.title
+    desc = ga_gathering.41.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/unification.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.41.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        
+    }
+    after = {  }
+}
+
+ga_gathering.42 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.42.title
+    desc = ga_gathering.42.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/gathering.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.42.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        
+    }
+    after = {  }
+}

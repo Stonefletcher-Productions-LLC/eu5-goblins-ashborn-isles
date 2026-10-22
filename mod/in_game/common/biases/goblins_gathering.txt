@@ -3,3 +3,4 @@ ga_received_supplies = { value = 30 months = 60 }
 ga_oath_honored = { value = 25 months = 120 }
 ga_sworn_pact = { value = 40 months = 120 }
 ga_sworn_pact_broken = { value = -40 months = 120 }
+ga_kin_answered = { value = 30 months = 120 }
