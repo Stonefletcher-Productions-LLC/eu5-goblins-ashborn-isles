@@ -4,6 +4,9 @@ from decimal import Decimal
 from datetime import date
 from pathlib import Path
 
+PACT_LADDER_067 = {'in_game/common/biases/goblins_gathering.txt', 'in_game/common/generic_action_ai_lists/goblins_gathering.txt', 'in_game/common/generic_actions/goblins_gathering.txt', 'in_game/common/on_action/goblins_gathering.txt', 'in_game/common/script_values/ga_gathering_ui.txt', 'in_game/common/scripted_triggers/goblins_gathering.txt', 'in_game/events/goblins_gathering.txt', 'in_game/gui/panels/situation/ga_gathering_of_five.gui', 'main_menu/localization/english/goblins_gathering_l_english.yml'}
+
+
 def verify(root):
     root=Path(root)
     source=(root/'data/island.json').read_text(encoding='utf-8')
@@ -103,7 +106,8 @@ def verify(root):
                 verify_intro(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_divorce import verify as verify_divorce
                 verify_divorce(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
-                if 'goblins_ashborn_isles/in_game/events/goblins_old_world.txt' in z.namelist():
+                # The Old World Reacts first ships in 0.6.7; earlier bundles carry only part of it.
+                if tuple(map(int, version.split('.'))) >= (0, 6, 7):
                     from verify_old_world import verify as verify_old_world
                     verify_old_world(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_harbor_bargains import verify as verify_bargains
@@ -168,6 +172,8 @@ def verify(root):
             prototype=json.loads((root/'data/prototype_055_files.json').read_text())
             for item in prototype['files']:
                 path=item['path']
+                # The Pact Ladder regenerated these Gathering files; 0.6.7 packages them.
+                if path in PACT_LADDER_067 and tuple(map(int, version.split('.'))) < (0, 6, 7): continue
                 assert z.read('goblins_ashborn_isles/'+path)==(root/'mod'/path).read_bytes(),f'Stale or missing Gathering content: {path}'
             for name in ['README.md','RELEASE_NOTES.md','TESTING.md','LORE.md']:
                 packed=z.read(name);authored=(root/('PLAYER_README.md' if name == 'README.md' and tuple(map(int, version.split('.'))) >= (0, 5, 9) else name)).read_bytes()
