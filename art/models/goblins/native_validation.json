@@ -5,7 +5,7 @@
   "meshes": {
     "cm_goblin_soldier_body": {
       "triangles": 6000,
-      "vertices": 4910,
+      "vertices": 4877,
       "bones_used": 50,
       "height_cm": [
         0.9,
@@ -14,7 +14,7 @@
     },
     "cm_goblin_soldier_outfit_light_a": {
       "triangles": 3200,
-      "vertices": 3296,
+      "vertices": 3281,
       "bones_used": 25,
       "height_cm": [
         16.0,
@@ -23,8 +23,8 @@
     },
     "cm_goblin_soldier_outfit_light_b": {
       "triangles": 3200,
-      "vertices": 3477,
-      "bones_used": 21,
+      "vertices": 3476,
+      "bones_used": 20,
       "height_cm": [
         16.0,
         150.2
@@ -32,7 +32,7 @@
     },
     "cm_goblin_soldier_outfit_heavy_a": {
       "triangles": 4500,
-      "vertices": 4268,
+      "vertices": 4263,
       "bones_used": 25,
       "height_cm": [
         16.0,
@@ -41,7 +41,7 @@
     },
     "cm_goblin_soldier_outfit_heavy_b": {
       "triangles": 4000,
-      "vertices": 3645,
+      "vertices": 3701,
       "bones_used": 25,
       "height_cm": [
         16.0,
@@ -50,7 +50,7 @@
     },
     "cm_goblin_soldier_cap_leather": {
       "triangles": 800,
-      "vertices": 661,
+      "vertices": 669,
       "bones_used": 1,
       "height_cm": [
         169.0,
@@ -59,7 +59,7 @@
     },
     "cm_goblin_soldier_cap_iron": {
       "triangles": 1200,
-      "vertices": 1090,
+      "vertices": 1081,
       "bones_used": 1,
       "height_cm": [
         160.2,
@@ -68,10 +68,10 @@
     },
     "cm_goblin_soldier_cap_horned": {
       "triangles": 1400,
-      "vertices": 1243,
+      "vertices": 1332,
       "bones_used": 1,
       "height_cm": [
-        168.9,
+        169.2,
         194.5
       ]
     }
@@ -80,19 +80,19 @@
   "native_scale": 0.08,
   "median_skin_texel_srgb": {
     "cindermaw": [
-      137,
+      134,
       146,
-      115
+      112
     ],
     "brackmaw": [
-      120,
-      142,
+      117,
+      141,
       126
     ],
     "reefhook": [
       148,
-      155,
-      120
+      154,
+      117
     ],
     "shatterfin": [
       115,
@@ -102,12 +102,12 @@
     "sootwake": [
       107,
       121,
-      104
+      101
     ],
     "giltfang": [
-      145,
-      136,
-      107
+      142,
+      135,
+      104
     ]
   },
   "native_skeleton_and_graph_compared": true,
