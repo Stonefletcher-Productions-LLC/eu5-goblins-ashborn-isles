@@ -1,0 +1,29 @@
+﻿monthly_country_pulse = { on_actions = { ga_opening_monthly } }
+# A month after the shared introduction, each crown hears its own story.
+ga_opening_monthly = {
+    trigger = {
+        ga_is_goblin = yes
+        OR = {
+            has_variable = ga_ashborn_intro_seen
+            # Older saves dispatched Cindermaw's introduction with this flag.
+            AND = { tag = CDM has_variable = cm_demo_initialized }
+        }
+        NOT = { has_variable = ga_opening_seen }
+    }
+    effect = {
+        # Wait a month so the opening never stacks on the shared introduction.
+        if = { limit = { NOT = { has_variable = ga_opening_started } }
+            set_variable = { name = ga_opening_started value = yes }
+            set_variable = { name = ga_opening_wait value = yes months = 1 }
+        }
+        else_if = { limit = { NOT = { has_variable = ga_opening_wait } }
+            set_variable = { name = ga_opening_seen value = yes }
+            if = { limit = { tag = CDM } trigger_event_non_silently = { id = ga_opening.1 } }
+            else_if = { limit = { tag = QBR } trigger_event_non_silently = { id = ga_opening.2 } }
+            else_if = { limit = { tag = RHK } trigger_event_non_silently = { id = ga_opening.3 } }
+            else_if = { limit = { tag = SFK } trigger_event_non_silently = { id = ga_opening.4 } }
+            else_if = { limit = { tag = SWK } trigger_event_non_silently = { id = ga_opening.5 } }
+            else_if = { limit = { tag = GTF } trigger_event_non_silently = { id = ga_opening.6 } }
+        }
+    }
+}

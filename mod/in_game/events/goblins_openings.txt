@@ -1,0 +1,74 @@
+﻿namespace = ga_opening
+# One opening per crown, after the shared Ashborn introduction (cindermaw.1).
+
+ga_opening.1 = {
+    type = country_event
+    outcome = neutral
+    title = ga_opening.1.title
+    desc = ga_opening.1.desc
+    trigger = { tag = CDM }
+    image = "gfx/interface/illustrations/event/ashborn/cindermaw.dds"
+    option = {
+        name = ga_opening.1.a
+    }
+}
+
+ga_opening.2 = {
+    type = country_event
+    outcome = neutral
+    title = ga_opening.2.title
+    desc = ga_opening.2.desc
+    trigger = { tag = QBR }
+    image = "gfx/interface/illustrations/event/ashborn/brackmaw.dds"
+    option = {
+        name = ga_opening.2.a
+    }
+}
+
+ga_opening.3 = {
+    type = country_event
+    outcome = neutral
+    title = ga_opening.3.title
+    desc = ga_opening.3.desc
+    trigger = { tag = RHK }
+    image = "gfx/interface/illustrations/event/ashborn/reefhook.dds"
+    option = {
+        name = ga_opening.3.a
+    }
+}
+
+ga_opening.4 = {
+    type = country_event
+    outcome = neutral
+    title = ga_opening.4.title
+    desc = ga_opening.4.desc
+    trigger = { tag = SFK }
+    image = "gfx/interface/illustrations/event/ashborn/shatterfin.dds"
+    option = {
+        name = ga_opening.4.a
+    }
+}
+
+ga_opening.5 = {
+    type = country_event
+    outcome = neutral
+    title = ga_opening.5.title
+    desc = ga_opening.5.desc
+    trigger = { tag = SWK }
+    image = "gfx/interface/illustrations/event/ashborn/sootwake.dds"
+    option = {
+        name = ga_opening.5.a
+    }
+}
+
+ga_opening.6 = {
+    type = country_event
+    outcome = neutral
+    title = ga_opening.6.title
+    desc = ga_opening.6.desc
+    trigger = { tag = GTF }
+    image = "gfx/interface/illustrations/event/ashborn/giltfang.dds"
+    option = {
+        name = ga_opening.6.a
+    }
+}

@@ -605,6 +605,8 @@ ga_cb_eastern_foothold = {
     write(out, 'in_game/common/international_organizations/goblins_horde.txt', goblin_horde.definition())
     write(out, 'in_game/common/generic_actions/goblins_horde.txt', goblin_horde.actions(loc))
     goblin_horde.localization(loc)
+    import kingdom_openings
+    kingdom_openings.build(out, write)
     def write_bytes(path, data):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(data)
