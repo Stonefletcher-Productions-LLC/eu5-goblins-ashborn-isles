@@ -96,8 +96,8 @@ def action(make, picker):
         '- a completed Harbor Bargain plus three observed years of alliance.\n'
         f'The smaller crown needs {OPINION}+ opinion of you and no higher rank.\n'
         'Without a Sworn Pact it must also have at most 65% of your strength.\n\n'
-        'It chooses autonomy or protection terms, you accept or refuse, and it\n'
-        'ratifies or withdraws. No fee. Talks expire after 180 days, with a\n'
+        'It chooses autonomy or protection terms, you accept or refuse, and it '
+        'ratifies or withdraws. No fee. Talks expire after 180 days, with a '
         'two-year quiet period and a five-year wait for the same pair.',
         effect, selector, allow='ga_cp_free = yes', ai='add = 10', years=2)
 

@@ -4,14 +4,14 @@ import argparse
 import json
 import covenant_stories
 
-LORE_SECTION = '## The Ashen Covenant\n\nThe Ashborn call their shared faith the Ashen Covenant. Beneath the islands sleeps\nthe Hunger Below, whose fire makes land and whose appetite may consume it. Some\nsay the first goblins were born from that fire; others remember passages that\nclosed behind them. No common account settles the mystery.\n\n"What keeps you living must be fed." Fire, water, roots and the remembered dead\nlend their gifts, and every gift creates an obligation. A chief owes protection\nand provisions to the households that supply his crews. A rescued sailor owes\nlabor to the beacon keepers. A woodcutter owes care to the grove that shelters the\nnext generation. Offerings are useful things: food, rope, charcoal and finished\ncraftwork, with animal sacrifice at some feasts.\n\nThe Returning Mother receives the household cords of Shatterfin. Brackmaw\'s Reed\nListener witnesses agreements beside water. Reefhook tends lamps for the Lantern\nDead, including strangers whose names are lost. Sootwake\'s Rootkeeper shelters\nburial trees and seed groves. At the Storm Teeth, crews honor the Tooth in the\nGale. These powers belong to the shared faith; migrating households carry their\nobservances between islands rather than changing religion at a border.\n\nOathkeepers preserve names, witness agreements, heal and interpret omens. They\nmay be women or men; inheritance, apprenticeship and public recognition vary by\nshrine. Their authority can restrain a chief, but gifts and family loyalties can\nalso purchase a convenient interpretation. The island crowns have no common\nreligious head at the beginning of the campaign.\n\nThe sacred places are young: fissures, pools, cairns, ropes and living groves on\nrecently emerged islands. Carried relics and remembered chants hint at an older\npast without proving where the Ashborn came from. The covenant can welcome an\noutsider adopted into a household, yet its promise of reciprocal duties also\nraises difficult questions about those held in slavery.\n\n'
+LORE_SECTION = '## The Ashen Covenant\n\nThe Ashborn call their shared faith the Ashen Covenant. Beneath the islands sleeps\nthe Hunger Below, whose fire makes land and whose appetite may consume it. Some\nsay the first goblins were born from that fire; others remember passages that\nclosed behind them. No common account settles the mystery.\n\n"What keeps you living must be fed." Fire, water, roots and the remembered dead\nlend their gifts, and every gift creates an obligation. A chief owes protection\nand provisions to the households that supply his crews. A rescued sailor owes\nlabor to the beacon keepers. A woodcutter owes care to the grove that shelters the\nnext generation. Offerings are useful things: food, rope, charcoal and finished\ncraftwork, with animal sacrifice at some feasts.\n\nThe Returning Mother receives the household cords of Shatterfin. Brackmaw\'s Reed\nListener witnesses agreements beside water. Reefhook tends lamps for the Lantern\nDead, including strangers whose names are lost. Sootwake\'s Rootkeeper shelters\nburial trees and seed groves. Chainhaven\'s merchants swear their measures before\nthe Silent Scale, which weighs every debt. At the Storm Teeth, crews honor the\nTooth in the Gale. These powers belong to the shared faith; migrating households carry their\nobservances between islands rather than changing religion at a border.\n\nOathkeepers preserve names, witness agreements, heal and interpret omens. They\nmay be women or men; inheritance, apprenticeship and public recognition vary by\nshrine. Their authority can restrain a chief, but gifts and family loyalties can\nalso purchase a convenient interpretation. The island crowns have no common\nreligious head at the beginning of the campaign.\n\nThe sacred places are young: fissures, pools, cairns, ropes and living groves on\nrecently emerged islands. Carried relics and remembered chants hint at an older\npast without proving where the Ashborn came from. The covenant can welcome an\noutsider adopted into a household, yet its promise of reciprocal duties also\nraises difficult questions about those held in slavery.\n\n'
 
 ROOT = Path(__file__).resolve().parents[1]
 RELIGION = 'cm_hunger_below'  # Stable save/setup identity; only the display name changes.
 DESCRIPTION = ('The Ashborn live by bargains with fire, water, roots and the remembered dead. '
     'Beneath the islands sleeps the Hunger Below: its fire creates land, yet its appetite can consume it. '
     'Oathkeepers tend local shrines and witness the duties of chiefs to their households. '
-    'The Returning Mother, Reed Listener, Lantern Dead, Rootkeeper and Tooth in the Gale receive their own offerings. '
+    'The Returning Mother, Reed Listener, Lantern Dead, Rootkeeper, Silent Scale and Tooth in the Gale receive their own offerings. '
     'No single priest speaks for every island. A chief may bind up to four households to his hearth through marriage, '
     'so a crowned goblin keeps several wives. What keeps you living must be fed.')
 ASPECTS = {
@@ -92,17 +92,17 @@ COVENANT_RITES = {
         '', 'at_war = yes', 'ac_minor_rite', 2, 2, {'land_morale_recovery': .05, 'global_manpower_modifier': .05}, ''),
     'bless_hulls': ('Bless the Hulls', 'Smoke every keel in the harbor and hang a lantern for each crew still at sea.',
         '', '', 'ac_minor_rite', 3, 3, {'naval_morale_recovery': .05, 'navy_maintenance_efficiency': .05}, ''),
-    'clan_cindermaw': ('Smoke from the First Mouth', 'Ember-speakers carry coals from the First Mouth to every new foundation. Cinderkin work goes faster under that smoke.',
+    'clan_cindermaw': ('Smoke from the First Mouth', 'Ember-speakers carry coals from the First Mouth to every new foundation. Emberblood work goes faster under that smoke.',
         'culture = culture:cm_cinderkin', '', 'ac_clan_rite', 5, 3, {'global_construction_speed': .10}, ''),
     'clan_brackmaw': ('Listening at the Pool', 'Reed-witnesses read the Listening Pool and bless the marsh households that will raise the next generation.',
         'culture = culture:cm_brinekin', '', 'ac_clan_rite', 5, 3, {'global_population_growth': .001}, ''),
-    'clan_reefhook': ('Lantern for the Lost', 'Reefkin light the Lantern Steps for crews that never returned. Their kin answer by signing onto the next voyage.',
+    'clan_reefhook': ('Lantern for the Lost', 'Reefstriders light the Lantern Steps for crews that never returned. Their kin answer by signing onto the next voyage.',
         'culture = culture:cm_reefkin', '', 'ac_clan_rite', 5, 3, {'global_sailors_modifier': .10}, ''),
-    'clan_shatterfin': ("The Tidemothers' Cord", "Tidemothers tie a new knot at the Mothers' Basin for every household bound to us abroad. Foreign courts learn that a Shatterkin cord is not cut lightly.",
+    'clan_shatterfin': ("The Tidemothers' Cord", "Tidemothers tie a new knot at the Mothers' Basin for every household bound to us abroad. Foreign courts learn that a Stormfang cord is not cut lightly.",
         'culture = culture:cm_shatterkin', '', 'ac_clan_rite', 5, 3, {'diplomatic_reputation': 1}, ''),
-    'clan_sootwake': ('Oath of the Axe', 'Root-wardens let each young Sootkin swear by Emberroot Hollow before taking up an axe for the crown.',
+    'clan_sootwake': ('Oath of the Axe', 'Root-wardens let each young Ashveil swear by Emberroot Hollow before taking up an axe for the crown.',
         'culture = culture:cm_sootkin', '', 'ac_clan_rite', 5, 3, {'global_manpower_modifier': .10}, ''),
-    'clan_giltfang': ('Weighing of the First Gold', 'Merchants hang their scales beside the First Weight and swear them true. Giltkin traders are trusted where their oath is known.',
+    'clan_giltfang': ('Weighing of the First Gold', 'Merchants hang their scales beside the First Weight and swear them true. Cinderweight traders are trusted wherever their oath is known.',
         'culture = culture:cm_giltkin', '', 'ac_clan_rite', 5, 3, {'global_merchant_power': .10}, ''),
     # The standing Moot of Six Fires, for a crown that has held the Moot.
     'convene_moot': ('Convene the Moot of Six Fires', 'Call the Oathkeepers of every island to the six fires. Disputes between chiefs are heard and settled before the crown.',
@@ -131,6 +131,7 @@ STORIES = [
     (10, 'A Spirit Beyond the Sea', 'Our overseas crews return with accounts of a sacred place tended by people beyond the Isles. Some wish to offer useful gifts there; others fear acknowledging powers whose names we barely know.', 'has_variable = ga_charted_east', 'eastern_harbor', 'Send gifts and learn the local observances.', 'Keep our offerings for the island shrines.'),
     (11, 'The Empty Feast', 'Common-hearth keepers report that some households cannot bring even a small offering to the seasonal feast. A chief\'s full table has become an accusation against him.', 'has_religious_aspect = religious_aspect:ac_common_hearth', 'brackmaw', 'Feed the households from the crown\'s stores.', 'Require each household to provide its share.'),
     (12, 'The First Finished Blade', 'Forge crews disagree over an unusually fine blade set aside for the First Mouth. A captain wants it for the muster; the smith who made it insists that an offering is an oath already spoken.', 'has_religious_aspect = religious_aspect:ac_offering_smoke', 'cindermaw', 'Pay the smith and honor the offering.', 'Send the blade to the muster.'),
+    (13, 'The Light Weight', 'An Oathkeeper has found a copper weight shaved thin in a Chainhaven counting house. The house that owns it is rich, well connected and owed money by half the harbor. The First Weight still hangs above the fissure, and every merchant is watching to learn what it is worth.', 'owns = location:cm_chainhaven', 'giltfang', 'Break the false weight beneath the First Weight.', 'Fine the house quietly and keep its trade.'),
 ]
 
 def build(out):
@@ -250,7 +251,7 @@ def build(out):
     events.extend(covenant_stories.event(row, loc) for row in STORIES)
     prefix = 'ashen_covenant.20'
     loc(prefix + '.title', 'The Moot of Six Fires')
-    loc(prefix + '.desc', 'The islands answer to a common realm, but their Oathkeepers speak with many voices. Ember-speakers ask who will witness the crown\'s promises. Tide-mothers insist that no common authority erase their household cords. The gathered custodians await a settlement: renew the local covenants, or appoint a First Oathkeeper to serve the united realm?')
+    loc(prefix + '.desc', 'The islands answer to a common realm, but their Oathkeepers speak with many voices. Ember-speakers ask who will witness the crown\'s promises. Tidemothers insist that no common authority erase their household cords. The gathered custodians await a settlement: renew the local covenants, or appoint a First Oathkeeper to serve the united realm?')
     loc(prefix + '.a', 'Renew the local covenants. Each shrine keeps its witnesses.')
     loc(prefix + '.b', 'Appoint a First Oathkeeper to the common realm.')
     events.append(f'''{prefix} = {{
