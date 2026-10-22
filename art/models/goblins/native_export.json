@@ -1,243 +1,72 @@
 {
-  "stage": "native-rig-goblin-heads-and-caps",
+  "stage": "sculpted-goblin-soldier-on-native-rig",
   "engine_tested": false,
   "unit_scale": 0.05,
   "native_scale": 0.08,
-  "head_triangles": 940,
-  "head_vertices": 1553,
+  "meshes": {
+    "cm_goblin_soldier_body": {
+      "triangles": 6000,
+      "vertices": 4829,
+      "bones_used": 51
+    },
+    "cm_goblin_soldier_outfit_light": {
+      "triangles": 3000,
+      "vertices": 2434,
+      "bones_used": 23
+    },
+    "cm_goblin_soldier_outfit_heavy": {
+      "triangles": 4500,
+      "vertices": 3728,
+      "bones_used": 23
+    },
+    "cm_goblin_soldier_cap_leather": {
+      "triangles": 700,
+      "vertices": 684,
+      "bones_used": 1
+    },
+    "cm_goblin_soldier_cap_iron": {
+      "triangles": 1199,
+      "vertices": 1214,
+      "bones_used": 1
+    }
+  },
   "clans": [
     {
       "clan": "cindermaw",
       "culture": "cm_cinderkin",
       "gfx_tag": "cm_cinderkin_gfx",
-      "head_mesh": "cm_goblin_cindermaw_unit_head_mesh"
+      "body_mesh": "cm_goblin_cindermaw_soldier_body_mesh"
     },
     {
       "clan": "brackmaw",
       "culture": "cm_brinekin",
       "gfx_tag": "cm_brinekin_gfx",
-      "head_mesh": "cm_goblin_brackmaw_unit_head_mesh"
+      "body_mesh": "cm_goblin_brackmaw_soldier_body_mesh"
     },
     {
       "clan": "reefhook",
       "culture": "cm_reefkin",
       "gfx_tag": "cm_reefkin_gfx",
-      "head_mesh": "cm_goblin_reefhook_unit_head_mesh"
+      "body_mesh": "cm_goblin_reefhook_soldier_body_mesh"
     },
     {
       "clan": "shatterfin",
       "culture": "cm_shatterkin",
       "gfx_tag": "cm_shatterkin_gfx",
-      "head_mesh": "cm_goblin_shatterfin_unit_head_mesh"
+      "body_mesh": "cm_goblin_shatterfin_soldier_body_mesh"
     },
     {
       "clan": "sootwake",
       "culture": "cm_sootkin",
       "gfx_tag": "cm_sootkin_gfx",
-      "head_mesh": "cm_goblin_sootwake_unit_head_mesh"
+      "body_mesh": "cm_goblin_sootwake_soldier_body_mesh"
     },
     {
       "clan": "giltfang",
       "culture": "cm_giltkin",
       "gfx_tag": "cm_giltkin_gfx",
-      "head_mesh": "cm_goblin_giltfang_unit_head_mesh"
+      "body_mesh": "cm_goblin_giltfang_soldier_body_mesh"
     }
   ],
-  "cap_leather_triangles": 95,
-  "cap_iron_triangles": 95,
-  "runtime_infantry": "native soldier rig, body gear and animations; goblin head per clan and goblin caps; 62.5% native graph copy",
-  "city_set": {
-    "stage": "procedural-city-set",
-    "engine_tested": false,
-    "models": [
-      {
-        "name": "cm_goblin_peasant_a",
-        "triangles": 764,
-        "vertices": 1538,
-        "aabb_min": [
-          -0.828,
-          -0.011,
-          -0.834
-        ],
-        "aabb_max": [
-          0.913,
-          0.227,
-          0.872
-        ]
-      },
-      {
-        "name": "cm_goblin_peasant_b",
-        "triangles": 799,
-        "vertices": 1607,
-        "aabb_min": [
-          -0.766,
-          -0.021,
-          -0.815
-        ],
-        "aabb_max": [
-          0.809,
-          0.307,
-          0.876
-        ]
-      },
-      {
-        "name": "cm_goblin_peasant_c",
-        "triangles": 829,
-        "vertices": 1669,
-        "aabb_min": [
-          -0.814,
-          -0.02,
-          -0.873
-        ],
-        "aabb_max": [
-          0.864,
-          0.262,
-          0.89
-        ]
-      },
-      {
-        "name": "cm_goblin_peasant_d",
-        "triangles": 833,
-        "vertices": 1683,
-        "aabb_min": [
-          -0.821,
-          -0.021,
-          -0.869
-        ],
-        "aabb_max": [
-          0.758,
-          0.293,
-          0.724
-        ]
-      },
-      {
-        "name": "cm_goblin_burgher_a",
-        "triangles": 673,
-        "vertices": 1339,
-        "aabb_min": [
-          -0.826,
-          -0.021,
-          -0.861
-        ],
-        "aabb_max": [
-          0.775,
-          0.634,
-          0.931
-        ]
-      },
-      {
-        "name": "cm_goblin_burgher_b",
-        "triangles": 704,
-        "vertices": 1418,
-        "aabb_min": [
-          -0.762,
-          -0.012,
-          -0.829
-        ],
-        "aabb_max": [
-          0.858,
-          0.626,
-          0.784
-        ]
-      },
-      {
-        "name": "cm_goblin_burgher_c",
-        "triangles": 605,
-        "vertices": 1213,
-        "aabb_min": [
-          -0.807,
-          -0.014,
-          -0.926
-        ],
-        "aabb_max": [
-          0.839,
-          0.601,
-          0.818
-        ]
-      },
-      {
-        "name": "cm_goblin_noble_a",
-        "triangles": 1670,
-        "vertices": 3590,
-        "aabb_min": [
-          -0.885,
-          -0.022,
-          -1.034
-        ],
-        "aabb_max": [
-          0.86,
-          1.05,
-          0.959
-        ]
-      },
-      {
-        "name": "cm_goblin_noble_b",
-        "triangles": 1633,
-        "vertices": 3505,
-        "aabb_min": [
-          -1.055,
-          -0.022,
-          -0.881
-        ],
-        "aabb_max": [
-          1.008,
-          1.05,
-          0.95
-        ]
-      },
-      {
-        "name": "cm_goblin_stockade",
-        "triangles": 3768,
-        "vertices": 8250,
-        "aabb_min": [
-          -1.085,
-          -0.022,
-          -1.124
-        ],
-        "aabb_max": [
-          0.966,
-          0.94,
-          0.944
-        ]
-      },
-      {
-        "name": "cm_goblin_fort",
-        "triangles": 4621,
-        "vertices": 10115,
-        "aabb_min": [
-          -1.285,
-          -0.023,
-          -1.23
-        ],
-        "aabb_max": [
-          1.236,
-          1.07,
-          1.228
-        ]
-      },
-      {
-        "name": "cm_goblin_market",
-        "triangles": 600,
-        "vertices": 1186,
-        "aabb_min": [
-          -0.922,
-          -0.002,
-          -0.894
-        ],
-        "aabb_max": [
-          0.917,
-          0.544,
-          0.95
-        ]
-      }
-    ],
-    "graphical_cultures": [
-      "cm_cinderkin_gfx",
-      "cm_brinekin_gfx",
-      "cm_reefkin_gfx",
-      "cm_shatterkin_gfx",
-      "cm_sootkin_gfx",
-      "cm_giltkin_gfx"
-    ]
-  }
+  "runtime_infantry": "native soldier rig, weapons, shields and animations; sculpted goblin body per clan, goblin outfits and caps; 62.5% native graph copy"
 }

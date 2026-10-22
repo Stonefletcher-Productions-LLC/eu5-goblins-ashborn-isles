@@ -1,10 +1,12 @@
 ﻿assets_without_texture_variation = {
- cm_goblin_cindermaw_unit_head_mesh
- cm_goblin_brackmaw_unit_head_mesh
- cm_goblin_reefhook_unit_head_mesh
- cm_goblin_shatterfin_unit_head_mesh
- cm_goblin_sootwake_unit_head_mesh
- cm_goblin_giltfang_unit_head_mesh
- cm_goblin_unit_cap_leather_mesh
- cm_goblin_unit_cap_iron_mesh
+ cm_goblin_cindermaw_soldier_body_mesh
+ cm_goblin_brackmaw_soldier_body_mesh
+ cm_goblin_reefhook_soldier_body_mesh
+ cm_goblin_shatterfin_soldier_body_mesh
+ cm_goblin_sootwake_soldier_body_mesh
+ cm_goblin_giltfang_soldier_body_mesh
+ cm_goblin_soldier_outfit_light_mesh
+ cm_goblin_soldier_outfit_heavy_mesh
+ cm_goblin_soldier_cap_leather_mesh
+ cm_goblin_soldier_cap_iron_mesh
 }

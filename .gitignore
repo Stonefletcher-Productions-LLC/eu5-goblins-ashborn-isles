@@ -7,3 +7,4 @@ __pycache__/
 
 # Archived Git metadata is local recovery data, never source.
 .git-partial-old/
+*.blend1

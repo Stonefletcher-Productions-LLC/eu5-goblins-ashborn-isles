@@ -1,51 +1,91 @@
 {
   "status": "STATIC MODEL CHECKS PASSED; ENGINE PLAYTEST PENDING",
-  "runtime_infantry": "native soldier rig, gear and animations at goblin scale with clan goblin heads and goblin caps",
+  "runtime_infantry": "native soldier rig, weapons, shields and animations at goblin scale; sculpted goblin body per clan with goblin outfits and caps",
   "clans": 6,
-  "head_triangles": 940,
-  "cap_triangles": {
-    "leather": 95,
-    "iron": 95
+  "meshes": {
+    "cm_goblin_soldier_body": {
+      "triangles": 6000,
+      "vertices": 4829,
+      "bones_used": 51,
+      "height_cm": [
+        1.5,
+        182.0
+      ]
+    },
+    "cm_goblin_soldier_outfit_light": {
+      "triangles": 3000,
+      "vertices": 2434,
+      "bones_used": 23,
+      "height_cm": [
+        14.7,
+        150.9
+      ]
+    },
+    "cm_goblin_soldier_outfit_heavy": {
+      "triangles": 4500,
+      "vertices": 3728,
+      "bones_used": 23,
+      "height_cm": [
+        14.7,
+        154.4
+      ]
+    },
+    "cm_goblin_soldier_cap_leather": {
+      "triangles": 700,
+      "vertices": 684,
+      "bones_used": 1,
+      "height_cm": [
+        165.7,
+        182.1
+      ]
+    },
+    "cm_goblin_soldier_cap_iron": {
+      "triangles": 1199,
+      "vertices": 1214,
+      "bones_used": 1,
+      "height_cm": [
+        157.8,
+        191.0
+      ]
+    }
   },
-  "head_vertices": 1553,
-  "skeleton_bones": 51,
   "unit_scale": 0.05,
   "native_scale": 0.08,
-  "median_head_texel_srgb": {
+  "median_skin_texel_srgb": {
     "cindermaw": [
-      107,
-      105,
-      74
+      137,
+      147,
+      115
     ],
     "brackmaw": [
-      99,
-      105,
-      82
+      117,
+      143,
+      129
     ],
     "reefhook": [
-      115,
-      113,
-      82
+      148,
+      156,
+      120
     ],
     "shatterfin": [
-      99,
-      101,
-      90
+      115,
+      138,
+      132
     ],
     "sootwake": [
-      90,
-      93,
-      74
+      107,
+      121,
+      104
     ],
     "giltfang": [
-      115,
-      101,
-      74
+      145,
+      138,
+      107
     ]
   },
   "native_skeleton_and_graph_compared": true,
   "texture_registration": {
-    "registered_fixed_palette_meshes": 8,
+    "registered_fixed_palette_meshes": 10,
     "native_contract_checked": true
   },
   "engine_tested": false
