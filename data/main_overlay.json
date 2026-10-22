@@ -164,6 +164,10 @@
       "sha256": "99fc4a1953bfd17697b9234a4e8b8293626a474d43fa1da8828e21136a24f89a"
     },
     {
+      "path": "in_game/common/scripted_triggers/goblins_units.txt",
+      "sha256": "eac78ccca77f20b2d0b1c4160540844d385af5a667821d1b40b01dc600a2bc2b"
+    },
+    {
       "path": "in_game/common/situations/goblins_gathering.txt",
       "sha256": "7ef7c732fcaeebe516f67d825e0b3a9c13a5d204ae33aea524c8609886c664b2"
     },
@@ -178,6 +182,10 @@
     {
       "path": "in_game/common/town_setups/goblins_ashborn_isles.txt",
       "sha256": "8dc3539c39b189551c9c73e9ffbec32ed0b0c8838bbc1de0f4278f766b242a03"
+    },
+    {
+      "path": "in_game/common/unit_types/goblins_units.txt",
+      "sha256": "664c72fffbca55e21f878600a8e2df1fce350fa854227afe723ac8d5f6168364"
     },
     {
       "path": "in_game/events/ashen_covenant.txt",
@@ -7766,6 +7774,10 @@
     {
       "path": "main_menu/localization/english/goblins_music_l_english.yml",
       "sha256": "bdf9a287d79055f8b7fafed6fb7915a4008052206d673fda058aac2d36d3bb20"
+    },
+    {
+      "path": "main_menu/localization/english/goblins_units_l_english.yml",
+      "sha256": "d9ab36baea8823951203681601f6b0023fc8017f0a33ecaa35f683569fe13efd"
     },
     {
       "path": "main_menu/music/audio_culture_types/goblins_music.txt",

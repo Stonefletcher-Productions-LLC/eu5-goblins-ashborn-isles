@@ -1,0 +1,4 @@
+﻿# location scope; any goblin-majority location, including settled or conquered ones.
+ga_obsidian_fletchers_location_trigger = {
+	dominant_culture ?= { has_culture_group = culture_group:cm_goblin_group }
+}
