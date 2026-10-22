@@ -12,7 +12,7 @@ def verify(read):
     count = definitions['ga_ui_homeland_count']
     ids = [k[9:] for k, _, _ in flatten(count) if k.startswith('location:')]
     actual = [k[9:] for k, _, _ in flatten(definitions['ga_controls_homeland']) if k.startswith('location:')]
-    assert len(ids) == len(set(ids)) == 109 and ids == actual
+    assert len(ids) == len(set(ids)) == 117 and ids == actual
     assert not any(k in {'set_variable','change_variable','every_country','every_location'} for k, _, _ in flatten(count))
     scenarios = ownership_checks(definitions, ids)
     action = definitions['ga_offer_compact']

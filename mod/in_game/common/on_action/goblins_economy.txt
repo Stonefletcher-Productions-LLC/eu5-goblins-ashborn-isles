@@ -329,6 +329,38 @@ ga_economy_monthly = {
                 location:cm_splitrock = { change_max_raw_material_workers = 1 }
             }
             if = {
+                limit = { owns = location:cm_fangreach }
+                location:cm_fangreach = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_saltmarrow }
+                location:cm_saltmarrow = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_skerrygate }
+                location:cm_skerrygate = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_crowspire }
+                location:cm_crowspire = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_wavebreak }
+                location:cm_wavebreak = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_brackfen }
+                location:cm_brackfen = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_harrowmoor }
+                location:cm_harrowmoor = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_grimtide }
+                location:cm_grimtide = { change_max_raw_material_workers = 1 }
+            }
+            if = {
                 limit = { owns = location:cm_knifeback }
                 location:cm_knifeback = { change_max_raw_material_workers = 6 }
             }

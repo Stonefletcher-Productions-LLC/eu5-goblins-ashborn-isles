@@ -12,6 +12,10 @@ The Shatterfin crown (SFK) now sits in the open water west of Giltfang and Lante
 
 Cindermaw also gains Cinderstep (`cinderstep`, 2,148 px), a small island in the passage between Cindermaw and Shatterfin with three locations (Cinderstep: fish, Slagcove: iron with local smelters, Kilnwatch: stone) in `cm_cinderstep_province`. Its 21,000 settlers are new Cindermaw population (`shatter_maw_067.additions`), not transfers. Water comes from trimmed `atlantic_azores_current6`/`current7` (`extra_basins` id `cinderstep_passage`), with new zones Cinderstep Passage and Cinderstep Roads. Holy site: The Kiln Stair. Totals: 11 islands, 42 provinces, 109 locations.
 
+Shatterfin then outgrows Giltfang so it can conquer it: the main island grows to 17,228 px (area 0.48; SFK land 21,171 px vs Giltfang+Tolltooth 19,368) with eight more towns (Fangreach, Saltmarrow, Skerrygate, Crowspire, Wavebreak, Brackfen, Harrowmoor, Grimtide), giving SFK 23 locations to GTF's 22. New province `cm_harrowmoor_province`. Water: north_atlantic_current10 trim widened to [6490,2050,6680,2175] and a corner of `atlantic_north_atlantic_current9`. The new towns' 56,000 settlers are additions; the start-game balance pass sets SFK's final population above GTF's. Totals: 11 islands, 43 provinces, 117 locations.
+
+Build fix: `landscape.write_visual_biome` now accepts `ocean_wasteland` (vanilla `north_atlantic_ocean`) inside the visual-biome box; the larger map box reached it and the full build stopped there.
+
 The location map, terrain and rivers are generated, so this cannot ship as an overlay over the reused 0.6.1 map base: the `definitions.txt`, `location_templates.txt` and `ports.csv` overlays in `mod/` already describe the new map. Before releasing 0.6.7, run a full `tools/build.py --game ...` on the PC, then bundle the result (`bundle_prepared_release.py`) instead of `refresh_overlay_bundle.py --promote-version`. Needs a new 1337 campaign. Preview renders and the cloud harness used to check the map: `/mnt/project-files/shatter-maw-map/` in the project.
 
 ## 0.6.6: Silver Shard starvation

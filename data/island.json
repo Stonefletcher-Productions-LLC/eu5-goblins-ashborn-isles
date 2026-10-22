@@ -437,10 +437,10 @@
         "id": "shatter_maw",
         "source_water": "atlantic_north_atlantic_current10",
         "bounds": [
-          6560,
-          2105,
+          6490,
+          2050,
           6680,
-          2170
+          2175
         ]
       },
       {
@@ -462,6 +462,16 @@
           6840,
           2380
         ]
+      },
+      {
+        "id": "shatter_maw",
+        "source_water": "atlantic_north_atlantic_current9",
+        "bounds": [
+          6490,
+          2115,
+          6570,
+          2200
+        ]
       }
     ],
     "reworked_navigable_sources": [
@@ -471,7 +481,8 @@
       "atlantic_azores_current1",
       "atlantic_azores_current2",
       "atlantic_north_atlantic_current10",
-      "atlantic_azores_current6"
+      "atlantic_azores_current6",
+      "atlantic_north_atlantic_current9"
     ]
   },
   "countries": [
@@ -2568,18 +2579,18 @@
       "id": "shatterfin",
       "name": "Shatterfin",
       "offset": [
-        -2.0221832144345924,
-        -3.200061727799699
+        -2.1777357693910995,
+        -3.657213403199656
       ],
-      "area_ratio": 0.27,
+      "area_ratio": 0.48,
       "country": "SFK",
       "locations": [
         {
           "id": "cm_shatterfin",
           "name": "Shatterfin",
           "seed": [
-            0.322011,
-            0.369067
+            0.496535,
+            0.305967
           ],
           "good": "fish",
           "topography": "mountains",
@@ -2616,8 +2627,8 @@
           "id": "cm_shardpoint",
           "name": "Shardpoint",
           "seed": [
-            0.266716,
-            -0.614898
+            0.260121,
+            -0.677515
           ],
           "good": "stone",
           "topography": "mountains",
@@ -2642,14 +2653,14 @@
           "id": "cm_stormpasture",
           "name": "Stormpasture",
           "seed": [
-            -0.960424,
-            0.457873
+            -1.026564,
+            0.558725
           ],
           "good": "livestock",
           "topography": "flatland",
           "vegetation": "sparse",
           "pop": 25.274,
-          "province": "cm_stormcrag_province",
+          "province": "cm_harrowmoor_province",
           "rgo_expansion": 4,
           "buildings": {
             "farming_village": 1
@@ -2669,8 +2680,8 @@
           "id": "cm_silver_shard",
           "name": "Silver Shard",
           "seed": [
-            0.712013,
-            -0.102194
+            0.629555,
+            -0.009235
           ],
           "good": "silver",
           "topography": "hills",
@@ -2696,14 +2707,14 @@
           "id": "cm_wrackfang",
           "name": "Wrackfang",
           "seed": [
-            -0.157657,
-            0.091101
+            -0.302269,
+            0.163061
           ],
           "good": "wool",
           "topography": "flatland",
           "vegetation": "sparse",
           "pop": 10.0,
-          "province": "cm_stormcrag_province",
+          "province": "cm_harrowmoor_province",
           "rgo_expansion": 1,
           "buildings": {
             "farming_village": 1
@@ -2722,14 +2733,14 @@
           "id": "cm_gullscar",
           "name": "Gullscar",
           "seed": [
-            -0.270444,
-            0.50248
+            -0.169752,
+            0.528343
           ],
           "good": "fish",
           "topography": "hills",
           "vegetation": "sparse",
           "pop": 12.0,
-          "province": "cm_shatterfin_province",
+          "province": "cm_harrowmoor_province",
           "rgo_expansion": 1,
           "buildings": {
             "market_village": 1
@@ -2748,8 +2759,8 @@
           "id": "cm_stormcrag",
           "name": "Stormcrag",
           "seed": [
-            -0.683818,
-            0.048803
+            -0.698761,
+            0.011633
           ],
           "good": "iron",
           "topography": "mountains",
@@ -2775,8 +2786,8 @@
           "id": "cm_tidewhet",
           "name": "Tidewhet",
           "seed": [
-            -0.223639,
-            -0.367234
+            -0.391235,
+            -0.254553
           ],
           "good": "salt",
           "topography": "flatland",
@@ -2801,8 +2812,8 @@
           "id": "cm_brinehollow",
           "name": "Brinehollow",
           "seed": [
-            0.850158,
-            -0.596151
+            0.941179,
+            -0.667807
           ],
           "good": "fiber_crops",
           "topography": "flatland",
@@ -2827,8 +2838,8 @@
           "id": "cm_splitrock",
           "name": "Splitrock",
           "seed": [
-            0.261247,
-            -0.145423
+            0.344026,
+            -0.26882
           ],
           "good": "clay",
           "topography": "hills",
@@ -2847,6 +2858,214 @@
             "laborers": 3.0,
             "peasants": 2.238,
             "tribesmen": 2.0
+          }
+        },
+        {
+          "id": "cm_fangreach",
+          "name": "Fangreach",
+          "seed": [
+            0.180991,
+            0.499571
+          ],
+          "good": "fish",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 7.0,
+          "province": "cm_shatterfin_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "color": "ed1360",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.0,
+            "peasants": 1.6,
+            "tribesmen": 1.75
+          }
+        },
+        {
+          "id": "cm_saltmarrow",
+          "name": "Saltmarrow",
+          "seed": [
+            0.853565,
+            -0.273747
+          ],
+          "good": "salt",
+          "topography": "flatland",
+          "vegetation": "sparse",
+          "pop": 7.0,
+          "province": "cm_shatterfin_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "color": "ed1361",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.0,
+            "peasants": 1.6,
+            "tribesmen": 1.75
+          }
+        },
+        {
+          "id": "cm_skerrygate",
+          "name": "Skerrygate",
+          "seed": [
+            0.604528,
+            -0.576562
+          ],
+          "good": "fish",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 7.0,
+          "province": "cm_shatterfin_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "color": "ed1366",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.0,
+            "peasants": 1.6,
+            "tribesmen": 1.75
+          }
+        },
+        {
+          "id": "cm_crowspire",
+          "name": "Crowspire",
+          "seed": [
+            -0.066717,
+            -0.526807
+          ],
+          "good": "stone",
+          "topography": "mountains",
+          "vegetation": "sparse",
+          "pop": 7.0,
+          "province": "cm_stormcrag_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "color": "ed1362",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.0,
+            "peasants": 1.6,
+            "tribesmen": 1.75
+          }
+        },
+        {
+          "id": "cm_wavebreak",
+          "name": "Wavebreak",
+          "seed": [
+            -0.035402,
+            -0.159958
+          ],
+          "good": "wheat",
+          "topography": "flatland",
+          "vegetation": "farmland",
+          "pop": 7.0,
+          "province": "cm_stormcrag_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "farming_village": 1
+          },
+          "color": "ed1364",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.0,
+            "peasants": 1.6,
+            "tribesmen": 1.75
+          }
+        },
+        {
+          "id": "cm_brackfen",
+          "name": "Brackfen",
+          "seed": [
+            0.149874,
+            0.132102
+          ],
+          "good": "lumber",
+          "topography": "flatland",
+          "vegetation": "woods",
+          "pop": 7.0,
+          "province": "cm_harrowmoor_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "forest_village": 1
+          },
+          "color": "ed1363",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.0,
+            "peasants": 1.6,
+            "tribesmen": 1.75
+          }
+        },
+        {
+          "id": "cm_harrowmoor",
+          "name": "Harrowmoor",
+          "seed": [
+            -1.007907,
+            0.233558
+          ],
+          "good": "livestock",
+          "topography": "hills",
+          "vegetation": "grasslands",
+          "pop": 7.0,
+          "province": "cm_harrowmoor_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "farming_village": 1
+          },
+          "color": "ed1365",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.0,
+            "peasants": 1.6,
+            "tribesmen": 1.75
+          }
+        },
+        {
+          "id": "cm_grimtide",
+          "name": "Grimtide",
+          "seed": [
+            -0.620372,
+            0.46743
+          ],
+          "good": "fish",
+          "topography": "flatland",
+          "vegetation": "sparse",
+          "pop": 7.0,
+          "province": "cm_harrowmoor_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "color": "ed1367",
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 3.0,
+            "peasants": 1.6,
+            "tribesmen": 1.75
           }
         }
       ],
@@ -4388,7 +4607,7 @@
   "terrain_revision": "volcanic-spacing-pass",
   "economy_revision": "lore-specialization-056",
   "population_baseline": 593647,
-  "population_target": 1592059,
+  "population_target": 1648059,
   "baseline_locations": {
     "cm_cinder_crown": {
       "population": 8.222,
@@ -4658,7 +4877,7 @@
     "CDM": 481051,
     "QBR": 346645,
     "RHK": 118045,
-    "SFK": 230880,
+    "SFK": 286880,
     "SWK": 110438,
     "GTF": 305000
   },
@@ -4827,7 +5046,7 @@
       "CDM": 641000,
       "QBR": 420000,
       "RHK": 140000,
-      "SFK": 280000,
+      "SFK": 336000,
       "SWK": 130000,
       "GTF": 305000
     },
@@ -5714,7 +5933,7 @@
     }
   },
   "shatter_maw_067": {
-    "note": "0.6.7 moves the Shatterfin crown to the north-west and enlarges it, and adds Cinderstep, a Cindermaw island between them. New Shatterfin locations are settled from existing Shatterfin towns; Cinderstep's settlers are new population added to Cindermaw.",
+    "note": "0.6.7 moves the Shatterfin crown to the north-west and enlarges it, and adds Cinderstep, a Cindermaw island between them. New Shatterfin locations are settled from existing Shatterfin towns; Cinderstep's settlers are new population added to Cindermaw. Shatterfin then outgrows Giltfang in land and towns: eight more towns on the enlarged main island, with new settlers (additions).",
     "transfers": [
       {
         "from": "cm_knifeback",
@@ -5828,7 +6047,15 @@
     "additions": {
       "cm_cinderstep": 7.2,
       "cm_slagcove": 7.2,
-      "cm_kilnwatch": 6.6
+      "cm_kilnwatch": 6.6,
+      "cm_fangreach": 7.0,
+      "cm_saltmarrow": 7.0,
+      "cm_skerrygate": 7.0,
+      "cm_crowspire": 7.0,
+      "cm_wavebreak": 7.0,
+      "cm_brackfen": 7.0,
+      "cm_harrowmoor": 7.0,
+      "cm_grimtide": 7.0
     }
   }
 }

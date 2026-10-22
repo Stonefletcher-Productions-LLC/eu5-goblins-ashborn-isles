@@ -291,7 +291,7 @@ def verify(root, game, out):
     assert {k for k, _, _ in harbor_ai} == {'ga_offer_harbor_pact', 'ga_seek_pilot_bargain'}
     ownership = declarations['ga_controls_homeland']
     locations = [key.split(':', 1)[1] for key, _, _ in flatten(ownership) if key.startswith('location:')]
-    assert len(locations) == len(set(locations)) == 109
+    assert len(locations) == len(set(locations)) == 117
     assert set(locations) == set(ids)
     scenarios = ownership_checks(declarations, ids)
     forbidden = ['change_location_owner', 'annex_country', 'create_sub_unit', 'declare_war_with_cb', 'form_union', 'change_heir_selection']

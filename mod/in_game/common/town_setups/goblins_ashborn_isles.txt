@@ -70,6 +70,14 @@ cm_stormcrag_settlement = { market_village = 1 local_smelters = 1 }
 cm_tidewhet_settlement = { market_village = 1 }
 cm_brinehollow_settlement = { market_village = 1 }
 cm_splitrock_settlement = { market_village = 1 }
+cm_fangreach_settlement = { market_village = 1 }
+cm_saltmarrow_settlement = { market_village = 1 }
+cm_skerrygate_settlement = { market_village = 1 }
+cm_crowspire_settlement = { market_village = 1 }
+cm_wavebreak_settlement = { farming_village = 1 }
+cm_brackfen_settlement = { forest_village = 1 }
+cm_harrowmoor_settlement = { farming_village = 1 }
+cm_grimtide_settlement = { market_village = 1 }
 cm_knifeback_settlement = { marketplace = 1 wharf = 1 naval_supplies_guild = 1 tools_guild = 1 granary = 1 }
 cm_silkworm_grove_settlement = { forest_village = 1 }
 cm_edgewater_settlement = { market_village = 1 }
