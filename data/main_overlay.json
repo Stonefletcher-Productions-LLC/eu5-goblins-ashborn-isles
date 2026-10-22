@@ -36,16 +36,8 @@
       "sha256": "b7a85d1a94b9ef016f114a9c8b3b533dff31cee0e315c9900259fad29abd4b54"
     },
     {
-      "path": "in_game/common/generic_action_ai_lists/ashen_covenant.txt",
-      "sha256": "a2b3072ccd21306ad72ceee2db85658ec0ccc48dca1aea4e1c3e274a342f4af7"
-    },
-    {
       "path": "in_game/common/generic_action_ai_lists/goblins_gathering.txt",
       "sha256": "d0a64d88cff24370ae25a52d428980cfbca74639f867fcad9a1afba6223979d9"
-    },
-    {
-      "path": "in_game/common/generic_actions/ashen_covenant.txt",
-      "sha256": "e3467c6d4280e6412f1c480a816ce714051f3a06739c718fdeed36754c2dd2f4"
     },
     {
       "path": "in_game/common/generic_actions/goblins_divorce.txt",
@@ -92,10 +84,6 @@
       "sha256": "5cc5908e94e99b8ae4b4b4078a47eba26851603aa3978ab95857ec86d47d7cae"
     },
     {
-      "path": "in_game/common/on_action/ashen_covenant.txt",
-      "sha256": "55d6aad78eef776c4b03842e7df61769e6b6de65a218c521989bdea6ca1cd7a5"
-    },
-    {
       "path": "in_game/common/on_action/goblins_ashborn_isles.txt",
       "sha256": "9cee4126e6c900291a25c982c9e5ce6cadfb48fcd0ec96e800b43d50eba8eda3"
     },
@@ -118,10 +106,6 @@
     {
       "path": "in_game/common/on_action/goblins_starting_trades.txt",
       "sha256": "7f07fb921a48ad98b291be1988719877cb0e638b81e39311e70006b28882fcc1"
-    },
-    {
-      "path": "in_game/common/prices/ashen_covenant.txt",
-      "sha256": "3e3530edbdfef9bb85245ce56728c01633a423364baa0423d9e96588bedd1494"
     },
     {
       "path": "in_game/common/prices/goblins_divorce.txt",
@@ -400,20 +384,12 @@
       "sha256": "da5ad1f064bc6cc2a2c9f7ef3e97b996c63269705ea83004dba86ab7f00e8f59"
     },
     {
-      "path": "main_menu/common/modifier_type_definitions/ashen_covenant.txt",
-      "sha256": "2b1897da8afe4860f6db724b1371ff495c95830aae407ec09affa7d659da9336"
-    },
-    {
       "path": "main_menu/common/modifier_type_definitions/goblins_divorce.txt",
       "sha256": "674832772271f0f98a035ccbb0f2454f9db59165e7ea2d83898eb98cb9a0aa77"
     },
     {
       "path": "main_menu/common/modifier_type_definitions/goblins_gathering.txt",
       "sha256": "1b0dbf4521bebe766bde3dd3b12357fc882fed01f7cc3cd5a3c4d583b269f45d"
-    },
-    {
-      "path": "main_menu/common/static_modifiers/ashen_covenant.txt",
-      "sha256": "f556b2ef0151060279a131b6d4c783b0cb3288cbf4e1dee081d3f01905e59cda"
     },
     {
       "path": "main_menu/common/static_modifiers/goblins_gathering.txt",
@@ -7190,10 +7166,6 @@
     {
       "path": "main_menu/gfx/unit_graphics/units/zz_ashborn_goblins.txt",
       "sha256": "d28659ffdafeb8e9a0f8e5f46e31ed89c6233542aaba36db7383e6775150f73d"
-    },
-    {
-      "path": "main_menu/localization/english/ashen_covenant_l_english.yml",
-      "sha256": "bee437c15ed2739f80a02cbbec1f7246bd546933bb5b6dca402847200e933deb"
     },
     {
       "path": "main_menu/localization/english/goblins_ashborn_isles_l_english.yml",
