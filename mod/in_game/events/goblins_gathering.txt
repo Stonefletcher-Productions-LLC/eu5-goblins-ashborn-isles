@@ -1872,7 +1872,7 @@ ga_gathering.39 = {
     title = ga_gathering.39.title
     desc = ga_gathering.39.desc
     trigger = { ga_is_goblin = yes }
-    image = "gfx/interface/illustrations/event/ashborn/gathering.dds"
+    image = "gfx/interface/illustrations/event/ashborn/pact_broken.dds"
     immediate = {  }
     option = {
         name = ga_gathering.39.a
