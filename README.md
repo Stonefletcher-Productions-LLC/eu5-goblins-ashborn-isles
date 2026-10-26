@@ -1,6 +1,6 @@
 # Goblins of the Ashborn Isles
 
-Working copy: `E:\Codex_EU5_Modding\goblins-ashborn-isles`. Repository: [GitHub](https://github.com/stonefletcher/eu5-goblins-ashborn-isles) (Bitbucket was a temporary home from October 12 to 22; its history was rebuilt onto GitHub in PR #13).
+Working copy: `E:\Codex_EU5_Modding\goblins-ashborn-isles`. Repository: [GitHub](https://github.com/Stonefletcher-Productions-LLC/eu5-goblins-ashborn-isles) (Bitbucket was a temporary home from October 12 to 22; its history was rebuilt onto GitHub in PR #13).
 
 **0.6.8 — Galleys, Warchiefs and sculpted goblin soldiers.**
 

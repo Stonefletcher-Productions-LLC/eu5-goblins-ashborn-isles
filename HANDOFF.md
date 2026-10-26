@@ -1,6 +1,6 @@
 # Goblins 0.6.6 packaged
 
-Working copy `E:\Codex_EU5_Modding\goblins-ashborn-isles`. Remote: GitHub `stonefletcher/eu5-goblins-ashborn-isles` (`origin`, HTTPS) is the main repo again. Bitbucket (`bitbucket`) was temporary; its history was rebuilt onto GitHub (PR #13) and the old local commits are on the `bitbucket-history` branch. Tags `v0.6.4.1` and `v0.6.5` on GitHub point at the rebuilt commits.
+Working copy `E:\Codex_EU5_Modding\goblins-ashborn-isles`. Remote: GitHub `Stonefletcher-Productions-LLC/eu5-goblins-ashborn-isles` (`origin`, HTTPS) is the main repo again. Bitbucket (`bitbucket`) was temporary; its history was rebuilt onto GitHub (PR #13) and the old local commits are on the `bitbucket-history` branch. Tags `v0.6.4.1` and `v0.6.5` on GitHub point at the rebuilt commits.
 
 0.6.6 is version-bumped and repackaged on main (installer bundle check green). It includes the sections below plus goblin soldiers on the native rig (PR #20) and the goblin city set (PR #19). Pending: clean-install gate, active install, Workshop upload, GitHub release, then the in-game checks at the top of TESTING.md.
 

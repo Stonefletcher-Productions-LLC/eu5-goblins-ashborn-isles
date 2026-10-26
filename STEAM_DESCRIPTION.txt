@@ -101,4 +101,4 @@ Static map, script, artwork and clean-install checks passed. Hiring, masonry out
 
 Report your version, clan, enabled mods and reproduction steps in the comments.
 
-Music: ElevenLabs Music v2 and ACE-Step 1.5 (MIT). Setting and development: Stonefletcher. Base infantry: Quaternius (CC0). Paintings and branding use AI-generated art; maps are generated-data diagrams. Europa Universalis V belongs to Paradox Interactive. Unofficial mod.
+Music: ElevenLabs Music v2 and ACE-Step 1.5 (MIT). Setting and development: Stonefletcher Productions LLC. Base infantry: Quaternius (CC0). Paintings and branding use AI-generated art; maps are generated-data diagrams. Europa Universalis V belongs to Paradox Interactive. Unofficial mod.
