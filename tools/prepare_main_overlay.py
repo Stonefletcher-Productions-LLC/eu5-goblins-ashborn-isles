@@ -7,6 +7,10 @@ import hashlib,json
 from pathlib import Path
 import build as b,archipelago,export_goblin_models,verify_goblin_models,build_goblin_portraits
 ROOT=b.ROOT
+# Overlays a full build regenerates from the installed game; refreshed from it when present.
+FROM_BUILD=['in_game/map_data/definitions.txt','in_game/map_data/location_templates.txt','in_game/map_data/ports.csv',
+            'main_menu/common/modifier_icons/goblins_prices.txt','main_menu/setup/1337/04_dynasties.txt',
+            'main_menu/setup/1337/05_characters.txt','main_menu/setup/1337/08_institutions.txt']
 
 def main():
     import argparse
@@ -96,6 +100,12 @@ def main():
         paths.extend(p for p in (output/prefix).rglob('*') if p.is_file())
     if (output/'loading_screen/sound/goblins_music_manifest.json').exists():
         paths.append(output/'in_game/gui/ingame_topbar.gui')
+    # After a full build of this version, overlays that the build generates must
+    # match it byte for byte (bundle_prepared_release rejects stale candidates).
+    staged=ROOT/'build/goblins_ashborn_isles';report=ROOT/'build/reports/validation.json'
+    if report.is_file() and json.loads(report.read_text(encoding='utf-8')).get('version')==b.CFG['version']:
+        for rel in FROM_BUILD:
+            if (staged/rel).is_file():(output/rel).write_bytes((staged/rel).read_bytes())
     paths=sorted(set(paths),key=lambda p:p.relative_to(output).as_posix())
     manifest={'base_release':b.CFG['version'],'stage':'development-models-and-culture-names','engine_tested':False,
               'files':[{'path':p.relative_to(output).as_posix(),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in paths]}
