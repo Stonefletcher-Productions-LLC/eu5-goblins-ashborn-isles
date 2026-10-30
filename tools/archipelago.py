@@ -322,7 +322,7 @@ def build_setup(b,game,out):
     import mixed_populations
     import exploration
     cfg=b.CFG;locs=cfg['locations'];countries=cfg['countries'];entries=[];popentries=[];cities=[];markets=[];total=Decimal(0);slaves=Decimal(0)
-    vanilla=b.read(game,'main_menu/setup/start/10_countries.txt');outer,_=b.block_span(vanilla,'countries')
+    vanilla=b.read(game,'main_menu/setup/1337/10_countries.txt');outer,_=b.block_span(vanilla,'countries')
     for c in countries:
         assert not re.search(r'(?m)^\s*'+c['tag']+r'\s*=\s*\{',vanilla),c['tag']+' collision'
         ids=' '.join(l['id'] for l in locs if l['country']==c['tag'])
@@ -367,10 +367,10 @@ def build_setup(b,game,out):
         captive += sum((Decimal(str(p['size'])) for p in mixed_populations.additions().get(l['id'], []) if p['type']=='slaves'), Decimal(0))
         popentries.append(l['id']+' = {\n'+'\n'.join(rows)+'\n}');total+=n;slaves+=captive
     b.write(out,'in_game/common/town_setups/goblins_ashborn_isles.txt','\n'.join(town_templates)+'\n')
-    b.write(out,'main_menu/setup/start/10_countries.txt',b.inject(vanilla,'countries','\n'.join(entries),outer+1))
+    b.write(out,'main_menu/setup/1337/10_countries.txt',b.inject(vanilla,'countries','\n'.join(entries),outer+1))
     for file,addition in [('06_pops.txt','\n'.join(popentries)),('07_cities_and_buildings.txt','\n'.join(cities))]:
-        rel='main_menu/setup/start/'+file;b.write(out,rel,b.inject(b.read(game,rel),'locations',addition))
-    rel='main_menu/setup/start/03_markets.txt';b.write(out,rel,b.inject(b.read(game,rel),'market_manager','\n'.join('add_market = '+m for m in cfg.get('markets',['cm_hooktooth']))))
+        rel='main_menu/setup/1337/'+file;b.write(out,rel,b.inject(b.read(game,rel),'locations',addition))
+    rel='main_menu/setup/1337/03_markets.txt';b.write(out,rel,b.inject(b.read(game,rel),'market_manager','\n'.join('add_market = '+m for m in cfg.get('markets',['cm_hooktooth']))))
     rel='in_game/common/government_types/00_default.txt'
     b.write(out,rel,b.inject(b.read(game,rel),'monarchy','heir_selection = cm_rule_of_the_strongest\nheir_selection = cm_tidemother_seniority'))
     b.write(out,'in_game/setup/countries/goblins_ashborn_isles.txt','\n'.join(f'{c["tag"]} = {{ color = rgb {{ {" ".join(map(str,c["color"]))} }} color2 = rgb {{ 36 31 29 }} culture_definition = {c["culture"]} religion_definition = cm_hunger_below is_historic = no }}' for c in countries)+'\n')

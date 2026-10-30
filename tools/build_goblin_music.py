@@ -15,9 +15,9 @@ from pathlib import Path
 from ashborn_roster import COUNTRIES
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_HASH = '53ab8b27030abe1ddc5ba46c487df8f0beecd4c95878038644d87efca7fed1b7'
-INIT_HASH = 'a10a30b594e11a210a736f74f135c94574689ffcd8d68b994dfab31000e87682'
-TOPBAR_HASH = '078c2ef89afbc1a034b9d4ee1abd101b99b09351c96d8c0a7442ffd7439e1ae2'
+BASE_HASH = '8b09d58de8a93fe831c8a8aab178af43ce11030be8ba4df882bfe7492b0c77be'
+INIT_HASH = 'a41777928fac3c0cc5fda9f6f5c1b98c55767c22a2c83d3236816ef4142bd30b'
+TOPBAR_HASH = '76b1e7ec7ca6592c604dd620a22ebad8ee64c6a26691d264d1ceb8cf999c080b'
 BANK_PATH = 'loading_screen/sound/banks/windows'
 MODE = 194639714
 MUSIC_ROOT = 337896570
@@ -375,7 +375,7 @@ def main():
     loc.write_text('l_english:\n ga_music_peace:0 "Ashen Harbors"\n ga_music_war:0 "Black Sails, Ashen Teeth"\n',encoding='utf-8-sig')
     (args.output/'loading_screen/sound/goblins_music_manifest.json').write_text(
         json.dumps({'base_sha256':BASE_HASH,'init_base_sha256':INIT_HASH,
-                    'topbar_base_sha256':TOPBAR_HASH,'supported_game_version':'1.3.11'},indent=2)+'\n')
+                    'topbar_base_sha256':TOPBAR_HASH,'supported_game_version':'1.4.*'},indent=2)+'\n')
     # Keep native bank name/ID for deterministic virtual-filesystem replacement.
     # Existing native media references are untouched; new media live alongside them.
     categories='\n'.join('ga_'+c['culture']+'_sfx = { priority = 200 culture_tag = '+c['culture']+'_gfx }' for c in COUNTRIES)+'\n'

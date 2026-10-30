@@ -17,8 +17,8 @@ TAGS = ('cdm', 'qbr', 'rhk', 'sfk', 'swk', 'gtf')
 GOBLIN_ROW = re.compile(r'^(?:cm_(?:' + '|'.join(TAGS) + r')_\w+|cm_shatterfin_dynasty) = \{.*\}\s*$')
 COURT = re.compile(r'_(?:court|noble|clergy|guild)_')
 LOWBORN = re.compile(r'_(?:clergy|guild)_')
-FILES = {'main_menu/setup/start/04_dynasties.txt': 'dynasty_manager',
-         'main_menu/setup/start/05_characters.txt': 'character_db'}
+FILES = {'main_menu/setup/1337/04_dynasties.txt': 'dynasty_manager',
+         'main_menu/setup/1337/05_characters.txt': 'character_db'}
 
 
 def bundle(root=ROOT):
@@ -44,25 +44,41 @@ def replace_rows(text, rows):
 def generated(config):
     dynasties, characters = ashborn_names.court_rows(config['countries'])
     family = shatterfin.family_rows() + characters
-    return {'main_menu/setup/start/04_dynasties.txt': [shatterfin.dynasty_row()] + dynasties,
-            'main_menu/setup/start/05_characters.txt': family + goblin_nobility.rows(config['countries'], family)}
+    return {'main_menu/setup/1337/04_dynasties.txt': [shatterfin.dynasty_row()] + dynasties,
+            'main_menu/setup/1337/05_characters.txt': family + goblin_nobility.rows(config['countries'], family)}
 
 
 def build(root=ROOT):
     config = json.loads((root / 'data/island.json').read_text(encoding='utf-8'))
     rows = generated(config)
-    with bundle(root) as z:
-        for rel in FILES:
-            text = z.read('goblins_ashborn_isles/' + rel).decode('utf-8')
-            out = root / 'mod' / rel
-            out.parent.mkdir(parents=True, exist_ok=True)
-            out.write_bytes(replace_rows(text, rows[rel]).encode('utf-8'))
+    for rel, text in base_files(root, config['version']).items():
+        out = root / 'mod' / rel
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_bytes(replace_rows(text, rows[rel]).encode('utf-8'))
     return verify(root)
 
 
+def base_files(root, version):
+    """Native setup text to overlay: a full build of this version if present, else the bundle.
+
+    A full build carries the native rows of the installed game, so after a game
+    update (1.4 moved setup/start to setup/1337) the overlays follow it.
+    """
+    staged = root / 'build/goblins_ashborn_isles'
+    report = root / 'build/reports/validation.json'
+    if report.is_file() and json.loads(report.read_text(encoding='utf-8')).get('version') == version \
+            and all((staged / rel).is_file() for rel in FILES):
+        return {rel: (staged / rel).read_bytes().decode('utf-8-sig') for rel in FILES}
+    with bundle(root) as z:
+        names = set(z.namelist())
+        legacy = lambda rel: rel.replace('setup/1337/', 'setup/start/')
+        return {rel: z.read('goblins_ashborn_isles/' + (rel if 'goblins_ashborn_isles/' + rel in names else legacy(rel))).decode('utf-8')
+                for rel in FILES}
+
+
 def verify(root=ROOT):
-    chars = (root / 'mod/main_menu/setup/start/05_characters.txt').read_bytes().decode('utf-8')
-    dyn = (root / 'mod/main_menu/setup/start/04_dynasties.txt').read_bytes().decode('utf-8')
+    chars = (root / 'mod/main_menu/setup/1337/05_characters.txt').read_bytes().decode('utf-8')
+    dyn = (root / 'mod/main_menu/setup/1337/04_dynasties.txt').read_bytes().decode('utf-8')
     people = {}
     for line in chars.split('\r\n'):
         if GOBLIN_ROW.match(line):

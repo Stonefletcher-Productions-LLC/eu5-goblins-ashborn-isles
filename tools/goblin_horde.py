@@ -7,7 +7,7 @@ for goblin crowns. The strongest homeland holder leads as Warchief.
 Native reference (EU5 international_organizations/readme.txt, religious_leagues.txt,
 japanese_shogunate.txt, generic_actions/unlockable_io_actions.txt).
 """
-from PIL import Image, ImageOps
+from PIL import Image, ImageDraw, ImageOps
 
 KEY = 'goblin_horde'
 IO = f'international_organization:{KEY}'
@@ -428,7 +428,7 @@ def ai_list():
     # Native AI lists keep the AI from scanning every action every tick.
     return f'''ga_horde_ai_list = {{
     potential = {{ ga_in_horde = yes }}
-    actions = {{ {' '.join(ACTIONS)} }}
+    actions = {{ {' '.join(ACTIONS)} ga_horde_ship_kin }}
 }}
 '''
 
@@ -436,6 +436,7 @@ def ai_list():
 def localization(loc):
     loc(KEY, 'Goblin Horde')
     loc(KEY + '_desc', 'Every goblin crown of the Ashborn Isles belongs to the Horde. Its crowns raid, rival and conquer one another freely, but when an outsider declares war on any of them, the whole Horde answers. The crown holding most of the homeland leads as Warchief.')
+    loc('io_opinion_goblin_horde', 'Goblin Horde kin')
     loc('GOBLIN_HORDE_LEADER', 'Warchief')
     loc('GOBLIN_HORDE_KIN', 'Goblin kin')
     loc('diplomatic_status_goblin_horde_name', 'Goblin Horde')
@@ -453,4 +454,35 @@ def art(root, out, write_bytes):
     with Image.open(root / 'art/horde/goblin_horde.png') as source:
         write_bytes(out / ILLUSTRATION, dds(ImageOps.fit(source.convert('RGB'), (1920, 826), method=Image.Resampling.LANCZOS), 'DXT1'))
     with Image.open(root / 'art/horde/goblin_horde_icon.png') as source:
-        write_bytes(out / ICON, dds(ImageOps.fit(source.convert('RGB'), (128, 128), method=Image.Resampling.LANCZOS), 'DXT1'))
+        write_bytes(out / ICON, dds_rgba(emblem(source)))
+
+
+def emblem(source):
+    """The volcano medallion at the centre of the clan ring, on transparency like vanilla IO icons.
+
+    The full ring of six clan banners reads as a busy square at the 32 px top-bar size.
+    """
+    cx, cy, r = 512 * source.width // 1024, 488 * source.height // 1024, 212 * source.width // 1024
+    image = source.convert('RGBA').crop((cx - r, cy - r, cx + r, cy + r)).resize((512, 512), Image.Resampling.LANCZOS)
+    mask = Image.new('L', (2048, 2048), 0)
+    ImageDraw.Draw(mask).ellipse((8, 8, 2040, 2040), fill=255)
+    image.putalpha(mask.resize((512, 512), Image.Resampling.LANCZOS))
+    return image.resize((128, 128), Image.Resampling.LANCZOS)
+
+
+def dds_rgba(image):
+    """DXT5 with real alpha and a full mip chain, like vanilla IO icons (Pillow encodes each level)."""
+    import io, struct
+    levels = []
+    while True:
+        buffer = io.BytesIO()
+        image.save(buffer, 'DDS', pixel_format='DXT5')
+        levels.append(buffer.getvalue()[128:])
+        if image.size == (1, 1):
+            break
+        image = image.resize((max(1, image.width // 2), max(1, image.height // 2)), Image.Resampling.LANCZOS)
+    width = height = 128
+    header = [124, 0xA1007, height, width, len(levels[0]), 0, len(levels)] + [0] * 11
+    header += [32, 4, int.from_bytes(b'DXT5', 'little'), 0, 0, 0, 0, 0]
+    header += [0x401008, 0, 0, 0, 0]
+    return b'DDS ' + struct.pack('<31I', *header) + b''.join(levels)

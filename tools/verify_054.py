@@ -37,7 +37,7 @@ def verify(b,game,out,mapstats):
     # 0.6.7 adds Stormcrag and Maw Rock with the relocated Shatter Maw.
     assert len({l['province'] for l in locs})==43
     # Check generated setup, not just input configuration.
-    pops=(out/'main_menu/setup/start/06_pops.txt').read_text(encoding='utf-8-sig')
+    pops=(out/'main_menu/setup/1337/06_pops.txt').read_text(encoding='utf-8-sig')
     for l in locs:
         a,z=b.block_span(pops,l['id']);rows=pops[a:z]
         import mixed_populations
@@ -46,7 +46,7 @@ def verify(b,game,out,mapstats):
     a,z=b.block_span(defs,'cm_cindermaw_area');area=defs[a:z]
     for l in locs:assert len(re.findall(r'\b'+re.escape(l['id'])+r'\b',area))==1
     # Outsiders at MIL 86 and minor sons must lose to eligible dynastic adults.
-    chars=(out/'main_menu/setup/start/05_characters.txt').read_text(encoding='utf-8-sig')
+    chars=(out/'main_menu/setup/1337/05_characters.txt').read_text(encoding='utf-8-sig')
     heirs={}
     for tag in ['CDM','QBR','RHK','SWK','GTF']:
         prefix='cm_'+tag.lower();candidates=[]

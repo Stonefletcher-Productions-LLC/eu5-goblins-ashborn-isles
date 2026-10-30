@@ -31,9 +31,8 @@ def main():
     version = config['version']
     validation = read(reports / 'validation.json')
     metadata = read(source / '.metadata/metadata.json')
-    terrain = read(ROOT / 'build/terrain_patch/manifest.json')
-    require(version == validation['version'] == metadata['version'] == terrain['version'],
-            'Source/build/metadata/terrain versions differ. Rebuild before staging.')
+    require(version == validation['version'] == metadata['version'],
+            'Source/build/metadata versions differ. Rebuild before staging.')
     require(metadata['id'] == 'alex.goblins_ashborn_isles' and metadata['game_id'] == 'eu5',
             'Unexpected mod identity.')
     require(metadata['supported_game_version'] == validation['target_game_version'],
@@ -53,14 +52,13 @@ def main():
         require(image.format == 'PNG' and image.size == (512, 512), 'Expected a 512 x 512 PNG thumbnail.')
         image.verify()
     require(sha(thumbnail) == sha(ROOT / 'mod/.metadata/thumbnail.png'), 'Thumbnail differs from source.')
-    for entry in terrain['files']:
-        path = source / entry['path']
-        require(path.is_file(), f'Missing full terrain cache: {path}')
-        require(path.stat().st_size == entry['final_size'] and sha(path) == entry['final_sha256'],
-                f'Incomplete or corrupt terrain cache: {path}')
-        require(path.with_suffix('.info').is_file(), f'Missing cache index: {path}')
+    decal = source / 'in_game/gfx/terrain2/decals/ga_ashborn_isles'
+    for name in ('height.bin', 'height.info', 'materials.bin', 'materials.info'):
+        require((decal / f'ga_ashborn_isles_{name}').is_file(), f'Missing island terrain decal: {name}')
+    require(not (source / 'in_game/gfx/terrain2/terrain_cache/heightmap.bin').exists(),
+            'Stale pre-1.4 terrain cache in build output. Rebuild.')
     for name in ('10_countries.txt', '06_pops.txt', '07_cities_and_buildings.txt', '03_markets.txt'):
-        require((source / 'main_menu/setup/start' / name).is_file(), f'Missing generated setup: {name}')
+        require((source / 'main_menu/setup/1337' / name).is_file(), f'Missing generated setup: {name}')
     require((source / 'in_game/map_data/locations.png').is_file(), 'Missing generated map.')
     # Fresh output only: never silently replace a previously reviewed candidate.
     stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')

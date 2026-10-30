@@ -20,7 +20,7 @@ def verify(base, out, game):
         return next(v for k,op,v in ast if k=='locations')
     old=locations(before); new=locations(after)
     assert [(k,op) for k,op,v in old]==[(k,op) for k,op,v in new]
-    native=(game/'main_menu/setup/start/06_pops.txt').read_text(encoding='utf-8-sig')
+    native=(game/'main_menu/setup/1337/06_pops.txt').read_text(encoding='utf-8-sig')
     native_classes=set(re.findall(r'\btype\s*=\s*(\w+)',native))
     cultures={c['culture'] for c in cfg['countries']}; summary={}
     expected={l['id']:(island['country'],cultures,next(c['culture'] for c in cfg['countries'] if c['tag']==island['country'])) for island in cfg['islands'] for l in island['locations']}

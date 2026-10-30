@@ -31,18 +31,31 @@ def verify(root):
             allowed = {'README.md','RELEASE_NOTES.md','TESTING.md','LORE.md','Install-Goblins.ps1','Install-Goblins.cmd','reports/validation.json'}
             assert all(n.startswith(('goblins_ashborn_isles/', 'terrain_patch/')) or n in allowed for n in z.namelist()), 'Development content in player archive'
         metadata=json.loads(z.read('goblins_ashborn_isles/.metadata/metadata.json'))
-        terrain=json.loads(z.read('terrain_patch/manifest.json'))
         report=json.loads(z.read('reports/validation.json'))
-        assert version==metadata['version']==terrain['version']==report['version'],'Stale packaged metadata or terrain'
+        assert version==metadata['version']==report['version'],'Stale packaged metadata'
         assert metadata['id']=='alex.goblins_ashborn_isles'
         assert z.read('Install-Goblins.ps1').decode('utf-8-sig').replace('\r\n','\n')==(root/'Install-Goblins.ps1').read_text(encoding='utf-8-sig'),'Stale embedded installer'
-        assert len(terrain['files'])==3
-        for item in terrain['files']:
-            assert item['final_size']>item['source_size']
-            assert len(z.read('terrain_patch/'+item['delta']))==item['final_size']-item['source_size']
-            assert z.read('goblins_ashborn_isles/'+str(Path(item['path']).with_suffix('.info')).replace('\\','/'))
+        if tuple(map(int, version.split('.'))) >= (0, 6, 9):
+            # EU5 1.4: island terrain is a self-contained decal; nothing patches game files.
+            assert not any(n.startswith('terrain_patch/') or '/terrain_cache/' in n and n.endswith('.bin') for n in z.namelist()),'Pre-1.4 terrain cache in archive'
+            decal='goblins_ashborn_isles/in_game/gfx/terrain2/decals/ga_ashborn_isles/ga_ashborn_isles_'
+            for suffix in ('height.bin','height.info','materials.bin','materials.info'):
+                assert z.read(decal+suffix),'Missing island terrain decal: '+suffix
+            assert b'ga_ashborn_isles' in z.read('goblins_ashborn_isles/in_game/gfx/terrain2/decals/decal_definitions.txt')
+            instances=json.loads(z.read('goblins_ashborn_isles/in_game/gfx/terrain2/terrain_cache/ingame_decals.json').decode('utf-8-sig'))
+            assert [d['decal_name'] for d in instances].count('ga_ashborn_isles')==1
+            assert metadata['supported_game_version']==config['game_version']
+        else:
+            terrain=json.loads(z.read('terrain_patch/manifest.json'))
+            assert terrain['version']==version,'Stale packaged terrain'
+            assert len(terrain['files'])==3
+            for item in terrain['files']:
+                assert item['final_size']>item['source_size']
+                assert len(z.read('terrain_patch/'+item['delta']))==item['final_size']-item['source_size']
+                assert z.read('goblins_ashborn_isles/'+str(Path(item['path']).with_suffix('.info')).replace('\\','/'))
+        setup='1337' if tuple(map(int, version.split('.'))) >= (0, 6, 9) else 'start'
         for name in ['10_countries.txt','06_pops.txt','07_cities_and_buildings.txt','03_markets.txt']:
-            assert z.read('goblins_ashborn_isles/main_menu/setup/start/'+name)
+            assert z.read(f'goblins_ashborn_isles/main_menu/setup/{setup}/'+name)
         if tuple(map(int, version.split('.'))) >= (0, 6, 4, 1):
             # An empty trailing row logged "Unknown reference to location! Key: ''".
             ports=z.read('goblins_ashborn_isles/in_game/map_data/ports.csv')
@@ -76,7 +89,7 @@ def verify(root):
             from verify_goblin_units import verify as verify_units
             verify_units(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
         # Configuration binding alone cannot catch a stale generated treasury.
-        country_setup=z.read('goblins_ashborn_isles/main_menu/setup/start/10_countries.txt').decode('utf-8-sig')
+        country_setup=z.read(f'goblins_ashborn_isles/main_menu/setup/{setup}/10_countries.txt').decode('utf-8-sig')
         starting_gold={}
         for country in config['countries']:
             tag=country['tag']
@@ -137,7 +150,7 @@ def verify(root):
             assert 'localization_key = ga_crown_estate' in estates
         if 'country_population_targets' in config:
             # Check the delivered setup, not merely the manifest's claimed config hash.
-            pops=z.read('goblins_ashborn_isles/main_menu/setup/start/06_pops.txt').decode('utf-8-sig')
+            pops=z.read(f'goblins_ashborn_isles/main_menu/setup/{setup}/06_pops.txt').decode('utf-8-sig')
             import mixed_populations
             actual={tag:0 for tag in config['country_population_targets']}
             expected=dict(config['country_population_targets'])
@@ -156,7 +169,7 @@ def verify(root):
             assert sum(actual.values())==sum(expected.values())
             assert report['economy']['longevity']['goblin_character_life_expectancy_bonus_years']==15
             assert report['economy']['longevity']['starting_ruler_ages']==config['starting_ruler_ages']
-            chars=z.read('goblins_ashborn_isles/main_menu/setup/start/05_characters.txt').decode('utf-8-sig')
+            chars=z.read(f'goblins_ashborn_isles/main_menu/setup/{setup}/05_characters.txt').decode('utf-8-sig')
             now=date(1337,11,11)
             for tag,expected in config['starting_ruler_ages'].items():
                 ident='cm_sfk_maarka' if tag=='SFK' else 'cm_'+tag.lower()+'_ruler'

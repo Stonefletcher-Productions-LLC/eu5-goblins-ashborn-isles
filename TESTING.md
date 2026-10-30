@@ -1,3 +1,13 @@
+# 0.6.9 acceptance: EU5 1.4
+
+EU5 1.4.6, only **[1.4] - Goblins of the Ashborn Isles** enabled, new 1337 campaign, fresh `logs/error.log`.
+
+- The title screen loads and game sound plays; goblin music switches between peace and war for a goblin crown.
+- The Ashborn Isles show raised volcanic terrain with goblin materials, no flat sea-floor islands, no seams or holes at the island edges and no changes to vanilla terrain elsewhere (check the Azores and Portugal coasts).
+- Cities, ports and units sit on their islands; fleets sit inside the Atlantic sea zones.
+- Goblin crowns are playable, start with Feudalism and their royal families; the 1658 bookmark still loads.
+- Search `error.log` and `error.1.log`-`error.5.log` for `goblin`, `ga_`, `cm_`, `ashborn`, `decal`, `terrain` and `shader`.
+
 # Development: goblin soldiers on the native unit rig
 
 1. Install from main and restart EU5. Start a new 1337 campaign as any goblin clan.

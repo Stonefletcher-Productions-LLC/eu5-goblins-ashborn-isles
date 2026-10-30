@@ -1,5 +1,5 @@
 {
-  "base_release": "0.6.8",
+  "base_release": "0.6.9",
   "stage": "development-models-and-culture-names",
   "engine_tested": false,
   "files": [
@@ -61,7 +61,7 @@
     },
     {
       "path": "in_game/common/generic_action_ai_lists/goblins_gathering.txt",
-      "sha256": "13b1555669dd0318e4fa994d83d42c820d4a98869e94da55c782531a083c3ce1"
+      "sha256": "5482a65a6c008f8b6e827a9fe27169b79724d9094922d69f344ac270a76a0d7c"
     },
     {
       "path": "in_game/common/generic_action_ai_lists/goblins_mainland.txt",
@@ -89,7 +89,7 @@
     },
     {
       "path": "in_game/common/generic_actions/goblins_mainland.txt",
-      "sha256": "1382c1cc26dae1560761bf67753253979d91c60755b790679ebcbd98bd3c4037"
+      "sha256": "58d5c934fbf79e75af0a5ae0d5a5c2da09c13db8451ec46728c9b9404d329d43"
     },
     {
       "path": "in_game/common/genes/zz_ashborn_outfits.txt",
@@ -249,7 +249,7 @@
     },
     {
       "path": "in_game/common/subject_types/goblins_gathering.txt",
-      "sha256": "b96da04aabe6de95328afc142fb53386e728b0d3287efb5ccc5e0ebbc54d6b35"
+      "sha256": "817c20d4b0ad25909423d6acfbc7524d84933c0c7ca5ae7cf923e19ebf902544"
     },
     {
       "path": "in_game/common/town_setups/goblins_ashborn_isles.txt",
@@ -573,11 +573,11 @@
     },
     {
       "path": "in_game/gui/ingame_topbar.gui",
-      "sha256": "7131dc63ca27f8959946daeded237183ddc496ddc1a6ae03ffda022481a29e6e"
+      "sha256": "ddeda692954e5350b32094bdff8241b6c4cca263e95c1420d1c523ce8b456cd5"
     },
     {
       "path": "in_game/gui/panels/situation/ga_ashborn_voyages.gui",
-      "sha256": "1a9a3d4fe0bc3dd5d6dcae4ef9729c66d32a1149365448b05df5944194ab593a"
+      "sha256": "80f404ec106dc3449898ed093faab2769d8ab24eeec08588d91e82274d00e9a3"
     },
     {
       "path": "in_game/gui/panels/situation/ga_eastern_hunger.gui",
@@ -593,19 +593,19 @@
     },
     {
       "path": "in_game/map_data/definitions.txt",
-      "sha256": "4bdfcea47f1d7039fe6a88155842adbe9cf9cd2fd25cdbf15ec5b0ea6fed2e41"
+      "sha256": "bf1f40ee9a32c28595facb5ea6310a579cc67bd63be88993e75ff7e6c3975481"
     },
     {
       "path": "in_game/map_data/location_templates.txt",
-      "sha256": "92a7326cc7f8936923de204a935ff5cae37bbc73d2eb1c83f6a27b5801bbd85f"
+      "sha256": "b81fde6c96869965ef8050729831025f4caceac729053a5011f79b2df1dc0ad0"
     },
     {
       "path": "in_game/map_data/ports.csv",
-      "sha256": "913d807ba2bbd67e5a317974b33da69d580559d54b1b1fe15531ad2d0a56d97e"
+      "sha256": "01e552d0aba3b554ac440affd31d1b34be869842e7b47a6691b7a16ee6d12af2"
     },
     {
       "path": "loading_screen/sound/banks/windows/Init.bnk",
-      "sha256": "61d89a0f473a1fef4f2206911699d14ef30e7a42def727280e9d341974837ff5"
+      "sha256": "bf5a917d15036a8492655f84879bf58dc0d2ab41bf05337e96a429e38c64f0d0"
     },
     {
       "path": "loading_screen/sound/banks/windows/Media/1638621397.wem",
@@ -629,19 +629,27 @@
     },
     {
       "path": "loading_screen/sound/banks/windows/SoundbanksInfo.json",
-      "sha256": "493cafab461d2f8d2d6ef0d0de454fdf6e17dbe7bb4a41a9b99713a5d2c65a17"
+      "sha256": "4f8f2a76717daaa7652b55a727d60dc64a702288439ee353d1349cea452d794f"
     },
     {
       "path": "loading_screen/sound/banks/windows/sb_music_logic.bnk",
-      "sha256": "dd049f5bbff54d87923df0bd7667e6000b1b963c4ccf840cc3863a481bd36317"
+      "sha256": "a14c0454bbe169409d18a334ce92c7e7f3f0da2a5a5c00d31621d20708721b3d"
     },
     {
       "path": "loading_screen/sound/goblins_music_manifest.json",
-      "sha256": "27452ab6ce29238e25693502ae220d2fca13703fecd249b44bf217e4d8f17809"
+      "sha256": "7fc9bdcc4e4a47d1cd342a01a02795f8d94cd5f7b627ac463944b95d761341a1"
     },
     {
       "path": "main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt",
       "sha256": "da5ad1f064bc6cc2a2c9f7ef3e97b996c63269705ea83004dba86ab7f00e8f59"
+    },
+    {
+      "path": "main_menu/common/modifier_icons/ashen_covenant.txt",
+      "sha256": "f98f76b566423d85fcda8b1934b5d3404466b6a7fe4c322481228ab8088c41dc"
+    },
+    {
+      "path": "main_menu/common/modifier_icons/goblins_prices.txt",
+      "sha256": "72629d6d0d8ed54d3f42b832694d80d69f5ce114620d77dc4c0e3973a22c266e"
     },
     {
       "path": "main_menu/common/modifier_type_definitions/ashen_covenant.txt",
@@ -649,7 +657,7 @@
     },
     {
       "path": "main_menu/common/modifier_type_definitions/goblins_divorce.txt",
-      "sha256": "9cff4bcf2070298c592eb528ae620726cfa5e0b20ef70fa13c7e803871ba1deb"
+      "sha256": "674832772271f0f98a035ccbb0f2454f9db59165e7ea2d83898eb98cb9a0aa77"
     },
     {
       "path": "main_menu/common/modifier_type_definitions/goblins_gathering.txt",
@@ -677,7 +685,7 @@
     },
     {
       "path": "main_menu/common/static_modifiers/goblins_old_world.txt",
-      "sha256": "448884c50775ac6f271748670ec02760185ca45c478d23fe5ad26c4e7d33ca2a"
+      "sha256": "9806274271e2ce01567fc5d400d4fe8e4187a2482ce0b05c36da9904da936276"
     },
     {
       "path": "main_menu/gfx/coat_of_arms/textured_emblems/te_ashborn_brackmaw.dds",
@@ -705,7 +713,7 @@
     },
     {
       "path": "main_menu/gfx/interface/icons/international_organizations/goblin_horde.dds",
-      "sha256": "6e48c3d4747b15b64322796137e3ab6aa4a5c17f6080fcbfa026d2444aeb212a"
+      "sha256": "eceee2383843d0b54a2c9ae8363cc5a8b23c8068d8fa0cc0d9dd4c5e18ff315e"
     },
     {
       "path": "main_menu/gfx/interface/icons/situations/ga_ashborn_voyages.dds",
@@ -1529,6 +1537,30 @@
     },
     {
       "path": "main_menu/gfx/interface/illustrations/units/army_auxiliary_a_baggage_train_cm_sootkin_gfx.dds",
+      "sha256": "e5ab44add242ec799f0022d4985bca865d4aef0c355fe5cb7eb22c1c5d1c5137"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_auxiliary_a_camel_auxiliary_cm_brinekin_gfx.dds",
+      "sha256": "e5ab44add242ec799f0022d4985bca865d4aef0c355fe5cb7eb22c1c5d1c5137"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_auxiliary_a_camel_auxiliary_cm_cinderkin_gfx.dds",
+      "sha256": "e5ab44add242ec799f0022d4985bca865d4aef0c355fe5cb7eb22c1c5d1c5137"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_auxiliary_a_camel_auxiliary_cm_giltkin_gfx.dds",
+      "sha256": "e5ab44add242ec799f0022d4985bca865d4aef0c355fe5cb7eb22c1c5d1c5137"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_auxiliary_a_camel_auxiliary_cm_reefkin_gfx.dds",
+      "sha256": "e5ab44add242ec799f0022d4985bca865d4aef0c355fe5cb7eb22c1c5d1c5137"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_auxiliary_a_camel_auxiliary_cm_shatterkin_gfx.dds",
+      "sha256": "e5ab44add242ec799f0022d4985bca865d4aef0c355fe5cb7eb22c1c5d1c5137"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_auxiliary_a_camel_auxiliary_cm_sootkin_gfx.dds",
       "sha256": "e5ab44add242ec799f0022d4985bca865d4aef0c355fe5cb7eb22c1c5d1c5137"
     },
     {
@@ -2564,6 +2596,294 @@
       "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_1_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_1_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_1_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_1_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_1_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_1_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_2_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_2_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_2_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_2_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_2_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_2_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_3_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_3_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_3_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_3_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_3_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_3_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_4_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_4_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_4_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_4_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_4_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_4_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_5_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_5_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_5_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_5_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_5_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_5_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_6_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_6_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_6_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_6_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_6_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_6_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_1_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_1_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_1_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_1_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_1_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_1_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_2_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_2_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_2_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_2_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_2_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_2_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_3_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_3_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_3_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_3_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_3_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_3_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_4_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_4_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_4_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_4_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_4_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_4_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_5_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_5_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_5_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_5_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_5_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_5_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_6_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_6_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_6_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_6_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_6_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_camelry_levy_6_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_heavy_cavalry_cm_brinekin_gfx.dds",
       "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
     },
@@ -2732,6 +3052,30 @@
       "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_iberian_jinetes_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_iberian_jinetes_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_iberian_jinetes_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_iberian_jinetes_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_iberian_jinetes_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_iberian_jinetes_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_indian_elephant_cavalry_cm_brinekin_gfx.dds",
       "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
     },
@@ -2873,6 +3217,294 @@
     },
     {
       "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_late_winged_hussars_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_1_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_1_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_1_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_1_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_1_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_1_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_2_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_2_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_2_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_2_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_2_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_2_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_3_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_3_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_3_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_3_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_3_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_3_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_4_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_4_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_4_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_4_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_4_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_4_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_5_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_5_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_5_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_5_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_5_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_5_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_6_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_6_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_6_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_6_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_6_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_6_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_1_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_1_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_1_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_1_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_1_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_1_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_2_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_2_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_2_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_2_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_2_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_2_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_3_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_3_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_3_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_3_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_3_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_3_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_4_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_4_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_4_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_4_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_4_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_4_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_5_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_5_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_5_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_5_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_5_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_5_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_6_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_6_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_6_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_6_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_6_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_light_camelry_levy_6_cm_sootkin_gfx.dds",
       "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
     },
     {
@@ -3116,6 +3748,30 @@
       "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_2_base_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_2_base_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_2_base_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_2_base_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_2_base_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_2_base_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_2_cm_brinekin_gfx.dds",
       "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
     },
@@ -3140,6 +3796,54 @@
       "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_2_levy_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_2_levy_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_2_levy_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_2_levy_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_2_levy_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_2_levy_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_base_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_base_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_base_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_base_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_base_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_base_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_cm_brinekin_gfx.dds",
       "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
     },
@@ -3161,6 +3865,30 @@
     },
     {
       "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_levy_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_levy_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_levy_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_levy_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_levy_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_order_knights_levy_cm_sootkin_gfx.dds",
       "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
     },
     {
@@ -3452,6 +4180,30 @@
       "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_tribal_camelry_levy_1_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_tribal_camelry_levy_1_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_tribal_camelry_levy_1_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_tribal_camelry_levy_1_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_tribal_camelry_levy_1_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_tribal_camelry_levy_1_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_tribal_cavalry_cm_brinekin_gfx.dds",
       "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
     },
@@ -3473,6 +4225,30 @@
     },
     {
       "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_tribal_cavalry_cm_sootkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_tuareg_veiled_cavalry_cm_brinekin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_tuareg_veiled_cavalry_cm_cinderkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_tuareg_veiled_cavalry_cm_giltkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_tuareg_veiled_cavalry_cm_reefkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_tuareg_veiled_cavalry_cm_shatterkin_gfx.dds",
+      "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_cavalry_a_tuareg_veiled_cavalry_cm_sootkin_gfx.dds",
       "sha256": "291e5069fd8505b7ec69bf944fd7bbbf5f1158c74a39ce1ddb6d696abe1b13f7"
     },
     {
@@ -3884,6 +4660,30 @@
       "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_algiers_ojaq_janissaries_cm_brinekin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_algiers_ojaq_janissaries_cm_cinderkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_algiers_ojaq_janissaries_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_algiers_ojaq_janissaries_cm_reefkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_algiers_ojaq_janissaries_cm_shatterkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_algiers_ojaq_janissaries_cm_sootkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_almogavars_cm_brinekin_gfx.dds",
       "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
     },
@@ -3905,6 +4705,30 @@
     },
     {
       "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_almogavars_cm_sootkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_andalusi_arquebusiers_cm_brinekin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_andalusi_arquebusiers_cm_cinderkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_andalusi_arquebusiers_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_andalusi_arquebusiers_cm_reefkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_andalusi_arquebusiers_cm_shatterkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_andalusi_arquebusiers_cm_sootkin_gfx.dds",
       "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
     },
     {
@@ -4604,6 +5428,30 @@
       "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_farfanes_cm_brinekin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_farfanes_cm_cinderkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_farfanes_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_farfanes_cm_reefkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_farfanes_cm_shatterkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_farfanes_cm_sootkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_feudal_levy_cm_brinekin_gfx.dds",
       "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
     },
@@ -4945,6 +5793,30 @@
     },
     {
       "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_gurkha_cm_sootkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_hafsid_ghulam_cm_brinekin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_hafsid_ghulam_cm_cinderkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_hafsid_ghulam_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_hafsid_ghulam_cm_reefkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_hafsid_ghulam_cm_shatterkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_hafsid_ghulam_cm_sootkin_gfx.dds",
       "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
     },
     {
@@ -5956,6 +6828,30 @@
       "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_navarrese_crossbowmen_cm_brinekin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_navarrese_crossbowmen_cm_cinderkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_navarrese_crossbowmen_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_navarrese_crossbowmen_cm_reefkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_navarrese_crossbowmen_cm_shatterkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_navarrese_crossbowmen_cm_sootkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_paik_cm_brinekin_gfx.dds",
       "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
     },
@@ -6484,6 +7380,30 @@
       "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_subsaharan_musketeer_corps_cm_brinekin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_subsaharan_musketeer_corps_cm_cinderkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_subsaharan_musketeer_corps_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_subsaharan_musketeer_corps_cm_reefkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_subsaharan_musketeer_corps_cm_shatterkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_subsaharan_musketeer_corps_cm_sootkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_tercio_cm_brinekin_gfx.dds",
       "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
     },
@@ -6817,6 +7737,30 @@
     },
     {
       "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_warriors_cm_sootkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_zayyanid_ghulam_cm_brinekin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_zayyanid_ghulam_cm_cinderkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_zayyanid_ghulam_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_zayyanid_ghulam_cm_reefkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_zayyanid_ghulam_cm_shatterkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_zayyanid_ghulam_cm_sootkin_gfx.dds",
       "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
     },
     {
@@ -7441,6 +8385,30 @@
     },
     {
       "path": "main_menu/gfx/interface/illustrations/units/masks/army_auxiliary_a_baggage_train_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_auxiliary_a_camel_auxiliary_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_auxiliary_a_camel_auxiliary_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_auxiliary_a_camel_auxiliary_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_auxiliary_a_camel_auxiliary_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_auxiliary_a_camel_auxiliary_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_auxiliary_a_camel_auxiliary_cm_sootkin_gfx.dds",
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
     {
@@ -8476,6 +9444,294 @@
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_1_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_1_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_1_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_1_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_1_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_1_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_2_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_2_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_2_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_2_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_2_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_2_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_3_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_3_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_3_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_3_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_3_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_3_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_4_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_4_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_4_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_4_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_4_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_4_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_5_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_5_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_5_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_5_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_5_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_5_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_6_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_6_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_6_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_6_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_6_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_6_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_1_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_1_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_1_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_1_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_1_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_1_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_2_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_2_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_2_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_2_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_2_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_2_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_3_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_3_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_3_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_3_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_3_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_3_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_4_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_4_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_4_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_4_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_4_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_4_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_5_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_5_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_5_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_5_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_5_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_5_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_6_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_6_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_6_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_6_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_6_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_camelry_levy_6_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_heavy_cavalry_cm_brinekin_gfx.dds",
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
@@ -8644,6 +9900,30 @@
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_iberian_jinetes_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_iberian_jinetes_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_iberian_jinetes_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_iberian_jinetes_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_iberian_jinetes_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_iberian_jinetes_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_indian_elephant_cavalry_cm_brinekin_gfx.dds",
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
@@ -8785,6 +10065,294 @@
     },
     {
       "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_late_winged_hussars_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_1_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_1_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_1_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_1_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_1_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_1_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_2_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_2_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_2_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_2_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_2_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_2_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_3_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_3_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_3_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_3_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_3_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_3_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_4_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_4_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_4_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_4_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_4_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_4_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_5_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_5_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_5_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_5_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_5_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_5_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_6_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_6_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_6_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_6_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_6_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_6_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_1_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_1_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_1_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_1_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_1_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_1_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_2_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_2_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_2_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_2_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_2_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_2_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_3_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_3_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_3_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_3_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_3_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_3_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_4_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_4_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_4_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_4_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_4_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_4_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_5_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_5_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_5_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_5_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_5_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_5_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_6_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_6_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_6_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_6_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_6_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_light_camelry_levy_6_cm_sootkin_gfx.dds",
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
     {
@@ -9028,6 +10596,30 @@
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_2_base_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_2_base_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_2_base_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_2_base_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_2_base_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_2_base_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_2_cm_brinekin_gfx.dds",
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
@@ -9052,6 +10644,54 @@
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_2_levy_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_2_levy_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_2_levy_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_2_levy_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_2_levy_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_2_levy_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_base_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_base_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_base_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_base_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_base_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_base_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_cm_brinekin_gfx.dds",
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
@@ -9073,6 +10713,30 @@
     },
     {
       "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_levy_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_levy_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_levy_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_levy_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_levy_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_order_knights_levy_cm_sootkin_gfx.dds",
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
     {
@@ -9364,6 +11028,30 @@
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_tribal_camelry_levy_1_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_tribal_camelry_levy_1_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_tribal_camelry_levy_1_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_tribal_camelry_levy_1_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_tribal_camelry_levy_1_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_tribal_camelry_levy_1_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_tribal_cavalry_cm_brinekin_gfx.dds",
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
@@ -9385,6 +11073,30 @@
     },
     {
       "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_tribal_cavalry_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_tuareg_veiled_cavalry_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_tuareg_veiled_cavalry_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_tuareg_veiled_cavalry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_tuareg_veiled_cavalry_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_tuareg_veiled_cavalry_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_cavalry_a_tuareg_veiled_cavalry_cm_sootkin_gfx.dds",
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
     {
@@ -9796,6 +11508,30 @@
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_algiers_ojaq_janissaries_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_algiers_ojaq_janissaries_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_algiers_ojaq_janissaries_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_algiers_ojaq_janissaries_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_algiers_ojaq_janissaries_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_algiers_ojaq_janissaries_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_almogavars_cm_brinekin_gfx.dds",
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
@@ -9817,6 +11553,30 @@
     },
     {
       "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_almogavars_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_andalusi_arquebusiers_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_andalusi_arquebusiers_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_andalusi_arquebusiers_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_andalusi_arquebusiers_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_andalusi_arquebusiers_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_andalusi_arquebusiers_cm_sootkin_gfx.dds",
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
     {
@@ -10516,6 +12276,30 @@
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_farfanes_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_farfanes_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_farfanes_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_farfanes_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_farfanes_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_farfanes_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_feudal_levy_cm_brinekin_gfx.dds",
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
@@ -10857,6 +12641,30 @@
     },
     {
       "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_gurkha_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_hafsid_ghulam_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_hafsid_ghulam_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_hafsid_ghulam_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_hafsid_ghulam_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_hafsid_ghulam_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_hafsid_ghulam_cm_sootkin_gfx.dds",
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
     {
@@ -11868,6 +13676,30 @@
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_navarrese_crossbowmen_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_navarrese_crossbowmen_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_navarrese_crossbowmen_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_navarrese_crossbowmen_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_navarrese_crossbowmen_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_navarrese_crossbowmen_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_paik_cm_brinekin_gfx.dds",
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
@@ -12396,6 +14228,30 @@
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_subsaharan_musketeer_corps_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_subsaharan_musketeer_corps_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_subsaharan_musketeer_corps_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_subsaharan_musketeer_corps_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_subsaharan_musketeer_corps_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_subsaharan_musketeer_corps_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_tercio_cm_brinekin_gfx.dds",
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
@@ -12732,6 +14588,30 @@
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_zayyanid_ghulam_cm_brinekin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_zayyanid_ghulam_cm_cinderkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_zayyanid_ghulam_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_zayyanid_ghulam_cm_reefkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_zayyanid_ghulam_cm_shatterkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_zayyanid_ghulam_cm_sootkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_cm_brinekin_gfx.dds",
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
@@ -12821,7 +14701,7 @@
     },
     {
       "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
-      "sha256": "730a430bcaa8fa9b1a7cafb7bc61b5375cc25bd10a08855f6aa47d8a600435bf"
+      "sha256": "23a3f8d370ff8981fad311cd8e3be676927c2df79d84d66fea638d0eeb9fa745"
     },
     {
       "path": "main_menu/localization/english/goblins_mainland_l_english.yml",
@@ -12853,18 +14733,18 @@
     },
     {
       "path": "main_menu/music/audio_culture_types/goblins_music.txt",
-      "sha256": "c3f16ba3754036a56f466888d51150bdef2d025a05859e2bb3afbce7f6cd3624"
+      "sha256": "ea882f7d00596da952a8e5666d51530e1d77d8e33f1cf2e440d3b9ee73075d2b"
     },
     {
-      "path": "main_menu/setup/start/04_dynasties.txt",
-      "sha256": "129949184acfbe9d9bceab88e88347de9561db2dbc0c12339669fed0d2cba6e6"
+      "path": "main_menu/setup/1337/04_dynasties.txt",
+      "sha256": "8f87046c984684d3aebca67b3aae919072c055f8da8d89e3af7882a6e0579b15"
     },
     {
-      "path": "main_menu/setup/start/05_characters.txt",
-      "sha256": "5404f9367d05136766e61974a7c76b6d60e19c3a4e4bee7a2a9561f617463487"
+      "path": "main_menu/setup/1337/05_characters.txt",
+      "sha256": "afbeda2a55791634092da0ce94e4fb63884828e7fd7a7a9a605ad3392e06e63b"
     },
     {
-      "path": "main_menu/setup/start/08_institutions.txt",
+      "path": "main_menu/setup/1337/08_institutions.txt",
       "sha256": "409b551ef1d26f9ed95228aad3a5eb67fbefb3460d3a19f69379aa6a68c0f3f1"
     }
   ]

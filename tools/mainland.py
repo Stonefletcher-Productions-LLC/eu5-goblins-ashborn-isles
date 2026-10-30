@@ -331,6 +331,7 @@ def actions(loc):
         custom_tooltip = {{ text = ga_ms_kin_shore_tt {kin_exists} }}
     }}
     cooldown = {{ type = ga_horde_ship_kin years = 5 }}
+    show_message = no
     price = price:ga_ms_kin_price
     {horde_picker()}
     effect = {{

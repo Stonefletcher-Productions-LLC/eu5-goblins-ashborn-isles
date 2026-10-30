@@ -454,9 +454,11 @@ ga_gathering_target_price = { gold = 10 }
         loc('MODIFIER_TYPE_DESC_' + modifier, 'Changes the cost of this action.')
         price_types.append(f'{modifier} = {{ color = bad percent = yes game_data = {{ category = country }} }}')
     write(out, 'main_menu/common/modifier_type_definitions/goblins_gathering.txt', '\n'.join(price_types))
+    import mainland
     # Divorce (mod/, hand-written) and compact tribute prices share the file.
     write(out, 'main_menu/common/modifier_icons/goblins_prices.txt', '\n'.join(
-        price_icon(p.split(' ')[0]) for p in price_types + ['ga_compact_autonomy_tribute_cost_modifier', 'ga_divorce_price_cost_modifier']))
+        price_icon(p.split(' ')[0]) for p in price_types + ['ga_compact_autonomy_tribute_cost_modifier', 'ga_divorce_price_cost_modifier']
+        + [p + '_cost_modifier' for p in mainland.PRICES]))
     write(out, 'in_game/common/biases/goblins_gathering.txt', '''
 ga_harbor_pact_opinion = { value = 35 months = 120 }
 ga_received_supplies = { value = 30 months = 60 }

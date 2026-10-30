@@ -12,22 +12,20 @@ checks=json.loads(report.read_text())
 if checks['version']!=version:raise SystemExit('Rebuild before packaging this version.')
 output=ROOT/'build/goblins_ashborn_isles'
 metadata=json.loads((output/'.metadata/metadata.json').read_text())
-manifest=json.loads((ROOT/'build/terrain_patch/manifest.json').read_text())
-if metadata['id']!='alex.goblins_ashborn_isles' or metadata['version']!=version or manifest['version']!=version:
-    raise SystemExit('Metadata/terrain version mismatch: rebuild first.')
-for item in manifest['files']:
-    p=output/item['path']
-    if not p.is_file() or p.stat().st_size!=item['final_size'] or not p.with_suffix('.info').is_file():
-        raise SystemExit('Incomplete terrain build.')
+if metadata['id']!='alex.goblins_ashborn_isles' or metadata['version']!=version:
+    raise SystemExit('Metadata version mismatch: rebuild first.')
+decal=output/'in_game/gfx/terrain2/decals/ga_ashborn_isles'
+if not all((decal/f'ga_ashborn_isles_{n}').is_file() for n in ['height.bin','height.info','materials.bin','materials.info']):
+    raise SystemExit('Incomplete terrain build.')
+if (output/'in_game/gfx/terrain2/terrain_cache/heightmap.bin').exists():
+    raise SystemExit('Stale pre-1.4 terrain cache in build output.')
 for filename in ['10_countries.txt','06_pops.txt','07_cities_and_buildings.txt','03_markets.txt']:
-    if not (output/'main_menu/setup/start'/filename).is_file():raise SystemExit('Incomplete campaign setup.')
+    if not (output/'main_menu/setup/1337'/filename).is_file():raise SystemExit('Incomplete campaign setup.')
 dist=ROOT/'dist';dist.mkdir(exist_ok=True)
 docs=['README.md','RELEASE_NOTES.md','TESTING.md','LORE.md','Install-Goblins.ps1','Install-Goblins.cmd']
 with zipfile.ZipFile(dist/f'Goblins_Ashborn_Isles_{version}.zip','w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
     for p in sorted((ROOT/'build/goblins_ashborn_isles').rglob('*')):
-        if p.is_file() and not (p.suffix=='.bin' and 'terrain_cache' in p.parts):z.write(p,'goblins_ashborn_isles/'+p.relative_to(ROOT/'build/goblins_ashborn_isles').as_posix())
-    for p in sorted((ROOT/'build/terrain_patch').iterdir()):
-        if p.is_file():z.write(p,'terrain_patch/'+p.name)
+        if p.is_file():z.write(p,'goblins_ashborn_isles/'+p.relative_to(ROOT/'build/goblins_ashborn_isles').as_posix())
     for name in docs:z.write(ROOT/('PLAYER_README.md' if name == 'README.md' else name),name)
     # Only the machine-readable validation receipt accompanies the runtime.
     z.write(report, 'reports/validation.json')

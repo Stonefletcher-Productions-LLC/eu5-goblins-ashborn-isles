@@ -18,7 +18,7 @@ def verify(out,game):
     assert len(TAGS)==6 and 'GTF' in TAGS
     new=[l for l in cfg['locations'] if l['country']=='GTF']
     assert len(new)==22 and {l['island'] for l in new}=={'giltfang','tolltooth'}
-    countries=read('main_menu/setup/start/10_countries.txt')
+    countries=read('main_menu/setup/1337/10_countries.txt')
     defs=read('in_game/map_data/definitions.txt')
     a,z=b.block_span(defs,'cm_cindermaw_area');homeland=defs[a:z]
     a,z=b.block_span(defs,'cm_ashborn_seas_area');waters=defs[a:z]
@@ -31,7 +31,7 @@ def verify(out,game):
         from exploration import STARTING_SEA_AREAS
         assert set(STARTING_SEA_AREAS)<=set(re.findall(r'\b\w+\b',known)),tag
     a,z=b.block_span(countries,'GTF');assert 'capital = cm_chainhaven' in countries[a:z]
-    markets=read('main_menu/setup/start/03_markets.txt')
+    markets=read('main_menu/setup/1337/03_markets.txt')
     for cap in ['cm_chainhaven','cm_hooktooth']:assert markets.count('add_market = '+cap)==1
     # Direct raster adjacency, without the builder's graph or wrapping array edges.
     box=(6000,1650,7900,3100)

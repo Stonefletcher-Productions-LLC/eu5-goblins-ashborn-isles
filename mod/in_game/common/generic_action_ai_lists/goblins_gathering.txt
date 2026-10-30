@@ -13,5 +13,5 @@ ga_harbor_bargains_ai_list = {
 }
 ga_horde_ai_list = {
     potential = { ga_in_horde = yes }
-    actions = { ga_horde_tribute ga_horde_war_horns ga_horde_muster ga_horde_settle_feud ga_horde_levy ga_horde_ask_gold ga_horde_ask_calm ga_horde_appeal_feud }
+    actions = { ga_horde_tribute ga_horde_war_horns ga_horde_muster ga_horde_settle_feud ga_horde_levy ga_horde_ask_gold ga_horde_ask_calm ga_horde_appeal_feud ga_horde_ship_kin }
 }

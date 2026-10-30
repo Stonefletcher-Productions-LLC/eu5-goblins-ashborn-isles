@@ -66,19 +66,16 @@ if (-not (Test-Path -LiteralPath (Join-Path $modSource '.metadata\metadata.json'
 }
 $metadata = Get-Content -LiteralPath (Join-Path $modSource '.metadata\metadata.json') -Raw | ConvertFrom-Json
 if ($metadata.id -ne $modId) { throw 'Unexpected source mod identity.' }
-$patchRoot = Join-Path $PSScriptRoot 'terrain_patch'
-if (-not (Test-Path -LiteralPath $patchRoot)) { $patchRoot = Join-Path $PSScriptRoot 'build\terrain_patch' }
-$manifest = Get-Content -LiteralPath (Join-Path $patchRoot 'manifest.json') -Raw | ConvertFrom-Json
-if ($manifest.version -ne $metadata.version -or @($manifest.files).Count -ne 3) { throw 'Incomplete or outdated terrain manifest.' }
+# EU5 1.4 terrain is a self-contained decal in the mod; no game files are patched.
+if (Test-Path -LiteralPath (Join-Path $modSource 'in_game\gfx\terrain2\terrain_cache\heightmap.bin')) { throw 'This build carries the pre-1.4 terrain cache. Download an updated release.' }
 foreach ($file in @('10_countries.txt','06_pops.txt','07_cities_and_buildings.txt','03_markets.txt')) {
-    if (-not (Test-Path -LiteralPath (Join-Path $modSource "main_menu\setup\start\$file"))) { throw "Incomplete build: $file" }
+    if (-not (Test-Path -LiteralPath (Join-Path $modSource "main_menu\setup\1337\$file"))) { throw "Incomplete build: $file" }
 }
-$needsGame = @($manifest.files | Where-Object {
-    $p = Join-Path $modSource $_.path
-    -not (Test-Path -LiteralPath $p) -or (Get-Item -LiteralPath $p -ErrorAction SilentlyContinue).Length -ne $_.final_size
-}).Count -gt 0
+foreach ($file in @('ga_ashborn_isles\ga_ashborn_isles_height.info','ga_ashborn_isles\ga_ashborn_isles_height.bin','ga_ashborn_isles\ga_ashborn_isles_materials.info','ga_ashborn_isles\ga_ashborn_isles_materials.bin','decal_definitions.txt')) {
+    if (-not (Test-Path -LiteralPath (Join-Path $modSource "in_game\gfx\terrain2\decals\$file"))) { throw "Incomplete build: island terrain $file" }
+}
 $musicManifestPath = Join-Path $modSource 'loading_screen\sound\goblins_music_manifest.json'
-if ($needsGame -or (Test-Path -LiteralPath $musicManifestPath)) {
+if (Test-Path -LiteralPath $musicManifestPath) {
     $candidates = [Collections.Generic.List[string]]::new()
     if ($GamePath) { $candidates.Add($GamePath) }
     $steam = (Get-ItemProperty -LiteralPath 'HKCU:\Software\Valve\Steam' -ErrorAction SilentlyContinue).SteamPath
@@ -91,41 +88,21 @@ if ($needsGame -or (Test-Path -LiteralPath $musicManifestPath)) {
             }
         }
     }
-    $game = $candidates | Where-Object { Test-Path -LiteralPath (Join-Path $_ 'in_game\gfx\terrain2\terrain_cache\heightmap.bin') } | Select-Object -First 1
+    $game = $candidates | Where-Object { Test-Path -LiteralPath (Join-Path $_ 'loading_screen\sound\banks\windows\sb_music_logic.bnk') } | Select-Object -First 1
     if (-not $game) { throw 'EU5 not found. Supply -GamePath pointing to its game directory.' }
-    if (Test-Path -LiteralPath $musicManifestPath) {
-        $musicManifest = Get-Content -LiteralPath $musicManifestPath -Raw | ConvertFrom-Json
-        $nativeMusicBank = Join-Path $game 'loading_screen\sound\banks\windows\sb_music_logic.bnk'
-        if ((Get-FileHash -LiteralPath $nativeMusicBank -Algorithm SHA256).Hash -ne $musicManifest.base_sha256) {
-            throw 'EU5 music-bank version mismatch. This Goblins music build must be updated for your installed game.'
-        }
-        foreach ($dependency in @(
-            @{ path = 'loading_screen\sound\banks\windows\Init.bnk'; hash = $musicManifest.init_base_sha256 },
-            @{ path = 'in_game\gui\ingame_topbar.gui'; hash = $musicManifest.topbar_base_sha256 }
-        )) {
-            if (-not $dependency.hash -or (Get-FileHash -LiteralPath (Join-Path $game $dependency.path) -Algorithm SHA256).Hash -ne $dependency.hash) {
-                throw "EU5 music dependency version mismatch: $($dependency.path). Update this Goblins build for your installed game."
-            }
+    $musicManifest = Get-Content -LiteralPath $musicManifestPath -Raw | ConvertFrom-Json
+    $nativeMusicBank = Join-Path $game 'loading_screen\sound\banks\windows\sb_music_logic.bnk'
+    if ((Get-FileHash -LiteralPath $nativeMusicBank -Algorithm SHA256).Hash -ne $musicManifest.base_sha256) {
+        throw 'EU5 music-bank version mismatch. This Goblins music build must be updated for your installed game.'
+    }
+    foreach ($dependency in @(
+        @{ path = 'loading_screen\sound\banks\windows\Init.bnk'; hash = $musicManifest.init_base_sha256 },
+        @{ path = 'in_game\gui\ingame_topbar.gui'; hash = $musicManifest.topbar_base_sha256 }
+    )) {
+        if (-not $dependency.hash -or (Get-FileHash -LiteralPath (Join-Path $game $dependency.path) -Algorithm SHA256).Hash -ne $dependency.hash) {
+            throw "EU5 music dependency version mismatch: $($dependency.path). Update this Goblins build for your installed game."
         }
     }
-    foreach ($entry in $manifest.files) {
-        $original = Join-Path $game $entry.path
-        if ((Get-Item -LiteralPath $original).Length -ne $entry.source_size -or (Get-FileHash -LiteralPath $original -Algorithm SHA256).Hash -ne $entry.source_sha256) { throw "EU5 version mismatch: $($entry.path)" }
-    }
-    if ($needsGame) { foreach ($entry in $manifest.files) {
-        $destination = [IO.Path]::GetFullPath((Join-Path $modSource $entry.path))
-        $sourcePrefix = [IO.Path]::GetFullPath($modSource).TrimEnd('\') + '\'
-        if (-not $destination.StartsWith($sourcePrefix, [StringComparison]::OrdinalIgnoreCase)) { throw 'Unsafe cache output path.' }
-        Copy-Item -LiteralPath (Join-Path $game $entry.path) -Destination $destination -Force
-        $output = [IO.File]::Open($destination, [IO.FileMode]::Append, [IO.FileAccess]::Write)
-        $delta = [IO.File]::OpenRead((Join-Path $patchRoot $entry.delta))
-        try { $delta.CopyTo($output) } finally { $delta.Dispose(); $output.Dispose() }
-    } }
-}
-foreach ($entry in $manifest.files) {
-    $p = Join-Path $modSource $entry.path
-    if ((Get-Item -LiteralPath $p).Length -ne $entry.final_size -or (Get-FileHash -LiteralPath $p -Algorithm SHA256).Hash -ne $entry.final_sha256) { throw "Prepared cache checksum mismatch: $($entry.path)" }
-    if (-not (Test-Path -LiteralPath ([IO.Path]::ChangeExtension($p, '.info')))) { throw 'Missing terrain index.' }
 }
 if ($PrepareOnly) { Write-Host "Prepared Goblins of the Ashborn Isles $($metadata.version) at $modSource"; return }
 if (-not $UserDataPath) { $UserDataPath = Join-Path ([Environment]::GetFolderPath('MyDocuments')) 'Paradox Interactive\Europa Universalis V' }

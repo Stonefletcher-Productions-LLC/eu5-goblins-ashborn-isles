@@ -351,6 +351,7 @@
  ga_horde_appeal_feud_desc: "Another crown of the Horde has attacked us. Ask the Warchief to end that war with a white peace. Once every five years."
  goblin_horde: "Goblin Horde"
  goblin_horde_desc: "Every goblin crown of the Ashborn Isles belongs to the Horde. Its crowns raid, rival and conquer one another freely, but when an outsider declares war on any of them, the whole Horde answers. The crown holding most of the homeland leads as Warchief."
+ io_opinion_goblin_horde: "Goblin Horde kin"
  GOBLIN_HORDE_LEADER: "Warchief"
  GOBLIN_HORDE_KIN: "Goblin kin"
  diplomatic_status_goblin_horde_name: "Goblin Horde"

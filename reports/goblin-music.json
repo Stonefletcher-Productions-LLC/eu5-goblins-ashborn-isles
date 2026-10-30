@@ -1,6 +1,6 @@
 {
-  "base_sha256": "53ab8b27030abe1ddc5ba46c487df8f0beecd4c95878038644d87efca7fed1b7",
-  "bank_sha256": "dd049f5bbff54d87923df0bd7667e6000b1b963c4ccf840cc3863a481bd36317",
+  "base_sha256": "8b09d58de8a93fe831c8a8aab178af43ce11030be8ba4df882bfe7492b0c77be",
+  "bank_sha256": "a14c0454bbe169409d18a334ce92c7e7f3f0da2a5a5c00d31621d20708721b3d",
   "modified_native_objects": [
     194639714,
     337896570
@@ -342,8 +342,8 @@
   ],
   "runtime_verified": false,
   "multiplayer_verified": false,
-  "init_base_sha256": "a10a30b594e11a210a736f74f135c94574689ffcd8d68b994dfab31000e87682",
-  "init_sha256": "61d89a0f473a1fef4f2206911699d14ef30e7a42def727280e9d341974837ff5",
+  "init_base_sha256": "a41777928fac3c0cc5fda9f6f5c1b98c55767c22a2c83d3236816ef4142bd30b",
+  "init_sha256": "bf5a917d15036a8492655f84879bf58dc0d2ab41bf05337e96a429e38c64f0d0",
   "runtime_observations": {
     "vorbis_candidates": "streamed, embedded and native-entry custom playback silent; unchanged native track audible (user confirmed)",
     "pcm_direct_peace": "Ashen Harbors audible with active isolated mod in Cindermaw, user confirmed 2026-10-11",
@@ -362,7 +362,7 @@
   "validation": {
     "routing_cases": 224,
     "full_root_routing_cases": 5376,
-    "unchanged_native_objects": 1975,
+    "unchanged_native_objects": 2274,
     "serialized_bank_parsed": true,
     "embedded_media_present": true,
     "media_registered": true,

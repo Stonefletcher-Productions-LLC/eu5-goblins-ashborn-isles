@@ -12,7 +12,7 @@ from verify_055 import parse
 
 
 def verify(base, out):
-    charrel = 'main_menu/setup/start/05_characters.txt'
+    charrel = 'main_menu/setup/1337/05_characters.txt'
     locrel = 'main_menu/localization/english/goblins_ashborn_isles_l_english.yml'
     before = (base / charrel).read_text(encoding='utf-8-sig')
     after = (out / charrel).read_text(encoding='utf-8-sig')
@@ -49,7 +49,7 @@ def verify(base, out):
     cfg = json.loads((Path(__file__).resolve().parents[1] / 'data/island.json').read_text())
     with tempfile.TemporaryDirectory() as directory:
         root = Path(directory)
-        for rel, block in [(charrel, 'character_db'), ('main_menu/setup/start/04_dynasties.txt', 'dynasty_manager')]:
+        for rel, block in [(charrel, 'character_db'), ('main_menu/setup/1337/04_dynasties.txt', 'dynasty_manager')]:
             path = root / rel; path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(block + ' = {\n}\n', encoding='utf-8')
         def write(root, rel, text): (root / rel).write_text(text, encoding='utf-8')
