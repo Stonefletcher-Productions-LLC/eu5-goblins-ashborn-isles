@@ -17,7 +17,7 @@ def verify(out,game):
     assert locs['cm_smokehorn']['province']!='cm_hooktooth_province'
     assert locs['cm_scorchbrook']['province']!='cm_saltjaw_province'
     read=lambda p:(out/p).read_text(encoding='utf-8-sig')
-    countries=read('main_menu/setup/start/10_countries.txt')
+    countries=read('main_menu/setup/1337/10_countries.txt')
     for c in b.CFG['countries']:
         a,z=b.block_span(countries,c['tag']); body=countries[a:z]
         assert 'stability = 50 government_power = 75 prestige = 25' in body,c['tag']
@@ -44,7 +44,7 @@ def verify(out,game):
     for capital in ['cm_hooktooth','cm_brackhaven']:
         assert locs[capital]['buildings']['sergeantry']==1
         assert locs[capital]['pop_classes']['soldiers']>=1
-    cities=read('main_menu/setup/start/07_cities_and_buildings.txt')
+    cities=read('main_menu/setup/1337/07_cities_and_buildings.txt')
     a,z=b.block_span(cities,'cm_lantern_haven');assert 'rank = town' in cities[a:z]
     assert locs['cm_lantern_haven']['buildings']=={'marketplace':1,'wharf':1,'granary':1}
     for name in ['cm_copperfang','cm_netjaw','cm_rustpeak','cm_bracknet','cm_knifeback','cm_tolltooth']:

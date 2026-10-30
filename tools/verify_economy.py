@@ -19,7 +19,7 @@ def verify(game, out):
     audit = report['balance_audit']
     assert not audit['staffing_shortfalls'], audit['staffing_shortfalls']
     templates = dict(economy_reference.blocks((out/'in_game/common/town_setups/goblins_ashborn_isles.txt').read_text(encoding='utf-8-sig')))
-    pops = dict(economy_reference.blocks(dict(economy_reference.blocks((out/'main_menu/setup/start/06_pops.txt').read_text()))['locations']))
+    pops = dict(economy_reference.blocks(dict(economy_reference.blocks((out/'main_menu/setup/1337/06_pops.txt').read_text()))['locations']))
     for loc in b.CFG['locations']:
         actual = {k:int(v) for k,v in re.findall(r'(\w+)\s*=\s*(\d+)', templates[loc['id']+'_settlement'])}
         assert actual == loc['buildings'], loc['id']
@@ -47,7 +47,7 @@ def verify(game, out):
     assert countries['SWK']['building_levels']['charcoal_maker'] > countries['CDM']['building_levels']['charcoal_maker']
     assert len({tuple(sorted(next(l['buildings'] for l in b.CFG['locations'] if l['id']==c['capital']).items())) for c in b.CFG['countries']}) == len(b.CFG['countries'])
     # Three native markets and once-only, ownership-guarded investment remain intact.
-    markets = (out/'main_menu/setup/start/03_markets.txt').read_text()
+    markets = (out/'main_menu/setup/1337/03_markets.txt').read_text()
     assert 'add_market = cm_hooktooth' in markets
     assert 'add_market = cm_chainhaven' in markets
     assert 'add_market = cm_shatterfin' in markets
@@ -67,7 +67,7 @@ def verify_population_062(game, out):
     import goblin_estates
     from verify_055 import parse
     native_classes = set(re.findall(r'(?m)^(\w+)\s*=\s*\{', (game/'in_game/common/pop_types/00_default.txt').read_text(encoding='utf-8-sig')))
-    populations = dict(economy_reference.blocks(dict(economy_reference.blocks((out/'main_menu/setup/start/06_pops.txt').read_text()))['locations']))
+    populations = dict(economy_reference.blocks(dict(economy_reference.blocks((out/'main_menu/setup/1337/06_pops.txt').read_text()))['locations']))
     policy = b.CFG['population_062']
     balance = b.CFG.get('start_balance_067', {})
     previous_totals = {tag:Decimal(0) for tag in policy['prior_country_population_targets']}

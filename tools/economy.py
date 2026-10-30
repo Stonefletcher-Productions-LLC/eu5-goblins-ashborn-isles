@@ -205,7 +205,7 @@ ga_economy_monthly = {{
 '''
     b.write(out,'in_game/common/on_action/goblins_economy.txt',script)
     # Flat, explicit starting development supplements native terrain/rank rules.
-    rel='main_menu/setup/start/14_development.txt';native=b.read(game,rel)
+    rel='main_menu/setup/1337/14_development.txt';native=b.read(game,rel)
     lines=['cm_cindermaw_area = 7']+[c['capital']+' = 3' for c in cfg['countries']]
     b.write(out,rel,b.inject(native,'development','\n'.join(lines)))
     corpus='\n'.join(p.read_text(encoding='utf-8-sig') for p in (game/'in_game/common/building_types').glob('*.txt'))

@@ -17,8 +17,8 @@ TAGS = ('cdm', 'qbr', 'rhk', 'sfk', 'swk', 'gtf')
 GOBLIN_ROW = re.compile(r'^(?:cm_(?:' + '|'.join(TAGS) + r')_\w+|cm_shatterfin_dynasty) = \{.*\}\s*$')
 COURT = re.compile(r'_(?:court|noble|clergy|guild)_')
 LOWBORN = re.compile(r'_(?:clergy|guild)_')
-FILES = {'main_menu/setup/start/04_dynasties.txt': 'dynasty_manager',
-         'main_menu/setup/start/05_characters.txt': 'character_db'}
+FILES = {'main_menu/setup/1337/04_dynasties.txt': 'dynasty_manager',
+         'main_menu/setup/1337/05_characters.txt': 'character_db'}
 
 
 def bundle(root=ROOT):
@@ -44,8 +44,8 @@ def replace_rows(text, rows):
 def generated(config):
     dynasties, characters = ashborn_names.court_rows(config['countries'])
     family = shatterfin.family_rows() + characters
-    return {'main_menu/setup/start/04_dynasties.txt': [shatterfin.dynasty_row()] + dynasties,
-            'main_menu/setup/start/05_characters.txt': family + goblin_nobility.rows(config['countries'], family)}
+    return {'main_menu/setup/1337/04_dynasties.txt': [shatterfin.dynasty_row()] + dynasties,
+            'main_menu/setup/1337/05_characters.txt': family + goblin_nobility.rows(config['countries'], family)}
 
 
 def build(root=ROOT):
@@ -61,8 +61,8 @@ def build(root=ROOT):
 
 
 def verify(root=ROOT):
-    chars = (root / 'mod/main_menu/setup/start/05_characters.txt').read_bytes().decode('utf-8')
-    dyn = (root / 'mod/main_menu/setup/start/04_dynasties.txt').read_bytes().decode('utf-8')
+    chars = (root / 'mod/main_menu/setup/1337/05_characters.txt').read_bytes().decode('utf-8')
+    dyn = (root / 'mod/main_menu/setup/1337/04_dynasties.txt').read_bytes().decode('utf-8')
     people = {}
     for line in chars.split('\r\n'):
         if GOBLIN_ROW.match(line):

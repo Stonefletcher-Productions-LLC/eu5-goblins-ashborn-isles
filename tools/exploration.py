@@ -73,7 +73,7 @@ def build(b,game,out,validate_setup=True):
     # Runtime-only installer overlays do not contain generated starting setup.
     # Full builds always retain these starting-knowledge checks.
     if validate_setup:
-        setup=(out/'main_menu/setup/start/10_countries.txt').read_text(encoding='utf-8-sig')
+        setup=(out/'main_menu/setup/1337/10_countries.txt').read_text(encoding='utf-8-sig')
         for c in b.CFG['countries']:
             a,z=b.block_span(setup,c['tag']);country=setup[a:z]
             assert 'expl_western_europe' not in country

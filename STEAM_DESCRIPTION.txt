@@ -1,4 +1,4 @@
-[h1]Goblins of the Ashborn Isles[/h1]
+[h1][1.4] - Goblins of the Ashborn Isles[/h1]
 
 [b]Version 0.6.8 — Galleys, Warchiefs and sculpted goblin soldiers.[/b]
 

@@ -30,7 +30,7 @@ def main():
     target = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
     assert not subprocess.check_output(['git', 'status', '--porcelain', '--untracked-files=no'], text=True).strip()
     subprocess.run(['gh', 'release', 'create', tag, str(archive), str(checksum),
-                    '--target', target, '--title', f'Goblins of the Ashborn Isles {version}',
+                    '--target', target, '--title', f'[1.4] - Goblins of the Ashborn Isles {version}',
                     '--notes-file', str(root / f'RELEASE_NOTES_{version}.md'), '--latest'], check=True)
 
 if __name__ == '__main__':

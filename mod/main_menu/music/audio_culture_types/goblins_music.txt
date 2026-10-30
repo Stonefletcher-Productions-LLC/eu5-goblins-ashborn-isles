@@ -1,4 +1,4 @@
-ga_cm_cinderkin_sfx = { priority = 200 culture_tag = cm_cinderkin_gfx }
+﻿ga_cm_cinderkin_sfx = { priority = 200 culture_tag = cm_cinderkin_gfx }
 ga_cm_brinekin_sfx = { priority = 200 culture_tag = cm_brinekin_gfx }
 ga_cm_reefkin_sfx = { priority = 200 culture_tag = cm_reefkin_gfx }
 ga_cm_shatterkin_sfx = { priority = 200 culture_tag = cm_shatterkin_gfx }

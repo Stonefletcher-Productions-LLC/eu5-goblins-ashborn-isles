@@ -139,7 +139,9 @@ def verify(read):
     assert auto['subject_pays'] == 'ga_compact_autonomy_tribute' and prot['subject_pays'] == 'subject_pays_vassal'
     assert ('scaled_gold', '=', '0.1') in dict((k, v) for k, _, v in parse(read('in_game/common/prices/goblins_gathering.txt')))['ga_compact_autonomy_tribute']
     assert prot['join_offensive_wars_always'] == prot['join_offensive_wars_can_call'] == [('always', '=', 'no')]
-    assert prot['overlord_protects_external'] == prot['overlord_protects_other_subjects'] == 'yes'
+    # EU5 1.4 removed overlord_protects_external/_other_subjects; defensive calls carry protection.
+    assert not any(k.startswith('overlord_protects') for t in types.values() for k in t)
+    assert prot['join_defensive_wars_always'] == [('always', '=', 'yes')]
     assert ('army_maintenance_efficiency', '=', '-0.05') in prot['overlord_modifier']
     assert ('global_defensive', '=', '0.10') in prot['subject_modifier']
     assert all(t['has_overlords_ruler'] == 'no' for t in types.values())
