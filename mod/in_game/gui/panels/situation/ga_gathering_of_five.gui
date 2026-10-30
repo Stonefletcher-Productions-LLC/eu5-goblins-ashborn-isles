@@ -4,6 +4,47 @@
         visible = yes
         text_single = { text = "ga_gathering_header" fontsize = 13 }
     }
+    blockoverride "situation_panel_main_content_top" {
+        situation_card_expandable = {
+            blockoverride "card_expandable_size" { minimumsize = { 500 -1 } }
+            blockoverride "header_text" { text = "ga_ui_guide_header" }
+            blockoverride "header_icon" { texture = "gfx/interface/icons/disasters/end_requirements_green.dds" }
+            blockoverride "header_button_onclick" { onclick = "[SituationView.Vars.Toggle('ga_guide_open')]" }
+            blockoverride "bottom_content_onclick" { visible = "[SituationView.Vars.Exists('ga_guide_open')]" }
+            blockoverride "icon_replace_visible_yes" { visible = "[SituationView.Vars.Exists('ga_guide_open')]" }
+            blockoverride "icon_replace_visible_not" { visible = "[Not(SituationView.Vars.Exists('ga_guide_open'))]" }
+            blockoverride "bottom_content" {
+                vbox = {
+                    layoutpolicy_horizontal = expanding
+                    spacing = 8
+                    text_multi = {
+                        layoutpolicy_horizontal = expanding
+                        max_width = 460
+                        autoresize = yes
+                        text = "ga_ui_homeland_rules"
+                    }
+                    text_multi = {
+                        layoutpolicy_horizontal = expanding
+                        max_width = 460
+                        autoresize = yes
+                        text = "ga_ui_compact_heading"
+                    }
+                    text_multi = {
+                        layoutpolicy_horizontal = expanding
+                        max_width = 460
+                        autoresize = yes
+                        text = "ga_ui_compact_route"
+                    }
+                    text_multi = {
+                        layoutpolicy_horizontal = expanding
+                        max_width = 460
+                        autoresize = yes
+                        text = "ga_ui_history_note"
+                    }
+                }
+            }
+        }
+    }
     blockoverride "situation_panel_main_content" {
         text_single = {
             layoutpolicy_horizontal = expanding
@@ -16,29 +57,330 @@
             autoresize = yes
             text = "ga_ui_homeland_progress"
         }
-        text_multi = {
-            layoutpolicy_horizontal = expanding
-            max_width = 400
-            autoresize = yes
-            text = "ga_ui_homeland_rules"
-        }
-        text_multi = {
-            layoutpolicy_horizontal = expanding
-            max_width = 400
-            autoresize = yes
-            text = "ga_ui_compact_heading"
-        }
-        text_multi = {
-            layoutpolicy_horizontal = expanding
-            max_width = 400
-            autoresize = yes
-            text = "ga_ui_compact_route"
-        }
-        text_multi = {
-            layoutpolicy_horizontal = expanding
-            max_width = 400
-            autoresize = yes
-            text = "ga_ui_history_note"
+        situation_card_common = {
+            blockoverride "common_header_icon" {}
+            blockoverride "common_header_text" { text = "ga_ui_pacts_header" }
+            blockoverride "common_bottom_content" {
+                vbox = {
+                    layoutpolicy_horizontal = expanding
+                    spacing = 6
+                    vbox = {
+                        layoutpolicy_horizontal = expanding
+                        spacing = 2
+                        text_single = {
+                            layoutpolicy_horizontal = expanding
+                            text = "ga_ui_pacts_trusted"
+                            tooltip = "ga_pact_step_trusted_tt"
+                        }
+                        hbox = {
+                            datacontext = "[GetCountry('CDM')]"
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_CDM'), '(CFixedPoint)1'))]"
+                            layoutpolicy_horizontal = expanding
+                            spacing = 6
+                            country_flag_small = {
+                                size = { 30 20 }
+                                tooltipwidget = { using = CountryTooltip }
+                            }
+                            text_single = {
+                                layoutpolicy_horizontal = expanding
+                                autoresize = yes
+                                text = "[Country.GetName]"
+                            }
+                        }
+                        hbox = {
+                            datacontext = "[GetCountry('QBR')]"
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_QBR'), '(CFixedPoint)1'))]"
+                            layoutpolicy_horizontal = expanding
+                            spacing = 6
+                            country_flag_small = {
+                                size = { 30 20 }
+                                tooltipwidget = { using = CountryTooltip }
+                            }
+                            text_single = {
+                                layoutpolicy_horizontal = expanding
+                                autoresize = yes
+                                text = "[Country.GetName]"
+                            }
+                        }
+                        hbox = {
+                            datacontext = "[GetCountry('RHK')]"
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_RHK'), '(CFixedPoint)1'))]"
+                            layoutpolicy_horizontal = expanding
+                            spacing = 6
+                            country_flag_small = {
+                                size = { 30 20 }
+                                tooltipwidget = { using = CountryTooltip }
+                            }
+                            text_single = {
+                                layoutpolicy_horizontal = expanding
+                                autoresize = yes
+                                text = "[Country.GetName]"
+                            }
+                        }
+                        hbox = {
+                            datacontext = "[GetCountry('SFK')]"
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_SFK'), '(CFixedPoint)1'))]"
+                            layoutpolicy_horizontal = expanding
+                            spacing = 6
+                            country_flag_small = {
+                                size = { 30 20 }
+                                tooltipwidget = { using = CountryTooltip }
+                            }
+                            text_single = {
+                                layoutpolicy_horizontal = expanding
+                                autoresize = yes
+                                text = "[Country.GetName]"
+                            }
+                        }
+                        hbox = {
+                            datacontext = "[GetCountry('SWK')]"
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_SWK'), '(CFixedPoint)1'))]"
+                            layoutpolicy_horizontal = expanding
+                            spacing = 6
+                            country_flag_small = {
+                                size = { 30 20 }
+                                tooltipwidget = { using = CountryTooltip }
+                            }
+                            text_single = {
+                                layoutpolicy_horizontal = expanding
+                                autoresize = yes
+                                text = "[Country.GetName]"
+                            }
+                        }
+                        hbox = {
+                            datacontext = "[GetCountry('GTF')]"
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_GTF'), '(CFixedPoint)1'))]"
+                            layoutpolicy_horizontal = expanding
+                            spacing = 6
+                            country_flag_small = {
+                                size = { 30 20 }
+                                tooltipwidget = { using = CountryTooltip }
+                            }
+                            text_single = {
+                                layoutpolicy_horizontal = expanding
+                                autoresize = yes
+                                text = "[Country.GetName]"
+                            }
+                        }
+                        text_single = {
+                            visible = "[And(Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_CDM'), '(CFixedPoint)1')), And(Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_QBR'), '(CFixedPoint)1')), And(Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_RHK'), '(CFixedPoint)1')), And(Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_SFK'), '(CFixedPoint)1')), And(Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_SWK'), '(CFixedPoint)1')), Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_GTF'), '(CFixedPoint)1')))))))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            text = "ga_ui_pacts_none"
+                        }
+                    }
+                    vbox = {
+                        layoutpolicy_horizontal = expanding
+                        spacing = 2
+                        text_single = {
+                            layoutpolicy_horizontal = expanding
+                            text = "ga_ui_pacts_sworn"
+                            tooltip = "ga_pact_step_sworn_tt"
+                        }
+                        hbox = {
+                            datacontext = "[GetCountry('CDM')]"
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_CDM'), '(CFixedPoint)2'))]"
+                            layoutpolicy_horizontal = expanding
+                            spacing = 6
+                            country_flag_small = {
+                                size = { 30 20 }
+                                tooltipwidget = { using = CountryTooltip }
+                            }
+                            text_single = {
+                                layoutpolicy_horizontal = expanding
+                                autoresize = yes
+                                text = "[Country.GetName]"
+                            }
+                        }
+                        hbox = {
+                            datacontext = "[GetCountry('QBR')]"
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_QBR'), '(CFixedPoint)2'))]"
+                            layoutpolicy_horizontal = expanding
+                            spacing = 6
+                            country_flag_small = {
+                                size = { 30 20 }
+                                tooltipwidget = { using = CountryTooltip }
+                            }
+                            text_single = {
+                                layoutpolicy_horizontal = expanding
+                                autoresize = yes
+                                text = "[Country.GetName]"
+                            }
+                        }
+                        hbox = {
+                            datacontext = "[GetCountry('RHK')]"
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_RHK'), '(CFixedPoint)2'))]"
+                            layoutpolicy_horizontal = expanding
+                            spacing = 6
+                            country_flag_small = {
+                                size = { 30 20 }
+                                tooltipwidget = { using = CountryTooltip }
+                            }
+                            text_single = {
+                                layoutpolicy_horizontal = expanding
+                                autoresize = yes
+                                text = "[Country.GetName]"
+                            }
+                        }
+                        hbox = {
+                            datacontext = "[GetCountry('SFK')]"
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_SFK'), '(CFixedPoint)2'))]"
+                            layoutpolicy_horizontal = expanding
+                            spacing = 6
+                            country_flag_small = {
+                                size = { 30 20 }
+                                tooltipwidget = { using = CountryTooltip }
+                            }
+                            text_single = {
+                                layoutpolicy_horizontal = expanding
+                                autoresize = yes
+                                text = "[Country.GetName]"
+                            }
+                        }
+                        hbox = {
+                            datacontext = "[GetCountry('SWK')]"
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_SWK'), '(CFixedPoint)2'))]"
+                            layoutpolicy_horizontal = expanding
+                            spacing = 6
+                            country_flag_small = {
+                                size = { 30 20 }
+                                tooltipwidget = { using = CountryTooltip }
+                            }
+                            text_single = {
+                                layoutpolicy_horizontal = expanding
+                                autoresize = yes
+                                text = "[Country.GetName]"
+                            }
+                        }
+                        hbox = {
+                            datacontext = "[GetCountry('GTF')]"
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_GTF'), '(CFixedPoint)2'))]"
+                            layoutpolicy_horizontal = expanding
+                            spacing = 6
+                            country_flag_small = {
+                                size = { 30 20 }
+                                tooltipwidget = { using = CountryTooltip }
+                            }
+                            text_single = {
+                                layoutpolicy_horizontal = expanding
+                                autoresize = yes
+                                text = "[Country.GetName]"
+                            }
+                        }
+                        text_single = {
+                            visible = "[And(Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_CDM'), '(CFixedPoint)2')), And(Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_QBR'), '(CFixedPoint)2')), And(Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_RHK'), '(CFixedPoint)2')), And(Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_SFK'), '(CFixedPoint)2')), And(Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_SWK'), '(CFixedPoint)2')), Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_GTF'), '(CFixedPoint)2')))))))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            text = "ga_ui_pacts_none"
+                        }
+                    }
+                    vbox = {
+                        layoutpolicy_horizontal = expanding
+                        spacing = 2
+                        text_single = {
+                            layoutpolicy_horizontal = expanding
+                            text = "ga_ui_pacts_bound"
+                            tooltip = "ga_pact_step_bound_tt"
+                        }
+                        hbox = {
+                            datacontext = "[GetCountry('CDM')]"
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_CDM'), '(CFixedPoint)3'))]"
+                            layoutpolicy_horizontal = expanding
+                            spacing = 6
+                            country_flag_small = {
+                                size = { 30 20 }
+                                tooltipwidget = { using = CountryTooltip }
+                            }
+                            text_single = {
+                                layoutpolicy_horizontal = expanding
+                                autoresize = yes
+                                text = "[Country.GetName]"
+                            }
+                        }
+                        hbox = {
+                            datacontext = "[GetCountry('QBR')]"
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_QBR'), '(CFixedPoint)3'))]"
+                            layoutpolicy_horizontal = expanding
+                            spacing = 6
+                            country_flag_small = {
+                                size = { 30 20 }
+                                tooltipwidget = { using = CountryTooltip }
+                            }
+                            text_single = {
+                                layoutpolicy_horizontal = expanding
+                                autoresize = yes
+                                text = "[Country.GetName]"
+                            }
+                        }
+                        hbox = {
+                            datacontext = "[GetCountry('RHK')]"
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_RHK'), '(CFixedPoint)3'))]"
+                            layoutpolicy_horizontal = expanding
+                            spacing = 6
+                            country_flag_small = {
+                                size = { 30 20 }
+                                tooltipwidget = { using = CountryTooltip }
+                            }
+                            text_single = {
+                                layoutpolicy_horizontal = expanding
+                                autoresize = yes
+                                text = "[Country.GetName]"
+                            }
+                        }
+                        hbox = {
+                            datacontext = "[GetCountry('SFK')]"
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_SFK'), '(CFixedPoint)3'))]"
+                            layoutpolicy_horizontal = expanding
+                            spacing = 6
+                            country_flag_small = {
+                                size = { 30 20 }
+                                tooltipwidget = { using = CountryTooltip }
+                            }
+                            text_single = {
+                                layoutpolicy_horizontal = expanding
+                                autoresize = yes
+                                text = "[Country.GetName]"
+                            }
+                        }
+                        hbox = {
+                            datacontext = "[GetCountry('SWK')]"
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_SWK'), '(CFixedPoint)3'))]"
+                            layoutpolicy_horizontal = expanding
+                            spacing = 6
+                            country_flag_small = {
+                                size = { 30 20 }
+                                tooltipwidget = { using = CountryTooltip }
+                            }
+                            text_single = {
+                                layoutpolicy_horizontal = expanding
+                                autoresize = yes
+                                text = "[Country.GetName]"
+                            }
+                        }
+                        hbox = {
+                            datacontext = "[GetCountry('GTF')]"
+                            visible = "[And(Country.Exists, EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_GTF'), '(CFixedPoint)3'))]"
+                            layoutpolicy_horizontal = expanding
+                            spacing = 6
+                            country_flag_small = {
+                                size = { 30 20 }
+                                tooltipwidget = { using = CountryTooltip }
+                            }
+                            text_single = {
+                                layoutpolicy_horizontal = expanding
+                                autoresize = yes
+                                text = "[Country.GetName]"
+                            }
+                        }
+                        text_single = {
+                            visible = "[And(Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_CDM'), '(CFixedPoint)3')), And(Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_QBR'), '(CFixedPoint)3')), And(Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_RHK'), '(CFixedPoint)3')), And(Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_SFK'), '(CFixedPoint)3')), And(Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_SWK'), '(CFixedPoint)3')), Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_GTF'), '(CFixedPoint)3')))))))]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            text = "ga_ui_pacts_none"
+                        }
+                    }
+                }
+            }
         }
         situation_card_common = {
             blockoverride "common_header_icon" {}

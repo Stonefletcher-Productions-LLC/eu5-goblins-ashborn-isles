@@ -17,11 +17,14 @@ def verify(read):
     # 12 sites plus Maw Rock and The Kiln Stair (0.6.7)
     assert len(levels) == 14 and set(levels) == set('12345')
     panel = read('in_game/gui/panels/situation/ga_gathering_of_five.gui')
+    # Panels packaged before the dropdown have one standings row per crown; later ones
+    # add an entry in each of the three pact rungs and move the rules to the top dropdown.
+    dropdown = 'situation_panel_main_content_top' in panel
     for tag in TAGS:
-        assert panel.count("[GetCountry('"+tag+"')]") == 1
+        assert panel.count("[GetCountry('"+tag+"')]") == (4 if dropdown else 1)
     assert panel.count('text = "ga_gathering_annexed"') == len(TAGS)
-    body = panel[panel.index('blockoverride "situation_panel_main_content"'):]
-    assert 'ga_ui_compact_route' in body and 'ga_ui_homeland_progress' in body
+    top, body = panel.split('blockoverride "situation_panel_main_content" {')
+    assert 'ga_ui_compact_route' in (top if dropdown else body) and 'ga_ui_homeland_progress' in body
     assert 'ga_commission_voyage' not in panel
     assert 'ga_exp_chart_east_row' in read('in_game/gui/panels/situation/ga_ashborn_voyages.gui')
     values = dict((k,v) for k,_,v in parse(read('in_game/common/script_values/ga_gathering_ui.txt')))

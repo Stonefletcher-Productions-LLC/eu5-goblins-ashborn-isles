@@ -5,6 +5,8 @@ from datetime import date
 from pathlib import Path
 
 PACT_LADDER_067 = {'in_game/common/biases/goblins_gathering.txt', 'in_game/common/generic_action_ai_lists/goblins_gathering.txt', 'in_game/common/generic_actions/goblins_gathering.txt', 'in_game/common/on_action/goblins_gathering.txt', 'in_game/common/script_values/ga_gathering_ui.txt', 'in_game/common/scripted_triggers/goblins_gathering.txt', 'in_game/events/goblins_gathering.txt', 'in_game/gui/panels/situation/ga_gathering_of_five.gui', 'main_menu/common/static_modifiers/goblins_gathering.txt', 'main_menu/localization/english/goblins_gathering_l_english.yml'}
+# The Gathering dropdown and pact list changed these after 0.6.9 was packaged.
+GATHERING_DROPDOWN_069 = {'in_game/gui/panels/situation/ga_eastern_hunger.gui', 'in_game/gui/panels/situation/ga_gathering_of_five.gui', 'main_menu/localization/english/goblins_gathering_l_english.yml'}
 
 
 def verify(root):
@@ -194,6 +196,7 @@ def verify(root):
                 path=item['path']
                 # The Pact Ladder regenerated these Gathering files; 0.6.7 packages them.
                 if path in PACT_LADDER_067 and tuple(map(int, version.split('.'))) < (0, 6, 7): continue
+                if path in GATHERING_DROPDOWN_069 and tuple(map(int, version.split('.'))) <= (0, 6, 9): continue
                 assert z.read('goblins_ashborn_isles/'+path)==(root/'mod'/path).read_bytes(),f'Stale or missing Gathering content: {path}'
             for name in ['README.md','RELEASE_NOTES.md','TESTING.md','LORE.md']:
                 packed=z.read(name);authored=(root/('PLAYER_README.md' if name == 'README.md' and tuple(map(int, version.split('.'))) >= (0, 5, 9) else name)).read_bytes()

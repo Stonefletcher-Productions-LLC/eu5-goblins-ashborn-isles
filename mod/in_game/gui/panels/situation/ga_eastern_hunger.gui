@@ -1,5 +1,40 @@
 ﻿situation_panel = {
     blockoverride "situation_subheader_content" {}
+    blockoverride "situation_panel_main_content_top" {
+        situation_card_expandable = {
+            blockoverride "card_expandable_size" { minimumsize = { 500 -1 } }
+            blockoverride "header_text" { text = "ga_ui_hunger_guide_header" }
+            blockoverride "header_icon" { texture = "gfx/interface/icons/disasters/end_requirements_green.dds" }
+            blockoverride "header_button_onclick" { onclick = "[SituationView.Vars.Toggle('ga_hunger_guide_open')]" }
+            blockoverride "bottom_content_onclick" { visible = "[SituationView.Vars.Exists('ga_hunger_guide_open')]" }
+            blockoverride "icon_replace_visible_yes" { visible = "[SituationView.Vars.Exists('ga_hunger_guide_open')]" }
+            blockoverride "icon_replace_visible_not" { visible = "[Not(SituationView.Vars.Exists('ga_hunger_guide_open'))]" }
+            blockoverride "bottom_content" {
+                vbox = {
+                    layoutpolicy_horizontal = expanding
+                    spacing = 8
+                    text_multi = {
+                        layoutpolicy_horizontal = expanding
+                        max_width = 460
+                        autoresize = yes
+                        text = "ga_eastern_hunger_desc"
+                    }
+                    text_multi = {
+                        layoutpolicy_horizontal = expanding
+                        max_width = 460
+                        autoresize = yes
+                        text = "ga_ui_eastern_route"
+                    }
+                    text_multi = {
+                        layoutpolicy_horizontal = expanding
+                        max_width = 460
+                        autoresize = yes
+                        text = "ga_ui_homeland_rules"
+                    }
+                }
+            }
+        }
+    }
     blockoverride "situation_panel_main_content" {
         text_single = {
             layoutpolicy_horizontal = expanding
@@ -11,24 +46,6 @@
             max_width = 400
             autoresize = yes
             text = "ga_ui_homeland_progress"
-        }
-        text_multi = {
-            layoutpolicy_horizontal = expanding
-            max_width = 400
-            autoresize = yes
-            text = "ga_ui_homeland_rules"
-        }
-        text_multi = {
-            layoutpolicy_horizontal = expanding
-            max_width = 400
-            autoresize = yes
-            text = "ga_ui_eastern_route"
-        }
-        text_multi = {
-            layoutpolicy_horizontal = expanding
-            max_width = 400
-            autoresize = yes
-            text = "ga_eastern_hunger_desc"
         }
         text_single = {
             layoutpolicy_horizontal = expanding

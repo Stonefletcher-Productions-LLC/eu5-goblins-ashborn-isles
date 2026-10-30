@@ -61,7 +61,7 @@
     },
     {
       "path": "in_game/common/generic_action_ai_lists/goblins_gathering.txt",
-      "sha256": "13b1555669dd0318e4fa994d83d42c820d4a98869e94da55c782531a083c3ce1"
+      "sha256": "5482a65a6c008f8b6e827a9fe27169b79724d9094922d69f344ac270a76a0d7c"
     },
     {
       "path": "in_game/common/generic_action_ai_lists/goblins_mainland.txt",
@@ -89,7 +89,7 @@
     },
     {
       "path": "in_game/common/generic_actions/goblins_mainland.txt",
-      "sha256": "1382c1cc26dae1560761bf67753253979d91c60755b790679ebcbd98bd3c4037"
+      "sha256": "58d5c934fbf79e75af0a5ae0d5a5c2da09c13db8451ec46728c9b9404d329d43"
     },
     {
       "path": "in_game/common/genes/zz_ashborn_outfits.txt",
@@ -577,15 +577,7 @@
     },
     {
       "path": "in_game/gui/panels/situation/ga_ashborn_voyages.gui",
-      "sha256": "1a9a3d4fe0bc3dd5d6dcae4ef9729c66d32a1149365448b05df5944194ab593a"
-    },
-    {
-      "path": "in_game/gui/panels/situation/ga_eastern_hunger.gui",
-      "sha256": "2beaa23be5b0bb72735281c3db88444a73443c6e24f2a80bcd7cbe757bbc8938"
-    },
-    {
-      "path": "in_game/gui/panels/situation/ga_gathering_of_five.gui",
-      "sha256": "ac97c1a935a16736fc302c2979c290436e7e8a268f1e0d8acdc02f9627cd1a10"
+      "sha256": "80f404ec106dc3449898ed093faab2769d8ab24eeec08588d91e82274d00e9a3"
     },
     {
       "path": "in_game/gui/panels/situation/ga_goblin_shore.gui",
@@ -713,7 +705,7 @@
     },
     {
       "path": "main_menu/gfx/interface/icons/international_organizations/goblin_horde.dds",
-      "sha256": "6e48c3d4747b15b64322796137e3ab6aa4a5c17f6080fcbfa026d2444aeb212a"
+      "sha256": "eceee2383843d0b54a2c9ae8363cc5a8b23c8068d8fa0cc0d9dd4c5e18ff315e"
     },
     {
       "path": "main_menu/gfx/interface/icons/situations/ga_ashborn_voyages.dds",
@@ -14698,10 +14690,6 @@
     {
       "path": "main_menu/localization/english/goblins_exploration_l_english.yml",
       "sha256": "e706bee904f2e29bef9d65d5cacc2d582ffad407add89ed4e015581a44f95db9"
-    },
-    {
-      "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
-      "sha256": "730a430bcaa8fa9b1a7cafb7bc61b5375cc25bd10a08855f6aa47d8a600435bf"
     },
     {
       "path": "main_menu/localization/english/goblins_mainland_l_english.yml",
