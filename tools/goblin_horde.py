@@ -428,7 +428,7 @@ def ai_list():
     # Native AI lists keep the AI from scanning every action every tick.
     return f'''ga_horde_ai_list = {{
     potential = {{ ga_in_horde = yes }}
-    actions = {{ {' '.join(ACTIONS)} }}
+    actions = {{ {' '.join(ACTIONS)} ga_horde_ship_kin }}
 }}
 '''
 
@@ -436,6 +436,7 @@ def ai_list():
 def localization(loc):
     loc(KEY, 'Goblin Horde')
     loc(KEY + '_desc', 'Every goblin crown of the Ashborn Isles belongs to the Horde. Its crowns raid, rival and conquer one another freely, but when an outsider declares war on any of them, the whole Horde answers. The crown holding most of the homeland leads as Warchief.')
+    loc('io_opinion_goblin_horde', 'Goblin Horde kin')
     loc('GOBLIN_HORDE_LEADER', 'Warchief')
     loc('GOBLIN_HORDE_KIN', 'Goblin kin')
     loc('diplomatic_status_goblin_horde_name', 'Goblin Horde')

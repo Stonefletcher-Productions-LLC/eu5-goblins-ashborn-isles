@@ -118,6 +118,7 @@ ga_horde_ship_kin = {
         custom_tooltip = { text = ga_ms_kin_shore_tt international_organization:goblin_horde = { any_international_organization_member = { ga_holds_mainland = yes NOT = { this = scope:actor } } } }
     }
     cooldown = { type = ga_horde_ship_kin years = 5 }
+    show_message = no
     price = price:ga_ms_kin_price
     select_trigger = {
         looking_for_a = international_organization
