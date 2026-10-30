@@ -1,3 +1,14 @@
+# Development: goblins in 1.4 expeditions
+
+New 1337 campaign as any goblin crown, fresh `logs/error.log`.
+
+- After 36 months a "The Captains Look East" notice appears. Open the Expeditions panel: **Ashborn Voyage: East Route** can start (5 gold plus the native fee); North and South Routes are listed but locked until the East Route is charted. The text shows names, not raw keys.
+- Launch the East Route with any adult courtier. A fleet leaves a goblin port, stops at Porto, Lisbon and Setubal (the Ports Charted counter climbs to 3/3), returns home and shows "A Coast Beyond Counting". The Portuguese coast is charted and Portugal gets the "Strange Visitors" event.
+- The Ashborn Voyages situation shows the route at sea, then charted, then 12 months of rest; then North and South can start.
+- Holy site pilgrimage (religious actions) works for the Ashen Covenant. With Open Sea Exploration, "Voyage into the Western Ocean" is offered; in the age of Absolutism with an adult heir, the Grand Tour is offered.
+- Watch an AI goblin crown for a few years: it should launch its own voyages.
+- Search the logs for `expedition`, `ga_voyage`, `goblins_exploration` and `ga_goblin_voyager`.
+
 # 0.6.9 acceptance: EU5 1.4
 
 EU5 1.4.6, only **[1.4] - Goblins of the Ashborn Isles** enabled, new 1337 campaign, fresh `logs/error.log`.

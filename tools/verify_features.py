@@ -50,9 +50,9 @@ def verify(b,out,mapstats):
         assert np.all(archipelago.surface(cfg,x,y)>0),'Scenery placed outside land'
         scenery_count+=len(a)
     from exploration import ROUTES
-    events=(out/'in_game/events/goblins_exploration.txt').read_text(encoding='utf-8-sig')
-    for route in ROUTES.values():
-        a,z=b.block_span(events,f'goblins_exploration.{route["event"]}')
+    events=(out/'in_game/common/scripted_effects/goblins_exploration.txt').read_text(encoding='utf-8-sig')
+    for key,route in ROUTES.items():
+        a,z=b.block_span(events,f'ga_exp_complete_{key}')
         section=events[a:z]
         for location in route['locations']:
             la,lz=b.block_span(section,'location:'+location);contact=section[la:lz]
@@ -60,7 +60,7 @@ def verify(b,out,mapstats):
             assert 'discover_area = area:cm_cindermaw_area' in contact
             assert 'discover_area = area:cm_ashborn_seas_area' in contact
             assert 'NOT = { has_variable = ga_received_goblin_first_contact }' in contact
-            assert 'NOT = { OR = {' in contact
+            assert 'NOT = { ga_goblin_voyager = yes }' in contact
             flag='set_variable = { name = ga_received_goblin_first_contact value = yes }'
             dispatch='trigger_event_non_silently = { id = goblins_exploration.6 }'
             assert flag in contact and dispatch in contact

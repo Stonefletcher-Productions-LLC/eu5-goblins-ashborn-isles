@@ -136,8 +136,8 @@ def verify(out,game):
     for path in FILES[:-1]:voyage.update({k:v for k,_,v in parse(read(path)) if k!='namespace'})
     for tag in TAGS:
         w=Voyages(voyage);w.monthly(tag);w.day=36*30;w.monthly(tag)
-        p=w.deliver('goblins_exploration.1');assert p[1]==tag and w.choose(p,0)
-        w.day+=4*30;p=w.deliver('goblins_exploration.2');assert p[1]==tag
+        p=w.deliver('goblins_exploration.1');assert p[1]==tag
+        assert w.launch('east',tag);w.sail();p=w.deliver('goblins_exploration.2');assert p[1]==tag
         assert 'location:lisbon' in w.countries[tag]['locations']
     return {'land_ratio_to_brackmaw':ratio,'land_pixels':pixels,'new_locations':22,
             'new_sea_tiles':sum(s.get('basin')=='giltfang' for s in cfg['coastal_sea']['zones']),

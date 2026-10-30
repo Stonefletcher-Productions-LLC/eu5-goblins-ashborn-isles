@@ -23,7 +23,7 @@ def verify(read):
     body = panel[panel.index('blockoverride "situation_panel_main_content"'):]
     assert 'ga_ui_compact_route' in body and 'ga_ui_homeland_progress' in body
     assert 'ga_commission_voyage' not in panel
-    assert 'ga_commission_voyage' in read('in_game/gui/panels/situation/ga_ashborn_voyages.gui')
+    assert 'ga_exp_chart_east_row' in read('in_game/gui/panels/situation/ga_ashborn_voyages.gui')
     values = dict((k,v) for k,_,v in parse(read('in_game/common/script_values/ga_gathering_ui.txt')))
     assert values['ga_gathering_realm_locations'] == [('value','=','ga_ui_homeland_count')]
     assert {v for k,_,v in flatten(values['ga_gathering_crown_status']) if k=='is_subject_type'} == {'vassal','ga_compact_autonomy','ga_compact_protection'}

@@ -20,6 +20,9 @@ def main():
     if not args.game:
         ap.error('--game is required to validate exploration locations and areas')
     exploration.build(b,args.game,output,validate_setup=False)
+    # 0.6.10: goblins use EU5 1.4 expeditions; two vanilla types are widened for them.
+    import goblin_expeditions
+    goblin_expeditions.build(args.game,output)
     import economy
     economy.starting_trades(b,args.game,output)
     import export_event_art
@@ -56,6 +59,7 @@ def main():
     paths.extend(output/p for p in ['main_menu/common/modifier_type_definitions/ashen_covenant.txt',
                                    'in_game/common/religions/goblins_ashborn_isles.txt',
                                    'main_menu/localization/english/ashen_covenant_l_english.yml'])
+    paths.extend(output/p for p in goblin_expeditions.FILES)
     paths.extend(output/p for p in ['in_game/common/on_action/goblins_exploration.txt','in_game/events/goblins_exploration.txt','main_menu/localization/english/goblins_exploration_l_english.yml'])
     from event_art import runtime_paths
     paths.extend(output / p for p in runtime_paths())

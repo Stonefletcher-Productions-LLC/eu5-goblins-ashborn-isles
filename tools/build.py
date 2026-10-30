@@ -235,6 +235,9 @@ def main():
     economy['longevity']=goblin_longevity.verify(sys.modules[__name__],out)
     import exploration
     discovery=exploration.build(sys.modules[__name__],game,out)
+    import goblin_expeditions
+    goblin_expeditions.build(game,out)
+    discovery['vanilla_expeditions']=goblin_expeditions.verify(lambda p:(out/p).read_text(encoding='utf-8-sig'))
     import gathering
     gathering_report=gathering.build(out,CFG)
     import ashen_covenant

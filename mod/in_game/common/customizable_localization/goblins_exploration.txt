@@ -3,13 +3,10 @@ text = { trigger = { has_variable = ga_charted_east has_variable = ga_charted_no
 text = { trigger = { has_variable = ga_exp_route var:ga_exp_route = 1 } localization_key = ga_exp_at_sea_east }
 text = { trigger = { has_variable = ga_exp_route var:ga_exp_route = 2 } localization_key = ga_exp_at_sea_north }
 text = { trigger = { has_variable = ga_exp_route var:ga_exp_route = 3 } localization_key = ga_exp_at_sea_south }
-text = { trigger = { has_variable = ga_exploration_pending NOT = { has_variable = ga_exp_serial } } localization_key = ga_exp_legacy }
-text = { trigger = { has_variable = ga_exploration_pending } localization_key = ga_exp_decision }
-text = { trigger = { has_variable = ga_exp_postponed } localization_key = ga_exp_postponed_status }
+text = { trigger = { has_variable = ga_exploration_pending } localization_key = ga_exp_legacy }
 text = { trigger = { has_variable = ga_exp_resting has_variable = ga_exploration_cooldown } localization_key = ga_exp_resting_status }
 text = { trigger = { has_variable = ga_exploration_cooldown } localization_key = ga_exp_preparing }
 text = { trigger = { NOT = { has_variable = ga_exploration_initialized } } localization_key = ga_exp_not_started }
-text = { trigger = { has_variable = ga_exp_paused } localization_key = ga_exp_paused_status }
 text = { fallback = yes localization_key = ga_exp_status_default } }
 ga_exp_remaining = { type = country
 text = { trigger = { has_variable = ga_exp_remaining_6 } localization_key = ga_exp_remaining_6_text }

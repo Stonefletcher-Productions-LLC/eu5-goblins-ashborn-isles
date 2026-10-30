@@ -139,8 +139,12 @@ def verify(root):
                 verify_projects(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_covenant_stories import verify as verify_stories
                 verify_stories(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
-                from verify_exploration_progress import verify as verify_voyages
-                verify_voyages(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
+                # Bundles up to 0.6.9 carry the calendar-timer voyages; later ones the native expeditions.
+                if 'goblins_ashborn_isles/in_game/common/expedition_types/goblins_voyages.txt' in z.namelist():
+                    from verify_exploration_progress import verify as verify_voyages
+                    verify_voyages(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
+                    from goblin_expeditions import verify as verify_vanilla_expeditions
+                    verify_vanilla_expeditions(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_combined_candidate import verify as verify_combined
                 verify_combined(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
             else:

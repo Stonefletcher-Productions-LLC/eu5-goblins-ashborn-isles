@@ -185,7 +185,7 @@ Each crown starts with **100 gold**. Its three opening projects cost **25 gold**
 
 ![Ashborn captains examine charts before a voyage](art/workshop/0.6.0/voyages.jpg)
 
-The separate **Ashborn Voyages** situation tracks preparation, a route at sea, returning crews, rest and completed charts. Fund expeditions toward Iberia, northern waters or northwest Africa. The first offer follows 36 months of preparation; voyages cost gold and take time.
+Ashborn Voyages are native EU5 1.4 expeditions. Launch the East, North and South Routes from the Expeditions panel: pick a captain, pay the crew and follow the fleet along the Portuguese, Atlantic-European or Moroccan ports until it comes home with its charts. The **Ashborn Voyages** situation tracks preparation, the fleet at sea, rest and completed charts. Crews prepare for 36 months before the first voyage and rest 12 months after each. Goblin crowns can also take EU5's own Voyage into the Western Ocean and an heir's Grand Tour, as well as holy site pilgrimages, coastal surveys and prospecting surveys.
 
 You can request a later reminder or commission available routes manually. Returning crews reveal limited coastal destinations, and reciprocal contact lets the countries they visit learn about the Isles. Foreign land is not all revealed at the start.
 
