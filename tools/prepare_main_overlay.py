@@ -102,8 +102,8 @@ def main():
         paths.append(output/'in_game/gui/ingame_topbar.gui')
     # After a full build of this version, overlays that the build generates must
     # match it byte for byte (bundle_prepared_release rejects stale candidates).
-    staged=ROOT/'build/goblins_ashborn_isles';report=ROOT/'build/reports/validation.json'
-    if report.is_file() and json.loads(report.read_text(encoding='utf-8')).get('version')==b.CFG['version']:
+    staged=ROOT/'build/goblins_ashborn_isles';validation_path=ROOT/'build/reports/validation.json'
+    if validation_path.is_file() and json.loads(validation_path.read_text(encoding='utf-8')).get('version')==b.CFG['version']:
         for rel in FROM_BUILD:
             if (staged/rel).is_file():(output/rel).write_bytes((staged/rel).read_bytes())
     paths=sorted(set(paths),key=lambda p:p.relative_to(output).as_posix())
