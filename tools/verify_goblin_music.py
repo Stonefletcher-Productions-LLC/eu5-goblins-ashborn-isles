@@ -50,6 +50,7 @@ def main():
     ap.add_argument('--game',type=Path,required=True)
     ap.add_argument('--native-xml',type=Path,required=True)
     ap.add_argument('--built-xml',type=Path,required=True)
+    ap.add_argument('--init-xml',type=Path,required=True,help='Native Init XML; gives the STMG layout')
     ap.add_argument('--mod',type=Path,default=ROOT/'mod')
     ap.add_argument('--report',type=Path)
     args=ap.parse_args()
@@ -206,16 +207,21 @@ def main():
     init_original=dict(chunks((args.game/'game'/BANK_PATH/'Init.bnk').read_bytes()))
     init_built=dict(chunks((args.mod/BANK_PATH/'Init.bnk').read_bytes()))
     original_stmg=init_original[b'STMG'];new_stmg=bytearray(init_built[b'STMG'])
-    old_count=struct.unpack_from('<I',original_stmg,10)[0]
-    new_count=struct.unpack_from('<I',new_stmg,10)[0]
+    # STMG layout differs between Wwise versions (1.4 added fHSFEmphasis); take it from the native dump.
+    settings=ET.parse(args.init_xml).getroot().find("object[@name='GlobalSettingsChunk']")
+    data_start=int(settings.find("field[@name='dwChunkSize']").get('offset'))+4
+    count_at=int(settings.find("field[@name='ulNumStateGroups']").get('offset'))-data_start
+    first=count_at+4
+    old_count=struct.unpack_from('<I',original_stmg,count_at)[0]
+    new_count=struct.unpack_from('<I',new_stmg,count_at)[0]
     assert new_count==old_count+1
     # This version's guarded native groups have zero custom transitions.
-    entries=[struct.unpack_from('<III',new_stmg,14+12*i) for i in range(new_count)]
+    entries=[struct.unpack_from('<III',new_stmg,first+12*i) for i in range(new_count)]
     assert all(e[2]==0 for e in entries)
     indexes=[i for i,e in enumerate(entries) if e[0]==war_group]
     assert len(indexes)==1 and entries[indexes[0]]==(war_group,0,0)
-    pos=14+12*indexes[0];del new_stmg[pos:pos+12]
-    struct.pack_into('<I',new_stmg,10,old_count)
+    pos=first+12*indexes[0];del new_stmg[pos:pos+12]
+    struct.pack_into('<I',new_stmg,count_at,old_count)
     init_built[b'STMG']=bytes(new_stmg)
     assert init_built==init_original, 'Native Init content changed beyond one registered group'
     for short_name in ('Init','sb_music_logic'):

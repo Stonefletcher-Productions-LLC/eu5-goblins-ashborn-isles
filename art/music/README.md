@@ -19,7 +19,7 @@ Original ElevenLabs MP3s and lossless WAV masters for the new tracks are retaine
 
 ## Routing and local war state
 
-`tools/build_goblin_music.py` reads installed EU5 1.3.11 music and Init banks and their wwiser XML dumps. It rejects unrecognized native bank and topbar hashes. The complete native sound catalogue is preserved, with registrations for the custom media, state and events. Children are serialized before music containers, matching native load order. The five tracks are embedded in the music bank and play through looping playlists.
+`tools/build_goblin_music.py` reads installed EU5 1.4.6 music and Init banks and their wwiser XML dumps. It rejects unrecognized native bank and topbar hashes. The complete native sound catalogue is preserved, with registrations for the custom media, state and events. Children are serialized before music containers, matching native load order. The five tracks are embedded in the music bank and play through looping playlists.
 
 The music root sends goblin campaign-introduction requests through the mode selector, avoiding the native culture-introduction branch that has no goblin match. Native cultures keep their original introduction routes. The mode selector's PlayerCulturePrimary condition routes six goblin audio categories to the custom playlists; wildcard branches preserve native destinations and the no-music branch remains intact.
 
@@ -31,6 +31,6 @@ The six categories match goblin graphical culture tags at priority 200, above na
 
 ## Rebuilding and acceptance
 
-Build with `--game <EU5 installation> --xml <native music XML> --init-xml <native Init XML>`. The local audio-state routing is the default; the native Init XML is required. Add `--ffmpeg <executable>` to regenerate WEMs from the WAV masters when present, otherwise the original MP3 masters. Dump the resulting banks with wwiser and run `tools/verify_goblin_music.py` with the corresponding native and built XML inputs. Rebuild after game audio or topbar updates. Do not combine with another mod replacing the same music bank, Init bank or in-game topbar.
+Build with `--game <EU5 installation> --xml <native music XML> --init-xml <native Init XML>`. The local audio-state routing is the default; the native Init XML is required. Add `--ffmpeg <executable>` to regenerate WEMs from the WAV masters when present, otherwise the original MP3 masters. Dump the resulting banks with wwiser and run `tools/verify_goblin_music.py` with the corresponding native and built XML inputs and `--init-xml <native Init XML>`. Rebuild after game audio or topbar updates. Do not combine with another mod replacing the same music bank, Init bank or in-game topbar.
 
 The runtime payload includes the music bank, Init state registration, native catalogue additions, culture definitions and topbar watcher together. Packaging and installation must keep those files in sync; an older music-only installer is not this tested candidate. Refer to `reports/goblin-music.json` for candidate-specific checks and `TESTING.md` for outstanding acceptance. Static routing checks cannot certify multiplayer or replace listening tests.
