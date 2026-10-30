@@ -1,5 +1,7 @@
 # Goblins of the Ashborn Isles
 
+**[Join the Discord](https://discord.gg/9Y5GVYTxf)** for news, bug reports and playtests. Website: [stonefletcher.com](https://stonefletcher.com). Made by Stonefletcher Productions LLC.
+
 Working copy: `E:\Codex_EU5_Modding\goblins-ashborn-isles`. Repository: [GitHub](https://github.com/Stonefletcher-Productions-LLC/eu5-goblins-ashborn-isles) (Bitbucket was a temporary home from October 12 to 22; its history was rebuilt onto GitHub in PR #13).
 
 **0.6.9 — Ready for EU5 1.4.**
@@ -214,8 +216,8 @@ Development packaging creates the player installer by default. Use `python tools
 
 The complete 0.6.1 static build, economy, connected-province, portrait asset and voyage script checks have passed. The city/wharf/seeded-trade follow-up passed full static validation, clean-source reconstruction and isolated installation; all 1,977 delivered files matched the build. These checks are separate from in-game confirmation of production, trade, UI rendering, portraits and save behavior. Multiplayer and achievements are unverified; dedicated foreign invasion ambitions and fear mechanics are not included.
 
-[Report a problem](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518) in the Workshop comments with your version, clan, enabled mods and steps to reproduce it. Screenshots and relevant saves help. See the [release history](RELEASE_NOTES.md) and [playtest checklist](TESTING.md) for more detail.
+[Report a problem](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518) in the Workshop comments or on [Discord](https://discord.gg/9Y5GVYTxf) with your version, clan, enabled mods and steps to reproduce it. Screenshots and relevant saves help. See the [release history](RELEASE_NOTES.md) and [playtest checklist](TESTING.md) for more detail.
 
 ## Credits
 
-Original setting and development by Stonefletcher. Base goblin infantry model: Quaternius, Ultimate Animated Character Pack (CC0). Music was generated with ElevenLabs Music v2 and local ACE-Step 1.5 (MIT). Paintings, banner and thumbnail use AI-generated artwork; map diagrams use the mod's generated geography. Europa Universalis V and its original assets belong to Paradox Interactive. This is an unofficial mod.
+Original setting and development by Stonefletcher Productions LLC ([stonefletcher.com](https://stonefletcher.com)). Base goblin infantry model: Quaternius, Ultimate Animated Character Pack (CC0). Music was generated with ElevenLabs Music v2 and local ACE-Step 1.5 (MIT). Paintings, banner and thumbnail use AI-generated artwork; map diagrams use the mod's generated geography. Europa Universalis V and its original assets belong to Paradox Interactive. This is an unofficial mod.
