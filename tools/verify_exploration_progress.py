@@ -1,14 +1,16 @@
-"""Execute generated voyage scripts, including legacy open and queued events.
+"""Execute the generated Ashborn Voyages: native expedition hooks, reports and old saves.
 
-This bounded harness uses 30-day test months. Generated native durations are
-checked separately; calendar arithmetic, GUI rendering and engine saves still
-need an in-game playtest.
+This bounded harness runs the expedition types' can_start/on_start/arrival/on_end
+blocks the way the engine calls them, with 30-day test months. Pathfinding, travel
+time, the Expeditions panel and engine saves still need an in-game playtest.
 """
 from copy import deepcopy
 from verify_harbor_bargains import World
 from verify_055 import parse, flatten
-from exploration_progress import FILES
+from exploration_progress import FILES, WAYPOINTS, RETIRED
 from exploration import ROUTES
+
+EXPEDITION = 'EXPEDITION'
 
 
 class Voyages(World):
@@ -16,50 +18,68 @@ class Voyages(World):
         super().__init__(definitions)
         for tag in ['POR','FRA','ENG','MOR']:
             self.countries[tag]=deepcopy(self.countries['CDM'])
+        self.goblins={tag for tag in self.countries if tag not in ['POR','FRA','ENG','MOR']}
         self.locations={}
         for route,r in ROUTES.items():
             for port in r['locations']:
                 loc='location:'+port
                 self.countries[loc]=deepcopy(self.countries['CDM'])
-                self.locations[loc]=None if port=='strait_of_gibraltar' else 'POR'
+                self.locations[loc]='POR'
         for data in self.countries.values():data.update(areas=set(),locations=set())
+        self.active=None
 
     def value(self, value, country, scopes):
         if value=='owner':return self.locations.get(country)
         if value=='root':return scopes.get('root',country)
         return super().value(value,country,scopes)
 
+    def condition(self, rows, country, scopes):
+        plain=[]
+        for k,op,v in rows:
+            if k=='ga_goblin_voyager':
+                if (country in self.goblins)!=(v=='yes'):return False
+            elif k=='has_ports':
+                if v!='yes':return False
+            elif k=='expedition_is_returning':
+                if self.active['returning']!=(v=='yes'):return False
+            elif k=='NOT':
+                if self.condition(v,country,scopes):return False
+            elif k in ['OR','AND','custom_tooltip']:
+                inner=[r for r in v if r[0]!='text']
+                if k=='OR':
+                    if not any(self.condition([r],country,scopes) for r in inner):return False
+                elif not self.condition(inner,country,scopes):return False
+            else:plain.append((k,op,v))
+        return super().condition(plain,country,scopes)
+
     def effects(self, rows, country, scopes):
         for k,op,v in rows:
             if k.startswith('location:'):self.effects(v,k,scopes)
             elif k=='owner':
                 owner=self.locations[country]
-                assert owner is not None
-                self.effects(v,owner,scopes)
+                if owner is not None:self.effects(v,owner,scopes)
+            elif k=='if':
+                limits=next(value for key,_,value in v if key=='limit')
+                if self.condition(limits,country,scopes):
+                    self.effects([row for row in v if row[0]!='limit'],country,scopes)
+            elif k=='scope:expedition':self.effects(v,EXPEDITION,scopes)
+            elif k in ['remove_commander','pause_expedition']:self.active.setdefault(k,[]).append(v)
             elif k=='discover_area':self.countries[country]['areas'].add(v)
             elif k=='discover_location':self.countries[self.value(v,country,scopes)]['locations'].add(country)
-            elif k=='set_variable':
+            elif k in self.defs and v=='yes':self.effects(self.defs[k],country,scopes)
+            elif k=='set_variable' and any(key=='months' for key,_,_ in v):
                 data=dict((key,value) for key,_,value in v)
-                if 'months' in data:
-                    data['days']=str(float(data.pop('months'))*30)
+                data['days']=str(float(data.pop('months'))*30)
                 super().effects([(k,op,[(key,'=',value) for key,value in data.items()])],country,scopes)
             elif k=='trigger_event_non_silently':
-                fields=dict((key,value) for key,_,value in v)
-                context=deepcopy(scopes)
-                context['root']=country
+                fields=dict((key,value) for key,_,value in v) if isinstance(v,list) else {'id':v}
+                context=deepcopy(scopes);context['root']=country
                 context['due']=self.day+30*float(fields.get('months',0))
                 self.queue.append((fields['id'],country,context))
             else:super().effects([(k,op,v)],country,scopes)
 
     def monthly(self, country='CDM'):
         self.effects(dict((k,v) for k,_,v in self.defs['ga_exploration_monthly'])['effect'],country,{'root':country})
-
-    def manual(self, force=False):
-        fields=dict((k,v) for k,_,v in self.defs['ga_commission_voyage'])
-        scopes={'root':'CDM','actor':'CDM'}
-        allowed=self.condition(fields['allow'],'CDM',scopes)
-        if allowed or force:self.effects(fields['effect'],'CDM',scopes)
-        return allowed
 
     def deliver(self, event=None):
         i=next(i for i,p in enumerate(self.queue) if p[2]['due']<=self.day and (event is None or p[0]==event))
@@ -69,9 +89,45 @@ class Voyages(World):
         self.effects(fields.get('immediate',[]),country,scopes)
         return popup
 
-    def offer(self):
-        self.monthly();self.day=36*30;self.monthly()
-        return self.deliver('goblins_exploration.1')
+    def answer(self, popup, index):
+        name,country,scopes=popup
+        option=[v for k,_,v in self.defs[name] if k=='option'][index]
+        self.effects([row for row in option if row[0] not in ['name','trigger','ai_chance']],country,deepcopy(scopes))
+
+    # Native expedition lifecycle -------------------------------------------------
+    def type(self, route):
+        return dict((k,v) for k,_,v in self.defs[f'ga_voyage_{route}_expedition'])
+
+    def visible(self, route, country='CDM'):
+        return self.condition(self.type(route)['potential'],country,{'root':country})
+
+    def can_start(self, route, country='CDM'):
+        return self.visible(route,country) and self.condition(self.type(route)['can_start'],country,{'root':country})
+
+    def hook(self, route, name, country='CDM', location=None):
+        scopes={'root':country,'expedition':EXPEDITION}
+        if location:scopes['location']=location
+        self.effects(self.type(route).get(name,[]),country,scopes)
+
+    def launch(self, route, country='CDM'):
+        if not self.can_start(route,country):return False
+        variables=self.type(route)['variables']
+        self.countries[EXPEDITION]=deepcopy(self.countries['CDM'])
+        self.countries[EXPEDITION]['vars']={k:(float(dict((a,c) for a,_,c in v)['start']),None) for k,_,v in variables}
+        self.active={'route':route,'country':country,'returning':False}
+        self.hook(route,'on_start',country)
+        return True
+
+    def sail(self):
+        route,country=self.active['route'],self.active['country']
+        stops=[k for k,_,_ in self.type(route)['waypoints']]
+        for stop in stops:self.hook(route,'on_arrive_to_waypoint',country,'location:'+stop)
+        self.active['returning']=True
+        for stop in reversed(stops):self.hook(route,'on_arrive_to_waypoint',country,'location:'+stop)
+        charts=self.variable(EXPEDITION,'ga_charts')
+        self.hook(route,'on_end',country)
+        self.active=None
+        return charts
 
 
 def verify(read):
@@ -79,147 +135,141 @@ def verify(read):
     for p in FILES[:-1]:defs.update({k:v for k,_,v in parse(read(p)) if k!='namespace'})
     scenarios=[]
     def passed(name):scenarios.append(name)
-    def status(w,scopes=None,key='ga_exp_status'):
+    def status(w,key='ga_exp_status'):
         for k,_,v in defs[key]:
             if k!='text':continue
             row=dict((k,v) for k,_,v in v)
-            if w.condition(row.get('trigger',[]),'CDM',scopes or {}):return row['localization_key']
+            if w.condition(row.get('trigger',[]),'CDM',{}):return row['localization_key']
         raise AssertionError('Missing fallback')
+
     w=Voyages(defs);w.monthly();assert not w.queue
-    assert status(w)=='ga_exp_preparing'
-    w.day=36*30-1;w.monthly();assert not w.queue and not w.manual()
-    w.day+=1;w.monthly();popup=w.deliver();assert status(w)=='ga_exp_decision'
-    assert len(w.queue)==0 and not w.manual();w.monthly();assert not w.queue
-    assert w.countries['CDM']['gold']==50
-    passed('36-month initial preparation; offers and monthly pulses never charge or duplicate')
-    for funds,allowed in [(4.99,False),(5,True),(50,True)]:
-        w=Voyages(defs);p=w.offer();w.countries['CDM']['gold']=funds
-        assert w.choose(p,0)==allowed
-        if not allowed:
-            before=deepcopy(w.countries);w.choose(p,0,force=True);assert w.countries==before
-        else:
-            assert w.countries['CDM']['gold']==funds-5
-            before=deepcopy(w.countries);w.choose(p,0,force=True);w.choose(p,1,force=True);w.choose(p,2,force=True)
-            w.manual(force=True);assert w.countries==before and len(w.queue)==1
-            assert status(w)=='ga_exp_at_sea_east'
-    passed('exact affordability; one debit and expedition; stale launch/wait/pause/manual effects cannot mutate an active voyage')
-    w=Voyages(defs);p=w.offer();assert w.choose(p,1)
-    assert status(w)=='ga_exp_postponed_status' and w.countries['CDM']['gold']==50
-    w.day+=179;w.monthly();assert not w.queue and not w.manual()
-    w.day+=1;w.monthly();fresh=w.deliver();before=deepcopy(w.countries)
-    w.choose(p,0,force=True);w.choose(p,2,force=True);assert w.countries==before
-    assert w.choose(fresh,2);assert status(w)=='ga_exp_paused_status'
-    w.day+=3*365;w.monthly();assert not w.queue
-    assert w.manual();fresh=w.deliver();assert w.choose(fresh,0)
-    passed('six-month postponement; indefinite stopped reminders; manual reopening without fees; old offer isolation')
-    departure=w.day
-    for elapsed,expected in [(0,4),(29,4),(30,3),(60,2),(90,1)]:
-        w.day=departure+elapsed
-        assert status(w,key='ga_exp_remaining')==f'ga_exp_remaining_{expected}_text'
-    w.day=departure+120
-    # Conquer a port while its expedition is at sea; reports/contact follow arrival owners.
+    assert status(w)=='ga_exp_preparing' and w.visible('east') and not w.can_start('east')
+    w.day=36*30-1;w.monthly();assert not w.queue and not w.can_start('east')
+    w.day+=1;w.monthly();assert [p[0] for p in w.queue]==['goblins_exploration.1']
+    w.monthly();assert len(w.queue)==1
+    assert status(w)=='ga_exp_status_default' and w.countries['CDM']['gold']==50
+    passed('36-month preparation; one free readiness notice; monthly pulses never charge or duplicate')
+
+    for funds,allowed in [(4.99,False),(5,True)]:
+        t=deepcopy(w);t.countries['CDM']['gold']=funds
+        assert t.launch('east')==allowed
+        if allowed:assert t.countries['CDM']['gold']==0
+    for route in ['north','south']:assert w.visible(route) and not w.can_start(route)
+    passed('exact affordability; north and south shown but locked until the East Route is charted')
+
+    notice=w.deliver();w.answer(notice,0)
+    assert w.launch('east') and w.countries['CDM']['gold']==45
+    assert status(w)=='ga_exp_at_sea_east' and status(w,'ga_exp_remaining')=='ga_exp_remaining_default'
+    assert w.active['remove_commander']
+    for route in ROUTES:assert not w.can_start(route)
+    w.day+=36*30;w.monthly();assert not w.queue
+    passed('one debit per launch; no second voyage or notice while a fleet is at sea')
+
+    # Conquer a port while the fleet is out; contact follows the owner at return.
     w.locations['location:lisbon']='FRA';w.locations['location:setubal']=None
-    saved=deepcopy(w);arrival=saved.deliver('goblins_exploration.2');assert arrival
-    assert arrival[2]['ga_exp_contact_lisbon']=='FRA' and arrival[2]['ga_exp_contact_porto']=='POR'
-    assert 'ga_exp_contact_setubal' not in arrival[2]
-    assert saved.countries['FRA']['areas']=={'area:cm_cindermaw_area','area:cm_ashborn_seas_area'}
-    assert saved.countries['ENG']['areas']==set()
-    assert saved.countries['CDM']['locations']=={'location:'+name for name in ROUTES['east']['locations']}
-    assert saved.countries['CDM']['areas']=={'area:iberian_west_coast_area'}
-    assert len(saved.queue)==2 and all(x[0]=='goblins_exploration.6' for x in saved.queue)
-    saved.locations['location:lisbon']='ENG'
-    assert arrival[2]['ga_exp_contact_lisbon']=='FRA'
-    assert status(saved)=='ga_exp_resting_status'
-    before=deepcopy(saved.countries);saved.choose(arrival,0);saved.choose(arrival,0,force=True)
-    assert saved.countries==before
-    assert saved.countries['CDM']['gold']==45
-    w=saved;w.queue=[];w.day+=359;assert not w.manual();w.day+=1;w.monthly();assert not w.queue
-    assert w.manual();p=w.deliver();assert p[0]=='goblins_exploration.3'
-    passed('saved state retains voyage and countdown; arrival reveals only listed coasts to current owners; report snapshots survive later conquest; exactly 12-month rest')
+    charts=w.sail();assert charts==len(WAYPOINTS['east'])
+    assert w.active is None and w.variable('CDM','ga_charted_east') is True
+    assert w.countries['CDM']['locations']>={'location:'+n for n in ROUTES['east']['locations']}
+    assert {'area:'+a for a in ROUTES['east']['areas']}<=w.countries['CDM']['areas']
+    assert w.countries['FRA']['areas']=={'area:cm_cindermaw_area','area:cm_ashborn_seas_area'}
+    assert w.countries['ENG']['areas']==set()
+    queued=[p[0] for p in w.queue]
+    assert queued.count('goblins_exploration.6')==2 and queued[-1]=='goblins_exploration.2'
+    report=w.deliver('goblins_exploration.2');before=deepcopy(w.countries)
+    w.effects(dict((k,v) for k,_,v in defs['goblins_exploration.2'])['immediate'],'CDM',report[2])
+    assert w.countries==before and not w.visible('east')
+    assert status(w)=='ga_exp_resting_status' and w.countries['CDM']['gold']==45
+    passed('ports counted once outbound; return charts listed coasts for us and current port owners; report and first contact fire once')
+
+    w.queue=[];start=w.day
+    w.day=start+REST-1;w.monthly();assert not w.queue and not w.can_start('north')
+    w.day=start+REST;w.monthly();assert [p[0] for p in w.queue]==['goblins_exploration.3']
+    passed('exactly 12-month rest, then one notice for the next routes')
     for order in [('north','south'),('south','north')]:
-        trial=deepcopy(w);offer=deepcopy(p)
+        t=deepcopy(w);t.queue=[]
         for route in order:
-            index=0 if route=='north' else 1
-            trial.countries['CDM']['gold']=9.99;assert not trial.choose(offer,index)
-            trial.countries['CDM']['gold']=10;assert trial.choose(offer,index)
-            assert trial.countries['CDM']['gold']==0
-            assert not trial.choose(offer,1-index)
-            trial.day+=180;returned=trial.deliver(f'goblins_exploration.{ROUTES[route]["event"]}')
-            assert returned
-            assert {'location:'+name for name in ROUTES[route]['locations']} <= trial.countries['CDM']['locations']
-            assert {'area:'+name for name in ROUTES[route]['areas']} <= trial.countries['CDM']['areas']
-            before=deepcopy(trial.countries)
-            trial.effects(dict((k,v) for k,_,v in defs[returned[0]])['immediate'],'CDM',returned[2])
-            assert trial.countries==before
-            trial.queue=[];trial.day+=360
-            if route!=order[-1]:
-                assert trial.manual();offer=trial.deliver()
-        assert status(trial)=='ga_exp_completed' and not trial.manual()
-        trial.monthly();assert not trial.queue
-    passed('both remaining-route orders; 10-gold boundaries; six-month crossings; replay-proof arrivals; completed routes cannot reopen')
+            t.countries['CDM']['gold']=9.99;assert not t.launch(route)
+            t.countries['CDM']['gold']=10;assert t.launch(route) and t.countries['CDM']['gold']==0
+            assert not t.can_start(order[1] if route==order[0] else order[0])
+            t.sail()
+            assert {'location:'+n for n in ROUTES[route]['locations']}<=t.countries['CDM']['locations']
+            t.queue=[];t.day+=REST
+        assert status(t)=='ga_exp_completed' and not any(t.visible(r) for r in ROUTES)
+        t.monthly();assert not t.queue
+    passed('both remaining-route orders; 10-gold boundaries; completed routes leave the Expeditions panel')
+
+    t=deepcopy(w);t.queue=[];t.launch('north');t.hook('north','on_fail')
+    assert status(t)=='ga_exp_resting_status' and t.variable('CDM','ga_charted_north') is None
+    t.day+=REST;assert t.can_start('north')
+    passed('a failed voyage frees the route after the crews rest')
+
+    t=Voyages(defs);t.monthly();t.day=36*30;t.monthly();t.answer(t.deliver(),1)
+    assert t.variable('CDM','ga_exp_paused') is True and t.launch('east')
+    t.sail();t.queue=[];t.day+=REST;t.monthly();assert not t.queue
+    passed('stopped notices stay off; voyages remain available in the panel')
+
+    t=Voyages(defs);t.countries['CDM']['is_ai']=True;t.monthly();t.day=36*30;t.monthly()
+    assert not t.queue and t.can_start('east')
+    assert float(dict((k,v) for k,_,v in t.type('east')['utility'])['value'])>0
+    passed('AI crowns get no notices and launch voyages through native expedition utility')
+
     for num in [1,3]:
-        for choice in [0,1,2 if num==1 else 3]:
-            legacy=Voyages(defs);c=legacy.countries['CDM']['vars']
+        for choice in [0,1]:
+            old=Voyages(defs);c=old.countries['CDM']['vars']
             c.update(ga_exploration_initialized=(True,None),ga_exploration_pending=(True,None))
             if num==3:c['ga_charted_east']=(True,None)
-            p=(f'goblins_exploration.{num}','CDM',{'root':'CDM'})
-            legacy.monthly();assert not legacy.queue
-            assert legacy.choose(p,choice)
-            before=deepcopy(legacy.countries);legacy.choose(p,choice,force=True);assert legacy.countries==before
-    passed('older unanswered offers can launch, wait or stop reminders exactly once')
+            old.answer((f'goblins_exploration.{num}','CDM',{'root':'CDM'}),choice)
+            assert old.variable('CDM','ga_exploration_pending') is None and old.countries['CDM']['gold']==50
+            assert old.can_start('east' if num==1 else 'north')
+    passed('older open offers close without cost and unlock the native voyages')
+    for route_id,(route,r) in enumerate(ROUTES.items(),1):
+        old=Voyages(defs);c=old.countries['CDM']['vars']
+        c.update(ga_exploration_initialized=(True,None),ga_exploration_pending=(True,None),ga_exp_route=(float(route_id),None),
+                 ga_exp_remaining_1=(True,None))
+        if route!='east':c['ga_charted_east']=(True,None)
+        for k in range(2):old.answer((f'goblins_exploration.{1 if route=="east" else 3}','CDM',{'root':'CDM'}),k)
+        assert old.variable('CDM','ga_exploration_pending') is True
+        assert status(old)=='ga_exp_at_sea_'+route and status(old,'ga_exp_remaining')=='ga_exp_remaining_1_text'
+        for other in ROUTES:assert not old.can_start(other)
+        old.queue.append((f'goblins_exploration.{r["event"]}','CDM',{'root':'CDM','due':0}))
+        assert old.deliver()
+        assert old.variable('CDM','ga_charted_'+route) is True and old.countries['CDM']['gold']==50
+        assert {'location:'+n for n in r['locations']}<=old.countries['CDM']['locations']
+        before=deepcopy(old.countries)
+        old.queue=[(f'goblins_exploration.{r["event"]}','CDM',{'root':'CDM','due':0})];old.deliver()
+        assert old.countries==before
+    passed('0.6.x calendar voyages already at sea settle once, without another fee')
+
     for route,r in ROUTES.items():
-        for open_already in [False,True]:
-            legacy=Voyages(defs);c=legacy.countries['CDM']['vars']
-            c.update(ga_exploration_initialized=(True,None),ga_exploration_pending=(True,None))
-            if route!='east':c['ga_charted_east']=(True,None)
-            legacy.countries['CDM']['gold']=40
-            p=(f'goblins_exploration.{r["event"]}','CDM',{'root':'CDM','due':0})
-            if open_already:assert legacy.choose(p,0)
-            else:legacy.queue.append(p);assert legacy.deliver()
-            assert legacy.variable('CDM','ga_charted_'+route) is True
-            assert legacy.countries['CDM']['gold']==40
-            before=deepcopy(legacy.countries);legacy.choose(p,0,force=True);assert legacy.countries==before
-    passed('all older paid voyages settle without another fee, including already-open return messages')
-    # Restore reminders explicitly after manually opening a paused offer.
-    w=Voyages(defs);p=w.offer();w.choose(p,2);assert w.manual();p=w.deliver();w.choose(p,1)
-    assert w.variable('CDM','ga_exp_paused') is None
-    w.day+=180;w.monthly();assert len(w.queue)==1
-    passed('six-month reminder choice explicitly restores reminders after manual mode')
-    # Delivery rejects wrong-route and wrong-token events before their immediate.
-    w=Voyages(defs);p=w.offer();w.choose(p,0)
-    correct=deepcopy(w.queue[0]);w.day+=120
-    wrong=deepcopy(correct);wrong=(wrong[0],wrong[1],dict(wrong[2],ga_exp_token=999))
-    w.queue.insert(0,wrong);before=deepcopy(w.countries);assert w.deliver() is None and w.countries==before
-    wrong=('goblins_exploration.4',correct[1],correct[2]);w.queue.insert(0,wrong)
-    assert w.deliver() is None and w.countries==before
-    assert w.deliver()
-    passed('stale and wrong-route scheduled returns are suppressed before discovery')
-    for route,r in ROUTES.items():
-        offer=defs['goblins_exploration.'+('1' if route=='east' else '3')]
-        option=next(v for k,_,v in offer if k=='option' and ('name','=',f'goblins_exploration.{1 if route=="east" else 3}.{route}') in v)
-        assert ('add_gold','=',str(-r['cost'])) in list(flatten(option))
-        dispatches=[dict((k,v) for k,_,v in v) for k,_,v in flatten(option) if k=='trigger_event_non_silently']
-        assert dispatches==[{'id':f'goblins_exploration.{r["event"]}','months':str(r['months'])}]
-    for sit in ['ga_gathering_of_five','ga_eastern_hunger']:
-        gui=read(f'in_game/gui/panels/situation/{sit}.gui')
-        assert 'ga_commission_voyage' not in gui
-        assert 'ga_exp_panel_status' not in gui
+        fields=dict((k,v) for k,_,v in defs[f'ga_voyage_{route}_expedition'])
+        stops=[k for k,_,_ in fields['waypoints']]
+        assert stops==WAYPOINTS[route] and set(stops)<=set(r['locations'])
+        assert ('add_gold','=',str(-r['cost'])) in fields['on_start']
+        assert dict((k,v) for k,_,v in fields['leader'])['is_ruler']=='no'
+        for key in ['unique','repeatable','returns_home','travel_mode','show_end_message']:
+            assert key in fields,key
     gui=read('in_game/gui/panels/situation/ga_ashborn_voyages.gui')
-    assert gui.count('action_name = "ga_commission_voyage"')==1
+    assert 'action_button' not in gui and 'ga_commission_voyage' not in gui
     for route in ROUTES: assert 'ga_exp_chart_'+route+'_row' in gui
-    assert 'ga_ashborn_voyages' in defs
+    for sit in ['ga_gathering_of_five','ga_eastern_hunger']:
+        assert 'ga_exp_panel_status' not in read(f'in_game/gui/panels/situation/{sit}.gui')
     localization=read(FILES[-1])
+    keys=set()
     for rows in defs.values():
         for key,_,value in flatten(rows):
-            if key=='localization_key':assert '\n '+value+':' in localization,value
-    assert {'plymouth','portsmouth','cadiz','gibraltar','tangier','ceuta','london','sevilla','fez'} <= set(ROUTES['north']['locations'])
-    assert 'This return message was already open' not in localization
-    assert 'The report records owners encountered' not in localization
-    assert 'Newly charted:' in localization
-    passed('native calendar-month prices/durations and dedicated voyage situation controls; all custom text registered')
-    return {'scenario_groups':len(scenarios),'scenarios':scenarios,'additional_monthly_scans':0,
-            'new_event_ids':0,'engine_playtested':False}
+            if key in ['localization_key','text','title','desc','custom_tooltip'] and isinstance(value,str):keys.add(value)
+            if key=='option':keys.add(dict((k,v) for k,_,v in value)['name'])
+    for route in ROUTES:
+        base=f'ga_voyage_{route}_expedition'
+        keys|={base,base+'_desc',base+'_historical_info',base+'_outcome_overview'}
+    keys|={'ga_charts','ga_charts_desc','ga_exp_panel_status','ga_exp_route_heading','ga_ashborn_voyages','ga_ashborn_voyages_desc'}
+    for key in keys:assert '\n '+key+':' in localization,key
+    assert 'Newly charted:' in localization and 'Review Ashborn Voyages' not in localization
+    passed('expedition types, situation panel and all their text registered; Review Ashborn Voyages button retired')
+    return {'scenario_groups':len(scenarios),'scenarios':scenarios,'retired':RETIRED,'engine_playtested':False}
 
+
+REST=12*30
 
 if __name__=='__main__':
     import json

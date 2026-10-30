@@ -2,21 +2,7 @@ situation_panel = {
         blockoverride "situation_subheader_content" {}
         blockoverride "situation_panel_main_content" {
             text_multi = { layoutpolicy_horizontal = expanding max_width = 400 autoresize = yes text = "ga_ashborn_voyages_desc" }
-            text_multi = {
-            layoutpolicy_horizontal = expanding max_width = 400 autoresize = yes
-            text = "ga_exp_panel_status"
-        }
-        targetted_button_regular = {
-            size = { 400 40 }
-            text = "ga_commission_voyage"
-            scripted_action_tooltip = {
-                click_type = left
-                click_mode = single
-                action_name = "ga_commission_voyage"
-                actor = "[GetPlayer]"
-            }
-        }
-        
+            text_multi = { layoutpolicy_horizontal = expanding max_width = 400 autoresize = yes text = "ga_exp_panel_status" }
             text_single = { text = "ga_exp_route_heading" }
             text_multi = { layoutpolicy_horizontal = expanding max_width = 400 autoresize = yes text = "ga_exp_chart_east_row" }
 text_multi = { layoutpolicy_horizontal = expanding max_width = 400 autoresize = yes text = "ga_exp_chart_north_row" }

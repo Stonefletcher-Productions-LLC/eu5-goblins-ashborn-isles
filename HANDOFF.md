@@ -1,5 +1,19 @@
 # Goblins 0.6.6 packaged
 
+## Unreleased: goblins in 1.4 expeditions (PR #69) — in-game checks
+
+Move these into TESTING.md at the next repackage (TESTING.md ships inside the bundle).
+
+New 1337 campaign as any goblin crown, fresh `logs/error.log`.
+
+- After 36 months a "The Captains Look East" notice appears. Open the Expeditions panel: **Ashborn Voyage: East Route** can start (5 gold plus the native fee); North and South Routes are listed but locked until the East Route is charted. The text shows names, not raw keys.
+- Launch the East Route with any adult courtier. A fleet leaves a goblin port, stops at Porto, Lisbon and Setubal (the Ports Charted counter climbs to 3/3), returns home and shows "A Coast Beyond Counting". The Portuguese coast is charted and Portugal gets the "Strange Visitors" event.
+- The Ashborn Voyages situation shows the route at sea, then charted, then 12 months of rest; then North and South can start.
+- Holy site pilgrimage (religious actions) works for the Ashen Covenant. With Open Sea Exploration, "Voyage into the Western Ocean" is offered; in the age of Absolutism with an adult heir, the Grand Tour is offered.
+- Watch an AI goblin crown for a few years: it should launch its own voyages.
+- Search the logs for `expedition`, `ga_voyage`, `goblins_exploration` and `ga_goblin_voyager`.
+
+
 Working copy `E:\Codex_EU5_Modding\goblins-ashborn-isles`. Remote: GitHub `Stonefletcher-Productions-LLC/eu5-goblins-ashborn-isles` (`origin`, HTTPS) is the main repo again. Bitbucket (`bitbucket`) was temporary; its history was rebuilt onto GitHub (PR #13) and the old local commits are on the `bitbucket-history` branch. Tags `v0.6.4.1` and `v0.6.5` on GitHub point at the rebuilt commits.
 
 0.6.6 is version-bumped and repackaged on main (installer bundle check green). It includes the sections below plus goblin soldiers on the native rig (PR #20) and the goblin city set (PR #19). Pending: clean-install gate, active install, Workshop upload, GitHub release, then the in-game checks at the top of TESTING.md.

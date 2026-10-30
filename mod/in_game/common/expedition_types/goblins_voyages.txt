@@ -1,0 +1,310 @@
+﻿# Ashborn Voyages: goblin-only native expeditions (EU5 1.4).
+ga_voyage_east_expedition = {
+	unique = yes
+	repeatable = no
+	returns_home = yes
+	origin = closest_port
+	travel_mode = sea
+	travel_speed = 1
+	show_start_message = yes
+	show_end_message = no
+
+	variables = {
+		ga_charts = {
+			display = fraction
+			start = 0
+			min = 0
+			max = 3
+		}
+	}
+
+	waypoints = {
+		porto
+		lisbon
+		setubal
+	}
+
+	potential = {
+		ga_goblin_voyager = yes
+		has_ports = yes
+		NOT = { has_variable = ga_charted_east }
+	}
+
+	can_start = {
+		custom_tooltip = { text = ga_exp_crews_ready_tt has_variable = ga_exploration_initialized NOT = { has_variable = ga_exploration_cooldown } }
+		custom_tooltip = { text = ga_exp_no_voyage_tt NOT = { has_variable = ga_exp_route } NOT = { has_variable = ga_exploration_pending } }
+		gold >= 5
+	}
+
+	leader = {
+		is_adult = yes
+		is_ruler = no
+		is_expedition_leader = no
+		has_exploration = no
+	}
+
+	on_start = {
+		add_gold = -5
+		set_variable = { name = ga_exp_route value = 1 }
+		remove_variable = ga_exp_resting
+		remove_variable = ga_exp_ready_notified
+		scope:expedition = {
+			if = {
+				limit = { exists = expedition_leader }
+				remove_commander = expedition_leader
+			}
+		}
+	}
+
+	on_arrive_to_new_location = {
+		scope:location = { discover_location = root }
+	}
+
+	on_arrive_to_waypoint = {
+		if = {
+			limit = { scope:expedition = { expedition_is_returning = no } }
+			scope:expedition = {
+				change_variable = { name = ga_charts add = 1 }
+				pause_expedition = 15
+			}
+		}
+	}
+
+	on_end = {
+		if = {
+			limit = { NOT = { has_variable = ga_charted_east } }
+			ga_exp_complete_east = yes
+			trigger_event_non_silently = goblins_exploration.2
+		}
+	}
+
+	on_fail = {
+		remove_variable = ga_exp_route
+		set_variable = { name = ga_exploration_cooldown value = yes months = 12 }
+		set_variable = { name = ga_exp_resting value = yes }
+	}
+
+	utility = {
+		value = 5
+	}
+
+	leader_utility = {
+		value = 1
+		if = {
+			limit = { has_trait = navigator }
+			add = 5
+		}
+		if = {
+			limit = { is_heir_of_court_country = yes }
+			add = -100
+		}
+	}
+}
+
+ga_voyage_north_expedition = {
+	unique = yes
+	repeatable = no
+	returns_home = yes
+	origin = closest_port
+	travel_mode = sea
+	travel_speed = 1
+	show_start_message = yes
+	show_end_message = no
+
+	variables = {
+		ga_charts = {
+			display = fraction
+			start = 0
+			min = 0
+			max = 4
+		}
+	}
+
+	waypoints = {
+		coruna
+		brest
+		plymouth
+		london
+	}
+
+	potential = {
+		ga_goblin_voyager = yes
+		has_ports = yes
+		NOT = { has_variable = ga_charted_north }
+	}
+
+	can_start = {
+		custom_tooltip = { text = ga_exp_crews_ready_tt has_variable = ga_exploration_initialized NOT = { has_variable = ga_exploration_cooldown } }
+		custom_tooltip = { text = ga_exp_no_voyage_tt NOT = { has_variable = ga_exp_route } NOT = { has_variable = ga_exploration_pending } }
+		custom_tooltip = { text = ga_exp_needs_east_tt has_variable = ga_charted_east }
+		gold >= 10
+	}
+
+	leader = {
+		is_adult = yes
+		is_ruler = no
+		is_expedition_leader = no
+		has_exploration = no
+	}
+
+	on_start = {
+		add_gold = -10
+		set_variable = { name = ga_exp_route value = 2 }
+		remove_variable = ga_exp_resting
+		remove_variable = ga_exp_ready_notified
+		scope:expedition = {
+			if = {
+				limit = { exists = expedition_leader }
+				remove_commander = expedition_leader
+			}
+		}
+	}
+
+	on_arrive_to_new_location = {
+		scope:location = { discover_location = root }
+	}
+
+	on_arrive_to_waypoint = {
+		if = {
+			limit = { scope:expedition = { expedition_is_returning = no } }
+			scope:expedition = {
+				change_variable = { name = ga_charts add = 1 }
+				pause_expedition = 15
+			}
+		}
+	}
+
+	on_end = {
+		if = {
+			limit = { NOT = { has_variable = ga_charted_north } }
+			ga_exp_complete_north = yes
+			trigger_event_non_silently = goblins_exploration.4
+		}
+	}
+
+	on_fail = {
+		remove_variable = ga_exp_route
+		set_variable = { name = ga_exploration_cooldown value = yes months = 12 }
+		set_variable = { name = ga_exp_resting value = yes }
+	}
+
+	utility = {
+		value = 5
+	}
+
+	leader_utility = {
+		value = 1
+		if = {
+			limit = { has_trait = navigator }
+			add = 5
+		}
+		if = {
+			limit = { is_heir_of_court_country = yes }
+			add = -100
+		}
+	}
+}
+
+ga_voyage_south_expedition = {
+	unique = yes
+	repeatable = no
+	returns_home = yes
+	origin = closest_port
+	travel_mode = sea
+	travel_speed = 1
+	show_start_message = yes
+	show_end_message = no
+
+	variables = {
+		ga_charts = {
+			display = fraction
+			start = 0
+			min = 0
+			max = 4
+		}
+	}
+
+	waypoints = {
+		funchal
+		teguise
+		agadir
+		rabat
+	}
+
+	potential = {
+		ga_goblin_voyager = yes
+		has_ports = yes
+		NOT = { has_variable = ga_charted_south }
+	}
+
+	can_start = {
+		custom_tooltip = { text = ga_exp_crews_ready_tt has_variable = ga_exploration_initialized NOT = { has_variable = ga_exploration_cooldown } }
+		custom_tooltip = { text = ga_exp_no_voyage_tt NOT = { has_variable = ga_exp_route } NOT = { has_variable = ga_exploration_pending } }
+		custom_tooltip = { text = ga_exp_needs_east_tt has_variable = ga_charted_east }
+		gold >= 10
+	}
+
+	leader = {
+		is_adult = yes
+		is_ruler = no
+		is_expedition_leader = no
+		has_exploration = no
+	}
+
+	on_start = {
+		add_gold = -10
+		set_variable = { name = ga_exp_route value = 3 }
+		remove_variable = ga_exp_resting
+		remove_variable = ga_exp_ready_notified
+		scope:expedition = {
+			if = {
+				limit = { exists = expedition_leader }
+				remove_commander = expedition_leader
+			}
+		}
+	}
+
+	on_arrive_to_new_location = {
+		scope:location = { discover_location = root }
+	}
+
+	on_arrive_to_waypoint = {
+		if = {
+			limit = { scope:expedition = { expedition_is_returning = no } }
+			scope:expedition = {
+				change_variable = { name = ga_charts add = 1 }
+				pause_expedition = 15
+			}
+		}
+	}
+
+	on_end = {
+		if = {
+			limit = { NOT = { has_variable = ga_charted_south } }
+			ga_exp_complete_south = yes
+			trigger_event_non_silently = goblins_exploration.5
+		}
+	}
+
+	on_fail = {
+		remove_variable = ga_exp_route
+		set_variable = { name = ga_exploration_cooldown value = yes months = 12 }
+		set_variable = { name = ga_exp_resting value = yes }
+	}
+
+	utility = {
+		value = 5
+	}
+
+	leader_utility = {
+		value = 1
+		if = {
+			limit = { has_trait = navigator }
+			add = 5
+		}
+		if = {
+			limit = { is_heir_of_court_country = yes }
+			add = -100
+		}
+	}
+}

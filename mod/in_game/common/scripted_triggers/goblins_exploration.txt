@@ -1,0 +1,2 @@
+﻿# country scope; any goblin country, by primary culture.
+ga_goblin_voyager = { culture ?= { has_culture_group = culture_group:cm_goblin_group } }
