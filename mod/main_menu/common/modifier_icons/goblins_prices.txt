@@ -6,3 +6,7 @@ ga_eastern_crossing_price_cost_modifier = { positive = "gfx/interface/icons/modi
 ga_gathering_target_price_cost_modifier = { positive = "gfx/interface/icons/modifier_types/hussite_wars_actions_price_cost_modifier.dds" }
 ga_compact_autonomy_tribute_cost_modifier = { positive = "gfx/interface/icons/modifier_types/hussite_wars_actions_price_cost_modifier.dds" }
 ga_divorce_price_cost_modifier = { positive = "gfx/interface/icons/modifier_types/hussite_wars_actions_price_cost_modifier.dds" }
+ga_ms_settlers_price_cost_modifier = { positive = "gfx/interface/icons/modifier_types/hussite_wars_actions_price_cost_modifier.dds" }
+ga_ms_tongue_price_cost_modifier = { positive = "gfx/interface/icons/modifier_types/hussite_wars_actions_price_cost_modifier.dds" }
+ga_ms_shrine_price_cost_modifier = { positive = "gfx/interface/icons/modifier_types/hussite_wars_actions_price_cost_modifier.dds" }
+ga_ms_kin_price_cost_modifier = { positive = "gfx/interface/icons/modifier_types/hussite_wars_actions_price_cost_modifier.dds" }

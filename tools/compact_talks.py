@@ -207,7 +207,6 @@ def extra(out, write, loc):
             has_overlords_ruler = no has_limited_diplomacy = yes
             can_change_heir_selection = yes can_change_rank = no
             overlord_can_cancel = yes will_join_independence_wars = yes
-            overlord_protects_external = yes overlord_protects_other_subjects = yes
             join_defensive_wars_always = {{ always = yes }}
             join_offensive_wars_always = {{ always = {'yes' if kind == 'autonomy' else 'no'} }}
             join_offensive_wars_can_call = {{ always = no }}

@@ -21,10 +21,10 @@ def blocks(text):
 
 
 def compare(b, game):
-    countries = dict(blocks(dict(blocks(b.read(game, 'main_menu/setup/start/10_countries.txt')))['countries']))
+    countries = dict(blocks(dict(blocks(b.read(game, 'main_menu/setup/1337/10_countries.txt')))['countries']))
     countries = dict(blocks(countries['countries']))
-    pops = dict(blocks(dict(blocks(b.read(game, 'main_menu/setup/start/06_pops.txt')))['locations']))
-    city_file = dict(blocks(b.read(game, 'main_menu/setup/start/07_cities_and_buildings.txt')))
+    pops = dict(blocks(dict(blocks(b.read(game, 'main_menu/setup/1337/06_pops.txt')))['locations']))
+    city_file = dict(blocks(b.read(game, 'main_menu/setup/1337/07_cities_and_buildings.txt')))
     settlements = dict(blocks(city_file['locations']))
     templates = {}
     for path in (game / 'in_game/common/town_setups').glob('*.txt'):

@@ -44,7 +44,7 @@ def main():
         source=root/('PLAYER_README.md' if doc=='README.md' else doc)
         assert desired[doc].decode('utf-8-sig').replace('\r\n','\n')==source.read_text(encoding='utf-8-sig'), 'Stale guide: '+doc
     assert json.loads(desired['reports/validation.json'])==report
-    assert json.loads(desired['terrain_patch/manifest.json'])['version']==version
+    assert not any(n.startswith('terrain_patch/') for n in desired), 'EU5 1.4 builds carry no terrain patch'
     destination=root/'dist'/name
     destination.parent.mkdir(exist_ok=True)
     destination.write_bytes(base_bytes)

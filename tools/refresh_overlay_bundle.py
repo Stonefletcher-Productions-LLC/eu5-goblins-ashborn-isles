@@ -96,7 +96,7 @@ def main():
         if old.read(name)!=(ROOT/'mod/.metadata/metadata.json').read_bytes():
             changed[name]=(ROOT/'mod/.metadata/metadata.json').read_bytes()
         if promotion:
-            for name in ('terrain_patch/manifest.json','reports/validation.json'):
+            for name in [n for n in ('terrain_patch/manifest.json','reports/validation.json') if n in old.namelist()]:
                 document=json.loads(old.read(name))
                 assert document['version']==manifest['version']
                 document['version']=config['version']

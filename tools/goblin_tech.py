@@ -2,7 +2,7 @@
 
 EU5 gates the age-1 galley (and the cog after it), Iron Working and the Feudalism
 advance behind an embraced Feudalism institution. Native setup seeds institutions
-per location in main_menu/setup/start/08_institutions.txt; goblin locations had no
+per location in main_menu/setup/1337/08_institutions.txt; goblin locations had no
 row, so the crowns started with canoes, no iron and no feudal tree despite
 starting_technology_level = 3.
 
@@ -24,7 +24,7 @@ import build as b
 from verify_055 import parse
 
 ROOT = Path(__file__).resolve().parents[1]
-INSTITUTIONS = 'main_menu/setup/start/08_institutions.txt'
+INSTITUTIONS = 'main_menu/setup/1337/08_institutions.txt'
 ADVANCES = 'in_game/common/advances/goblins_ships.txt'
 UNITS = 'in_game/common/unit_types/goblins_ships.txt'
 TRIGGERS = 'in_game/common/scripted_triggers/goblins_ships.txt'

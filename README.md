@@ -2,6 +2,17 @@
 
 Working copy: `E:\Codex_EU5_Modding\goblins-ashborn-isles`. Repository: [GitHub](https://github.com/Stonefletcher-Productions-LLC/eu5-goblins-ashborn-isles) (Bitbucket was a temporary home from October 12 to 22; its history was rebuilt onto GitHub in PR #13).
 
+**0.6.9 — Ready for EU5 1.4.**
+
+- **Updated for EU5 1.4 (Across the Pillars).** The mod is rebuilt against EU5 1.4.6: the 1337 start setup, the map, the city and port positions and the institutions all follow the 1.4 files.
+- **New island terrain method:** the Ashborn Isles are now a native 1.4 terrain layer added on top of the world. The installer no longer rewrites EU5's own terrain files.
+- **Fixes the 0.6.8 breakage on 1.4:** the title screen no longer hangs, game sound works again, and the goblin nations load.
+- **Goblin music rebuilt** for the 1.4 sound banks.
+- **Goblin unit cards for 1.4's new unit types**, such as camelry, order knights, jinetes and ghulams.
+- The mod is now listed as **[1.4] - Goblins of the Ashborn Isles**.
+
+Built for **EU5 1.4**. It does not work on 1.3. Restart before playing and start a **new 1337 campaign**; 0.6.8 saves do not carry over. In multiplayer, every player needs the same version. Not yet tested in game. All 0.6.8 changes remain included.
+
 **0.6.8 — Galleys, Warchiefs and sculpted goblin soldiers.**
 
 - **Starting tech and ships:** goblin crowns start with Feudalism, so they get galleys, iron working and feudal advances from day one instead of only canoes. Two unique goblin ships join the fleet.
@@ -69,7 +80,7 @@ Built for **EU5 1.3.11**. Restart before playing. Existing 0.6.3 saves can use t
 
 ![Goblins of the Ashborn Isles banner](art/workshop/0.6.0/banner.jpg)
 
-[0.6.8 release notes](RELEASE_NOTES_0.6.8.md) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)
+[0.6.9 release notes](RELEASE_NOTES_0.6.9.md) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)
 
 Fire rose from the Atlantic. When the smoke cleared, goblin kingdoms stood among the new volcanic islands between the Azores and Portugal. Captains claimed sheltered harbors, smiths built their forges beneath black ridges, and rival houses began arguing over who should lead them.
 
@@ -188,9 +199,9 @@ At home, the **Ashen Covenant** provides twelve sacred sites, traditions, rites,
 
 ## Install and continue
 
-Built for **EU5 1.3.11 (Pavia)**. Existing 0.6.3 campaigns can continue after restarting. Start a **new 1337 campaign** when upgrading from earlier versions to receive the revised populations and industries.
+Built for **EU5 1.4**. Start a **new 1337 campaign**; saves from 0.6.8 and EU5 1.3 do not carry over.
 
-- Subscribe through the Workshop, or download **Goblins_Ashborn_Isles_0.6.8.zip** from the release above, extract it and run **Install-Goblins.cmd** with EU5 closed. The installer reconstructs its terrain using the installed game.
+- Subscribe through the Workshop, or download **Goblins_Ashborn_Isles_0.6.9.zip** from the release above, extract it and run **Install-Goblins.cmd** with EU5 closed.
 - Enable only one Goblins copy and disable the old Gathering Prototype add-on. Restart before playing.
 - Existing 0.6.0 saves can receive the clan-flag repair after restart and the next monthly pulse; that repair alone needs no new campaign.
 - Other map, terrain and starting-world mods may conflict. Keep separate saves.

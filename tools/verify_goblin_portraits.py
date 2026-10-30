@@ -76,7 +76,7 @@ def verify(out,game=None):
         block=kings.split(f'cm_{name}_signature =')[1].split('_signature =')[0]
         character=spec['character']
         assert f'exists = character:{character} this = character:{character} gfx_culture_applicable = {culture_of[spec["clan"]]}_gfx' in block,name
-        assert re.search(r'(?m)^'+character+r' = \{',(out/'main_menu/setup/start/05_characters.txt').read_text(encoding='utf-8-sig')),character
+        assert re.search(r'(?m)^'+character+r' = \{',(out/'main_menu/setup/1337/05_characters.txt').read_text(encoding='utf-8-sig')),character
         assert f"template = {spec['clothing']} range" in block and spec['clothing'] in KING_CLOTHING
         assert all(0<v<=1 for v in spec['face'].values()) and 0<=spec['weathering']<=1
         for gene,template in spec['marks']:assert f'{gene} = {{' in genes and f'{template} = {{' in genes

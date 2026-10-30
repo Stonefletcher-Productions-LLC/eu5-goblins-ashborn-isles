@@ -1,6 +1,6 @@
 {
-  "base_sha256": "53ab8b27030abe1ddc5ba46c487df8f0beecd4c95878038644d87efca7fed1b7",
-  "init_base_sha256": "a10a30b594e11a210a736f74f135c94574689ffcd8d68b994dfab31000e87682",
-  "topbar_base_sha256": "078c2ef89afbc1a034b9d4ee1abd101b99b09351c96d8c0a7442ffd7439e1ae2",
-  "supported_game_version": "1.3.11"
+  "base_sha256": "8b09d58de8a93fe831c8a8aab178af43ce11030be8ba4df882bfe7492b0c77be",
+  "init_base_sha256": "a41777928fac3c0cc5fda9f6f5c1b98c55767c22a2c83d3236816ef4142bd30b",
+  "topbar_base_sha256": "76b1e7ec7ca6592c604dd620a22ebad8ee64c6a26691d264d1ceb8cf999c080b",
+  "supported_game_version": "1.4.*"
 }

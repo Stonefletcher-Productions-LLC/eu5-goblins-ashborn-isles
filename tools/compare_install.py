@@ -10,7 +10,8 @@ version = json.loads((repo/'data/island.json').read_text(encoding='utf-8'))['ver
 inst = gate/'user/mod/goblins_ashborn_isles'
 archive = repo/f'dist/Goblins_Ashborn_Isles_{version}.zip'
 z = zipfile.ZipFile(archive)
-terrain = json.loads(z.read('terrain_patch/manifest.json'))
+# 0.6.8 and earlier rebuilt the terrain cache at install; 1.4 builds ship it whole.
+terrain = json.loads(z.read('terrain_patch/manifest.json')) if 'terrain_patch/manifest.json' in z.namelist() else {'files': []}
 want = {n[len('goblins_ashborn_isles/'):]: n for n in z.namelist() if n.startswith('goblins_ashborn_isles/') and not n.endswith('/')}
 have = {p.relative_to(inst).as_posix() for p in inst.rglob('*') if p.is_file()}
 reconstructed = {f['path'].replace('\\', '/') for f in terrain['files']}

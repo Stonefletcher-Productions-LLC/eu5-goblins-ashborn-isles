@@ -49,9 +49,9 @@ def family_rows():
     return rows
 
 def build(b,game,out):
-    rel='main_menu/setup/start/04_dynasties.txt'
+    rel='main_menu/setup/1337/04_dynasties.txt'
     b.write(out,rel,b.inject(b.read(game,rel),'dynasty_manager',dynasty_row()))
-    rel='main_menu/setup/start/05_characters.txt'
+    rel='main_menu/setup/1337/05_characters.txt'
     b.write(out,rel,b.inject(b.read(game,rel),'character_db','\n'.join(family_rows())))
 
 def verify(b,out):
@@ -62,7 +62,7 @@ def verify(b,out):
     assert 'allow_male = no' in law and 'allow_children = no' in law
     assert 'value = root.character_age' in law and 'root.mil' not in law
     assert 'dynasty = scope:target.last_valid_ruler.dynasty' in law
-    setup=(out/'main_menu/setup/start/10_countries.txt').read_text(encoding='utf-8-sig')
+    setup=(out/'main_menu/setup/1337/10_countries.txt').read_text(encoding='utf-8-sig')
     for tag in ['CDM','QBR','RHK','SFK','SWK']:
         a,z=b.block_span(setup,tag);country=setup[a:z]
         assert ('heir_selection = cm_tidemother_seniority' if tag=='SFK' else 'heir_selection = cm_rule_of_the_strongest') in country

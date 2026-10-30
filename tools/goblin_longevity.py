@@ -32,7 +32,7 @@ def verify(b, out):
     assert s.count('character_life_expectancy = 15') == 1
     for c in b.CFG['countries']: assert 'culture = culture:' + c['culture'] in s
     assert 'tag =' not in s and 'global_life_expectancy' not in s
-    chars = (out/'main_menu/setup/start/05_characters.txt').read_text(encoding='utf-8-sig')
+    chars = (out/'main_menu/setup/1337/05_characters.txt').read_text(encoding='utf-8-sig')
     import ashborn_names
     ages = {}
     now = date(1337, 11, 11)

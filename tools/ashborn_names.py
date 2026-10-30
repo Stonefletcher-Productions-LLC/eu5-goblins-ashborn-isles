@@ -210,14 +210,14 @@ def build_courts(b,out):
     import shatterfin
     # Shatterfin's family is written separately but counts when spreading names.
     characters=characters+goblin_nobility.rows(b.CFG['countries'],shatterfin.family_rows()+characters)
-    for rel,block,rows in [('main_menu/setup/start/04_dynasties.txt','dynasty_manager',dynasties),('main_menu/setup/start/05_characters.txt','character_db',characters)]:
+    for rel,block,rows in [('main_menu/setup/1337/04_dynasties.txt','dynasty_manager',dynasties),('main_menu/setup/1337/05_characters.txt','character_db',characters)]:
         p=out/rel;b.write(out,rel,b.inject(p.read_text(encoding='utf-8-sig'),block,'\n'.join(rows)))
     return len(characters)
 
 def verify(b,out):
     lang=(out/'in_game/common/languages/goblins_ashborn_isles.txt').read_text(encoding='utf-8-sig')
     cultures=(out/'in_game/common/cultures/goblins_ashborn_isles.txt').read_text(encoding='utf-8-sig')
-    chars=(out/'main_menu/setup/start/05_characters.txt').read_text(encoding='utf-8-sig')
+    chars=(out/'main_menu/setup/1337/05_characters.txt').read_text(encoding='utf-8-sig')
     loc=(out/'main_menu/localization/english/goblins_ashborn_isles_l_english.yml').read_text(encoding='utf-8-sig')
     for tag,(label,culture,m,f,h,l) in POOLS.items():
         assert len(m.split())>=16 and len(f.split())>=16

@@ -1,51 +1,52 @@
-"""Check final streamed height tiles against their actual neighboring PNGs."""
+"""Decode the island terrain decal as written and check it against the map."""
 from pathlib import Path
-import io,re,json
+import re,json
 import numpy as np
 from PIL import Image
+import lzav
+import terrain_decal as td
+
+def entries(path):return [tuple(map(int,m)) for m in re.findall(r'offset=(-?\d+)\s+size=(-?\d+)',path.read_text())]
+
+def decode(out,kind,mip):
+    """North-up image of one mip, plus the raw 132x132 tiles (rows Y-up)."""
+    folder=out/td.DECALS/td.NAME;bpc=2 if kind=='height' else 1
+    table=entries(folder/f'{td.NAME}_{kind}.info');blob=(folder/f'{td.NAME}_{kind}.bin').read_bytes()
+    n=td.SIZE//128;start=sum((n>>m)**2 for m in range(mip));n>>=mip
+    tiles={}
+    image=np.zeros((n*128,n*128),np.uint16 if bpc==2 else np.uint8)
+    for ty in range(n):
+        for tx in range(n):
+            o,s=table[start+ty*n+tx]
+            t=np.frombuffer(lzav.decompress(blob[o:o+s],132*132*bpc),'<u2' if bpc==2 else 'u1').reshape(132,132)
+            tiles[ty,tx]=t;image[ty*128:(ty+1)*128,tx*128:(tx+1)*128]=t[2:130,2:130]
+    return image[::-1],tiles
 
 def verify(game,out,reports,cfg=None):
-    rel='in_game/gfx/terrain2/terrain_cache/heightmap'
-    def entries(path):return [tuple(map(int,m)) for m in re.findall(r'offset=(-?\d+)\s+size=(-?\d+)',path.read_text())]
-    a=entries(out/(rel+'.info'));old=entries(game/(rel+'.info'));changes=[i for i in range(len(a)) if a[i]!=old[i]]
-    levels=[];start=0;w,h=512,256
-    while True:
-     levels.append((start,w,h));start+=w*h
-     if w==h==1:break
-     w=max(1,w//2);h=max(1,h//2)
-    compared=0;max_seam=0;counts={}
-    with (out/(rel+'.bin')).open('rb') as stream:
-     cache={}
-     def tile(i):
-      if i not in cache:
-       o,n=a[i]
-       if o<0:cache[i]=np.zeros((132,132),np.uint16)
-       else:stream.seek(o);cache[i]=np.array(Image.open(io.BytesIO(stream.read(n))),np.uint16)
-      return cache[i]
-     for level,(start,w,h) in enumerate(levels):
-      ids=[i for i in changes if start<=i<start+w*h];counts[level]=len(ids)
-      for i in ids:
-       y,x=divmod(i-start,w);t=tile(i).astype(int)
-       for side,j in [('right',i+1 if x<w-1 else None),('up',i+w if y<h-1 else None)]:
-        if j is None:continue
-        v=tile(j).astype(int)
-        diff=np.abs(t[:,128:]-v[:,:4]) if side=='right' else np.abs(t[:4]-v[128:])
-        seam=int(diff.max());max_seam=max(max_seam,seam);assert seam==0,(level,x,y,side,seam);compared+=1
-      cache.clear()
-    assert counts[0]>0 and counts[8]>0 and counts[9]>0,counts
+    compared=0;counts={}
+    levels=(td.SIZE//128).bit_length()
+    for kind in ('height','materials'):
+        for mip in range(levels):
+            _,tiles=decode(out,kind,mip);n=(td.SIZE//128)>>mip;counts[f'{kind}_{mip}']=len(tiles)
+            for (ty,tx),t in tiles.items():
+                for j in [(ty,tx+1),(ty+1,tx)]:
+                    if j not in tiles:continue
+                    v=tiles[j]
+                    edge=(t[2:130,128:132],v[2:130,0:4]) if j[1]!=tx else (t[128:132,2:130],v[0:4,2:130])
+                    assert np.array_equal(*edge),(kind,mip,ty,tx,j);compared+=1
     assert not (out/'in_game/gfx/terrain2/heightmap.png').exists()
-    result={'updated_height_tiles':len(changes),'tiles_per_mip':counts,'shared_borders_checked':compared,'max_shared_border_error':max_seam,'legacy_heightmap_override':False,'engine_visual_verified':False}
+    assert not (out/'in_game/gfx/terrain2/terrain_cache/heightmap.bin').exists()
+    result={'decal':td.NAME,'tiles':counts,'shared_borders_checked':compared,'max_shared_border_error':0,'engine_visual_verified':False}
     if cfg is not None:
-        result['relief_world_units']=verify_relief(out,reports,cfg,a)
+        result['relief_world_units']=verify_relief(out,reports,cfg)
     (reports/'terrain_verification.json').write_text(json.dumps(result,indent=2));return result
 
 
-def verify_relief(out,reports,cfg,entries):
-    """Measure the assembled cache at gameplay-map resolution, not its recipe.
+def verify_relief(out,reports,cfg):
+    """Measure the decoded decal at gameplay-map resolution, not its recipe.
 
-    Mip 2 is 16384x8192, exactly the location map resolution. Decode the
-    final binary independently and compare its terrain with location colors.
-    The earlier seam-only test could pass perfectly flat terrain.
+    Mip 1 has one pixel per location-map pixel. Compare its terrain with the
+    location colors, so a flat or misplaced decal fails here.
     """
     from PIL import ImageDraw, ImageFont
     box=(int(min(i['center'][0]-i['radius'][0]*1.7 for i in cfg['islands'])),
@@ -53,17 +54,12 @@ def verify_relief(out,reports,cfg,entries):
          int(max(i['center'][0]+i['radius'][0]*1.7 for i in cfg['islands']))+1,
          int(max(i['center'][1]+i['radius'][1]*1.7 for i in cfg['islands']))+1)
     x0,y0,x1,y1=box
-    heights=np.zeros((y1-y0,x1-x0),np.uint16)
-    start=512*256+256*128
-    with (out/'in_game/gfx/terrain2/terrain_cache/heightmap.bin').open('rb') as f:
-        for py in range(y0//128*128,y1,128):
-            for px in range(x0//128*128,x1,128):
-                offset,length=entries[start+(63-py//128)*128+px//128]
-                if offset<0: continue
-                f.seek(offset)
-                tile=np.array(Image.open(io.BytesIO(f.read(length))),np.uint16)[2:130,2:130]
-                left,top=max(px,x0),max(py,y0);right,bottom=min(px+128,x1),min(py+128,y1)
-                heights[top-y0:bottom-y0,left-x0:right-x0]=tile[top-py:bottom-py,left-px:right-px]
+    cx,cy=td.placement(cfg);mip1,_=decode(out,'height',1);half=td.SIZE//4
+    # Decal mip 1 pixel (r,c) covers map pixel (cx/4-half+c, (32768-cy)/4-half+r).
+    ox=cx//4-half;oy=(td.TERRAIN_H-cy)//4-half
+    assert cx%4==0 and cy%4==0
+    heights=mip1[y0-oy:y1-oy,x0-ox:x1-ox]
+    assert heights.shape==(y1-y0,x1-x0),'decal does not cover the islands'
     with Image.open(out/'in_game/map_data/locations.png') as locations:
         pixels=np.array(locations.crop(box))
     sea=.08340625*65535
@@ -101,9 +97,9 @@ def verify_relief(out,reports,cfg,entries):
     font_path=Path('C:/Windows/Fonts/segoeui.ttf')
     heading=ImageFont.truetype(str(font_path),25) if font_path.exists() else ImageFont.load_default()
     small=ImageFont.truetype(str(font_path),16) if font_path.exists() else ImageFont.load_default()
-    draw.text((20,12),'ASHBORN ISLES '+cfg['version']+' / DECODED TERRAIN CACHE',font=heading,fill='#edba5d')
+    draw.text((20,12),'ASHBORN ISLES '+cfg['version']+' / DECODED TERRAIN DECAL',font=heading,fill='#edba5d')
     draw.text((20,47),'Offline heightfield preview; native vertical scale. In-game appearance still requires verification.',font=small,fill='#d4ddd9')
-    canvas.save(reports/'Goblins_Cache_Relief.png')
+    canvas.save(reports/'Goblins_Decal_Relief.png')
     return metrics
 
 

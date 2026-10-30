@@ -33,7 +33,8 @@ def read(game, rel): return source(game, rel).read_text(encoding='utf-8-sig')
 def write(base, rel, content):
     p = base / rel
     p.parent.mkdir(parents=True, exist_ok=True)
-    bom=str(rel).endswith('.yml') or (str(rel).replace('\\','/').startswith('in_game/') and str(rel).endswith('.txt'))
+    # EU5 logs 'should be in utf8-bom encoding' for script without a BOM; setup files must have none.
+    bom=str(rel).endswith('.yml') or (str(rel).replace('\\','/').startswith(('in_game/','main_menu/common/','main_menu/music/')) and str(rel).endswith('.txt'))
     p.write_text(content.replace('\r\n','\n'), encoding=('utf-8-sig' if bom else 'utf-8'), newline='\r\n')
 
 def clean(text):
@@ -122,14 +123,14 @@ def validate(game,out,mapstats,economy):
     checks.append('Metadata and terrain instance JSON parse.')
     for p in (out/'main_menu/setup').rglob('*.txt'):
         assert not p.read_bytes().startswith(bytes.fromhex('efbbbf')),f'Setup BOM rejected by engine: {p}'
-    cities=(out/'main_menu/setup/start/07_cities_and_buildings.txt').read_text()
+    cities=(out/'main_menu/setup/1337/07_cities_and_buildings.txt').read_text()
     assert 'cm_hooktooth = { rank = city town_setup = cm_hooktooth_settlement }' in cities
     for country in CFG['countries']:
         assert f'{country["capital"]} = {{ rank = {country["rank"]} town_setup = {country["capital"]}_settlement }}' in cities
         owned={l['id'] for l in CFG['locations'] if l['country']==country['tag']}
         assert country['capital'] in owned
     checks.append('Setup files have no BOM; all six countries have populated urban capitals, with city rank only at Hooktooth.')
-    for rel in ['main_menu/setup/start/06_pops.txt','main_menu/setup/start/10_countries.txt','main_menu/setup/start/07_cities_and_buildings.txt','main_menu/setup/start/03_markets.txt','in_game/map_data/definitions.txt']:
+    for rel in ['main_menu/setup/1337/06_pops.txt','main_menu/setup/1337/10_countries.txt','main_menu/setup/1337/07_cities_and_buildings.txt','main_menu/setup/1337/03_markets.txt','in_game/map_data/definitions.txt']:
         before=[l.strip() for l in (game/rel).read_text(encoding='utf-8-sig').splitlines() if l.strip()]
         after=[l.strip() for l in (out/rel).read_text(encoding='utf-8-sig').splitlines() if l.strip()]
         # Every original line survives in order; new content only inserted.
@@ -138,7 +139,7 @@ def validate(game,out,mapstats,economy):
             if pos<len(before) and line==before[pos]:pos+=1
         assert pos==len(before),f'Unexpected vanilla change: {rel}'
     checks.append('Existing country, population, city, market and hierarchy lines preserved in order.')
-    pops=(out/'main_menu/setup/start/06_pops.txt').read_text(encoding='utf-8-sig')
+    pops=(out/'main_menu/setup/1337/06_pops.txt').read_text(encoding='utf-8-sig')
     for l in CFG['locations']:
         a,b=block_span(pops,l['id']);sizes=re.findall(r'\bsize\s*=\s*([\d.]+)',pops[a:b])
         import mixed_populations
@@ -216,10 +217,11 @@ def main():
     continuity=verify_center_continuity(CFG)
     print('Building playable map and island terrain...',flush=True)
     mapstats=build_map(game,out,reports)
-    from terrain_cache import build_cache_patch
-    print('Patching runtime terrain cache...',flush=True)
-    terrain=build_cache_patch(game,out,reports,CFG,footprint,source)
+    import terrain_decal
+    print('Building island terrain decal...',flush=True)
+    terrain=terrain_decal.build(sys.modules[__name__],game,out)
     terrain['verification']=verify(game,out,reports,CFG)
+    (reports/'terrain_decal.json').write_text(json.dumps(terrain,indent=2),encoding='utf-8')
     terrain['center_continuity']=continuity
     print('Building campaign setup...',flush=True)
     economy=build_setup(game,out);localization(out);archipelago.add_localization(sys.modules[__name__],out)
@@ -275,7 +277,7 @@ def main():
     (reports/'model_verification.json').write_text(json.dumps(model_checks,indent=2),encoding='utf-8')
     import preview
     preview.context(game,out,reports)
-    report={'version':CFG['version'],'target_game_version':CFG['game_version'],'status':'STATIC VALIDATION PASSED; IN-GAME TESTING PENDING','checks':checks,'map':mapstats,'economy':economy,'runtime_tested':False,'terrain_cache_baked':False,'terrain_cache_patch':terrain,'exploration':discovery,'source_sha256':HASHES}
+    report={'version':CFG['version'],'target_game_version':CFG['game_version'],'status':'STATIC VALIDATION PASSED; IN-GAME TESTING PENDING','checks':checks,'map':mapstats,'economy':economy,'runtime_tested':False,'terrain_decal':terrain,'exploration':discovery,'source_sha256':HASHES}
     report['candidate_validation']=candidate_validation
     (reports/'validation.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
     print(json.dumps({'status':report['status'],'locations':len(CFG['locations']),'population':economy['total_population'],'land_pixels':mapstats['land_pixels'],'ports':len(mapstats['ports']),'output':str(out)},indent=2))

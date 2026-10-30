@@ -40,7 +40,7 @@ def verify(out, game=None):
         assert shipped.get(rel) == hashlib.sha256((out / rel).read_bytes()).hexdigest(), 'Stale flag manifest: ' + rel
     # Valid textures alone do not bind a country's flag: the old setup omitted
     # these assignments and the engine displayed procedural flags instead.
-    setup_path = out / 'main_menu/setup/start/10_countries.txt'
+    setup_path = out / 'main_menu/setup/1337/10_countries.txt'
     if setup_path.exists():
         from build import block_span
         setup = setup_path.read_text(encoding='utf-8-sig')
@@ -59,7 +59,7 @@ def verify(out, game=None):
         assert (game / 'main_menu/gfx/coat_of_arms/patterns/pattern_solid.dds').is_file()
         native = (game / 'main_menu/common/coat_of_arms/coat_of_arms/pre_scripted_countries.txt').read_text(encoding='utf-8-sig')
         assert 'textured_emblem = {' in native and 'color1 = rgb {' in native
-        native_setup = (game / 'main_menu/setup/start/10_countries.txt').read_text(encoding='utf-8-sig')
+        native_setup = (game / 'main_menu/setup/1337/10_countries.txt').read_text(encoding='utf-8-sig')
         assert 'flag = "ASK"' in native_setup
         native_effects = (game / 'in_game/events/situations/fall_of_delhi.txt').read_text(encoding='utf-8-sig')
         assert 'change_country_flag = BAH' in native_effects

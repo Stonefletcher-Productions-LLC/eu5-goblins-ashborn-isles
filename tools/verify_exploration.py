@@ -27,7 +27,7 @@ def verify(game, out, rebuild=True):
     land_ports = {loc for route in e.ROUTES.values() for loc in route['locations']} - seas
     assert not land_ports & known, 'Voyage destinations already discovered'
     assert not e.STARTING_REGIONS and not e.STARTING_PROVINCES
-    setup = (out/'main_menu/setup/start/10_countries.txt').read_text(encoding='utf-8-sig')
+    setup = (out/'main_menu/setup/1337/10_countries.txt').read_text(encoding='utf-8-sig')
     for country in b.CFG['countries']:
         start, end = b.block_span(setup, country['tag'])
         block = setup[start:end]

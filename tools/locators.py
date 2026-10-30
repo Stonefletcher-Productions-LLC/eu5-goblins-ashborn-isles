@@ -2,6 +2,11 @@
 import re
 import numpy as np
 
+LOCATOR_FILES={'city':'generated_locators_city','vfx':'generated_locators_vfx',
+               'unit_stack':'generated_map_object_locators_unit_stack',
+               'combat':'generated_map_object_locators_combat',
+               'dock':'generated_map_object_locators_dock'}
+
 def build_locators(b,game,out,labels,seawater,sea_labels,box,height,ports):
     anchors={};sets={k:[] for k in ['city','unit_stack','combat','vfx','dock']}
     def entry(name,x,y):
@@ -23,7 +28,8 @@ def build_locators(b,game,out,labels,seawater,sea_labels,box,height,ports):
         for kind in ['unit_stack','combat','vfx']:sets[kind].append(entry(zone['id'],xs[j]+box[0]+.5,ys[j]+box[1]+.5))
     for port in ports:sets['dock'].append(entry(port['land'],port['x']+.5,port['png_y']+.5))
     for kind,rows in sets.items():
-        rel=f'in_game/gfx/map/map_objects/generated_map_object_locators_{kind}.txt'
+        # EU5 1.4 renamed the city and vfx locator files.
+        rel=f'in_game/gfx/map/map_objects/{LOCATOR_FILES[kind]}.txt'
         text=b.read(game,rel)
         for name,(x,y) in native_water_anchors(b,game,out,box,text).items():
             text=re.sub(r'(id='+name+r'\s*\n\s*position=\{ )[-\d.]+ ([-\d.]+) [-\d.]+( \})',
