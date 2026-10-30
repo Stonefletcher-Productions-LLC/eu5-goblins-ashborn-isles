@@ -35,6 +35,11 @@ try {
     if (-not (Test-Path -LiteralPath $notes)) { throw "Missing Workshop change notes: $notes" }
     if (Get-Process -Name eu5 -ErrorAction SilentlyContinue) { throw 'Close Europa Universalis V first.' }
     if (-not (Get-Process -Name steam -ErrorAction SilentlyContinue)) { throw 'Start Steam (signed in as the Workshop owner) first.' }
+    # The Workshop title comes from the uploader config; keep it identical to the mod name (e.g. "[1.4] - ...").
+    $modName = (Get-Content -LiteralPath (Join-Path $Repo 'mod\.metadata\metadata.json') -Raw | ConvertFrom-Json).name
+    $steamName = (Get-Content -LiteralPath (Join-Path $Uploader 'goblins-config.json') -Raw | ConvertFrom-Json).mods[0].names.english
+    if ($steamName -ne $modName) { throw "Workshop title '$steamName' differs from mod name '$modName'; update $Uploader\goblins-config.json." }
+    if (-not ([Text.Encoding]::UTF8.GetString([IO.File]::ReadAllBytes((Join-Path $Repo 'STEAM_DESCRIPTION.txt')))).StartsWith("[h1]$modName[/h1]")) { throw "STEAM_DESCRIPTION.txt heading differs from mod name '$modName'." }
     RunPy tools/verify_prepared_bundle.py
     if (-not (Test-Path -LiteralPath (Join-Path $Repo "dist\Goblins_Ashborn_Isles_$Version.zip"))) { throw "dist zip missing; run tools/refresh_overlay_bundle.py first." }
 
