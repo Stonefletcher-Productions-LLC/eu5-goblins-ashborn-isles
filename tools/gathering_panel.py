@@ -88,6 +88,46 @@ PACT_STEPS                    }
                 }
             }
 '''.replace('PACT_STEPS', pact_steps).replace('TAG', tag).replace('INDEPENDENT', independent).replace('STATUS', status).replace('TOTAL', str(len(homeland))))
+    # Summary of the viewer's pacts: each rung lists the crowns currently on it.
+    def step_is(tag, i):
+        return f"EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ga_pact_step_{tag}'), '(CFixedPoint){i}')"
+    pact_rungs = ''
+    for i, (key, _, _) in enumerate(sworn_pacts.STEPS):
+        if i == 0: continue
+        crowns = ''.join(f'''
+                        hbox = {{
+                            datacontext = "[GetCountry('{tag}')]"
+                            visible = "[And(Country.Exists, {step_is(tag, i)})]"
+                            layoutpolicy_horizontal = expanding
+                            spacing = 6
+                            country_flag_small = {{
+                                size = {{ 30 20 }}
+                                tooltipwidget = {{ using = CountryTooltip }}
+                            }}
+                            text_single = {{
+                                layoutpolicy_horizontal = expanding
+                                autoresize = yes
+                                text = "[Country.GetName]"
+                            }}
+                        }}''' for tag in tags)
+        none = f'Not({step_is(tags[-1], i)})'
+        for tag in reversed(tags[:-1]): none = f'And(Not({step_is(tag, i)}), {none})'
+        pact_rungs += f'''
+                    vbox = {{
+                        layoutpolicy_horizontal = expanding
+                        spacing = 2
+                        text_single = {{
+                            layoutpolicy_horizontal = expanding
+                            text = "ga_ui_pacts_{key}"
+                            tooltip = "ga_pact_step_{key}_tt"
+                        }}{crowns}
+                        text_single = {{
+                            visible = "[{none}]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            text = "ga_ui_pacts_none"
+                        }}
+                    }}'''
     panel = '''
 situation_panel = {
     blockoverride "situation_subheader_content" {}
@@ -96,6 +136,16 @@ situation_panel = {
         text_single = { text = "ga_gathering_header" fontsize = 13 }
     }
     blockoverride "situation_panel_main_content" {
+        situation_card_common = {
+            blockoverride "common_header_icon" {}
+            blockoverride "common_header_text" { text = "ga_ui_pacts_header" }
+            blockoverride "common_bottom_content" {
+                vbox = {
+                    layoutpolicy_horizontal = expanding
+                    spacing = 6PACT_RUNGS
+                }
+            }
+        }
         situation_card_common = {
             blockoverride "common_header_icon" {}
             blockoverride "common_header_text" { text = "ga_gathering_race" }
@@ -139,7 +189,7 @@ situation_panel = {
         }
     }
 }
-'''.replace('ROWS', ''.join(rows))
+'''.replace('ROWS', ''.join(rows)).replace('PACT_RUNGS', pact_rungs)
     write(out, 'in_game/gui/panels/situation/ga_gathering_of_five.gui', panel)
     for key, value in {
         'ga_gathering_header': 'Six Crowns - One Realm',
@@ -161,3 +211,8 @@ situation_panel = {
     for key, name, tip in sworn_pacts.STEPS:
         loc('ga_pact_step_' + key, 'Our pact: #Y ' + name + '#!')
         loc('ga_pact_step_' + key + '_tt', tip)
+    loc('ga_ui_pacts_header', 'Your pacts with the other crowns')
+    loc('ga_ui_pacts_trusted', '#Y Trusted#! - allied, or a Harbor Bargain honored')
+    loc('ga_ui_pacts_sworn', '#Y Sworn#! - bound by a Sworn Pact')
+    loc('ga_ui_pacts_bound', '#Y Bound#! - your subject; its homeland counts toward unification')
+    loc('ga_ui_pacts_none', 'None yet')

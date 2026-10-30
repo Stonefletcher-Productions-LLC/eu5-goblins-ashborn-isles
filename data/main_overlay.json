@@ -580,14 +580,6 @@
       "sha256": "80f404ec106dc3449898ed093faab2769d8ab24eeec08588d91e82274d00e9a3"
     },
     {
-      "path": "in_game/gui/panels/situation/ga_eastern_hunger.gui",
-      "sha256": "2beaa23be5b0bb72735281c3db88444a73443c6e24f2a80bcd7cbe757bbc8938"
-    },
-    {
-      "path": "in_game/gui/panels/situation/ga_gathering_of_five.gui",
-      "sha256": "ac97c1a935a16736fc302c2979c290436e7e8a268f1e0d8acdc02f9627cd1a10"
-    },
-    {
       "path": "in_game/gui/panels/situation/ga_goblin_shore.gui",
       "sha256": "48d2e1b87798a4c8b3c019a6fc5c3b07b9f53fcee82123b742bcc74f4a68ee88"
     },
@@ -14698,10 +14690,6 @@
     {
       "path": "main_menu/localization/english/goblins_exploration_l_english.yml",
       "sha256": "e706bee904f2e29bef9d65d5cacc2d582ffad407add89ed4e015581a44f95db9"
-    },
-    {
-      "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
-      "sha256": "23a3f8d370ff8981fad311cd8e3be676927c2df79d84d66fea638d0eeb9fa745"
     },
     {
       "path": "main_menu/localization/english/goblins_mainland_l_english.yml",
