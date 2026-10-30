@@ -37,14 +37,20 @@ def dispatch():
 
 def panel():
     # Own-country action preserves existing voyage eligibility and saved progress.
+    # EU5 1.4 removed action_button_default; generic actions use scripted_action_tooltip.
     return '''text_multi = {
             layoutpolicy_horizontal = expanding max_width = 400 autoresize = yes
             text = "ga_exp_panel_status"
         }
-        action_button_default = {
+        targetted_button_regular = {
             size = { 400 40 }
-            actor = "[GetPlayer]"
-            left_action = { action_name = "ga_commission_voyage" }
+            text = "ga_commission_voyage"
+            scripted_action_tooltip = {
+                click_type = left
+                click_mode = single
+                action_name = "ga_commission_voyage"
+                actor = "[GetPlayer]"
+            }
         }
         '''
 
