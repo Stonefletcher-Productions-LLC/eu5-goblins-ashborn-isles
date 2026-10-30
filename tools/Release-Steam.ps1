@@ -40,6 +40,7 @@ try {
     $steamName = (Get-Content -LiteralPath (Join-Path $Uploader 'goblins-config.json') -Raw | ConvertFrom-Json).mods[0].names.english
     if ($steamName -ne $modName) { throw "Workshop title '$steamName' differs from mod name '$modName'; update $Uploader\goblins-config.json." }
     if (-not ([Text.Encoding]::UTF8.GetString([IO.File]::ReadAllBytes((Join-Path $Repo 'STEAM_DESCRIPTION.txt')))).StartsWith("[h1]$modName[/h1]")) { throw "STEAM_DESCRIPTION.txt heading differs from mod name '$modName'." }
+    if (-not ([Text.Encoding]::UTF8.GetString([IO.File]::ReadAllBytes((Join-Path $Repo 'STEAM_DESCRIPTION.txt')))).Contains('https://discord.gg/9Y5GVYTxf')) { throw "STEAM_DESCRIPTION.txt must link the Discord (https://discord.gg/9Y5GVYTxf)." }
     RunPy tools/verify_prepared_bundle.py
     if (-not (Test-Path -LiteralPath (Join-Path $Repo "dist\Goblins_Ashborn_Isles_$Version.zip"))) { throw "dist zip missing; run tools/refresh_overlay_bundle.py first." }
 

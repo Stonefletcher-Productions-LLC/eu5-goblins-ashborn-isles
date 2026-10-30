@@ -2,6 +2,9 @@
 
 [b]Version 0.6.9 — Ready for EU5 1.4.[/b]
 
+[h2]Join the Discord[/h2]
+News, bug reports and playtests: [b][url=https://discord.gg/9Y5GVYTxf]discord.gg/9Y5GVYTxf[/url][/b]. Website: [url=https://stonefletcher.com]stonefletcher.com[/url]. Made by [b]Stonefletcher Productions LLC[/b].
+
 [img]https://images.steamusercontent.com/ugc/14907097014739312596/D0FF7245E19633C807843C5D36A672B4224E95BB/[/img]
 
 
@@ -19,7 +22,6 @@ Choose a goblin crown, develop its economy and bargain with neighboring rulers. 
 Requires EU5 1.4 and a new 1337 campaign. Not yet tested in game.
 [b]Included from 0.6.8:[/b] galleys from day one, sculpted goblin soldiers, kingdom openings, Warchief actions and the Goblin Shore.
 [b]Included from 0.6.7:[/b] Shatter Maw moves and grows, Cinderstep, start-game balance, the Goblin Horde, Pact Ladder and Covenant rites.
-[b]Included from 0.6.6:[/b] royal families and up to four wives, Obsidian Fletchers, goblin soldiers and goblin towns.
 
 [h2]An Atlantic homeland[/h2]
 
@@ -47,9 +49,7 @@ Every crown has its own culture, ruling household, introduction and three starti
 
 [img]https://images.steamusercontent.com/ugc/12326756296266873860/999EC3DB01CD882A3DBCB91990A98F4576AFD0A2/[/img]
 
-[b]Giltfang — Cinderweight.[/b] Vrekk, the Brass-Tooth, turned salvage disputes and trusted copper weights into harbor fees, armed crews and a crown. Copper workings and salt pans supply Chainhaven's market, while Tolltooth's lamps guard the approach. His projects support honest weights, harbor envoys or a supplied watch.
-
-Distinct names, dynasties, courts and original artwork give each clan its own identity.
+[b]Giltfang — Cinderweight.[/b] Vrekk, the Brass-Tooth, turned salvage disputes and trusted copper weights into harbor fees, armed crews and a crown. Copper workings and salt pans supply Chainhaven's market, while Tolltooth's lamps guard the approach.
 
 [h2]Gather the crowns[/h2]
 
@@ -75,7 +75,7 @@ Each crown starts with [b]100 gold[/b]. Its three opening projects cost [b]25 go
 
 [b]Ashborn Voyages[/b] tracks preparation, sailing, returning crews, rest and completed charts. Expeditions toward Iberia, northern waters and northwest Africa cost gold and time. The first offer follows 36 months of preparation.
 
-Request reminders or commission available routes manually. Returning crews reveal limited coastal destinations, with reciprocal contact. Foreign land is not all revealed at the start.
+Returning crews reveal limited coastal destinations, with reciprocal contact. Foreign land is not all revealed at the start.
 
 [h2]The Eastern Hunger and the Ashen Covenant[/h2]
 
@@ -83,7 +83,7 @@ Request reminders or commission available routes manually. Returning crews revea
 
 After unification, the [b]Eastern Hunger[/b] supports a European coastal foothold. Prepare your fleet, choose an eligible objective and pursue it through normal warfare and peace settlements. Build the forces and win the land yourself.
 
-At home, the [b]Ashen Covenant[/b] provides twelve sacred sites, traditions, rites, Favor and religious stories. Its choices sit alongside clan politics and the demands of the ruling household. Earlier portrait, skin, hairstyle, Drogg, wardrobe and holy-site fixes remain included.
+At home, the [b]Ashen Covenant[/b] provides twelve sacred sites, traditions, rites, Favor and religious stories. Its choices sit alongside clan politics and the demands of the ruling household.
 
 [h2]Install and continue[/h2]
 
@@ -99,6 +99,6 @@ Built for [b]EU5 1.4[/b]. 0.6.9 needs a [b]new 1337 campaign[/b]. In multiplayer
 [h2]Checks, feedback and credits[/h2]
 Static map, script, artwork and clean-install checks passed. Hiring, masonry output, trade and UI rendering need gameplay confirmation. Multiplayer and achievements are unverified. Dedicated foreign invasion ambitions and fear mechanics are not included.
 
-Report your version, clan, enabled mods and reproduction steps in the comments.
+Report your version, clan, enabled mods and reproduction steps in the comments or on [url=https://discord.gg/9Y5GVYTxf]Discord[/url].
 
-Music: ElevenLabs Music v2 and ACE-Step 1.5 (MIT). Setting and development: Stonefletcher Productions LLC. Base infantry: Quaternius (CC0). Paintings and branding use AI-generated art; maps are generated-data diagrams. Europa Universalis V belongs to Paradox Interactive. Unofficial mod.
+Music: ElevenLabs Music v2 and ACE-Step 1.5 (MIT). Setting and development: Stonefletcher Productions LLC ([url=https://stonefletcher.com]stonefletcher.com[/url]). Base infantry: Quaternius (CC0). Paintings and branding use AI-generated art; maps are generated-data diagrams. Europa Universalis V belongs to Paradox Interactive. Unofficial mod.

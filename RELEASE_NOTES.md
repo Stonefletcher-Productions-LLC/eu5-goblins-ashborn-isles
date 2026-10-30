@@ -1,5 +1,7 @@
 # Goblins of the Ashborn Isles 0.6.9
 
+**[Join the Discord](https://discord.gg/9Y5GVYTxf)** for news, bug reports and playtests. Website: [stonefletcher.com](https://stonefletcher.com). Made by Stonefletcher Productions LLC.
+
 **0.6.9 — Ready for EU5 1.4.**
 
 - **Updated for EU5 1.4 (Across the Pillars).** The mod is rebuilt against EU5 1.4.6: the 1337 start setup, the map, the city and port positions and the institutions all follow the 1.4 files.

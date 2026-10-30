@@ -1,5 +1,7 @@
 # Goblins of the Ashborn Isles 0.6.9
 
+**[Join the Discord](https://discord.gg/9Y5GVYTxf)** for news, bug reports and playtests. Website: [stonefletcher.com](https://stonefletcher.com). Made by Stonefletcher Productions LLC.
+
 **0.6.9 — Ready for EU5 1.4.**
 
 - **Updated for EU5 1.4 (Across the Pillars).** The mod is rebuilt against EU5 1.4.6: the 1337 start setup, the map, the city and port positions and the institutions all follow the 1.4 files.
@@ -121,3 +123,5 @@ Goods move within a market through market access; this does not create an inter-
 Built for EU5 1.4. Extract the entire package, close EU5, and run Install-Goblins.cmd. Enable only one Goblins copy. Start a new 1337 campaign.
 
 If EU5 says **Goblins of the Ashborn Isles** is missing when you load a save, cancel the load. Enable the mod in your playset and restart EU5 first; continuing without it crashes the game.
+
+Questions or bugs? Ask on [Discord](https://discord.gg/9Y5GVYTxf). Website: [stonefletcher.com](https://stonefletcher.com).
