@@ -44,10 +44,6 @@
       "sha256": "4d4a363bfe50686d322b8f518f0b5127504fcad218d4b6a4f5703a8e21cfe202"
     },
     {
-      "path": "in_game/common/customizable_localization/goblins_exploration.txt",
-      "sha256": "a137036d4358a4c06d68ec5856205ab803054f6bd0c52313460cf73be4237054"
-    },
-    {
       "path": "in_game/common/customizable_localization/goblins_harbor_receipts.txt",
       "sha256": "841028b2e2b47bdd6ee47e4bcf9a6612ec3de9eb47b53e69e2992ae1a8acad0c"
     },
@@ -74,10 +70,6 @@
     {
       "path": "in_game/common/generic_actions/goblins_divorce.txt",
       "sha256": "abf515a23566faf4e96a91902456aec59f2af0732b97ce0a83197defecacae73"
-    },
-    {
-      "path": "in_game/common/generic_actions/goblins_exploration.txt",
-      "sha256": "efc39cb595ac9ff668a5401e2fc1db864dd9cb5b67bece8b3c07b97e8217ea7e"
     },
     {
       "path": "in_game/common/generic_actions/goblins_gathering.txt",
@@ -142,10 +134,6 @@
     {
       "path": "in_game/common/on_action/goblins_economy.txt",
       "sha256": "d3be196311f0ce9f0e11901c54d8869d524881fba2cae33585e3e82dcb336d22"
-    },
-    {
-      "path": "in_game/common/on_action/goblins_exploration.txt",
-      "sha256": "011e823fba356289900343df16c07eb63f629e444c9263e656f3479bc2aa7d21"
     },
     {
       "path": "in_game/common/on_action/goblins_gathering.txt",
@@ -270,10 +258,6 @@
     {
       "path": "in_game/events/goblins_ashborn_isles.txt",
       "sha256": "d766d2297d7c6d0d55a9f6010520fd259f85eda7bc67d2772a391a37545ecec2"
-    },
-    {
-      "path": "in_game/events/goblins_exploration.txt",
-      "sha256": "05a86affba06a0ca2b09636728fd522b60856abc54172ce1e50af551983374f3"
     },
     {
       "path": "in_game/events/goblins_gathering.txt",
@@ -574,10 +558,6 @@
     {
       "path": "in_game/gui/ingame_topbar.gui",
       "sha256": "ddeda692954e5350b32094bdff8241b6c4cca263e95c1420d1c523ce8b456cd5"
-    },
-    {
-      "path": "in_game/gui/panels/situation/ga_ashborn_voyages.gui",
-      "sha256": "80f404ec106dc3449898ed093faab2769d8ab24eeec08588d91e82274d00e9a3"
     },
     {
       "path": "in_game/gui/panels/situation/ga_goblin_shore.gui",
@@ -14686,10 +14666,6 @@
     {
       "path": "main_menu/localization/english/goblins_divorce_l_english.yml",
       "sha256": "5148d57dc83c36754a2f7020eaf14f47dde7966d43d14bb95f0ff933d0ec7a60"
-    },
-    {
-      "path": "main_menu/localization/english/goblins_exploration_l_english.yml",
-      "sha256": "e706bee904f2e29bef9d65d5cacc2d582ffad407add89ed4e015581a44f95db9"
     },
     {
       "path": "main_menu/localization/english/goblins_mainland_l_english.yml",
