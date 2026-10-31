@@ -1,3 +1,6 @@
+0.6.10 — Fiefdom names and the Gathering panel
+A goblin crown made a fiefdom or union partner of another crown keeps its own name instead of taking the overlord's clan name (Reefhook no longer turns into "Cindermaw"); already-renamed crowns get their name and flag back on the next monthly tick. The Gathering's rules move into the 1.4 situation dropdown with a list of your pacts. 0.6.9 campaigns continue. All players need the same version in multiplayer.
+
 0.6.9 — Ready for EU5 1.4
 Rebuilt for EU5 1.4 (Across the Pillars): 1.4 start setup, map and institutions. The Ashborn Isles are now a native 1.4 terrain layer; the title-screen hang and missing sound on 1.4 are fixed. Goblin music rebuilt for 1.4 and goblin unit cards for the new 1.4 unit types. Requires EU5 1.4 and a new 1337 campaign. All players need the same version in multiplayer.
 

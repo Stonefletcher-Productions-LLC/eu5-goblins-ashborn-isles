@@ -1,10 +1,26 @@
 ﻿# Native effect updates the dynasty name and adjective. Stable country tags remain intact.
 ga_update_dynastic_clan_name = {
+    # A shared ruler's clan is not this crown's: return to the crown's own name and flag once.
+    if = {
+        limit = {
+            OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK tag = GTF }
+            has_variable = ga_named_dynasty
+            ga_clan_ruler_is_shared = yes
+        }
+        if = { limit = { tag = CDM } ga_restore_clan_country_name = { tag = CDM } }
+        if = { limit = { tag = QBR } ga_restore_clan_country_name = { tag = QBR } }
+        if = { limit = { tag = RHK } ga_restore_clan_country_name = { tag = RHK } }
+        if = { limit = { tag = SFK } ga_restore_clan_country_name = { tag = SFK } }
+        if = { limit = { tag = SWK } ga_restore_clan_country_name = { tag = SWK } }
+        if = { limit = { tag = GTF } ga_restore_clan_country_name = { tag = GTF } }
+        remove_variable = ga_named_dynasty
+    }
     if = {
         limit = {
             OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK tag = GTF }
             government_type = government_type:monarchy
             has_regent = no
+            ga_clan_ruler_is_shared = no
             ruler ?= { has_dynasty = no }
         }
         ruler = { found_dynasty = random }
@@ -14,6 +30,7 @@ ga_update_dynastic_clan_name = {
             OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK tag = GTF }
             government_type = government_type:monarchy
             has_regent = no
+            ga_clan_ruler_is_shared = no
             ruler ?= { has_dynasty = yes }
             OR = {
                 NOT = { has_variable = ga_named_dynasty }
@@ -23,5 +40,12 @@ ga_update_dynastic_clan_name = {
         ruler = { save_scope_as = new_ruler }
         change_country_dynastic_name = {}
         set_variable = { name = ga_named_dynasty value = ruler.dynasty }
+    }
+}
+ga_restore_clan_country_name = {
+    change_country_name = $tag$
+    hidden_effect = {
+        change_country_flag = $tag$
+        change_country_adjective = $tag$_ADJ
     }
 }
