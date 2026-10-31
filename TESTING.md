@@ -1,3 +1,11 @@
+# 0.6.10 acceptance: fiefdom names
+
+EU5 1.4.6, a 0.6.9 or new campaign as a goblin crown.
+
+- Conquer another goblin crown (for example Reefhook) and make it a fiefdom. After the next month it shows its own name and flag on the map and in the diplomacy panel, not your clan name.
+- Release it as independent or let it gain its own ruler: it takes that ruler's clan name again.
+- Search `error.log` for `ga_clan_ruler_is_shared` and `ga_restore_clan_country_name`.
+
 # 0.6.9 acceptance: EU5 1.4
 
 EU5 1.4.6, only **[1.4] - Goblins of the Ashborn Isles** enabled, new 1337 campaign, fresh `logs/error.log`.

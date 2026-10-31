@@ -4,6 +4,13 @@
 
 Working copy: `E:\Codex_EU5_Modding\goblins-ashborn-isles`. Repository: [GitHub](https://github.com/Stonefletcher-Productions-LLC/eu5-goblins-ashborn-isles) (Bitbucket was a temporary home from October 12 to 22; its history was rebuilt onto GitHub in PR #13).
 
+**0.6.10 — Fiefdom names and the Gathering panel.**
+
+- **Fiefdoms keep their own name.** A goblin crown made into a fiefdom (or joined in a union) under another crown no longer takes its overlord's clan name. Before, conquering Reefhook and making it a Cindermaw fiefdom renamed it "Cindermaw". Crowns already renamed this way get their own name and flag back on the next monthly tick. When the crown gets its own ruler again, it takes that ruler's clan name as before.
+- **Gathering panel for 1.4:** the Gathering's rules now sit in the situation dropdown, together with a list of your pacts.
+
+Built for **EU5 1.4**. 0.6.9 campaigns continue after a restart; no new campaign is needed. In multiplayer, every player needs the same version. Not yet tested in game. All 0.6.9 changes remain included.
+
 **0.6.9 — Ready for EU5 1.4.**
 
 - **Updated for EU5 1.4 (Across the Pillars).** The mod is rebuilt against EU5 1.4.6: the 1337 start setup, the map, the city and port positions and the institutions all follow the 1.4 files.
@@ -82,7 +89,7 @@ Built for **EU5 1.3.11**. Restart before playing. Existing 0.6.3 saves can use t
 
 ![Goblins of the Ashborn Isles banner](art/workshop/0.6.0/banner.jpg)
 
-[0.6.9 release notes](RELEASE_NOTES_0.6.9.md) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)
+[0.6.10 release notes](RELEASE_NOTES_0.6.10.md) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)
 
 Fire rose from the Atlantic. When the smoke cleared, goblin kingdoms stood among the new volcanic islands between the Azores and Portugal. Captains claimed sheltered harbors, smiths built their forges beneath black ridges, and rival houses began arguing over who should lead them.
 
@@ -203,7 +210,7 @@ At home, the **Ashen Covenant** provides twelve sacred sites, traditions, rites,
 
 Built for **EU5 1.4**. Start a **new 1337 campaign**; saves from 0.6.8 and EU5 1.3 do not carry over.
 
-- Subscribe through the Workshop, or download **Goblins_Ashborn_Isles_0.6.9.zip** from the release above, extract it and run **Install-Goblins.cmd** with EU5 closed.
+- Subscribe through the Workshop, or download **Goblins_Ashborn_Isles_0.6.10.zip** from the release above, extract it and run **Install-Goblins.cmd** with EU5 closed.
 - Enable only one Goblins copy and disable the old Gathering Prototype add-on. Restart before playing.
 - Existing 0.6.0 saves can receive the clan-flag repair after restart and the next monthly pulse; that repair alone needs no new campaign.
 - Other map, terrain and starting-world mods may conflict. Keep separate saves.

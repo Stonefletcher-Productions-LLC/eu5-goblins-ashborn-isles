@@ -1,5 +1,5 @@
 {
-  "base_release": "0.6.9",
+  "base_release": "0.6.10",
   "stage": "development-models-and-culture-names",
   "engine_tested": false,
   "files": [
@@ -209,11 +209,15 @@
     },
     {
       "path": "in_game/common/scripted_effects/goblins_dynastic_clans.txt",
-      "sha256": "4187f5691b9194e2d9d4eb35b6c52cebf791ad2b1a0dab1252fade298b51c67d"
+      "sha256": "21bfa6acb67af0e0f3cc4f24b5e4ed248eec03e069c6bb9c7b006a8b9331e5aa"
     },
     {
       "path": "in_game/common/scripted_effects/goblins_starting_trades.txt",
       "sha256": "2ce2271fe5466b92d82f00eaa2ce67a0b1f2d0af52193b170a80bf9932b8825d"
+    },
+    {
+      "path": "in_game/common/scripted_triggers/goblins_dynastic_clans.txt",
+      "sha256": "a5a56e80b9170197bccde1b7968ed7344b401beca89fde57db01511cf58b1ed1"
     },
     {
       "path": "in_game/common/scripted_triggers/goblins_gathering.txt",
@@ -578,6 +582,14 @@
     {
       "path": "in_game/gui/panels/situation/ga_ashborn_voyages.gui",
       "sha256": "80f404ec106dc3449898ed093faab2769d8ab24eeec08588d91e82274d00e9a3"
+    },
+    {
+      "path": "in_game/gui/panels/situation/ga_eastern_hunger.gui",
+      "sha256": "bb0e21533a36d52cc8959d55362c1eb5e10150b61fab41de87d51af7728d3e5d"
+    },
+    {
+      "path": "in_game/gui/panels/situation/ga_gathering_of_five.gui",
+      "sha256": "08ccfbe16b57d7e5dffca402ebe377678c38ea2e97edd42e99dd09e57e295c04"
     },
     {
       "path": "in_game/gui/panels/situation/ga_goblin_shore.gui",
@@ -14690,6 +14702,10 @@
     {
       "path": "main_menu/localization/english/goblins_exploration_l_english.yml",
       "sha256": "e706bee904f2e29bef9d65d5cacc2d582ffad407add89ed4e015581a44f95db9"
+    },
+    {
+      "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
+      "sha256": "5c11a3d65212dcfdb71cfa9989bc535fabc79cbfa85a9830ea36d985c4d31ad9"
     },
     {
       "path": "main_menu/localization/english/goblins_mainland_l_english.yml",

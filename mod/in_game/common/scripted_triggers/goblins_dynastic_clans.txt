@@ -1,0 +1,11 @@
+﻿# Mirrors the native on_new_ruler guard: this crown's ruler is also its overlord's or a union partner's.
+ga_clan_ruler_is_shared = {
+    has_ruler = yes
+    OR = {
+        AND = {
+            is_subject = yes
+            overlord ?= { ruler ?= { this = root.ruler } }
+        }
+        any_union_partner = { ruler ?= { this = root.ruler } }
+    }
+}

@@ -1,6 +1,6 @@
 [h1][1.4] - Goblins of the Ashborn Isles[/h1]
 
-[b]Version 0.6.9 — Ready for EU5 1.4.[/b]
+[b]Version 0.6.10 — Fiefdom names and the Gathering panel.[/b]
 
 [h2]Join the Discord[/h2]
 News, bug reports and playtests: [b][url=https://discord.gg/9Y5GVYTxf]discord.gg/9Y5GVYTxf[/url][/b]. Website: [url=https://stonefletcher.com]stonefletcher.com[/url]. Made by [b]Stonefletcher Productions LLC[/b].
@@ -12,14 +12,13 @@ Volcanic islands rose between the Azores and Portugal. Goblin captains claimed t
 
 Choose a goblin crown, develop its economy and bargain with neighboring rulers. Unite the Isles through conquest, submission or dynastic union, then chart foreign shores and pursue an eastern foothold.
 
-[h2]New in 0.6.9[/h2]
+[h2]New in 0.6.10[/h2]
 [list]
-[*][b]Updated for EU5 1.4[/b] (Across the Pillars): start setup, map and institutions rebuilt on 1.4.6.
-[*][b]New island terrain:[/b] the Isles are a native 1.4 terrain layer; EU5's own terrain files are left alone.
-[*]Fixes the title-screen hang and silent game on 1.4. Goblin music rebuilt for 1.4.
-[*]Goblin unit cards for the new 1.4 unit types.
+[*][b]Fiefdoms keep their own name:[/b] a crown made a fiefdom of another goblin crown no longer takes the overlord's clan name. Renamed crowns get their name back next month.
+[*]The Gathering's rules now sit in the 1.4 situation dropdown, with a list of your pacts.
 [/list]
-Requires EU5 1.4 and a new 1337 campaign. Not yet tested in game.
+0.6.9 campaigns continue. Not yet tested in game.
+[b]Included from 0.6.9:[/b] rebuilt for EU5 1.4 with native 1.4 island terrain, goblin music and unit cards for the new unit types.
 [b]Included from 0.6.8:[/b] galleys from day one, sculpted goblin soldiers, kingdom openings, Warchief actions and the Goblin Shore.
 [b]Included from 0.6.7:[/b] Shatter Maw moves and grows, Cinderstep, start-game balance, the Goblin Horde, Pact Ladder and Covenant rites.
 
@@ -87,7 +86,7 @@ At home, the [b]Ashen Covenant[/b] provides twelve sacred sites, traditions, rit
 
 [h2]Install and continue[/h2]
 
-Built for [b]EU5 1.4[/b]. 0.6.9 needs a [b]new 1337 campaign[/b]. In multiplayer, everyone needs the same version.
+Built for [b]EU5 1.4[/b]. Start a [b]new 1337 campaign[/b] (0.6.9 campaigns can continue). In multiplayer, everyone needs the same version.
 
 [list]
 [*]Subscribe through the Workshop and restart EU5.
