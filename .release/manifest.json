@@ -1569,5 +1569,6 @@
         "assets/overlay-abd70fad79c4-0001.b64"
       ]
     }
-  ]
+  ],
+  "source_commit_note": "0.6.10 fiefdom-name fix (PR #72)"
 }
